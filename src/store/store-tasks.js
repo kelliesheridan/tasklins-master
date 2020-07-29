@@ -30,6 +30,14 @@ const state = {
 		// 	dueTime: '16:00'
 		// }	
 	},
+	projects: {
+		'ID1': {
+			name: 'Tasks',
+			color: 'blue',
+			tasklin: ''
+		}
+
+	},
 	search: '',
 	sort: 'dueDate',
 	tasksDownloaded: false
