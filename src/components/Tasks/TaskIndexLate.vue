@@ -40,7 +40,6 @@
         </div> 
       </div>
     </q-item-section> -->
-
     <q-item-section side>
       <div class="row">
         <q-btn
