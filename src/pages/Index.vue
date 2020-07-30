@@ -10,6 +10,8 @@
     <div class="col-xs-12 col-sm-6 col-md-6 q-pa-md">
         <div>
         <list-header bgColor="bg-orange-4">Today's Tasks</list-header>
+        <no-tasks
+					v-if="!Object.keys(tasksToday).length && !Object.keys(tasksLate).length &&!search"></no-tasks>
           <tasks-late
 					v-if="Object.keys(tasksLate).length"
 					:tasksLate="tasksLate" />
@@ -97,7 +99,8 @@ export default {
     components: {
         'tasks-today' : require('components/Tasks/TasksToday.vue').default,
         'tasks-late' : require('components/Tasks/TasksLate.vue').default,
-        'list-header' : require('components/Shared/ListHeader.vue').default
+        'list-header' : require('components/Shared/ListHeader.vue').default,
+        'no-tasks' : require('components/Tasks/NoTasks.vue').default
 		},
 	  computed: {
     ...mapGetters('profile', ['profile']),

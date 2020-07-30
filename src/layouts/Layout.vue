@@ -59,7 +59,7 @@
               <img v-if="this.tasklin.color === 'pink'" src="statics/placeholder/pink3a.png"/>
               <img v-if="this.tasklin.color === 'purple'" src="statics/placeholder/purple3a.png"/>
               <img v-if="this.tasklin.color === 'green'" src="statics/placeholder/green3a.png"/>
-              <q-badge align="bottom" floating color="secondary">{{profile.level}}</q-badge>
+              <!-- <q-badge align="bottom" floating color="secondary">{{profile.level}}</q-badge> -->
               </q-avatar>
             <div>{{profile.name}}</div>
             <div>{{profile.username}}</div>

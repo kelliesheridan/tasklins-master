@@ -33,8 +33,13 @@ const state = {
 	projects: {
 		'ID1': {
 			name: 'Tasks',
+			color: 'yellow',
+			tasklin: '',
+		},
+		'ID2': {
+			name: '4thewords',
 			color: 'blue',
-			tasklin: ''
+			tasklin: '',
 		}
 
 	},
@@ -271,6 +276,9 @@ const getters = {
 		})
 
 		return tasks
+	},
+	projects: (state) => {
+		return state.projects
 	}
 }
 
