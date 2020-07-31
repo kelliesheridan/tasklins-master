@@ -9,35 +9,35 @@
   <div class="col-8">
 
     <div class="q-pa-md">
-      Kellie <q-linear-progress rounded size="15px" :value="kellieProgress" color="deep-purple" class="q-mt-sm" :key="update"/>
+      Kellie <q-linear-progress rounded size="15px" :value="kellieProgress" :style="{ 'color': getUserColor('kellie') }" class="q-mt-sm" :key="update"/>
     </div>
 
     <div class="q-pa-md">
-      Matt <q-linear-progress rounded size="15px" :value="mattProgress" color="teal" class="q-mt-sm"  :key="update"/>
+      Matt <q-linear-progress rounded size="15px" :value="mattProgress" :style="{ 'color': getUserColor('matt') }" class="q-mt-sm"  :key="update"/>
     </div>
 
     <div class="q-pa-md">
-      Kaitlyn <q-linear-progress rounded size="15px" :value="kaitlynProgress" color="pink-12" class="q-mt-sm" :key="update"/>
+      Kaitlyn <q-linear-progress rounded size="15px" :value="kaitlynProgress" :style="{ 'color': getUserColor('kaitlyn') }" class="q-mt-sm" :key="update"/>
     </div>  
 
     <div class="q-pa-md">
-      Adam <q-linear-progress rounded size="15px" :value="adamProgress" color="blue-grey-7" class="q-mt-sm" :key="update"/>
+      Adam <q-linear-progress rounded size="15px" :value="adamProgress" :style="{ 'color': getUserColor('adam') }" class="q-mt-sm" :key="update"/>
     </div>
 
     <div class="q-pa-md">
-      Kylie <q-linear-progress rounded size="15px" :value="kellieProgress" color="deep-purple" class="q-mt-sm" :key="update"/>
+      Kylie <q-linear-progress rounded size="15px" :value="kylieProgress" :style="{ 'color': getUserColor('kylie') }" class="q-mt-sm" :key="update"/>
     </div>
 
     <div class="q-pa-md">
-      Francis <q-linear-progress rounded size="15px" :value="mattProgress" color="teal" class="q-mt-sm"  :key="update"/>
+      Francis <q-linear-progress rounded size="15px" :value="francisProgress" :style="{ 'color': getUserColor('francis') }" class="q-mt-sm"  :key="update"/>
     </div>
 
     <div class="q-pa-md">
-      Gloria <q-linear-progress rounded size="15px" :value="kaitlynProgress" color="pink-12" class="q-mt-sm" :key="update"/>
+      Gloria <q-linear-progress rounded size="15px" :value="gloriaProgress" :style="{ 'color': getUserColor('gloria') }" class="q-mt-sm" :key="update"/>
     </div>  
 
     <div class="q-pa-md">
-      Paul <q-linear-progress rounded size="15px" :value="adamProgress" color="blue-grey-7" class="q-mt-sm" :key="update"/>
+      Paul <q-linear-progress rounded size="15px" :value="paulProgress" :style="{ 'color': getUserColor('paul') }" class="q-mt-sm" :key="update"/>
     </div>    
         </div>
 
@@ -119,6 +119,7 @@ export default {
   }),
   computed: {
     ...mapGetters('fitness', ['fitness']),
+    ...mapGetters('profile', ['profile']),
     firstActivity: function () {
       this.update;
       return this.getUsername(0);
@@ -146,6 +147,22 @@ export default {
     adamProgress: function () {
       this.update;
       return this.calculateValues('adam');
+    },
+    kylieProgress: function () {
+      this.update;
+      return this.calculateValues('kylie');
+    },
+    francisProgress: function () {
+      this.update;
+      return this.calculateValues('francis');
+    },
+    gloriaProgress: function () {
+      this.update;
+      return this.calculateValues('gloria');
+    },
+    paulProgress: function () {
+      this.update;
+      return this.calculateValues('paul');
     }
   },
   methods: {
@@ -166,6 +183,23 @@ export default {
             })
         }
         return intensityCount;
+      },
+      getUserColor(user) {
+        let color = ""
+        let fitness = this.fitness.fitness;
+        if (fitness != undefined) {
+            Object.keys(fitness).forEach(element => {
+              if (fitness[element].username == user) {
+                if (color === "") {
+                  color = fitness[element].color
+                }
+            }
+            })
+        }
+        if (color === "") {
+          color = "rgb(240,240,240)";
+        }
+        return color;
       },
       getUsername(value) {
         let activity = "";

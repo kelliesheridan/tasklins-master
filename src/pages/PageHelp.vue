@@ -54,7 +54,7 @@
         >
           <q-input
             filled
-            v-model="problem"
+            v-model="tickets.problem"
             label="What can we help you with?"
             lazy-rules
             :rules="[ val => val && val.length > 0 || 'Please type something']"
@@ -81,8 +81,11 @@
 import { mapGetters, mapActions} from 'vuex'
 
 export default {
+  data: () => ({
+    help: false
+  }),
     computed: {
-          ...mapGetters('tickets', ['tickets'])      
+        ...mapGetters('tickets', ['tickets'])      
     },
     methods: {
       ...mapActions('tickets', ['updateTicket', 'deleteTicket']),

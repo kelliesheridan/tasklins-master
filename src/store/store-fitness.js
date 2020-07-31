@@ -59,6 +59,7 @@ const actions = {
 	fbAddFitnessTask({dispatch}, fitnessTask) {
 		let userId = firebaseAuth.currentUser.uid
 		let username = this.state.profile.profile.user.name
+		let userColor = this.state.profile.profile.user.color
 		let date = Date.now()
 		let payload = {
 			date: date,
@@ -67,6 +68,7 @@ const actions = {
 			intensity: 0.01,
 			goal: 10,
 			cheers: 0,
+			color: userColor
             }
 		let taskFitness = firebaseDb.ref('fitness/' + date)
 		taskFitness.set(payload)

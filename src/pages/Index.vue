@@ -11,7 +11,7 @@
         <div>
         <list-header bgColor="bg-orange-4">Today's Tasks</list-header>
         <no-tasks
-					v-if="!Object.keys(tasksToday).length && !Object.keys(tasksLate).length &&!search"></no-tasks>
+					v-if="!Object.keys(tasksToday).length && !Object.keys(tasksLate).length"></no-tasks>
           <tasks-late
 					v-if="Object.keys(tasksLate).length"
 					:tasksLate="tasksLate" />
@@ -57,7 +57,7 @@
         <q-list dense padding class="rounded-borders">
           <q-item>
             <q-item-section>
-              <q-item-labe overline><b>Next Steps</b></q-item-labe>
+              <q-item-label overline><b>Next Steps</b></q-item-label>
             </q-item-section>
           </q-item>
 
