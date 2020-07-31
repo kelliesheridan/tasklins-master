@@ -93,6 +93,9 @@ const actions = {
 		}
 		dispatch('fbAddTask', payload)
 	},
+	addProject({ dispatch, commit }, project) {
+		dispatch('fbAddProject', project)
+	},
 	setSearch({ commit }, value) {
 		commit('setSearch', value)
 	},
@@ -143,6 +146,19 @@ const actions = {
 		let taskRef = firebaseDb.ref('tasks/' + userId + '/' + payload.id)
 		payload.task.createdDate = Date.now()
 		taskRef.set(payload.task, error => {
+			if (error) {
+				showErrorMessage(error.message)
+			}
+			else {
+				//Notify.create('New Task Added - + 1xp')
+			}
+		})
+	},
+	fbAddProject({}, payload) {
+		let userId = firebaseAuth.currentUser.uid
+		let taskRef = firebaseDb.ref('projects/' + payload.projectName)
+		payload.createdDate = Date.now()
+		taskRef.set(payload, error => {
 			if (error) {
 				showErrorMessage(error.message)
 			}

@@ -6,7 +6,7 @@
 
             <q-card-section class="q-pt-none">
 
-	    	<modal-project-name />
+	    	<modal-project-name :projectName.sync="project.projectName" ref="modalProjectName" />
 
             <modal-project-tasklin />    
         
@@ -23,20 +23,11 @@
 import { mapActions } from 'vuex'
 
 export default {
-
     data() {
         return {
-            model: null,
-            taskToSubmit: {
-                name: '',
-                project: '',
-                npublic: false,
-                nrepeating: false,
-                dueDate: '',
-                dueTime: '',
-                completed: false,
-                createdDate: '',
-                lastModified: ''
+            project: {
+                projectName: '',
+                color: ''
             }
         }
     },
@@ -48,18 +39,14 @@ export default {
 		'modal-task-save': require('components/Tasks/Modals/Shared/ModalTaskSave.vue').default,
 				},
         methods: {
-			...mapActions('tasks', ['addTask']),
+			...mapActions('tasks', ['addTask', 'addProject']),
 			...mapActions('profile', ['addXPValue']),
 			submitTask() {
-                this.addTask(this.taskToSubmit)
-                this.addXPValue(1)
-				this.$emit('close')
+                this.addProject(this.project)
+                this.$emit('close')
             },
             submitForm() {
-			this.$refs.modalTaskName.$refs.name.validate()
-			if (!this.$refs.modalTaskName.$refs.name.hasError) {
 				this.submitTask()
-			}
 		},
         }
     }

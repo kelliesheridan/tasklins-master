@@ -12,12 +12,13 @@
 					separator
 					bordered>
 
-				<project
-					v-for="(task, key) in tasksProject"
-					:key="key"
-					:task="task"
-					:id="key">
-					</project>
+				 <q-input class="col q-ma-sm"
+					filled
+					v-model="project.projectName"
+					label="Project*"
+					lazy-rules
+					:rules="[ val => val && val.length > 0 || 'Please type a project']"
+				/>
 				</q-list>
 		</div>
 	</transition>
@@ -27,9 +28,8 @@
 import { mapState, mapGetters, mapActions } from 'vuex'
 
 export default {
-    props: ['tasksProject'],
+
     components: {
-        'project' : require('components/Tasks/Project.vue').default,
         'list-header' : require('components/Shared/ListHeader.vue').default
 		},
 	computed: {
@@ -37,7 +37,7 @@ export default {
     },
       methods: {
 	...mapActions('profile', ['addXP']),
-	 	},
+		 },
     }
     
 </script>
