@@ -174,6 +174,7 @@ export default {
       },
       calculateValues(user) {
         let intensityCount = 0.0;
+        if (user) {
         let fitness = this.fitness.fitness;
         if (fitness != undefined) {
             Object.keys(fitness).forEach(element => {
@@ -182,10 +183,12 @@ export default {
             }
             })
         }
+        }
         return intensityCount;
       },
       getUserColor(user) {
         let color = ""
+        if (user) {
         let fitness = this.fitness.fitness;
         if (fitness != undefined) {
             Object.keys(fitness).forEach(element => {
@@ -195,6 +198,7 @@ export default {
                 }
             }
             })
+        }
         }
         if (color === "") {
           color = "rgb(240,240,240)";

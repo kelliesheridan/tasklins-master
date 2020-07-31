@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import { uid, date } from 'quasar'
 import { LocalStorage, SessionStorage } from 'quasar'
 import { firebaseAuth, firebaseDb } from 'boot/firebase'
@@ -21,6 +22,7 @@ const mutations = {
 	setFitnessTask(state, payload) {
 		console.debug("setting state.fitness to:", payload)
 		state.fitness = payload
+		
 	},
 	setSortedFitnessTask(state, payload) {
 		let sortedArray = new Array();
