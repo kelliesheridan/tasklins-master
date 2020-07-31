@@ -4,67 +4,49 @@ import { LocalStorage, SessionStorage } from 'quasar'
 import { firebaseAuth, firebaseDb } from 'boot/firebase'
 
 const state = {
-	// kellieprogress: 0.3,
-    // mattprogress: 0.9,
-    // kaitlynprogress: 0.8,
-    // adamprogress: 0.4,
-	// fitness: {
-	// // 	date: null,
-	// // 	username: '',
-	// // 	type: '',
-	// // 	intensity: 0.0,
-	// // 	goal: 0,
-	// // 	cheers: 0,
-	// }
+	writing: {
+
+	}
 }
 
 const mutations = {
-	setFitnessTask(state, payload) {
-		console.debug("setting state.fitness to:", payload)
-		state.fitness = payload
+	setWritingTask(state, payload) {
+		console.debug("setting state.writing to:", payload)
+		state.writing = payload
 		
 	},
-	setSortedFitnessTask(state, payload) {
+	setSortedWritingTask(state, payload) {
 		let sortedArray = new Array();
 		sortedArray = payload.sort();
-		state.fitnessSorted = payload
+		state.writingSorted = payload
 	},
 }
 
 const actions = {
-	addFitnessTask({ commit, dispatch }, fitnessTask) {
-		dispatch('fbAddFitnessTask', fitnessTask)
-		dispatch('fbReadFitnessTasks')
+	addWritingTask({ commit, dispatch }, writingTask) {
+		dispatch('fbAddWritingTask', writingTask)
+		dispatch('fbReadWritingTasks')
 	},
-	readFitnessTasks({ dispatch }) {
-		dispatch('fbReadFitnessTasks')
+	readWritingTasks({ dispatch }) {
+		dispatch('fbReadWritingTasks')
 	},
-	fbReadFitnessTasks({ commit }) {
+	fbReadWritingTasks({ commit }) {
 		let userId = firebaseAuth.currentUser.uid
-		let fitnessTasks = firebaseDb.ref('fitness').orderByKey();
-		let fitnessArray = new Array();
-		fitnessTasks.once("value").then(function(snapshot) {
-		let fitnessRecord = snapshot.val();
-		// snapshot.forEach(function(childSnapshot) {
-		// 	var key = childSnapshot.key;
-		// 	var childData = childSnapshot.val();
-		// 	fitnessArray.push([key, childData]);
-		// });
-
-		// commit('setFitnessTask', fitnessArray)
-		// commit('setSortedFitnessTask', fitnessArray)
-
-		commit('setFitnessTask', fitnessRecord)
+		let writingTasks = firebaseDb.ref('writing').orderByKey();
+		let writingArray = new Array();
+		writingTasks.once("value").then(function(snapshot) {
+		let writingRecord = snapshot.val();
+		commit('setWritingTask', writingRecord)
 
 		})
 
 		// child added
-		fitnessTasks.on('child_added', snapshot => {
-			let fitnessRecord = snapshot.val();
-			commit('setFitnessTask', fitnessRecord)
+		writingTasks.on('child_added', snapshot => {
+			let writingRecord = snapshot.val();
+			commit('setWritingTask', writingRecord)
 		})
 	},
-	fbAddFitnessTask({dispatch}, fitnessTask) {
+	fbAddWritingTask({dispatch}, writingTask) {
 		let userId = firebaseAuth.currentUser.uid
 		let username = this.state.profile.profile.user.name
 		let userColor = this.state.profile.profile.user.color
@@ -72,24 +54,20 @@ const actions = {
 		let payload = {
 			date: date,
 			username: username.toLowerCase(),
-			type: fitnessTask,
+			type: writingTask,
 			intensity: 0.01,
 			goal: 10,
 			cheers: 0,
 			color: userColor
             }
-		let taskFitness = firebaseDb.ref('fitness/' + date)
-		taskFitness.set(payload)
-		dispatch('fbReadFitnessTasks')
+		let taskWriting = firebaseDb.ref('writing/' + date)
+		taskWriting.set(payload)
+		dispatch('fbReadWritingTasks')
 	},
 }
 
 const getters = {
-    fitness: state => {
-		state.kellieprogress = 0.3
-    	state.mattprogress = 0.9
-    	state.kaitlynprogress = 0.8
-		state.adamprogress = 0.4
+    writing: state => {
 		return state;
     }
 }

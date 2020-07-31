@@ -13,35 +13,35 @@
     </div>
 
     <div class="q-pa-md">
-      Meghan <q-linear-progress rounded size="15px" :value="mattProgress" :style="{ 'color': getUserColor('matt') }" class="q-mt-sm"  :key="update"/>
+      Meghan <q-linear-progress rounded size="15px" :value="meghanProgress" :style="{ 'color': getUserColor('matt') }" class="q-mt-sm"  :key="update"/>
     </div>
 
     <div class="q-pa-md">
-      Erin <q-linear-progress rounded size="15px" :value="kaitlynProgress" :style="{ 'color': getUserColor('kaitlyn') }" class="q-mt-sm" :key="update"/>
+      Erin <q-linear-progress rounded size="15px" :value="erinProgress" :style="{ 'color': getUserColor('kaitlyn') }" class="q-mt-sm" :key="update"/>
     </div>  
 
     <div class="q-pa-md">
-      Emma <q-linear-progress rounded size="15px" :value="adamProgress" :style="{ 'color': getUserColor('adam') }" class="q-mt-sm" :key="update"/>
+      Emma <q-linear-progress rounded size="15px" :value="emmaProgress" :style="{ 'color': getUserColor('adam') }" class="q-mt-sm" :key="update"/>
     </div>
 
     <div class="q-pa-md">
-      Dez <q-linear-progress rounded size="15px" :value="kylieProgress" :style="{ 'color': getUserColor('kylie') }" class="q-mt-sm" :key="update"/>
+      Dez <q-linear-progress rounded size="15px" :value="dezProgress" :style="{ 'color': getUserColor('kylie') }" class="q-mt-sm" :key="update"/>
     </div>
 
     <div class="q-pa-md">
-      Rachel <q-linear-progress rounded size="15px" :value="francisProgress" :style="{ 'color': getUserColor('francis') }" class="q-mt-sm"  :key="update"/>
+      Rachel <q-linear-progress rounded size="15px" :value="rachelProgress" :style="{ 'color': getUserColor('francis') }" class="q-mt-sm"  :key="update"/>
     </div>
 
     <div class="q-pa-md">
-      Kyra <q-linear-progress rounded size="15px" :value="gloriaProgress" :style="{ 'color': getUserColor('gloria') }" class="q-mt-sm" :key="update"/>
+      Kyra <q-linear-progress rounded size="15px" :value="kyraProgress" :style="{ 'color': getUserColor('gloria') }" class="q-mt-sm" :key="update"/>
     </div>  
 
     <div class="q-pa-md">
-      Helen <q-linear-progress rounded size="15px" :value="paulProgress" :style="{ 'color': getUserColor('paul') }" class="q-mt-sm" :key="update"/>
+      Helen <q-linear-progress rounded size="15px" :value="helenProgress" :style="{ 'color': getUserColor('paul') }" class="q-mt-sm" :key="update"/>
     </div>
 
     <div class="q-pa-md">
-      Calyn <q-linear-progress rounded size="15px" :value="paulProgress" :style="{ 'color': getUserColor('paul') }" class="q-mt-sm" :key="update"/>
+      Calyn <q-linear-progress rounded size="15px" :value="calynProgress" :style="{ 'color': getUserColor('paul') }" class="q-mt-sm" :key="update"/>
     </div>  
         </div>
 
@@ -181,20 +181,20 @@ export default {
     }
   },
   methods: {
-      ...mapActions('fitness', ['addFitnessTask', 'readFitnessTasks']),
+      ...mapActions('writing', ['addWritingTask', 'readWritingTasks']),
       submit(event) {
-        console.debug('fitness event: ', event)
-        this.addFitnessTask(event);
+        console.debug('writing event: ', event)
+        this.addWritingTask(event);
         this.update += 1;
       },
       calculateValues(user) {
         let intensityCount = 0.0;
         if (user) {
-        let fitness = this.fitness.fitness;
-        if (fitness != undefined) {
-            Object.keys(fitness).forEach(element => {
-              if (fitness[element].username == user) {
-                intensityCount += fitness[element].intensity
+        let writing = this.writing.writing;
+        if (writing != undefined) {
+            Object.keys(writing).forEach(element => {
+              if (writing[element].username == user) {
+                intensityCount += writing[element].intensity
             }
             })
         }
@@ -204,12 +204,12 @@ export default {
       getUserColor(user) {
         let color = ""
         if (user) {
-        let fitness = this.fitness.fitness;
-        if (fitness != undefined) {
-            Object.keys(fitness).forEach(element => {
-              if (fitness[element].username == user) {
+        let writing = this.writing.writing;
+        if (writing != undefined) {
+            Object.keys(writing).forEach(element => {
+              if (writing[element].username == user) {
                 if (color === "") {
-                  color = fitness[element].color
+                  color = writing[element].color
                 }
             }
             })
@@ -222,14 +222,14 @@ export default {
       },
       getCardColor(value) {
         let color = "";
-        let fitness = this.fitness.fitness;
-        if (fitness != undefined) {
-        let elementToCheck = value === 0 ? Object.keys(fitness).length - 1 : Object.keys(fitness).length - 1 - value;
-        if (fitness != undefined) {
-          Object.keys(fitness).forEach(element => {
-            if (Object.keys(fitness).indexOf(element) == elementToCheck) {
+        let writing = this.writing.writing;
+        if (writing != undefined) {
+        let elementToCheck = value === 0 ? Object.keys(writing).length - 1 : Object.keys(writing).length - 1 - value;
+        if (writing != undefined) {
+          Object.keys(writing).forEach(element => {
+            if (Object.keys(writing).indexOf(element) == elementToCheck) {
               if (color == "") 
-                color = fitness[element].color; 
+                color = writing[element].color; 
            }})
         }
         if (color == "") {color = "rgb(240,240,240)"; }
@@ -238,14 +238,14 @@ export default {
       },
       getUsername(value) {
         let activity = "";
-        let fitness = this.fitness.fitness;
-        if (fitness != undefined) {
-        let elementToCheck = value === 0 ? Object.keys(fitness).length - 1 : Object.keys(fitness).length - 1 - value;
-        if (fitness != undefined) {
-          Object.keys(fitness).forEach(element => {
-            if (Object.keys(fitness).indexOf(element) == elementToCheck) {
-            activity = fitness[element].username; 
-            switch (fitness[element].type) {
+        let writing = this.writing.writing;
+        if (writing != undefined) {
+        let elementToCheck = value === 0 ? Object.keys(writing).length - 1 : Object.keys(writing).length - 1 - value;
+        if (writing != undefined) {
+          Object.keys(writing).forEach(element => {
+            if (Object.keys(writing).indexOf(element) == elementToCheck) {
+            activity = writing[element].username; 
+            switch (writing[element].type) {
               case "writing": 
                 activity += " wrote 250 words!"
                 break;

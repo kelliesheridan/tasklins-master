@@ -6,6 +6,7 @@ import profile from './store-profile'
 import settings from './store-settings'
 import auth from './store-auth'
 import fitness from './store-fitness'
+import writing from './store-writing'
 import tasklins from './store-tasklins'
 import tickets from './store-tickets'
 
@@ -23,7 +24,7 @@ Vue.use(Vuex)
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
-      tasks, profile, settings, auth, fitness, tasklins, tickets
+      tasks, profile, settings, auth, fitness, tasklins, tickets, writing
     },
 
     // enable strict mode (adds overhead!)
