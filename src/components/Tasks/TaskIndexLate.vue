@@ -56,13 +56,7 @@
           dense
           color="red"
           icon="delete" />
-        <q-btn
-          @click.stop="pushDueDate({ id: id, dueDate: task.dueDate })"
-          flat
-          round
-          dense
-          color="blue"
-          icon="rotate_right" />
+          <tomorrow-button></tomorrow-button>
       </div>
     </q-item-section>
 
@@ -135,6 +129,7 @@
     },
     components: {
       'edit-task': require('components/Tasks/Modals/EditTask.vue').default,
+      'tomorrow-button': require('components/Tasks/Modals/Shared/TomorrowButton.vue').default,      
     }
 	}
 </script>
