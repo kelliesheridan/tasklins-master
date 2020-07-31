@@ -23,6 +23,22 @@
     <div class="q-pa-md">
       Adam <q-linear-progress rounded size="15px" :value="adamProgress" color="blue-grey-7" class="q-mt-sm" :key="update"/>
     </div>
+
+    <div class="q-pa-md">
+      Kylie <q-linear-progress rounded size="15px" :value="kellieProgress" color="deep-purple" class="q-mt-sm" :key="update"/>
+    </div>
+
+    <div class="q-pa-md">
+      Francis <q-linear-progress rounded size="15px" :value="mattProgress" color="teal" class="q-mt-sm"  :key="update"/>
+    </div>
+
+    <div class="q-pa-md">
+      Gloria <q-linear-progress rounded size="15px" :value="kaitlynProgress" color="pink-12" class="q-mt-sm" :key="update"/>
+    </div>  
+
+    <div class="q-pa-md">
+      Paul <q-linear-progress rounded size="15px" :value="adamProgress" color="blue-grey-7" class="q-mt-sm" :key="update"/>
+    </div>    
         </div>
 
   <div class="col bg-grey-4">

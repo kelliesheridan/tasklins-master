@@ -30,6 +30,19 @@ const state = {
 		// 	dueTime: '16:00'
 		// }	
 	},
+	projects: {
+		'ID1': {
+			name: 'Tasks',
+			color: 'yellow',
+			tasklin: '',
+		},
+		'ID2': {
+			name: '4thewords',
+			color: 'blue',
+			tasklin: '',
+		}
+
+	},
 	search: '',
 	sort: 'dueDate',
 	tasksDownloaded: false
@@ -263,6 +276,9 @@ const getters = {
 		})
 
 		return tasks
+	},
+	projects: (state) => {
+		return state.projects
 	}
 }
 

@@ -1,16 +1,14 @@
 <template>
 
-    <q-input
-    	outlined
-    	:value="name"
-    	@input="$emit('update:name', $event)"
-    	:rules="[val => !!val || 'Field is required']"
-    	autofocus
-		v-select-all
-    	ref="name"
-    	label="Project name"
-    	class="col">
-        </q-input>
+            <div class="row q-mb-sm">
+                <q-select
+                outlined
+                @input="$emit('update:project', $event)"
+                class="col"
+                :value="project"
+                :options="options"
+                label="Project" />
+            </div>
         
 </template>
 

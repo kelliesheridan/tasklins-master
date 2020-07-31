@@ -8,7 +8,6 @@
 		<list-header
 		clickable
 		v-ripple
-		@click="hideTasks = !hideTasks"
 		bgColor="bg-orange-4">Tasks</list-header>
 
 				<q-list					
@@ -16,7 +15,7 @@
 					bordered>
 
 				<task
-					:class="{ hidden: !hideTasks }"
+					:class="{ hidden: hideTasks }"
 					v-for="(task, key) in tasksTodo"
 					:key="key"
 					:task="task"
@@ -34,7 +33,7 @@ export default {
 	props: ['tasksTodo'],
 	data() {
       return {
-        hideTasks: true
+        hideTasks: false
       }
     },
     components: {

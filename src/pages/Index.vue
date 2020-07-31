@@ -10,12 +10,14 @@
     <div class="col-xs-12 col-sm-6 col-md-6 q-pa-md">
         <div>
         <list-header bgColor="bg-orange-4">Today's Tasks</list-header>
-        	<tasks-today
-					v-if="Object.keys(tasksToday).length"
-					:tasksToday="tasksToday" />
+        <no-tasks
+					v-if="!Object.keys(tasksToday).length && !Object.keys(tasksLate).length &&!search"></no-tasks>
           <tasks-late
 					v-if="Object.keys(tasksLate).length"
 					:tasksLate="tasksLate" />
+        	<tasks-today
+					v-if="Object.keys(tasksToday).length"
+					:tasksToday="tasksToday" />
         </div>
     </div>
 
@@ -35,21 +37,55 @@
             </p>
         </div>
     </div>
+
   </div>
 
-  <!-- <div class="row justify-center q-pa-md" >
+  <div class="row justify-center q-pa-md" >
 
-    <div class="col justify-center q-pa-md">
-        <list-header bgColor="bg-orange-4">News</list-header>
-        <p>Coming Soon!</p>
-    </div>
-
-      <div class="col justify-center q-pa-md">
+        <div class="col-xs-12 col-sm-12 col-md-6 news q-pa-md">
         <list-header bgColor="bg-orange-4">Social Feed</list-header>
-        <p>Coming Soon!</p>
-    </div>
+        <div class="text-left">
+        <h6>Social Feed</h6>
+        </div>
+        </div>
 
-  </div> -->
+
+        <div class="col-xs-12 col-sm-12 col-md-6 news q-pa-md">
+        <list-header bgColor="bg-orange-4">News</list-header>
+    <div class="text-left">
+      <div class="q-pa-md" style="max-width: 350px">
+        <q-list dense padding class="rounded-borders">
+          <q-item>
+            <q-item-section>
+              <q-item-labe overline><b>Next Steps</b></q-item-labe>
+            </q-item-section>
+          </q-item>
+
+          <q-item clickable v-ripple>
+            <q-item-section>
+              <q-item-label>Help Button</q-item-label>
+              <q-item-label caption>Button on help page to submit issues</q-item-label>
+            </q-item-section>
+          </q-item>
+
+          <q-item clickable v-ripple>
+            <q-item-section>
+              <q-item-label>Social Feed</q-item-label>
+              <q-item-label caption>See updates from other users</q-item-label>
+            </q-item-section>
+          </q-item>
+
+          <q-item clickable v-ripple>
+            <q-item-section>
+              <q-item-label>Happiness Meter</q-item-label>
+              <q-item-label caption>Get things done... happy Tasklin!</q-item-label>
+            </q-item-section>
+          </q-item>
+        </q-list>
+      </div>
+        </div>
+        </div>
+    </div>
 
   </q-page>
 </template>
@@ -63,7 +99,8 @@ export default {
     components: {
         'tasks-today' : require('components/Tasks/TasksToday.vue').default,
         'tasks-late' : require('components/Tasks/TasksLate.vue').default,
-        'list-header' : require('components/Shared/ListHeader.vue').default
+        'list-header' : require('components/Shared/ListHeader.vue').default,
+        'no-tasks' : require('components/Tasks/NoTasks.vue').default
 		},
 	  computed: {
     ...mapGetters('profile', ['profile']),
@@ -83,6 +120,11 @@ img {
   border-radius: 8px;
   padding: 10px;
   max-width: 50%;
+}
+
+.news {
+  margin:0%;
+
 }
 
 </style>
