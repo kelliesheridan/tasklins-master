@@ -14,8 +14,6 @@
 					separator
 					bordered>
 
-					<q-toggle v-model="hideTasks" />
-
 				<task
 					:class="{ hidden: hideTasks }"
 					v-for="(task, key) in tasksTodo"
