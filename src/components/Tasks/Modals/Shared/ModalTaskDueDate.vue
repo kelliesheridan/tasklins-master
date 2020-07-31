@@ -16,22 +16,30 @@
         </q-icon>
                 </template>
             </q-input>
-            <q-btn
-            flat
-            dense
-            color="purple"
-            icon="today" />
+        <!-- <q-btn
+          @click.stop="$emit('update:dueDate', $event)"       
+          @click.stop="dueDateToday({ id: id, dueDate: task.dueDate })"
+          flat
+          round
+          dense
+          color="purple"
+          icon="today" />
             <q-btn
             flat
             dense
             color="green"
-            icon="event" />
+            icon="event" /> -->
         </div>
 
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
-    props: ['dueDate']
+    props: ['dueDate', 'task', 'id'],
+        methods: {
+      ...mapActions('tasks', ['pushDueDate', 'dueDateToday']),
+    },
 }  
 </script>

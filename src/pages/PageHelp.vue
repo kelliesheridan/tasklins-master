@@ -1,8 +1,8 @@
 <template>
   <q-page padding>
 <p><strong>Open Issues</strong></p>
-<div>
-     <q-list separator style="max-width: 600px">
+<!--<div>
+      <q-list separator style="max-width: 600px">
 
       <q-item
       v-for="(ticket, key) in tickets"
@@ -24,20 +24,16 @@
         <q-item-section top side>
           <div class="text-grey-8 q-gutter-xs">
             <q-btn @click="promptToDelete(id)" class="gt-xs" size="12px" flat dense round icon="delete" />
-            <!-- <q-btn class="gt-xs" size="12px" flat dense round icon="autorenew" /> -->
+            <q-btn class="gt-xs" size="12px" flat dense round icon="autorenew" />
             <q-btn :value="ticket.completed" @click="updateTicket({ id: id, updates: {completed: !ticket.completed} })" class="gt-xs" size="12px" flat dense round icon="done" />
           </div>
         </q-item-section>
       </q-item>
 
 
-    </q-list>
-</div>
-<p><strong>Known Issues</strong></p>
+    </q-list> 
+</div> -->
 <p>- Dark mode doesn't really work yet</p>
-<p>- Form authentification on new user signup and tasklin creation</p>
-<p>- Make the help form work</p>
-<p>- Select Due Time issue</p>
 
         <q-dialog v-model="help">
 
@@ -69,11 +65,11 @@
         </q-card>
         </q-dialog>
 
-              <div class="text-center q-pa-md absolute-bottom">
+          <!--    <div class="text-center q-pa-md absolute-bottom">
 
-          <q-btn rounded padding @click="help = true" class="glossy text-center q-pa-md" color="negative" label="Help! Something is Broken!" />
+           <q-btn rounded padding @click="help = true" class="glossy text-center q-pa-md" color="negative" label="Help! Something is Broken!" /> 
         
-      </div>
+      </div> -->
   </q-page>
 </template>
 

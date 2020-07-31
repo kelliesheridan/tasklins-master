@@ -77,6 +77,13 @@
 
           <q-item clickable v-ripple>
             <q-item-section>
+              <q-item-label>Cheer Button</q-item-label>
+              <q-item-label caption>Cheer people on in challenges</q-item-label>
+            </q-item-section>
+          </q-item>          
+
+          <q-item clickable v-ripple>
+            <q-item-section>
               <q-item-label>Happiness Meter</q-item-label>
               <q-item-label caption>Get things done... happy Tasklin!</q-item-label>
             </q-item-section>

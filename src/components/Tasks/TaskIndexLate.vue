@@ -48,15 +48,30 @@
           round
           dense
           color="primary"
-          icon="edit" />
+          icon="edit">
+        <q-tooltip content-class="bg-secondary">Edit Task</q-tooltip>
+        </q-btn>
+
         <q-btn
           @click.stop="promptToDelete(id)"
           flat
           round
           dense
           color="red"
-          icon="delete" />
-          <tomorrow-button></tomorrow-button>
+          icon="delete">
+          <q-tooltip content-class="bg-secondary">Delete</q-tooltip>
+          </q-btn>
+
+          <q-btn
+          @click.stop="pushDueDate({ id: id, dueDate: task.dueDate })"
+          flat
+          round
+          dense
+          color="blue"
+          icon="rotate_right"
+          >
+          <q-tooltip content-class="bg-secondary">Move to Tomorrow</q-tooltip>
+          </q-btn>
       </div>
     </q-item-section>
 
@@ -128,8 +143,7 @@
       }
     },
     components: {
-      'edit-task': require('components/Tasks/Modals/EditTask.vue').default,
-      'tomorrow-button': require('components/Tasks/Modals/Shared/TomorrowButton.vue').default,      
+      'edit-task': require('components/Tasks/Modals/EditTask.vue').default   
     }
 	}
 </script>

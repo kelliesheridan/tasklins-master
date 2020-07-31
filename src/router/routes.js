@@ -15,6 +15,7 @@ const routes = [
       { path: 'todo', component: () => import('pages/PageTodo.vue') },
       { path: 'settings', component: () => import('pages/PageSettings.vue') },
       { path: 'auth', component: () => import('pages/PageAuth.vue') },
+      { path: 'writing', component: () => import('pages/PageWritingChallenge.vue') },      
       { path: 'fitness', component: () => import('pages/PageFitnessChallenge.vue') }
     ]
   }

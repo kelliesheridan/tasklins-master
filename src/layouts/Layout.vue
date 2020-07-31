@@ -164,6 +164,11 @@ export default {
           link: '/fitness'
         },
         {
+          title: 'Writing',
+          icon: 'create',
+          link: '/writing'
+        },        
+        {
           title: 'Help',
           icon: 'help',
           link: '/help'

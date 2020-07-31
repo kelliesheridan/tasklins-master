@@ -13,40 +13,36 @@
     </div>
 
     <div class="q-pa-md">
-      Matt <q-linear-progress rounded size="15px" :value="mattProgress" :style="{ 'color': getUserColor('matt') }" class="q-mt-sm"  :key="update"/>
+      Meghan <q-linear-progress rounded size="15px" :value="mattProgress" :style="{ 'color': getUserColor('matt') }" class="q-mt-sm"  :key="update"/>
     </div>
 
     <div class="q-pa-md">
-      Kaitlyn <q-linear-progress rounded size="15px" :value="kaitlynProgress" :style="{ 'color': getUserColor('kaitlyn') }" class="q-mt-sm" :key="update"/>
+      Erin <q-linear-progress rounded size="15px" :value="kaitlynProgress" :style="{ 'color': getUserColor('kaitlyn') }" class="q-mt-sm" :key="update"/>
     </div>  
 
     <div class="q-pa-md">
-      Adam <q-linear-progress rounded size="15px" :value="adamProgress" :style="{ 'color': getUserColor('adam') }" class="q-mt-sm" :key="update"/>
+      Emma <q-linear-progress rounded size="15px" :value="adamProgress" :style="{ 'color': getUserColor('adam') }" class="q-mt-sm" :key="update"/>
     </div>
 
     <div class="q-pa-md">
-      Kylie <q-linear-progress rounded size="15px" :value="kylieProgress" :style="{ 'color': getUserColor('kylie') }" class="q-mt-sm" :key="update"/>
+      Dez <q-linear-progress rounded size="15px" :value="kylieProgress" :style="{ 'color': getUserColor('kylie') }" class="q-mt-sm" :key="update"/>
     </div>
 
     <div class="q-pa-md">
-      Francis <q-linear-progress rounded size="15px" :value="francisProgress" :style="{ 'color': getUserColor('francis') }" class="q-mt-sm"  :key="update"/>
+      Rachel <q-linear-progress rounded size="15px" :value="francisProgress" :style="{ 'color': getUserColor('francis') }" class="q-mt-sm"  :key="update"/>
     </div>
 
     <div class="q-pa-md">
-      Gloria <q-linear-progress rounded size="15px" :value="gloriaProgress" :style="{ 'color': getUserColor('gloria') }" class="q-mt-sm" :key="update"/>
+      Kyra <q-linear-progress rounded size="15px" :value="gloriaProgress" :style="{ 'color': getUserColor('gloria') }" class="q-mt-sm" :key="update"/>
     </div>  
 
     <div class="q-pa-md">
-      Paul <q-linear-progress rounded size="15px" :value="paulProgress" :style="{ 'color': getUserColor('paul') }" class="q-mt-sm" :key="update"/>
+      Helen <q-linear-progress rounded size="15px" :value="paulProgress" :style="{ 'color': getUserColor('paul') }" class="q-mt-sm" :key="update"/>
     </div>
 
     <div class="q-pa-md">
-      Sara <q-linear-progress rounded size="15px" :value="saraProgress" :style="{ 'color': getUserColor('gloria') }" class="q-mt-sm" :key="update"/>
+      Calyn <q-linear-progress rounded size="15px" :value="paulProgress" :style="{ 'color': getUserColor('paul') }" class="q-mt-sm" :key="update"/>
     </div>  
-
-    <div class="q-pa-md">
-      Perry <q-linear-progress rounded size="15px" :value="perryProgress" :style="{ 'color': getUserColor('perry') }" class="q-mt-sm" :key="update"/>
-    </div>        
         </div>
 
   <div class="col bg-grey-4">
@@ -91,42 +87,30 @@
       </div>
     </div>
   <div class="q-pa-md absolute-bottom text-center">
-    <q-btn-dropdown class="q-mr-sm" color="light-green" label="I Worked Out" dropdown-icon="fitness_center">
+    <q-btn-dropdown class="q-mr-sm" color="light-green" label="I Did Something" dropdown-icon="create">
       <q-list>
-        <q-item clickable v-close-popup @click="submit('gym')">
+        <q-item clickable v-close-popup @click="submit('writing')">
           <q-item-section>
-            <q-item-label>Lifted Weights</q-item-label>
+            <q-item-label>Wrote 250 Words</q-item-label>
           </q-item-section>
         </q-item>
 
-        <q-item clickable v-close-popup @click="submit('run')">
+        <q-item clickable v-close-popup @click="submit('editing')">
           <q-item-section>
-            <q-item-label>Went for a Run</q-item-label>
+            <q-item-label>Edited for 20 Minutes</q-item-label>
           </q-item-section>
         </q-item>
 
-        <q-item clickable v-close-popup @click="submit('walk')">
+        <q-item clickable v-close-popup @click="submit('plotting')">
           <q-item-section>
-            <q-item-label>Went for a Walk</q-item-label>
-          </q-item-section>
-        </q-item>      
-
-        <q-item clickable v-close-popup @click="submit('yoga')">
-          <q-item-section>
-            <q-item-label>Did Some Yoga</q-item-label>
+            <q-item-label>Plotted for 2- Minutes</q-item-label>
           </q-item-section>
         </q-item>
 
-        <q-item clickable v-close-popup @click="submit('home')">
+        <q-item clickable v-close-popup @click="submit('query')">
           <q-item-section>
-            <q-item-label>Home Workout</q-item-label>
-        </q-item-section>
-        </q-item>
-
-        <q-item clickable v-close-popup @click="submit('other')">
-          <q-item-section>
-            <q-item-label>Did some other healthy thing</q-item-label>
-        </q-item-section>
+            <q-item-label>Sent a Query Letter</q-item-label>
+          </q-item-section>
         </q-item>
 
       </q-list>
@@ -145,7 +129,7 @@ export default {
     update: 0
   }),
   computed: {
-    ...mapGetters('fitness', ['fitness']),
+    ...mapGetters('writing', ['writing']),
     ...mapGetters('profile', ['profile']),
     firstActivity: function () {
       this.update;
@@ -159,45 +143,41 @@ export default {
       this.update;
       return this.getUsername(2);
     },
-    mattProgress: function () {
-      this.update;
-      return this.calculateValues('matt');
-    },
     kellieProgress: function () {
       this.update;
       return this.calculateValues('kellie');
     },
-    kaitlynProgress: function () {
+    meghanProgress: function () {
       this.update;
-      return this.calculateValues('kaitlyn');
+      return this.calculateValues('meghan');
     },
-    adamProgress: function () {
+    erinProgress: function () {
       this.update;
-      return this.calculateValues('adam');
+      return this.calculateValues('erin');
     },
-    kylieProgress: function () {
+    emmaProgress: function () {
       this.update;
-      return this.calculateValues('kylie');
+      return this.calculateValues('emma');
     },
-    francisProgress: function () {
+    dezProgress: function () {
       this.update;
-      return this.calculateValues('francis');
+      return this.calculateValues('dez');
     },
-    gloriaProgress: function () {
+    rachelProgress: function () {
       this.update;
-      return this.calculateValues('gloria');
+      return this.calculateValues('rachel');
     },
-    paulProgress: function () {
+    kyraProgress: function () {
       this.update;
-      return this.calculateValues('paul');
+      return this.calculateValues('kyra');
     },
-    saraProgress: function () {
+    helenProgress: function () {
       this.update;
-      return this.calculateValues('paul');
-    },
-     perryProgress: function () {
+      return this.calculateValues('helen');
+    },    
+    calynProgress: function () {
       this.update;
-      return this.calculateValues('paul');
+      return this.calculateValues('calyn');
     }
   },
   methods: {
@@ -266,24 +246,18 @@ export default {
             if (Object.keys(fitness).indexOf(element) == elementToCheck) {
             activity = fitness[element].username; 
             switch (fitness[element].type) {
-              case "run": 
-                activity += " went for a run!"
+              case "writing": 
+                activity += " wrote 250 words!"
                 break;
-              case "walk": 
-                activity += " went for a walk!"
-                break; 
-              case "yoga": 
-                activity += " did some yoga!"
+              case "editing": 
+                activity += " did some editing"
                 break;
-              case "weights": 
-                activity += " lifted heavy things!"
+              case "plotting": 
+                activity += " did some brainstorming!"
                 break;
-              case "home": 
-                activity += " worked out at home!"
-                break;
-              case "other": 
-                activity += " did something else? It was probably a healthy thing!"
-                break; 
+              case "query": 
+                activity += " sent a query letter!"
+                break;     
             } }})
         }
         

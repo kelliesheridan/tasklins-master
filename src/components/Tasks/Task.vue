@@ -49,26 +49,35 @@
           round
           dense
           color="primary"
-          icon="edit" />
+          icon="edit">
+          <q-tooltip content-class="bg-secondary">Edit Task</q-tooltip>
+        </q-btn>
         <q-btn
           @click.stop="promptToDelete(id)"
           flat
           round
           dense
           color="red"
-          icon="delete" />
+          icon="delete">
+          <q-tooltip content-class="bg-secondary">Delete</q-tooltip>
+          </q-btn>
         <q-btn
+          @click.stop="dueDateToday({ id: id, dueDate: task.dueDate })"
           flat
           round
           dense
           color="purple"
           icon="today" />
         <q-btn
+          @click.stop="pushDueDate({ id: id, dueDate: task.dueDate })"
           flat
           round
           dense
           color="blue"
-          icon="rotate_right" />
+          icon="rotate_right"
+          >
+          <q-tooltip content-class="bg-secondary">+1 Day</q-tooltip>
+          </q-btn>
       </div>
     </q-item-section>
 
@@ -104,7 +113,7 @@
               }
     },
     methods: {
-      ...mapActions('tasks', ['updateTask', 'deleteTask']),
+      ...mapActions('tasks', ['updateTask', 'deleteTask', 'pushDueDate', 'dueDateToday']),
       ...mapActions('profile', ['addXP', 'addLin']),
       showEditTaskModal() {
         this.showEditTask = true

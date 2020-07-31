@@ -82,6 +82,9 @@ const actions = {
 	pushDueDate( { dispatch }, payload) {
 		dispatch('fbPushDueDate', payload)
 	},
+	dueDateToday( { dispatch }, payload) {
+		dispatch('fbDueDateToday', payload)
+	},
 	addTask({ dispatch, commit }, task) {
 		let taskId = uid()
 		let payload = {
@@ -162,6 +165,17 @@ const actions = {
 		let userId = firebaseAuth.currentUser.uid
 		let taskRef = firebaseDb.ref('tasks/' + userId + '/' + payload.id)
 		payload.dueDate = addToDate(payload.dueDate, { days: 1});
+		// payload.dueDate = date.formatDate(payload.dueDate, 'YYYY-MM-DD')
+		taskRef.update(payload, error => {
+			if (error) {
+				showErrorMessage(error.message)
+			}
+		})
+	},
+	fbDueDateToday({}, payload) {
+		let userId = firebaseAuth.currentUser.uid
+		let taskRef = firebaseDb.ref('tasks/' + userId + '/' + payload.id)
+		payload.dueDate = Date.now();
 		// payload.dueDate = date.formatDate(payload.dueDate, 'YYYY-MM-DD')
 		taskRef.update(payload, error => {
 			if (error) {
