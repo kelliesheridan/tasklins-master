@@ -55,6 +55,12 @@ const actions = {
 		commit('setFitnessTask', fitnessRecord)
 
 		})
+
+		// child added
+		fitnessTasks.on('child_added', snapshot => {
+			let fitnessRecord = snapshot.val();
+			commit('addFitnessTask', payload)
+		})
 	},
 	fbAddFitnessTask({dispatch}, fitnessTask) {
 		let userId = firebaseAuth.currentUser.uid
