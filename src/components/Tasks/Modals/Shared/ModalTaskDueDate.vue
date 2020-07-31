@@ -24,8 +24,8 @@
             <q-btn
             flat
             dense
-            color="green"
-            icon="event" />
+            color="blue"
+            icon="rotate_right" />
         </div>
 
 </template>
