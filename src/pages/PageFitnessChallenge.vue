@@ -44,7 +44,7 @@
   <div class="col bg-grey-4">
 
     <q-card dense flat square class="my-card q-pa-xs">
-      <q-card-section class="bg-pink-12 text-white">
+      <q-card-section :style="{ 'background-color': getCardColor(0) }" class="text-white">
         <div class="text-h7">{{firstActivity}}
 
       <q-card-actions align="right">
@@ -57,7 +57,7 @@
     </q-card>
 
     <q-card dense flat square class="my-card q-pa-xs">
-      <q-card-section class="bg-teal text-white">
+      <q-card-section :style="{ 'background-color': getCardColor(1) }" class="text-white">
         <div class="text-h7">{{secondActivity}}
 
       <q-card-actions align="right">
@@ -69,7 +69,7 @@
     </q-card>
 
         <q-card dense flat square class="my-card q-pa-xs">
-      <q-card-section class="bg-deep-purple text-white">
+      <q-card-section :style="{ 'background-color': getCardColor(2) }" class="text-white">
         <div class="text-h7">{{thirdActivity}}
 
       <q-card-actions align="right">
@@ -200,6 +200,22 @@ export default {
           color = "rgb(240,240,240)";
         }
         return color;
+      },
+      getCardColor(value) {
+        let color = "";
+        let fitness = this.fitness.fitness;
+        if (fitness != undefined) {
+        let elementToCheck = value === 0 ? Object.keys(fitness).length - 1 : Object.keys(fitness).length - 2;
+        if (fitness != undefined) {
+          Object.keys(fitness).forEach(element => {
+            if (Object.keys(fitness).indexOf(element) == elementToCheck) {
+              if (color == "") 
+                color = fitness[element].color; 
+           }})
+        }
+        if (color == "") {color = "rgb(240,240,240)"; }
+        return color;
+        }
       },
       getUsername(value) {
         let activity = "";
