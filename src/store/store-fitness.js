@@ -59,7 +59,7 @@ const actions = {
 		// child added
 		fitnessTasks.on('child_added', snapshot => {
 			let fitnessRecord = snapshot.val();
-			commit('addFitnessTask', fitnessRecord)
+			commit('setFitnessTask', fitnessRecord)
 		})
 	},
 	fbAddFitnessTask({dispatch}, fitnessTask) {
