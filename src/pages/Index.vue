@@ -131,7 +131,11 @@ img {
 
 .news {
   margin:0%;
-
 }
+
+.q-scroll-area-tasks {
+		display: flex;
+		flex-grow: 1;
+	}
 
 </style>

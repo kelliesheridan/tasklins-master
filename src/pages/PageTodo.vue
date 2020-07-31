@@ -12,7 +12,6 @@
 		  <template v-if="tasksDownloaded">
 			<p v-if="search && !Object.keys(tasksTodo).length && !Object.keys(tasksCompleted).length">No search results.</p>
 
-			<q-scroll-area class="q-scroll-area-tasks">
 				<no-tasks
 					v-if="!Object.keys(tasksTodo).length && !search"></no-tasks>
 
@@ -24,7 +23,6 @@
 					v-if="Object.keys(tasksCompleted).length"
 					:tasksCompleted="tasksCompleted" />
 
-			</q-scroll-area>
 
         <q-dialog v-model="showAddProject">
           <add-project @close="showAddProject=false"
