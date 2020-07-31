@@ -130,7 +130,7 @@ export default {
     },
     thirdActivity: function () {
       this.update;
-      return this.getUsername(1);
+      return this.getUsername(2);
     },
     mattProgress: function () {
       this.update;
@@ -205,7 +205,7 @@ export default {
         let color = "";
         let fitness = this.fitness.fitness;
         if (fitness != undefined) {
-        let elementToCheck = value === 0 ? Object.keys(fitness).length - 1 : Object.keys(fitness).length - 2;
+        let elementToCheck = value === 0 ? Object.keys(fitness).length - 1 : Object.keys(fitness).length - 1 - value;
         if (fitness != undefined) {
           Object.keys(fitness).forEach(element => {
             if (Object.keys(fitness).indexOf(element) == elementToCheck) {
@@ -221,7 +221,7 @@ export default {
         let activity = "";
         let fitness = this.fitness.fitness;
         if (fitness != undefined) {
-        let elementToCheck = value === 0 ? Object.keys(fitness).length - 1 : Object.keys(fitness).length - 2;
+        let elementToCheck = value === 0 ? Object.keys(fitness).length - 1 : Object.keys(fitness).length - 1 - value;
         if (fitness != undefined) {
           Object.keys(fitness).forEach(element => {
             if (Object.keys(fitness).indexOf(element) == elementToCheck) {
