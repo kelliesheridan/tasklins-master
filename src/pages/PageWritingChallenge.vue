@@ -113,6 +113,12 @@
           </q-item-section>
         </q-item>
 
+        <q-item clickable v-close-popup @click="submit('homework')">
+          <q-item-section>
+            <q-item-label>Did Homework</q-item-label>
+          </q-item-section>
+        </q-item>        
+
       </q-list>
     </q-btn-dropdown>
   </div>
@@ -257,7 +263,10 @@ export default {
                 break;
               case "query": 
                 activity += " sent a query letter!"
-                break;     
+                break;
+              case "homework": 
+                activity += " did homework! There was writing involved."
+                break;       
             } }})
         }
         
