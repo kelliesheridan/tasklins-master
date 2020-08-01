@@ -63,7 +63,7 @@
         <q-input class="col q-ma-sm"
         filled
         v-model="changeName"
-        label="Your Name*"
+        label="Your First Name*"
         lazy-rules
         :rules="[ val => val && val.length > 0 || 'Please type something']"
       />
