@@ -15,12 +15,12 @@
           <div>
             <q-item>
               <q-item-section side top>
-                <q-avatar rounded size="150px">
+                <q-avatar rounded class="pip-avatar">
                   <img src="statics/Piper.jpg" />
                 </q-avatar>
               </q-item-section>
               <q-item-section top>
-                <q-item-label header>Hi, I'm Piper! I'll be showing you around. Don't mind the dust, things are still pretty heavily under construction around here, but we're happy to have you!</q-item-label>
+                <q-item-label>Hi, I'm Piper! I'll be showing you around. Don't mind the dust, things are still pretty heavily under construction around here, but we're happy to have you!</q-item-label>
               </q-item-section>
             </q-item>
           </div>
@@ -43,12 +43,12 @@
           <div>
             <q-item>
               <q-item-section side top>
-                <q-avatar rounded size="150px">
+                <q-avatar rounded class="pip-avatar">
                   <img src="statics/Piper.jpg" />
                 </q-avatar>
               </q-item-section>
               <q-item-section top>
-                <q-item-label header>Now, before you start adding in your tasks, we need to know a little more about you.</q-item-label>
+                <q-item-label>Now, before you start adding in your tasks, we need to know a little more about you.</q-item-label>
               </q-item-section>
             </q-item>
           </div>
@@ -118,12 +118,12 @@
           <div>
             <q-item>
               <q-item-section side top>
-                <q-avatar rounded size="150px">
+                <q-avatar rounded class="pip-avatar">
                   <img src="statics/Piper.jpg" />
                 </q-avatar>
               </q-item-section>
               <q-item-section top>
-                <q-item-label header>Next up, it's time to meet your first Tasklin. Eventually, you'll be able to collect a wide variety of creatures, but as Tasklins continues to grow, your first pet will be here growing along with you.</q-item-label>
+                <q-item-label>Next up, it's time to meet your first Tasklin. Eventually, you'll be able to collect a wide variety of creatures, but as Tasklins continues to grow, your first pet will be here growing along with you.</q-item-label>
               </q-item-section>
             </q-item>
           </div>
@@ -163,13 +163,13 @@
           <div>
             <q-item>
               <q-item-section side top>
-                <q-avatar rounded size="150px">
+                <q-avatar rounded class="pip-avatar">
                   <img src="statics/Piper.jpg" />
                 </q-avatar>
               </q-item-section>
               <q-item-section top side>
-                <q-item-label v-if="hatched === false" header>All Tasklins start out as eggs. You can store as many eggs as you want to, but to meet the Tasklin inside, you're going to have to give it something to work on. Use the + button to add your first five tasks. These can be any things you need to complete, such as 'Go for a walk' or 'Finish Math Homework'.</q-item-label>
-                <q-item-label v-if="hatched === true" header>Well done! Now it's time to name your first Tasklin, and then we're ready to start our adventure! And judging by the things you need to get done, there's no time to waste.</q-item-label>
+                <q-item-label v-if="hatched === false">All Tasklins start out as eggs. You can store as many eggs as you want to, but to meet the Tasklin inside, you're going to have to give it something to work on. Use the + button to add your first five tasks. These can be any things you need to complete, such as 'Go for a walk' or 'Finish Math Homework'.</q-item-label>
+                <q-item-label v-if="hatched === true">Well done! Now it's time to name your first Tasklin, and then we're ready to start our adventure! And judging by the things you need to get done, there's no time to waste.</q-item-label>
               </q-item-section>
             </q-item>
           </div>
@@ -333,7 +333,7 @@ export default {
               creation_date: Date.now() 
     }
         this.addTasklin(tasklin)
-        this.$router.push("/todo")
+        this.$router.push("/index")
       },
     },
     components: {
@@ -348,11 +348,19 @@ export default {
         width: 700px;
         max-width: 80vw;
     }
+
+    .pip-avatar {
+      size: 50px;
+    }
   }
 
   @media screen and (max-width: 767px) {
     .card {
         width: 80%;
+    }
+
+    .pip-avatar {
+      size: 150px;
     }
   }    
 
