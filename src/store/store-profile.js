@@ -132,30 +132,7 @@ const actions = {
                 color: profile.color
             }
            commit('updateProfile', payload)
-
         })
-
-		// // child changed
-		// userProfile.on('child_changed', snapshot => {
-        //     let profile = snapshot.val()
-		// 	let payload = {
-		// 		name: profile.name,
-        //         username: profile.username,
-        //         id: profile.id,
-        //         about: profile.about,
-        //         avatar: profile.avater,
-        //         lin: profile.lin,
-        //         xp: profile.xp,
-        //         level: profile.level,
-        //         friends: profile.friends,
-        //         inventory: profile.inventory,
-        //         tasklins: profile.tasklins,
-        //         private: profile.private,
-        //         signup: profile.signup,
-        //         admin: profile.admin,
-        //     }
-        //     commit('updateProfile', payload)
-		// })
     },
 
     updateProfile({ commit, dispatch }, profile) {

@@ -46,6 +46,7 @@ const actions = {
 		commit('setLoggedIn', true)
 		LocalStorage.set('loggedIn', true)
         dispatch('tasks/fbReadData', null, { root: true })
+        dispatch('tasks/fbReadProjects', null, { root: true })
 		dispatch('profile/fbReadProfile', null, { root: true })
 		dispatch('fitness/readFitnessTasks', null, { root: true })
 		dispatch('tasklins/getTasklin', null, { root: true })

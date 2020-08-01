@@ -42,22 +42,10 @@ const actions = {
 	fbReadFitnessTasks({ commit }) {
 		let userId = firebaseAuth.currentUser.uid
 		let fitnessTasks = firebaseDb.ref('fitness').orderByKey();
-		let fitnessArray = new Array();
 		fitnessTasks.once("value").then(function(snapshot) {
 		let fitnessRecord = snapshot.val();
-		// snapshot.forEach(function(childSnapshot) {
-		// 	var key = childSnapshot.key;
-		// 	var childData = childSnapshot.val();
-		// 	fitnessArray.push([key, childData]);
-		// });
-
-		// commit('setFitnessTask', fitnessArray)
-		// commit('setSortedFitnessTask', fitnessArray)
-
 		commit('setFitnessTask', fitnessRecord)
-
 		})
-
 		// child added
 		fitnessTasks.on('child_added', snapshot => {
 			let fitnessRecord = snapshot.val();

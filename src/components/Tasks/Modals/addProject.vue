@@ -16,6 +16,12 @@
                 class="col">
             </q-input>
 
+            <!-- <q-select
+                outlined
+                v-model="project.projectName"
+                :options="this.$store.state.tasks.projects">
+            </q-select> -->
+
             <modal-project-tasklin />    
         
              <table style="width:100%">
@@ -41,32 +47,44 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapState, mapActions, mapGetters } from 'vuex'
 
 export default {
-    props: ['projectName'],
     data() {
         return {
             project: {
                 projectName: '',
                 color: ''
-            }
+            },
+            options: [
+                
+            ]
         }
     },
-        components: {
-		'modal-header': require('components/Tasks/Modals/Shared/ModalHeader.vue').default,
-		'modal-project-tasklin': require('components/Tasks/Modals/Shared/Projects/ModalProjectTasklin.vue').default,
-        'modal-task-save': require('components/Tasks/Modals/Shared/ModalTaskSave.vue').default,
+    computed: {
+        ...mapState({
+            message: state => state.state
+        }),
+
         },
-        methods: {
-			...mapActions('tasks', ['addProject']),
-			submitProject() {
-                this.addProject(this.project)
-                this.$emit('close')
-            },
-            submitForm() {
-				this.submitProject()
-		},
-        }
-    }
+    components: {
+    'modal-header': require('components/Tasks/Modals/Shared/ModalHeader.vue').default,
+    'modal-project-tasklin': require('components/Tasks/Modals/Shared/Projects/ModalProjectTasklin.vue').default,
+    'modal-task-save': require('components/Tasks/Modals/Shared/ModalTaskSave.vue').default,
+    },
+    methods: {
+        ...mapActions('tasks', ['addProject']),
+        ...mapGetters('profile', ['profile']),
+        
+        
+        
+        submitProject() {
+            this.addProject(this.project)
+            this.$emit('close')
+        },
+        submitForm() {
+            this.submitProject()
+        },
+    },
+}
 </script>

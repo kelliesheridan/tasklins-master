@@ -8,41 +8,8 @@ import moment from 'moment'
 const { addToDate } = date;
 const state = {
 	tasks: {
-		// 'ID1': {
-		// 	name: 'Go to shop',
-		// 	project: 'main',
-		// 	public: true,
-		// 	repeating: false,
-		// 	dueDate: '2019/05/12',
-		// 	dueTime: '18:30',
-		// 	completed: false
-		// },
-		// 'ID2': {
-		// 	name: 'Get bananas',
-		// 	completed: false,
-		// 	dueDate: '2019/05/13',
-		// 	dueTime: '14:00'
-		// },
-		// 'ID3': {
-		// 	name: 'Get apples',
-		// 	completed: false,
-		// 	dueDate: '2019/05/14',
-		// 	dueTime: '16:00'
-		// }	
 	},
-	projects: {
-		'ID1': {
-			name: 'Tasks',
-			color: 'yellow',
-			tasklin: '',
-		},
-		'ID2': {
-			name: '4thewords',
-			color: 'blue',
-			tasklin: '',
-		}
-
-	},
+	projects: {},
 	search: '',
 	sort: 'dueDate',
 	tasksDownloaded: false
@@ -69,6 +36,10 @@ const mutations = {
 	},
 	setTasksDownloaded(state, value) {
 		state.tasksDownloaded = value
+	},
+	setProjects(state, value) {
+		state.projects = value
+		console.debug("project array ", state.projects)
 	}
 }
 
@@ -102,7 +73,6 @@ const actions = {
 	setSort({ commit }, value) {
 		commit('setSort', value)
 	},
-
 	fbReadData({ commit }) {
 		let userId = firebaseAuth.currentUser.uid
 		let userTasks = firebaseDb.ref('tasks/' + userId)
@@ -166,6 +136,18 @@ const actions = {
 			else {
 				//Notify.create('New Task Added - + 1xp')
 			}
+		})
+	},
+	fbReadProjects({ commit }) {
+		let userId = firebaseAuth.currentUser.uid
+		let projects = firebaseDb.ref('projects/' + userId).orderByKey();
+		let projectsArray = new Array();
+		projects.once("value").then(function(snapshot) {
+		let projectRecords = snapshot.val();
+		Object.keys(projectRecords).forEach(element => {
+			projectsArray.push(element)
+		  })
+		commit('setProjects', projectsArray)
 		})
 	},
 	fbUpdateTask({}, payload) {
@@ -308,11 +290,10 @@ const getters = {
 
 		return tasks
 	},
-	projects: (state) => {
+	projects: state => {
 		return state.projects
-	}
+    }
 }
-
 export default {
 	namespaced: true,
 	state,
