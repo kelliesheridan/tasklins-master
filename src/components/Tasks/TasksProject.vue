@@ -14,7 +14,7 @@
 
 				 <q-input class="col q-ma-sm"
 					filled
-					v-model="project.projectName"
+					v-model="projectName"
 					label="Project*"
 					lazy-rules
 					:rules="[ val => val && val.length > 0 || 'Please type a project']"

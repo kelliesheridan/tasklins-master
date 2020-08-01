@@ -14,17 +14,6 @@
         :project.sync="taskToSubmit.project"/>
         
         <modal-task-due-date :dueDate.sync="taskToSubmit.dueDate"/>
-
-        <!-- <modal-task-due-time v-if="taskToSubmit.dueDate" :dueTime.sync="taskToSubmit.dueTime"/> 
-        
-                <div class="q-mb-sm">
-                    
-        <modal-task-npublic :npublic.sync="taskToSubmit.npublic"/>
-
-        <modal-task-nrepeating :nrepeating.sync="taskToSubmit.nrepeating"/>
-
-                </div>  -->
-
         </q-card-section>
 
         <modal-task-save></modal-task-save>	    
@@ -50,7 +39,8 @@ export default {
                 dueTime: '',
                 completed: false,
                 createdDate: '',
-                lastModified: ''
+                lastModified: '',
+                project: ''
             }
         }
     },

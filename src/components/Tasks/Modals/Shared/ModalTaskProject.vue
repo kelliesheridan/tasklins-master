@@ -1,27 +1,26 @@
 <template>
-  
-            <div class="row q-mb-sm">
-                <q-select
-                outlined
-                @input="$emit('update:project', $event)"
-                class="col"
-                :value="project"
-                :options="options"
-                label="Project" />
-            </div>
 
+    <q-input
+    	outlined
+    	v-model="projectName"
+    	@input="$emit('projectName', $event)"
+    	:rules="[val => !!val || 'Field is required']"
+    	autofocus
+		v-select-all
+    	ref="projectName"
+    	label="Project name*"
+    	class="col">
+        </q-input>
+        
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+	import { selectAll } from 'src/directives/directive-select-all'
 
-export default {
-    data() {
-        return {
-           options: ['None', 'Facebook', 'Twitter', 'Apple', 'Oracle'],
-        }
-    },
-		 props: ['project']
-}
-  
+	export default {
+		props: ['projectName'],
+		directives: {
+			selectAll
+		}
+	}
 </script>

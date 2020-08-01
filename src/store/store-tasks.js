@@ -156,7 +156,8 @@ const actions = {
 	},
 	fbAddProject({}, payload) {
 		let userId = firebaseAuth.currentUser.uid
-		let taskRef = firebaseDb.ref('projects/' + payload.projectName)
+		let taskRef = firebaseDb.ref('projects/' + userId + '/' + payload.projectName)
+		console.debug('project:', payload)
 		payload.createdDate = Date.now()
 		taskRef.set(payload, error => {
 			if (error) {
