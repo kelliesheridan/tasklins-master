@@ -49,11 +49,23 @@ export default {
 </script>
 
 <style>
+
+  @media screen and (min-width: 768px) {
     .auth-tabs {
         max-width: 20%;
         margin: auto;
         margin-top: 10%;
+  }
+
+  @media screen and (max-width: 767px) {
+    .auth-tabs {
+        max-width: 80%;
+        margin: auto;
+        margin-top: 10%;
     }
+  }
+
+    
       .bg {
         background-image: url("http://www.tasklins.com/AboutPageAssets/images/trythis3.png");
         margin: auto;
