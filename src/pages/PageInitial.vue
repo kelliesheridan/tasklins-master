@@ -106,7 +106,7 @@
         </q-card-section>
 
         <q-card-actions align="right">
-          <q-btn flat label="Next" color="primary" @click="showNewUser3 = true" v-close-popup :disable="!changeName || !changeUsername || !changeColor" />
+          <q-btn flat label="Next" color="primary" @click="showNewUser3 = true" v-close-popup/>
         </q-card-actions>
       </q-card>
     </q-dialog>
