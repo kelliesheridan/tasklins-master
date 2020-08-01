@@ -20,6 +20,7 @@ const actions = {
 				console.log('response: ', response)
 				dispatch('fbCreateProfile')
 				dispatch('fbCreateSettings')
+				this.$router.push('/initial').catch(err => {})
 			})
 			.catch(error => {
 				showErrorMessage(error.message)
