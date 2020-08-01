@@ -6,11 +6,32 @@
 
             <q-card-section class="q-pt-none">
 
-            <modal-project-name />
+            <q-input
+                outlined
+                v-model="project.projectName"
+                :rules="[val => !!val || 'Field is required']"
+                autofocus
+                ref="name"
+                label="Project name *"
+                class="col">
+            </q-input>
 
             <modal-project-tasklin />    
         
-            <modal-project-color />
+             <table style="width:100%">
+                <tr>
+                <th><img src="statics/colors/yellow.jpg" class="size"></th>
+                <th><img src="statics/colors/blue.jpg" class="size"></th>
+                <th><img src="statics/colors/green.jpg" class="size"></th>
+                <th><img src="statics/colors/purple.jpg" class="size"></th>
+                </tr>
+                <tr class="picker">
+                <th><q-radio v-model="project.color" val="yellow" color="yellow" /></th>
+                <th><q-radio v-model="project.color" val="blue" color="blue" /></th>
+                <th><q-radio v-model="project.color" val="green" color="green" /></th>
+                <th><q-radio v-model="project.color" val="purple" color="purple" /></th>
+                </tr>
+            </table>
 
         </q-card-section>
 
@@ -34,10 +55,8 @@ export default {
     },
         components: {
 		'modal-header': require('components/Tasks/Modals/Shared/ModalHeader.vue').default,
-		'modal-project-name': require('components/Tasks/Modals/Shared/Projects/ModalProjectName.vue').default,
-        'modal-project-tasklin': require('components/Tasks/Modals/Shared/Projects/ModalProjectTasklin.vue').default,
-        'modal-project-color': require('components/Tasks/Modals/Shared/Projects/ModalProjectColor.vue').default,
-		'modal-task-save': require('components/Tasks/Modals/Shared/ModalTaskSave.vue').default,
+		'modal-project-tasklin': require('components/Tasks/Modals/Shared/Projects/ModalProjectTasklin.vue').default,
+        'modal-task-save': require('components/Tasks/Modals/Shared/ModalTaskSave.vue').default,
         },
         methods: {
 			...mapActions('tasks', ['addProject']),
