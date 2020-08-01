@@ -43,9 +43,12 @@
   <div class="row main justify-center q-pa-md" >
 
         <div class="section col-xs-12 col-sm-12 col-md-6 news q-pa-xs">
-        <list-header bgColor="bg-orange-4">Social Feed</list-header>
-        <div class="text-left">
-        <h6>Social Feed</h6>
+        <list-header bgColor="bg-orange-4">Follow Tasklins on Social Media</list-header>
+        <div class="text-center">
+              <a href="https://www.facebook.com/Tasklins-123005292837764" target="_blank"><img src="statics/social/facebook.png" width="82" height="86" title="Facebook" alt="Tasklins on Facebook"></a>
+              <a href="https://twitter.com/tasklins" target="_blank"><img src="statics/social/twitter.png" width="82" height="86" title="Facebook" alt="Tasklins on Facebook"></a>
+              <a href="https://www.instagram.com/tasklins/" target="_blank"><img src="statics/social/instagram.png" width="82" height="86" title="Facebook" alt="Tasklins on Facebook"></a>
+              <a href="https://www.pinterest.ca/Tasklins/" target="_blank"><img src="statics/social/pinterest.png" width="82" height="86" title="Facebook" alt="Tasklins on Facebook"></a>
         </div>
         </div>
 
@@ -100,6 +103,7 @@
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
 import { date } from 'quasar'
+import { openURL } from 'quasar'
 
 export default {
     props: ['tasksTodo'],
@@ -140,8 +144,9 @@ img {
     flex: auto;
 	}
 
-/* .main {
-  height: 50%;
-	} */
+.icon-s {
+  height: 10%;
+  width: 10%;
+	}
 
 </style>

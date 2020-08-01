@@ -68,7 +68,7 @@ export default {
             this.$refs.password.validate()
             if (!this.$refs.email.hasError && !this.$refs.password.hasError) {
                 this.loginUser(this.formData)
-                this.$router.push('/index').catch(err => {})
+                this.$router.push('/').catch(err => {})
             }
         },
 },
