@@ -56,6 +56,7 @@ export default {
         margin: auto;
         margin-top: 10%;
   }
+  }
 
   @media screen and (max-width: 767px) {
     .auth-tabs {
@@ -63,9 +64,7 @@ export default {
         margin: auto;
         margin-top: 10%;
     }
-  }
-
-    
+  }    
       .bg {
         background-image: url("http://www.tasklins.com/AboutPageAssets/images/trythis3.png");
         margin: auto;

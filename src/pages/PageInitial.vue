@@ -6,7 +6,7 @@
     </div>
 
     <q-dialog v-model="showNewUser1" persistent transition-show="scale" transition-hide="scale">
-      <q-card style="width: 700px; max-width: 80vw;">
+      <q-card class="card">
         <q-card-section class="bg-primary text-white">
           <div class="text-h6">Welcome to Tasklins!</div>
         </q-card-section>
@@ -37,7 +37,7 @@
 
 
     <q-dialog v-model="showNewUser2" persistent transition-show="scale" transition-hide="scale">
-      <q-card style="width: 700px; max-width: 80vw;">
+      <q-card class="card">
 
         <q-card-section class="q-pt-md">
           <div>
@@ -112,7 +112,7 @@
     </q-dialog>
 
     <q-dialog v-model="showNewUser3" persistent transition-show="scale" transition-hide="scale">
-      <q-card style="width: 700px; max-width: 80vw;">
+      <q-card class="card">
 
         <q-card-section class="q-pt-md">
           <div>
@@ -343,6 +343,19 @@ export default {
 </script>
 
 <style>
+  @media screen and (min-width: 768px) {
+    .card {
+        width: 700px;
+        max-width: 80vw;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .card {
+        width: 80%;
+    }
+  }    
+
   .egg {
   width: 20%;
   max-width: 50%;
