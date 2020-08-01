@@ -4,7 +4,7 @@
     <q-header v-if="loggedIn" elevated class="bg-primary text-white">
     <q-toolbar>
       <!-- <q-btn dense flat round color="accent" icon="notifications"/> -->
-      <q-btn dense flat round icon="games" color="accent" @click="left = !left" />
+      <q-btn dense flat round class="side-menu" icon="games" color="accent" @click="left = !left" />
       <!-- <q-btn dense flat round icon="done" color="accent" @click="right = !right" /> -->
       <q-toolbar-title class="text-center">
         Tasklins
@@ -30,6 +30,10 @@
             to="/fitness"
             icon="fitness_center"
             label="Fitness" />
+            <q-route-tab
+            to="/writing"
+            icon="create"
+            label="Writing" />            
              <q-route-tab
             to="/help"
             icon="help"
@@ -209,7 +213,11 @@ export default {
     }
   }
 
-
+  @media screen and (max-width: 767px) {
+    .side-menu {
+      display: none;
+    }
+  }
 
   .bg-image {
     background-image: url(http://www.testingtheapp.tasklins.com/statics/trees.jpg);

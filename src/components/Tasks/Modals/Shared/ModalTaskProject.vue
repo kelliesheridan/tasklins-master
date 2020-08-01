@@ -1,13 +1,12 @@
 <template>
 		<q-select
 			outlined
-			v-model="name"
-			@change="$emit('update:name', $event)"
-			:rules="[val => !!val || 'Field is required']"
+			v-model="project"
+			@change="$emit('update:project', $event)"
 			autofocus
 			v-select-all
-			ref="name"
-			label="Task name"
+			ref="project"
+			label="Project"
 			class="col"
 			:options="this.$store.state.tasks.projects">
 		</q-select>
@@ -18,7 +17,17 @@
 	import { selectAll } from 'src/directives/directive-select-all'
 
 	export default {
-		props: ['name'],
+		props: ['project'],
+
+		  data () {
+			return {
+			model: null,
+			options: [
+				'Google', 'Facebook', 'Twitter', 'Apple', 'Oracle'
+			]
+			}
+		  },
+
 		directives: {
 			selectAll
 		}

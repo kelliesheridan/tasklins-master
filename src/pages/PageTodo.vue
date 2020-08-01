@@ -1,16 +1,18 @@
 <template>
   <q-page>
 
-	  <div class="q-pa-md absolute full-width full-height column">
+	  <div class="q-pa-md absolute full-width full-height">
 
 		  <div class="row q-mb-md">
 			<sort />
-			<q-btn @click="showAddProject = true" class="new-project" color="secondary" glossy label="New Project" />
+			<!-- <q-btn @click="showAddProject = true" class="new-project" color="secondary" glossy label="New Project" /> -->
 
 		  </div>
 
 		  <template v-if="tasksDownloaded">
-			<p v-if="search && !Object.keys(tasksTodo).length && !Object.keys(tasksCompleted).length">No search results.</p>
+			  <div class="section col-xs-12 col-sm-12 col-md-6 col-lg-6 q-pa-xs">
+
+				<p v-if="search && !Object.keys(tasksTodo).length && !Object.keys(tasksCompleted).length">No search results.</p>
 
 				<no-tasks
 					v-if="!Object.keys(tasksTodo).length && !search"></no-tasks>
@@ -22,6 +24,9 @@
 				<tasks-completed 
 					v-if="Object.keys(tasksCompleted).length"
 					:tasksCompleted="tasksCompleted" />
+
+			  </div>
+
 
 
         <q-dialog v-model="showAddProject">
@@ -71,15 +76,16 @@
 </script>
 
 <style>
-	.q-scroll-area-tasks {
-		display: flex;
-		flex-grow: 1;
-	}
-
 	.new-project {
 		height: 50%;
 		margin-top: auto;
 		margin-bottom: auto;
 		margin-left: 10px;
 	}
+
+	.section {
+    overflow: auto;
+    flex: auto;
+	}
+
 </style>

@@ -56,7 +56,7 @@
         <div class="text-h7">{{firstActivity}}
 
       <q-card-actions align="right">
-        <q-btn dense flat>Cheer!</q-btn>
+        <!-- <q-btn dense @click="submit('cheer')" flat>Cheer!</q-btn> -->
       </q-card-actions>
         </div>
       </q-card-section>
@@ -69,7 +69,7 @@
         <div class="text-h7">{{secondActivity}}
 
       <q-card-actions align="right">
-        <q-btn dense flat>Cheer!</q-btn>
+        <!-- <q-btn @click="submit('cheer')" dense flat>Cheer!</q-btn> -->
       </q-card-actions>
 
         </div>
@@ -81,7 +81,7 @@
         <div class="text-h7">{{thirdActivity}}
 
       <q-card-actions align="right">
-        <q-btn dense flat>Cheer!</q-btn>
+        <!-- <q-btn dense @click="submit('cheer')" flat>Cheer!</q-btn> -->
       </q-card-actions>
 
         </div>
@@ -90,10 +90,10 @@
 
       </div>
     </div>
-  <div class="q-pa-md absolute-bottom text-center">
+  <div class="q-pa-md text-center">
     <q-btn-dropdown class="q-mr-sm" color="light-green" label="I Worked Out" dropdown-icon="fitness_center">
       <q-list>
-        <q-item clickable v-close-popup @click="submit('gym')">
+        <q-item clickable v-close-popup @click="submit('weights')">
           <q-item-section>
             <q-item-label>Lifted Weights</q-item-label>
           </q-item-section>
@@ -283,7 +283,10 @@ export default {
                 break;
               case "other": 
                 activity += " did something else? It was probably a healthy thing!"
-                break; 
+                break;
+              // case "cheer": 
+              //   activity += " cheered for someone! Who? We'll figure that out later."
+              //   break; 
             } }})
         }
         

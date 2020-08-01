@@ -5,9 +5,9 @@
     
   </div>  
 
-  <div class="row justify-center q-pa-md" >
+  <div class="row main justify-center q-pa-md" >
 
-    <div class="col-xs-12 col-sm-6 col-md-6 q-pa-md">
+    <div class="section col-xs-12 col-sm-12 col-md-6 col-lg-6 q-pa-xs">
         <div>
         <list-header bgColor="bg-orange-4">Today's Tasks</list-header>
         <no-tasks
@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    <div class="col-xs-12 col-sm-12 col-md-6 justify-center q-pa-md">
+    <div class="section col-xs-12 col-sm-12 col-md-6 col-lg-6 justify-center q-pa-xs">
         <list-header bgColor="bg-orange-4">Your Tasklin</list-header>
         <div class="text-center">
               <img v-if="this.tasklin.color === 'blue'" src="statics/placeholder/blue3b.png"/>
@@ -40,9 +40,9 @@
 
   </div>
 
-  <div class="row justify-center q-pa-md" >
+  <div class="row main justify-center q-pa-md" >
 
-        <div class="col-xs-12 col-sm-12 col-md-6 news q-pa-md">
+        <div class="section col-xs-12 col-sm-12 col-md-6 news q-pa-xs">
         <list-header bgColor="bg-orange-4">Social Feed</list-header>
         <div class="text-left">
         <h6>Social Feed</h6>
@@ -50,7 +50,7 @@
         </div>
 
 
-        <div class="col-xs-12 col-sm-12 col-md-6 news q-pa-md">
+        <div class="section col-xs-12 col-sm-12 col-md-6 news q-pa-xs">
         <list-header bgColor="bg-orange-4">News</list-header>
     <div class="text-left">
       <div class="q-pa-md" style="max-width: 350px">
@@ -133,9 +133,15 @@ img {
   margin:0%;
 }
 
-.q-scroll-area-tasks {
-		display: flex;
-		flex-grow: 1;
+.section {
+    overflow: auto;
+    height: 50%;
+    display: inline-block;
+    flex: auto;
 	}
+
+/* .main {
+  height: 50%;
+	} */
 
 </style>

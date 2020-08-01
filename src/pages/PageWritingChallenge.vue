@@ -52,7 +52,7 @@
         <div class="text-h7">{{firstActivity}}
 
       <q-card-actions align="right">
-        <q-btn dense flat>Cheer!</q-btn>
+        <!-- <q-btn dense flat>Cheer!</q-btn> -->
       </q-card-actions>
         </div>
       </q-card-section>
@@ -65,7 +65,7 @@
         <div class="text-h7">{{secondActivity}}
 
       <q-card-actions align="right">
-        <q-btn dense flat>Cheer!</q-btn>
+        <!-- <q-btn dense flat>Cheer!</q-btn> -->
       </q-card-actions>
 
         </div>
@@ -77,7 +77,7 @@
         <div class="text-h7">{{thirdActivity}}
 
       <q-card-actions align="right">
-        <q-btn dense flat>Cheer!</q-btn>
+        <!-- <q-btn dense flat>Cheer!</q-btn> -->
       </q-card-actions>
 
         </div>
@@ -86,7 +86,7 @@
 
       </div>
     </div>
-  <div class="q-pa-md absolute-bottom text-center">
+  <div class="q-pa-md text-center">
     <q-btn-dropdown class="q-mr-sm" color="light-green" label="I Did Something" dropdown-icon="create">
       <q-list>
         <q-item clickable v-close-popup @click="submit('writing')">
