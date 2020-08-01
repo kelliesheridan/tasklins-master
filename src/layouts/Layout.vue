@@ -103,7 +103,7 @@
           />
         </q-dialog>    
 
-    <q-page-container v-if="loggedIn" class="bg-image2">
+    <q-page-container v-if="loggedIn">
       <router-view />
     </q-page-container>
 
