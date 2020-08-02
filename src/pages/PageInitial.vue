@@ -15,7 +15,7 @@
           <div>
             <q-item>
               <q-item-section side top>
-                <q-avatar rounded class="pip-avatar">
+                <q-avatar class="pip-avatar" rounded>
                   <img src="statics/Piper.jpg" />
                 </q-avatar>
               </q-item-section>
@@ -78,12 +78,12 @@
       
       </div>
 
-      <q-input
+      <!-- <q-input
         filled        
         v-model="changeAbout"
         label="What's the most exciting goal you're currently working toward?"
         :rules="[ val => val.length <= 250 || 'No more than 250 characters']"
-      />
+      /> -->
 
       <div class="q-pa-md">
         <q-badge :style="{ 'background-color': this.profile.color }" text-color="black" class="q-mb-sm">
@@ -162,11 +162,11 @@
         <q-card class="my-card">
           <div>
             <q-item>
-              <q-item-section side top>
+
                 <q-avatar rounded class="pip-avatar">
                   <img src="statics/Piper.jpg" />
                 </q-avatar>
-              </q-item-section>
+
               <q-item-section top side>
                 <q-item-label v-if="hatched === false">All Tasklins start out as eggs. You can store as many eggs as you want to, but to meet the Tasklin inside, you're going to have to give it something to work on. Use the + button to add your first five tasks. These can be any things you need to complete, such as 'Go for a walk' or 'Finish Math Homework'.</q-item-label>
                 <q-item-label v-if="hatched === true">Well done! Now it's time to name your first Tasklin, and then we're ready to start our adventure! And judging by the things you need to get done, there's no time to waste.</q-item-label>
@@ -349,17 +349,27 @@ export default {
     }
 
     .pip-avatar {
-      size: 50px;
+      width: 200px;
+      height: auto;
     }
+
+    .my-picker {
+      max-width: 250px;
+}
   }
 
   @media screen and (max-width: 767px) {
     .card {
-        width: 80%;
+        width: 85%;
     }
 
     .pip-avatar {
-      size: 150px;
+      width: 100px;
+      height: auto;
+    }
+
+    .my-picker {
+      max-width: 200px;
     }
   }    
 
@@ -386,10 +396,6 @@ export default {
   height: auto;
   margin: auto;
   display: inline-block;
-}
-
-.my-picker {
- max-width: 250px;
 }
 
 </style>

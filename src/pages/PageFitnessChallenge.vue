@@ -1,95 +1,6 @@
 <template>
   <q-page padding>
 
-    <div class="q-pa-md q-gutter-sm">
-
-    </div>
-
-  <div class="row">
-  <div class="col-8">
-
-    <div class="q-pa-md">
-      Kellie <q-linear-progress rounded size="15px" :value="kellieProgress" :style="{ 'color': getUserColor('kellie') }" class="q-mt-sm" :key="update"/>
-    </div>
-
-    <div class="q-pa-md">
-      Matt <q-linear-progress rounded size="15px" :value="mattProgress" :style="{ 'color': getUserColor('matt') }" class="q-mt-sm"  :key="update"/>
-    </div>
-
-    <div class="q-pa-md">
-      Kaitlyn <q-linear-progress rounded size="15px" :value="kaitlynProgress" :style="{ 'color': getUserColor('kaitlyn') }" class="q-mt-sm" :key="update"/>
-    </div>  
-
-    <div class="q-pa-md">
-      Adam <q-linear-progress rounded size="15px" :value="adamProgress" :style="{ 'color': getUserColor('adam') }" class="q-mt-sm" :key="update"/>
-    </div>
-
-    <div class="q-pa-md">
-      Kylie <q-linear-progress rounded size="15px" :value="kylieProgress" :style="{ 'color': getUserColor('kylie') }" class="q-mt-sm" :key="update"/>
-    </div>
-
-    <div class="q-pa-md">
-      Francis <q-linear-progress rounded size="15px" :value="francisProgress" :style="{ 'color': getUserColor('francis') }" class="q-mt-sm"  :key="update"/>
-    </div>
-
-    <div class="q-pa-md">
-      Gloria <q-linear-progress rounded size="15px" :value="gloriaProgress" :style="{ 'color': getUserColor('gloria') }" class="q-mt-sm" :key="update"/>
-    </div>  
-
-    <div class="q-pa-md">
-      Paul <q-linear-progress rounded size="15px" :value="paulProgress" :style="{ 'color': getUserColor('paul') }" class="q-mt-sm" :key="update"/>
-    </div>
-
-    <div class="q-pa-md">
-      Sara <q-linear-progress rounded size="15px" :value="saraProgress" :style="{ 'color': getUserColor('gloria') }" class="q-mt-sm" :key="update"/>
-    </div>  
-
-    <div class="q-pa-md">
-      Perry <q-linear-progress rounded size="15px" :value="perryProgress" :style="{ 'color': getUserColor('perry') }" class="q-mt-sm" :key="update"/>
-    </div>        
-        </div>
-
-  <div class="col bg-grey-4">
-
-    <q-card dense flat square class="my-card q-pa-xs">
-      <q-card-section :style="{ 'background-color': getCardColor(0) }" class="text-white">
-        <div class="text-h7">{{firstActivity}}
-
-      <q-card-actions align="right">
-        <!-- <q-btn dense @click="submit('cheer')" flat>Cheer!</q-btn> -->
-      </q-card-actions>
-        </div>
-      </q-card-section>
-
-
-    </q-card>
-
-    <q-card dense flat square class="my-card q-pa-xs">
-      <q-card-section :style="{ 'background-color': getCardColor(1) }" class="text-white">
-        <div class="text-h7">{{secondActivity}}
-
-      <q-card-actions align="right">
-        <!-- <q-btn @click="submit('cheer')" dense flat>Cheer!</q-btn> -->
-      </q-card-actions>
-
-        </div>
-      </q-card-section>
-    </q-card>
-
-        <q-card dense flat square class="my-card q-pa-xs">
-      <q-card-section :style="{ 'background-color': getCardColor(2) }" class="text-white">
-        <div class="text-h7">{{thirdActivity}}
-
-      <q-card-actions align="right">
-        <!-- <q-btn dense @click="submit('cheer')" flat>Cheer!</q-btn> -->
-      </q-card-actions>
-
-        </div>
-      </q-card-section>
-    </q-card>
-
-      </div>
-    </div>
   <div class="q-pa-md text-center">
     <q-btn-dropdown class="q-mr-sm" color="light-green" label="I Worked Out" dropdown-icon="fitness_center">
       <q-list>
@@ -132,6 +43,94 @@
       </q-list>
     </q-btn-dropdown>
   </div>
+
+
+  <div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 q-pa-xs bg-grey-4">
+
+    <q-card dense flat square class="my-card q-pa-xs">
+      <q-card-section :style="{ 'background-color': getCardColor(0) }" class="text-white">
+        <div class="text-h7">{{firstActivity}}
+
+      <q-card-actions align="right">
+        <!-- <q-btn dense @click="submit('cheer')" flat>Cheer!</q-btn> -->
+      </q-card-actions>
+        </div>
+      </q-card-section>
+
+
+    </q-card>
+
+    <q-card dense flat square class="my-card q-pa-xs">
+      <q-card-section :style="{ 'background-color': getCardColor(1) }" class="text-white">
+        <div class="text-h7">{{secondActivity}}
+
+      <q-card-actions align="right">
+        <!-- <q-btn @click="submit('cheer')" dense flat>Cheer!</q-btn> -->
+      </q-card-actions>
+
+        </div>
+      </q-card-section>
+    </q-card>
+
+        <q-card dense flat square class="my-card q-pa-xs">
+      <q-card-section :style="{ 'background-color': getCardColor(2) }" class="text-white">
+        <div class="text-h7">{{thirdActivity}}
+
+      <q-card-actions align="right">
+        <!-- <q-btn dense @click="submit('cheer')" flat>Cheer!</q-btn> -->
+      </q-card-actions>
+
+        </div>
+      </q-card-section>
+    </q-card>
+
+      </div>    
+      
+  <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 q-pa-xs">
+
+    <div class="q-pa-md">
+      Kellie <q-linear-progress rounded size="15px" :value="kellieProgress" :style="{ 'color': getUserColor('kellie') }" class="q-mt-sm" :key="update"/>
+    </div>
+
+    <div class="q-pa-md">
+      Matt <q-linear-progress rounded size="15px" :value="mattProgress" :style="{ 'color': getUserColor('matt') }" class="q-mt-sm"  :key="update"/>
+    </div>
+
+    <div class="q-pa-md">
+      Kaitlyn <q-linear-progress rounded size="15px" :value="kaitlynProgress" :style="{ 'color': getUserColor('kaitlyn') }" class="q-mt-sm" :key="update"/>
+    </div>  
+
+    <div class="q-pa-md">
+      Adam <q-linear-progress rounded size="15px" :value="adamProgress" :style="{ 'color': getUserColor('adam') }" class="q-mt-sm" :key="update"/>
+    </div>
+
+    <div class="q-pa-md">
+      Kylie <q-linear-progress rounded size="15px" :value="kylieProgress" :style="{ 'color': getUserColor('kylie') }" class="q-mt-sm" :key="update"/>
+    </div>
+
+    <div class="q-pa-md">
+      Francis <q-linear-progress rounded size="15px" :value="francisProgress" :style="{ 'color': getUserColor('francis') }" class="q-mt-sm"  :key="update"/>
+    </div>
+
+    <div class="q-pa-md">
+      Gloria <q-linear-progress rounded size="15px" :value="gloriaProgress" :style="{ 'color': getUserColor('gloria') }" class="q-mt-sm" :key="update"/>
+    </div>  
+
+    <div class="q-pa-md">
+      Paul <q-linear-progress rounded size="15px" :value="paulProgress" :style="{ 'color': getUserColor('paul') }" class="q-mt-sm" :key="update"/>
+    </div>
+
+    <div class="q-pa-md">
+      Sara <q-linear-progress rounded size="15px" :value="saraProgress" :style="{ 'color': getUserColor('gloria') }" class="q-mt-sm" :key="update"/>
+    </div>  
+
+    <div class="q-pa-md">
+      Perry <q-linear-progress rounded size="15px" :value="perryProgress" :style="{ 'color': getUserColor('perry') }" class="q-mt-sm" :key="update"/>
+    </div>        
+  </div>
+
+</div>
 
   </q-page>
 </template>

@@ -1,12 +1,45 @@
 <template>
   <q-page padding>
 
-    <div class="q-pa-md q-gutter-sm">
+  <div class="q-pa-md text-center">
+    <q-btn-dropdown class="q-mr-sm" color="light-green" label="I Did Something" dropdown-icon="create">
+      <q-list>
+        <q-item clickable v-close-popup @click="submit('writing')">
+          <q-item-section>
+            <q-item-label>Wrote 250 Words</q-item-label>
+          </q-item-section>
+        </q-item>
 
-    </div>
+        <q-item clickable v-close-popup @click="submit('editing')">
+          <q-item-section>
+            <q-item-label>Edited for 20 Minutes</q-item-label>
+          </q-item-section>
+        </q-item>
+
+        <q-item clickable v-close-popup @click="submit('plotting')">
+          <q-item-section>
+            <q-item-label>Plotted for 2- Minutes</q-item-label>
+          </q-item-section>
+        </q-item>
+
+        <q-item clickable v-close-popup @click="submit('query')">
+          <q-item-section>
+            <q-item-label>Sent a Query Letter</q-item-label>
+          </q-item-section>
+        </q-item>
+
+        <q-item clickable v-close-popup @click="submit('homework')">
+          <q-item-section>
+            <q-item-label>Did Homework</q-item-label>
+          </q-item-section>
+        </q-item>        
+
+      </q-list>
+    </q-btn-dropdown>
+  </div>
 
   <div class="row">
-  <div class="col-8">
+  <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 
     <div class="q-pa-md">
       Kellie <q-linear-progress rounded size="15px" :value="kellieProgress" :style="{ 'color': getUserColor('kellie') }" class="q-mt-sm" :key="update"/>
@@ -45,7 +78,7 @@
     </div>  
         </div>
 
-  <div class="col bg-grey-4">
+  <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 bg-grey-4">
 
     <q-card dense flat square class="my-card q-pa-xs">
       <q-card-section :style="{ 'background-color': getCardColor(0) }" class="text-white">
@@ -72,7 +105,7 @@
       </q-card-section>
     </q-card>
 
-        <q-card dense flat square class="my-card q-pa-xs">
+    <q-card dense flat square class="my-card q-pa-xs">
       <q-card-section :style="{ 'background-color': getCardColor(2) }" class="text-white">
         <div class="text-h7">{{thirdActivity}}
 
@@ -86,42 +119,6 @@
 
       </div>
     </div>
-  <div class="q-pa-md text-center">
-    <q-btn-dropdown class="q-mr-sm" color="light-green" label="I Did Something" dropdown-icon="create">
-      <q-list>
-        <q-item clickable v-close-popup @click="submit('writing')">
-          <q-item-section>
-            <q-item-label>Wrote 250 Words</q-item-label>
-          </q-item-section>
-        </q-item>
-
-        <q-item clickable v-close-popup @click="submit('editing')">
-          <q-item-section>
-            <q-item-label>Edited for 20 Minutes</q-item-label>
-          </q-item-section>
-        </q-item>
-
-        <q-item clickable v-close-popup @click="submit('plotting')">
-          <q-item-section>
-            <q-item-label>Plotted for 2- Minutes</q-item-label>
-          </q-item-section>
-        </q-item>
-
-        <q-item clickable v-close-popup @click="submit('query')">
-          <q-item-section>
-            <q-item-label>Sent a Query Letter</q-item-label>
-          </q-item-section>
-        </q-item>
-
-        <q-item clickable v-close-popup @click="submit('homework')">
-          <q-item-section>
-            <q-item-label>Did Homework</q-item-label>
-          </q-item-section>
-        </q-item>        
-
-      </q-list>
-    </q-btn-dropdown>
-  </div>
 
   </q-page>
 </template>
