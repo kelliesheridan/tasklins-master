@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hHh lpR fFf">
 
-    <q-header v-if="loggedIn" elevated class="bg-primary text-white">
+    <q-header v-if="loggedIn && this.tasklin.color !== ''" elevated class="bg-primary text-white">
     <q-toolbar>
       <!-- <q-btn dense flat round color="accent" icon="notifications"/> -->
       <q-btn dense flat round class="side-menu" icon="games" color="accent" @click="left = !left" />
@@ -15,7 +15,7 @@
     </q-toolbar>
     </q-header>
 
-    <q-footer v-if="loggedIn" class="text-center">
+    <q-footer v-if="loggedIn && this.tasklin.color !== ''" class="text-center">
       <div class="row">
           <q-tabs class="col">
             <q-route-tab
@@ -55,7 +55,7 @@
 
     </q-footer>
 
-    <q-drawer v-if="loggedIn" :breakpoint="767" show-if-above content-class="bg-secondary" v-model="left" side="left">
+    <q-drawer v-if="loggedIn && this.tasklin.color !== ''" :breakpoint="767" show-if-above content-class="bg-secondary" v-model="left" side="left">
         <q-img src="https://cdn.quasar.dev/img/material.png" style="height: 150px">
           <div class="absolute-bottom bg-transparent">
             <q-avatar v-if="this.tasklin != ''" size="80px">
