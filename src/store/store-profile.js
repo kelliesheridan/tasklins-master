@@ -158,7 +158,7 @@ const actions = {
         //initial check for data
         userTasks.once('value', snapshot => {
         let userList = [];
-        if (snapshot) {
+        if (snapshot.val()) {
             var result = Object.keys(snapshot.val()).map(function (key) { 
                 userList.push(snapshot.val()[key]);
                 //console.debug(snapshot.val()[key]);
