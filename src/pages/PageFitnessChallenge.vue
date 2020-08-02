@@ -50,7 +50,7 @@
 
     <q-card dense flat square class="my-card q-pa-xs">
       <q-card-section :style="{ 'background-color': getCardColor(0) }" class="text-white">
-        <div class="text-h7">{{firstActivity}}
+        <div class="text-h7">{{this.getActivity(0)}}
 
       <q-card-actions align="right">
         <!-- <q-btn dense @click="submit('cheer')" flat>Cheer!</q-btn> -->
@@ -63,7 +63,7 @@
 
     <q-card dense flat square class="my-card q-pa-xs">
       <q-card-section :style="{ 'background-color': getCardColor(1) }" class="text-white">
-        <div class="text-h7">{{secondActivity}}
+        <div class="text-h7">{{this.getActivity(1)}}
 
       <q-card-actions align="right">
         <!-- <q-btn @click="submit('cheer')" dense flat>Cheer!</q-btn> -->
@@ -75,7 +75,7 @@
 
         <q-card dense flat square class="my-card q-pa-xs">
       <q-card-section :style="{ 'background-color': getCardColor(2) }" class="text-white">
-        <div class="text-h7">{{thirdActivity}}
+        <div class="text-h7">{{this.getActivity(2)}}
 
       <q-card-actions align="right">
         <!-- <q-btn dense @click="submit('cheer')" flat>Cheer!</q-btn> -->
@@ -87,7 +87,7 @@
 
     <q-card dense flat square class="my-card q-pa-xs">
       <q-card-section :style="{ 'background-color': getCardColor(3) }" class="text-white">
-        <div class="text-h7">{{fourthActivity}}
+        <div class="text-h7">{{this.getActivity(3)}}
 
       <q-card-actions align="right">
         <!-- <q-btn dense @click="submit('cheer')" flat>Cheer!</q-btn> -->
@@ -99,7 +99,7 @@
 
     <q-card dense flat square class="my-card q-pa-xs">
       <q-card-section :style="{ 'background-color': getCardColor(4) }" class="text-white">
-        <div class="text-h7">{{fifthActivity}}
+        <div class="text-h7">{{this.getActivity(4)}}
 
       <q-card-actions align="right">
         <!-- <q-btn dense @click="submit('cheer')" flat>Cheer!</q-btn> -->
@@ -114,43 +114,43 @@
   <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 q-pa-xs">
 
     <div class="q-pa-md">
-      Kellie <q-linear-progress rounded size="15px" :value="kellieProgress" :style="{ 'color': getUserColor('kellie') }" class="q-mt-sm" :key="update"/>
+      Kellie <q-linear-progress rounded size="15px" :value="this.getProgress('kellie')" :style="{ 'color': getUserColor('kellie') }" class="q-mt-sm" :key="update"/>
     </div>
 
     <div class="q-pa-md">
-      Matt <q-linear-progress rounded size="15px" :value="mattProgress" :style="{ 'color': getUserColor('matt') }" class="q-mt-sm"  :key="update"/>
+      Matt <q-linear-progress rounded size="15px" :value="this.getProgress('matt')" :style="{ 'color': getUserColor('matt') }" class="q-mt-sm"  :key="update"/>
     </div>
 
     <div class="q-pa-md">
-      Kaitlyn <q-linear-progress rounded size="15px" :value="kaitlynProgress" :style="{ 'color': getUserColor('kaitlyn') }" class="q-mt-sm" :key="update"/>
+      Kaitlyn <q-linear-progress rounded size="15px" :value="this.getProgress('kaitlyn')" :style="{ 'color': getUserColor('kaitlyn') }" class="q-mt-sm" :key="update"/>
     </div>  
 
     <div class="q-pa-md">
-      Adam <q-linear-progress rounded size="15px" :value="adamProgress" :style="{ 'color': getUserColor('adam') }" class="q-mt-sm" :key="update"/>
+      Adam <q-linear-progress rounded size="15px" :value="this.getProgress('adam')" :style="{ 'color': getUserColor('adam') }" class="q-mt-sm" :key="update"/>
     </div>
 
     <div class="q-pa-md">
-      Kylie <q-linear-progress rounded size="15px" :value="kylieProgress" :style="{ 'color': getUserColor('kylie') }" class="q-mt-sm" :key="update"/>
+      Kylie <q-linear-progress rounded size="15px" :value="this.getProgress('kylie')" :style="{ 'color': getUserColor('kylie') }" class="q-mt-sm" :key="update"/>
     </div>
 
     <div class="q-pa-md">
-      Francis <q-linear-progress rounded size="15px" :value="francisProgress" :style="{ 'color': getUserColor('francis') }" class="q-mt-sm"  :key="update"/>
+      Francis <q-linear-progress rounded size="15px" :value="this.getProgress('francis')" :style="{ 'color': getUserColor('francis') }" class="q-mt-sm"  :key="update"/>
     </div>
 
     <div class="q-pa-md">
-      Gloria <q-linear-progress rounded size="15px" :value="gloriaProgress" :style="{ 'color': getUserColor('gloria') }" class="q-mt-sm" :key="update"/>
+      Gloria <q-linear-progress rounded size="15px" :value="this.getProgress('gloria')" :style="{ 'color': getUserColor('gloria') }" class="q-mt-sm" :key="update"/>
     </div>  
 
     <div class="q-pa-md">
-      Paul <q-linear-progress rounded size="15px" :value="paulProgress" :style="{ 'color': getUserColor('paul') }" class="q-mt-sm" :key="update"/>
+      Paul <q-linear-progress rounded size="15px" :value="this.getProgress('paul')" :style="{ 'color': getUserColor('paul') }" class="q-mt-sm" :key="update"/>
     </div>
 
     <div class="q-pa-md">
-      Sara <q-linear-progress rounded size="15px" :value="saraProgress" :style="{ 'color': getUserColor('gloria') }" class="q-mt-sm" :key="update"/>
+      Sara <q-linear-progress rounded size="15px" :value="this.getProgress('sara')" :style="{ 'color': getUserColor('gloria') }" class="q-mt-sm" :key="update"/>
     </div>  
 
     <div class="q-pa-md">
-      Perry <q-linear-progress rounded size="15px" :value="perryProgress" :style="{ 'color': getUserColor('perry') }" class="q-mt-sm" :key="update"/>
+      Perry <q-linear-progress rounded size="15px" :value="this.getProgress('perry')" :style="{ 'color': getUserColor('perry') }" class="q-mt-sm" :key="update"/>
     </div>        
   </div>
 
@@ -170,66 +170,6 @@ export default {
   computed: {
     ...mapGetters('fitness', ['fitness']),
     ...mapGetters('profile', ['profile']),
-    firstActivity: function () {
-      this.update;
-      return this.getUsername(0);
-    },
-    secondActivity: function () {
-      this.update;
-      return this.getUsername(1);
-    },
-    thirdActivity: function () {
-      this.update;
-      return this.getUsername(2);
-    },
-    fourthActivity: function () {
-      this.update;
-      return this.getUsername(3);
-    },
-    fifthActivity: function () {
-      this.update;
-      return this.getUsername(4);
-    },
-    mattProgress: function () {
-      this.update;
-      return this.calculateValues('matt');
-    },
-    kellieProgress: function () {
-      this.update;
-      return this.calculateValues('kellie');
-    },
-    kaitlynProgress: function () {
-      this.update;
-      return this.calculateValues('kaitlyn');
-    },
-    adamProgress: function () {
-      this.update;
-      return this.calculateValues('adam');
-    },
-    kylieProgress: function () {
-      this.update;
-      return this.calculateValues('kylie');
-    },
-    francisProgress: function () {
-      this.update;
-      return this.calculateValues('francis');
-    },
-    gloriaProgress: function () {
-      this.update;
-      return this.calculateValues('gloria');
-    },
-    paulProgress: function () {
-      this.update;
-      return this.calculateValues('paul');
-    },
-    saraProgress: function () {
-      this.update;
-      return this.calculateValues('sara');
-    },
-     perryProgress: function () {
-      this.update;
-      return this.calculateValues('perrt');
-    }
   },
   methods: {
       ...mapActions('fitness', ['addFitnessTask', 'readFitnessTasks']),
@@ -251,6 +191,14 @@ export default {
         }
         }
         return intensityCount;
+      },
+      getActivity(number) {
+        this.update;
+        return this.getUsername(number);
+      },
+      getProgress(username) {
+       this.update;
+      return this.calculateValues(username);
       },
       getUserColor(user) {
         let color = ""
