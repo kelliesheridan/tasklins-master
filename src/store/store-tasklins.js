@@ -57,7 +57,7 @@ const actions = {
 			}
 		})
 	},
-	fbAddTasklin({}, tasklin) {
+	fbAddTasklin({ commit }, tasklin) {
 		let userId = firebaseAuth.currentUser.uid
 		let payload = {
 			name: tasklin.name,
@@ -68,6 +68,7 @@ const actions = {
             }
 		let fbTasklin = firebaseDb.ref('tasklins/' + userId )
 		fbTasklin.set(payload)
+		commit('setTasklin', payload)
 	},
 }
 

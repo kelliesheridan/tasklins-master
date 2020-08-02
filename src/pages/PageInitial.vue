@@ -176,28 +176,28 @@
         
         </q-card>
 
-      <div v-if="this.tasklin.color === 'blue'">
+      <div v-if="this.tasklin.color === 'blue' || color == 'blue'">
           <div id="cf2" class="shadow">
           <img v-if="hatched === false" class="responsive egg2 animate__animated animate__bounce" src="statics/eggs/blue3.png"/>
           <img v-if="hatched === true" class="responsive egg2" src="statics/placeholder/blue3a.png" />
         </div>
       </div>
 
-      <div v-if="this.tasklin.color === 'purple'">
+      <div v-if="this.tasklin.color === 'purple' || color == 'purple'">
           <div id="cf2" class="shadow">
           <img v-if="hatched === false" class="responsive egg2" src="statics/eggs/purple3.png"/>
           <img v-if="hatched === true" class="responsive egg2" src="statics/placeholder/purple3a.png" />
         </div>
       </div>
 
-      <div v-if="this.tasklin.color === 'green'">
+      <div v-if="this.tasklin.color === 'green' || color === 'green'">
           <div id="cf2" class="shadow">
           <img v-if="hatched === false" class="responsive egg2" src="statics/eggs/green3.png"/>
           <img v-if="hatched === true" class="responsive egg2" src="statics/placeholder/green3a.png" />
         </div>
       </div>
 
-      <div v-if="this.tasklin.color === 'pink'">
+      <div v-if="this.tasklin.color === 'pink' || color == 'pink'">
           <div id="cf2" class="shadow">
           <img v-if="hatched === false" class="responsive egg2" src="statics/eggs/pink3.png"/>
           <img v-if="hatched === true" class="responsive egg2" src="statics/placeholder/pink3a.png" />
@@ -324,14 +324,13 @@ export default {
         }
         
         this.updateProfile(profile);
-
-    let tasklin = {
+        let tasklin = {
               name: this.tasklinName,
               color: this.color,
               type: this.tasklinType,
               xp: 0,
               creation_date: Date.now() 
-    }
+        }
         this.addTasklin(tasklin)
         this.$router.push("/index")
       },

@@ -144,11 +144,12 @@ const actions = {
 		let projectsArray = new Array();
 		projects.once("value").then(function(snapshot) {
 		let projectRecords = snapshot.val();
+		if (projectRecords) {
 		Object.keys(projectRecords).forEach(element => {
 			projectsArray.push(element)
 		  })
 		commit('setProjects', projectsArray)
-		})
+		}}) 
 	},
 	fbUpdateTask({}, payload) {
 		let userId = firebaseAuth.currentUser.uid
