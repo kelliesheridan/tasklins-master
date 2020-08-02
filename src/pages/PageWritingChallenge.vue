@@ -18,7 +18,7 @@
 
         <q-item clickable v-close-popup @click="submit('plotting')">
           <q-item-section>
-            <q-item-label>Plotted for 2- Minutes</q-item-label>
+            <q-item-label>Plotted for 20 Minutes</q-item-label>
           </q-item-section>
         </q-item>
 
