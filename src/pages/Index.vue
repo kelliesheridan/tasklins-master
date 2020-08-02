@@ -29,11 +29,11 @@
               <img v-if="this.tasklin.color === 'purple'" src="statics/placeholder/purple3b.png"/>
               <img v-if="this.tasklin.color === 'green'" src="statics/placeholder/green3b.png"/>
             <p>
-              Name: {{tasklin.name}}
+              <q-item-label overline><b>Name: </b> {{tasklin.name}}</q-item-label>
               <br>
-              Type: {{tasklin.type}}
+              <q-item-label overline><b>Type: </b>{{tasklin.type}}</q-item-label>
               <br>
-              Mood: So happy!
+              <q-item-label overline><b>Mood: </b>So Happy!</q-item-label>
             </p>
         </div>
     </div>
