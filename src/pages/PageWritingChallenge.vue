@@ -39,45 +39,6 @@
   </div>
 
   <div class="row">
-  <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-
-    <div class="q-pa-md">
-      Kellie <q-linear-progress rounded size="15px" :value="kellieProgress" :style="{ 'color': getUserColor('kellie') }" class="q-mt-sm" :key="update"/>
-    </div>
-
-    <div class="q-pa-md">
-      Meghan <q-linear-progress rounded size="15px" :value="meghanProgress" :style="{ 'color': getUserColor('meghan') }" class="q-mt-sm"  :key="update"/>
-    </div>
-
-    <div class="q-pa-md">
-      Erin <q-linear-progress rounded size="15px" :value="erinProgress" :style="{ 'color': getUserColor('erin') }" class="q-mt-sm" :key="update"/>
-    </div>  
-
-    <div class="q-pa-md">
-      Emma <q-linear-progress rounded size="15px" :value="emmaProgress" :style="{ 'color': getUserColor('emma') }" class="q-mt-sm" :key="update"/>
-    </div>
-
-    <div class="q-pa-md">
-      Dez <q-linear-progress rounded size="15px" :value="dezProgress" :style="{ 'color': getUserColor('dez') }" class="q-mt-sm" :key="update"/>
-    </div>
-
-    <div class="q-pa-md">
-      Rachel <q-linear-progress rounded size="15px" :value="rachelProgress" :style="{ 'color': getUserColor('rachel') }" class="q-mt-sm"  :key="update"/>
-    </div>
-
-    <div class="q-pa-md">
-      Kyra <q-linear-progress rounded size="15px" :value="kyraProgress" :style="{ 'color': getUserColor('kyra') }" class="q-mt-sm" :key="update"/>
-    </div>  
-
-    <div class="q-pa-md">
-      Helen <q-linear-progress rounded size="15px" :value="helenProgress" :style="{ 'color': getUserColor('helen') }" class="q-mt-sm" :key="update"/>
-    </div>
-
-    <div class="q-pa-md">
-      Calyn <q-linear-progress rounded size="15px" :value="calynProgress" :style="{ 'color': getUserColor('calyn') }" class="q-mt-sm" :key="update"/>
-    </div>  
-        </div>
-
   <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 bg-grey-4">
 
     <q-card dense flat square class="my-card q-pa-xs">
@@ -118,6 +79,45 @@
     </q-card>
 
       </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+
+    <div class="q-pa-md">
+      Kellie <q-linear-progress rounded size="15px" :value="kellieProgress" :style="{ 'color': getUserColor('kellie') }" class="q-mt-sm" :key="update"/>
+    </div>
+
+    <div class="q-pa-md">
+      Meghan <q-linear-progress rounded size="15px" :value="meghanProgress" :style="{ 'color': getUserColor('meghan') }" class="q-mt-sm"  :key="update"/>
+    </div>
+
+    <div class="q-pa-md">
+      Erin <q-linear-progress rounded size="15px" :value="erinProgress" :style="{ 'color': getUserColor('erin') }" class="q-mt-sm" :key="update"/>
+    </div>  
+
+    <div class="q-pa-md">
+      Emma <q-linear-progress rounded size="15px" :value="emmaProgress" :style="{ 'color': getUserColor('emma') }" class="q-mt-sm" :key="update"/>
+    </div>
+
+    <div class="q-pa-md">
+      Dez <q-linear-progress rounded size="15px" :value="dezProgress" :style="{ 'color': getUserColor('dez') }" class="q-mt-sm" :key="update"/>
+    </div>
+
+    <div class="q-pa-md">
+      Rachel <q-linear-progress rounded size="15px" :value="rachelProgress" :style="{ 'color': getUserColor('rachel') }" class="q-mt-sm"  :key="update"/>
+    </div>
+
+    <div class="q-pa-md">
+      Kyra <q-linear-progress rounded size="15px" :value="kyraProgress" :style="{ 'color': getUserColor('kyra') }" class="q-mt-sm" :key="update"/>
+    </div>  
+
+    <div class="q-pa-md">
+      Helen <q-linear-progress rounded size="15px" :value="helenProgress" :style="{ 'color': getUserColor('helen') }" class="q-mt-sm" :key="update"/>
+    </div>
+
+    <div class="q-pa-md">
+      Calyn <q-linear-progress rounded size="15px" :value="calynProgress" :style="{ 'color': getUserColor('calyn') }" class="q-mt-sm" :key="update"/>
+    </div>  
+  </div>      
     </div>
 
   </q-page>

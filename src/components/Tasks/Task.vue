@@ -62,7 +62,9 @@
           round
           dense
           color="purple"
-          icon="today" />
+          icon="today">
+        <q-tooltip content-class="bg-secondary">Do Today</q-tooltip>
+          </q-btn>
         <q-btn
           @click.stop="pushDueDate({ id: id, dueDate: task.dueDate })"
           flat
