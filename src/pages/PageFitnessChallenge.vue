@@ -192,11 +192,11 @@ export default {
     },
     saraProgress: function () {
       this.update;
-      return this.calculateValues('paul');
+      return this.calculateValues('sara');
     },
      perryProgress: function () {
       this.update;
-      return this.calculateValues('paul');
+      return this.calculateValues('perrt');
     }
   },
   methods: {
