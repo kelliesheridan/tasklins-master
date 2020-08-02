@@ -169,7 +169,7 @@
 
               <q-item-section top side>
                 <q-item-label v-if="hatched === false">All Tasklins start out as eggs. You can store as many eggs as you want to, but to meet the Tasklin inside, you're going to have to give it something to work on. Use the + button to add your first five tasks. These can be any things you need to complete, such as 'Go for a walk' or 'Finish Math Homework'.</q-item-label>
-                <q-item-label v-if="hatched === true">Well done! Now it's time to name your first Tasklin, and then we're ready to start our adventure! And judging by the things you need to get done, there's no time to waste.</q-item-label>
+                <q-item-label v-if="hatched === true">Well done! Now it's time to name your first Tasklin, and then we're ready to start our adventure! And judging by the things you need to get done, there's no time to waste. And keep an eye out for the + button to add more tasks in the future. You can find it on your menu bar.</q-item-label>
               </q-item-section>
             </q-item>
           </div>
