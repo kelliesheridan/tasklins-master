@@ -85,6 +85,30 @@
       </q-card-section>
     </q-card>
 
+    <q-card dense flat square class="my-card q-pa-xs">
+      <q-card-section :style="{ 'background-color': getCardColor(3) }" class="text-white">
+        <div class="text-h7">{{fourthActivity}}
+
+      <q-card-actions align="right">
+        <!-- <q-btn dense @click="submit('cheer')" flat>Cheer!</q-btn> -->
+      </q-card-actions>
+
+        </div>
+      </q-card-section>
+    </q-card>
+
+    <q-card dense flat square class="my-card q-pa-xs">
+      <q-card-section :style="{ 'background-color': getCardColor(4) }" class="text-white">
+        <div class="text-h7">{{fifthActivity}}
+
+      <q-card-actions align="right">
+        <!-- <q-btn dense @click="submit('cheer')" flat>Cheer!</q-btn> -->
+      </q-card-actions>
+
+        </div>
+      </q-card-section>
+    </q-card>
+
       </div>    
       
   <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 q-pa-xs">
@@ -157,6 +181,14 @@ export default {
     thirdActivity: function () {
       this.update;
       return this.getUsername(2);
+    },
+    fourthActivity: function () {
+      this.update;
+      return this.getUsername(3);
+    },
+    fifthActivity: function () {
+      this.update;
+      return this.getUsername(4);
     },
     mattProgress: function () {
       this.update;
