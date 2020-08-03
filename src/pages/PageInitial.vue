@@ -324,6 +324,7 @@ export default {
         }
         
         this.updateProfile(profile);
+        
         let tasklin = {
               name: this.tasklinName,
               color: this.color,

@@ -56,9 +56,9 @@
   },
 		
 	mounted() {
-    	if (this.profile.signup) {
-    		this.$router.push("/initial");
-  		}
+    	// if (this.profile.signup) {
+    	// 	this.$router.push("/initial");
+  		// }
   	},
 		computed: {
 			...mapGetters('profile', ['profile']),

@@ -21,6 +21,7 @@ const mutations = {
 const actions = {
 	addTasklin({ dispatch }, tasklin) {
 		dispatch('fbAddTasklin', tasklin)
+		dispatch('profile/fbReadProfile', null, { root: true })
 	},
 	getTasklin({ dispatch }, payload) {
 		dispatch('fbReadTasklins', {})

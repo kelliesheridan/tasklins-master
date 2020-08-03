@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hHh lpR fFf">
 
-    <q-header v-if="loggedIn && this.tasklin.color !== ''" elevated class="bg-primary text-white">
+    <q-header v-if="loggedIn" elevated class="bg-primary text-white">
     <q-toolbar>
       <!-- <q-btn dense flat round color="accent" icon="notifications"/> -->
       <q-btn dense flat round class="side-menu" icon="games" color="accent" @click="left = !left" />
