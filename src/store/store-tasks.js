@@ -198,10 +198,10 @@ const getters = {
 	tasksSorted: (state) => {
 		let tasksSorted = {},
 			keysOrdered = Object.keys(state.tasks)
-
+if (keysOrdered.length > 0) {
 		keysOrdered.sort((a,b) => {
-			let taskAProp = state.tasks[a][state.sort].toLowerCase(),
-				taskBProp = state.tasks[b][state.sort].toLowerCase()
+			let taskAProp = state.tasks[a][state.sort],
+				taskBProp = state.tasks[b][state.sort]
 
 			if (taskAProp > taskBProp) return 1
 			else if (taskAProp < taskBProp) return -1
@@ -211,7 +211,7 @@ const getters = {
 		keysOrdered.forEach((key) => {
 			tasksSorted[key] = state.tasks[key]
 		})
-
+	}
 		return tasksSorted
 	},
 
