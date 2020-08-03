@@ -1,15 +1,15 @@
 <template>
   <q-layout view="hHh lpR fFf">
 
-    <q-header v-if="loggedIn && this.tasklin.color !== ''" elevated class="bg-primary text-white">
+    <q-header v-if="loggedIn" elevated class="bg-primary text-white">
     <q-toolbar>
       <!-- <q-btn dense flat round color="accent" icon="notifications"/> -->
-      <q-btn dense flat round class="side-menu" icon="games" color="accent" @click="left = !left" />
+      <q-btn v-if="loggedIn && this.tasklin.color !== ''" dense flat round class="side-menu" icon="games" color="accent" @click="left = !left" />
       <!-- <q-btn dense flat round icon="done" color="accent" @click="right = !right" /> -->
       <q-toolbar-title class="text-center">
         Tasklins
       </q-toolbar-title>
-          <q-btn v-if="loggedIn" dense flat to="/settings" round color="accent" icon="settings" />
+          <q-btn v-if="loggedIn && this.tasklin.color !== ''" dense flat to="/settings" round color="accent" icon="settings" />
           <q-btn v-if="loggedIn" @click="logoutUser" dense flat round color="accent" icon="exit_to_app" />
           <q-btn v-if="!loggedIn" dense flat to="/auth" round color="accent" icon="account_circle" />
     </q-toolbar>
