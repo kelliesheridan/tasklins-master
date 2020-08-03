@@ -6,9 +6,7 @@ const state = {
 	settings: {
 		show24hrTimeFormat: false,
 		hideCompletedTasks: false,
-		darkMode: false,
-		fitnessGoal: 0,
-		fitnessColor: 'green'
+		darkMode: false
 	}
 }
 
@@ -59,8 +57,6 @@ const actions = {
 				darkMode: settings.darkMode,
 				hideCompletedTasks: settings.hideCompletedTasks,
 				show24hrTimeFormat: settings.show24hrTimeFormat,
-				fitnessGoal: settings.fitnessGoal,
-				fitnessColor: settings.fitnessColor,
 			}
 			commit('setSettings', payload)
 
