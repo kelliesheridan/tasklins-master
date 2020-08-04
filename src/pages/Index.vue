@@ -111,6 +111,11 @@ import { openURL } from 'quasar'
 
 export default {
     props: ['tasksTodo'],
+    mounted() {
+    	if (this.profile.signup) {
+    		this.$router.push("/initial");
+  		}
+  	},
     components: {
         'tasks-today' : require('components/Tasks/TasksToday.vue').default,
         'tasks-late' : require('components/Tasks/TasksLate.vue').default,

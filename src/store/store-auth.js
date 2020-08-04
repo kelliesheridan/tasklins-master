@@ -54,7 +54,7 @@ const actions = {
 		dispatch('tasklins/getTasklin', null, { root: true })
 		dispatch('settings/fbReadSettings', null, { root: true })
 		dispatch('profile/fbCheckUsername', null, { root: true })
-		this.$router.replace('/initial').catch(err => {})
+		this.$router.replace('/index').catch(err => {})
 		} else {
 		commit('tasks/clearTasks', null, {root: true})
 		commit('tasks/setTasksDownloaded', false, {root: true})
