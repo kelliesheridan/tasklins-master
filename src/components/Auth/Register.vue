@@ -96,6 +96,7 @@ export default {
                 // this.$refs.password2.validate()
                 if (!this.$refs.email.hasError && !this.$refs.password.hasError) {
                     this.registerUser(this.formData)
+                    this.$router.push('/initial')
                 }
         },
 		// filters: {

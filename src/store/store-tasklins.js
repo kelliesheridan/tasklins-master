@@ -22,6 +22,7 @@ const actions = {
 	addTasklin({ dispatch }, tasklin) {
 		dispatch('fbAddTasklin', tasklin)
 		dispatch('profile/fbReadProfile', null, { root: true })
+		this.$router.replace('/todo')
 	},
 	getTasklin({ dispatch }, payload) {
 		dispatch('fbReadTasklins', {})
