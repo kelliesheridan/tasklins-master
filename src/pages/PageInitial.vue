@@ -256,6 +256,11 @@ export default {
             newTasks: 0
         }
     },
+        mounted() {
+    	if (this.profile.signup) {
+    		this.$router.push("/index");
+  		}
+  	},
     computed: {
       ...mapGetters('profile', ['profile']),      
       ...mapGetters('tasklins', ['tasklin']),      
