@@ -333,7 +333,7 @@ export default {
               creation_date: Date.now() 
         }
         this.addTasklin(tasklin)
-        this.$router.push("/index")
+        this.$router.push("/todo")
       },
     },
     components: {
