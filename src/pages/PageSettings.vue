@@ -7,7 +7,7 @@
         <q-item-section>
           <q-item-label>24hr Clock</q-item-label>
         </q-item-section>
-        <q-item-section side >
+        <q-item-section side>
           <q-toggle color="primary" v-model="show24hrTimeFormat" />
         </q-item-section>
       </q-item>
@@ -26,18 +26,15 @@
           <q-item-label>Dark Mode</q-item-label>
         </q-item-section>
         <q-item-section side top>
-          <q-toggle color="red" v-model="darkMode"  />
+          <q-toggle color="red" v-model="darkMode" />
         </q-item-section>
       </q-item>
 
       <div class="row q-mb-md">
         <q-space />
-        <q-btn
-        color="primary"
-        label="Save Settings"
-        @click="submit()" />
-    </div>
-      
+        <q-btn color="primary" label="Save Settings" @click="submit()" />
+      </div>
+
       <!-- <q-separator spaced />
       <q-item-label header>Notifications</q-item-label>
 
@@ -69,52 +66,56 @@
           <q-toggle color="red" v-model="notif3" val="picture" />
         </q-item-section>
       </q-item> -->
-
     </q-list>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters('settings', ['settings']),
-			show24hrTimeFormat: {
-				get() {
-					return this.settings.show24hrTimeFormat
-				},
-				set(value) {
-					this.setShow24hrTimeFormat(value)
-				} 
-			},
-			hideCompletedTasks: {
-				get() {
-					return this.settings.hideCompletedTasks
-				},
-				set(value) {
-					this.setHideCompletedTasks(value)
-				} 
-			},
-    darkMode: {
+    ...mapGetters("settings", ["settings"]),
+    show24hrTimeFormat: {
       get() {
-        return this.settings.darkMode
+        return this.settings.show24hrTimeFormat;
       },
       set(value) {
-        this.setDarkMode(value)
+        this.setShow24hrTimeFormat(value);
+      }
+    },
+    hideCompletedTasks: {
+      get() {
+        return this.settings.hideCompletedTasks;
+      },
+      set(value) {
+        this.setHideCompletedTasks(value);
+      }
+    },
+    darkMode: {
+      get() {
+        return this.settings.darkMode;
+      },
+      set(value) {
+        this.setDarkMode(value);
       }
     }
-},
-  		methods: {
-      ...mapActions('settings', ['setShow24hrTimeFormat', 'setHideCompletedTasks', 'setDarkMode', 'fbUpdateSettings']),
-      submit() {
-        this.fbUpdateSettings();
-        this.$q.notify({
-        message: 'Your Settings Have Been Updated',
+  },
+  methods: {
+    ...mapActions("settings", [
+      "setShow24hrTimeFormat",
+      "setHideCompletedTasks",
+      "setDarkMode",
+      "fbUpdateSettings"
+    ]),
+    submit() {
+      this.fbUpdateSettings();
+      this.$q.notify({
+        message: "Your Settings Have Been Updated",
         color: "secondary",
-        icon: 'settings',
-      })
-      }
+        icon: "settings"
+      });
+    }
   }
-}
+};
 </script>

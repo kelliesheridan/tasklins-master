@@ -1,19 +1,19 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from "vue";
+import Vuex from "vuex";
 
-import tasks from './store-tasks'
-import profile from './store-profile'
-import settings from './store-settings'
-import auth from './store-auth'
-import fitness from './store-fitness'
-import writing from './store-writing'
-import tasklins from './store-tasklins'
-import tickets from './store-tickets'
+import tasks from "./store-tasks";
+import profile from "./store-profile";
+import settings from "./store-settings";
+import auth from "./store-auth";
+import fitness from "./store-fitness";
+import writing from "./store-writing";
+import tasklins from "./store-tasklins";
+import tickets from "./store-tickets";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 /*
- * If not building with SSR mode, you can 
+ * If not building with SSR mode, you can
  * directly export the Store instantiation;
  *
  * The function below can be async too; either use
@@ -21,17 +21,23 @@ Vue.use(Vuex)
  * with the Store instance.
  */
 
-export default function (/* { ssrContext } */) {
+export default function(/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
-      tasks, profile, settings, auth, fitness, tasklins, tickets, writing
+      tasks,
+      profile,
+      settings,
+      auth,
+      fitness,
+      tasklins,
+      tickets,
+      writing
     },
 
     // enable strict mode (adds overhead!)
     // for dev mode only
     strict: process.env.DEV
-  })
+  });
 
-  return Store
+  return Store;
 }
-
