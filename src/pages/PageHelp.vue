@@ -34,6 +34,7 @@
     </q-list> 
 </div> -->
     <p>- Dark mode doesn't really work yet</p>
+    <p>- Some issues with dates, specifically setting dates using buttons rather than the edit button</p>    
 
     <q-dialog v-model="help">
       <q-card>
