@@ -179,8 +179,8 @@
           <q-linear-progress
             rounded
             size="15px"
-            :value="this.getProgress('kylie')"
-            :style="{ color: getUserColor('kylie') }"
+            :value="this.getProgress('kylie ')"
+            :style="{ color: getUserColor('kylie ') }"
             class="q-mt-sm"
             :key="update"
           />
@@ -203,8 +203,8 @@
           <q-linear-progress
             rounded
             size="15px"
-            :value="this.getProgress('gloria')"
-            :style="{ color: getUserColor('gloria') }"
+            :value="this.getProgress('Glorgatron')"
+            :style="{ color: getUserColor('Glorgatron') }"
             class="q-mt-sm"
             :key="update"
           />
@@ -228,7 +228,7 @@
             rounded
             size="15px"
             :value="this.getProgress('sara')"
-            :style="{ color: getUserColor('gloria') }"
+            :style="{ color: getUserColor('sara') }"
             class="q-mt-sm"
             :key="update"
           />
@@ -245,6 +245,32 @@
             :key="update"
           />
         </div>
+
+         <div class="q-pa-md">
+          Monica
+          <q-linear-progress
+            rounded
+            size="15px"
+            :value="this.getProgress('MonicaN')"
+            :style="{ color: getUserColor('MonicaN') }"
+            class="q-mt-sm"
+            :key="update"
+          />
+        </div>
+
+        <div class="q-pa-md">
+          Ryan
+          <q-linear-progress
+            rounded
+            size="15px"
+            :value="this.getProgress('ryan')"
+            :style="{ color: getUserColor('ryan') }"
+            class="q-mt-sm"
+            :key="update"
+          />
+        </div>
+        
+        
       </div>
     </div>
   </q-page>
