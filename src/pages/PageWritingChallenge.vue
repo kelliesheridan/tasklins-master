@@ -50,8 +50,8 @@
     </div>
 
     <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 bg-grey-4">
-               <q-card dense flat square class="my-card q-pa-xs">
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 bg-grey-4" style="overflow: auto; height: 550px">
+        <q-card dense flat square class="my-card q-pa-xs">
           <q-card-section
             :style="{ 'background-color': getCardColor(0) }"
             class="text-white"
@@ -126,7 +126,7 @@
           </q-card-section>
         </q-card>
 
-              <q-card dense flat square class="my-card q-pa-xs">
+        <q-card dense flat square class="my-card q-pa-xs">
           <q-card-section
             :style="{ 'background-color': getCardColor(5) }"
             class="text-white"
@@ -141,6 +141,20 @@
           </q-card-section>
         </q-card>              
 
+        <q-card dense flat square class="my-card q-pa-xs">
+          <q-card-section
+            :style="{ 'background-color': getCardColor(6) }"
+            class="text-white"
+          >
+            <div class="text-h7">
+              {{ this.getActivity(6) }}
+
+              <q-card-actions align="right">
+                <!-- <q-btn @click="submit('cheer')" dense flat>Cheer!</q-btn> -->
+              </q-card-actions>
+            </div>
+          </q-card-section>
+        </q-card>  
       </div>
 
       <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">

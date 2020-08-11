@@ -2,7 +2,7 @@
   <q-page padding>
     <template v-if="tasksDownloaded">
       <div class="row main justify-center q-pa-md">
-        <div class="section col-xs-12 col-sm-12 col-md-6 col-lg-6 q-pa-xs" style="overflow: auto; height: 278px">
+        <div class="section col-xs-12 col-sm-12 col-md-6 col-lg-6 q-pa-xs" style="overflow: auto; height: 50%">
           <div>
             <list-header bgColor="bg-orange-4">Today's Tasks</list-header>
             <no-tasks
