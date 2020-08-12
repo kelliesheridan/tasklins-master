@@ -43,7 +43,7 @@
               />
             </div>
 
-        <q-toggle v-model="togglePrivate" label="My profile is public" />
+        <!-- <q-toggle v-model="togglePrivate" label="My profile is public" /> -->
 
         <div>
           <q-btn @click="updateUserProfile" label="Save" color="primary" />
