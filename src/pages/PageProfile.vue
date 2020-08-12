@@ -125,7 +125,6 @@ export default {
         level: this.profile.level,
         friends: this.profile.friends,
         inventory: this.profile.inventory,
-        tasklins: this.profile.tasklins,
         private: this.profile.private,
         signup: this.profile.signup,
         color: this.profile.color,
@@ -133,10 +132,10 @@ export default {
       };
       console.debug("profile", profile);
       this.updateProfile(profile);
+    },
+    submitForm() {
+    		this.fbUpdateProfile();
     }
-    // submitForm() {
-    // 		this.fbUpdateProfile();
-    // }
   }
 };
 </script>

@@ -54,9 +54,6 @@ const mutations = {
   setPrivate(state, value) {
     state.profile.user.private = value;
   },
-  setTasklins(state, value) {
-    state.profile.user.tasklins = value;
-  },
   setColor(state, value) {
     state.profile.user.color = value;
   },
@@ -101,9 +98,6 @@ const actions = {
   updateUsername({ commit, dispatch }, value) {
     commit("setUsername", value);
     //dispatch('fbUpdateProfile')
-  },
-  updateTasklins({ commit, dispatch }, value) {
-    commit("setTasklins", value);
   },
   updateColor({ commit, dispatch }, value) {
     commit("setColor", value);
