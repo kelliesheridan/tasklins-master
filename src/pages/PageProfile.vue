@@ -17,12 +17,31 @@
           lazy-rules
         />
 
-        <q-input
+        <!-- <q-input
           filled
           v-model="changeAbout"
           label="A little about you"
           lazy-rules
-        />
+        /> -->
+
+        <div class="q-pa-md">
+              <q-badge
+                :style="{ 'background-color': this.profile.color }"
+                text-color="black"
+                class="q-mb-sm"
+              >
+                {{ this.profile.color }}
+              </q-badge>
+
+              <q-color
+                :color="changeColor"
+                v-model="changeColor"
+                no-footer
+                no-header
+                default-view="palette"
+                class="my-picker"
+              />
+            </div>
 
         <q-toggle v-model="togglePrivate" label="My profile is public" />
 
@@ -35,8 +54,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import { mapActions } from "vuex";
+import { mapActions, mapState, mapGetters } from "vuex";
 
 export default {
   data() {
@@ -75,6 +93,15 @@ export default {
       set(value) {
         this.togglePrivateValue(value);
       }
+    },
+    changeColor: {
+      get() {
+        return this.profile.color;
+      },
+      set(value) {
+        this.updateColor(value);
+        this.hex = value;
+      }
     }
   },
   methods: {
@@ -83,6 +110,7 @@ export default {
       "updateName",
       "updateUsername",
       "updateProfile",
+      "updateColor",
       "togglePrivateValue"
     ]),
     updateUserProfile() {
@@ -100,6 +128,7 @@ export default {
         tasklins: this.profile.tasklins,
         private: this.profile.private,
         signup: this.profile.signup,
+        color: this.profile.color,
         admin: this.profile.admin
       };
       console.debug("profile", profile);
