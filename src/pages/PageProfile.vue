@@ -17,6 +17,8 @@
           lazy-rules
         />
 
+        <p>Current Level: {{ this.profile.level }}</p>
+
         <!-- <q-input
           filled
           v-model="changeAbout"

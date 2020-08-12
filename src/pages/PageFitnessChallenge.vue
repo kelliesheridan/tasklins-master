@@ -47,6 +47,13 @@
       </q-btn-dropdown>
     </div>
 
+    <div class="wallOfShame">
+      <div class="wallOfShame__card">
+        <h5><strong>Wall of Shame</strong></h5>
+        <p>Francis - Gloria - Paul - Perry - Ryan</p>
+      </div>
+    </div>
+
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 q-pa-xs bg-grey-4" style="overflow: auto; height: 550px">
         <q-card dense flat square class="my-card q-pa-xs">
@@ -150,41 +157,6 @@
       </div>
 
       <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 q-pa-xs">
-        <div class="q-pa-md">
-          Kellie
-          <q-linear-progress
-            rounded
-            size="15px"
-            :value="this.getProgress('kellie')"
-            :style="{ color: getUserColor('kellie') }"
-            class="q-mt-sm"
-            :key="update"
-          />
-        </div>
-
-        <div class="q-pa-md">
-          Matt
-          <q-linear-progress
-            rounded
-            size="15px"
-            :value="this.getProgress('matt')"
-            :style="{ color: getUserColor('matt') }"
-            class="q-mt-sm"
-            :key="update"
-          />
-        </div>
-
-        <div class="q-pa-md">
-          Kaitlyn
-          <q-linear-progress
-            rounded
-            size="15px"
-            :value="this.getProgress('kaitlyn')"
-            :style="{ color: getUserColor('kaitlyn') }"
-            class="q-mt-sm"
-            :key="update"
-          />
-        </div>
 
         <div class="q-pa-md">
           Adam
@@ -193,18 +165,6 @@
             size="15px"
             :value="this.getProgress('adam')"
             :style="{ color: getUserColor('adam') }"
-            class="q-mt-sm"
-            :key="update"
-          />
-        </div>
-
-        <div class="q-pa-md">
-          Kylie
-          <q-linear-progress
-            rounded
-            size="15px"
-            :value="this.getProgress('kylie')"
-            :style="{ color: getUserColor('kylie') }"
             class="q-mt-sm"
             :key="update"
           />
@@ -235,24 +195,72 @@
         </div>
 
         <div class="q-pa-md">
-          Paul
+          Kaitlyn
           <q-linear-progress
             rounded
             size="15px"
-            :value="this.getProgress('paul')"
-            :style="{ color: getUserColor('paul') }"
+            :value="this.getProgress('kaitlyn')"
+            :style="{ color: getUserColor('kaitlyn') }"
+            class="q-mt-sm"
+            :key="update"
+          />
+        </div>  
+
+        <div class="q-pa-md">
+          Kellie
+          <q-linear-progress
+            rounded
+            size="15px"
+            :value="this.getProgress('kellie')"
+            :style="{ color: getUserColor('kellie') }"
             class="q-mt-sm"
             :key="update"
           />
         </div>
 
         <div class="q-pa-md">
-          Sara
+          Kylie
           <q-linear-progress
             rounded
             size="15px"
-            :value="this.getProgress('sara')"
-            :style="{ color: getUserColor('sara') }"
+            :value="this.getProgress('kylie')"
+            :style="{ color: getUserColor('kylie') }"
+            class="q-mt-sm"
+            :key="update"
+          />
+        </div> 
+
+        <div class="q-pa-md">
+          Matt
+          <q-linear-progress
+            rounded
+            size="15px"
+            :value="this.getProgress('matt')"
+            :style="{ color: getUserColor('matt') }"
+            class="q-mt-sm"
+            :key="update"
+          />
+        </div>  
+
+        <div class="q-pa-md">
+          Monica
+          <q-linear-progress
+            rounded
+            size="15px"
+            :value="this.getProgress('monica')"
+            :style="{ color: getUserColor('monica') }"
+            class="q-mt-sm"
+            :key="update"
+          />
+        </div>                        
+
+        <div class="q-pa-md">
+          Paul
+          <q-linear-progress
+            rounded
+            size="15px"
+            :value="this.getProgress('paul')"
+            :style="{ color: getUserColor('paul') }"
             class="q-mt-sm"
             :key="update"
           />
@@ -270,18 +278,6 @@
           />
         </div>
 
-         <div class="q-pa-md">
-          Monica
-          <q-linear-progress
-            rounded
-            size="15px"
-            :value="this.getProgress('monica')"
-            :style="{ color: getUserColor('monica') }"
-            class="q-mt-sm"
-            :key="update"
-          />
-        </div>
-
         <div class="q-pa-md">
           Ryan
           <q-linear-progress
@@ -293,7 +289,19 @@
             :key="update"
           />
         </div>
-        
+
+        <div class="q-pa-md">
+          Sara
+          <q-linear-progress
+            rounded
+            size="15px"
+            :value="this.getProgress('sara')"
+            :style="{ color: getUserColor('sara') }"
+            class="q-mt-sm"
+            :key="update"
+          />
+        </div>
+
         
       </div>
     </div>
@@ -433,4 +441,28 @@ export default {
   padding: 10px 10px
 .row + .row
   margin-top: 1rem
+
+  h4 
+    margin-bottom: 5px
+    padding: 0
+
+.wallOfShame
+    width: 30%
+    text-align: center
+    margin: 0 auto    
+
+.wallOfShame__card 
+    background-color: $grey-4
+    color: $red-10
+    border-radius: 5px
+    margin-bottom: 5px
+    margin-top: -25px
+
+.wallOfShame__card  > p
+  color: $deep-orange-9
+  margin-top: -35px
+  padding-bottom: 5px
+  
+    
+     
 </style>

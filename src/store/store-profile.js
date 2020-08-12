@@ -170,11 +170,27 @@ function mutateLin(min, max) {
 
 function getLevel() {
   var xp = parseInt(state.profile.user.xp);
-  if (xp >= 50) {
+  if (xp >= 3500) {
+    return "12";
+  } else if (xp >= 3000 && xp <= 3499) {
+    return "11";
+  } else if (xp >= 2500 && xp <= 2999) {
+    return "10";
+  } else if (xp >= 2000 && xp <= 2499) {
+    return "9";
+  } else if (xp >= 1500 && xp <= 1999) {
+    return "8";
+  } else if (xp >= 1000 && xp <= 1499) {
+    return "7";
+  } else if (xp >= 500 && xp <= 999) {
+    return "6";
+  } else if (xp >= 250 && xp <= 499) {
+    return "5";
+  } else if (xp >= 100 && xp <= 249) {
     return "4";
-  } else if (xp >= 20 && xp <= 50) {
+  } else if (xp >= 50 && xp <= 99) {
     return "3";
-  } else if (xp >= 10 && xp <= 20) {
+  } else if (xp >= 25 && xp <= 49) {
     return "2";
   } else {
     return "1";
