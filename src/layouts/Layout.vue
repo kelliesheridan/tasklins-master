@@ -175,11 +175,11 @@ export default {
         //   icon: 'pets',
         //   link: '/tasklins'
         // },
-        // {
-        //   title: 'Profile',
-        //   icon: 'person',
-        //   link: '/profile'
-        // },
+        {
+          title: 'Profile',
+          icon: 'person',
+          link: '/profile'
+        },
         // {
         //   title: 'Explore',
         //   icon: 'explore',
