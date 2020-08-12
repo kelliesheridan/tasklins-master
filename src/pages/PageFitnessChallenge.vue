@@ -203,8 +203,8 @@
           <q-linear-progress
             rounded
             size="15px"
-            :value="this.getProgress('kylie ')"
-            :style="{ color: getUserColor('kylie ') }"
+            :value="this.getProgress('kylie')"
+            :style="{ color: getUserColor('kylie') }"
             class="q-mt-sm"
             :key="update"
           />
@@ -227,8 +227,8 @@
           <q-linear-progress
             rounded
             size="15px"
-            :value="this.getProgress('Glorgatron')"
-            :style="{ color: getUserColor('Glorgatron') }"
+            :value="this.getProgress('gloria')"
+            :style="{ color: getUserColor('gloria') }"
             class="q-mt-sm"
             :key="update"
           />
