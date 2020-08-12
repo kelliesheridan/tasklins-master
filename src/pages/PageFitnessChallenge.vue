@@ -275,8 +275,8 @@
           <q-linear-progress
             rounded
             size="15px"
-            :value="this.getProgress('Monica')"
-            :style="{ color: getUserColor('Monica') }"
+            :value="this.getProgress('monica')"
+            :style="{ color: getUserColor('monica') }"
             class="q-mt-sm"
             :key="update"
           />
