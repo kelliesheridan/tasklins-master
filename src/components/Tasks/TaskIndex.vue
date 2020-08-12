@@ -141,7 +141,7 @@
       }
     },
     components: {
-      'edit-task': require('components/Tasks/Modals/EditTask.vue').default,
+      'edit-task': require('components/Tasks/Modals/editTask.vue').default,
     }
 	}
 </script>

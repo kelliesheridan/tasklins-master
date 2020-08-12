@@ -149,7 +149,7 @@ const actions = {
       let projectRecords = snapshot.val();
       if (projectRecords) {
         Object.keys(projectRecords).forEach(element => {
-          projectsArray.push(element);
+          projectsArray.push(projectRecords[element]);
         });
         commit("setProjects", projectsArray);
       }

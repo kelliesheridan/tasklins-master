@@ -25,7 +25,6 @@
         return {
             project: {
                 projectName: '',
-                color: ''
                 }
         }
     },

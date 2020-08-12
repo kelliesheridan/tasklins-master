@@ -1,11 +1,10 @@
 <template>
 		<q-select
 			outlined
-			v-model="project"
 			@change="$emit('update:project', $event)"
+			v-model="project"
 			autofocus
 			v-select-all
-			ref="project"
 			label="Project"
 			class="col"
 			:options="this.$store.state.tasks.projects">
@@ -18,16 +17,6 @@
 
 	export default {
 		props: ['project'],
-
-		  data () {
-			return {
-			model: null,
-			options: [
-				'Google', 'Facebook', 'Twitter', 'Apple', 'Oracle'
-			]
-			}
-		  },
-
 		directives: {
 			selectAll
 		}

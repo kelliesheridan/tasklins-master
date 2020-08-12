@@ -12,9 +12,14 @@
         ref="modalTaskName"
         />
 
-        <!-- <modal-task-project
-        :project.sync="taskToSubmit.project"
-        ref="modalTaskProject"/> -->
+        <!-- <q-select
+            outlined
+            v-model="taskToSubmit.project"
+            autofocus
+            label="Project"
+            class="col"
+            :options="this.$store.state.tasks.projects">
+        </q-select> -->
         
         <modal-task-due-date :dueDate.sync="taskToSubmit.dueDate"/>
 
@@ -69,7 +74,6 @@ export default {
         components: {
 		'modal-header': require('components/Tasks/Modals/Shared/ModalHeader.vue').default,
 		'modal-task-name': require('components/Tasks/Modals/Shared/ModalTaskName.vue').default,
-		// 'modal-task-project': require('components/Tasks/Modals/Shared/ModalTaskProject.vue').default,
 		'modal-task-due-date': require('components/Tasks/Modals/Shared/ModalTaskDueDate.vue').default,
 		// 'modal-task-due-time': require('components/Tasks/Modals/Shared/ModalTaskDueTime.vue').default,
 		// 'modal-task-npublic': require('components/Tasks/Modals/Shared/ModalTaskPublic.vue').default,
