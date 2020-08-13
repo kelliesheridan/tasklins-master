@@ -1,7 +1,8 @@
 <template>
   <q-page padding>
-    <div class="q-pa-md text-center">
-      <q-btn-dropdown
+    <div class="q-pa-md row text-center">
+      <div class="col-12">
+        <q-btn-dropdown
         class="q-mr-sm"
         color="light-green"
         label="I Worked Out"
@@ -45,14 +46,18 @@
           </q-item>
         </q-list>
       </q-btn-dropdown>
-    </div>
+      </div>
 
-    <div class="wallOfShame">
+      <div class="class=col-12 wallOfShame">
       <div class="wallOfShame__card">
         <h5><strong>Wall of Shame</strong></h5>
-        <p>Francis - Gloria - Paul - Perry - Ryan</p>
+        <p>Francis - Paul - Perry - Ryan</p>
       </div>
     </div>
+      
+    </div>
+
+    
 
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 q-pa-xs bg-grey-4" style="overflow: auto; height: 550px">
@@ -456,13 +461,11 @@ export default {
     color: $red-10
     border-radius: 5px
     margin-bottom: 5px
-    margin-top: -25px
+    margin-top: 25px
 
 .wallOfShame__card  > p
   color: $deep-orange-9
-  margin-top: -35px
-  padding-bottom: 5px
-  
-    
+  margin-top: 10px
+  // padding-bottom: 5px    
      
 </style>
