@@ -136,6 +136,22 @@
       <add-task @close="showAddTask = false" />
     </q-dialog>
 
+    <q-dialog v-model="levelUp" persistent transition-show="scale" transition-hide="scale">
+      <q-card class="bg-primary text-white" style="width: 400px">
+        <q-card-section>
+          <div class="text-h6">You Leveled Up!</div>
+        </q-card-section>
+
+        <q-card-section class="q-pt-none">
+          You reached level {{ profile.level }}! Right now, this doesn't really mean anything, but good job!
+        </q-card-section>
+
+        <q-card-actions align="right" class="bg-white text-teal">
+          <q-btn flat label="OK" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
+
     <q-page-container v-if="loggedIn">
       <router-view />
     </q-page-container>
@@ -155,6 +171,7 @@ export default {
   data() {
     return {
       showAddTask: false,
+      levelUp: false,
       problem: null,
       accept: false,
       left: false,
