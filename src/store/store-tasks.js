@@ -128,9 +128,7 @@ const actions = {
   },
   fbAddProject({}, payload) {
     let userId = firebaseAuth.currentUser.uid;
-    let taskRef = firebaseDb.ref(
-      "projects/" + userId + "/" + payload.projectName
-    );
+    let taskRef = firebaseDb.ref("projects/" + userId + "/" + payload.projectName);
     console.debug("project:", payload);
     payload.createdDate = Date.now();
     taskRef.set(payload, error => {
@@ -149,7 +147,7 @@ const actions = {
       let projectRecords = snapshot.val();
       if (projectRecords) {
         Object.keys(projectRecords).forEach(element => {
-          projectsArray.push(projectRecords[element]);
+          projectsArray.push(element);
         });
         commit("setProjects", projectsArray);
       }

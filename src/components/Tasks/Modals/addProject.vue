@@ -54,10 +54,8 @@ export default {
         return {
             project: {
                 projectName: '',
+                color: '',
             },
-            options: [
-                
-            ]
         }
     },
     computed: {
@@ -74,9 +72,7 @@ export default {
     methods: {
         ...mapActions('tasks', ['addProject']),
         ...mapGetters('profile', ['profile']),
-        
-        
-        
+
         submitProject() {
             this.addProject(this.project)
             this.$emit('close')
