@@ -248,6 +248,18 @@
         </div>  
 
         <div class="q-pa-md">
+          Meghan
+          <q-linear-progress
+            rounded
+            size="15px"
+            :value="this.getProgress('meghan')"
+            :style="{ color: getUserColor('meghan') }"
+            class="q-mt-sm"
+            :key="update"
+          />
+        </div>  
+
+        <div class="q-pa-md">
           Monica
           <q-linear-progress
             rounded

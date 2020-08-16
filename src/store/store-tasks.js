@@ -133,7 +133,7 @@ const actions = {
       }
     });
   },
-  fbAddProject({}, payload) {
+  fbAddProject({dispatch}, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let taskRef = firebaseDb.ref("projects/" + userId + "/" + payload.projectName);
     console.debug("project:", payload);
@@ -142,6 +142,7 @@ const actions = {
       if (error) {
         showErrorMessage(error.message);
       } else {
+        dispatch("fbReadProjects")
         //Notify.create('New Task Added - + 1xp')
       }
     });
