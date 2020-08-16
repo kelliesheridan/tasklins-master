@@ -136,7 +136,6 @@ const actions = {
   fbUpdateProfile({}) {
     let userId = firebaseAuth.currentUser.uid;
     let proUpdate = firebaseDb.ref("profile/" + userId);
-    console.debug(state.profile.user);
     proUpdate.update(state.profile.user, error => {
       if (error) {
         showErrorMessage(error.message);
@@ -156,8 +155,7 @@ const actions = {
           userList.push(snapshot.val()[key]);
           //console.debug(snapshot.val()[key]);
         });
-        console.debug(
-          "includes username " + username + ": " + userList.includes(username)
+        console.debug("includes username " + username + ": " + userList.includes(username)
         );
       }
     });

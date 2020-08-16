@@ -39,7 +39,6 @@ const mutations = {
   },
   setProjects(state, value) {
     state.projects = value;
-    console.debug("project array ", state.projects);
   },
   setProjectSearch(state, value) {
     state.projectSearch = value;
@@ -151,6 +150,7 @@ const actions = {
     let userId = firebaseAuth.currentUser.uid;
     let projects = firebaseDb.ref("projects/" + userId).orderByKey();
     let projectsArray = new Array();
+    projectsArray.push('');
     projects.once("value").then(function(snapshot) {
       let projectRecords = snapshot.val();
       if (projectRecords) {

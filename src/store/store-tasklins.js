@@ -28,15 +28,12 @@ const actions = {
     dispatch("fbReadTasklins", {});
   },
   fbReadTasklins({ commit }) {
-    console.debug("reading tasklin data");
     let userId = firebaseAuth.currentUser.uid;
-    console.debug("userID/", userId);
-
+    
     let userSettings = firebaseDb.ref("tasklins/" + userId);
 
     userSettings.once("value", snapshot => {
       let tasklinInfo = snapshot.val();
-      console.debug("usersettings from tasklins/", tasklinInfo);
       if (tasklinInfo) {
         let payload = {
           name: tasklinInfo.name,
@@ -45,7 +42,6 @@ const actions = {
           xp: tasklinInfo.xp,
           creation_date: tasklinInfo.creation_date
         };
-        console.debug("tasklin payload is: ", payload);
         commit("setTasklin", payload);
       }
     });
