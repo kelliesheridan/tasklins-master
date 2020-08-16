@@ -12,14 +12,14 @@
         ref="modalTaskName"
         />
 
-        <!-- <q-select
+        <q-select
             outlined
             v-model="taskToSubmit.project"
             autofocus
             label="Project"
             class="col"
             :options="this.$store.state.tasks.projects">
-        </q-select> -->
+        </q-select>
         
         <modal-task-due-date :dueDate.sync="taskToSubmit.dueDate"/>
 
