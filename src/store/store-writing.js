@@ -9,7 +9,6 @@ const state = {
 
 const mutations = {
   setWritingTask(state, payload) {
-    console.debug("setting state.writing to:", payload);
     state.writing = payload;
   },
   setSortedWritingTask(state, payload) {

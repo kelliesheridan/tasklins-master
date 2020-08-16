@@ -1,32 +1,46 @@
 <template>
-      <q-select filled
-      transition-show="flip-up"
-      transition-hide="flip-down"
-      :options="options"
-      label="Projects"/>
-    
+	 <q-select
+      outlined
+      v-model="projectSearchField"
+      autofocus
+      label="Project"
+      class="col"
+      :options="projectOptions">
+  </q-select>
 </template>
 
 <script>
-export default {
-  data () {
-    return {
-      options: [
-        {
-            label: 'Name',
-            value: 'name'
-        },
-        {
-            label: 'Due Date',
-            value: 'dueDate'
+	import { mapStore, mapState, mapActions } from 'vuex'
+	
+	export default {
+		computed: {
+      ...mapState('tasks', ['projectSearch']),
+      projectOptions: {
+        get() {
+          if (this.$store.state.tasks.projects == undefined) {
+            return {
+              array:[],
+              selected: null }
+          } else {
+          return this.$store.state.tasks.projects
         }
-      ]
-    }
-  }
-}
+        },
+        set() {
+
+        }
+      },
+			projectSearchField: {
+				get() {
+					return this.projectSearch
+				},
+				set(value) {
+					this.setProjectSearch(value)
+				}
+			}
+		},
+		methods: {
+			...mapActions('tasks', ['setProjectSearch'])
+		},
+	
+	}
 </script>
-
-<style scoped>
-
-
-</style>

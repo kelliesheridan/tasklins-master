@@ -10,6 +10,7 @@ const state = {
   tasks: {},
   projects: {},
   search: "",
+  projectSearch: "",
   sort: "dueDate",
   tasksDownloaded: false
 };
@@ -39,7 +40,10 @@ const mutations = {
   setProjects(state, value) {
     state.projects = value;
     console.debug("project array ", state.projects);
-  }
+  },
+  setProjectSearch(state, value) {
+    state.projectSearch = value;
+  },
 };
 
 const actions = {
@@ -68,6 +72,9 @@ const actions = {
   },
   setSearch({ commit }, value) {
     commit("setSearch", value);
+  },
+  setProjectSearch({ commit }, value) {
+    commit("setProjectSearch", value);
   },
   setSort({ commit }, value) {
     commit("setSort", value);
@@ -230,6 +237,32 @@ const getters = {
         }
       });
       return tasksFiltered;
+    } else if (state.projectSearch) {
+      Object.keys(tasksSorted).forEach(function(key) {
+        let task = tasksSorted[key],
+          taskProjectNameLowerCase = task.project.toLowerCase(),
+          searchLowerCase = state.projectSearch.toLowerCase();
+        if (taskProjectNameLowerCase.includes(searchLowerCase)) {
+          tasksFiltered[key] = task;
+        }
+      });
+      return tasksFiltered;
+    }
+    return tasksSorted;
+  },
+  projectsFiltered: (state, getters) => {
+    let tasksSorted = getters.tasksSorted,
+    projectsFiltered = {};
+    if (state.projectSearch) {
+      Object.keys(tasksSorted).forEach(function(key) {
+        let task = tasksSorted[key],
+          taskProjectNameLowerCase = task.project.toLowerCase(),
+          searchLowerCase = state.projectSearch.toLowerCase();
+        if (taskProjectNameLowerCase.includes(searchLowerCase)) {
+          projectsFiltered[key] = task;
+        }
+      });
+      return projectsFiltered;
     }
     return tasksSorted;
   },

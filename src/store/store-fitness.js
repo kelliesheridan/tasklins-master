@@ -20,7 +20,6 @@ const state = {
 
 const mutations = {
   setFitnessTask(state, payload) {
-    console.debug("setting state.fitness to:", payload);
     state.fitness = payload;
   },
   setSortedFitnessTask(state, payload) {
