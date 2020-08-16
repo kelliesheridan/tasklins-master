@@ -108,14 +108,47 @@
               <q-list dense padding class="rounded-borders">
                 <q-item>
                   <q-item-section>
-                    <q-item-label overline><b>Next Steps</b></q-item-label>
+                    <q-item-label><strong>Recent Updates</strong></q-item-label>
                   </q-item-section>
                 </q-item>
 
                 <q-item clickable v-ripple>
                   <q-item-section>
-                    <q-item-label>Help Button</q-item-label>
-                    <q-item-label caption
+                    <q-item-label><strong>Levels</strong></q-item-label>
+                    <q-item-label 
+                      >Completing tasks adds xp. When you reach a new level, you'll get a quick pop-up notification.</q-item-label
+                    >
+                  </q-item-section>
+                </q-item>
+
+                <q-item clickable v-ripple>
+                  <q-item-section>
+                    <q-item-label><strong>Profile Page</strong></q-item-label>
+                    <q-item-label 
+                      >See your current level and change your username/name/color on the profile page.</q-item-label
+                    >
+                  </q-item-section>
+                </q-item>
+
+                <q-item clickable v-ripple>
+                  <q-item-section>
+                    <q-item-label><strong>Projects</strong></q-item-label>
+                    <q-item-label 
+                      >When creating a new task you can assign it to a project, and also sort by project on the to do page. Working on new ways to sort and organize projects.</q-item-label
+                    >
+                  </q-item-section>
+                </q-item>
+
+                 <q-item>
+                  <q-item-section>
+                    <q-item-label><strong>Next Steps</strong></q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item clickable v-ripple>
+                  <q-item-section>
+                    <q-item-label><strong>Help Button</strong></q-item-label>
+                    <q-item-label 
                       >Button on help page to submit issues</q-item-label
                     >
                   </q-item-section>
@@ -123,8 +156,8 @@
 
                 <q-item clickable v-ripple>
                   <q-item-section>
-                    <q-item-label>Social Feed</q-item-label>
-                    <q-item-label caption
+                    <q-item-label><strong>Socail Feed</strong></q-item-label>
+                    <q-item-label
                       >See updates from other users</q-item-label
                     >
                   </q-item-section>
@@ -132,8 +165,8 @@
 
                 <q-item clickable v-ripple>
                   <q-item-section>
-                    <q-item-label>Cheer Button</q-item-label>
-                    <q-item-label caption
+                    <q-item-label><strong>Cheer Button</strong></q-item-label>
+                    <q-item-label
                       >Cheer people on in challenges</q-item-label
                     >
                   </q-item-section>
@@ -141,8 +174,8 @@
 
                 <q-item clickable v-ripple>
                   <q-item-section>
-                    <q-item-label>Happiness Meter</q-item-label>
-                    <q-item-label caption
+                    <q-item-label><strong>Tasklin Moods</strong></q-item-label>
+                    <q-item-label
                       >Get things done... happy Tasklin!</q-item-label
                     >
                   </q-item-section>
