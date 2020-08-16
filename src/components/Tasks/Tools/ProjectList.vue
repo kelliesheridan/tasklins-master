@@ -17,10 +17,8 @@
       ...mapState('tasks', ['projectSearch']),
       projectOptions: {
         get() {
-          if (this.$store.state.tasks.projects == undefined) {
-            return {
-              array:[],
-              selected: null }
+          if (this.$store.state.tasks.projects.length == undefined) {
+            return [];
           } else {
           return this.$store.state.tasks.projects
         }
