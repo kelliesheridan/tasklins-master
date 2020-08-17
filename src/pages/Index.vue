@@ -116,7 +116,7 @@
                   <q-item-section>
                     <q-item-label><strong>Levels</strong></q-item-label>
                     <q-item-label 
-                      >Completing tasks adds xp. When you reach a new level, you'll get a quick pop-up notification.</q-item-label
+                      >Completing tasks adds xp. When you reach a new level, you'll get a quick notification.</q-item-label
                     >
                   </q-item-section>
                 </q-item>
