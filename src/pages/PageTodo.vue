@@ -51,12 +51,6 @@ export default {
       showAddProject: false
     };
   },
-
-  mounted() {
-    // if (this.profile.signup) {
-    // 	this.$router.push("/initial");
-    // }
-  },
   computed: {
     ...mapGetters("profile", ["profile"]),
     ...mapGetters("tasks", ["tasksTodo", "tasksCompleted", "tasksSorted", "projectsFiltered"]),
@@ -68,7 +62,7 @@ export default {
     "tasks-completed": require("components/Tasks/TasksCompleted.vue").default,
     "sort": require("components/Tasks/Tools/Sort.vue").default,
     "projectList": require("components/Tasks/Tools/ProjectList.vue").default,
-    "no-tasks": require("components/Tasks/NoTasks.vue").default
+    "no-tasks": require("components/Tasks/NoTasks.vue").default,
   }
 };
 </script>

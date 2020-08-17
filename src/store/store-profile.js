@@ -168,31 +168,36 @@ function mutateLin(min, max) {
 
 function getLevel() {
   var xp = parseInt(state.profile.user.xp);
+  var level = ""
   if (xp >= 3500) {
-    return "12";
+    level = "12";
   } else if (xp >= 3000 && xp <= 3499) {
-    return "11";
+    level = "11";
   } else if (xp >= 2500 && xp <= 2999) {
-    return "10";
+    level = "10";
   } else if (xp >= 2000 && xp <= 2499) {
-    return "9";
+    level = "9";
   } else if (xp >= 1500 && xp <= 1999) {
-    return "8";
+    level = "8";
   } else if (xp >= 1000 && xp <= 1499) {
-    return "7";
+    level = "7";
   } else if (xp >= 500 && xp <= 999) {
-    return "6";
+    level = "6";
   } else if (xp >= 250 && xp <= 499) {
-    return "5";
+    level = "5";
   } else if (xp >= 100 && xp <= 249) {
-    return "4";
+    level = "4";
   } else if (xp >= 50 && xp <= 99) {
-    return "3";
+    level = "3";
   } else if (xp >= 25 && xp <= 49) {
-    return "2";
+    level = "2";
   } else {
-    return "1";
+    level = "1";
   }
+  if (level > state.profile.user.level) {
+    alert("Congratulations, You've leveled up! Welcome to level " + level)
+  }
+  return level;
 }
 
 const getters = {

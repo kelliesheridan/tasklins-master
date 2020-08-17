@@ -203,7 +203,6 @@ const actions = {
     });
   }
 };
-
 const getters = {
   tasksSorted: state => {
     let tasksSorted = {},
