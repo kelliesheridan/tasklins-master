@@ -152,7 +152,7 @@
       </q-card>
     </q-dialog>
 
-    <q-page-container v-if="loggedIn">
+    <q-page-container v-if="loggedIn" class="loggedIn">
       <router-view />
     </q-page-container>
 
@@ -266,6 +266,10 @@ export default {
 .bg-image {
   background-image: url(http://www.testingtheapp.tasklins.com/statics/trees.jpg);
   background-size: contain;
+}
+
+.loggedIn {
+  background-color: bg-accent;
 }
 
 .bg-image2 {

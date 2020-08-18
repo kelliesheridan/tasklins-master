@@ -7,10 +7,91 @@ $gutter-vertical: 8rem;
 $gutter-vertical-small: 6rem;
 $gutter-horizontal: 6rem;
 
-//COLORS
+//TASKLIN COLORS
+.bg-tasklin-white {
+  background: #D1D6D8;
+}
 
-$color-green-light: #479890;
-$color-green-dark: #00655D;
-$color-neutral: #B3A7B7;
-$color-purple-light: #A080AB;
-$color-purple-dark: #4E4351;
+.bg-tasklin-grey-lightest {
+  background: #D1D6D8;
+}
+
+.bg-tasklin-grey-light {
+  background: #7D8285;
+}
+
+.bg-tasklin-grey-medium {
+  background: #595E60;
+}  
+
+.bg-tasklin-grey-dark {
+  background: #373A3B;
+}
+
+.bg-tasklin-grey-darkest {
+  background: #232526;
+}  
+
+.bg-tasklin-black {
+  background: #161819;
+}  
+
+.bg-tasklin-blue-light {
+  background: #ACAFC6;
+}
+
+.bg-tasklin-blue-medium {
+  background: #8388AA;
+}  
+
+.bg-tasklin-blue-dark {
+  background: #606693;
+}  
+
+.bg-tasklin-yellow-light {
+  background: #FFF4D9;
+}
+
+.bg-tasklin-yellow-medium {
+  background: #F7E5B6;
+}  
+
+.bg-tasklin-yellow-dark {
+  background: #80588E;
+}  
+
+.bg-tasklin-green-light {
+  background: #BAA6C2;
+}
+
+.bg-tasklin-green-medium {
+  background: #79A45F;
+}  
+
+.bg-tasklin-green-dark {
+  background: #5D8B41;
+}  
+
+.bg-tasklin-purple-light {
+  background: #BAA6C2;
+}
+
+.bg-tasklin-purple-medium {
+  background: #997BA4;
+}  
+
+.bg-tasklin-purple-dark {
+  background: #80588E;
+}
+
+.bg-tasklin-red-light {
+  background: #CA8F9D;
+}
+
+.bg-tasklin-red-medium {
+  background: #AC6475;
+}  
+
+.bg-tasklin-red-dark {
+  background: #924456;
+} 

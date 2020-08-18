@@ -4,7 +4,7 @@
       <div class="row main justify-center q-pa-md">
         <div class="section col-xs-12 col-sm-12 col-md-6 col-lg-6 q-pa-xs" style="overflow: auto; height: 50%">
           <div>
-            <list-header bgColor="bg-orange-4">Today's Tasks</list-header>
+            <list-header bgColor="bg-primary">Today's Tasks</list-header>
             <no-tasks
               v-if="
                 !Object.keys(tasksToday).length &&
@@ -14,6 +14,7 @@
             <tasks-late
               v-if="Object.keys(tasksLate).length"
               :tasksLate="tasksLate"
+              class="lateTasks"
             />
             <tasks-today
               v-if="Object.keys(tasksToday).length"
@@ -25,7 +26,7 @@
         <div
           class="section col-xs-12 col-sm-12 col-md-6 col-lg-6 justify-center q-pa-xs"
         >
-          <list-header bgColor="bg-orange-4">Your Tasklin</list-header>
+          <list-header bgColor="bg-primary">Your Tasklin</list-header>
           <div class="text-center">
             <img
               v-if="this.tasklin.color === 'blue'"
@@ -60,7 +61,7 @@
 
       <div class="row main justify-center q-pa-md">
         <div class="section col-xs-12 col-sm-12 col-md-6 news q-pa-xs">
-          <list-header bgColor="bg-orange-4"
+          <list-header bgColor="bg-primary"
             >Follow Tasklins on Social Media</list-header
           >
           <div class="text-center">
@@ -102,7 +103,7 @@
         </div>
 
         <div class="section col-xs-12 col-sm-12 col-md-6 news q-pa-xs">
-          <list-header bgColor="bg-orange-4">News</list-header>
+          <list-header bgColor="bg-primary">News</list-header>
           <div class="text-left">
             <div class="q-pa-md" style="max-width: 350px">
               <q-list dense padding class="rounded-borders">
@@ -234,6 +235,10 @@ img {
 
 .news {
   margin: 0%;
+}
+
+.lateTasks {  
+  margin: -1px;
 }
 
 .section {

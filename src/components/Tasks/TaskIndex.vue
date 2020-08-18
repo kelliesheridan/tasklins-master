@@ -1,7 +1,7 @@
 <template>
   <q-item 
   	@click="updateTask({ id: id, updates: { completed: !task.completed } }); addXP(task.completed); addLin(task.completed);"
-  	:class="!task.completed ? 'bg-color-purple-dark' : 'bg-green-1'"
+  	:class="!task.completed ? 'bg-tasklin-white' : 'bg-positive'"
     v-touch-hold:1000.mouse="showEditTaskModal"
   	clickable
   	v-ripple>
@@ -48,7 +48,7 @@
           flat
           round
           dense
-          color="primary"
+          color="white"
           icon="edit">
         <q-tooltip content-class="bg-secondary">Edit Task</q-tooltip>
         </q-btn>
@@ -57,7 +57,7 @@
           flat
           round
           dense
-          color="red"
+          color="white"
           icon="delete">
           <q-tooltip content-class="bg-secondary">Delete</q-tooltip>
           </q-btn>
@@ -66,7 +66,7 @@
           flat
           round
           dense
-          color="blue"
+          color="white"
           icon="rotate_right">
           <q-tooltip content-class="bg-secondary">Move to Tomorrow</q-tooltip>
           </q-btn>
