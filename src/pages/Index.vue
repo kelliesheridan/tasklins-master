@@ -207,6 +207,7 @@ export default {
     if (this.profile.signup) {
       this.$router.push("/initial")
     }
+    this.setProjectSearch("");
   },
   components: {
     "tasks-today": require("components/Tasks/TasksToday.vue").default,
@@ -221,7 +222,8 @@ export default {
     ...mapState("tasks", ["search", "tasksDownloaded"])
   },
   methods: {
-    ...mapActions("profile", ["addXP"])
+    ...mapActions("profile", ["addXP"]),
+    ...mapActions('tasks', ['setProjectSearch'])
   }
 };
 </script>
