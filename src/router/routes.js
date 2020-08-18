@@ -7,6 +7,7 @@ const routes = [
       { path: '/', component: () => import('pages/Index.vue') },
       { path: 'index', component: () => import('pages/Index.vue') },
       { path: 'initial', component: () => import('pages/PageInitial.vue') },
+      { path: 'initial2', component: () => import('pages/PageInitialTest.vue') },
       { path: 'tasklins', component: () => import('pages/PageTasklins.vue') },
       { path: 'profile', component: () => import('pages/PageProfile.vue') },
       { path: 'explore', component: () => import('pages/PageExplore.vue') },
