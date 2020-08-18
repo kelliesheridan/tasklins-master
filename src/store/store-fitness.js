@@ -37,6 +37,9 @@ const actions = {
   readFitnessTasks({ dispatch }) {
     dispatch("fbReadFitnessTasks");
   },
+  cheer({ dispatch }, value) {
+    dispatch("fbCheerFitnessTask", value)
+  },
   fbReadFitnessTasks({ commit }) {
     let userId = firebaseAuth.currentUser.uid;
     let fitnessTasks = firebaseDb.ref("fitness").orderByKey();
@@ -67,9 +70,23 @@ const actions = {
     let taskFitness = firebaseDb.ref("fitness/" + date);
     taskFitness.set(payload);
     dispatch("fbReadFitnessTasks");
+  },
+  fbCheerFitnessTask({dispatch}, payload) {
+    let fitnessTasks = firebaseDb.ref("fitness/" + payload.date);
+    fitnessTasks.once("value").then(function(snapshot) {
+      let fitnessRecord = snapshot.val();
+      fitnessRecord.cheers += 1;
+    let taskRef = firebaseDb.ref("fitness/" + payload.date);
+    taskRef.update(fitnessRecord, error => {
+      if (error) {
+        showErrorMessage(error.message);
+      } else {
+        dispatch("fbReadFitnessTasks");
+      }
+    });
+    });
   }
-};
-
+}
 const getters = {
   fitness: state => {
     state.kellieprogress = 0.3;

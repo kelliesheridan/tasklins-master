@@ -70,7 +70,8 @@
               {{ this.getActivity(0) }}
 
               <q-card-actions align="right">
-                <!-- <q-btn dense @click="submit('cheer')" flat>Cheer!</q-btn> -->
+                <label>{{this.getCheers(0) }}</label>
+                <q-btn dense @click="increaseCheerLevel(0)" flat>Cheer!</q-btn>
               </q-card-actions>
             </div>
           </q-card-section>
@@ -85,7 +86,8 @@
               {{ this.getActivity(1) }}
 
               <q-card-actions align="right">
-                <!-- <q-btn @click="submit('cheer')" dense flat>Cheer!</q-btn> -->
+                <label>{{this.getCheers(1) }}</label>
+                <q-btn dense @click="increaseCheerLevel(1)" flat>Cheer!</q-btn>
               </q-card-actions>
             </div>
           </q-card-section>
@@ -100,7 +102,8 @@
               {{ this.getActivity(2) }}
 
               <q-card-actions align="right">
-                <!-- <q-btn dense @click="submit('cheer')" flat>Cheer!</q-btn> -->
+                <label>{{this.getCheers(2) }}</label>
+                 <q-btn dense @click="increaseCheerLevel(2)" flat>Cheer!</q-btn>
               </q-card-actions>
             </div>
           </q-card-section>
@@ -115,7 +118,8 @@
               {{ this.getActivity(3) }}
 
               <q-card-actions align="right">
-                <!-- <q-btn dense @click="submit('cheer')" flat>Cheer!</q-btn> -->
+                <label>{{this.getCheers(3) }}</label>
+                <q-btn dense @click="increaseCheerLevel(3)" flat>Cheer!</q-btn>
               </q-card-actions>
             </div>
           </q-card-section>
@@ -128,7 +132,8 @@
             <div class="text-h7">
               {{ this.getActivity(4) }}
               <q-card-actions align="right">
-                <!-- <q-btn dense @click="submit('cheer')" flat>Cheer!</q-btn> -->
+                <label>{{this.getCheers(4) }}</label>
+                 <q-btn dense @click="increaseCheerLevel(4)" flat>Cheer!</q-btn>
               </q-card-actions>
             </div>
           </q-card-section>
@@ -141,7 +146,8 @@
             <div class="text-h7">
               {{ this.getActivity(5) }}
               <q-card-actions align="right">
-                <!-- <q-btn dense @click="submit('cheer')" flat>Cheer!</q-btn> -->
+                <label>{{this.getCheers(5) }}</label>
+                 <q-btn dense @click="increaseCheerLevel(5)" flat>Cheer!</q-btn>
               </q-card-actions>
             </div>
           </q-card-section>
@@ -154,7 +160,8 @@
             <div class="text-h7">
               {{ this.getActivity(6) }}
               <q-card-actions align="right">
-                <!-- <q-btn dense @click="submit('cheer')" flat>Cheer!</q-btn> -->
+                <label>{{this.getCheers(6) }}</label>
+                <q-btn dense @click="increaseCheerLevel(6)" flat>Cheer!</q-btn>
               </q-card-actions>
             </div>
           </q-card-section>
@@ -337,7 +344,7 @@ export default {
     ...mapGetters("profile", ["profile"])
   },
   methods: {
-    ...mapActions("fitness", ["addFitnessTask", "readFitnessTasks"]),
+    ...mapActions("fitness", ["addFitnessTask", "readFitnessTasks", "cheer"]),
     submit(event) {
       console.debug("fitness event: ", event);
       this.addFitnessTask(event);
@@ -360,6 +367,15 @@ export default {
     getActivity(number) {
       this.update;
       return this.getUsername(number);
+    },
+     getCheers(number) {
+      this.update;
+      return this.getCheerNumber(number);
+    },
+    increaseCheerLevel(number) {
+      this.update;
+      let args = this.getTaskDate(number);
+      if (args != undefined) this.cheer(args);
     },
     getProgress(username) {
       this.update;
@@ -403,6 +419,44 @@ export default {
           color = "rgb(240,240,240)";
         }
         return color;
+      }
+    },
+    getTaskDate(value) {
+      let date = "";
+      let cheer = "";
+      let fitness = this.fitness.fitness;
+      if (fitness != undefined) {
+        let elementToCheck =
+          value === 0
+            ? Object.keys(fitness).length - 1
+            : Object.keys(fitness).length - 1 - value;
+        if (fitness != undefined) {
+          Object.keys(fitness).forEach(element => {
+            if (Object.keys(fitness).indexOf(element) == elementToCheck) {
+              if (date == "") date = fitness[element].date;
+              if (cheer == "") cheer = fitness[element].cheers;
+            }
+          });
+        }
+        return {date, cheer};
+      }
+    },
+    getCheerNumber(value) {
+      let cheer = "";
+      let fitness = this.fitness.fitness;
+      if (fitness != undefined) {
+        let elementToCheck =
+          value === 0
+            ? Object.keys(fitness).length - 1
+            : Object.keys(fitness).length - 1 - value;
+        if (fitness != undefined) {
+          Object.keys(fitness).forEach(element => {
+            if (Object.keys(fitness).indexOf(element) == elementToCheck) {
+              if (cheer == "") cheer = fitness[element].cheers;
+            }
+          });
+        }
+        return cheer;
       }
     },
     getUsername(value) {

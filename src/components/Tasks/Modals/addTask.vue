@@ -13,7 +13,6 @@
             <q-select
                 outlined
                 v-model="taskToSubmit.project"
-                autofocus
                 label="Project"
                 class="col"
                 :options="this.$store.state.tasks.projects">
@@ -48,7 +47,7 @@ export default {
                 lastModified: '',
             }
         }
-    },
+        },
         components: {
 		'modal-header': require('components/Tasks/Modals/Shared/ModalHeader.vue').default,
 		'modal-task-name': require('components/Tasks/Modals/Shared/ModalTaskName.vue').default,
