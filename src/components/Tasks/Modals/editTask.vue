@@ -20,8 +20,14 @@
             class="col"
             :options="this.$store.state.tasks.projects">
         </q-select>
+
+        </q-card-section>
         
-        <modal-task-due-date :dueDate.sync="taskToSubmit.dueDate"/>
+        <q-card-section class="q-pt-none">
+
+                <modal-task-due-date :dueDate.sync="taskToSubmit.dueDate"/>
+
+        </q-card-section>
 
         <!-- <modal-task-due-time v-if="taskToSubmit.dueDate" :dueTime.sync="taskToSubmit.dueTime"/> 
         
@@ -31,9 +37,7 @@
 
          <modal-task-nrepeating :nrepeating.sync="taskToSubmit.nrepeating"/> 
 
-                 </div> --> 
-
-        </q-card-section>
+                 </div> -->     
 
         <modal-task-save></modal-task-save>
 

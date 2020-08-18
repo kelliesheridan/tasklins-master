@@ -69,10 +69,10 @@
             <div class="text-h7">
               {{ this.getActivity(0) }}
 
-              <q-card-actions align="right">
+              <!-- <q-card-actions align="right">
                 <label>{{this.getCheers(0) }}</label>
                 <q-btn dense @click="increaseCheerLevel(0)" flat>Cheer!</q-btn>
-              </q-card-actions>
+              </q-card-actions> -->
             </div>
           </q-card-section>
         </q-card>
@@ -85,10 +85,10 @@
             <div class="text-h7">
               {{ this.getActivity(1) }}
 
-              <q-card-actions align="right">
+              <!-- <q-card-actions align="right">
                 <label>{{this.getCheers(1) }}</label>
                 <q-btn dense @click="increaseCheerLevel(1)" flat>Cheer!</q-btn>
-              </q-card-actions>
+              </q-card-actions> -->
             </div>
           </q-card-section>
         </q-card>
@@ -101,10 +101,10 @@
             <div class="text-h7">
               {{ this.getActivity(2) }}
 
-              <q-card-actions align="right">
+              <!-- <q-card-actions align="right">
                 <label>{{this.getCheers(2) }}</label>
                  <q-btn dense @click="increaseCheerLevel(2)" flat>Cheer!</q-btn>
-              </q-card-actions>
+              </q-card-actions> -->
             </div>
           </q-card-section>
         </q-card>
@@ -117,10 +117,10 @@
             <div class="text-h7">
               {{ this.getActivity(3) }}
 
-              <q-card-actions align="right">
+              <!-- <q-card-actions align="right">
                 <label>{{this.getCheers(3) }}</label>
                 <q-btn dense @click="increaseCheerLevel(3)" flat>Cheer!</q-btn>
-              </q-card-actions>
+              </q-card-actions> -->
             </div>
           </q-card-section>
         </q-card>
@@ -131,10 +131,10 @@
             class="text-white">
             <div class="text-h7">
               {{ this.getActivity(4) }}
-              <q-card-actions align="right">
+              <!-- <q-card-actions align="right">
                 <label>{{this.getCheers(4) }}</label>
                  <q-btn dense @click="increaseCheerLevel(4)" flat>Cheer!</q-btn>
-              </q-card-actions>
+              </q-card-actions> -->
             </div>
           </q-card-section>
         </q-card>
@@ -145,10 +145,10 @@
             class="text-white">
             <div class="text-h7">
               {{ this.getActivity(5) }}
-              <q-card-actions align="right">
+              <!-- <q-card-actions align="right">
                 <label>{{this.getCheers(5) }}</label>
                  <q-btn dense @click="increaseCheerLevel(5)" flat>Cheer!</q-btn>
-              </q-card-actions>
+              </q-card-actions> -->
             </div>
           </q-card-section>
         </q-card>
@@ -159,10 +159,10 @@
             class="text-white">
             <div class="text-h7">
               {{ this.getActivity(6) }}
-              <q-card-actions align="right">
+              <!-- <q-card-actions align="right">
                 <label>{{this.getCheers(6) }}</label>
                 <q-btn dense @click="increaseCheerLevel(6)" flat>Cheer!</q-btn>
-              </q-card-actions>
+              </q-card-actions> -->
             </div>
           </q-card-section>
         </q-card>

@@ -16,10 +16,15 @@
                 label="Project"
                 class="col"
                 :options="this.$store.state.tasks.projects">
-		    </q-select>
-        
-        <modal-task-due-date :dueDate.sync="taskToSubmit.dueDate"/>
-        </q-card-section>
+		    </q-select>        
+            
+            </q-card-section>
+
+            <q-card-section class="q-pt-none">
+
+                <modal-task-due-date :dueDate.sync="taskToSubmit.dueDate"/>
+
+            </q-card-section>
 
         <modal-task-save></modal-task-save>	    
         </q-form>
