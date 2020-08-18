@@ -1,7 +1,7 @@
 <template>
   <q-item 
   	@click="updateTask({ id: id, updates: { completed: !task.completed } }); addXP(task.completed); addLin(task.completed);"
-  	:class="!task.completed ? 'bg-negative' : 'bg-positive'"
+  	:class="!task.completed ? 'bg-red-1' : 'bg-green-1'"
     v-touch-hold:1000.mouse="showEditTaskModal"
   	clickable
   	v-ripple>
