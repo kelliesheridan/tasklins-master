@@ -12,14 +12,14 @@
         </q-item-section>
       </q-item> -->
 
-      <!-- <q-item tag="label" v-ripple>
+      <q-item tag="label" v-ripple>
         <q-item-section>
           <q-item-label>Show Projects on Tasks</q-item-label>
         </q-item-section>
         <q-item-section side>
           <q-toggle color="primary" v-model="showProjectsOnPage" />
         </q-item-section>
-      </q-item> -->
+      </q-item>
 
       <q-item tag="label" v-ripple>
         <q-item-section>
@@ -95,10 +95,10 @@ export default {
     },
     showProjectsOnPage: {
       get() {
-        return this.showProjectsOnPage;
+        return this.settings.showProjectsOnPage;
       },
       set(value) {
-        this.sshowProjectsOnPage(value);
+        this.setShowProjectsOnPage(value);
       }
     },
     hideCompletedTasks: {

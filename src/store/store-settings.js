@@ -69,6 +69,7 @@ const actions = {
         hideCompletedTasks: settings.hideCompletedTasks,
         show24hrTimeFormat: settings.show24hrTimeFormat
       };
+      console.debug("settings are: ", payload)
       commit("setSettings", payload);
     });
   },
