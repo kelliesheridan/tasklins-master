@@ -115,9 +115,9 @@
 
                 <q-item clickable v-ripple>
                   <q-item-section>
-                    <q-item-label><strong>Levels</strong></q-item-label>
+                    <q-item-label><strong>See Projects on Tasks</strong></q-item-label>
                     <q-item-label 
-                      >Completing tasks adds xp. When you reach a new level, you'll get a quick notification.</q-item-label
+                      >In settings, you can now turn on the ability to see which project a task belongs to.</q-item-label
                     >
                   </q-item-section>
                 </q-item>
@@ -157,7 +157,7 @@
 
                 <q-item clickable v-ripple>
                   <q-item-section>
-                    <q-item-label><strong>Socail Feed</strong></q-item-label>
+                    <q-item-label><strong>Social Feed</strong></q-item-label>
                     <q-item-label
                       >See updates from other users</q-item-label
                     >

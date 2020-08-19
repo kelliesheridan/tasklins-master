@@ -66,7 +66,7 @@
           </q-card-section>
         </q-card>
 
-               <q-card dense flat square class="my-card q-pa-xs">
+        <q-card dense flat square class="my-card q-pa-xs">
           <q-card-section
             :style="{ 'background-color': getCardColor(1) }"
             class="text-white"
@@ -81,7 +81,7 @@
           </q-card-section>
         </q-card>
 
-               <q-card dense flat square class="my-card q-pa-xs">
+        <q-card dense flat square class="my-card q-pa-xs">
           <q-card-section
             :style="{ 'background-color': getCardColor(2) }"
             class="text-white"
@@ -158,13 +158,51 @@
       </div>
 
       <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+
         <div class="q-pa-md">
-          Kellie
+          Emma
           <q-linear-progress
             rounded
             size="15px"
-            :value="this.getProgress('kellie')"
-            :style="{ color: getUserColor('kellie') }"
+            :value="this.getProgress('emma')"
+            :style="{ color: getUserColor('emma') }"
+            class="q-mt-sm"
+            :key="update"
+          />
+        </div>
+        
+        <div class="q-pa-md">
+          Erin
+          <q-linear-progress
+            rounded
+            size="15px"
+            :value="this.getProgress('erin')"
+            :style="{ color: getUserColor('erin') }"
+            class="q-mt-sm"
+            :key="update"
+          />
+        </div>
+
+        
+          <div class="q-pa-md">
+            Kellie
+            <q-linear-progress
+              rounded
+              size="15px"
+              :value="this.getProgress('kellie')"
+              :style="{ color: getUserColor('kellie') }"
+              class="q-mt-sm"
+              :key="update"
+            />
+          </div>
+
+        <div class="q-pa-md">
+          Kyra
+          <q-linear-progress
+            rounded
+            size="15px"
+            :value="this.getProgress('kyra')"
+            :style="{ color: getUserColor('kyra') }"
             class="q-mt-sm"
             :key="update"
           />
@@ -182,31 +220,9 @@
           />
         </div>
 
-        <div class="q-pa-md">
-          Erin
-          <q-linear-progress
-            rounded
-            size="15px"
-            :value="this.getProgress('erin')"
-            :style="{ color: getUserColor('erin') }"
-            class="q-mt-sm"
-            :key="update"
-          />
-        </div>
 
-        <div class="q-pa-md">
-          Emma
-          <q-linear-progress
-            rounded
-            size="15px"
-            :value="this.getProgress('emma')"
-            :style="{ color: getUserColor('emma') }"
-            class="q-mt-sm"
-            :key="update"
-          />
-        </div>
 
-        <div class="q-pa-md">
+        <!-- <div class="q-pa-md">
           Dez
           <q-linear-progress
             rounded
@@ -216,9 +232,9 @@
             class="q-mt-sm"
             :key="update"
           />
-        </div>
+        </div> -->
 
-        <div class="q-pa-md">
+        <!-- <div class="q-pa-md">
           Rachel
           <q-linear-progress
             rounded
@@ -228,21 +244,9 @@
             class="q-mt-sm"
             :key="update"
           />
-        </div>
+        </div> -->
 
-        <div class="q-pa-md">
-          Kyra
-          <q-linear-progress
-            rounded
-            size="15px"
-            :value="this.getProgress('kyra')"
-            :style="{ color: getUserColor('kyra') }"
-            class="q-mt-sm"
-            :key="update"
-          />
-        </div>
-
-        <div class="q-pa-md">
+        <!-- <div class="q-pa-md">
           Helen
           <q-linear-progress
             rounded
@@ -252,9 +256,9 @@
             class="q-mt-sm"
             :key="update"
           />
-        </div>
+        </div> -->
 
-        <div class="q-pa-md">
+        <!-- <div class="q-pa-md">
           Calyn
           <q-linear-progress
             rounded
@@ -264,7 +268,7 @@
             class="q-mt-sm"
             :key="update"
           />
-        </div>
+        </div> -->
       </div>
     </div>
   </q-page>
