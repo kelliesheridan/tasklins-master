@@ -55,7 +55,7 @@
           flat
           round
           dense
-          color="white"
+          color="primary"
           icon="edit">
         <q-tooltip content-class="bg-secondary">Edit Task</q-tooltip>
         </q-btn>
@@ -64,7 +64,7 @@
           flat
           round
           dense
-          color="white"
+          color="red"
           icon="delete">
           <q-tooltip content-class="bg-secondary">Delete</q-tooltip>
           </q-btn>
@@ -73,7 +73,7 @@
           flat
           round
           dense
-          color="white"
+          color="blue"
           icon="rotate_right">
           <q-tooltip content-class="bg-secondary">Move to Tomorrow</q-tooltip>
           </q-btn>
