@@ -18,7 +18,7 @@
       </q-item-label>
     </q-item-section>
 
-    <q-item-section v-if="task.project" side>
+    <q-item-section v-if="showProjects" side>
       <q-item-label
       	:class="{ 'text-strikethrough' : task.completed }"
         v-html="$options.filters.searchHighlight(task.project, search)">
@@ -109,7 +109,14 @@
         return this.task.dueTime
         }
         return date.formatDate(this.task.dueDate + ' ' + this.task.dueTime, 'h:mmA')
-              }
+        },
+      showProjects() {
+        if (this.settings.showProjectsOnPage != undefined) {
+          return this.settings.showProjectsOnPage;
+        } else {
+          return false;
+        }
+      }
     },
     methods: {
       ...mapActions('tasks', ['updateTask', 'deleteTask', 'pushDueDate']),
