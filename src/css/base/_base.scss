@@ -19,14 +19,14 @@ html {
     }
 
     @include respond(big-desktop) {
-        font-size: 75%;
+        font-size: 85%;
     }
 }
 
-// body {
-//     // box-sizing: border-box;    
+body {
+    box-sizing: border-box;    
 
-//     // @include respond(tab-port) {
+    // @include respond(tab-port) {
         
-//     // }
-// }
+    // }
+}

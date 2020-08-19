@@ -1,38 +1,6 @@
 <template>
   <q-page padding>
     <p><strong>Open Issues</strong></p>
-    <!--<div>
-      <q-list separator style="max-width: 600px">
-
-      <q-item
-      v-for="(ticket, key) in tickets"
-      :key="key"
-      :class="!ticket.completed ? 'bg-blue-1' : ticket.completed ? 'bg-green-1' : bg-yellow-1"
-      >
-        <q-item-section top>
-          <q-item-label lines="1">
-            <span class="text-weight-medium">{{ ticket.name }}</span>
-            <span class="text-grey-8">{{ ticket.user }}</span>
-          </q-item-label>
-          <q-item-label caption lines="1">
-            {{ ticket.problem }}
-          </q-item-label>
-          <q-item-label lines="1" class="q-mt-xs text-body2 text-weight-bold text-primary text-uppercase">
-          </q-item-label>
-        </q-item-section>
-
-        <q-item-section top side>
-          <div class="text-grey-8 q-gutter-xs">
-            <q-btn @click="promptToDelete(id)" class="gt-xs" size="12px" flat dense round icon="delete" />
-            <q-btn class="gt-xs" size="12px" flat dense round icon="autorenew" />
-            <q-btn :value="ticket.completed" @click="updateTicket({ id: id, updates: {completed: !ticket.completed} })" class="gt-xs" size="12px" flat dense round icon="done" />
-          </div>
-        </q-item-section>
-      </q-item>
-
-
-    </q-list> 
-</div> -->
     <p>- Dark mode doesn't really work yet</p>
     <p>- Some issues with dates, specifically setting dates using buttons rather than the edit button</p>    
 
@@ -72,7 +40,7 @@
       </q-card>
     </q-dialog>
 
-    <!--    <div class="text-center q-pa-md absolute-bottom">
+       <!-- <div class="text-center q-pa-md absolute-bottom">
 
            <q-btn rounded padding @click="help = true" class="glossy text-center q-pa-md" color="negative" label="Help! Something is Broken!" /> 
         

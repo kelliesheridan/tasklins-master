@@ -5,6 +5,7 @@ import { firebaseAuth, firebaseDb } from "boot/firebase";
 const state = {
   settings: {
     show24hrTimeFormat: false,
+    showProjectsOnPage: false,
     hideCompletedTasks: false,
     darkMode: false
   }
@@ -13,6 +14,9 @@ const state = {
 const mutations = {
   setShow24hrTimeFormat(state, value) {
     state.settings.show24hrTimeFormat = value;
+  },
+  setShowProjectsOnPage(state, value) {
+    state.settings.showProjectsOnPage = value;
   },
   setHideCompletedTasks(state, value) {
     state.settings.hideCompletedTasks = value;
@@ -37,6 +41,10 @@ const actions = {
     commit("setShow24hrTimeFormat", value);
     // dispatch('saveSettings')
   },
+  setShowProjectsOnPage({ commit, dispatch }, value) {
+    commit("setShowProjectsOnPage", value);
+    // dispatch('saveSettings')
+  },
   setHideCompletedTasks({ commit, dispatch }, value) {
     commit("setHideCompletedTasks", value);
     // dispatch('saveSettings')
@@ -57,6 +65,7 @@ const actions = {
       let settings = snapshot.val();
       let payload = {
         darkMode: settings.darkMode,
+        showProjectsOnPage: settings.showProjectsOnPage,
         hideCompletedTasks: settings.hideCompletedTasks,
         show24hrTimeFormat: settings.show24hrTimeFormat
       };

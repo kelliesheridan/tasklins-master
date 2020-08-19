@@ -49,10 +49,6 @@
       </div>
 
       <div class="class=col-12 wallOfShame">
-      <div class="wallOfShame__card">
-        <h5><strong>Wall of Shame</strong></h5>
-        <p>Francis - Paul - Perry - Ryan</p>
-      </div>
     </div>
       
     </div>
@@ -60,7 +56,7 @@
     
 
     <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 q-pa-xs bg-grey-4" style="overflow: auto; height: 550px">
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 q-pa-xs bg-grey-4" style="overflow: auto; height: 570px">
         <q-card dense flat square class="my-card q-pa-xs">
           <q-card-section
             :style="{ 'background-color': getCardColor(0) }"
@@ -166,6 +162,34 @@
             </div>
           </q-card-section>
         </q-card>
+
+        <q-card dense flat square class="my-card q-pa-xs">
+          <q-card-section
+            :style="{ 'background-color': getCardColor(7) }"
+            class="text-white">
+            <div class="text-h7">
+              {{ this.getActivity(7) }}
+              <!-- <q-card-actions align="right">
+                <label>{{this.getCheers(6) }}</label>
+                <q-btn dense @click="increaseCheerLevel(6)" flat>Cheer!</q-btn>
+              </q-card-actions> -->
+            </div>
+          </q-card-section>
+        </q-card>
+
+        <q-card dense flat square class="my-card q-pa-xs">
+          <q-card-section
+            :style="{ 'background-color': getCardColor(8) }"
+            class="text-white">
+            <div class="text-h7">
+              {{ this.getActivity(8) }}
+              <!-- <q-card-actions align="right">
+                <label>{{this.getCheers(6) }}</label>
+                <q-btn dense @click="increaseCheerLevel(6)" flat>Cheer!</q-btn>
+              </q-card-actions> -->
+            </div>
+          </q-card-section>
+        </q-card>
       </div>
 
       <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 q-pa-xs">
@@ -182,7 +206,7 @@
           />
         </div>
 
-        <div class="q-pa-md">
+        <!-- <div class="q-pa-md">
           Francis
           <q-linear-progress
             rounded
@@ -192,7 +216,7 @@
             class="q-mt-sm"
             :key="update"
           />
-        </div>
+        </div> -->
 
         <div class="q-pa-md">
           Gloria
@@ -277,7 +301,7 @@
             :key="update"
           />
         </div>                        
-
+<!-- 
         <div class="q-pa-md">
           Paul
           <q-linear-progress
@@ -288,9 +312,9 @@
             class="q-mt-sm"
             :key="update"
           />
-        </div>
+        </div> -->
 
-        <div class="q-pa-md">
+        <!-- <div class="q-pa-md">
           Perry
           <q-linear-progress
             rounded
@@ -300,9 +324,9 @@
             class="q-mt-sm"
             :key="update"
           />
-        </div>
+        </div> -->
 
-        <div class="q-pa-md">
+        <!-- <div class="q-pa-md">
           Ryan
           <q-linear-progress
             rounded
@@ -312,7 +336,7 @@
             class="q-mt-sm"
             :key="update"
           />
-        </div>
+        </div> -->
 
         <div class="q-pa-md">
           Sara

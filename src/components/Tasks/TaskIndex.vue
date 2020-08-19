@@ -18,6 +18,13 @@
       </q-item-label>
     </q-item-section>
 
+    <q-item-section v-if="task.project" side>
+      <q-item-label
+      	:class="{ 'text-strikethrough' : task.completed }"
+        v-html="$options.filters.searchHighlight(task.project, search)">
+      </q-item-label>
+    </q-item-section>
+
     <!-- <q-item-section v-if="task.dueDate" side>
       <div class="row">
         <div class="column justify-center">

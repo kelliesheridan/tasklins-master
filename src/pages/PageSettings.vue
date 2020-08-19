@@ -3,14 +3,23 @@
     <q-list padding>
       <q-item-label header>User Controls</q-item-label>
 
-      <q-item tag="label" v-ripple>
+      <!-- <q-item tag="label" v-ripple>
         <q-item-section>
           <q-item-label>24hr Clock</q-item-label>
         </q-item-section>
         <q-item-section side>
           <q-toggle color="primary" v-model="show24hrTimeFormat" />
         </q-item-section>
-      </q-item>
+      </q-item> -->
+
+      <!-- <q-item tag="label" v-ripple>
+        <q-item-section>
+          <q-item-label>Show Projects on Tasks</q-item-label>
+        </q-item-section>
+        <q-item-section side>
+          <q-toggle color="primary" v-model="showProjectsOnPage" />
+        </q-item-section>
+      </q-item> -->
 
       <q-item tag="label" v-ripple>
         <q-item-section>
@@ -84,6 +93,14 @@ export default {
         this.setShow24hrTimeFormat(value);
       }
     },
+    showProjectsOnPage: {
+      get() {
+        return this.showProjectsOnPage;
+      },
+      set(value) {
+        this.sshowProjectsOnPage(value);
+      }
+    },
     hideCompletedTasks: {
       get() {
         return this.settings.hideCompletedTasks;
@@ -104,6 +121,7 @@ export default {
   methods: {
     ...mapActions("settings", [
       "setShow24hrTimeFormat",
+      "setShowProjectsOnPage",
       "setHideCompletedTasks",
       "setDarkMode",
       "fbUpdateSettings"
