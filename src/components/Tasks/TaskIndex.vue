@@ -1,5 +1,5 @@
 <template>
-  <q-item 
+  <q-item class="task"
   	@click="updateTask({ id: id, updates: { completed: !task.completed } }); addXP(task.completed); addLin(task.completed);"
   	:class="!task.completed ? 'bg-orange-1' : 'bg-green-1'"
     v-touch-hold:1000.mouse="showEditTaskModal"
@@ -50,7 +50,7 @@
 
     <q-item-section side>
       <div class="row">
-        <q-btn
+        <q-btn class="task-btn"
           @click.stop="showEditTask = true"
           flat
           round
@@ -59,7 +59,7 @@
           icon="edit">
         <q-tooltip content-class="bg-secondary">Edit Task</q-tooltip>
         </q-btn>
-        <q-btn
+        <q-btn class="task-btn"
           @click.stop="promptToDelete(id)"
           flat
           round
@@ -68,7 +68,7 @@
           icon="delete">
           <q-tooltip content-class="bg-secondary">Delete</q-tooltip>
           </q-btn>
-        <q-btn
+        <q-btn class="task-btn"
           @click.stop="pushDueDate({ id: id, dueDate: task.dueDate })"
           flat
           round

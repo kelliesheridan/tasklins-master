@@ -3,8 +3,8 @@
     <div class="q-pa-md absolute full-width full-height">
       <div class="row q-mb-md">
         <sort />
-        <projectList class="col-8" />
-        <q-btn @click="showAddProject = true" class="new-project" color="secondary" glossy label="New Project" />
+        <projectList class="col-3 project-select" />
+        <q-btn @click="showAddProject = true" class="new-project-btn" color="secondary" glossy label="New Project" />
       </div>
 
       <template v-if="tasksDownloaded">
@@ -68,13 +68,6 @@ export default {
 </script>
 
 <style>
-.new-project {
-  height: 50%;
-  margin-top: auto;
-  margin-bottom: auto;
-  margin-left: 10px;
-}
-
 .section {
   overflow: auto;
   flex: auto;

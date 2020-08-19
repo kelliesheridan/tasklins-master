@@ -1,5 +1,5 @@
 <template>
-  <q-item 
+  <q-item class="task"
   	@click="updateTask({ id: id, updates: { completed: !task.completed } }); addXP(task.completed); addLin(task.completed);"
   	:class="!task.completed ? 'bg-orange-1' : 'bg-green-1'"
     v-touch-hold:1000.mouse="showEditTaskModal"
@@ -16,6 +16,22 @@
       	:class="{ 'text-strikethrough' : task.completed }"
         v-html="$options.filters.searchHighlight(task.name, search)">
       </q-item-label>
+
+      <div v-if="task.dueDate" class="row">
+        <div class="column justify-center">
+          <q-icon 
+            name="event"
+            size="12px"
+            class="q-mr-xs" />
+        </div>
+        <div class="column">
+          <q-item-label 
+            class="row justify-end"
+            caption>
+            {{ task.dueDate | niceDate }}
+          </q-item-label>
+        </div>
+      </div>
     </q-item-section>
 
     <q-item-section v-if="showProjects" side>
@@ -25,7 +41,7 @@
       </q-item-label>
     </q-item-section>
 
-    <q-item-section v-if="task.dueDate" side>
+    <!-- <q-item-section v-if="task.dueDate" side>
       <div class="row">
         <div class="column justify-center">
           <q-icon 
@@ -41,11 +57,11 @@
           </q-item-label>
         </div>
       </div>
-    </q-item-section>
+    </q-item-section> -->
 
     <q-item-section side>
       <div class="row">
-        <q-btn
+        <q-btn class="task-btn"
           @click.stop="showEditTask = true"
           flat
           round
@@ -54,7 +70,7 @@
           icon="edit">
           <q-tooltip content-class="bg-secondary">Edit Task</q-tooltip>
         </q-btn>
-        <q-btn
+        <q-btn class="task-btn"
           @click.stop="promptToDelete(id)"
           flat
           round
@@ -63,7 +79,7 @@
           icon="delete">
           <q-tooltip content-class="bg-secondary">Delete</q-tooltip>
           </q-btn>
-        <q-btn
+        <q-btn class="task-btn"
           @click.stop="dueDateToday({ id: id, dueDate: task.dueDate })"
           flat
           round

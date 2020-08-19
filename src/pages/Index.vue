@@ -11,12 +11,12 @@
                   !Object.keys(tasksLate).length
               "
             ></no-tasks>
-            <tasks-late
+            <tasks-late 
               v-if="Object.keys(tasksLate).length"
               :tasksLate="tasksLate"
-              class="lateTasks"
+              class="lateTasks task-box"
             />
-            <tasks-today
+            <tasks-today class="task-box"
               v-if="Object.keys(tasksToday).length"
               :tasksToday="tasksToday"
             />
@@ -237,10 +237,6 @@ img {
 
 .news {
   margin: 0%;
-}
-
-.lateTasks {  
-  margin: -1px;
 }
 
 .section {
