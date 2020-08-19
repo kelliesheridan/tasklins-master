@@ -1,8 +1,7 @@
 <template>
 	 <q-select
       outlined
-      v-model="projectSearchField"
-      autofocus
+      v-model="projectSearchField"      
       label="Project"
       class="col"
       :options="projectOptions">
