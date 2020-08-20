@@ -26,6 +26,12 @@
 
             </q-card-section>
 
+            <!-- <q-card-section class="q-pt-none">
+
+                <modal-task-nrepeating />
+
+            </q-card-section> -->
+
         <modal-task-save></modal-task-save>	    
         </q-form>
     </q-card>
