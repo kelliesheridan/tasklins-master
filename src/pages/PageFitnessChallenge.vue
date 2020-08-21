@@ -206,7 +206,7 @@
           />
         </div>
 
-        <!-- <div class="q-pa-md">
+        <div class="q-pa-md">
           Francis
           <q-linear-progress
             rounded
@@ -216,7 +216,7 @@
             class="q-mt-sm"
             :key="update"
           />
-        </div> -->
+        </div>
 
         <div class="q-pa-md">
           Gloria
