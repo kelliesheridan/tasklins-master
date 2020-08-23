@@ -87,7 +87,7 @@
         if (this.settings.show24hrTimeFormat) {
         return this.task.dueTime
         }
-        return moment(this.task.dueDate + ' ' + this.task.dueTime, 'h:mmA').format()
+        return moment(this.task.dueDate + ' ' + this.task.dueTime).format("LT")
               }
     },
     methods: {

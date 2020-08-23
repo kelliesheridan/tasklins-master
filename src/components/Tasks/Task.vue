@@ -114,7 +114,7 @@
 <script>
   import { mapState, mapActions, mapGetters } from 'vuex'
   import { date } from 'quasar'
-  const moment= require('moment') 
+  const moment = require('moment') 
 
 	export default {
 		props: ['task', 'id'],
@@ -128,9 +128,9 @@
       ...mapGetters('settings', ['settings']),
       taskDueTime() {
         if (this.settings.show24hrTimeFormat) {
-        return this.task.dueTime
+          return this.task.dueTime
         }
-        return moment(this.task.dueDate + ' ' + this.task.dueTime).format('h:mmA')
+          return moment(this.task.dueDate + ' ' + this.task.dueTime).format('LT')
         },
       showProjects() {
         if (this.settings.showProjectsOnPage != undefined) {

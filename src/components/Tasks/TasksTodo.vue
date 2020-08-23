@@ -40,7 +40,7 @@ export default {
     components: {
         'task' : require('components/Tasks/Task.vue').default,
         'list-header' : require('components/Shared/ListHeader.vue').default
-		},
+	},
 	computed: {
     ...mapGetters('profile', ['profile']),
     },
