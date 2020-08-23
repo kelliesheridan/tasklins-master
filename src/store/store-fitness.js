@@ -57,7 +57,7 @@ const actions = {
     let userId = firebaseAuth.currentUser.uid;
     let username = this.state.profile.profile.user.name;
     let userColor = this.state.profile.profile.user.color;
-    let date = Date.now();
+    let date = moment().format();
     let payload = {
       date: date,
       username: username.toLowerCase(),

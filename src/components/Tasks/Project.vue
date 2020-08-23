@@ -87,7 +87,7 @@
         if (this.settings.show24hrTimeFormat) {
         return this.task.dueTime
         }
-        return date.formatDate(this.task.dueDate + ' ' + this.task.dueTime, 'h:mmA')
+        return moment(this.task.dueDate + ' ' + this.task.dueTime, 'h:mmA').format()
               }
     },
     methods: {
@@ -114,7 +114,7 @@
     },
     filters: {
       niceDate(value) {
-        return date.formatDate(value, 'ddd MMM D')
+        return moment(value).format('ddd MMM D')
       },
       searchHighlight(value, search) {
         if (search) {

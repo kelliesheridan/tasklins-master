@@ -198,7 +198,6 @@
 
 <script>
 import { mapState, mapGetters, mapActions } from "vuex";
-import { date } from "quasar";
 import { openURL } from "quasar";
 
 export default {

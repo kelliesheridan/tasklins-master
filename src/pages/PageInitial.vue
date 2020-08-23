@@ -459,7 +459,7 @@ export default {
         color: this.color,
         type: this.tasklinType,
         xp: 0,
-        creation_date: Date.now()
+        creation_date: moment().format()
       };
       this.addTasklin(tasklin);
       this.$router.push("/todo");
