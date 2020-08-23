@@ -76,8 +76,17 @@ export default {
   data: () => ({
     tab: 'help'
   }),
+  mounted() {
+			if (this.profile) {
+        if (this.profile.id !== "QjYAo2oEvtU5aRmSOcayJrYnbXj2" && this.profile.id !== "tCtIxAjj5vhOARnNpYMaIHxFXJp1") {
+          console.debug("redirecting from admin, id", this.profile.id)
+          this.$router.replace("/todo").catch(err => {});
+        }
+      }
+		},
   computed: {
-    ...mapGetters("tickets", ["tickets"])
+    ...mapGetters("tickets", ["tickets"]),
+    ...mapGetters("profile", ["profile"])
   },
   methods: {
     ...mapActions("tickets", ["updateTicket", "deleteTicket"]),
