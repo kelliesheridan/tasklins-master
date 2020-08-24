@@ -39,6 +39,12 @@
             </q-item-section>
           </q-item>
 
+          <q-item clickable v-close-popup @click="submit('sports')">
+            <q-item-section>
+              <q-item-label>Sports!</q-item-label>
+            </q-item-section>
+          </q-item>
+
           <q-item clickable v-close-popup @click="submit('other')">
             <q-item-section>
               <q-item-label>Did some other healthy thing</q-item-label>
@@ -510,6 +516,9 @@ export default {
                   break;
                 case "home":
                   activity += " worked out at home!";
+                  break;
+                case "sports":
+                  activity += " played a sport! Weird.";
                   break;
                 case "other":
                   activity +=
