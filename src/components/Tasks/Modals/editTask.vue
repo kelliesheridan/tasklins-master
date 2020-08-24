@@ -26,18 +26,18 @@
         <q-card-section class="q-pt-none">
 
                 <modal-task-due-date :dueDate.sync="taskToSubmit.dueDate"/>
+                <modal-task-due-time v-if="taskToSubmit.dueDate" :dueTime.sync="taskToSubmit.dueTime"/> 
 
         </q-card-section>
 
-        <!-- <modal-task-due-time v-if="taskToSubmit.dueDate" :dueTime.sync="taskToSubmit.dueTime"/> 
+        <q-card-section class="q-pt-none">
+
+     <!-- <modal-task-npublic :npublic.sync="taskToSubmit.npublic"/> -->
+
+         <modal-task-nrepeating :nrepeating.sync="taskToSubmit.nrepeating"/>   
+
+        </q-card-section>
         
-                <div class="q-mb-sm">
-                    
-        <modal-task-npublic :npublic.sync="taskToSubmit.npublic"/>
-
-         <modal-task-nrepeating :nrepeating.sync="taskToSubmit.nrepeating"/> 
-
-                 </div> -->     
 
         <modal-task-save></modal-task-save>
 
@@ -79,9 +79,9 @@ export default {
 		'modal-header': require('components/Tasks/Modals/Shared/ModalHeader.vue').default,
 		'modal-task-name': require('components/Tasks/Modals/Shared/ModalTaskName.vue').default,
 		'modal-task-due-date': require('components/Tasks/Modals/Shared/ModalTaskDueDate.vue').default,
-		// 'modal-task-due-time': require('components/Tasks/Modals/Shared/ModalTaskDueTime.vue').default,
+		'modal-task-due-time': require('components/Tasks/Modals/Shared/ModalTaskDueTime.vue').default,
 		// 'modal-task-npublic': require('components/Tasks/Modals/Shared/ModalTaskPublic.vue').default,
-		// 'modal-task-nrepeating': require('components/Tasks/Modals/Shared/ModalTaskRepeating.vue').default,
+		'modal-task-nrepeating': require('components/Tasks/Modals/Shared/ModalTaskRepeating.vue').default,
 		'modal-task-save': require('components/Tasks/Modals/Shared/ModalTaskSave.vue').default,
 				},
 		mounted() {
