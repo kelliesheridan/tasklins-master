@@ -30,6 +30,11 @@
             caption>
             {{ task.dueDate | niceDate }}
           </q-item-label>
+          <!-- <q-item-label
+            class="row justify-end"
+            caption>
+            <small>{{ taskDueTime }}</small>
+          </q-item-label> -->
         </div>
       </div>
     </q-item-section>
