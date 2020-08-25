@@ -124,6 +124,7 @@ const actions = {
     let userId = firebaseAuth.currentUser.uid;
     let taskRef = firebaseDb.ref("tasks/" + userId + "/" + payload.id);
     payload.task.createdDate = moment().format();
+    payload.task.dueDate = moment(payload.task.dueDate).format("YYYY-MM-DD");
     taskRef.set(payload.task, error => {
       if (error) {
         showErrorMessage(error.message);
@@ -174,8 +175,7 @@ const actions = {
   fbPushDueDate({}, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let taskRef = firebaseDb.ref("tasks/" + userId + "/" + payload.id);
-    payload.dueDate = addToDate(payload.dueDate, { days: 1 });
-    // payload.dueDate = date.formatDate(payload.dueDate, 'YYYY-MM-DD')
+    payload.dueDate = moment(payload.dueDate).add(1,'days').format('YYYY-MM-DD')
     taskRef.update(payload, error => {
       if (error) {
         showErrorMessage(error.message);
@@ -185,7 +185,7 @@ const actions = {
   fbDueDateToday({}, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let taskRef = firebaseDb.ref("tasks/" + userId + "/" + payload.id);
-    payload.dueDate = moment().format();
+    payload.dueDate = moment().format("YYYY-MM-DD");
     // payload.dueDate = date.formatDate(payload.dueDate, 'YYYY-MM-DD')
     taskRef.update(payload, error => {
       if (error) {
@@ -209,11 +209,12 @@ const getters = {
       keysOrdered = Object.keys(state.tasks);
     if (keysOrdered.length > 0) {
       keysOrdered.sort((a, b) => {
+        console.debug("taskA:" + state.tasks[a][state.sort] + "; taskB:" + state.tasks[b][state.sort]);
         let taskAProp = state.tasks[a][state.sort],
           taskBProp = state.tasks[b][state.sort];
 
-        if (taskAProp > taskBProp) return 1;
-        else if (taskAProp < taskBProp) return -1;
+        if (moment(taskAProp).format("YYYY-MM-DD") > moment(taskBProp).format("YYYY-MM-DD")) return 1;
+        else if (moment(taskAProp).format("YYYY-MM-DD") < moment(taskBProp).format("YYYY-MM-DD")) return -1;
         else return 0;
       });
 
