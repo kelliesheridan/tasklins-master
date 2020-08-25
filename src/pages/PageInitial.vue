@@ -456,6 +456,7 @@ export default {
 
       let tasklin = {
         name: this.tasklinName,
+        project: "Tasks",
         color: this.color,
         type: this.tasklinType,
         xp: 0,

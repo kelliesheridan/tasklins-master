@@ -549,22 +549,5 @@ export default {
   h4 
     margin-bottom: 5px
     padding: 0
-
-.wallOfShame
-    width: 30%
-    text-align: center
-    margin: 0 auto    
-
-.wallOfShame__card 
-    background-color: $grey-4
-    color: $red-10
-    border-radius: 5px
-    margin-bottom: 5px
-    margin-top: 25px
-
-.wallOfShame__card  > p
-  color: $deep-orange-9
-  margin-top: 10px
-  // padding-bottom: 5px    
      
 </style>
