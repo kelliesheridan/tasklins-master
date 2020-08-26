@@ -1,4 +1,5 @@
 import { firebaseDb, firebaseAuth } from "boot/firebase";
+import moment from "moment";
 
 const state = {
   profile: {

@@ -1,6 +1,7 @@
 import { LocalStorage, Loading } from "quasar";
 import { firebaseAuth, firebaseDb } from "boot/firebase";
 import { showErrorMessage } from "src/functions/function-show-error-message";
+import moment from "moment";
 
 const state = {
   loggedIn: false

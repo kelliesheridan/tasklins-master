@@ -1,6 +1,7 @@
 import { LocalStorage, SessionStorage } from "quasar";
 import { Dark } from "quasar";
 import { firebaseAuth, firebaseDb } from "boot/firebase";
+import moment from "moment";
 
 const state = {
   settings: {
