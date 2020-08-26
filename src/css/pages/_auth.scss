@@ -2,7 +2,7 @@
     .auth-tabs {
       max-width: 40%;
       margin: auto;
-      margin-top: 10%;
+
     }
   }
   
@@ -10,15 +10,10 @@
     .auth-tabs {
       max-width: 80%;
       margin: auto;
-      margin-top: 10%;
     }
   }
   .bg-auth {
-    background-image: url("http://www.tasklins.com/AboutPageAssets/images/trythis3.png");
-    margin: auto;
-    background-repeat: no-repeat;
-    background-size: 50% 120%;
-    background-position: center top;
+    background-color: #D1D6D8;
   }
 
   .auth-input {
@@ -32,3 +27,12 @@
   .auth-register {
     background-color: #444444;
   }
+
+
+  // .bg-auth {
+  //   background-image: url("http://www.tasklins.com/AboutPageAssets/images/trythis3.png");
+  //   margin: auto;
+  //   background-repeat: no-repeat;
+  //   background-size: 50% 120%;
+  //   background-position: center top;
+  // }

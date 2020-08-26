@@ -2,8 +2,8 @@
     height: 85vh;
     background-image:linear-gradient(
         to right bottom,
-        rgba(green, 0.7),
-        rgba(blue, 0.7)),
+        rgba(green, 0.5),
+        rgba(blue, 0.5)),
         url("http://www.tasklins.com/AboutPageAssets/images/trythis3.png");
     background-size: cover;
     background-position: top;
@@ -42,22 +42,22 @@
 
 }
 
-.signups {
-    text-align: center;
-    margin: 0 auto;
-    position: relative;
-    top: 30%;
-    max-width: 80%;
-    box-shadow: 17px 17px 25px 0px rgba(green, .5);
-    transition: transform .3s;
-    animation: moveInBottom .5s ease-out .75s;
-    animation-fill-mode: backwards;
+// .signups {
+//     text-align: center;
+//     margin: 0 auto;
+//     position: relative;
+//     top: 30%;
+//     max-width: 80%;
+//     box-shadow: 17px 17px 25px 0px rgba(green, .5);
+//     transition: transform .3s;
+//     animation: moveInBottom .5s ease-out .75s;
+//     animation-fill-mode: backwards;
 
-    @include respond(tab-port) {
-        max-width: 90%;
-    }
+//     @include respond(tab-port) {
+//         max-width: 90%;
+//     }
 
-    &:hover {
-        transform: translateY(-1rem) scale(1.03);
-    }
-}
+//     &:hover {
+//         transform: translateY(-1rem) scale(1.03);
+//     }
+// }

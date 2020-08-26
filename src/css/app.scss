@@ -2,6 +2,7 @@
 @import "abstracts/mixins";
 @import "abstracts/variables";
 
+@import "base/animations";
 @import "base/base";
 @import "base/typography";
 @import "base/utilities";
@@ -9,7 +10,7 @@
 @import "components/button";
 @import "components/projects";
 @import "components/tasks";    
-// @import "components/composition";
+@import "components/composition";
 // @import "components/egg"; 
 // @import "components/feature-box";
 // @import "components/story";   
@@ -18,4 +19,5 @@
 // @import "layout/grid";
 @import "layout/header";
  
-@import "pages/auth"; 
+@import "pages/auth";
+@import "pages/home";
