@@ -276,6 +276,7 @@
 
 <script>
 import { mapActions, mapState, mapGetters } from "vuex";
+const moment = require('moment') 
 
 export default {
   data: () => ({
@@ -283,7 +284,7 @@ export default {
   }),
   computed: {
     ...mapGetters("writing", ["writing"]),
-    ...mapGetters("profile", ["profile"]),
+    ...mapGetters("profile", ["profile", "profiles"]),
   },
   methods: {
     ...mapActions("writing", ["addWritingTask", "readWritingTasks"]),
@@ -317,21 +318,19 @@ export default {
     getUserColor(user) {
       let color = "";
       if (user) {
-        let writing = this.writing.writing;
-        if (writing != undefined) {
-          Object.keys(writing).forEach(element => {
-            if (writing[element].username == user) {
-              if (color === "") {
-                color = writing[element].color;
-              }
+        let profiles = this.profiles;
+        if (profiles != undefined) {
+          Object.keys(profiles).forEach(element => {
+            if (profiles[element].name.toLowerCase() == user.toLowerCase()) {
+                color = profiles[element].color;
+                if (color !== "") {
+                  return color;
+                }
             }
           });
+          return color;
         }
       }
-      if (color === "") {
-        color = "rgb(240,240,240)";
-      }
-      return color;
     },
     getCardColor(value) {
       let color = "";
@@ -344,7 +343,7 @@ export default {
         if (writing != undefined) {
           Object.keys(writing).forEach(element => {
             if (Object.keys(writing).indexOf(element) == elementToCheck) {
-              if (color == "") color = writing[element].color;
+             color = this.getUserColor(writing[element].username)
             }
           });
         }
