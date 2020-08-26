@@ -2,6 +2,7 @@
     .auth-tabs {
       max-width: 40%;
       margin: auto;
+      margin-top: -50px;
 
     }
   }
@@ -28,6 +29,9 @@
     background-color: #444444;
   }
 
+  .auth-btn {
+    margin: 5px;
+  }
 
   // .bg-auth {
   //   background-image: url("http://www.tasklins.com/AboutPageAssets/images/trythis3.png");

@@ -8,7 +8,12 @@
                 <span class="heading-primary--sub">Organize your life, explore our world</span>
             </h1>
 
-                <q-card class="auth-tabs">
+            <div>
+              <q-btn class="auth-btn" color="white" text-color="secondary" push label="Login" icon="timeline" />
+              <q-btn class="auth-btn" color="white" text-color="secondary" push label="Register" icon="timeline" />
+            </div>
+
+                <!-- <q-card class="auth-tabs">
                   <q-tabs
                     v-model="tab"
                     dense
@@ -33,13 +38,13 @@
                       <register />
                     </q-tab-panel>
                   </q-tab-panels>
-                </q-card>
+                </q-card> -->
 
-            <div class="composition">
+            <!-- <div class="composition">
                 <img src="statics/placeholder/pink1.png" alt="Pink Tasklin" class="composition__photo composition__photo--p1">
                 <img src="statics/placeholder/blue1.png" alt="Blue Tasklin" class="composition__photo composition__photo--p2">
                 <img src="statics/placeholder/green1.png" alt="Green Tasklin" class="composition__photo composition__photo--p3">
-            </div>
+            </div> -->
             </div>
 
 
@@ -56,8 +61,8 @@ export default {
     };
   },
   components: {
-    register: require("components/Auth/Register.vue").default,
-    login: require("components/Auth/Login.vue").default
+    // register: require("components/Auth/Register.vue").default,
+    // login: require("components/Auth/Login.vue").default
   }
 };
 </script>
