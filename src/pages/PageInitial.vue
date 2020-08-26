@@ -244,7 +244,7 @@
         </div>
       </q-card>
 
-      <div v-if="this.tasklin.color === 'blue' || color == 'blue'">
+      <div v-if="color == 'blue'">
         <div id="cf2" class="shadow">
           <img
             v-if="hatched === false"
@@ -259,7 +259,7 @@
         </div>
       </div>
 
-      <div v-if="this.tasklin.color === 'purple' || color == 'purple'">
+      <div v-if="color == 'purple'">
         <div id="cf2" class="shadow">
           <img
             v-if="hatched === false"
@@ -274,7 +274,7 @@
         </div>
       </div>
 
-      <div v-if="this.tasklin.color === 'green' || color === 'green'">
+      <div v-if="color === 'green'">
         <div id="cf2" class="shadow">
           <img
             v-if="hatched === false"
@@ -289,7 +289,7 @@
         </div>
       </div>
 
-      <div v-if="this.tasklin.color === 'pink' || color == 'pink'">
+      <div v-if="color == 'pink'">
         <div id="cf2" class="shadow">
           <img
             v-if="hatched === false"
@@ -305,7 +305,13 @@
       </div>
 
       <div v-else></div>    
-      
+
+      <div class="section col-xs-12 col-sm-12 col-md-6 col-lg-6 q-pa-xs" style="overflow: auto; height: 90%">
+        <tasks-initial
+            v-if="Object.keys(tasksTodo).length"
+            :tasksTodo="tasksTodo"
+          />    
+      </div> 
 
       <div v-if="newTasks >= 5 && hatched != true">
         <q-btn        
@@ -314,14 +320,9 @@
         glossy
         label="Hatch"
         />
-
-        <tasks-todo
-            v-if="Object.keys(tasksTodo).length"
-            :tasksTodo="tasksTodo"
-          />
-
       </div>
 
+      
       <div v-if="newTasks <= 4">
         <q-btn        
         color="secondary"
@@ -479,7 +480,7 @@ export default {
   },
   components: {
     "add-task": require("components/Tasks/Modals/addTask.vue").default,
-    "tasks-todo": require("components/Tasks/TasksInitial.vue").default,
+    "tasks-initial": require("components/Tasks/TasksInitial.vue").default,
   }
 };
 </script>

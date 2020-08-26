@@ -372,7 +372,7 @@ export default {
   }),
   computed: {
     ...mapGetters("fitness", ["fitness"]),
-    ...mapGetters("profile", ["profile"])
+    ...mapGetters("profile", ["profile", "profiles"])
   },
   methods: {
     ...mapActions("fitness", ["addFitnessTask", "readFitnessTasks", "cheer"]),
@@ -415,39 +415,34 @@ export default {
     getUserColor(user) {
       let color = "";
       if (user) {
-        let fitness = this.fitness.fitness;
-        if (fitness != undefined) {
-          Object.keys(fitness).forEach(element => {
-            if (fitness[element].username == user) {
-              if (color === "") {
-                color = fitness[element].color;
-              }
+        let profiles = this.profiles;
+        if (profiles != undefined) {
+          Object.keys(profiles).forEach(element => {
+            if (profiles[element].name.toLowerCase() == user.toLowerCase()) {
+                color = profiles[element].color;
+                if (color !== "") {
+                  return color;
+                }
             }
           });
+          return color;
         }
       }
-      if (color === "") {
-        color = "rgb(240,240,240)";
-      }
-      return color;
     },
     getCardColor(value) {
       let color = "";
       let fitness = this.fitness.fitness;
       if (fitness != undefined) {
-        let elementToCheck =
-          value === 0
-            ? Object.keys(fitness).length - 1
-            : Object.keys(fitness).length - 1 - value;
+        let elementToCheck = value === 0 ? Object.keys(fitness).length - 1 : Object.keys(fitness).length - 1 - value;
         if (fitness != undefined) {
           Object.keys(fitness).forEach(element => {
             if (Object.keys(fitness).indexOf(element) == elementToCheck) {
-              if (color == "") color = fitness[element].color;
+              color = this.getUserColor(fitness[element].username)
             }
           });
         }
         if (color == "") {
-          color = "rgb(240,240,240)";
+          color = "rgb(0,0,240)";
         }
         return color;
       }

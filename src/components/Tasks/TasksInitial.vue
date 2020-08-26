@@ -3,7 +3,6 @@
 		<q-list
 		separator
 		bordered>
-
 			<task
 				v-for="(task, key) in tasksTodo"
 				:key="key"
@@ -19,7 +18,7 @@ import { mapState, mapGetters, mapActions } from 'vuex'
 const moment= require('moment') 
 
 export default {
-    props: ['tasksInitial'],
+    props: ['tasksTodo'],
     components: {
         'task' : require('components/Tasks/TaskInitial.vue').default,
 		},
