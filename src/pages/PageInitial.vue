@@ -301,28 +301,38 @@
             class="responsive egg2"
             src="statics/placeholder/pink3a.png"
           />
-        </div>
+        </div>      
       </div>
 
-      <div v-else></div>
+      <div v-else></div>    
+      
 
-      <q-btn
-        v-if="newTasks <= 4"
-        color="secondary"
-        @click="
-          showAddTask = true;
-          newTasks++;
-        "
-        glossy
-        icon="add"
-      />
-      <q-btn
-        v-if="newTasks >= 5 && hatched != true"
+      <div v-if="newTasks >= 5 && hatched != true">
+        <q-btn        
         color="secondary"
         @click="hatched = true"
         glossy
         label="Hatch"
-      />
+        />
+
+        <tasks-todo
+            v-if="Object.keys(tasksTodo).length"
+            :tasksTodo="tasksTodo"
+          />
+
+      </div>
+
+      <div v-if="newTasks <= 4">
+        <q-btn        
+        color="secondary"
+        @click="
+          showAddTask = true;
+          newTasks++;"
+        glossy
+        icon="add"
+        />
+      </div>       
+
 
       <div
         class="q-pa-sm thinger"
@@ -380,6 +390,7 @@ export default {
     ...mapGetters("profile", ["profile"]),
     ...mapGetters("tasklins", ["tasklin"]),
     ...mapGetters("settings", ["fbReadSettings"]),
+    ...mapGetters("tasks", ["tasksTodo", "tasksSorted", "projectsFiltered"]),
     changeAbout: {
       get() {
         return this.profile.about;
@@ -467,7 +478,8 @@ export default {
     }
   },
   components: {
-    "add-task": require("components/Tasks/Modals/addTask.vue").default
+    "add-task": require("components/Tasks/Modals/addTask.vue").default,
+    "tasks-todo": require("components/Tasks/TasksInitial.vue").default,
   }
 };
 </script>

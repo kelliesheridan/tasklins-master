@@ -207,8 +207,7 @@ const getters = {
     let tasksSorted = {},
       keysOrdered = Object.keys(state.tasks);
     if (keysOrdered.length > 0) {
-      keysOrdered.sort((a, b) => {
-        console.debug("taskA:" + state.tasks[a][state.sort] + "; taskB:" + state.tasks[b][state.sort]);
+      keysOrdered.sort((a, b) => {        
         let taskAProp = state.tasks[a][state.sort],
           taskBProp = state.tasks[b][state.sort];
 
@@ -311,7 +310,7 @@ const getters = {
     });
 
     return tasks;
-  },
+  },  
   projects: state => {
     return state.projects;
   }
