@@ -1,30 +1,28 @@
 <template>
 <q-form @submit.prevent="submitForm">
-    <div class="row q-mb-xs">
+    <div class="row q-mb-xs auth-register">
         <q-banner dense class="bg-grey-3 col">
         <template v-slot:avatar>
             <q-icon name="account_circle" color="primary" />
         </template>
-        Join Tasklins today!
+        Welcome to Tasklins! We're so excited to have you as part of our community. Before we get started, there are a few details we need to get in order.
         </q-banner>
     </div>
 
-    <div class="row">
+    <div class="row auth-section">
         <q-input
         outlined
-        class="col"
+        class="col auth-input"
         v-model="formData.email"
         ref="email"
         label="E-mail"
         :rules="[ val => isValidEmailAddress(val) || 'Please enter a valid email address.']"
         lazy-rules
         />
-    </div>
 
-      <div class="row q-mb-xs">
         <q-input
         outlined
-        class="col"
+        class="col auth-input"
         v-model="formData.email2"
         ref="email2"
         label="Please Re-enter E-mail"
@@ -37,8 +35,19 @@
         <q-input
         outlined
         type="password"
-        class="col"
+        class="col auth-input"
         v-model="formData.password"
+        label="Password"
+        lazy-rules
+        :rules="[ val => val.length >= 6 || 'Please use at least 6 characters']"
+        ref="password"
+        />
+
+        <q-input
+        outlined
+        type="password"
+        class="col auth-input"
+        v-model="formData.password2"
         label="Password"
         lazy-rules
         :rules="[ val => val.length >= 6 || 'Please use at least 6 characters']"
@@ -46,24 +55,17 @@
         />
     </div>
 
-    <!-- <div class="row q-mb-md">
-        <q-input
-        outlined
-        type="password"
-        class="col"
-        v-model="formData.password2"
-        label="Re-enter Password"
-        :rules="[ val => formData.password2.val = formData.password.val || 'Passwords do not match']"
-        lazy-rules
-        />
-    </div> -->
+    <div class="row auth-section">
+
+
+    </div>
 
     <div class="row q-mb-md">
         <q-space />
         <q-btn
         color="primary"
         label="Register"
-        :disable="formData.email2 != formData.email"
+        :disable="formData.email2 != formData.email && formData.password2 != formData.email"
         type="submit" />
     </div>
 
