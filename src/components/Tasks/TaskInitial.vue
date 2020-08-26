@@ -1,31 +1,19 @@
 <template>
-  <q-item class="task"    
-  	clickable
+  <q-item class="task"      	
   	v-ripple>
     <q-item-section side top>
     </q-item-section>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 
     <q-item-section>
-      <q-item-label
-      	:class="{ 'text-strikethrough' : task.completed }"
+      <q-item-label      	
         v-html="$options.filters.searchHighlight(task.name, search)">
-      </q-item-label>
-
-      <div v-if="task.dueDate" class="row">
-        <div class="column justify-center">
-          <q-icon 
-            name="event"
-            size="12px"
-            class="q-mr-xs" />
-        </div>
-        <div class="column">
-          <q-item-label 
-            class="row justify-end"
+      </q-item-label>        
+          <q-item-label             
             caption>
             {{ task.dueDate | niceDate }}
           </q-item-label>
-        </div>
-      </div>
+        
+      
     </q-item-section>
     
   </q-item>

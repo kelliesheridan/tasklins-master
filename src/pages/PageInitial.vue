@@ -306,7 +306,7 @@
 
       <div v-else></div>    
 
-      <div class="section col-xs-12 col-sm-12 col-md-6 col-lg-6 q-pa-xs" style="overflow: auto; height: 90%">
+      <div class="initial-box col-xs-12 col-sm-12 col-md-6 col-lg-6 q-pa-xs" style="overflow: auto; height: 90%">
         <tasks-initial
             v-if="Object.keys(tasksTodo).length"
             :tasksTodo="tasksTodo"
@@ -486,6 +486,12 @@ export default {
 </script>
 
 <style>
+.initial-box {
+  overflow: auto;
+  flex: auto;  
+  margin: 0 auto;
+}
+
 @media screen and (min-width: 768px) {
   .card {
     width: 700px;
@@ -499,6 +505,10 @@ export default {
 
   .my-picker {
     max-width: 250px;
+  }
+
+  .initial-box {
+    max-width: 20%;
   }
 }
 
@@ -514,6 +524,11 @@ export default {
 
   .my-picker {
     max-width: 200px;
+  }
+
+  .initial-box {
+    max-width: 80%;
+
   }
 }
 
