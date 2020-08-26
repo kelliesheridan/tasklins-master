@@ -3,14 +3,14 @@
            <header class="header">
 
            <div class="header__text-box">
-            <h1 class="heading-primary">
+            <h1 class="heading-primary" v-if="!register && !login" >
                 <span class="heading-primary--main">Tasklins</span>
                 <span class="heading-primary--sub">Organize your life, explore our world</span>
             </h1>
 
             <div>
-              <q-btn class="auth-btn" color="white" text-color="secondary" push label="Login" icon="timeline" />
-              <q-btn class="auth-btn" color="white" text-color="secondary" push label="Register" icon="timeline" />
+              <q-btn class="auth-btn" color="white" text-color="secondary" push label="Login" />
+              <q-btn class="auth-btn" color="white" text-color="secondary" push label="Register"/>
             </div>
 
                 <!-- <q-card class="auth-tabs">
@@ -47,6 +47,14 @@
             </div> -->
             </div>
 
+          <q-dialog @click="login = true" v-model="login" transition-hide="scale">
+            <login @close="login = false" />
+          </q-dialog>
+
+        <q-dialog @click="register = true" v-model="register" transition-hide="scale">
+          <register @close="register = false" />
+        </q-dialog>
+
 
        </header>
 
@@ -57,12 +65,14 @@
 export default {
   data() {
     return {
-      tab: "login"
+      tab: "login",
+      login: false,
+      register: true
     };
   },
   components: {
-    // register: require("components/Auth/Register.vue").default,
-    // login: require("components/Auth/Login.vue").default
+    register: require("components/Auth/Register.vue").default,
+    login: require("components/Auth/Login.vue").default
   }
 };
 </script>

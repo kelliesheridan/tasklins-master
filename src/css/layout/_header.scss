@@ -1,5 +1,5 @@
 .header {
-    height: 85vh;
+    height: 90vh;
     background-image:linear-gradient(
         to right bottom,
         rgba(#595E60, 0.7),
@@ -12,12 +12,12 @@
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);  
     
     @include respond(tab-land) {
-        height: 90vh;
+        height: 95vh;
         clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
     }
 
     @include respond(phone) {
-        height: 80vh;
+        height: 90vh;
         clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     }
     
