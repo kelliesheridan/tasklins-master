@@ -152,7 +152,7 @@
       </q-card>
     </q-dialog>
 
-    <q-page-container v-if="loggedIn" class="loggedIn bg-simple">
+    <q-page-container v-if="loggedIn" class="loggedIn">
       <router-view />
     </q-page-container>
 
@@ -250,7 +250,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss">
 @media screen and (min-width: 768px) {
   .q-footer {
     display: none;
@@ -268,12 +268,8 @@ export default {
   background-size: contain;
 }
 
-.bg-simple {
-  background-color: #F7F7F7;
-}
-
 .loggedIn {
-  background-color: bg-accent;
+  background-color: $accent;
 }
 
 .bg-image2 {
