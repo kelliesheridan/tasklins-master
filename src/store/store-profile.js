@@ -31,6 +31,17 @@ const mutations = {
       state.profile.user.xp -= 5;
     }
   },
+  setXPFromTask(state, task) {
+    if (task.updates.completed) {
+      if (moment(task.updates.dueDate).isSameOrBefore(moment())) {
+        state.profile.user.xp += 5;
+      } else {
+        state.profile.user.xp += 3;
+      }
+    } else {
+      state.profile.user.xp -= 5;
+    }
+  },
   setLin(state, isCompleted) {
     if (isCompleted) {
       state.profile.user.lin += mutateLin(1, 5);
@@ -76,6 +87,11 @@ const mutations = {
 const actions = {
   addXP({ commit, dispatch }, isCompleted) {
     commit("setXP", isCompleted);
+    commit("setLevel");
+    dispatch("fbUpdateProfile");
+  },
+  updateXPFromTask({ commit, dispatch }, payload) {
+    commit("setXPFromTask", payload);
     commit("setLevel");
     dispatch("fbUpdateProfile");
   },

@@ -48,12 +48,14 @@ const mutations = {
 const actions = {
   updateTask({ dispatch }, payload) {
     dispatch("fbUpdateTask", payload);
+    dispatch("profile/updateXPFromTask", payload, { root: true });
   },
   deleteTask({ dispatch }, id) {
     dispatch("fbDeleteTask", id);
   },
   pushDueDate({ dispatch }, payload) {
     dispatch("fbPushDueDate", payload);
+    dispatch("profile/addXPValue", -1, { root: true });
   },
   dueDateToday({ dispatch }, payload) {
     dispatch("fbDueDateToday", payload);
