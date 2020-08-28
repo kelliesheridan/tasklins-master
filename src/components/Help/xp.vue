@@ -13,8 +13,8 @@
                 <q-item>
                     <q-item-section>
                     <q-item-label><strong>Ways to Gain and Lose XP</strong></q-item-label>
-                    <q-item-label>Add New Task +1-3xp</q-item-label>
-                    <q-item-label>Delete Task -2-3xp</q-item-label>
+                    <q-item-label>Add New Task +xp</q-item-label>
+                    <q-item-label>Delete Task -2xp</q-item-label>
                     <q-item-label>Finish a Challenge Task +5xp</q-item-label>
                     <q-item-label>Complete Task On Time +5xp</q-item-label>
                     <q-item-label>Complete Task Late +3xp</q-item-label>
