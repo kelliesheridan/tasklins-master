@@ -182,6 +182,10 @@ function mutateLin(min, max) {
   var lin = Math.floor(Math.random() * (max - min + 1)) + min;
   return lin;
 }
+function mutateXP(min, max) {
+  var xp = Math.floor(Math.random() * (max - min + 1)) + min;
+  return xp;
+}
 
 function getLevel() {
   var xp = parseInt(state.profile.user.xp);

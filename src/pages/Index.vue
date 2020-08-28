@@ -115,10 +115,17 @@
 
                 <q-item clickable v-ripple>
                   <q-item-section>
-                    <q-item-label><strong>See Projects on Tasks</strong></q-item-label>
+                    <q-item-label><strong>XP Updates</strong></q-item-label>
                     <q-item-label 
-                      >In settings, you can now turn on the ability to see which project a task belongs to.</q-item-label
+                      >We've changed how xp works.</q-item-label
                     >
+                  </q-item-section>
+                </q-item>
+
+                <q-item clickable v-ripple>
+                  <q-item-section>
+                    <q-item-label><strong>See Projects on Tasks</strong></q-item-label>
+                    <q-item-label>In settings, you can now turn on the ability to see which project a task belongs to.</q-item-label>
                   </q-item-section>
                 </q-item>
 
@@ -127,57 +134,6 @@
                     <q-item-label><strong>Profile Page</strong></q-item-label>
                     <q-item-label 
                       >See your current level and change your username/name/color on the profile page.</q-item-label
-                    >
-                  </q-item-section>
-                </q-item>
-
-                <q-item clickable v-ripple>
-                  <q-item-section>
-                    <q-item-label><strong>Projects</strong></q-item-label>
-                    <q-item-label 
-                      >When creating a new task you can assign it to a project, and also sort by project on the to do page. Working on new ways to sort and organize projects.</q-item-label
-                    >
-                  </q-item-section>
-                </q-item>
-
-                 <q-item>
-                  <q-item-section>
-                    <q-item-label><strong>Next Steps</strong></q-item-label>
-                  </q-item-section>
-                </q-item>
-
-                <q-item clickable v-ripple>
-                  <q-item-section>
-                    <q-item-label><strong>Help Button</strong></q-item-label>
-                    <q-item-label 
-                      >Button on help page to submit issues</q-item-label
-                    >
-                  </q-item-section>
-                </q-item>
-
-                <q-item clickable v-ripple>
-                  <q-item-section>
-                    <q-item-label><strong>Social Feed</strong></q-item-label>
-                    <q-item-label
-                      >See updates from other users</q-item-label
-                    >
-                  </q-item-section>
-                </q-item>
-
-                <q-item clickable v-ripple>
-                  <q-item-section>
-                    <q-item-label><strong>Cheer Button</strong></q-item-label>
-                    <q-item-label
-                      >Cheer people on in challenges</q-item-label
-                    >
-                  </q-item-section>
-                </q-item>
-
-                <q-item clickable v-ripple>
-                  <q-item-section>
-                    <q-item-label><strong>Tasklin Moods</strong></q-item-label>
-                    <q-item-label
-                      >Get things done... happy Tasklin!</q-item-label
                     >
                   </q-item-section>
                 </q-item>

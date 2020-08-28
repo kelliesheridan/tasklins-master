@@ -73,7 +73,7 @@ export default {
 			...mapActions('profile', ['addXPValue']),
 			submitTask() {
                 this.addTask(this.taskToSubmit)
-                this.addXPValue(1)
+                this.addXPValue(3)
 				this.$emit('close')
             },
             submitForm() {
