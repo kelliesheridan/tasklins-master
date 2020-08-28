@@ -36,6 +36,14 @@
 
       <q-item>
         <q-item-section>
+          <q-item-label><strong>Better Projects</strong></q-item-label>
+          <q-item-label>Color code tasks by project. Better sorting on Todo Page.</q-item-label>
+        </q-item-section>
+      </q-item>
+
+
+      <q-item>
+        <q-item-section>
           <q-item-label><strong>User Stats</strong></q-item-label>
           <q-item-label>Keep track of how many tasks you're getting done each day.</q-item-label>
         </q-item-section>
