@@ -71,6 +71,7 @@ const actions = {
     let taskFitness = firebaseDb.ref("fitness/" + date);
     taskFitness.set(payload);
     dispatch("fbReadFitnessTasks");
+    dispatch("profile/addXP", true, { root: true })
   },
   fbCheerFitnessTask({dispatch}, payload) {
     let fitnessTasks = firebaseDb.ref("fitness/" + payload.date);

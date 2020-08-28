@@ -55,6 +55,7 @@ const actions = {
   },
   pushDueDate({ dispatch }, payload) {
     dispatch("fbPushDueDate", payload);
+    dispatch("profile/addXPValue", -1, { root: true });
   },
   dueDateToday({ dispatch }, payload) {
     dispatch("fbDueDateToday", payload);
