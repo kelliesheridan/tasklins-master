@@ -48,6 +48,7 @@ const mutations = {
 const actions = {
   updateTask({ dispatch }, payload) {
     dispatch("fbUpdateTask", payload);
+    dispatch("profile/updateXPFromTask", payload, { root: true });
   },
   deleteTask({ dispatch }, id) {
     dispatch("fbDeleteTask", id);
