@@ -34,7 +34,6 @@ const mutations = {
   setXPFromTask(state, task) {
     if (task.updates.completed) {
       if (moment(task.updates.dueDate).isSameOrBefore(moment())) {
-        console.debug(moment(task.updates.dueDate).format("YYYY-MM-DD") + " is less than? " + moment().format("YYYY-MM-DD"));
         state.profile.user.xp += 5;
       } else {
         state.profile.user.xp += 3;
