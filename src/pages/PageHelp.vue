@@ -1,8 +1,87 @@
 <template>
   <q-page padding>
-    <p><strong>Open Issues</strong></p>
-    <p>- Dark mode doesn't really work yet</p>
-    <p>- Some issues with dates, specifically setting dates using buttons rather than the edit button</p>    
+
+    
+    <div class="help-section">
+    <q-btn push label="Known Bugs" 	color="secondary" @click="showKnownIssues = !showKnownIssues"/>
+
+    <q-list v-if="showKnownIssues" dense  padding>
+      <q-item>
+        <q-item-section>
+          <q-item-label><strong>Darkmode Doesn't Really Work Yet</strong></q-item-label>
+          <q-item-label>It's wonky. We'll get there.</q-item-label>
+        </q-item-section>
+      </q-item>
+
+      <q-item>
+        <q-item-section>
+          <q-item-label><strong>Tasks Late Not Working</strong></q-item-label>
+          <q-item-label>Some today tasks are showing up as late tasks.</q-item-label>
+        </q-item-section>
+      </q-item>
+    </q-list>
+
+    </div>
+
+    <div class="help-section">
+    <q-btn push label="In Progress" color="secondary"	@click="showInProgress = !showInProgress"/>
+
+    <q-list v-if="showInProgress" dense  padding>
+      <q-item>
+        <q-item-section>
+          <q-item-label><strong>Repeating Tasks</strong></q-item-label>
+          <q-item-label>Repeat the same task as needed instead of having to make new ones.</q-item-label>
+        </q-item-section>
+      </q-item>
+
+      <q-item>
+        <q-item-section>
+          <q-item-label><strong>Better Projects</strong></q-item-label>
+          <q-item-label>Color code tasks by project. Better sorting on Todo Page.</q-item-label>
+        </q-item-section>
+      </q-item>
+
+
+      <q-item>
+        <q-item-section>
+          <q-item-label><strong>User Stats</strong></q-item-label>
+          <q-item-label>Keep track of how many tasks you're getting done each day.</q-item-label>
+        </q-item-section>
+      </q-item>
+
+      <q-item>
+        <q-item-section>
+          <q-item-label><strong>Tasklin Evolution</strong></q-item-label>
+          <q-item-label>New art for Tasklins along with the ability to level up and have moods.</q-item-label>
+        </q-item-section>
+      </q-item>
+
+    </q-list>
+
+    </div>
+
+    <div class="help-section">
+    <q-btn push label="Longterm Goals" color="secondary"	@click="showLongterm = !showLongterm"/>
+
+    <q-list v-if="showLongterm" dense  padding>
+      <q-item>
+        <q-item-section>
+          <q-item-label><strong>Social Feed</strong></q-item-label>
+          <q-item-label>Share what you're working on. Celebrate your accomplishments. Stay accountable.</q-item-label>
+        </q-item-section>
+      </q-item>
+
+      <q-item>
+        <q-item-section>
+          <q-item-label><strong>Cheer Button</strong></q-item-label>
+          <q-item-label>Cheer your friends on as they complete challenge tasks.</q-item-label>
+        </q-item-section>
+      </q-item>
+    </q-list>
+
+    </div>
+
+
 
     <q-dialog v-model="help">
       <q-card>
@@ -53,7 +132,10 @@ import { mapGetters, mapActions } from "vuex";
 
 export default {
   data: () => ({
-    help: false
+    help: false,
+    showKnownIssues: false,
+    showInProgress: false,
+    showLongterm: false,
   }),
   computed: {
     ...mapGetters("tickets", ["tickets"])

@@ -25,6 +25,7 @@
         
         <q-card-section class="q-pt-none">
 
+
                 <modal-task-due-date :dueDate.sync="taskToSubmit.dueDate"/>
                 <modal-task-due-time v-if="taskToSubmit.dueDate" :dueTime.sync="taskToSubmit.dueTime"/> 
 
@@ -49,6 +50,7 @@
 
 <script>
 import { mapActions } from 'vuex'
+const moment = require('moment') 
 
 export default {
     props: ['task', 'id'],
@@ -58,9 +60,17 @@ export default {
             options: ['None', 'Facebook', 'Twitter', 'Apple', 'Oracle'],
             taskToSubmit: {}
         }
-    },
+        },
+        computed: {
+          taskDueTime() {
+            if (this.settings.show24hrTimeFormat) {
+            return this.task.dueTime
+            }
+            return moment(this.task.dueDate + ' ' + this.task.dueTime).format('LT')
+            },  
+        },
 		methods: {
-			...mapActions('tasks', ['updateTask']),
+			...mapActions('tasks', ['updateTask', 'dueDateToday']),
 			submitTask() {
 				this.updateTask({
 					id: this.id,

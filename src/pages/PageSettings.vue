@@ -3,14 +3,14 @@
     <q-list padding>
       <q-item-label header>User Controls</q-item-label>
 
-      <!-- <q-item tag="label" v-ripple>
+      <q-item tag="label" v-ripple>
         <q-item-section>
           <q-item-label>24hr Clock</q-item-label>
         </q-item-section>
         <q-item-section side>
           <q-toggle color="primary" v-model="show24hrTimeFormat" />
         </q-item-section>
-      </q-item> -->
+      </q-item>
 
       <q-item tag="label" v-ripple>
         <q-item-section>

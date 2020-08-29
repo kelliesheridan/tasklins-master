@@ -48,12 +48,15 @@ const mutations = {
 const actions = {
   updateTask({ dispatch }, payload) {
     dispatch("fbUpdateTask", payload);
+    dispatch("profile/updateXPFromTask", payload, { root: true });
   },
   deleteTask({ dispatch }, id) {
     dispatch("fbDeleteTask", id);
+    dispatch("profile/addXPValue", -1, { root: true });
   },
   pushDueDate({ dispatch }, payload) {
     dispatch("fbPushDueDate", payload);
+    dispatch("profile/addXPValue", -1, { root: true });
   },
   dueDateToday({ dispatch }, payload) {
     dispatch("fbDueDateToday", payload);
@@ -123,7 +126,8 @@ const actions = {
   fbAddTask({}, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let taskRef = firebaseDb.ref("tasks/" + userId + "/" + payload.id);
-    payload.task.createdDate = Date.now();
+    payload.task.createdDate = moment().format();
+    payload.task.dueDate = moment(payload.task.dueDate).format("YYYY-MM-DD");
     taskRef.set(payload.task, error => {
       if (error) {
         showErrorMessage(error.message);
@@ -136,7 +140,7 @@ const actions = {
     let userId = firebaseAuth.currentUser.uid;
     let taskRef = firebaseDb.ref("projects/" + userId + "/" + payload.projectName);
     console.debug("project:", payload);
-    payload.createdDate = Date.now();
+    payload.createdDate = moment().format();
     taskRef.set(payload, error => {
       if (error) {
         showErrorMessage(error.message);
@@ -164,7 +168,7 @@ const actions = {
   fbUpdateTask({}, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let taskRef = firebaseDb.ref("tasks/" + userId + "/" + payload.id);
-    payload.updates.lastModified = Date.now();
+    payload.updates.lastModified = moment().format();
     taskRef.update(payload.updates, error => {
       if (error) {
         showErrorMessage(error.message);
@@ -174,8 +178,7 @@ const actions = {
   fbPushDueDate({}, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let taskRef = firebaseDb.ref("tasks/" + userId + "/" + payload.id);
-    payload.dueDate = addToDate(payload.dueDate, { days: 1 });
-    // payload.dueDate = date.formatDate(payload.dueDate, 'YYYY-MM-DD')
+    payload.dueDate = moment(payload.dueDate).add(1,'days').format('YYYY-MM-DD')
     taskRef.update(payload, error => {
       if (error) {
         showErrorMessage(error.message);
@@ -185,8 +188,7 @@ const actions = {
   fbDueDateToday({}, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let taskRef = firebaseDb.ref("tasks/" + userId + "/" + payload.id);
-    payload.dueDate = Date.now();
-    // payload.dueDate = date.formatDate(payload.dueDate, 'YYYY-MM-DD')
+    payload.dueDate = moment().format("YYYY-MM-DD");
     taskRef.update(payload, error => {
       if (error) {
         showErrorMessage(error.message);
@@ -208,12 +210,12 @@ const getters = {
     let tasksSorted = {},
       keysOrdered = Object.keys(state.tasks);
     if (keysOrdered.length > 0) {
-      keysOrdered.sort((a, b) => {
+      keysOrdered.sort((a, b) => {        
         let taskAProp = state.tasks[a][state.sort],
           taskBProp = state.tasks[b][state.sort];
 
-        if (taskAProp > taskBProp) return 1;
-        else if (taskAProp < taskBProp) return -1;
+        if (moment(taskAProp).format("YYYY-MM-DD") > moment(taskBProp).format("YYYY-MM-DD")) return 1;
+        else if (moment(taskAProp).format("YYYY-MM-DD") < moment(taskBProp).format("YYYY-MM-DD")) return -1;
         else return 0;
       });
 
@@ -278,13 +280,13 @@ const getters = {
     Object.keys(tasksFiltered).forEach(function(key) {
       let task = tasksFiltered[key];
       let taskDueDate = task.dueDate;
-      let today = Date.now();
-      moment().format();
+      let today = moment().format();
+      //console.debug("moment date: " +  moment().format() + ", normal date:" + today);
 
-      let formattedTaskDueDate = date.formatDate(taskDueDate, "YYYY-MM-DD");
-      let formattedToday = date.formatDate(today, "YYYY-MM-DD");
+      let formattedTaskDueDate = moment(taskDueDate).format("YYYY-MM-DD");
+      let formattedToday = moment(today).format("YYYY-MM-DD");
 
-      if (date.isSameDate(formattedTaskDueDate, formattedToday)) {
+      if (moment(formattedTaskDueDate).isSame(formattedToday, 'day')) {
         tasks[key] = task;
       }
     });
@@ -297,11 +299,10 @@ const getters = {
     Object.keys(tasksFiltered).forEach(function(key) {
       let task = tasksFiltered[key];
       let taskDueDate = task.dueDate;
-      let today = Date.now();
-      moment().format();
-
-      let formattedTaskDueDate = date.formatDate(taskDueDate, "YYYY-MM-DD");
-      let formattedToday = date.formatDate(today, "YYYY-MM-DD");
+      let today = moment().format();
+     
+      let formattedTaskDueDate = moment(taskDueDate).format("YYYY-MM-DD");
+      let formattedToday = moment(today).format("YYYY-MM-DD");
 
       if (
         moment(formattedTaskDueDate).isBefore(formattedToday) &&
@@ -312,7 +313,7 @@ const getters = {
     });
 
     return tasks;
-  },
+  },  
   projects: state => {
     return state.projects;
   }

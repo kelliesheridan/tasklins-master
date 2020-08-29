@@ -39,6 +39,12 @@
             </q-item-section>
           </q-item>
 
+          <q-item clickable v-close-popup @click="submit('sports')">
+            <q-item-section>
+              <q-item-label>Sports!</q-item-label>
+            </q-item-section>
+          </q-item>
+
           <q-item clickable v-close-popup @click="submit('other')">
             <q-item-section>
               <q-item-label>Did some other healthy thing</q-item-label>
@@ -358,6 +364,7 @@
 
 <script>
 import { mapActions, mapState, mapGetters } from "vuex";
+const moment = require('moment') 
 
 export default {
   data: () => ({
@@ -365,7 +372,7 @@ export default {
   }),
   computed: {
     ...mapGetters("fitness", ["fitness"]),
-    ...mapGetters("profile", ["profile"])
+    ...mapGetters("profile", ["profile", "profiles"])
   },
   methods: {
     ...mapActions("fitness", ["addFitnessTask", "readFitnessTasks", "cheer"]),
@@ -408,39 +415,34 @@ export default {
     getUserColor(user) {
       let color = "";
       if (user) {
-        let fitness = this.fitness.fitness;
-        if (fitness != undefined) {
-          Object.keys(fitness).forEach(element => {
-            if (fitness[element].username == user) {
-              if (color === "") {
-                color = fitness[element].color;
-              }
+        let profiles = this.profiles;
+        if (profiles != undefined) {
+          Object.keys(profiles).forEach(element => {
+            if (profiles[element].name.toLowerCase() == user.toLowerCase()) {
+                color = profiles[element].color;
+                if (color !== "") {
+                  return color;
+                }
             }
           });
+          return color;
         }
       }
-      if (color === "") {
-        color = "rgb(240,240,240)";
-      }
-      return color;
     },
     getCardColor(value) {
       let color = "";
       let fitness = this.fitness.fitness;
       if (fitness != undefined) {
-        let elementToCheck =
-          value === 0
-            ? Object.keys(fitness).length - 1
-            : Object.keys(fitness).length - 1 - value;
+        let elementToCheck = value === 0 ? Object.keys(fitness).length - 1 : Object.keys(fitness).length - 1 - value;
         if (fitness != undefined) {
           Object.keys(fitness).forEach(element => {
             if (Object.keys(fitness).indexOf(element) == elementToCheck) {
-              if (color == "") color = fitness[element].color;
+              color = this.getUserColor(fitness[element].username)
             }
           });
         }
         if (color == "") {
-          color = "rgb(240,240,240)";
+          color = "rgb(0,0,240)";
         }
         return color;
       }
@@ -511,6 +513,9 @@ export default {
                 case "home":
                   activity += " worked out at home!";
                   break;
+                case "sports":
+                  activity += " played a sport! Weird.";
+                  break;
                 case "other":
                   activity +=
                     " did something else? It was probably a healthy thing!";
@@ -540,22 +545,5 @@ export default {
   h4 
     margin-bottom: 5px
     padding: 0
-
-.wallOfShame
-    width: 30%
-    text-align: center
-    margin: 0 auto    
-
-.wallOfShame__card 
-    background-color: $grey-4
-    color: $red-10
-    border-radius: 5px
-    margin-bottom: 5px
-    margin-top: 25px
-
-.wallOfShame__card  > p
-  color: $deep-orange-9
-  margin-top: 10px
-  // padding-bottom: 5px    
      
 </style>

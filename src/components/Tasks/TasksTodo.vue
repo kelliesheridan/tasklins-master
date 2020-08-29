@@ -28,6 +28,7 @@
 
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
+const moment= require('moment') 
 
 export default {
 	props: ['tasksTodo'],
@@ -39,7 +40,7 @@ export default {
     components: {
         'task' : require('components/Tasks/Task.vue').default,
         'list-header' : require('components/Shared/ListHeader.vue').default
-		},
+	},
 	computed: {
     ...mapGetters('profile', ['profile']),
     },

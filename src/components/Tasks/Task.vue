@@ -1,6 +1,6 @@
 <template>
   <q-item class="task"
-  	@click="updateTask({ id: id, updates: { completed: !task.completed } }); addXP(task.completed); addLin(task.completed);"
+  	@click="updateTask({ id: id, updates: { completed: !task.completed, dueDate: task.dueDate } }); addLin(task.completed);"
   	:class="!task.completed ? 'bg-orange-1' : 'bg-green-1'"
     v-touch-hold:1000.mouse="showEditTaskModal"
   	clickable
@@ -30,11 +30,13 @@
             caption>
             {{ task.dueDate | niceDate }}
           </q-item-label>
-          <q-item-label
+
+          <!-- <q-item-label
             class="row justify-end"
             caption>
             <small>{{ taskDueTime }}</small>
-          </q-item-label>
+          </q-item-label> -->
+
         </div>
       </div>
     </q-item-section>
@@ -119,6 +121,7 @@
 <script>
   import { mapState, mapActions, mapGetters } from 'vuex'
   import { date } from 'quasar'
+  const moment = require('moment') 
 
 	export default {
 		props: ['task', 'id'],
@@ -132,9 +135,9 @@
       ...mapGetters('settings', ['settings']),
       taskDueTime() {
         if (this.settings.show24hrTimeFormat) {
-        return this.task.dueTime
+          return this.task.dueTime
         }
-        return date.formatDate(this.task.dueDate + ' ' + this.task.dueTime, 'h:mmA')
+          return moment(this.task.dueDate + ' ' + this.task.dueTime).format('LT')
         },
       showProjects() {
         if (this.settings.showProjectsOnPage != undefined) {
@@ -168,7 +171,7 @@
     },
     filters: {
       niceDate(value) {
-        return date.formatDate(value, 'ddd MMM D')
+        return moment(value).format('ddd MMM D')
       },
       searchHighlight(value, search) {
         if (search) {

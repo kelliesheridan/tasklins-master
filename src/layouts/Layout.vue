@@ -104,7 +104,7 @@
             <q-badge align="bottom" floating text-color="black" color="accent">{{profile.level}}</q-badge>
           </q-avatar>
           <div>{{ profile.name }}</div>
-          <div>{{ profile.username }}</div>
+          <div>{{ profile.xp }}</div>
           <!-- <div>{{profile.id}}</div> -->
         </div>
       </q-img>

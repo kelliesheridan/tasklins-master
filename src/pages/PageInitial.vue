@@ -244,7 +244,7 @@
         </div>
       </q-card>
 
-      <div v-if="this.tasklin.color === 'blue' || color == 'blue'">
+      <div v-if="color == 'blue'">
         <div id="cf2" class="shadow">
           <img
             v-if="hatched === false"
@@ -259,7 +259,7 @@
         </div>
       </div>
 
-      <div v-if="this.tasklin.color === 'purple' || color == 'purple'">
+      <div v-if="color == 'purple'">
         <div id="cf2" class="shadow">
           <img
             v-if="hatched === false"
@@ -274,7 +274,7 @@
         </div>
       </div>
 
-      <div v-if="this.tasklin.color === 'green' || color === 'green'">
+      <div v-if="color === 'green'">
         <div id="cf2" class="shadow">
           <img
             v-if="hatched === false"
@@ -289,7 +289,7 @@
         </div>
       </div>
 
-      <div v-if="this.tasklin.color === 'pink' || color == 'pink'">
+      <div v-if="color == 'pink'">
         <div id="cf2" class="shadow">
           <img
             v-if="hatched === false"
@@ -301,28 +301,39 @@
             class="responsive egg2"
             src="statics/placeholder/pink3a.png"
           />
-        </div>
+        </div>      
       </div>
 
-      <div v-else></div>
+      <div v-else></div>    
 
-      <q-btn
-        v-if="newTasks <= 4"
-        color="secondary"
-        @click="
-          showAddTask = true;
-          newTasks++;
-        "
-        glossy
-        icon="add"
-      />
-      <q-btn
-        v-if="newTasks >= 5 && hatched != true"
+      <div class="initial-box col-xs-12 col-sm-12 col-md-6 col-lg-6 q-pa-xs" style="overflow: auto; height: 90%">
+        <tasks-initial
+            v-if="Object.keys(tasksTodo).length"
+            :tasksTodo="tasksTodo"
+          />    
+      </div> 
+
+      <div v-if="newTasks >= 5 && hatched != true">
+        <q-btn        
         color="secondary"
         @click="hatched = true"
         glossy
         label="Hatch"
-      />
+        />
+      </div>
+
+      
+      <div v-if="newTasks <= 4">
+        <q-btn        
+        color="secondary"
+        @click="
+          showAddTask = true;
+          newTasks++;"
+        glossy
+        icon="add"
+        />
+      </div>       
+
 
       <div
         class="q-pa-sm thinger"
@@ -380,6 +391,7 @@ export default {
     ...mapGetters("profile", ["profile"]),
     ...mapGetters("tasklins", ["tasklin"]),
     ...mapGetters("settings", ["fbReadSettings"]),
+    ...mapGetters("tasks", ["tasksTodo", "tasksSorted", "projectsFiltered"]),
     changeAbout: {
       get() {
         return this.profile.about;
@@ -477,17 +489,25 @@ export default {
         pattern2: ""   
                
         };
+
       this.addTasklin(tasklin);
       this.$router.push("/todo");
     }
   },
   components: {
-    "add-task": require("components/Tasks/Modals/addTask.vue").default
+    "add-task": require("components/Tasks/Modals/addTask.vue").default,
+    "tasks-initial": require("components/Tasks/TasksInitial.vue").default,
   }
 };
 </script>
 
 <style>
+.initial-box {
+  overflow: auto;
+  flex: auto;  
+  margin: 0 auto;
+}
+
 @media screen and (min-width: 768px) {
   .card {
     width: 700px;
@@ -501,6 +521,10 @@ export default {
 
   .my-picker {
     max-width: 250px;
+  }
+
+  .initial-box {
+    max-width: 20%;
   }
 }
 
@@ -516,6 +540,11 @@ export default {
 
   .my-picker {
     max-width: 200px;
+  }
+
+  .initial-box {
+    max-width: 80%;
+
   }
 }
 

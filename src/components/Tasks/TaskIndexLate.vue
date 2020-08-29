@@ -1,7 +1,9 @@
 <template>
   <q-item class="task task-late" 
-  	@click="updateTask({ id: id, updates: { completed: !task.completed } }); addXP(task.completed); addLin(task.completed);"
+
+  	@click="updateTask({ id: id, updates: { completed: !task.completed, dueDate: task.dueDate } }); addLin(task.completed);"
   	:class="!task.completed ? 'bg-negative' : 'bg-green-1'"
+
     v-touch-hold:1000.mouse="showEditTaskModal"
   	clickable
   	v-ripple>
@@ -95,6 +97,7 @@
 <script>
   import { mapState, mapActions, mapGetters } from 'vuex'
   import { date } from 'quasar'
+  const moment= require('moment') 
 
 	export default {
 		props: ['task', 'id'],
@@ -110,7 +113,7 @@
         if (this.settings.show24hrTimeFormat) {
         return this.task.dueTime
         }
-        return date.formatDate(this.task.dueDate + ' ' + this.task.dueTime, 'h:mmA')
+        return moment(this.task.dueDate + ' ' + this.task.dueTime).format('h:mmA')
       },
       showProjects() {
         if (this.settings.showProjectsOnPage != undefined) {
@@ -144,7 +147,7 @@
     },
     filters: {
       niceDate(value) {
-        return date.formatDate(value, 'ddd MMM D')
+        return moment(value).format('ddd MMM D')
       },
       searchHighlight(value, search) {
         if (search) {

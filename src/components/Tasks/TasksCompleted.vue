@@ -25,6 +25,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+const moment= require('moment') 
 
 export default {
 	props: ['tasksCompleted'],

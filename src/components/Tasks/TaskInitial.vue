@@ -1,93 +1,20 @@
 <template>
-  <q-item class="task"
-
-  	@click="updateTask({ id: id, updates: { completed: !task.completed, dueDate: task.dueDate } }); addLin(task.completed);"
-  	:class="!task.completed ? 'bg-accent' : 'bg-positive'"
-
-    v-touch-hold:1000.mouse="showEditTaskModal"
-  	clickable
+  <q-item class="task"      	
   	v-ripple>
     <q-item-section side top>
-      <q-checkbox 
-        v-model="task.completed"
-        class="no-pointer-events" />
     </q-item-section>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 
     <q-item-section>
-      <q-item-label
-      	:class="{ 'text-strikethrough' : task.completed }"
+      <q-item-label      	
         v-html="$options.filters.searchHighlight(task.name, search)">
-      </q-item-label>
-    </q-item-section>
-
-    <q-item-section v-if="showProjects" side>
-      <q-item-label
-      	:class="{ 'text-strikethrough' : task.completed }"
-        v-html="$options.filters.searchHighlight(task.project, search)">
-      </q-item-label>
-    </q-item-section>
-
-    <!-- <q-item-section v-if="task.dueDate" side>
-      <div class="row">
-        <div class="column justify-center">
-          <q-icon 
-            name="event"
-            size="18px"
-            class="q-mr-xs" />
-        </div>
-        <div class="column">
-          <q-item-label 
-            class="row justify-end"
+      </q-item-label>        
+          <q-item-label             
             caption>
             {{ task.dueDate | niceDate }}
           </q-item-label>
-          <q-item-label
-            class="row justify-end"
-            caption>
-            <small>{{ taskDueTime }}</small>
-          </q-item-label>
-        </div> 
-      </div>
-    </q-item-section> -->
-
-    <q-item-section side>
-      <div class="row">
-        <q-btn class="task-btn"
-          @click.stop="showEditTask = true"
-          flat
-          round
-          dense
-          color="primary"
-          icon="edit">
-        <q-tooltip content-class="bg-secondary">Edit Task</q-tooltip>
-        </q-btn>
-        <q-btn class="task-btn"
-          @click.stop="promptToDelete(id)"
-          flat
-          round
-          dense
-          color="red"
-          icon="delete">
-          <q-tooltip content-class="bg-secondary">Delete</q-tooltip>
-          </q-btn>
-        <q-btn class="task-btn"
-          @click.stop="pushDueDate({ id: id, dueDate: task.dueDate })"
-          flat
-          round
-          dense
-          color="blue"
-          icon="rotate_right">
-          <q-tooltip content-class="bg-secondary">Move to Tomorrow</q-tooltip>
-          </q-btn>
-      </div>
+        
+      
     </q-item-section>
-
-    <q-dialog v-model="showEditTask">
-      <edit-task 
-        @close="showEditTask = false"
-        :task="task"
-        :id="id" />
-    </q-dialog>
     
   </q-item>
 </template>
@@ -95,13 +22,12 @@
 <script>
   import { mapState, mapActions, mapGetters } from 'vuex'
   import { date } from 'quasar'
-  const moment= require('moment') 
+  const moment = require('moment') 
 
 	export default {
 		props: ['task', 'id'],
     data() {
-      return {
-        showEditTask: false
+      return {       
       }
     },
     computed: {
@@ -109,9 +35,9 @@
       ...mapGetters('settings', ['settings']),
       taskDueTime() {
         if (this.settings.show24hrTimeFormat) {
-        return this.task.dueTime
+          return this.task.dueTime
         }
-        return moment(this.task.dueDate + ' ' + this.task.dueTime).format('h:mmA')
+          return moment(this.task.dueDate + ' ' + this.task.dueTime).format('LT')
         },
       showProjects() {
         if (this.settings.showProjectsOnPage != undefined) {
@@ -122,30 +48,15 @@
       }
     },
     methods: {
-      ...mapActions('tasks', ['updateTask', 'deleteTask', 'pushDueDate']),
+      ...mapActions('tasks', ['updateTask', 'deleteTask', 'pushDueDate', 'dueDateToday']),
       ...mapActions('profile', ['addXP', 'addLin']),
       showEditTaskModal() {
         this.showEditTask = true
       },
-      promptToDelete(id) {
-        this.$q.dialog({
-          title: 'Confirm',
-          message: 'Really delete?',
-          ok: {
-            push: true
-          },
-          cancel: {
-            color: 'negative'
-          },
-          persistent: true
-        }).onOk(() => {
-          this.deleteTask(id)
-        })
-      },
     },
     filters: {
       niceDate(value) {
-        return moment(value.value).format('ddd MMM D')
+        return moment(value).format('ddd MMM D')
       },
       searchHighlight(value, search) {
         if (search) {
@@ -158,7 +69,7 @@
       }
     },
     components: {
-      'edit-task': require('components/Tasks/Modals/editTask.vue').default,
+      
     }
 	}
 </script>

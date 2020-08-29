@@ -1,10 +1,10 @@
 <template>
 	<div>
 		<q-list
-		separator>
-
+		separator
+		bordered>
 			<task
-				v-for="(task, key) in tasksLate"
+				v-for="(task, key) in tasksTodo"
 				:key="key"
 				:task="task"
 				:id="key">
@@ -18,9 +18,9 @@ import { mapState, mapGetters, mapActions } from 'vuex'
 const moment= require('moment') 
 
 export default {
-    props: ['tasksLate'],
+    props: ['tasksTodo'],
     components: {
-        'task' : require('components/Tasks/TaskIndexLate.vue').default,
+        'task' : require('components/Tasks/TaskInitial.vue').default,
 		},
 	computed: {
 	...mapGetters('profile', ['profile']),

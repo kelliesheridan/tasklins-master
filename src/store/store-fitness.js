@@ -2,6 +2,7 @@ import Vue from "vue";
 import { uid, date } from "quasar";
 import { LocalStorage, SessionStorage } from "quasar";
 import { firebaseAuth, firebaseDb } from "boot/firebase";
+import moment from "moment";
 
 const state = {
   // kellieprogress: 0.3,
@@ -57,7 +58,7 @@ const actions = {
     let userId = firebaseAuth.currentUser.uid;
     let username = this.state.profile.profile.user.name;
     let userColor = this.state.profile.profile.user.color;
-    let date = Date.now();
+    let date = moment().format();
     let payload = {
       date: date,
       username: username.toLowerCase(),
@@ -70,6 +71,7 @@ const actions = {
     let taskFitness = firebaseDb.ref("fitness/" + date);
     taskFitness.set(payload);
     dispatch("fbReadFitnessTasks");
+    dispatch("profile/addXP", true, { root: true })
   },
   fbCheerFitnessTask({dispatch}, payload) {
     let fitnessTasks = firebaseDb.ref("fitness/" + payload.date);

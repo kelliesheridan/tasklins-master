@@ -1,4 +1,5 @@
 import { firebaseDb, firebaseAuth } from "boot/firebase";
+import moment from "moment";
 
 const state = {
   profile: {
@@ -18,13 +19,25 @@ const state = {
       //   signup: false,
       //   admin: true,
     }
-  }
+  },
+  profiles: {}
 };
 
 const mutations = {
   setXP(state, isCompleted) {
     if (isCompleted) {
       state.profile.user.xp += 5;
+    } else {
+      state.profile.user.xp -= 5;
+    }
+  },
+  setXPFromTask(state, task) {
+    if (task.updates.completed) {
+      if (moment(task.updates.dueDate).isSameOrBefore(moment())) {
+        state.profile.user.xp += 5;
+      } else {
+        state.profile.user.xp += 3;
+      }
     } else {
       state.profile.user.xp -= 5;
     }
@@ -60,6 +73,9 @@ const mutations = {
   updateProfile({}, profile) {
     state.profile.user = profile;
   },
+  loadAllProfiles({}, profiles) {
+    state.profiles = profiles;
+  },
   printUsername({}, userNames) {
     console.debug("usernames: " + userNames);
   }
@@ -71,6 +87,11 @@ const mutations = {
 const actions = {
   addXP({ commit, dispatch }, isCompleted) {
     commit("setXP", isCompleted);
+    commit("setLevel");
+    dispatch("fbUpdateProfile");
+  },
+  updateXPFromTask({ commit, dispatch }, payload) {
+    commit("setXPFromTask", payload);
     commit("setLevel");
     dispatch("fbUpdateProfile");
   },
@@ -102,10 +123,9 @@ const actions = {
   updateColor({ commit, dispatch }, value) {
     commit("setColor", value);
   },
-  fbReadProfile({ commit }) {
+  fbReadProfile({ dispatch, commit }) {
     let userId = firebaseAuth.currentUser.uid;
     let userProfile = firebaseDb.ref("profile/" + userId);
-
     userProfile.once("value", snapshot => {
       let profile = snapshot.val();
       let payload = {
@@ -125,6 +145,17 @@ const actions = {
         color: profile.color
       };
       commit("updateProfile", payload);
+      dispatch("fbReadAllProfiles")
+    });
+  },
+
+  fbReadAllProfiles({ dispatch, commit }) {
+    let userId = firebaseAuth.currentUser.uid;
+    let userProfile = firebaseDb.ref("profile");
+
+    userProfile.once("value", snapshot => {
+      let profiles = snapshot.val();
+      commit("loadAllProfiles", profiles);
     });
   },
 
@@ -133,12 +164,14 @@ const actions = {
     dispatch("fbUpdateProfile");
   },
 
-  fbUpdateProfile({}) {
+  fbUpdateProfile({ dispatch }) {
     let userId = firebaseAuth.currentUser.uid;
     let proUpdate = firebaseDb.ref("profile/" + userId);
     proUpdate.update(state.profile.user, error => {
       if (error) {
         showErrorMessage(error.message);
+      } else {
+        dispatch("fbReadAllProfiles")
       }
     });
   },
@@ -164,6 +197,10 @@ const actions = {
 function mutateLin(min, max) {
   var lin = Math.floor(Math.random() * (max - min + 1)) + min;
   return lin;
+}
+function mutateXP(min, max) {
+  var xp = Math.floor(Math.random() * (max - min + 1)) + min;
+  return xp;
 }
 
 function getLevel() {
@@ -203,6 +240,9 @@ function getLevel() {
 const getters = {
   profile: state => {
     return state.profile.user;
+  },
+  profiles: state => {
+    return state.profiles;
   }
 };
 
