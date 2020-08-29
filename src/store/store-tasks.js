@@ -52,6 +52,7 @@ const actions = {
   },
   deleteTask({ dispatch }, id) {
     dispatch("fbDeleteTask", id);
+    dispatch("profile/addXPValue", -1, { root: true });
   },
   pushDueDate({ dispatch }, payload) {
     dispatch("fbPushDueDate", payload);
