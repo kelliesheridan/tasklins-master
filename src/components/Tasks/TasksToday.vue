@@ -2,7 +2,7 @@
 	<div>
 		<q-list
 		separator
-		bordered>
+		>
 
 			<task
 				v-for="(task, key) in tasksToday"

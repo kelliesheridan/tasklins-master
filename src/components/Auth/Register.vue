@@ -1,30 +1,36 @@
 <template>
-<q-form @submit.prevent="submitForm">
-    <div class="row q-mb-xs">
-        <q-banner dense class="bg-grey-3 col">
-        <template v-slot:avatar>
-            <q-icon name="account_circle" color="primary" />
-        </template>
-        Join Tasklins today!
-        </q-banner>
-    </div>
 
-    <div class="row">
+    <q-card bordered
+      class="my-card card-register bg-tasklin-purple-dark text-white"      
+    >
+      <q-card-section>
+        <div class="text-h6 text-center">Welcome to Tasklins</div>
+
+      </q-card-section>
+
+      <q-form @submit.prevent="submitForm">
+        <div class="row q-mb-xs auth-register">
+            <q-banner dense class="bg-tasklin-blue-dark col">
+           We're so excited to have you as part of our community. Before we get started, there are a few details we need to get in order.
+            </q-banner>
+        </div>
+
+    <div class="row auth-section">
         <q-input
-        outlined
-        class="col"
+        stack-label
+        class="col auth-input"
+        bg-color="tasklin-purple-light"
         v-model="formData.email"
         ref="email"
         label="E-mail"
         :rules="[ val => isValidEmailAddress(val) || 'Please enter a valid email address.']"
         lazy-rules
         />
-    </div>
 
-      <div class="row q-mb-xs">
         <q-input
-        outlined
-        class="col"
+        stack-label
+        class="col auth-input"
+        bg-color="tasklin-purple-light"
         v-model="formData.email2"
         ref="email2"
         label="Please Re-enter E-mail"
@@ -35,10 +41,23 @@
 
     <div class="row q-mb-sm">
         <q-input
-        outlined
+        stack-label
         type="password"
-        class="col"
+        class="col auth-input"
+        bg-color="tasklin-purple-light"
         v-model="formData.password"
+        label="Password"
+        lazy-rules
+        :rules="[ val => val.length >= 6 || 'Please use at least 6 characters']"
+        ref="password"
+        />
+
+        <q-input
+        stack-label
+        type="password"
+        class="col auth-input"
+        bg-color="tasklin-purple-light"
+        v-model="formData.password2"
         label="Password"
         lazy-rules
         :rules="[ val => val.length >= 6 || 'Please use at least 6 characters']"
@@ -46,32 +65,97 @@
         />
     </div>
 
-    <!-- <div class="row q-mb-md">
+    <q-separator />
+
+    <div class="row auth-section">
+
         <q-input
-        outlined
-        type="password"
-        class="col"
-        v-model="formData.password2"
-        label="Re-enter Password"
-        :rules="[ val => formData.password2.val = formData.password.val || 'Passwords do not match']"
+        stack-label
+        class="col auth-input"
+        bg-color="tasklin-blue-light"
+        v-model="formData.name"
+        ref="name"
+        label="Your Name"
         lazy-rules
         />
-    </div> -->
+
+        <q-input
+        stack-label
+        class="col auth-input"
+        bg-color="tasklin-blue-light"
+        v-model="formData.username"
+        ref="username"
+        label="Choose a Username"
+        lazy-rules
+        />
+
+    </div>
+
+    <div class="row auth-section">
+
+            <q-select
+            stack-label
+            label="Your Prounouns"
+            class="auth-input"
+            bg-color="tasklin-purple-light"
+            v-model="formData.prounouns"
+            use-input
+            use-chips
+            multiple
+            input-debounce="0"
+            @new-value="createValue"
+            :options="filterOptions"
+            @filter="filterFn"
+            style="width: 50%"
+            />
+
+
+<!-- :style="{ 'background-color': this.profile.color }" -->
+
+        <div class="q-pa-xs">
+              <q-badge                
+                text-color="black"
+                class="q-mb-sm"
+              >
+                Choose a Color
+              </q-badge>
+
+            <q-color
+            :color="changeColor"
+            v-model="changeColor"
+            no-header
+            no-footer
+            default-view="palette"
+            :palette="[
+                '{{ tasklin-green-dark }}', '$tasklin-blue-light', '#E8045A', '#B2028A',
+                '#2A0449', '#019A9D'
+            ]"
+            class="my-picker"
+            />
+
+            </div>
+  </div>
 
     <div class="row q-mb-md">
         <q-space />
         <q-btn
         color="primary"
+        class="auth-register-btn"
         label="Register"
-        :disable="formData.email2 != formData.email"
+        :disable="formData.email2 != formData.email && formData.password2 != formData.email"
         type="submit" />
     </div>
 
 </q-form>
+    </q-card>
+
 </template>
 
 <script>
 import { mapActions } from 'vuex'
+const stringOptions = [
+  'She/Her', 'He/Him', 'They/Them'
+]
 
 export default {
     data() {
@@ -80,8 +164,16 @@ export default {
                 email: '',
                 email2: '',
                 password: '',
-                // password2: ''
-            }
+                password2: '',
+                name: '',
+                username: '',
+                password: '',
+                prounouns: '',
+                color: '',
+            },
+            model: null,
+            filterOptions: stringOptions,
+            hex: '#FF00FF'         
         }
     },
     methods: {
@@ -99,11 +191,48 @@ export default {
                     this.$router.push('/initial')
                 }
         },
+            createValue (val, done) {
+            // Calling done(var) when new-value-mode is not set or "add", or done(var, "add") adds "var" content to the model
+            // and it resets the input textbox to empty string
+            // ----
+            // Calling done(var) when new-value-mode is "add-unique", or done(var, "add-unique") adds "var" content to the model
+            // only if is not already set
+            // and it resets the input textbox to empty string
+            // ----
+            // Calling done(var) when new-value-mode is "toggle", or done(var, "toggle") toggles the model with "var" content
+            // (adds to model if not already in the model, removes from model if already has it)
+            // and it resets the input textbox to empty string
+            // ----
+            // If "var" content is undefined/null, then it doesn't tampers with the model
+            // and only resets the input textbox to empty string
+
+            if (val.length > 0) {
+                if (!stringOptions.includes(val)) {
+                stringOptions.push(val)
+                }
+                done(val, 'toggle')
+            }
+            },
+
+            filterFn (val, update) {
+            update(() => {
+                if (val === '') {
+                this.filterOptions = stringOptions
+                }
+                else {
+                const needle = val.toLowerCase()
+                this.filterOptions = stringOptions.filter(
+                    v => v.toLowerCase().indexOf(needle) > -1
+                )
+                }
+            })
+            }
+        }
+        }
 		// filters: {
 		// 	titleCase(value) {
 		// 		return value.charAt(0).toUpperCase() + value.slice(1)
 		// 	}
 		// }
-    }
-}
+
 </script>

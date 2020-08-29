@@ -216,7 +216,7 @@
           Francis
           <q-linear-progress
             rounded
-            size="15px"
+            size="17px"
             :value="this.getProgress('francis')"
             :style="{ color: getUserColor('francis') }"
             class="q-mt-sm"

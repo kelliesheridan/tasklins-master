@@ -1,8 +1,7 @@
 <template>
 	<div>
 		<q-list
-		separator
-		bordered		>
+		separator>
 
 			<task
 				v-for="(task, key) in tasksLate"

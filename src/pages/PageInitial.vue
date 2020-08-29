@@ -468,12 +468,28 @@ export default {
 
       let tasklin = {
         name: this.tasklinName,
+        creation_date: Date.now(),
+        type: "Creature",
         project: "Tasks",
-        color: this.color,
-        type: this.tasklinType,
         xp: 0,
-        creation_date: moment().format()
-      };
+        level: 1,
+        color1: this.color1,
+        color2: this.color2,
+        color3: this.color3,
+        bodyShape: this.bodyShape,
+        bodyTexture: this.bodyTexture,
+        eyeColor: this.color1,
+        eyeType: this.eyeType,
+        nose: this.nose,
+        mouth: this.mouth,
+        pattern1: this.pattern1,
+        eyebrowsOrTail: "",
+        earsOrHorns: "",
+        bodyShape2: "",
+        pattern2: ""   
+               
+        };
+
       this.addTasklin(tasklin);
       this.$router.push("/todo");
     }

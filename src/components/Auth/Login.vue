@@ -1,12 +1,19 @@
 <template>
+
+
+    <q-card bordered
+      class="my-card card-register bg-tasklin-purple-dark text-white"      
+    >
+      <q-card-section>
+        <div class="text-h6 text-center">Welcome to Tasklins</div>
+
+      </q-card-section>
+
 <q-form @submit.prevent="submitForm">
     <div class="row q-mb-md">
-        <q-banner dense class="bg-grey-3 col">
-        <template v-slot:avatar>
-            <q-icon name="account_circle" color="primary" />
-        </template>
-        Login to Tasklins!
-        </q-banner>
+            <q-banner dense class="bg-tasklin-blue-dark col">
+           Login and we'll get back to work!
+            </q-banner>
     </div>
 
     <div class="row q-mb-md">
@@ -43,6 +50,9 @@
     </div>
 
 </q-form>
+
+    </q-card>
+
 </template>
 
 <script>

@@ -1,35 +1,63 @@
 <template>
-  <q-page padding class="bg">
-    <div class="q-pa-md">
-      <!-- <div class="q-gutter-y-md" style="max-width: 600px" relative-center> -->
-      <q-card class="auth-tabs">
-        <q-tabs
-          v-model="tab"
-          dense
-          class="text-grey"
-          active-color="primary"
-          indicator-color="primary"
-          align="justify"
-          narrow-indicator
-        >
-          <q-tab name="login" label="Login" />
-          <q-tab name="register" label="Register" />
-        </q-tabs>
+  <q-page padding class="bg-auth">
+           <header class="header">
 
-        <q-separator />
+           <div class="header__text-box">
+            <h1 class="heading-primary" v-if="!register && !login" >
+                <span class="heading-primary--main">Tasklins</span>
+                <span class="heading-primary--sub">Organize your life, explore our world</span>
+            </h1>
 
-        <q-tab-panels v-model="tab" animated>
-          <q-tab-panel name="login">
-            <login />
-          </q-tab-panel>
+            <div>
+              <q-btn class="auth-btn" color="white" text-color="secondary" push label="Login" />
+              <q-btn class="auth-btn" color="white" text-color="secondary" push label="Register"/>
+            </div>
 
-          <q-tab-panel name="register">
-            <register />
-          </q-tab-panel>
-        </q-tab-panels>
-      </q-card>
-    </div>
-    <!-- </div> -->
+                <!-- <q-card class="auth-tabs">
+                  <q-tabs
+                    v-model="tab"
+                    dense
+                    class="text-grey"
+                    active-color="primary"
+                    indicator-color="secondary"
+                    align="justify"
+                    narrow-indicator
+                  >
+                    <q-tab name="login" label="Login" />
+                    <q-tab name="register" label="Register" />
+                  </q-tabs>
+
+                  <q-separator />
+
+                  <q-tab-panels v-model="tab" animated>
+                    <q-tab-panel name="login">
+                      <login />
+                    </q-tab-panel>
+
+                    <q-tab-panel name="register">
+                      <register />
+                    </q-tab-panel>
+                  </q-tab-panels>
+                </q-card> -->
+
+            <!-- <div class="composition">
+                <img src="statics/placeholder/pink1.png" alt="Pink Tasklin" class="composition__photo composition__photo--p1">
+                <img src="statics/placeholder/blue1.png" alt="Blue Tasklin" class="composition__photo composition__photo--p2">
+                <img src="statics/placeholder/green1.png" alt="Green Tasklin" class="composition__photo composition__photo--p3">
+            </div> -->
+            </div>
+
+          <q-dialog @click="login = true" v-model="login" transition-hide="scale">
+            <login @close="login = false" />
+          </q-dialog>
+
+        <q-dialog @click="register = true" v-model="register" transition-hide="scale">
+          <register @close="register = false" />
+        </q-dialog>
+
+
+       </header>
+
   </q-page>
 </template>
 
@@ -37,7 +65,9 @@
 export default {
   data() {
     return {
-      tab: "login"
+      tab: "login",
+      login: false,
+      register: true
     };
   },
   components: {
@@ -46,28 +76,3 @@ export default {
   }
 };
 </script>
-
-<style>
-@media screen and (min-width: 768px) {
-  .auth-tabs {
-    max-width: 20%;
-    margin: auto;
-    margin-top: 10%;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .auth-tabs {
-    max-width: 80%;
-    margin: auto;
-    margin-top: 10%;
-  }
-}
-.bg {
-  background-image: url("http://www.tasklins.com/AboutPageAssets/images/trythis3.png");
-  margin: auto;
-  background-repeat: no-repeat;
-  background-size: 50% 120%;
-  background-position: center top;
-}
-</style>

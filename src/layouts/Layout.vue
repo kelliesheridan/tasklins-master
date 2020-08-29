@@ -101,7 +101,7 @@
               v-if="this.tasklin.color === 'green'"
               src="statics/placeholder/green3a.png"
             />
-            <q-badge align="bottom" floating color="secondary">{{profile.xp}}</q-badge>
+            <q-badge align="bottom" floating text-color="black" color="accent">{{profile.level}}</q-badge>
           </q-avatar>
           <div>{{ profile.name }}</div>
           <div>{{ profile.xp }}</div>
@@ -250,7 +250,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss">
 @media screen and (min-width: 768px) {
   .q-footer {
     display: none;
@@ -269,7 +269,7 @@ export default {
 }
 
 .loggedIn {
-  background-color: bg-accent;
+  background-color: $accent;
 }
 
 .bg-image2 {

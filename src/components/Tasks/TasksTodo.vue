@@ -8,7 +8,7 @@
 		<list-header
 		clickable
 		v-ripple
-		bgColor="bg-orange-4">Tasks</list-header>
+		bgColor="bg-primary">Tasks</list-header>
 
 				<q-list					
 					separator

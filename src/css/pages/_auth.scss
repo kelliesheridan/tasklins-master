@@ -1,0 +1,52 @@
+@media screen and (min-width: 768px) {
+    .auth-tabs {
+      max-width: 40%;
+      margin: auto;
+      margin-top: -50px;
+
+    }
+  }
+  
+  @media screen and (max-width: 767px) {
+    .auth-tabs {
+      max-width: 80%;
+      margin: auto;
+    }
+  }
+  .bg-auth {
+    background-color: #D1D6D8;
+  }
+
+  .auth-input {
+      padding: 7px;
+  }
+
+  .auth-section {
+    padding: 2px;
+  }
+
+  .auth-btn {
+    margin: 5px;
+  }
+
+  .card-register {
+    width: 700px;
+    max-width: 80vw;
+  }
+
+  .auth-register-btn {
+    margin: 10px;
+  }
+
+  .auth-picker {
+    max-width: 250px
+  }
+ 
+
+  // .bg-auth {
+  //   background-image: url("http://www.tasklins.com/AboutPageAssets/images/trythis3.png");
+  //   margin: auto;
+  //   background-repeat: no-repeat;
+  //   background-size: 50% 120%;
+  //   background-position: center top;
+  // }
