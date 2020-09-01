@@ -77,6 +77,7 @@
         ref="name"
         label="Your Name"
         lazy-rules
+        :rules="[ val => val.length >= 1 || 'Please enter your name!']"
         />
 
         <q-input
@@ -87,6 +88,7 @@
         ref="username"
         label="Choose a Username"
         lazy-rules
+        :rules="[ val => val.length >= 1 || 'Please enter your username!']"
         />
 
     </div>
@@ -109,13 +111,11 @@
             style="width: 50%"
             />
 
-
-<!-- :style="{ 'background-color': this.profile.color }" -->
-
         <div class="col q-pa-xs">
               <q-badge                
                 text-color="black"
                 class="q-mb-sm"
+                :style="{ 'background-color': this.profile.color }"
               >
                 Choose a Color
               </q-badge>
@@ -127,8 +127,7 @@
             no-footer
             default-view="palette"
             :palette="[
-                '#f44336', '#e91e63', '#9c27b0', '#3f51b5', '#00bcd4', '#4caf50', '#ffeb3b', '#ff9800', '#795548','#9e9e9e'
-            ]"
+                '#f44336', '#e91e63', '#9c27b0', '#3f51b5', '#00bcd4', '#4caf50', '#ffeb3b', '#ff9800', '#795548','#9e9e9e']"
             class="my-picker"
             />
 
@@ -152,7 +151,8 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState, mapGetters } from "vuex";
+
 const stringOptions = [
   'She/Her', 'He/Him', 'They/Them'
 ]
@@ -176,7 +176,85 @@ export default {
             hex: '#FF00FF'         
         }
     },
+        computed: {
+        ...mapGetters("profile", ["profile"]),
+        ...mapGetters("tasklins", ["tasklin"]),
+        ...mapGetters("settings", ["fbReadSettings"]),        
+        changeAbout: {
+        get() {
+            return this.profile.about;
+        },
+        set(value) {
+            this.updateAbout(value);
+        }
+        },
+        changeName: {
+        get() {
+            return this.profile.name;
+        },
+        set(value) {
+            this.updateName(value);
+        }
+        },
+        changeUsername: {
+        get() {
+            return this.profile.username;
+        },
+        set(value) {
+            this.updateUsername(value);
+        }
+        },
+        togglePrivate: {
+        get() {
+            return this.profile.private;
+        },
+        set(value) {
+            this.togglePrivateValue(value);
+        }
+        },
+        changeColor: {
+        get() {
+            return this.profile.color;
+        },
+        set(value) {
+            this.updateColor(value);
+            this.hex = value;
+        }
+        }
+    },
     methods: {
+            ...mapActions("profile", [
+            "fbReadProfile",
+            "updateAbout",
+            "updateName",
+            "updateUsername",
+            "updateProfile",
+            "togglePrivateValue",            
+            "updateColor"
+            ]),
+            updateUserProfile() {
+                let profile = {
+                    name: this.profile.name,
+                    username: this.profile.username,
+                    id: this.profile.id,
+                    about: this.profile.about,
+                    avatar: this.profile.avatar,
+                    lin: this.profile.lin,
+                    xp: this.profile.xp,
+                    level: this.profile.level,
+                    friends: this.profile.friends,
+                    inventory: this.profile.inventory,
+                    private: this.profile.private,
+                    signup: false,
+                    admin: this.profile.admin,
+                    color: this.profile.color
+                };
+
+                this.updateProfile(profile);
+
+                this.addTasklin(tasklin);
+                this.$router.push("/initial");
+                },
 			...mapActions('auth', ['registerUser']),
 			isValidEmailAddress(email) {
 				var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
