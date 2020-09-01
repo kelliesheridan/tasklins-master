@@ -9,7 +9,7 @@
       </q-card-section>
 
       <q-form @submit.prevent="submitForm">
-        <div class="row q-mb-xs auth-register">
+        <div class="row q-mb-xs">
             <q-banner dense class="bg-tasklin-blue-dark col">
            <div class="text-h6"> We're so excited to have you as part of our community. Before we get started, there are a few details we need to get in order.
             </div>
@@ -96,7 +96,7 @@
             <q-select
             stack-label
             label="Your Prounouns"
-            class="auth-input"
+            class="col auth-input"
             bg-color="tasklin-purple-light"
             v-model="formData.prounouns"
             use-input
@@ -112,7 +112,7 @@
 
 <!-- :style="{ 'background-color': this.profile.color }" -->
 
-        <div class="q-pa-xs">
+        <div class="col q-pa-xs">
               <q-badge                
                 text-color="black"
                 class="q-mb-sm"
@@ -127,8 +127,7 @@
             no-footer
             default-view="palette"
             :palette="[
-                '{{ tasklin-green-dark }}', '$tasklin-blue-light', '#E8045A', '#B2028A',
-                '#2A0449', '#019A9D'
+                '#f44336', '#e91e63', '#9c27b0', '#3f51b5', '#00bcd4', '#4caf50', '#ffeb3b', '#ff9800', '#795548','#9e9e9e'
             ]"
             class="my-picker"
             />

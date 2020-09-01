@@ -5,7 +5,7 @@
       class="my-card card-register bg-tasklin-purple-dark text-white"      
     >
       <q-card-section>
-        <div class="text-h5 text-center">Welcome to Tasklins</div>
+        <div class="text-h5 text-center">Welcome Back to Tasklins</div>
 
       </q-card-section>
 
@@ -16,9 +16,8 @@
             </q-banner>
     </div>
 
-    <div class="row q-mb-md">
-        <q-input
-        outlined
+    <div class="row auth-section">
+        <q-input        
         class="col auth-input"
         v-model="formData.email"
         label="E-mail"
@@ -28,9 +27,8 @@
         />
     </div>
 
-    <div class="row q-mb-md">
-        <q-input
-        outlined
+    <div class="row auth-section">
+        <q-input        
         type="password"
         class="col auth-input"
         v-model="formData.password"
