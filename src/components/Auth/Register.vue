@@ -23,7 +23,7 @@
         bg-color="green-2"
         v-model="formData.email"
         ref="email"
-        label="E-mail"
+        placeholder="E-mail"
         :rules="[ val => isValidEmailAddress(val) || 'Please enter a valid email address.']"
         lazy-rules
         />
@@ -34,7 +34,7 @@
         bg-color="green-2"
         v-model="formData.email2"
         ref="email2"
-        label="Please Re-enter E-mail"
+        placeholder="Please re-enter e-mail"        
         :rules="[val => val == formData.email || 'Emails do not match.']"
         lazy-rules
         />
@@ -47,7 +47,7 @@
         class="col auth-input"
         bg-color="green-2"
         v-model="formData.password"
-        label="Password"
+        placeholder="Password"
         lazy-rules
         :rules="[ val => val.length >= 6 || 'Please use at least 6 characters']"
         ref="password"
@@ -59,7 +59,7 @@
         class="col auth-input"
         bg-color="green-2"
         v-model="formData.password2"
-        label="Password"
+        placeholder="Re-Enter password"
         lazy-rules
         :rules="[ val => val.length >= 6 || 'Please use at least 6 characters']"
         ref="password"
@@ -75,7 +75,7 @@
         bg-color="green-2"
         v-model="formData.name"
         ref="name"
-        label="Your Name"
+        placeholder="Your Name"
         lazy-rules
         :rules="[ val => val.length >= 1 || 'Please enter your name!']"
         />
@@ -86,7 +86,7 @@
         bg-color="green-2"
         v-model="formData.username"
         ref="username"
-        label="Choose a Username"
+        placeholder="Choose a Username"
         lazy-rules
         :rules="[ val => val.length >= 1 || 'Please enter your username!']"
         />
@@ -97,7 +97,7 @@
 
             <q-select
             stack-label
-            label="Your Prounouns"
+            placeholder="Your Pronouns"
             class="col auth-input"
             bg-color="green-2"
             v-model="formData.prounouns"
@@ -113,7 +113,7 @@
 
         <div class="col q-pa-xs">
               <q-badge                
-                text-color="black"
+                text-color="white"
                 class="q-mb-sm"
                 :style="{ 'background-color': this.profile.color }"
               >

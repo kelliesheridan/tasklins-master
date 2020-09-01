@@ -20,7 +20,7 @@
         <q-input        
         class="col auth-input"
         v-model="formData.email"
-        label="E-mail"
+        placeholder="E-mail"
         bg-color="green-2"
         :rules="[ val => isValidEmailAddress(val) || 'Please enter a valid email address']"
         ref="email"
@@ -33,7 +33,7 @@
         type="password"
         class="col auth-input"
         v-model="formData.password"
-        label="Password"
+        placeholder="Password"
         bg-color="green-2"
         lazy-rules
         :rules="[ val => val.length >= 6 || 'Please use at least 6 characters']"
