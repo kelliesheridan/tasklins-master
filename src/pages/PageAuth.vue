@@ -9,36 +9,9 @@
             </h1>
 
             <div>
-              <q-btn class="auth-btn" color="white" text-color="secondary" push label="Login" />
-              <q-btn class="auth-btn" color="white" text-color="secondary" push label="Register"/>
+              <q-btn class="auth-btn" @click.stop="login = true" color="white" text-color="secondary" push label="Login" />
+              <q-btn class="auth-btn" @click.stop="register = true" color="white" text-color="secondary" push label="Register"/>
             </div>
-
-                <!-- <q-card class="auth-tabs">
-                  <q-tabs
-                    v-model="tab"
-                    dense
-                    class="text-grey"
-                    active-color="primary"
-                    indicator-color="secondary"
-                    align="justify"
-                    narrow-indicator
-                  >
-                    <q-tab name="login" label="Login" />
-                    <q-tab name="register" label="Register" />
-                  </q-tabs>
-
-                  <q-separator />
-
-                  <q-tab-panels v-model="tab" animated>
-                    <q-tab-panel name="login">
-                      <login />
-                    </q-tab-panel>
-
-                    <q-tab-panel name="register">
-                      <register />
-                    </q-tab-panel>
-                  </q-tab-panels>
-                </q-card> -->
 
             <!-- <div class="composition">
                 <img src="statics/placeholder/pink1.png" alt="Pink Tasklin" class="composition__photo composition__photo--p1">
@@ -47,9 +20,9 @@
             </div> -->
             </div>
 
-          <q-dialog @click="login = true" v-model="login" transition-hide="scale">
-            <login @close="login = false" />
-          </q-dialog>
+        <q-dialog @click="login = true" v-model="login" transition-hide="scale">
+          <login @close="login = false" />
+        </q-dialog>
 
         <q-dialog @click="register = true" v-model="register" transition-hide="scale">
           <register @close="register = false" />
@@ -67,7 +40,7 @@ export default {
     return {
       tab: "login",
       login: false,
-      register: true
+      register: false
     };
   },
   components: {

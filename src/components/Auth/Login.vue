@@ -5,21 +5,21 @@
       class="my-card card-register bg-tasklin-purple-dark text-white"      
     >
       <q-card-section>
-        <div class="text-h6 text-center">Welcome to Tasklins</div>
+        <div class="text-h5 text-center">Welcome to Tasklins</div>
 
       </q-card-section>
 
 <q-form @submit.prevent="submitForm">
     <div class="row q-mb-md">
             <q-banner dense class="bg-tasklin-blue-dark col">
-           Login and we'll get back to work!
+           <div class="text-h6"> It's time to login and get back to work!</div>
             </q-banner>
     </div>
 
     <div class="row q-mb-md">
         <q-input
         outlined
-        class="col"
+        class="col auth-input"
         v-model="formData.email"
         label="E-mail"
         :rules="[ val => isValidEmailAddress(val) || 'Please enter a valid email address']"
@@ -32,7 +32,7 @@
         <q-input
         outlined
         type="password"
-        class="col"
+        class="col auth-input"
         v-model="formData.password"
         label="Password"
         lazy-rules

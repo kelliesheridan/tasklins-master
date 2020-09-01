@@ -4,14 +4,15 @@
       class="my-card card-register bg-tasklin-purple-dark text-white"      
     >
       <q-card-section>
-        <div class="text-h6 text-center">Welcome to Tasklins</div>
+        <div class="text-h5 text-center">Welcome to Tasklins</div>
 
       </q-card-section>
 
       <q-form @submit.prevent="submitForm">
         <div class="row q-mb-xs auth-register">
             <q-banner dense class="bg-tasklin-blue-dark col">
-           We're so excited to have you as part of our community. Before we get started, there are a few details we need to get in order.
+           <div class="text-h6"> We're so excited to have you as part of our community. Before we get started, there are a few details we need to get in order.
+            </div>
             </q-banner>
         </div>
 
@@ -39,7 +40,7 @@
         />
     </div>
 
-    <div class="row q-mb-sm">
+    <div class="row auth-section">
         <q-input
         stack-label
         type="password"
@@ -65,14 +66,13 @@
         />
     </div>
 
-    <q-separator />
 
     <div class="row auth-section">
 
         <q-input
         stack-label
         class="col auth-input"
-        bg-color="tasklin-blue-light"
+        bg-color="tasklin-purple-light"
         v-model="formData.name"
         ref="name"
         label="Your Name"
@@ -82,7 +82,7 @@
         <q-input
         stack-label
         class="col auth-input"
-        bg-color="tasklin-blue-light"
+        bg-color="tasklin-purple-light"
         v-model="formData.username"
         ref="username"
         label="Choose a Username"
