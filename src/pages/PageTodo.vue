@@ -4,7 +4,7 @@
       <div class="row q-mb-md">
         <sort />
         <projectList class="col-3 project-select" />
-        <q-btn @click="showAddProject = true" class="new-project-btn" color="secondary" glossy label="New Project" />
+        <q-btn @click="showAddProject = true" class="new-project-btn" color="primary" label="New Project" />
       </div>
 
       <template v-if="tasksDownloaded">

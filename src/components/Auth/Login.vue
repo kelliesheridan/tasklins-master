@@ -2,7 +2,7 @@
 
 
     <q-card bordered
-      class="my-card card-register bg-tasklin-purple-dark text-white"      
+      class="my-card card-register panel-details"      
     >
       <q-card-section>
         <div class="text-h5 text-center">Welcome Back to Tasklins</div>
@@ -11,7 +11,7 @@
 
 <q-form @submit.prevent="submitForm">
     <div class="row q-mb-md">
-            <q-banner dense class="bg-tasklin-blue-dark col">
+            <q-banner dense class="panel-details col">
            <div class="text-h6"> It's time to login and get back to work!</div>
             </q-banner>
     </div>
@@ -21,6 +21,7 @@
         class="col auth-input"
         v-model="formData.email"
         label="E-mail"
+        bg-color="green-2"
         :rules="[ val => isValidEmailAddress(val) || 'Please enter a valid email address']"
         ref="email"
         lazy-rules
@@ -33,6 +34,7 @@
         class="col auth-input"
         v-model="formData.password"
         label="Password"
+        bg-color="green-2"
         lazy-rules
         :rules="[ val => val.length >= 6 || 'Please use at least 6 characters']"
         ref="password"
@@ -42,7 +44,8 @@
     <div class="row q-mb-md">
         <q-space />
         <q-btn
-        color="primary"
+        color="green-2"
+        text-color="primary"
         label="Login"
         type="submit" />
     </div>

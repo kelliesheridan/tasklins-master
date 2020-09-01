@@ -49,25 +49,18 @@
 
     <q-footer v-if="loggedIn && this.tasklin.color !== ''" class="text-center">
       <div class="row">
-        <q-tabs class="col">
+        <q-tabs class="col-8">
           <q-route-tab to="/index" icon="home" label="Home" />
           <q-route-tab to="/todo" icon="done" label="Todo" />
           <q-route-tab to="/fitness" icon="fitness_center" label="Fitness" />
-          <q-route-tab to="/writing" icon="create" label="Writing" />
+          <q-route-tab to="/profile" icon="person" label="Profile" />
           <q-route-tab to="/help" icon="help" label="Help" />
         </q-tabs>
-      </div>
-      <div class="row no-wrap q-mb-sm text-center">
-        <q-btn
-          @click="showAddTask = true"
-          rounded
-          dense
-          class="col-4"
-          color="secondary"
-          size="18px"
-          icon="add"
-        />
-        <search class="col-8" />
+
+        <q-space />
+
+        <q-btn @click="showAddTask = true" class="add-task-btn-footer" round size="18px" color="secondary" icon="add" />
+
       </div>
     </q-footer>
 
@@ -115,13 +108,14 @@
 
       
 
-      <div class="text-center q-pa-md">
+      <!-- <div class="text-center q-pa-md">
         <search />
-      </div>
+      </div> -->
 
       <div class="text-center q-mb-lg">
         <q-btn
           @click="showAddTask = true"
+          class="add-task-btn"
           round
           color="primary"
           size="18px"
@@ -218,11 +212,11 @@ export default {
           icon: "fitness_center",
           link: "/fitness"
         },
-        {
-          title: "Writing",
-          icon: "create",
-          link: "/writing"
-        },
+        // {
+        //   title: "Writing",
+        //   icon: "create",
+        //   link: "/writing"
+        // },
         {
           title: "Help",
           icon: "help",
@@ -248,7 +242,7 @@ export default {
 
   components: {
     "add-task": require("components/Tasks/Modals/addTask.vue").default,
-    search: require("components/Tasks/Tools/Search.vue").default,
+    // search: require("components/Tasks/Tools/Search.vue").default,
     // 'new-user-info' : require('components/NewUserInfo.vue').default,
     // 'lin' : require('components/Shared/Lin.vue').default,
     EssentialLink
@@ -286,13 +280,9 @@ export default {
 .layout-details {
   background-color: #eceff190;  
   color: #607d8b;
-  border-radius: 1.5rem;
+  border-radius: 1rem;
   padding: 4px;
   margin: 0 auto;  
-}
-
-tasklin-details {
-  margin: 0 auto;
 }
 
 </style>

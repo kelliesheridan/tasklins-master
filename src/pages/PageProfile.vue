@@ -1,6 +1,6 @@
 <template>
   <q-page padding>
-    <div class="q-pa-md" style="max-width: 400px">
+    <div class="q-pa-xs" style="max-width: 400px">
       <q-form @submit.prevent="submitForm" class="q-gutter-md">
         <q-input
           filled
@@ -17,7 +17,7 @@
           lazy-rules
         />
 
-        <p>Current Level: {{ this.profile.level }}</p>
+        <p><strong>Current Level: {{ this.profile.level }}</strong></p>
 
         <!-- <q-input
           filled
@@ -26,7 +26,7 @@
           lazy-rules
         /> -->
 
-        <div class="q-pa-md">
+        <div>
               <q-badge
                 :style="{ 'background-color': this.profile.color }"
                 text-color="black"
@@ -41,8 +41,7 @@
                 no-footer
                 no-header
                 :palette="[
-                '#f44336', '#e91e63', '#9c27b0', '#3f51b5', '#00bcd4', '#4caf50', '#ffeb3b', '#ff9800', '#795548','#9e9e9e'
-            ]"
+                '#f44336', '#e91e63', '#9c27b0', '#3f51b5', '#00bcd4', '#4caf50', '#ffeb3b', '#ff9800', '#795548','#9e9e9e']"
                 default-view="palette"
                 class="my-picker"
               />

@@ -1,7 +1,7 @@
 .task {
     padding: 4px;
     border: 0px;
-    
+    margin-bottom: -3px;
 }
 
 .task-btn {
@@ -15,3 +15,11 @@
 .task-late {
     border-right: 1px;
 }
+
+.task-date {
+    
+    @include respond(big-desktop) {
+       font-size: 12px;
+       padding: 1px;
+      }
+   }

@@ -21,21 +21,20 @@
         <div class="column justify-center">
           <q-icon 
             name="event"
-            size="12px"
+            size="20px"
             class="q-mr-xs" />
         </div>
-        <div class="column">
-          <q-item-label 
-            class="row justify-end"
-            caption>
+        <div class="column task-date">
+          <q-item-label
+            class="row justify-start "
+            >
             {{ task.dueDate | niceDate }}
           </q-item-label>
 
-          <!-- <q-item-label
-            class="row justify-end"
-            caption>
+          <q-item-label          
+            class="row justify-start">
             <small>{{ taskDueTime }}</small>
-          </q-item-label> -->
+          </q-item-label>
 
         </div>
       </div>

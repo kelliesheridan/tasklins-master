@@ -4,7 +4,9 @@
       <div class="row main justify-center q-pa-md">
         <div class="section col-xs-12 col-sm-12 col-md-6 col-lg-6 q-pa-xs" style="overflow: auto; height: 50%">
           <div>
-            <list-header bgColor="bg-primary">Today's Tasks</list-header>
+            <list-header bgColor="bg-primary">
+              <div class="index-header">Today's Tasks</div>
+            </list-header>
             <no-tasks
               v-if="
                 !Object.keys(tasksToday).length &&
@@ -24,9 +26,12 @@
         </div>
 
         <div
-          class="section tasklin-section col-xs-12 col-sm-12 col-md-6 col-lg-6 justify-center q-pa-xs"
+          class="section col-xs-12 col-sm-12 col-md-6 col-lg-6 justify-center q-pa-xs"
         >
-          <list-header bgColor="bg-primary">Your Tasklin</list-header>
+          <list-header bgColor="bg-primary">
+            <div class="index-header">Your Tasklin</div>
+          </list-header>
+          <div class="section tasklin-section">
           <div class="text-center">
             <img
               v-if="this.tasklin.color === 'blue'"
@@ -54,14 +59,16 @@
               <q-item-label><b>Mood: </b>So Happy!</q-item-label>
             </p>
           </div>
+          </div>
+
         </div>
       </div>
 
       <div class="row main justify-center q-pa-md">
         <div class="section col-xs-12 col-sm-12 col-md-6 news q-pa-xs">
-          <list-header bgColor="bg-primary"
-            >Follow Tasklins on Social Media</list-header
-          >
+          <list-header bgColor="bg-primary">
+            <div class="index-header">Follow Tasklins on Social Media</div>
+          </list-header>
           <div class="text-center">
             <a
               href="https://www.facebook.com/Tasklins-123005292837764"
@@ -101,7 +108,9 @@
         </div>
 
         <div class="section col-xs-12 col-sm-12 col-md-6 news q-pa-xs">
-          <list-header bgColor="bg-primary">News</list-header>
+          <list-header bgColor="bg-primary">
+            <div class="index-header">News</div>
+          </list-header>
           <div class="text-left">
             <div class="q-pa-md" style="max-width: 350px">
               <q-list dense padding class="rounded-borders">
@@ -201,7 +210,9 @@ img {
 
 .tasklin-section {
   background-image: url("http://www.testingtheapp.tasklins.com/statics/background-forest.jpg");   
-  background-color: #eceff1; 
+  background-color: #eceff1;
+  margin: 1rem;
+  border-radius: 1rem;
   height: 100%; 
   background-position: center; 
   background-repeat: no-repeat; 
