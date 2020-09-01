@@ -24,36 +24,34 @@
         </div>
 
         <div
-          class="section col-xs-12 col-sm-12 col-md-6 col-lg-6 justify-center q-pa-xs"
+          class="section tasklin-section col-xs-12 col-sm-12 col-md-6 col-lg-6 justify-center q-pa-xs"
         >
           <list-header bgColor="bg-primary">Your Tasklin</list-header>
           <div class="text-center">
             <img
               v-if="this.tasklin.color === 'blue'"
-              src="statics/placeholder/blue3b.png"
+              src="statics/placeholder/blue3a.png"
             />
             <img
               v-if="this.tasklin.color === 'pink'"
-              src="statics/placeholder/pink3b.png"
+              src="statics/placeholder/pink3a.png"
             />
             <img
               v-if="this.tasklin.color === 'purple'"
-              src="statics/placeholder/purple3b.png"
+              src="statics/placeholder/purple3a.png"
             />
             <img
               v-if="this.tasklin.color === 'green'"
-              src="statics/placeholder/green3b.png"
+              src="statics/placeholder/green3a.png"
             />
-            <p>
-              <q-item-label overline
+            <p class="tasklin-details">
+              <q-item-label
                 ><b>Name: </b> {{ tasklin.name }}</q-item-label
-              >
-              <br />
-              <q-item-label overline
+              >              
+              <q-item-label
                 ><b>Type: </b>{{ tasklin.type }}</q-item-label
               >
-              <br />
-              <q-item-label overline><b>Mood: </b>So Happy!</q-item-label>
+              <q-item-label><b>Mood: </b>So Happy!</q-item-label>
             </p>
           </div>
         </div>
@@ -199,6 +197,29 @@ img {
   height: 50%;
   display: inline-block;
   flex: auto;
+}
+
+.tasklin-section {
+  background-image: url("http://www.testingtheapp.tasklins.com/statics/background-forest.jpg");   
+  background-color: #eceff1; 
+  height: 100%; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover;
+}
+
+
+.tasklin-details {
+  background-color: #eceff190; 
+  width: 30%;
+  border-radius: 1.5rem;
+  padding: 4px;
+  margin: 0 auto;
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover;
 }
 
 .icon-s {

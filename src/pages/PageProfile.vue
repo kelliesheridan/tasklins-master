@@ -40,6 +40,9 @@
                 v-model="changeColor"
                 no-footer
                 no-header
+                :palette="[
+                '#f44336', '#e91e63', '#9c27b0', '#3f51b5', '#00bcd4', '#4caf50', '#ffeb3b', '#ff9800', '#795548','#9e9e9e'
+            ]"
                 default-view="palette"
                 class="my-picker"
               />

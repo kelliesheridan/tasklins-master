@@ -183,6 +183,18 @@
           />
         </div>
 
+        <div class="q-pa-md">
+          Helen
+          <q-linear-progress
+            rounded
+            size="15px"
+            :value="this.getProgress('helen')"
+            :style="{ color: getUserColor('helen') }"
+            class="q-mt-sm"
+            :key="update"
+          />
+        </div>
+
         
           <div class="q-pa-md">
             Kellie
@@ -241,18 +253,6 @@
             size="15px"
             :value="this.getProgress('rachel')"
             :style="{ color: getUserColor('rachel') }"
-            class="q-mt-sm"
-            :key="update"
-          />
-        </div> -->
-
-        <!-- <div class="q-pa-md">
-          Helen
-          <q-linear-progress
-            rounded
-            size="15px"
-            :value="this.getProgress('helen')"
-            :style="{ color: getUserColor('helen') }"
             class="q-mt-sm"
             :key="update"
           />

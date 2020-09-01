@@ -79,13 +79,14 @@
       v-model="left"
       side="left"
     >
+      <div class="tasklin-details">
       <q-img
-        src="https://cdn.quasar.dev/img/material.png"
-        style="height: 150px"
+        src="statics/background-forest.jpg"
+        style="height: 250px"
       >
-        <div class="absolute-bottom bg-transparent">
-          <q-avatar v-if="this.tasklin != ''" size="80px">
-            <img
+              <div class="layout-details bg-transparent">
+          <q-avatar v-if="this.tasklin != ''" size="10rem">
+            <img              
               v-if="this.tasklin.color === 'blue'"
               src="statics/placeholder/blue3a.png"
             />
@@ -103,11 +104,16 @@
             />
             <q-badge align="bottom" floating text-color="black" color="accent">{{profile.level}}</q-badge>
           </q-avatar>
-          <div>{{ profile.name }}</div>
-          <div>{{ profile.xp }}</div>
-          <!-- <div>{{profile.id}}</div> -->
+          <div class="layout-details">
+            <div>{{ profile.name }}</div>
+            <div>@{{ profile.username }}</div>
+          </div>
         </div>
-      </q-img>
+
+        </q-img>
+      </div>
+
+      
 
       <div class="text-center q-pa-md">
         <search />
@@ -276,4 +282,17 @@ export default {
   background-image: url(http://www.testingtheapp.tasklins.com/statics/trees2.jpg);
   background-size: contain;
 }
+
+.layout-details {
+  background-color: #eceff190;  
+  color: #607d8b;
+  border-radius: 1.5rem;
+  padding: 4px;
+  margin: 0 auto;  
+}
+
+tasklin-details {
+  margin: 0 auto;
+}
+
 </style>
