@@ -8,7 +8,7 @@
 
       </q-card-section>
 
-      <q-form @submit.prevent="submitForm">
+      <q-form @submit.prevent="submitForm" >
         <div class="row q-mb-xs">
             <q-banner dense class="panel-details col">
            <div class="text-h6"> We're so excited to have you as part of our community. Before we get started, there are a few details we need to get in order.
@@ -17,6 +17,7 @@
         </div>
 
     <div class="row auth-section">
+
         <q-input
         stack-label
         class="col auth-input"
@@ -32,6 +33,9 @@
         stack-label
         class="col auth-input"
         bg-color="green-2"
+        autocomplete="off"
+        
+        type="email"
         v-model="formData.email2"
         ref="email2"
         label="Please Re-enter E-mail"
@@ -42,6 +46,7 @@
 
     <div class="row auth-section">
         <q-input
+        aria=-label
         stack-label
         type="password"
         class="col auth-input"
@@ -61,7 +66,7 @@
         v-model="formData.password2"
         label="Password"
         lazy-rules
-        :rules="[ val => val.length >= 6 || 'Please use at least 6 characters']"
+        :rules="[val => val == formData.password || 'Passwords do not match.']"
         ref="password"
         />
     </div>
@@ -81,6 +86,7 @@
         />
 
         <q-input
+        id="userID"
         stack-label
         class="col auth-input"
         bg-color="green-2"
@@ -96,28 +102,24 @@
     <div class="row auth-section">
 
             <q-select
-            stack-label
-            label="Your Prounouns"
-            class="col auth-input"
-            bg-color="green-2"
-            v-model="formData.prounouns"
-            use-input
-            use-chips
-            multiple
-            input-debounce="0"
-            @new-value="createValue"
-            :options="filterOptions"
-            @filter="filterFn"
-            style="width: 50%"
-            />
+                outlined
+                v-model="formData.prounouns"
+                bg-color="green-2"
+                label="Your Prounouns"
+                class="col auth-input"
+                :options="filterOptions"
+                style="width: 50%">
+		    </q-select>        
+
+          
 
         <div class="col q-pa-xs">
               <q-badge                
                 text-color="black"
                 class="q-mb-sm"
-                :style="{ 'background-color': this.profile.color }"
-              >
-                Choose a Color
+                :style="{ 'background-color': this.profile.color }">
+                <div class="text-h5 text-center" style="color: white">Pick a colour:</div>
+                
               </q-badge>
 
             <q-color
