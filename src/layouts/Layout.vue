@@ -99,7 +99,7 @@
           </q-avatar>
           <div class="layout-details">
             <div>{{ profile.name }}</div>
-            <div>@{{ profile.username }}</div>
+            <div>{{ profile.username }}</div>
           </div>
         </div>
 

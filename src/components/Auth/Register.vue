@@ -139,6 +139,7 @@
         <q-space />
         <q-btn
         color="green-2"
+        @click="updateUserProfile"
         text-color="primary"
         class="auth-register-btn"
         label="Register"
@@ -252,8 +253,7 @@ export default {
                 };
 
                 this.updateProfile(profile);
-
-                this.addTasklin(tasklin);
+                
                 this.$router.push("/initial");
                 },
 			...mapActions('auth', ['registerUser']),
@@ -264,48 +264,13 @@ export default {
             submitForm() {
                 this.$refs.email.validate()
                 this.$refs.password.validate()
-                // this.$refs.password2.validate()
+                
                 if (!this.$refs.email.hasError && !this.$refs.password.hasError) {
                     this.registerUser(this.formData)
                     this.$router.push('/initial')
                 }
         },
-            createValue (val, done) {
-            // Calling done(var) when new-value-mode is not set or "add", or done(var, "add") adds "var" content to the model
-            // and it resets the input textbox to empty string
-            // ----
-            // Calling done(var) when new-value-mode is "add-unique", or done(var, "add-unique") adds "var" content to the model
-            // only if is not already set
-            // and it resets the input textbox to empty string
-            // ----
-            // Calling done(var) when new-value-mode is "toggle", or done(var, "toggle") toggles the model with "var" content
-            // (adds to model if not already in the model, removes from model if already has it)
-            // and it resets the input textbox to empty string
-            // ----
-            // If "var" content is undefined/null, then it doesn't tampers with the model
-            // and only resets the input textbox to empty string
 
-            if (val.length > 0) {
-                if (!stringOptions.includes(val)) {
-                stringOptions.push(val)
-                }
-                done(val, 'toggle')
-            }
-            },
-
-            filterFn (val, update) {
-            update(() => {
-                if (val === '') {
-                this.filterOptions = stringOptions
-                }
-                else {
-                const needle = val.toLowerCase()
-                this.filterOptions = stringOptions.filter(
-                    v => v.toLowerCase().indexOf(needle) > -1
-                )
-                }
-            })
-            }
         }
         }
 		// filters: {

@@ -32,7 +32,7 @@
                 text-color="black"
                 class="q-mb-sm"
               >
-                {{ this.profile.color }}
+                Your Current Color
               </q-badge>
 
               <q-color
