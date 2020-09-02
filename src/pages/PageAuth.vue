@@ -25,7 +25,11 @@
         </q-dialog>
 
         <q-dialog @click="register = true" v-model="register" transition-hide="scale">
-          <register @close="register = false" />
+          <register1 @close="register2 = true" />
+        </q-dialog>
+
+        <q-dialog v-model="register2" transition-hide="scale">
+          <register2 @close="register2 = false" />
         </q-dialog>
 
 
@@ -44,7 +48,8 @@ export default {
     };
   },
   components: {
-    register: require("components/Auth/Register.vue").default,
+    register1: require("components/Auth/Register1.vue").default,
+    register2: require("components/Auth/Register2.vue").default,
     login: require("components/Auth/Login.vue").default
   }
 };
