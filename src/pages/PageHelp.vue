@@ -3,7 +3,7 @@
 
     
     <div class="help-section">
-    <q-btn push label="Known Bugs" 	color="secondary" @click="showKnownIssues = !showKnownIssues"/>
+    <q-btn push label="Known Bugs" 	color="primary" @click="showKnownIssues = !showKnownIssues"/>
 
     <q-list v-if="showKnownIssues" dense  padding>
       <q-item>
@@ -24,7 +24,7 @@
     </div>
 
     <div class="help-section">
-    <q-btn push label="In Progress" color="secondary"	@click="showInProgress = !showInProgress"/>
+    <q-btn push label="In Progress" color="primary"	@click="showInProgress = !showInProgress"/>
 
     <q-list v-if="showInProgress" dense  padding>
       <q-item>
@@ -61,7 +61,7 @@
     </div>
 
     <div class="help-section">
-    <q-btn push label="Longterm Goals" color="secondary"	@click="showLongterm = !showLongterm"/>
+    <q-btn push label="Longterm Goals" color="primary"	@click="showLongterm = !showLongterm"/>
 
     <q-list v-if="showLongterm" dense  padding>
       <q-item>
@@ -119,11 +119,11 @@
       </q-card>
     </q-dialog>
 
-       <!-- <div class="text-center q-pa-md absolute-bottom">
+       <div class="text-center q-pa-md absolute-bottom">
 
-           <q-btn rounded padding @click="help = true" class="glossy text-center q-pa-md" color="negative" label="Help! Something is Broken!" /> 
+           <q-btn rounded padding @click="help = true" class="text-center q-pa-sm" color="red-4" label="Help! Something is Broken!" /> 
         
-      </div> -->
+      </div>
   </q-page>
 </template>
 

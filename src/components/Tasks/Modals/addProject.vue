@@ -11,7 +11,7 @@
                 v-model="project.projectName"
                 :rules="[val => !!val || 'Field is required']"
                 autofocus
-                ref="name"
+                ref="name"                
                 label="Project name *"
                 class="col">
             </q-input>
@@ -22,22 +22,21 @@
                 :options="this.$store.state.tasks.projects">
             </q-select> -->
 
-            <modal-project-tasklin />    
-        
-             <table style="width:100%">
-                <tr>
-                <th><img src="statics/colors/yellow.jpg" class="size"></th>
-                <th><img src="statics/colors/blue.jpg" class="size"></th>
-                <th><img src="statics/colors/green.jpg" class="size"></th>
-                <th><img src="statics/colors/purple.jpg" class="size"></th>
-                </tr>
-                <tr class="picker">
-                <th><q-radio v-model="project.color" val="yellow" color="yellow" /></th>
-                <th><q-radio v-model="project.color" val="blue" color="blue" /></th>
-                <th><q-radio v-model="project.color" val="green" color="green" /></th>
-                <th><q-radio v-model="project.color" val="purple" color="purple" /></th>
-                </tr>
-            </table>
+            <div>
+                <div>
+                    <p class="text-center"> Soon, you'll be able to assign each project to a Tasklin. For now, your starter Tasklin will gain experience on all projects.</p>
+                </div>
+                <div>
+                    <q-select
+                        disable
+                        readonly
+                        filled
+                        label="Tasks"
+                        v-model="project.projectTasklin"
+                        :options="this.$store.state.tasks.projects"                  
+                    />
+                </div>                
+            </div>             
 
         </q-card-section>
 
@@ -56,6 +55,7 @@ export default {
                 projectName: '',
                 color: '',
             },
+                  options: ['Tasks']
         }
     },
     computed: {
@@ -65,8 +65,7 @@ export default {
 
         },
     components: {
-    'modal-header': require('components/Tasks/Modals/Shared/ModalHeader.vue').default,
-    'modal-project-tasklin': require('components/Tasks/Modals/Shared/Projects/ModalProjectTasklin.vue').default,
+    'modal-header': require('components/Tasks/Modals/Shared/ModalHeader.vue').default,    
     'modal-task-save': require('components/Tasks/Modals/Shared/ModalTaskSave.vue').default,
     },
     methods: {

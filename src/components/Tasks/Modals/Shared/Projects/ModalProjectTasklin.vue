@@ -2,13 +2,17 @@
 
           <div>
 			<div>
-				<p> Eventually, you'll need to assign a Tasklin to each project. For now, they're just here to be cute.</p>
+				<p> Soon, you'll be able to assign each project to a Tasklin. For now, your starter Tasklin will gain experience on all projects.</p>
 			</div>
 			<div>
-            <img src="statics/placeholder/blue3a.png" class="responsive egg">
-            <img src="statics/placeholder/purple3a.png" class="responsive egg">            
-            <img src="statics/placeholder/green3a.png" class="responsive egg">
-            <img src="statics/placeholder/pink3a.png" class="responsive egg"> 
+				<q-select
+					disable
+					readonly
+					filled
+					v-model="model"
+					:options="options"			
+					
+				/>
 			</div>
                 
           </div>
