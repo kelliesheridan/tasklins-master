@@ -128,11 +128,25 @@
           v-bind="link"
         />
       </q-list>
+
+      <br>
+      <div>
+            <a href="https://www.patreon.com/bePatron?u=9215033" target="_blank"
+              ><img
+                src="statics/patreon.png"
+                width="150"
+                height="60"
+                title="Support Tasklins on Patreon"
+                alt="Tasklins on Patreon"
+            /></a>
+      </div>
+
     </q-drawer>
 
     <q-dialog v-model="showAddTask">
       <add-task @close="showAddTask = false" />
-    </q-dialog>
+    </q-dialog>   
+
 
     <q-dialog v-model="levelUp" persistent transition-show="scale" transition-hide="scale">
       <q-card class="bg-primary text-white" style="width: 400px">
