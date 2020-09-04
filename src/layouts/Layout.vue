@@ -106,8 +106,6 @@
         </q-img>
       </div>
 
-      
-
       <!-- <div class="text-center q-pa-md">
         <search />
       </div> -->

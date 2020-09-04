@@ -169,6 +169,7 @@ const actions = {
     let userId = firebaseAuth.currentUser.uid;
     let taskRef = firebaseDb.ref("tasks/" + userId + "/" + payload.id);
     payload.updates.lastModified = moment().format();
+    console.debug('task payload:', payload.updates.task)
     taskRef.update(payload.updates, error => {
       if (error) {
         showErrorMessage(error.message);
