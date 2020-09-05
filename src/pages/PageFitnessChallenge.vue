@@ -1,6 +1,16 @@
 <template>
   <q-page padding>
-    <div class="q-pa-md row text-center">
+      <div class="q-pa-md q-gutter-sm">
+    <q-banner inline-actions rounded class="bg-secondary text-primary">      
+
+      <template>
+        <q-btn flat icon="fitness_center"/>
+        <q-btn flat icon="create" />
+      </template>
+    </q-banner>
+    </div>
+
+    <div v-if="fitness" class="q-pa-md fitness row text-center">
       <div class="col-12">
         <q-btn-dropdown
         class="q-mr-sm"

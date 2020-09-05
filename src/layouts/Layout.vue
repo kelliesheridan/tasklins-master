@@ -49,12 +49,12 @@
 
     <q-footer v-if="loggedIn && this.tasklin.color !== ''" class="text-center">
       <div class="row">
-        <q-tabs class="col-8">
-          <q-route-tab to="/index" icon="home" label="Home" />
-          <q-route-tab to="/todo" icon="done" label="Todo" />
-          <q-route-tab to="/fitness" icon="fitness_center" label="Fitness" />
-          <q-route-tab to="/profile" icon="person" label="Profile" />
-          <q-route-tab to="/help" icon="help" label="Help" />
+        <q-tabs class="col-10">
+          <q-route-tab class="q-pa-xs" dense to="/index" icon="home" />
+          <q-route-tab class="q-pa-xs" dense to="/todo" icon="done" />
+          <q-route-tab class="q-pa-xs" dense to="/fitness" icon="fitness_center" />
+          <q-route-tab class="q-pa-xs" dense to="/profile" icon="person" />
+          <q-route-tab class="q-pa-xs" dense to="/help" icon="help"  />
         </q-tabs>
 
         <q-space />
@@ -109,7 +109,17 @@
       <!-- <div class="text-center q-pa-md">
         <search />
       </div> -->
-
+      <div>
+        <q-tabs class="col-10 text-secondary bg-primary">
+          <q-route-tab class="q-pa-xs" dense to="/index" icon="home" />
+          <q-route-tab class="q-pa-xs" dense to="/todo" icon="done" />
+          <q-route-tab class="q-pa-xs" dense to="/fitness" icon="fitness_center" />
+          <q-route-tab class="q-pa-xs" dense to="/profile" icon="person" />
+          <q-route-tab class="q-pa-xs" dense to="/help" icon="help"  />
+        </q-tabs>
+      </div>
+      
+      
       <div class="text-center q-mb-lg">
         <q-btn
           @click="showAddTask = true"
@@ -121,25 +131,13 @@
         />
       </div>
 
-      <q-list>
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
 
       <br>
-      <div>
+      <!-- <div class="q-pa-lg fixed-center-bottom">
             <a href="https://www.patreon.com/bePatron?u=9215033" target="_blank"
-              ><img
-                src="statics/patreon.png"
-                width="150"
-                height="60"
-                title="Support Tasklins on Patreon"
-                alt="Tasklins on Patreon"
-            /></a>
-      </div>
+              >
+              <q-btn patron dense text-color="secondary" color="primary" label="Become a Patron" /></a>
+      </div> -->
 
     </q-drawer>
 
@@ -257,7 +255,7 @@ export default {
     // search: require("components/Tasks/Tools/Search.vue").default,
     // 'new-user-info' : require('components/NewUserInfo.vue').default,
     // 'lin' : require('components/Shared/Lin.vue').default,
-    EssentialLink
+    // EssentialLink
   }
 };
 </script>
@@ -295,6 +293,22 @@ export default {
   border-radius: 1rem;
   padding: 4px;
   margin: 0 auto;  
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
 }
 
 </style>
