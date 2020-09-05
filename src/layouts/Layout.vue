@@ -49,17 +49,17 @@
 
     <q-footer v-if="loggedIn && this.tasklin.color !== ''" class="text-center">
       <div class="row">
-        <q-tabs class="col-10">
+        <q-tabs class="text-secondary bg-primary col-10">
           <q-route-tab class="q-pa-xs" dense to="/index" icon="home" />
           <q-route-tab class="q-pa-xs" dense to="/todo" icon="done" />
-          <q-route-tab class="q-pa-xs" dense to="/fitness" icon="fitness_center" />
+          <q-route-tab class="q-pa-xs" dense to="/fitness" icon="fitness_center" />          
           <q-route-tab class="q-pa-xs" dense to="/profile" icon="person" />
           <q-route-tab class="q-pa-xs" dense to="/help" icon="help"  />
         </q-tabs>
 
         <q-space />
 
-        <q-btn @click="showAddTask = true" class="add-task-btn-footer" round size="18px" color="secondary" icon="add" />
+        <q-btn @click="showAddTask = true" class="q-pa-xs add-task-btn-footer" round size="18px" color="secondary" icon="add" />
 
       </div>
     </q-footer>
