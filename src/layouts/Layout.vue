@@ -49,10 +49,10 @@
 
     <q-footer v-if="loggedIn && this.tasklin.color !== ''" class="text-center">
       <div class="row">
-        <q-tabs class="text-secondary bg-primary col-10">
+        <q-tabs indicator-color="transparent" active-color="accent" class="text-secondary bg-primary col-10">
           <q-route-tab class="q-pa-xs" dense to="/index" icon="home" />
           <q-route-tab class="q-pa-xs" dense to="/todo" icon="done" />
-          <q-route-tab class="q-pa-xs" dense to="/fitness" icon="fitness_center" />          
+          <q-route-tab class="q-pa-xs" dense to="/challenges" icon="assessment" />          
           <q-route-tab class="q-pa-xs" dense to="/profile" icon="person" />
           <q-route-tab class="q-pa-xs" dense to="/help" icon="help"  />
         </q-tabs>
@@ -110,10 +110,10 @@
         <search />
       </div> -->
       <div>
-        <q-tabs class="col-10 text-secondary bg-primary">
+        <q-tabs indicator-color="transparent" active-color="accent" class="col-10 text-secondary bg-primary">
           <q-route-tab class="q-pa-xs" dense to="/index" icon="home" />
           <q-route-tab class="q-pa-xs" dense to="/todo" icon="done" />
-          <q-route-tab class="q-pa-xs" dense to="/fitness" icon="fitness_center" />
+          <q-route-tab class="q-pa-xs" dense to="/challenges" icon="assessment" />
           <q-route-tab class="q-pa-xs" dense to="/profile" icon="person" />
           <q-route-tab class="q-pa-xs" dense to="/help" icon="help"  />
         </q-tabs>
