@@ -159,7 +159,7 @@
 
       <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 
-        <div class="q-pa-xs">
+        <div class="q-pa-md">
           Emma
           <q-linear-progress
             rounded
@@ -171,7 +171,7 @@
           />
         </div>
         
-        <div class="q-pa-xs">
+        <div class="q-pa-md">
           Erin
           <q-linear-progress
             rounded
@@ -183,7 +183,7 @@
           />
         </div>
 
-        <div class="q-pa-xs">
+        <div class="q-pa-md">
           Helen
           <q-linear-progress
             rounded
@@ -196,7 +196,7 @@
         </div>
 
         
-          <div class="q-pa-xs">
+          <div class="q-pa-md">
             Kellie
             <q-linear-progress
               rounded
@@ -208,7 +208,7 @@
             />
           </div>
 
-        <div class="q-pa-xs">
+        <div class="q-pa-md">
           Kyra
           <q-linear-progress
             rounded
@@ -220,7 +220,7 @@
           />
         </div>
 
-        <div class="q-pa-xs">
+        <div class="q-pa-md">
           Meghan
           <q-linear-progress
             rounded

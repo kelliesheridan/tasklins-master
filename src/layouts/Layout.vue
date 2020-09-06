@@ -49,9 +49,12 @@
 
     <q-footer v-if="loggedIn && this.tasklin.color !== ''" class="text-center">
       <div class="row">
-        <q-tabs indicator-color="transparent" active-color="accent" class="text-secondary bg-primary col-10">
+        <q-tabs align="left" mobile-arrows shadow-2 indicator-color="transparent" active-color="accent" class="text-secondary bg-primary col-10">
           <q-route-tab class="q-pa-xs" dense to="/index" icon="home" />
           <q-route-tab class="q-pa-xs" dense to="/todo" icon="done" />
+          <!-- <q-route-tab class="q-pa-xs" dense to="/tasklins" icon="pets" />
+          <q-route-tab class="q-pa-xs" dense to="/explore" icon="explore" />
+          <q-route-tab class="q-pa-xs" dense to="/community" icon="chat" /> -->
           <q-route-tab class="q-pa-xs" dense to="/challenges" icon="assessment" />          
           <q-route-tab class="q-pa-xs" dense to="/profile" icon="person" />
           <q-route-tab class="q-pa-xs" dense to="/help" icon="help"  />
@@ -59,7 +62,7 @@
 
         <q-space />
 
-        <q-btn @click="showAddTask = true" class="q-pa-xs add-task-btn-footer" round size="18px" color="secondary" icon="add" />
+        <q-btn flat @click="showAddTask = true" class="q-pa-xs add-task-btn-footer" icon="add" />
 
       </div>
     </q-footer>
@@ -110,9 +113,12 @@
         <search />
       </div> -->
       <div>
-        <q-tabs indicator-color="transparent" active-color="accent" class="col-10 text-secondary bg-primary">
-          <q-route-tab class="q-pa-xs" dense to="/index" icon="home" />
+        <q-tabs outside-arrows indicator-color="transparent" active-color="accent" class="col-10 text-secondary bg-primary">
+          <q-route-tab class="q-pa-sm" dense to="/index" icon="home" />
           <q-route-tab class="q-pa-xs" dense to="/todo" icon="done" />
+          <!-- <q-route-tab class="q-pa-xs" dense to="/tasklins" icon="pets" />
+          <q-route-tab class="q-pa-xs" dense to="/explore" icon="explore" />
+          <q-route-tab class="q-pa-xs" dense to="/community" icon="chat" /> -->
           <q-route-tab class="q-pa-xs" dense to="/challenges" icon="assessment" />
           <q-route-tab class="q-pa-xs" dense to="/profile" icon="person" />
           <q-route-tab class="q-pa-xs" dense to="/help" icon="help"  />
