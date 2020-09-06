@@ -30,6 +30,15 @@
         </q-item-section>
       </q-item>
 
+      <!-- <q-item tag="label" v-ripple>
+        <q-item-section>
+          <q-item-label>Hide Tips</q-item-label>
+        </q-item-section>
+        <q-item-section side top>
+          <q-toggle color="primary" v-model="hideTips" />
+        </q-item-section>
+      </q-item> -->
+
       <q-item tag="label" v-ripple>
         <q-item-section>
           <q-item-label>Dark Mode</q-item-label>

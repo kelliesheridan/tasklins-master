@@ -13,12 +13,12 @@
         </q-item-section>
       </q-item>
 
-      <q-item>
+      <!-- <q-item>
         <q-item-section>
           <q-item-label><strong>Tasks Late Not Working</strong></q-item-label>
           <q-item-label>Some today tasks are showing up as late tasks.</q-item-label>
         </q-item-section>
-      </q-item>
+      </q-item> -->
     </q-list>
 
     </div>
@@ -41,6 +41,12 @@
         </q-item-section>
       </q-item>
 
+      <q-item>
+        <q-item-section>
+          <q-item-label><strong>Turn Off Hints</strong></q-item-label>
+          <q-item-label>Toggle hints on/off in settings.</q-item-label>
+        </q-item-section>
+      </q-item>
 
       <q-item>
         <q-item-section>

@@ -82,6 +82,9 @@
       >
               <div class="layout-details bg-transparent">
           <q-avatar v-if="this.tasklin != ''" size="10rem">
+              <q-tooltip anchor="center right" self="center left" :offset="[10, 10]">
+                This will eventually be your avatar.
+              </q-tooltip>
             <img              
               v-if="this.tasklin.color === 'blue'"
               src="statics/placeholder/blue3a.png"
