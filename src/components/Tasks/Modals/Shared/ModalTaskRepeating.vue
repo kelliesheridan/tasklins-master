@@ -130,13 +130,7 @@ export default {
   props: ["nrepeating"],
   data() {
     return {
-      monday: false,
-      tuesday: false,
-      wednesday: false,
-      thursday: false,
-      friday: false,
-      saturday: false,
-      sunday: false
+     
     };
   }
 };
