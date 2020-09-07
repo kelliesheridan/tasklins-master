@@ -1,22 +1,20 @@
 <template>
-  
-        <div class="row q-mb-sm">
-        <q-input
-    	outlined
-    	label="Due date"
-    	:value="dueDate"
-    	@input="$emit('update:dueDate', $event)">
-                <template v-slot:append>
+  <div class="row q-mb-sm">
+    <q-input
+      outlined
+      label="Due date"
+      :value="dueDate"
+      @input="$emit('update:dueDate', $event)"
+    >
+      <template v-slot:append>
         <q-icon name="event" class="cursor-pointer">
           <q-popup-proxy>
-            <q-date
-            	:value="dueDate"
-            	@input="$emit('update:dueDate', $event)" />
+            <q-date :value="dueDate" @input="$emit('update:dueDate', $event)" />
           </q-popup-proxy>
         </q-icon>
-                </template>
-            </q-input>
-        <!-- <q-btn
+      </template>
+    </q-input>
+    <!-- <q-btn
           @click.stop="$emit('update:dueDate', $event)"       
           @click.stop="dueDateToday({ id: id, dueDate: task.dueDate })"
           flat
@@ -29,17 +27,16 @@
             dense
             color="green"
             icon="event" /> -->
-        </div>
-
+  </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions } from "vuex";
 
 export default {
-    props: ['dueDate', 'task', 'id'],
-        methods: {
-      ...mapActions('tasks', ['pushDueDate', 'dueDateToday']),
-    },
-}  
+  props: ["dueDate", "task", "id"],
+  methods: {
+    ...mapActions("tasks", ["pushDueDate", "dueDateToday"])
+  }
+};
 </script>

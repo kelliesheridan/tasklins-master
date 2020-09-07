@@ -34,9 +34,45 @@
         <q-card-section class="q-pt-none">
 
      <!-- <modal-task-npublic :npublic.sync="taskToSubmit.npublic"/> -->
+     <modal-task-nrepeating :nrepeating.sync="taskToSubmit.nrepeating"/>
+<!-- <div>
+            <q-btn class="task-btn"                        
+            flat                        
+            dense
+            color="blue"
+            icon="repeat_one">
+            <q-tooltip content-class="bg-secondary">Repeat Task</q-tooltip>
+            </q-btn>
 
-         <modal-task-nrepeating :nrepeating.sync="taskToSubmit.nrepeating"/>   
-
+            <q-btn unelevated flat dense text-color="primary" label="Mo"
+            :value="taskToSubmit.nrepeating.monday"
+            :class="!taskToSubmit.nrepeating.monday? 'bg-red-1' : 'bg-green-1'"
+            @click="taskToSubmit.nrepeating.monday = !taskToSubmit.nrepeating.monday"/>
+            <q-btn unelevated flat dense text-color="primary" label="Tu"
+            :value="taskToSubmit.nrepeating.tuesday"
+            :class="!taskToSubmit.nrepeating.tuesday? 'bg-red-1' : 'bg-green-1'"
+            @click="taskToSubmit.nrepeating.tuesday = !taskToSubmit.nrepeating.tuesday"/>
+            <q-btn unelevated flat dense text-color="primary" label="We"
+            :value="taskToSubmit.nrepeating.wednesday"
+            :class="!taskToSubmit.nrepeating.wednesday? 'bg-red-1' : 'bg-green-1'"
+            @click="taskToSubmit.nrepeating.wednesday = !taskToSubmit.nrepeating.wednesday"/>
+            <q-btn unelevated flat dense text-color="primary" label="Th"
+            :value="taskToSubmit.nrepeating.thursday"
+            :class="!taskToSubmit.nrepeating.thursday? 'bg-red-1' : 'bg-green-1'"
+            @click="taskToSubmit.nrepeating.thursday = !taskToSubmit.nrepeating.thursday"/>
+            <q-btn unelevated flat dense text-color="primary" label="Fr"
+            :value="taskToSubmit.nrepeating.friday"
+            :class="!taskToSubmit.nrepeating.friday? 'bg-red-1' : 'bg-green-1'"
+            @click="taskToSubmit.nrepeating.friday = !taskToSubmit.nrepeating.friday"/>
+            <q-btn unelevated flat dense text-color="primary" label="Sa"
+            :value="taskToSubmit.nrepeating.saturday"
+            :class="!taskToSubmit.nrepeating.saturday? 'bg-red-1' : 'bg-green-1'"
+            @click="taskToSubmit.nrepeating.saturday = !taskToSubmit.nrepeating.saturday"/>
+            <q-btn unelevated flat dense text-color="primary" label="Su"
+            :value="taskToSubmit.nrepeating.sunday"
+            :class="!taskToSubmit.nrepeating.sunday? 'bg-red-1' : 'bg-green-1'"
+            @click="taskToSubmit.nrepeating.sunday = !taskToSubmit.nrepeating.sunday"/>
+        </div> -->
         </q-card-section>
         
 

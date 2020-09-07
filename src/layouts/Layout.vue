@@ -49,18 +49,33 @@
 
     <q-footer v-if="loggedIn && this.tasklin.color !== ''" class="text-center">
       <div class="row">
-        <q-tabs indicator-color="transparent" active-color="accent" class="text-secondary bg-primary col-10">
+        <q-tabs
+          indicator-color="transparent"
+          active-color="accent"
+          class="text-secondary bg-primary col-10"
+        >
           <q-route-tab class="q-pa-xs" dense to="/index" icon="home" />
           <q-route-tab class="q-pa-xs" dense to="/todo" icon="done" />
-          <q-route-tab class="q-pa-xs" dense to="/challenges" icon="assessment" />          
+          <q-route-tab
+            class="q-pa-xs"
+            dense
+            to="/challenges"
+            icon="assessment"
+          />
           <q-route-tab class="q-pa-xs" dense to="/profile" icon="person" />
-          <q-route-tab class="q-pa-xs" dense to="/help" icon="help"  />
+          <q-route-tab class="q-pa-xs" dense to="/help" icon="help" />
         </q-tabs>
 
         <q-space />
 
-        <q-btn @click="showAddTask = true" class="q-pa-xs add-task-btn-footer" round size="18px" color="secondary" icon="add" />
-
+        <q-btn
+          @click="showAddTask = true"
+          class="q-pa-xs add-task-btn-footer"
+          round
+          size="18px"
+          color="secondary"
+          icon="add"
+        />
       </div>
     </q-footer>
 
@@ -73,36 +88,38 @@
       side="left"
     >
       <div class="tasklin-details">
-      <q-img
-        src="statics/background-forest.jpg"
-        style="height: 250px"
-      >
-              <div class="layout-details bg-transparent">
-          <q-avatar v-if="this.tasklin != ''" size="10rem">
-            <img              
-              v-if="this.tasklin.color === 'blue'"
-              src="statics/placeholder/blue3a.png"
-            />
-            <img
-              v-if="this.tasklin.color === 'pink'"
-              src="statics/placeholder/pink3a.png"
-            />
-            <img
-              v-if="this.tasklin.color === 'purple'"
-              src="statics/placeholder/purple3a.png"
-            />
-            <img
-              v-if="this.tasklin.color === 'green'"
-              src="statics/placeholder/green3a.png"
-            />
-            <q-badge align="bottom" floating text-color="black" color="accent">{{profile.level}}</q-badge>
-          </q-avatar>
-          <div class="layout-details">
-            <div>{{ profile.name }}</div>
-            <div>{{ profile.username }}</div>
+        <q-img src="statics/background-forest.jpg" style="height: 250px">
+          <div class="layout-details bg-transparent">
+            <q-avatar v-if="this.tasklin != ''" size="10rem">
+              <img
+                v-if="this.tasklin.color === 'blue'"
+                src="statics/placeholder/blue3a.png"
+              />
+              <img
+                v-if="this.tasklin.color === 'pink'"
+                src="statics/placeholder/pink3a.png"
+              />
+              <img
+                v-if="this.tasklin.color === 'purple'"
+                src="statics/placeholder/purple3a.png"
+              />
+              <img
+                v-if="this.tasklin.color === 'green'"
+                src="statics/placeholder/green3a.png"
+              />
+              <q-badge
+                align="bottom"
+                floating
+                text-color="black"
+                color="accent"
+                >{{ profile.level }}</q-badge
+              >
+            </q-avatar>
+            <div class="layout-details">
+              <div>{{ profile.name }}</div>
+              <div>{{ profile.username }}</div>
+            </div>
           </div>
-        </div>
-
         </q-img>
       </div>
 
@@ -110,16 +127,24 @@
         <search />
       </div> -->
       <div>
-        <q-tabs indicator-color="transparent" active-color="accent" class="col-10 text-secondary bg-primary">
+        <q-tabs
+          indicator-color="transparent"
+          active-color="accent"
+          class="col-10 text-secondary bg-primary"
+        >
           <q-route-tab class="q-pa-xs" dense to="/index" icon="home" />
           <q-route-tab class="q-pa-xs" dense to="/todo" icon="done" />
-          <q-route-tab class="q-pa-xs" dense to="/challenges" icon="assessment" />
+          <q-route-tab
+            class="q-pa-xs"
+            dense
+            to="/challenges"
+            icon="assessment"
+          />
           <q-route-tab class="q-pa-xs" dense to="/profile" icon="person" />
-          <q-route-tab class="q-pa-xs" dense to="/help" icon="help"  />
+          <q-route-tab class="q-pa-xs" dense to="/help" icon="help" />
         </q-tabs>
       </div>
-      
-      
+
       <div class="text-center q-mb-lg">
         <q-btn
           @click="showAddTask = true"
@@ -131,29 +156,32 @@
         />
       </div>
 
-
-      <br>
+      <br />
       <!-- <div class="q-pa-lg fixed-center-bottom">
             <a href="https://www.patreon.com/bePatron?u=9215033" target="_blank"
               >
               <q-btn patron dense text-color="secondary" color="primary" label="Become a Patron" /></a>
       </div> -->
-
     </q-drawer>
 
     <q-dialog v-model="showAddTask">
       <add-task @close="showAddTask = false" />
-    </q-dialog>   
+    </q-dialog>
 
-
-    <q-dialog v-model="levelUp" persistent transition-show="scale" transition-hide="scale">
+    <q-dialog
+      v-model="levelUp"
+      persistent
+      transition-show="scale"
+      transition-hide="scale"
+    >
       <q-card class="bg-primary text-white" style="width: 400px">
         <q-card-section>
           <div class="text-h6">You Leveled Up!</div>
         </q-card-section>
 
         <q-card-section class="q-pt-none">
-          You reached level {{ profile.level }}! Right now, this doesn't really mean anything, but good job!
+          You reached level {{ profile.level }}! Right now, this doesn't really
+          mean anything, but good job!
         </q-card-section>
 
         <q-card-actions align="right" class="bg-white text-teal">
@@ -203,9 +231,9 @@ export default {
         //   link: '/tasklins'
         // },
         {
-          title: 'Profile',
-          icon: 'person',
-          link: '/profile'
+          title: "Profile",
+          icon: "person",
+          link: "/profile"
         },
         // {
         //   title: 'Explore',
@@ -251,7 +279,7 @@ export default {
   },
 
   components: {
-    "add-task": require("components/Tasks/Modals/addTask.vue").default,
+    "add-task": require("components/Tasks/Modals/addTask.vue").default
     // search: require("components/Tasks/Tools/Search.vue").default,
     // 'new-user-info' : require('components/NewUserInfo.vue').default,
     // 'lin' : require('components/Shared/Lin.vue').default,
@@ -288,11 +316,11 @@ export default {
 }
 
 .layout-details {
-  background-color: #eceff190;  
+  background-color: #eceff190;
   color: #607d8b;
   border-radius: 1rem;
   padding: 4px;
-  margin: 0 auto;  
+  margin: 0 auto;
 }
 
 a:link {
@@ -310,5 +338,4 @@ a:hover {
 a:active {
   text-decoration: none;
 }
-
 </style>
