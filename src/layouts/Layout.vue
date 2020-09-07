@@ -49,21 +49,37 @@
 
     <q-footer v-if="loggedIn && this.tasklin.color !== ''" class="text-center">
       <div class="row">
-        <q-tabs align="left" mobile-arrows shadow-2 indicator-color="transparent" active-color="accent" class="text-secondary bg-primary col-10">
+        <q-tabs
+          align="left"
+          mobile-arrows
+          shadow-2
+          indicator-color="transparent"
+          active-color="accent"
+          class="text-secondary bg-primary col-10"
+        >
           <q-route-tab class="q-pa-xs" dense to="/index" icon="home" />
           <q-route-tab class="q-pa-xs" dense to="/todo" icon="done" />
           <!-- <q-route-tab class="q-pa-xs" dense to="/tasklins" icon="pets" />
           <q-route-tab class="q-pa-xs" dense to="/explore" icon="explore" />
           <q-route-tab class="q-pa-xs" dense to="/community" icon="chat" /> -->
-          <q-route-tab class="q-pa-xs" dense to="/challenges" icon="assessment" />          
+          <q-route-tab
+            class="q-pa-xs"
+            dense
+            to="/challenges"
+            icon="assessment"
+          />
           <q-route-tab class="q-pa-xs" dense to="/profile" icon="person" />
           <q-route-tab class="q-pa-xs" dense to="/help" icon="help" />
         </q-tabs>
 
         <q-space />
 
-        <q-btn flat @click="showAddTask = true" class="q-pa-xs add-task-btn-footer" icon="add" />
-
+        <q-btn
+          flat
+          @click="showAddTask = true"
+          class="q-pa-xs add-task-btn-footer"
+          icon="add"
+        />
       </div>
     </q-footer>
 
@@ -73,38 +89,47 @@
       show-if-above
       content-class="bg-secondary"
       v-model="left"
-      side="left">
+      side="left"
+    >
       <div class="tasklin-details">
-      <q-img
-        src="statics/background-forest.jpg"
-        style="height: 250px">
-        <div class="layout-details bg-transparent">
-          <q-avatar v-if="this.tasklin != ''" size="10rem">
-              <q-tooltip anchor="center right" self="center left" :offset="[10, 10]">
+        <q-img src="statics/background-forest.jpg" style="height: 250px">
+          <div class="layout-details bg-transparent">
+            <q-avatar v-if="this.tasklin != ''" size="10rem">
+              <q-tooltip
+                anchor="center right"
+                self="center left"
+                :offset="[10, 10]"
+              >
                 This will eventually be your avatar.
               </q-tooltip>
-            <img              
-              v-if="this.tasklin.color === 'blue'"
-              src="statics/placeholder/blue3a.png"
-            />
-            <img
-              v-if="this.tasklin.color === 'pink'"
-              src="statics/placeholder/pink3a.png"
-            />
-            <img
-              v-if="this.tasklin.color === 'purple'"
-              src="statics/placeholder/purple3a.png"
-            />
-            <img
-              v-if="this.tasklin.color === 'green'"
-              src="statics/placeholder/green3a.png"
-            />
-            <q-badge align="bottom" floating text-color="black" color="accent">{{profile.level}}</q-badge>
-          </q-avatar>
-          </div>
-          <div class="layout-details">
-            <div>{{ profile.name }}</div>
-            <div>{{ profile.username }}</div>
+              <img
+                v-if="this.tasklin.color === 'blue'"
+                src="statics/placeholder/blue3a.png"
+              />
+              <img
+                v-if="this.tasklin.color === 'pink'"
+                src="statics/placeholder/pink3a.png"
+              />
+              <img
+                v-if="this.tasklin.color === 'purple'"
+                src="statics/placeholder/purple3a.png"
+              />
+              <img
+                v-if="this.tasklin.color === 'green'"
+                src="statics/placeholder/green3a.png"
+              />
+              <q-badge
+                align="bottom"
+                floating
+                text-color="black"
+                color="accent"
+                >{{ profile.level }}</q-badge
+              >
+            </q-avatar>
+            <div class="layout-details">
+              <div>{{ profile.name }}</div>
+              <div>{{ profile.username }}</div>
+            </div>
           </div>
         </q-img>
       </div>
@@ -113,13 +138,23 @@
         <search />
       </div> -->
       <div>
-        <q-tabs outside-arrows indicator-color="transparent" active-color="accent" class="col-10 text-secondary bg-primary">
+        <q-tabs
+          outside-arrows
+          indicator-color="transparent"
+          active-color="accent"
+          class="col-10 text-secondary bg-primary"
+        >
           <q-route-tab class="q-pa-sm" dense to="/index" icon="home" />
           <q-route-tab class="q-pa-xs" dense to="/todo" icon="done" />
           <!-- <q-route-tab class="q-pa-xs" dense to="/tasklins" icon="pets" />
           <q-route-tab class="q-pa-xs" dense to="/explore" icon="explore" />
           <q-route-tab class="q-pa-xs" dense to="/community" icon="chat" /> -->
-          <q-route-tab class="q-pa-xs" dense to="/challenges" icon="assessment" />
+          <q-route-tab
+            class="q-pa-xs"
+            dense
+            to="/challenges"
+            icon="assessment"
+          />
           <q-route-tab class="q-pa-xs" dense to="/profile" icon="person" />
           <q-route-tab class="q-pa-xs" dense to="/help" icon="help" />
         </q-tabs>
