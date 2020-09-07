@@ -73,14 +73,12 @@
       show-if-above
       content-class="bg-secondary"
       v-model="left"
-      side="left"
-    >
+      side="left">
       <div class="tasklin-details">
       <q-img
         src="statics/background-forest.jpg"
-        style="height: 250px"
-      >
-              <div class="layout-details bg-transparent">
+        style="height: 250px">
+        <div class="layout-details bg-transparent">
           <q-avatar v-if="this.tasklin != ''" size="10rem">
               <q-tooltip anchor="center right" self="center left" :offset="[10, 10]">
                 This will eventually be your avatar.
@@ -103,6 +101,7 @@
             />
             <q-badge align="bottom" floating text-color="black" color="accent">{{profile.level}}</q-badge>
           </q-avatar>
+          </div>
           <div class="layout-details">
             <div>{{ profile.name }}</div>
             <div>{{ profile.username }}</div>
