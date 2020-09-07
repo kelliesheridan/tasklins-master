@@ -127,7 +127,9 @@ const actions = {
     let userId = firebaseAuth.currentUser.uid;
     let taskRef = firebaseDb.ref("tasks/" + userId + "/" + payload.id);
     payload.task.createdDate = moment().format();
-    payload.task.dueDate = moment(payload.task.dueDate).format("YYYY-MM-DD");
+    if (payload.task.dueDate !== "") {
+      payload.task.dueDate = moment(payload.task.dueDate).format("YYYY-MM-DD");
+    }
     taskRef.set(payload.task, error => {
       if (error) {
         showErrorMessage(error.message);
