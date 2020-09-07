@@ -241,6 +241,7 @@ export default {
                     id: this.profile.id,
                     about: this.profile.about,
                     avatar: this.profile.avatar,
+                    memberType: 1,
                     lin: this.profile.lin,
                     xp: this.profile.xp,
                     level: this.profile.level,

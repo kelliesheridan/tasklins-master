@@ -14,8 +14,7 @@
 
         <q-select
             outlined
-            v-model="taskToSubmit.project"
-            autofocus
+            v-model="taskToSubmit.project"            
             label="Project"
             class="col"
             :options="this.$store.state.tasks.projects">
