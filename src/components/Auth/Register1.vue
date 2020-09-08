@@ -75,7 +75,7 @@
         <q-space />
         <q-btn
         color="green-2"
-        @click="updateUserProfile"
+        @click="submitForm()"
         text-color="primary"
         class="auth-register-btn"
         label="Register"
@@ -141,7 +141,8 @@ export default {
                 this.$refs.password.validate()
                 
                 if (!this.$refs.email.hasError && !this.$refs.password.hasError) {
-                    this.registerUser(this.formData)                    
+                    this.registerUser(this.formData)   
+                    this.$router.push("/auth2");                 
                 }
         },
     }
