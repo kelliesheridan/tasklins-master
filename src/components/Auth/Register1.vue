@@ -119,7 +119,6 @@ export default {
         ...mapGetters("profile", ["profile"]),
         ...mapGetters("tasklins", ["tasklin"]),
         ...mapGetters("settings", ["fbReadSettings"]),        
-        
     },
     methods: {
             ...mapActions("profile", [

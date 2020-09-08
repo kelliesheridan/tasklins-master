@@ -130,6 +130,9 @@ const actions = {
     if (payload.task.dueDate !== "") {
       payload.task.dueDate = moment(payload.task.dueDate).format("YYYY-MM-DD");
     }
+    if (payload.task.project == "") {
+      payload.task.project = "Tasks";
+    }
     taskRef.set(payload.task, error => {
       if (error) {
         showErrorMessage(error.message);
@@ -156,7 +159,7 @@ const actions = {
     let userId = firebaseAuth.currentUser.uid;
     let projects = firebaseDb.ref("projects/" + userId).orderByKey();
     let projectsArray = new Array();
-    projectsArray.push('');
+    projectsArray.push('Tasks');
     projects.once("value").then(function(snapshot) {
       let projectRecords = snapshot.val();
       if (projectRecords) {
