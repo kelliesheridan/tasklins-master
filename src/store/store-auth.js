@@ -95,6 +95,7 @@ const actions = {
     let payload = {
       darkMode: false,
       hideCompletedTasks: false,
+      hideTips: false,
       show24hrTimeFormat: false
     };
     let taskRef = firebaseDb.ref("settings/" + userId);
