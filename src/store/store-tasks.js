@@ -42,7 +42,7 @@ const mutations = {
   },
   setProjectSearch(state, value) {
     state.projectSearch = value;
-  },
+  }
 };
 
 const actions = {
@@ -141,16 +141,18 @@ const actions = {
       }
     });
   },
-  fbAddProject({dispatch}, payload) {
+  fbAddProject({ dispatch }, payload) {
     let userId = firebaseAuth.currentUser.uid;
-    let taskRef = firebaseDb.ref("projects/" + userId + "/" + payload.projectName);
+    let taskRef = firebaseDb.ref(
+      "projects/" + userId + "/" + payload.projectName
+    );
     console.debug("project:", payload);
     payload.createdDate = moment().format();
     taskRef.set(payload, error => {
       if (error) {
         showErrorMessage(error.message);
       } else {
-        dispatch("fbReadProjects")
+        dispatch("fbReadProjects");
         //Notify.create('New Task Added - + 1xp')
       }
     });
@@ -159,7 +161,7 @@ const actions = {
     let userId = firebaseAuth.currentUser.uid;
     let projects = firebaseDb.ref("projects/" + userId).orderByKey();
     let projectsArray = new Array();
-    projectsArray.push('Tasks');
+    projectsArray.push("Tasks");
     projects.once("value").then(function(snapshot) {
       let projectRecords = snapshot.val();
       if (projectRecords) {
@@ -170,21 +172,78 @@ const actions = {
       }
     });
   },
-  fbUpdateTask({}, payload) {
+  fbUpdateTask({dispatch}, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let taskRef = firebaseDb.ref("tasks/" + userId + "/" + payload.id);
     payload.updates.lastModified = moment().format();
-    console.debug('task payload:', payload.updates.task)
     taskRef.update(payload.updates, error => {
       if (error) {
         showErrorMessage(error.message);
       }
-    });
+    })
+    // check for repeating task
+    if (payload.updates.completed) {
+      if (payload.updates.task.nrepeating.monday || 
+        payload.updates.task.nrepeating.tuesday ||
+        payload.updates.task.nrepeating.wednesday ||
+        payload.updates.task.nrepeating.thursday ||
+        payload.updates.task.nrepeating.friday ||
+        payload.updates.task.nrepeating.saturday ||
+        payload.updates.task.nrepeating.sunday) {
+      var dayNeeded = 0;
+      var currentDay = moment().day();
+      var newTask = {
+        name: payload.updates.task.name,
+        project: payload.updates.task.project,
+        npublic: payload.updates.task.npublic,
+        nrepeating: {
+          monday: payload.updates.task.nrepeating.monday,
+          tuesday: payload.updates.task.nrepeating.tuesday,
+          wednesday: payload.updates.task.nrepeating.wednesday,
+          thursday: payload.updates.task.nrepeating.thursday,
+          friday: payload.updates.task.nrepeating.friday,
+          saturday: payload.updates.task.nrepeating.saturday,
+          sunday: payload.updates.task.nrepeating.sunday
+        },
+        dueDate: "",
+        dueTime: "",
+        completed: false,
+        createdDate: moment().format(),
+        lastModified: moment().format()
+      };
+
+      if (payload.updates.task.nrepeating.monday) {
+        dayNeeded = 1;
+      } else if (payload.updates.task.nrepeating.tuesday) {
+        dayNeeded = 2;
+      } else if (payload.updates.task.nrepeating.wednesday) {
+        dayNeeded = 3;
+      } else if (payload.updates.task.nrepeating.thursday) {
+        dayNeeded = 4;
+      } else if (payload.updates.task.nrepeating.friday) {
+        dayNeeded = 5;
+      } else if (payload.updates.task.nrepeating.saturday) {
+        dayNeeded = 6;
+      } else if (payload.updates.task.nrepeating.sunday) {
+        dayNeeded = 7;
+      }
+      newTask.dueDate = moment(payload.updates.task.dueDate)
+        .day(dayNeeded + 7)
+        .format("YYYY-MM-DD");
+      var newPayload = {};
+      newPayload.task = newTask;
+      newPayload.id = uid();
+
+      dispatch("fbAddTask", newPayload);
+    };
+  }
   },
   fbPushDueDate({}, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let taskRef = firebaseDb.ref("tasks/" + userId + "/" + payload.id);
-    payload.dueDate = moment(payload.dueDate).add(1,'days').format('YYYY-MM-DD')
+    payload.dueDate = moment(payload.dueDate)
+      .add(1, "days")
+      .format("YYYY-MM-DD");
     taskRef.update(payload, error => {
       if (error) {
         showErrorMessage(error.message);
@@ -216,12 +275,20 @@ const getters = {
     let tasksSorted = {},
       keysOrdered = Object.keys(state.tasks);
     if (keysOrdered.length > 0) {
-      keysOrdered.sort((a, b) => {        
+      keysOrdered.sort((a, b) => {
         let taskAProp = state.tasks[a][state.sort],
           taskBProp = state.tasks[b][state.sort];
 
-        if (moment(taskAProp).format("YYYY-MM-DD") > moment(taskBProp).format("YYYY-MM-DD")) return 1;
-        else if (moment(taskAProp).format("YYYY-MM-DD") < moment(taskBProp).format("YYYY-MM-DD")) return -1;
+        if (
+          moment(taskAProp).format("YYYY-MM-DD") >
+          moment(taskBProp).format("YYYY-MM-DD")
+        )
+          return 1;
+        else if (
+          moment(taskAProp).format("YYYY-MM-DD") <
+          moment(taskBProp).format("YYYY-MM-DD")
+        )
+          return -1;
         else return 0;
       });
 
@@ -292,7 +359,7 @@ const getters = {
       let formattedTaskDueDate = moment(taskDueDate).format("YYYY-MM-DD");
       let formattedToday = moment(today).format("YYYY-MM-DD");
 
-      if (moment(formattedTaskDueDate).isSame(formattedToday, 'day')) {
+      if (moment(formattedTaskDueDate).isSame(formattedToday, "day")) {
         tasks[key] = task;
       }
     });
@@ -306,7 +373,7 @@ const getters = {
       let task = tasksFiltered[key];
       let taskDueDate = task.dueDate;
       let today = moment().format();
-     
+
       let formattedTaskDueDate = moment(taskDueDate).format("YYYY-MM-DD");
       let formattedToday = moment(today).format("YYYY-MM-DD");
 
@@ -319,7 +386,7 @@ const getters = {
     });
 
     return tasks;
-  },  
+  },
   projects: state => {
     return state.projects;
   }
