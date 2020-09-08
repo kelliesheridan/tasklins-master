@@ -25,7 +25,7 @@ const actions = {
         console.log("response: ", response);
         dispatch("fbCreateProfile");
         dispatch("fbCreateSettings");
-        this.$router.push("/initial").catch(err => {});
+        this.$router.push("/auth2").catch(err => {});
       })
       .catch(error => {
         showErrorMessage(error.message);
