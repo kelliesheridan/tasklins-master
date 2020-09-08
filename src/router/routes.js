@@ -16,7 +16,8 @@ const routes = [
       { path: 'help', component: () => import('pages/PageHelp.vue') },
       { path: 'todo', component: () => import('pages/PageTodo.vue') },
       { path: 'settings', component: () => import('pages/PageSettings.vue') },
-      { path: 'auth', component: () => import('pages/PageAuth.vue') },   
+      { path: 'auth', component: () => import('pages/PageAuth.vue') },
+      { path: 'auth2', component: () => import('pages/PageAuth2.vue') },      
       { path: 'challenges', component: () => import('pages/PageChallenges.vue') }
     ]
   }

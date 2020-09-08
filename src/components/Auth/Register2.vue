@@ -19,66 +19,6 @@
           stack-label
           class="col auth-input"
           bg-color="green-2"
-          v-model="formData.email"
-          ref="email"
-          placeholder="E-mail"
-          :rules="[
-            val =>
-              isValidEmailAddress(val) || 'Please enter a valid email address.'
-          ]"
-          lazy-rules
-        />
-
-        <q-input
-          stack-label
-          class="col auth-input"
-          bg-color="green-2"
-          autocomplete="off"
-          type="email"
-          v-model="formData.email2"
-          ref="email2"
-          placeholder="Please re-enter e-mail"
-          :rules="[val => val == formData.email || 'Emails do not match.']"
-          lazy-rules
-        />
-      </div>
-
-      <div class="row auth-section">
-        <q-input
-          aria="-label"
-          stack-label
-          type="password"
-          class="col auth-input"
-          bg-color="green-2"
-          v-model="formData.password"
-          placeholder="Password"
-          lazy-rules
-          :rules="[
-            val => val.length >= 6 || 'Please use at least 6 characters'
-          ]"
-          ref="password"
-        />
-
-        <q-input
-          stack-label
-          type="password"
-          class="col auth-input"
-          bg-color="green-2"
-          v-model="formData.password2"
-          placeholder="Re-Enter password"
-          lazy-rules
-          :rules="[
-            val => val == formData.password || 'Passwords do not match.'
-          ]"
-          ref="password"
-        />
-      </div>
-
-      <div class="row auth-section">
-        <q-input
-          stack-label
-          class="col auth-input"
-          bg-color="green-2"
           v-model="formData.name"
           ref="name"
           placeholder="Your Name"
@@ -104,7 +44,7 @@
           outlined
           v-model="formData.prounouns"
           bg-color="green-2"
-          label="Your Prounouns"
+          label="Your Pronouns"
           class="col auth-input"
           :options="filterOptions"
           style="width: 50%"

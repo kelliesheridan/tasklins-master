@@ -75,7 +75,19 @@
         <q-space />
         <q-btn
         color="green-2"
-        @click="updateUserProfile"
+        @click="authPush"
+        text-color="primary"
+        class="auth-register-btn"
+        label="Next"
+        v-close-popup
+        type="submit" />
+    </div>
+
+    <div class="row q-mb-md">
+        <q-space />
+        <q-btn
+        color="green-2"
+        @click="updateUserProfile && authPush"
         text-color="primary"
         class="auth-register-btn"
         label="Register"
@@ -129,7 +141,11 @@ export default {
             "updateProfile",
             "togglePrivateValue",            
             "updateColor"
-            ]),        
+            ]),
+            authPush() {
+      
+                this.$router.push("/auth2");
+    },        
 			...mapActions('auth', ['registerUser']),
 			isValidEmailAddress(email) {
 				var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/

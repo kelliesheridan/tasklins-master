@@ -1,5 +1,5 @@
 <template>
-  <q-page padding>
+  <q-page padding class="bg-auth">
     <div class="q-pa-md" style="max-width: 400px"></div>
 
     <q-dialog
