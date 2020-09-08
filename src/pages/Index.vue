@@ -166,9 +166,9 @@ import { openURL } from "quasar";
 export default {
   props: ["tasksTodo"],
   mounted() {
-    if (this.profile.signup) {
-      this.$router.push("/initial")
-    }
+    // if (this.profile.signup) {
+    //   this.$router.push("/initial")
+    // }
     this.setProjectSearch("");
   },
   components: {
