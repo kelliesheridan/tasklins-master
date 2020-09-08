@@ -18,11 +18,13 @@
           <no-tasks v-if="!Object.keys(tasksTodo).length && !search"></no-tasks>
 
           <tasks-todo
+            class="toDoScroll"
             v-if="Object.keys(tasksTodo).length"
             :tasksTodo="tasksTodo"
           />
 
           <tasks-completed
+            class="toDoScroll"
             v-if="Object.keys(tasksCompleted).length"
             :tasksCompleted="tasksCompleted"
           />
@@ -71,5 +73,9 @@ export default {
 .section {
   overflow: auto;
   flex: auto;
+}
+
+.toDoScroll {
+  padding-bottom: 25px;
 }
 </style>
