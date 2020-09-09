@@ -25,8 +25,8 @@
                 <q-item-label
                   >Hi, I'm Piper! I'll be showing you around. Don't mind the
                   dust, things are still pretty heavily under construction
-                  around here, but we're happy to have you!</q-item-label
-                >
+                  around here, but we're happy to have you!
+                </q-item-label>
               </q-item-section>
             </q-item>
           </div>
@@ -62,8 +62,8 @@
               <q-item-section top>
                 <q-item-label
                   >Now, before you start adding in your tasks, we need to know a
-                  little more about you.</q-item-label
-                >
+                  little more about you.
+                </q-item-label>
               </q-item-section>
             </q-item>
           </div>
@@ -301,39 +301,36 @@
             class="responsive egg2"
             src="statics/placeholder/pink3a.png"
           />
-        </div>      
+        </div>
       </div>
 
-      <div v-else></div>    
+      <div v-else></div>
 
-      <div class="initial-box col-xs-12 col-sm-12 col-md-6 col-lg-6 q-pa-xs" style="overflow: auto; height: 90%">
+      <div
+        class="initial-box col-xs-12 col-sm-12 col-md-6 col-lg-6 q-pa-xs"
+        style="overflow: auto; height: 90%"
+      >
         <tasks-initial
-            v-if="Object.keys(tasksTodo).length"
-            :tasksTodo="tasksTodo"
-          />    
-      </div> 
+          v-if="Object.keys(tasksTodo).length"
+          :tasksTodo="tasksTodo"
+        />
+      </div>
 
       <div v-if="newTasks >= 5 && hatched != true">
-        <q-btn        
-        color="secondary"
-        @click="hatched = true"
-        glossy
-        label="Hatch"
-        />
+        <q-btn color="secondary" @click="hatched = true" glossy label="Hatch" />
       </div>
 
-      
       <div v-if="newTasks <= 4">
-        <q-btn        
-        color="secondary"
-        @click="
-          showAddTask = true;
-          newTasks++;"
-        glossy
-        icon="add"
+        <q-btn
+          color="secondary"
+          @click="
+            showAddTask = true;
+            newTasks++;
+          "
+          glossy
+          icon="add"
         />
-      </div>       
-
+      </div>
 
       <div
         class="q-pa-sm thinger"
@@ -486,9 +483,8 @@ export default {
         eyebrowsOrTail: "",
         earsOrHorns: "",
         bodyShape2: "",
-        pattern2: ""   
-               
-        };
+        pattern2: ""
+      };
 
       this.addTasklin(tasklin);
       this.$router.push("/todo");
@@ -496,7 +492,7 @@ export default {
   },
   components: {
     "add-task": require("components/Tasks/Modals/addTask.vue").default,
-    "tasks-initial": require("components/Tasks/TasksInitial.vue").default,
+    "tasks-initial": require("components/Tasks/TasksInitial.vue").default
   }
 };
 </script>
@@ -504,7 +500,7 @@ export default {
 <style>
 .initial-box {
   overflow: auto;
-  flex: auto;  
+  flex: auto;
   margin: 0 auto;
 }
 
@@ -544,7 +540,6 @@ export default {
 
   .initial-box {
     max-width: 80%;
-
   }
 }
 
