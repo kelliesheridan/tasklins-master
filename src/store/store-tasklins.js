@@ -41,7 +41,7 @@ const actions = {
           color: tasklinInfo.color,
           type: tasklinInfo.type,
           xp: tasklinInfo.xp,
-          creation_date: tasklinInfo.creation_date
+          creation_date: moment(tasklinInfo.creation_date).format("YYYY-MM-DD")
         };
         commit("setTasklin", payload);
       }
@@ -49,7 +49,7 @@ const actions = {
   },
   fbUpdateTasklin({}) {
     let userId = firebaseAuth.currentUser.uid;
-    let settingsUpdate = firebaseDb.ref("fitness/" + userId);
+    let settingsUpdate = firebaseDb.ref("tasklins/" + userId);
     settingsUpdate.update(state.settings, error => {
       if (error) {
         showErrorMessage(error.message);
@@ -60,10 +60,10 @@ const actions = {
     let userId = firebaseAuth.currentUser.uid;
     let payload = {
       name: tasklin.name,
-      color: tasklin.color,
+      color: tasklin.color1,
       type: tasklin.type,
       xp: tasklin.xp,
-      creation_date: tasklin.creation_date
+      creation_date: moment(tasklin.creation_date).format("YYYY-MM-DD")
     };
     let fbTasklin = firebaseDb.ref("tasklins/" + userId);
     fbTasklin.set(payload);

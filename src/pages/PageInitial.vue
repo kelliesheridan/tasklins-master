@@ -470,7 +470,7 @@ export default {
         project: "Tasks",
         xp: 0,
         level: 1,
-        color1: this.color1,
+        color1: this.color,
         color2: this.color2,
         color3: this.color3,
         bodyShape: this.bodyShape,
