@@ -15,6 +15,7 @@ const routes = [
       { path: 'community', component: () => import('pages/PageCommunity.vue') },
       { path: 'help', component: () => import('pages/PageHelp.vue') },
       { path: 'todo', component: () => import('pages/PageTodo.vue') },
+      { path: 'lists', component: () => import('pages/PageLists.vue') },
       { path: 'settings', component: () => import('pages/PageSettings.vue') },
       { path: 'auth', component: () => import('pages/PageAuth.vue') },
       { path: 'auth2', component: () => import('pages/PageAuth2.vue') },      
