@@ -41,6 +41,7 @@
 
       <div class="row auth-section">
         <q-select
+          id="userID"
           outlined
           v-model="formData.prounouns"
           bg-color="green-2"
@@ -95,7 +96,7 @@
           label="Register"
           :disable="
             formData.email2 != formData.email &&
-              formData.password2 != formData.email
+            formData.password2 != formData.email
           "
           type="submit"
         />
@@ -120,7 +121,7 @@ export default {
         name: "",
         username: "",
         password: "",
-        prounouns: "",
+        pronouns: "",
         color: ""
       },
       model: null,
@@ -171,6 +172,14 @@ export default {
       set(value) {
         this.updateColor(value);
         this.hex = value;
+      }
+    },
+    changePronouns: {
+      get() {
+        return this.profile.pronouns;
+      },
+      set(value) {
+        this.updatePronouns(value);
       }
     }
   },
