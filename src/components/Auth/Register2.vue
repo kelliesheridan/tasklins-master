@@ -59,7 +59,7 @@
             :style="{ 'background-color': this.profile.color }"
           >
             <div class="text-h5 text-center" style="color: white">
-              Pick a colour:
+              Pick a color:
             </div>
           </q-badge>
 

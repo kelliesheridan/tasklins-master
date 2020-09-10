@@ -17,6 +17,8 @@
 }
 
 .task-date {
+    text-align: center;
+    align-items: center;
     
     @include respond(big-desktop) {
        font-size: 12px;

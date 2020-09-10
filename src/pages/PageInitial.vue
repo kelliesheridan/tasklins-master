@@ -123,7 +123,7 @@
       </div>
 
       <div v-if="newTasks >= 5 && hatched != true">
-        <q-btn color="secondary" @click="hatched == true" glossy label="Hatch" />
+        <q-btn color="secondary" @click="hatched = true" glossy label="Hatch" />
       </div>
 
       <div v-if="newTasks <= 4">
@@ -187,7 +187,7 @@ export default {
       showNewUser2: false,
       showAddTask: false,
       eggColor: "eggStarterPurple",
-      hatched: true,
+      hatched: false,
       hex: "ff00ff",
       tasklinName: "",
       tasklinType: "Monster",

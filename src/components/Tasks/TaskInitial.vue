@@ -8,17 +8,11 @@
       <q-item-label      	
         v-html="$options.filters.searchHighlight(task.name, search)">
       </q-item-label>        
-      <div v-if="task.dueDate" class="row">
-        <div class="column justify-center">
-
-        </div>
-        <div class="column task-date">
+      <div v-if="task.dueDate">
           <q-item-label
-            class="row justify-start "
-            >
+            class="task-date">
             {{ task.dueDate | niceDate }}
           </q-item-label>
-        </div>
       </div>
         
       
