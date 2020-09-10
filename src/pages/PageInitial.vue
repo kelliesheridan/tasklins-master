@@ -43,12 +43,6 @@
         </q-card-section>
       </q-card>
     </q-dialog>
-
-    <q-dialog
-      v-model="showNewUser2"
-      persistent
-      transition-show="scale"
-      transition-hide="scale">
     
     <div class="col text-center" v-if="showNewUser4">
       <q-card class="my-card">
