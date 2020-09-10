@@ -22,6 +22,16 @@
           v-if="taskToSubmit.dueDate"
           :dueTime.sync="taskToSubmit.dueTime"
         />
+
+        <!-- <q-btn class="task-btn"
+          @click.stop="pushDueDate({ id: id, dueDate: task.dueDate })"
+          flat
+          round
+          dense
+          color="blue"
+          icon="rotate_right">
+          <q-tooltip content-class="bg-secondary">Move to Tomorrow</q-tooltip>
+        </q-btn> -->
       </q-card-section>
 
       <q-card-section class="q-pt-none">
@@ -81,7 +91,7 @@ export default {
       .default
   },
   methods: {
-    ...mapActions("tasks", ["addTask"]),
+    ...mapActions("tasks", ["addTask", "pushDueDate"]),
     ...mapActions("profile", ["addXPValue"]),
     submitTask() {
       this.addTask(this.taskToSubmit);

@@ -14,19 +14,17 @@
         </q-icon>
       </template>
     </q-input>
-    <!-- <q-btn
-          @click.stop="$emit('update:dueDate', $event)"       
-          @click.stop="dueDateToday({ id: id, dueDate: task.dueDate })"
+
+<!-- @click.stop="dueDateToday({ id: id, dueDate: task.dueDate })" -->
+
+        <q-btn
+          @click.stop="$emit(Date.now())"    
           flat
           round
           dense
           color="purple"
           icon="today" />
-            <q-btn
-            flat
-            dense
-            color="green"
-            icon="event" /> -->
+
   </div>
 </template>
 

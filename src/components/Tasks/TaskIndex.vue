@@ -78,7 +78,7 @@
           color="blue"
           icon="rotate_right">
           <q-tooltip content-class="bg-secondary">Move to Tomorrow</q-tooltip>
-          </q-btn>
+        </q-btn>
       </div>
     </q-item-section>
 

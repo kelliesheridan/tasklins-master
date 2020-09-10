@@ -48,169 +48,8 @@
       v-model="showNewUser2"
       persistent
       transition-show="scale"
-      transition-hide="scale"
-    >
-      <q-card class="card">
-        <q-card-section class="q-pt-md">
-          <div>
-            <q-item>
-              <q-item-section side top>
-                <q-avatar rounded class="pip-avatar">
-                  <img src="statics/Piper.jpg" />
-                </q-avatar>
-              </q-item-section>
-              <q-item-section top>
-                <q-item-label
-                  >Now, before you start adding in your tasks, we need to know a
-                  little more about you.
-                </q-item-label>
-              </q-item-section>
-            </q-item>
-          </div>
-        </q-card-section>
-
-        <q-card-section class="q-pt-md">
-          <q-form @submit.prevent="submitForm" class="q-gutter-md">
-            <div class="row">
-              <q-input
-                class="col q-ma-sm"
-                filled
-                v-model="changeName"
-                label="Your First Name*"
-                lazy-rules
-                :rules="[
-                  val => (val && val.length > 0) || 'Please type something'
-                ]"
-              />
-
-              <q-input
-                class="col q-ma-sm"
-                filled
-                v-model="changeUsername"
-                label="Username*"
-                lazy-rules
-                :rules="[
-                  val => (val && val.length > 0) || 'Please type something'
-                ]"
-              />
-            </div>
-
-            <!-- <q-input
-        filled        
-        v-model="changeAbout"
-        label="What's the most exciting goal you're currently working toward?"
-        :rules="[ val => val.length <= 250 || 'No more than 250 characters']"
-      /> -->
-
-            <div class="q-pa-md">
-              <q-badge
-                :style="{ 'background-color': this.profile.color }"
-                text-color="black"
-                class="q-mb-sm"
-              >
-                {{ this.profile.color }}
-              </q-badge>
-
-              <q-color
-                :color="changeColor"
-                v-model="changeColor"
-                no-footer
-                no-header
-                default-view="palette"
-                class="my-picker"
-              />
-            </div>
-
-            <!-- <q-toggle v-model="togglePrivate" label="My profile is public" /> -->
-          </q-form>
-        </q-card-section>
-
-        <q-card-actions align="right">
-          <q-btn
-            flat
-            label="Next"
-            color="primary"
-            @click="showNewUser3 = true"
-            v-close-popup
-          />
-        </q-card-actions>
-      </q-card>
-    </q-dialog>
-
-    <q-dialog
-      v-model="showNewUser3"
-      persistent
-      transition-show="scale"
-      transition-hide="scale"
-    >
-      <q-card class="card">
-        <q-card-section class="q-pt-md">
-          <div>
-            <q-item>
-              <q-item-section side top>
-                <q-avatar rounded class="pip-avatar">
-                  <img src="statics/Piper.jpg" />
-                </q-avatar>
-              </q-item-section>
-              <q-item-section top>
-                <q-item-label
-                  >Next up, it's time to meet your first Tasklin. Eventually,
-                  you'll be able to collect a wide variety of creatures, but as
-                  Tasklins continues to grow, your first pet will be here
-                  growing along with you.</q-item-label
-                >
-              </q-item-section>
-            </q-item>
-          </div>
-        </q-card-section>
-
-        <div class="thinger">
-          <q-card-section class="q-pt-md">
-            <div>
-              <img src="statics/eggs/blue3.png" class="responsive egg" />
-              <img src="statics/eggs/purple3.png" class="responsive egg" />
-              <img src="statics/eggs/green3.png" class="responsive egg" />
-              <img src="statics/eggs/pink3.png" class="responsive egg" />
-            </div>
-          </q-card-section>
-
-          <q-card-section class="q-pt-md">
-            <div class="q-pa-md">
-              <div class="q-gutter-sm">
-                <q-radio v-model="color" val="blue" label="Blue" color="blue" />
-                <q-radio
-                  v-model="color"
-                  val="purple"
-                  label="Purple"
-                  color="purple"
-                />
-                <q-radio
-                  v-model="color"
-                  val="green"
-                  label="Green"
-                  color="green"
-                />
-                <q-radio v-model="color" val="pink" label="Pink" color="pink" />
-              </div>
-            </div>
-          </q-card-section>
-        </div>
-
-        <q-card-actions align="right">
-          <q-btn
-            v-if="showNewUser3"
-            label="Next"
-            @click="
-              updateUserProfile;
-              showNewUser4 = true;
-            "
-            v-close-popup
-            color="primary"
-          />
-        </q-card-actions>
-      </q-card>
-    </q-dialog>
-
+      transition-hide="scale">
+    
     <div class="col text-center" v-if="showNewUser4">
       <q-card class="my-card">
         <div>
@@ -308,8 +147,7 @@
 
       <div
         class="initial-box col-xs-12 col-sm-12 col-md-6 col-lg-6 q-pa-xs"
-        style="overflow: auto; height: 90%"
-      >
+        style="overflow: auto; height: 90%">
         <tasks-initial
           v-if="Object.keys(tasksTodo).length"
           :tasksTodo="tasksTodo"
@@ -328,8 +166,7 @@
             newTasks++;
           "
           glossy
-          icon="add"
-        />
+          icon="add"/>
       </div>
 
       <div
