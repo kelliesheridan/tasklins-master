@@ -59,8 +59,16 @@
             <div class="text-h7">
               {{ this.getActivity(0) }}
 
-              <q-card-actions align="right">
-                <!-- <q-btn @click="submit('cheer')" dense flat>Cheer!</q-btn> -->
+              <q-card-actions class="q-pa-xs q-pa-xs" align="right">
+
+                <span>
+                  <q-btn @click="submit('cheer'); cheer = true" dense push>Cheer!</q-btn>
+                </span>
+
+                <span>
+                 # <q-icon name="thumb_up" />
+                </span>           
+
               </q-card-actions>
             </div>
           </q-card-section>
@@ -280,7 +288,8 @@ const moment = require('moment')
 
 export default {
   data: () => ({
-    update: 0
+    update: 0,
+    cheer: false
   }),
   computed: {
     ...mapGetters("writing", ["writing"]),
@@ -291,6 +300,10 @@ export default {
     submit(event) {
       console.debug("writing event: ", event);
       this.addWritingTask(event);
+      this.update += 1;
+    },
+      cheer() {
+        
       this.update += 1;
     },
     calculateValues(user) {

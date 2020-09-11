@@ -1,5 +1,7 @@
 <template>
-  <img class="responsive" src="/statics/tasklins/test1.svg"/>
+  <div class="tasklin-texture">
+    <img class="responsive" src="/statics/tasklins/test1.svg"/>
+  </div>
 </template>
 
 <script>

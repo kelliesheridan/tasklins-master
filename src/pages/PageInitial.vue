@@ -140,11 +140,10 @@
       
       
 
-      <div
-        class="q-pa-sm thinger"
+      <div class="q-pa-sm thinger"
         v-if="hatched === true">
 
-        <div class="q-pa-sm">
+        <div class="q-pa-sm tasklin-size">
           <tasklin />
         </div>
 
@@ -364,5 +363,10 @@ export default {
   height: auto;
   margin: auto;
   display: inline-block;
+}
+
+.tasklin-size {
+  width: 100%;
+  height: auto;
 }
 </style>
