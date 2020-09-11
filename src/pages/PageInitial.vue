@@ -145,7 +145,7 @@
         v-if="hatched === true">
 
         <div class="q-pa-sm">
-          <img v-if="hatched === true" class="responsive" src="statics/tasklins/test1.svg" />
+          <tasklin />
         </div>
 
         <div class="q-pa-sm" style="max-width: 300px">
@@ -262,7 +262,8 @@ export default {
   },
   components: {
     "add-task": require("components/Tasks/Modals/addTask.vue").default,
-    "tasks-initial": require("components/Tasks/TasksInitial.vue").default
+    "tasks-initial": require("components/Tasks/TasksInitial.vue").default,
+    "tasklin": require("components/Tasklins/Tasklin.vue").default
   }
 };
 </script>
