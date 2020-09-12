@@ -140,12 +140,11 @@
       
       
 
-      <div
-        class="q-pa-sm thinger"
+      <div class="q-pa-sm thinger"
         v-if="hatched === true">
 
-        <div class="q-pa-sm">
-          <img v-if="hatched === true" class="responsive" src="statics/tasklins/test1.svg" />
+        <div class="q-pa-sm tasklin-size">
+          <tasklin />
         </div>
 
         <div class="q-pa-sm" style="max-width: 300px">
@@ -262,7 +261,8 @@ export default {
   },
   components: {
     "add-task": require("components/Tasks/Modals/addTask.vue").default,
-    "tasks-initial": require("components/Tasks/TasksInitial.vue").default
+    "tasks-initial": require("components/Tasks/TasksInitial.vue").default,
+    "tasklin": require("components/Tasklins/Tasklin.vue").default
   }
 };
 </script>
@@ -363,5 +363,10 @@ export default {
   height: auto;
   margin: auto;
   display: inline-block;
+}
+
+.tasklin-size {
+  width: 100%;
+  height: auto;
 }
 </style>
