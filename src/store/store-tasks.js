@@ -161,7 +161,7 @@ const actions = {
     let userId = firebaseAuth.currentUser.uid;
     let projects = firebaseDb.ref("projects/" + userId).orderByKey();
     let projectsArray = new Array();
-    projectsArray.push("Tasks");
+    //projectsArray.push("Tasks");
     projects.once("value").then(function(snapshot) {
       let projectRecords = snapshot.val();
       if (projectRecords) {

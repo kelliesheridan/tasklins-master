@@ -19,7 +19,7 @@
           stack-label
           class="col auth-input"
           bg-color="green-2"
-          v-model="changeName"            
+          v-model="changeName"
           ref="name"
           placeholder="Your Name"
           lazy-rules
@@ -96,7 +96,7 @@
           label="Register"
           :disable="
             formData.email2 != formData.email &&
-            formData.password2 != formData.email
+              formData.password2 != formData.email
           "
           type="submit"
         />
@@ -194,6 +194,7 @@ export default {
       "togglePrivateValue",
       "updateColor"
     ]),
+    ...mapActions("tasklins", ["addTasklin"]),
     updateUserProfile() {
       let profile = {
         name: this.profile.name,
@@ -211,12 +212,39 @@ export default {
         signup: false,
         admin: this.profile.admin,
         color: this.profile.color,
-        pronouns: this.profile.pronouns
+        pronouns: this.profile.pronouns == undefined ? "" : this.profile.pronouns
       };
 
       this.updateProfile(profile);
-
+      this.addNewTasklin();
       this.$router.push("/initial");
+    },
+    
+    addNewTasklin() {
+      let tasklin = {
+        name: "",
+        creation_date: Date.now(),
+        type: "Monster",
+        project: "Tasks",
+        xp: 0,
+        level: 1,
+        color: this.profile.color,
+        color2: "",
+        color3: "",
+        bodyShape: "",
+        bodyTexture: "",
+        eyeColor: this.profile.color,
+        eyeType: "",
+        nose: "",
+        mouth: "",
+        pattern1: "",
+        eyebrowsOrTail: "",
+        earsOrHorns: "",
+        bodyShape2: "",
+        pattern2: ""
+      };
+
+      this.addTasklin(tasklin);
     },
     ...mapActions("auth", ["registerUser"]),
     isValidEmailAddress(email) {
@@ -224,13 +252,7 @@ export default {
       return re.test(String(email).toLowerCase());
     },
     submitForm() {
-      this.$refs.email.validate();
-      this.$refs.password.validate();
-
-      if (!this.$refs.email.hasError && !this.$refs.password.hasError) {
-        this.registerUser(this.formData);
-        this.$router.push("/initial");
-      }
+      this.$router.push("/initial");
     }
   }
 };

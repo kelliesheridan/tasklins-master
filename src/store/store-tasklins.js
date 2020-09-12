@@ -25,6 +25,10 @@ const actions = {
     dispatch("profile/fbReadProfile", null, { root: true });
     this.$router.replace("/todo");
   },
+  updateTasklin({ dispatch }, tasklin) {
+    dispatch("fbUpdateTasklin", tasklin);
+    dispatch("profile/fbReadProfile", null, { root: true });
+  },
   getTasklin({ dispatch }, payload) {
     dispatch("fbReadTasklins", {});
   },
@@ -47,10 +51,10 @@ const actions = {
       }
     });
   },
-  fbUpdateTasklin({}) {
+  fbUpdateTasklin({}, tasklin) {
     let userId = firebaseAuth.currentUser.uid;
-    let settingsUpdate = firebaseDb.ref("tasklins/" + userId);
-    settingsUpdate.update(state.settings, error => {
+    let tasklinUpdate = firebaseDb.ref("tasklins/" + userId);
+    tasklinUpdate.update(tasklin, error => {
       if (error) {
         showErrorMessage(error.message);
       }
@@ -60,7 +64,7 @@ const actions = {
     let userId = firebaseAuth.currentUser.uid;
     let payload = {
       name: tasklin.name,
-      color: tasklin.color1,
+      color: tasklin.color,
       type: tasklin.type,
       xp: tasklin.xp,
       creation_date: moment(tasklin.creation_date).format("YYYY-MM-DD")
