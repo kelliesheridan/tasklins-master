@@ -19,7 +19,7 @@
           stack-label
           class="col auth-input"
           bg-color="green-2"
-          v-model="formData.name"
+          v-model="changeName"            
           ref="name"
           placeholder="Your Name"
           lazy-rules
@@ -31,7 +31,7 @@
           stack-label
           class="col auth-input"
           bg-color="green-2"
-          v-model="formData.username"
+          v-model="changeUsername"
           ref="username"
           placeholder="Choose a Username"
           lazy-rules
@@ -43,7 +43,7 @@
         <q-select
           id="userID"
           outlined
-          v-model="formData.prounouns"
+          v-model="changePronouns"
           bg-color="green-2"
           label="Your Pronouns"
           class="col auth-input"
@@ -189,6 +189,7 @@ export default {
       "updateAbout",
       "updateName",
       "updateUsername",
+      "updatePronouns",
       "updateProfile",
       "togglePrivateValue",
       "updateColor"
@@ -209,7 +210,8 @@ export default {
         private: this.profile.private,
         signup: false,
         admin: this.profile.admin,
-        color: this.profile.color
+        color: this.profile.color,
+        pronouns: this.profile.pronouns
       };
 
       this.updateProfile(profile);

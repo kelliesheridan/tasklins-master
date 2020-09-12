@@ -78,7 +78,10 @@ const mutations = {
   },
   printUsername({}, userNames) {
     console.debug("usernames: " + userNames);
-  }
+  },
+  setPronouns(state, value) {
+    state.profile.user.pronouns = value;
+  },
 };
 // addNewUser(state, payload) {
 // 	Vue.set(state.profile, payload.id, payload.task)
@@ -123,6 +126,10 @@ const actions = {
   updateColor({ commit, dispatch }, value) {
     commit("setColor", value);
   },
+  updatePronouns({ commit, dispatch }, value) {
+    commit("setPronouns", value);
+    //dispatch('fbUpdateProfile')
+  },
   fbReadProfile({ dispatch, commit }) {
     let userId = firebaseAuth.currentUser.uid;
     let userProfile = firebaseDb.ref("profile/" + userId);
@@ -142,7 +149,8 @@ const actions = {
         private: profile.private,
         signup: profile.signup,
         admin: profile.admin,
-        color: profile.color
+        color: profile.color,
+        pronouns: profile.pronouns
       };
       commit("updateProfile", payload);
       dispatch("fbReadAllProfiles")
