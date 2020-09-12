@@ -172,7 +172,7 @@ const actions = {
       }
     });
   },
-  fbUpdateTask({dispatch}, payload) {
+  fbUpdateTask({ dispatch }, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let taskRef = firebaseDb.ref("tasks/" + userId + "/" + payload.id);
     payload.updates.lastModified = moment().format();
@@ -180,63 +180,23 @@ const actions = {
       if (error) {
         showErrorMessage(error.message);
       }
-    })
+    });
     // check for repeating task
     if (payload.updates.completed) {
-      if (payload.updates.task.nrepeating.monday || 
+      if (
+        payload.updates.task.nrepeating.monday ||
         payload.updates.task.nrepeating.tuesday ||
         payload.updates.task.nrepeating.wednesday ||
         payload.updates.task.nrepeating.thursday ||
         payload.updates.task.nrepeating.friday ||
         payload.updates.task.nrepeating.saturday ||
-        payload.updates.task.nrepeating.sunday) {
-      var dayNeeded = 0;
-      var currentDay = moment().day();
-      var newTask = {
-        name: payload.updates.task.name,
-        project: payload.updates.task.project,
-        npublic: payload.updates.task.npublic,
-        nrepeating: {
-          monday: payload.updates.task.nrepeating.monday,
-          tuesday: payload.updates.task.nrepeating.tuesday,
-          wednesday: payload.updates.task.nrepeating.wednesday,
-          thursday: payload.updates.task.nrepeating.thursday,
-          friday: payload.updates.task.nrepeating.friday,
-          saturday: payload.updates.task.nrepeating.saturday,
-          sunday: payload.updates.task.nrepeating.sunday
-        },
-        dueDate: "",
-        dueTime: "",
-        completed: false,
-        createdDate: moment().format(),
-        lastModified: moment().format()
-      };
-
-      if (payload.updates.task.nrepeating.monday) {
-        dayNeeded = 1;
-      } else if (payload.updates.task.nrepeating.tuesday) {
-        dayNeeded = 2;
-      } else if (payload.updates.task.nrepeating.wednesday) {
-        dayNeeded = 3;
-      } else if (payload.updates.task.nrepeating.thursday) {
-        dayNeeded = 4;
-      } else if (payload.updates.task.nrepeating.friday) {
-        dayNeeded = 5;
-      } else if (payload.updates.task.nrepeating.saturday) {
-        dayNeeded = 6;
-      } else if (payload.updates.task.nrepeating.sunday) {
-        dayNeeded = 7;
+        payload.updates.task.nrepeating.sunday
+      ) {
+        var newPayload = {};
+        newPayload = getRepeatingTask(payload.updates.task);
+        dispatch("fbAddTask", newPayload);
       }
-      newTask.dueDate = moment(payload.updates.task.dueDate)
-        .day(dayNeeded + 7)
-        .format("YYYY-MM-DD");
-      var newPayload = {};
-      newPayload.task = newTask;
-      newPayload.id = uid();
-
-      dispatch("fbAddTask", newPayload);
-    };
-  }
+    }
   },
   fbPushDueDate({}, payload) {
     let userId = firebaseAuth.currentUser.uid;
@@ -398,3 +358,90 @@ export default {
   actions,
   getters
 };
+
+function getRepeatingTask(task) {
+  var daysNeeded = [];
+  var currentDay = moment().day();
+  if (currentDay == 0) currentDay = 7;
+  var requiredDay = 0;
+  var newTask = {
+    name: task.name,
+    project: task.project,
+    npublic: task.npublic,
+    nrepeating: {
+      monday: task.nrepeating.monday,
+      tuesday: task.nrepeating.tuesday,
+      wednesday: task.nrepeating.wednesday,
+      thursday: task.nrepeating.thursday,
+      friday: task.nrepeating.friday,
+      saturday: task.nrepeating.saturday,
+      sunday: task.nrepeating.sunday
+    },
+    dueDate: "",
+    dueTime: "",
+    completed: false,
+    createdDate: moment().format(),
+    lastModified: moment().format()
+  };
+
+  if (task.nrepeating.monday) {
+    daysNeeded.push(1);
+  }
+  if (task.nrepeating.tuesday) {
+    daysNeeded.push(2);
+  }
+  if (task.nrepeating.wednesday) {
+    daysNeeded.push(3);
+  }
+  if (task.nrepeating.thursday) {
+    daysNeeded.push(4);
+  }
+  if (task.nrepeating.friday) {
+    daysNeeded.push(5);
+  }
+  if (task.nrepeating.saturday) {
+    daysNeeded.push(6);
+  }
+  if (task.nrepeating.sunday) {
+    daysNeeded.push(7);
+  }
+
+  let day = currentDay;
+  if (daysNeeded.length > 1) {
+    daysNeeded.reduce((a, b) => {
+      if (a && b > currentDay) {
+        let aDiff = Math.abs(a - currentDay);
+        let bDiff = Math.abs(b - currentDay);
+
+        if (aDiff == bDiff) {
+          requiredDay = a > b ? a : b;
+        } else {
+          requiredDay = bDiff < aDiff ? b : a;
+        }
+      } else {
+        day = 0;
+        let aDiff = Math.abs(a - day);
+        let bDiff = Math.abs(b - day);
+        requiredDay = bDiff > aDiff ? a : b;
+      }
+    });
+  } else {
+    requiredDay = daysNeeded[0];
+  }
+if (requiredDay == 7) requiredDay = 0;
+  if (requiredDay > currentDay) {
+    newTask.dueDate = moment()
+      .isoWeekday(requiredDay)
+      .format("YYYY-MM-DD");
+  } else {
+    newTask.dueDate = moment()
+      .add(1, "weeks")
+      .isoWeekday(requiredDay)
+      .format("YYYY-MM-DD");
+  }
+
+  var newPayload = {};
+  newPayload.task = newTask;
+  newPayload.id = uid();
+  return newPayload;
+}
