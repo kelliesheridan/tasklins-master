@@ -138,6 +138,10 @@
               v-if="this.tasklin.color === '#795548'"
               src="statics/placeholder/brown3a.png"
             />
+            <img
+              v-if="this.tasklin.color === '#9e9e9e'"
+              src="statics/placeholder/grey3a.png"
+            />
               <q-badge
                 align="bottom"
                 floating
