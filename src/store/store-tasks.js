@@ -363,7 +363,7 @@ function getRepeatingTask(task) {
   var daysNeeded = [];
   var currentDay = moment().day();
   if (currentDay == 0) currentDay = 7;
-  var requiredDay = 0;
+  var requiredDay = -1;
   var newTask = {
     name: task.name,
     project: task.project,
@@ -406,29 +406,23 @@ function getRepeatingTask(task) {
     daysNeeded.push(7);
   }
 
-  let day = currentDay;
   if (daysNeeded.length > 1) {
-    daysNeeded.reduce((a, b) => {
-      if (a && b > currentDay) {
-        let aDiff = Math.abs(a - currentDay);
-        let bDiff = Math.abs(b - currentDay);
-
-        if (aDiff == bDiff) {
-          requiredDay = a > b ? a : b;
-        } else {
-          requiredDay = bDiff < aDiff ? b : a;
+    daysNeeded.reverse();
+    try {
+      daysNeeded.forEach(element => {
+        if (element > currentDay) {
+          requiredDay = element;
+        } else if (requiredDay == -1) {
+          requiredDay = daysNeeded.pop();
+          throw BREAKEXCEPTION;
         }
-      } else {
-        day = 0;
-        let aDiff = Math.abs(a - day);
-        let bDiff = Math.abs(b - day);
-        requiredDay = bDiff > aDiff ? a : b;
-      }
-    });
-  } else {
-    requiredDay = daysNeeded[0];
+      });
+    } catch (e) {
+      //
+    }
   }
-if (requiredDay == 7) requiredDay = 0;
+
+  if (requiredDay == 7) requiredDay = 0;
   if (requiredDay > currentDay) {
     newTask.dueDate = moment()
       .isoWeekday(requiredDay)
