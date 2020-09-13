@@ -2,7 +2,7 @@
   <div class="fixed-center text-center">
     <p>
       <img
-        src="~assets/sad.svg"
+        src="statics/sad404.png"
         style="width:30vw;max-width:150px;"
       >
     </p>
