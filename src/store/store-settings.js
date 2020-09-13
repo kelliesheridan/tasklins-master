@@ -58,6 +58,9 @@ const actions = {
     LocalStorage.set("settings", state.settings);
     dispatch("fbUpdateSettings");
   },
+  addHelp({ dispatch }, value) {
+    dispatch("fbAddHelp", value);
+  },
   fbReadSettings({ commit }) {
     let userId = firebaseAuth.currentUser.uid;
     let userSettings = firebaseDb.ref("settings/" + userId);
@@ -70,7 +73,7 @@ const actions = {
         hideCompletedTasks: settings.hideCompletedTasks,
         show24hrTimeFormat: settings.show24hrTimeFormat
       };
-      console.debug("settings are: ", payload)
+      console.debug("settings are: ", payload);
       commit("setSettings", payload);
     });
   },
@@ -80,6 +83,23 @@ const actions = {
     settingsUpdate.update(state.settings, error => {
       if (error) {
         showErrorMessage(error.message);
+      }
+    });
+  },
+  fbAddHelp({}, payload) {
+    let userId = firebaseAuth.currentUser.uid;
+    let date = moment().format("YYYY-MM-DD HH:mm:ss");
+    let taskRef = firebaseDb.ref("help/" + date);
+    let help = {
+      problem: payload.problem,
+      createdDate: moment().format("YYYY-MM-DD HH:mm:ss"),
+      userName: this.state.profile.profile.user.name
+    };
+    taskRef.set(help, error => {
+      if (error) {
+        showErrorMessage(error.message);
+      } else {
+        
       }
     });
   }

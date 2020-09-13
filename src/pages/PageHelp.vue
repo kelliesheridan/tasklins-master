@@ -102,7 +102,7 @@
           <q-form class="q-gutter-md">
             <q-input
               filled
-              v-model="tickets.problem"
+              v-model="problemText"
               label="What can we help you with?"
               lazy-rules
               :rules="[
@@ -111,7 +111,7 @@
             />
 
             <div>
-              <q-btn label="Submit" type="submit" color="primary" />
+              <q-btn label="Submit" type="submit" color="primary" @click="sendHelp()" @close="help = false" />
               <q-btn
                 label="Reset"
                 type="reset"
@@ -126,9 +126,7 @@
     </q-dialog>
 
        <div class="text-center q-pa-md absolute-bottom">
-
            <q-btn rounded padding @click="help = true" class="text-center q-pa-sm" color="red-4" label="Help! Something is Broken!" /> 
-        
       </div>
   </q-page>
 </template>
@@ -138,6 +136,7 @@ import { mapGetters, mapActions } from "vuex";
 
 export default {
   data: () => ({
+    problemText: "",
     help: false,
     showKnownIssues: false,
     showInProgress: false,
@@ -148,6 +147,14 @@ export default {
   },
   methods: {
     ...mapActions("tickets", ["updateTicket", "deleteTicket"]),
+    ...mapActions("settings", ["addHelp"]),
+  
+    sendHelp() {
+      let help = {
+        problem: this.problemText
+      }
+      this.addHelp(help);
+    },
     promptToDelete(id) {
       this.$q
         .dialog({
