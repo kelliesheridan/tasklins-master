@@ -113,7 +113,8 @@ cfg.module.rules.push({
     // https://quasar.dev/options/animations
     animations: [
       'zoomIn',
-      'zoomOut'
+      'zoomOut',
+      'bounce'
     ],
 
     // https://quasar.dev/quasar-cli/developing-ssr/configuring-ssr

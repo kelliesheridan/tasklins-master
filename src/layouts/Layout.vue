@@ -95,73 +95,10 @@
       v-model="left"
       side="left"
     >
-      <div class="tasklin-details">
+      <div>
         <q-img src="statics/background-forest.jpg" style="height: 250px">
-          <div class="layout-details bg-transparent">
-            <q-avatar v-if="this.tasklin != ''" size="10rem">
-              <q-tooltip
-                anchor="center right"
-                self="center left"
-                :offset="[10, 10]"
-              >
-                This will eventually be your avatar.
-              </q-tooltip>
-               <img
-              v-if="this.tasklin.color === '#2196fs'"
-              src="statics/placeholder/blue3a.png"
-            />
-            <img
-              v-if="this.tasklin.color === '#2196fs'"
-              src="statics/tasklins/StarterBlue1.png"
-            />
-            <img
-              v-if="this.tasklin.color === '#e19e63'"
-              src="statics/tasklins/StarterPink1.png"
-            />
-            <img
-              v-if="this.tasklin.color === '#9c27b0'"
-              src="statics/tasklins/StarterPurple1.png"
-            />
-            <img
-              v-if="this.tasklin.color === '#4caf50'"
-              src="statics/tasklins/StarterGreen1.png"
-            />
-            <img
-              v-if="this.tasklin.color === '#f44336'"
-              src="statics/tasklins/StarterRed1.png"
-            />
-            <img
-              v-if="this.tasklin.color === '#00bcd4'"
-              src="statics/tasklins/StarterCyan1.png"
-            />
-            <img
-              v-if="this.tasklin.color === '#ffeb3b'"
-              src="statics/tasklins/StarterYellow1.png"
-            />
-            <img
-              v-if="this.tasklin.color === '#ff9800'"
-              src="statics/tasklins/StarterOrange1.png"
-            />
-            <img
-              v-if="this.tasklin.color === '#795548'"
-              src="statics/tasklins/StarterBrown1.png"
-            />
-            <img
-              v-if="this.tasklin.color === '#9e9e9e'"
-              src="statics/tasklins/StarterGrey1.png"
-            />
-              <q-badge
-                align="bottom"
-                floating
-                text-color="black"
-                color="accent"
-                >{{ profile.level }}</q-badge
-              >
-            </q-avatar>
-            <div class="layout-details">
-              <div>{{ profile.name }}</div>
-              <div>{{ profile.username }}</div>
-            </div>
+          <div class="eventBox bg-transparent">                 
+              <img src="statics/items/scroll-1.png" v-show="showBonusItem" style="margin-top: 50px; margin-left: 50px" class="scrollImg" @click="showBonus = true" />
           </div>
         </q-img>
       </div>
@@ -198,6 +135,13 @@
         />
       </div>
 
+      <div class="q-ma-sm layout-details">
+        <div>{{ profile.name }}</div>
+        <div>{{ profile.username }}</div>
+        <div>Level: {{ profile.level }}</div>
+        <div>{{ profile.lin }}</div>
+      </div>
+
       <br />
       <!-- <div class="q-pa-lg fixed-center-bottom">
             <a href="https://www.patreon.com/bePatron?u=9215033" target="_blank"
@@ -210,7 +154,7 @@
       <add-task @close="showAddTask = false" />
     </q-dialog>
 
-    <q-dialog
+    <!-- <q-dialog
       v-model="levelUp"
       persistent
       transition-show="scale"
@@ -228,6 +172,27 @@
 
         <q-card-actions align="right" class="bg-white text-teal">
           <q-btn flat label="OK" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog> -->
+
+    <q-dialog
+      v-model="showBonus"
+      persistent
+      transition-show="scale"
+      transition-hide="scale"
+    >
+      <q-card class="bg-primary text-white" style="width: 400px">
+        <q-card-section>
+          <div class="text-h6">Something happened!</div>
+        </q-card-section>
+
+        <q-card-section class="q-pt-none">
+          Soon, this will be the space where you see the game world. Where you can find items and have unexpected things happen to you!
+        </q-card-section>
+
+        <q-card-actions align="right" class="bg-white text-teal">
+          <q-btn flat label="OK" v-close-popup @click="showBonusItem = false"/>
         </q-card-actions>
       </q-card>
     </q-dialog>
@@ -256,6 +221,8 @@ export default {
       accept: false,
       left: false,
       right: false,
+      showBonus: false,
+      showBonusItem: true,
       essentialLinks: [
         {
           title: "Home",
@@ -359,10 +326,23 @@ export default {
 
 .layout-details {
   background-color: #eceff190;
-  color: #607d8b;
-  border-radius: 1rem;
-  padding: 4px;
+  color: #607d8b;  
+  padding: 1rem;
   margin: 0 auto;
+}
+
+.eventBox {  
+  margin: 0 auto;
+}
+
+.scrollImg {
+  width: 50%;
+  height: auto;
+}
+
+.scrollImg:hover {
+  animation: bounce;
+  animation-duration: 2s;
 }
 
 a:link {

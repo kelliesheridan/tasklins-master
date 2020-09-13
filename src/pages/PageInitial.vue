@@ -140,10 +140,10 @@
       
       
 
-      <div class="q-pa-sm thinger"
+      <div class="q-pa-sm thinger tasklinDisplayInitialBox"
         v-if="hatched === true">
 
-        <div class="q-pa-xs">
+        <div class="q-pa-xs tasklinDisplayInitial">
           
           <tasklin />
           
@@ -372,5 +372,19 @@ export default {
 .tasklin-size {
   max-width: 1rem;
   height: auto;
+}
+
+.tasklinDisplayInitialBox {
+  margin: 1rem;
+  max-width: 100%;
+  height: auto;
+}
+
+.tasklinDisplayInitial {
+  margin: 1rem;
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+  flex: auto;
 }
 </style>
