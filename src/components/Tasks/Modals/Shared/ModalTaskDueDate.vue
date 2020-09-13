@@ -18,7 +18,7 @@
 <!-- @click.stop="dueDateToday({ id: id, dueDate: task.dueDate })" -->
 
         <q-btn
-          @click.stop="$emit(Date.now())"    
+          @click="setDueDate()"    
           flat
           round
           dense
@@ -30,11 +30,15 @@
 
 <script>
 import { mapActions } from "vuex";
+import moment from "moment";
 
 export default {
   props: ["dueDate", "task", "id"],
   methods: {
-    ...mapActions("tasks", ["pushDueDate", "dueDateToday"])
+    ...mapActions("tasks", ["pushDueDate", "dueDateToday"]),
+    setDueDate() {
+      this.dueDate = moment().format("YYYY-MM-DD")
+    }
   }
 };
 </script>
