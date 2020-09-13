@@ -240,6 +240,11 @@ function getLevel() {
     level = "1";
   }
   if (level > state.profile.user.level) {
+    this.$q.notify({
+      message: "Congratulations, You've leveled up! Welcome to level " + level,
+      color: "primary",
+      icon: "favorite"
+    });
     alert("Congratulations, You've leveled up! Welcome to level " + level)
   }
   return level;

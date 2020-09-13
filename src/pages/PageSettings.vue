@@ -139,7 +139,7 @@ export default {
       this.fbUpdateSettings();
       this.$q.notify({
         message: "Your Settings Have Been Updated",
-        color: "secondary",
+        color: "primary",
         icon: "settings"
       });
     }
