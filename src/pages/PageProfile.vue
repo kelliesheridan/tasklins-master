@@ -17,6 +17,16 @@
           lazy-rules
         />
 
+        <!-- <q-select
+          id="userID"
+          outlined
+          v-model="changePronouns"          
+          label="Your Pronouns"
+          :options="filterOptions"
+          style="width: 50%"
+        >
+        </q-select> -->
+
         <p><strong>Current Level: {{ this.profile.level }}</strong></p>
 
         <!-- <q-input
@@ -60,6 +70,9 @@
 <script>
 import { mapActions, mapState, mapGetters } from "vuex";
 
+const stringOptions = ["She/Her", "He/Him", "They/Them", "Other/Prefer Not to Say"];
+
+
 export default {
   data() {
     return {};
@@ -88,6 +101,14 @@ export default {
       },
       set(value) {
         this.updateUsername(value);
+      }
+    },
+    changePronouns: {
+      get() {
+        return this.profile.prnouns;
+      },
+      set(value) {
+        this.updatePronouns(value);
       }
     },
     togglePrivate: {

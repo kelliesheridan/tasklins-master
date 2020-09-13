@@ -18,7 +18,7 @@
         <q-tooltip content-class="bg-secondary">Repeat Task Daily/Days of the Week</q-tooltip>
       </q-btn>
 
-      <q-btn class="task-btn q-pa-xs"
+      <!-- <q-btn class="task-btn q-pa-xs"
       @click="monthly = !monthly
       daily = false
       byDayNumber = false"       
@@ -31,7 +31,7 @@
       daily = false"       
       flat dense color="blue" label="#">
       <q-tooltip content-class="bg-secondary">Repeat Task Every ___ Number of Days</q-tooltip>
-      </q-btn>
+      </q-btn> -->
 
       <!-- <q-btn unelevated flat dense text-color="primary" label="Mo"
             :value="mon"

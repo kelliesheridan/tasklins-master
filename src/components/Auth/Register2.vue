@@ -96,7 +96,7 @@
           label="Register"
           :disable="
             formData.email2 != formData.email &&
-              formData.password2 != formData.email
+            formData.password2 != formData.email
           "
           type="submit"
         />
@@ -108,7 +108,7 @@
 <script>
 import { mapActions, mapState, mapGetters } from "vuex";
 
-const stringOptions = ["She/Her", "He/Him", "They/Them"];
+const stringOptions = ["She/Her", "He/Him", "They/Them", "Other/Prefer Not to Say"];
 
 export default {
   data() {

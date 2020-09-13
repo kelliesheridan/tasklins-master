@@ -139,7 +139,11 @@
         <div>{{ profile.name }}</div>
         <div>{{ profile.username }}</div>
         <div>Level: {{ profile.level }}</div>
-        <div>{{ profile.lin }}</div>
+        <div>{{ profile.lin }}
+          <img
+        src="statics/items/lin.png"
+        style="width:15px;">
+        </div>
       </div>
 
       <br />

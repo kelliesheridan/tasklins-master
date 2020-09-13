@@ -1,6 +1,11 @@
 <template>
   <q-page padding>
       <div class="q-pa-xs q-gutter-xs">
+
+    <list-header bgColor="bg-primary">
+      <div class="index-header">Global Challenges</div>
+    </list-header>
+
     <q-banner inline-actions rounded class="u-center-text bg-transparent text-primary">      
 
       <template>
@@ -17,6 +22,10 @@
     <div v-if="showWriting">
       <writingChallenge />
     </div>
+
+    <list-header bgColor="bg-primary">
+      <div class="index-header">In the future, you'll be able to create custom and private challenges. For now, you can automatically participate in any of our existing challenge. If you'd like your progress to show on the challenge page, submit a help ticket through the ? icon at the top of the screen. </div>
+    </list-header>
     
   </q-page>
 </template>
@@ -31,13 +40,14 @@ export default {
     showFitness: false,
     showWriting: false
   }),
-  computed: {
+    computed: {
     ...mapGetters("fitness", ["fitness"]),
     ...mapGetters("profile", ["profile", "profiles"])
   },
     components: {
     writingChallenge: require("components/WritingChallenge.vue").default,
     fitnessChallenge: require("components/FitnessChallenge.vue").default,
+    "list-header": require("components/Shared/ListHeader.vue").default,
   },
   methods: {
     ...mapActions("fitness", ["addFitnessTask", "readFitnessTasks", "cheer"]),
