@@ -146,28 +146,20 @@
 
                 <q-item clickable v-ripple>
                   <q-item-section>
-                    <q-item-label><strong>XP Updates</strong></q-item-label>
+                    <q-item-label><strong>New Look</strong></q-item-label>
                     <q-item-label 
-                      >We've changed how xp works.</q-item-label
+                      >Changed some colors and menus around. Not terribly exciting.</q-item-label
                     >
                   </q-item-section>
                 </q-item>
 
                 <q-item clickable v-ripple>
                   <q-item-section>
-                    <q-item-label><strong>See Projects on Tasks</strong></q-item-label>
-                    <q-item-label>In settings, you can now turn on the ability to see which project a task belongs to.</q-item-label>
+                    <q-item-label><strong>Repeating Tasks</strong></q-item-label>
+                    <q-item-label>Set tasks to repeat every day or on specific days of the week. More options coming soon.</q-item-label>
                   </q-item-section>
                 </q-item>
 
-                <q-item clickable v-ripple>
-                  <q-item-section>
-                    <q-item-label><strong>Profile Page</strong></q-item-label>
-                    <q-item-label 
-                      >See your current level and change your username/name/color on the profile page.</q-item-label
-                    >
-                  </q-item-section>
-                </q-item>
               </q-list>
             </div>
           </div>
