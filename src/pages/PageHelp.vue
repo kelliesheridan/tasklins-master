@@ -13,12 +13,12 @@
         </q-item-section>
       </q-item>
 
-      <!-- <q-item>
+      <q-item>
         <q-item-section>
-          <q-item-label><strong>Tasks Late Not Working</strong></q-item-label>
-          <q-item-label>Some today tasks are showing up as late tasks.</q-item-label>
+          <q-item-label><strong>Challenge Page Clearing</strong></q-item-label>
+          <q-item-label>If someone else enters a task on a challenge page, anyone currently on the page has their page cleared.</q-item-label>
         </q-item-section>
-      </q-item> -->
+      </q-item>
     </q-list>
 
     </div>
@@ -29,8 +29,8 @@
     <q-list v-if="showInProgress" dense  padding>
       <q-item>
         <q-item-section>
-          <q-item-label><strong>Repeating Tasks</strong></q-item-label>
-          <q-item-label>Repeat the same task as needed instead of having to make new ones.</q-item-label>
+          <q-item-label><strong>Cheer Button</strong></q-item-label>
+          <q-item-label>Cheer your friends on as they complete challenge tasks.</q-item-label>
         </q-item-section>
       </q-item>
 
@@ -70,6 +70,7 @@
     <q-btn push label="Longterm Goals" color="primary"	@click="showLongterm = !showLongterm"/>
 
     <q-list v-if="showLongterm" dense  padding>
+
       <q-item>
         <q-item-section>
           <q-item-label><strong>Social Feed</strong></q-item-label>
@@ -79,10 +80,25 @@
 
       <q-item>
         <q-item-section>
-          <q-item-label><strong>Cheer Button</strong></q-item-label>
-          <q-item-label>Cheer your friends on as they complete challenge tasks.</q-item-label>
+          <q-item-label><strong>In Game Items</strong></q-item-label>
+          <q-item-label>Either find or use Lin to purchase in game items for your Tasklins.</q-item-label>
         </q-item-section>
       </q-item>
+
+      <q-item>
+        <q-item-section>
+          <q-item-label><strong>More Tasklins</strong></q-item-label>
+          <q-item-label>Find or purchase eggs to have more Tasklins.</q-item-label>
+        </q-item-section>
+      </q-item>
+
+      <q-item>
+        <q-item-section>
+          <q-item-label><strong>Avatars</strong></q-item-label>
+          <q-item-label>Customize your own appearance in the game world.</q-item-label>
+        </q-item-section>
+      </q-item>            
+
     </q-list>
 
     </div>

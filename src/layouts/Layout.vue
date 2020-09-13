@@ -21,6 +21,15 @@
           v-if="loggedIn && this.tasklin.color !== ''"
           dense
           flat
+          to="/help"
+          round
+          color="accent"
+          icon="help"
+        />        
+        <q-btn
+          v-if="loggedIn && this.tasklin.color !== ''"
+          dense
+          flat
           to="/settings"
           round
           color="accent"
@@ -62,14 +71,9 @@
           <!-- <q-route-tab class="q-pa-xs" dense to="/tasklins" icon="pets" />
           <q-route-tab class="q-pa-xs" dense to="/explore" icon="explore" />
           <q-route-tab class="q-pa-xs" dense to="/community" icon="chat" /> -->
-          <q-route-tab
-            class="q-pa-xs"
-            dense
-            to="/challenges"
-            icon="assessment"
-          />
+          <q-route-tab class="q-pa-xs" dense to="/explore" icon="explore" />
+          <q-route-tab class="q-pa-xs" dense to="/challenges" icon="assessment" />
           <q-route-tab class="q-pa-xs" dense to="/profile" icon="person" />
-          <q-route-tab class="q-pa-xs" dense to="/help" icon="help" />
         </q-tabs>
 
         <q-space />
@@ -149,14 +153,9 @@
           <!-- <q-route-tab class="q-pa-xs" dense to="/tasklins" icon="pets" />
           <q-route-tab class="q-pa-xs" dense to="/explore" icon="explore" />
           <q-route-tab class="q-pa-xs" dense to="/community" icon="chat" /> -->
-          <q-route-tab
-            class="q-pa-xs"
-            dense
-            to="/challenges"
-            icon="assessment"
-          />
+          <q-route-tab class="q-pa-xs" dense to="/explore" icon="explore" />
+          <q-route-tab class="q-pa-xs" dense to="/challenges" icon="assessment" />
           <q-route-tab class="q-pa-xs" dense to="/profile" icon="person" />
-          <q-route-tab class="q-pa-xs" dense to="/help" icon="help" />
         </q-tabs>
       </div>
 
@@ -250,11 +249,11 @@ export default {
           icon: "person",
           link: "/profile"
         },
-        // {
-        //   title: 'Explore',
-        //   icon: 'explore',
-        //   link: '/explore'
-        // },
+        {
+          title: 'Explore',
+          icon: 'explore',
+          link: '/explore'
+        },
         // {
         //   title: 'Community',
         //   icon: 'chat',
