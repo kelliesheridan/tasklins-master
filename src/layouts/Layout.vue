@@ -111,40 +111,44 @@
               src="statics/placeholder/blue3a.png"
             />
             <img
+              v-if="this.tasklin.color === '#2196fs'"
+              src="statics/tasklins/StarterBlue1.png"
+            />
+            <img
               v-if="this.tasklin.color === '#e19e63'"
-              src="statics/placeholder/pink3a.png"
+              src="statics/tasklins/StarterPink1.png"
             />
             <img
               v-if="this.tasklin.color === '#9c27b0'"
-              src="statics/placeholder/purple3a.png"
+              src="statics/tasklins/StarterPurple1.png"
             />
             <img
               v-if="this.tasklin.color === '#4caf50'"
-              src="statics/placeholder/green3a.png"
+              src="statics/tasklins/StarterGreen1.png"
             />
             <img
               v-if="this.tasklin.color === '#f44336'"
-              src="statics/placeholder/red3a.png"
+              src="statics/tasklins/StarterRed1.png"
             />
             <img
               v-if="this.tasklin.color === '#00bcd4'"
-              src="statics/placeholder/cyan3a.png"
+              src="statics/tasklins/StarterCyan1.png"
             />
             <img
               v-if="this.tasklin.color === '#ffeb3b'"
-              src="statics/placeholder/yellow3a.png"
+              src="statics/tasklins/StarterYellow1.png"
             />
             <img
               v-if="this.tasklin.color === '#ff9800'"
-              src="statics/placeholder/orange3a.png"
+              src="statics/tasklins/StarterOrange1.png"
             />
             <img
               v-if="this.tasklin.color === '#795548'"
-              src="statics/placeholder/brown3a.png"
+              src="statics/tasklins/StarterBrown1.png"
             />
             <img
               v-if="this.tasklin.color === '#9e9e9e'"
-              src="statics/placeholder/grey3a.png"
+              src="statics/tasklins/StarterGrey1.png"
             />
               <q-badge
                 align="bottom"
