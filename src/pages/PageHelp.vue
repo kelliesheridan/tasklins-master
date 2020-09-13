@@ -127,7 +127,7 @@
             />
 
             <div>
-              <q-btn label="Submit" type="submit" color="primary" @click="sendHelp()" @close="help = false" />
+              <q-btn label="Submit" type="submit" color="primary" @click="sendHelp(); help = false" />
               <q-btn
                 label="Reset"
                 type="reset"
