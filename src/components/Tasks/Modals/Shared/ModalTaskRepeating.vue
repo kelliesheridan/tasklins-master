@@ -11,15 +11,7 @@
         </div> -->
     <div>
       <q-btn class="task-btn q-pa-xs"
-      @click="nrepeating.monday = true;
-      nrepeating.tuesday = true;
-      nrepeating.wednesday = true;
-      nrepeating.thursday = true;
-      nrepeating.friday = true;
-      nrepeating.saturday = true;
-      nrepeating.sunday = true;
-      nrepeating.monday = true;
-      daily = !daily
+      @click="daily = !daily
       monthly = false
       byDayNumber = false"       
       flat dense color="blue" icon="repeat_one">
