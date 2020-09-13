@@ -106,22 +106,46 @@
               >
                 This will eventually be your avatar.
               </q-tooltip>
-              <img
-                v-if="this.tasklin.color === 'blue'"
-                src="statics/placeholder/blue3a.png"
-              />
-              <img
-                v-if="this.tasklin.color === 'pink'"
-                src="statics/placeholder/pink3a.png"
-              />
-              <img
-                v-if="this.tasklin.color === 'purple'"
-                src="statics/placeholder/purple3a.png"
-              />
-              <img
-                v-if="this.tasklin.color === 'green'"
-                src="statics/placeholder/green3a.png"
-              />
+               <img
+              v-if="this.tasklin.color === '#2196fs'"
+              src="statics/placeholder/blue3a.png"
+            />
+            <img
+              v-if="this.tasklin.color === '#e19e63'"
+              src="statics/placeholder/pink3a.png"
+            />
+            <img
+              v-if="this.tasklin.color === '#9c27b0'"
+              src="statics/placeholder/purple3a.png"
+            />
+            <img
+              v-if="this.tasklin.color === '#4caf50'"
+              src="statics/placeholder/green3a.png"
+            />
+            <img
+              v-if="this.tasklin.color === '#f44336'"
+              src="statics/placeholder/red3a.png"
+            />
+            <img
+              v-if="this.tasklin.color === '#00bcd4'"
+              src="statics/placeholder/cyan3a.png"
+            />
+            <img
+              v-if="this.tasklin.color === '#ffeb3b'"
+              src="statics/placeholder/yellow3a.png"
+            />
+            <img
+              v-if="this.tasklin.color === '#ff9800'"
+              src="statics/placeholder/orange3a.png"
+            />
+            <img
+              v-if="this.tasklin.color === '#795548'"
+              src="statics/placeholder/brown3a.png"
+            />
+            <img
+              v-if="this.tasklin.color === '#9e9e9e'"
+              src="statics/placeholder/grey3a.png"
+            />
               <q-badge
                 align="bottom"
                 floating

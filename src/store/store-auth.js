@@ -25,6 +25,7 @@ const actions = {
         console.log("response: ", response);
         dispatch("fbCreateProfile");
         dispatch("fbCreateSettings");
+        dispatch("fbCreateOriginalProject");
         this.$router.push("/auth2").catch(err => {});
       })
       .catch(error => {
@@ -60,7 +61,7 @@ const actions = {
         dispatch("tasklins/getTasklin", null, { root: true });
         dispatch("settings/fbReadSettings", null, { root: true });
         dispatch("profile/fbCheckUsername", null, { root: true });
-        if (this.profile.user.name !== "") {
+        if (this.state.profile.profile.user.name !== "") {
           this.$router.replace("/index").catch(err => {});
         } else {
         this.$router.replace("/auth2").catch(err => {});
@@ -104,10 +105,34 @@ const actions = {
     };
     let taskRef = firebaseDb.ref("settings/" + userId);
     taskRef.set(payload);
-  }
+  },
+  fbCreateOriginalProject({ dispatch }) {
+    let userId = firebaseAuth.currentUser.uid;
+    let payload = {
+      projectName: "Tasks",
+      color: ""
+    };
+    let taskRef = firebaseDb.ref(
+      "projects/" + userId + "/" + payload.projectName
+    );
+    console.debug("project:", payload);
+    payload.createdDate = moment().format();
+    taskRef.set(payload, error => {
+      if (error) {
+        showErrorMessage(error.message);
+      } else {
+        dispatch("fbReadProjects");
+        //Notify.create('New Task Added - + 1xp')
+      }
+    });
+  },
 };
 
-const getters = {};
+const getters = {
+  profile: state => {
+    return state.profile.user;
+  },
+}
 
 export default {
   namespaced: true,

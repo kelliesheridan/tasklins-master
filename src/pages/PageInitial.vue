@@ -211,7 +211,7 @@ export default {
       "updateTasklins",
       "updateColor"
     ]),
-    ...mapActions("tasklins", ["addTasklin", "updateTasklin"]),
+    ...mapActions("tasklins", ["updateTasklin"]),
     updateUserProfile() {
       let profile = {
         name: this.profile.name,
@@ -231,33 +231,35 @@ export default {
       };
 
       this.updateProfile(profile);
-
+      this.updateExistingTasklin();
+      this.$router.push("/index");
+    },
+    updateExistingTasklin() {
       let tasklin = {
         name: this.tasklinName,
         creation_date: Date.now(),
-        type: "Creature",
+        type: "Monster",
         project: "Tasks",
         xp: 0,
         level: 1,
-        color1: this.color,
-        color2: this.color2,
-        color3: this.color3,
-        bodyShape: this.bodyShape,
-        bodyTexture: this.bodyTexture,
-        eyeColor: this.color1,
-        eyeType: this.eyeType,
-        nose: this.nose,
-        mouth: this.mouth,
-        pattern1: this.pattern1,
+        color: this.profile.color,
+        color2: "",
+        color3: "",
+        bodyShape: "",
+        bodyTexture: "",
+        eyeColor: this.profile.color,
+        eyeType: "",
+        nose: "",
+        mouth: "",
+        pattern1: "",
         eyebrowsOrTail: "",
         earsOrHorns: "",
         bodyShape2: "",
         pattern2: ""
       };
 
-      this.addTasklin(tasklin);
-      this.$router.push("/todo");
-    }
+      this.updateTasklin(tasklin);
+  }
   },
   components: {
     "add-task": require("components/Tasks/Modals/addTask.vue").default,
