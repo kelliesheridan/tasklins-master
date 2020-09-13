@@ -37,7 +37,7 @@ export default {
   methods: {
     ...mapActions("tasks", ["pushDueDate", "dueDateToday"]),
     setDueDate() {
-      this.dueDate = moment().format("YYYY-MM-DD")
+      this.$emit('update:dueDate', moment().format("YYYY-MM-DD"));
     }
   }
 };
