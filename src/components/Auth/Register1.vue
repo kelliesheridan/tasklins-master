@@ -22,6 +22,7 @@
           v-model="formData.email"
           ref="email"
           placeholder="E-mail"
+          aria-autocomplete="email"
           :rules="[
             val =>
               this.isValidEmailAddress(val) ||
@@ -39,6 +40,7 @@
           v-model="formData.email2"
           ref="email2"
           placeholder="Please re-enter e-mail"
+          aria-autocomplete="email"
           :rules="[val => val == formData.email || 'Emails do not match.']"
           lazy-rules
         />
@@ -53,6 +55,7 @@
           bg-color="green-2"
           v-model="formData.password"
           placeholder="Password"
+          autocomplete="new-password"
           lazy-rules
           :rules="[
             val => val.length >= 6 || 'Please use at least 6 characters'
@@ -67,6 +70,7 @@
           bg-color="green-2"
           v-model="formData.password2"
           placeholder="Re-Enter password"
+          autocomplete="new-password"
           lazy-rules
           :rules="[
             val => val == formData.password || 'Passwords do not match.'

@@ -21,6 +21,7 @@
         class="col auth-input"
         v-model="formData.email"
         placeholder="E-mail"
+        autocomplete="email"
         bg-color="green-2"
         :rules="[ val => isValidEmailAddress(val) || 'Please enter a valid email address']"
         ref="email"
@@ -34,6 +35,7 @@
         class="col auth-input"
         v-model="formData.password"
         placeholder="Password"
+        autocomplete="password"
         bg-color="green-2"
         lazy-rules
         :rules="[ val => val.length >= 6 || 'Please use at least 6 characters']"
