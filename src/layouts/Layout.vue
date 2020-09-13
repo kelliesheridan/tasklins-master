@@ -346,7 +346,7 @@ export default {
 
 .scrollImg:hover {
   animation: bounce;
-  animation-duration: 2s;
+  animation-duration: 1s;
 }
 
 a:link {
