@@ -18,6 +18,12 @@
       	:class="{ 'text-strikethrough' : task.completed }"
         v-html="$options.filters.searchHighlight(task.name, search)">
       </q-item-label>
+
+      <q-item-label v-if='task.dueTime'       
+        class="row justify-start">
+        <small>{{ taskDueTime }}</small>
+      </q-item-label>
+        
     </q-item-section>
 
     <q-item-section v-if="showProjects" side>
@@ -26,29 +32,6 @@
         v-html="$options.filters.searchHighlight(task.project, search)">
       </q-item-label>
     </q-item-section>
-
-    <!-- <q-item-section v-if="task.dueDate" side>
-      <div class="row">
-        <div class="column justify-center">
-          <q-icon 
-            name="event"
-            size="18px"
-            class="q-mr-xs" />
-        </div>
-        <div class="column">
-          <q-item-label 
-            class="row justify-end"
-            caption>
-            {{ task.dueDate | niceDate }}
-          </q-item-label>
-          <q-item-label
-            class="row justify-end"
-            caption>
-            <small>{{ taskDueTime }}</small>
-          </q-item-label>
-        </div> 
-      </div>
-    </q-item-section> -->
 
     <q-item-section side>
       <div class="row">
