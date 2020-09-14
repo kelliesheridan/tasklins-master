@@ -315,7 +315,7 @@ export default {
 }
 
 .bg-image {
-  background-image: url(http://www.testingtheapp.tasklins.com/statics/trees.jpg);
+  background-image: url(https://www.testingtheapp.tasklins.com/statics/trees.jpg);
   background-size: contain;
 }
 
@@ -324,7 +324,7 @@ export default {
 }
 
 .bg-image2 {
-  background-image: url(http://www.testingtheapp.tasklins.com/statics/trees2.jpg);
+  background-image: url(https://www.testingtheapp.tasklins.com/statics/trees2.jpg);
   background-size: contain;
 }
 
