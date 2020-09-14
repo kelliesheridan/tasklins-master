@@ -29,6 +29,7 @@ const actions = {
         this.$router.push("/auth2").catch(err => {});
       })
       .catch(error => {
+        this.$router.push("/auth").catch(err => {});
         showErrorMessage(error.message);
       });
   },
