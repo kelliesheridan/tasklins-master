@@ -31,7 +31,7 @@
             {{ task.dueDate | niceDate }}
           </q-item-label>
 
-          <q-item-label          
+          <q-item-label v-if='task.dueTime'       
             class="row justify-start">
             <small>{{ taskDueTime }}</small>
           </q-item-label>
