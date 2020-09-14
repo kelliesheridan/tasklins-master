@@ -57,7 +57,7 @@ export default {
       options: ["None", "Facebook", "Twitter", "Apple", "Oracle"],
       taskToSubmit: {
         name: "",
-        project: "",
+        project: "Tasks",
         npublic: false,
         nrepeating: {
           monday: false,
