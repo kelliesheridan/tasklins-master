@@ -50,7 +50,7 @@
     </div>
 
     <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 bg-grey-4" style="overflow: auto; height: 550px">
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 bg-accent" style="overflow: auto; height: 550px">
         <q-card dense flat square class="my-card q-pa-xs">
           <q-card-section
             :style="{ 'background-color': getCardColor(0) }"
@@ -61,13 +61,13 @@
 
               <q-card-actions class="q-pa-xs q-pa-xs" align="right">
 
-                <span>
+                <!-- <span>
                   <q-btn @click="submit('cheer'); cheer = true" dense push>Cheer!</q-btn>
                 </span>
 
                 <span>
                  # <q-icon name="thumb_up" />
-                </span>           
+                </span>            -->
 
               </q-card-actions>
             </div>

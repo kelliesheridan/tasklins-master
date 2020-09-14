@@ -56,15 +56,13 @@
       </q-btn-dropdown>
       </div>
 
-      <div class="class=col-12 wallOfShame">
-    </div>
       
     </div>
 
     
 
     <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 q-pa-xs bg-grey-4" style="overflow: auto; height: 570px">
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 q-pa-xs bg-accent" style="overflow: auto; height: 570px">
         <q-card dense flat square class="my-card q-pa-xs">
           <q-card-section
             :style="{ 'background-color': getCardColor(0) }"
