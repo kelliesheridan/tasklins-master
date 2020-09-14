@@ -132,12 +132,13 @@
           color="primary"
           size="18px"
           icon="add"
-        />
+        >
+        <q-tooltip content-class="bg-primary">Add New Task</q-tooltip>
+        </q-btn>
       </div>
 
       <div class="q-ma-sm layout-details">
-        <div>{{ profile.name }}</div>
-        <div>{{ profile.username }}</div>
+        <div>{{ profile.name }} (@{{ profile.username }})</div>
         <div>Level: {{ profile.level }}</div>
         <div>{{ profile.lin }}
           <img

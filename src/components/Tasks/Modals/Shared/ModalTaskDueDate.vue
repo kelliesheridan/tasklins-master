@@ -23,7 +23,8 @@
           round
           dense
           color="purple"
-          icon="today" />
+          icon="today"
+           ><q-tooltip content-class="bg-primary">Do Today</q-tooltip></q-btn>
 
   </div>
 </template>

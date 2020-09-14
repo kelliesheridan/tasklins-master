@@ -42,7 +42,7 @@
           dense
           color="primary"
           icon="edit">
-        <q-tooltip content-class="bg-secondary">Edit Task</q-tooltip>
+        <q-tooltip content-class="bg-primary">Edit Task</q-tooltip>
         </q-btn>
         <q-btn class="task-btn"
           @click.stop="promptToDelete(id)"
@@ -51,7 +51,7 @@
           dense
           color="red"
           icon="delete">
-          <q-tooltip content-class="bg-secondary">Delete</q-tooltip>
+          <q-tooltip content-class="bg-primary">Delete</q-tooltip>
           </q-btn>
         <q-btn class="task-btn"
           @click.stop="pushDueDate({ id: id, dueDate: task.dueDate })"
@@ -60,7 +60,7 @@
           dense
           color="blue"
           icon="rotate_right">
-          <q-tooltip content-class="bg-secondary">Move to Tomorrow</q-tooltip>
+          <q-tooltip content-class="bg-primary">Move to Tomorrow</q-tooltip>
         </q-btn>
       </div>
     </q-item-section>
