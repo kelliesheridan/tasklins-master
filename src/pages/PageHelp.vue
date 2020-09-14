@@ -88,7 +88,7 @@
       <q-item>
         <q-item-section>
           <q-item-label><strong>More Tasklins</strong></q-item-label>
-          <q-item-label>Find or purchase eggs to have more Tasklins.</q-item-label>
+          <q-item-label>Find or purchase eggs to have more than one Tasklins.</q-item-label>
         </q-item-section>
       </q-item>
 

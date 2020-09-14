@@ -1,7 +1,7 @@
 <template>
   <q-item class="task"
 
-  	@click="updateTask({ id: id, updates: { completed: !task.completed, dueDate: task.dueDate } }); addLin(task.completed);"
+  	@click="updateTask({ id: id, updates: { completed: !task.completed, dueDate: task.dueDate, task: task } }); addLin(task.completed);"
   	:class="!task.completed ? 'bg-accent' : 'bg-positive'"
 
     v-touch-hold:1000.mouse="showEditTaskModal"

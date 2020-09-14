@@ -144,7 +144,7 @@
                   </q-item-section>
                 </q-item>
 
-                <q-item clickable v-ripple>
+                <q-item> 
                   <q-item-section>
                     <q-item-label><strong>New Look</strong></q-item-label>
                     <q-item-label 
@@ -153,10 +153,17 @@
                   </q-item-section>
                 </q-item>
 
-                <q-item clickable v-ripple>
+                <q-item>
                   <q-item-section>
                     <q-item-label><strong>Repeating Tasks</strong></q-item-label>
-                    <q-item-label>Set tasks to repeat every day or on specific days of the week. More options coming soon.</q-item-label>
+                    <q-item-label>Set tasks to repeat on specific days of the week (or every day). More options coming soon.</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item>
+                  <q-item-section>
+                    <q-item-label><strong>Due Times</strong></q-item-label>
+                    <q-item-label>Option to set a due time for your tasks.</q-item-label>
                   </q-item-section>
                 </q-item>
 
