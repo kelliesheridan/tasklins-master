@@ -149,7 +149,7 @@
         v-if="hatched === true"
       >
         <div
-          class="q-pa-xs tasklinDisplayInitial"
+          class="q-pa-xs tasklinDisplayInitial" style="width: 240px !important; height: 240px !important"
         >
           <tasklin />
 
