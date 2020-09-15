@@ -175,7 +175,12 @@ const actions = {
   fbUpdateTask({ dispatch }, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let taskRef = firebaseDb.ref("tasks/" + userId + "/" + payload.id);
-    payload.updates.lastModified = moment().format();
+    payload.updates.lastModified = moment().format("YYYY-MM-DD HH:mm:ss");
+    if (payload.updates.completed) {
+      payload.updates.completedDate = moment().format("YYYY-MM-DD HH:mm:ss");
+    } else {
+      payload.updates.completedDate = "";
+    }
     taskRef.update(payload.updates, error => {
       if (error) {
         showErrorMessage(error.message);
