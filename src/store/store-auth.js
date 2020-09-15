@@ -62,11 +62,12 @@ const actions = {
         dispatch("tasklins/getTasklin", null, { root: true });
         dispatch("settings/fbReadSettings", null, { root: true });
         dispatch("profile/fbCheckUsername", null, { root: true });
-        if (this.state.tasklins.tasklin.name === "") {
-          this.$router.replace("/initial").catch(err => {});
-        }
         if (this.state.profile.profile.user.name !== "") {
-          this.$router.replace("/index").catch(err => {});
+          if (this.state.tasklins.tasklin.name === "") {
+            this.$router.replace("/initial").catch(err => {});
+          } else {
+            this.$router.replace("/index").catch(err => {});
+          }
         } else {
         this.$router.replace("/auth2").catch(err => {});
         }
