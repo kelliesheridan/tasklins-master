@@ -411,7 +411,7 @@ function getRepeatingTask(task) {
     daysNeeded.push(7);
   }
 
-  if (daysNeeded.length > 1) {
+  if (daysNeeded.length > 0) {
     daysNeeded.reverse();
     try {
       daysNeeded.forEach(element => {
