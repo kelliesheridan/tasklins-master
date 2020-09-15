@@ -146,10 +146,17 @@
 
                 <q-item> 
                   <q-item-section>
+                    <q-item-label><strong>Help Button</strong></q-item-label>
+                    <q-item-label>
+                      Found a bug or have a question? You can submit any issues from the help page (top right hand corner).</q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item> 
+                  <q-item-section>
                     <q-item-label><strong>New Look</strong></q-item-label>
                     <q-item-label 
-                      >Changed some colors and menus around. Not terribly exciting.</q-item-label
-                    >
+                      >Changed some colors and menus around. Not terribly exciting.</q-item-label>
                   </q-item-section>
                 </q-item>
 

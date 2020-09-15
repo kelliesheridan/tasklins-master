@@ -4,7 +4,7 @@
       <q-toolbar>
         <!-- <q-btn dense flat round color="accent" icon="notifications"/> -->
         <q-btn
-          v-if="loggedIn && this.tasklin.color !== ''"
+          v-if="loggedIn && this.tasklin.name !== ''"
           dense
           flat
           round
@@ -18,7 +18,7 @@
           Tasklins
         </q-toolbar-title>
         <q-btn
-          v-if="loggedIn && this.tasklin.color !== ''"
+          v-if="loggedIn && this.tasklin.name !== ''"
           dense
           flat
           to="/help"
@@ -27,7 +27,7 @@
           icon="help"
         />        
         <q-btn
-          v-if="loggedIn && this.tasklin.color !== ''"
+          v-if="loggedIn && this.tasklin.name !== ''"
           dense
           flat
           to="/settings"
@@ -56,7 +56,7 @@
       </q-toolbar>
     </q-header>
 
-    <q-footer v-if="loggedIn && this.tasklin.color !== ''" class="text-center">
+    <q-footer v-if="loggedIn && this.tasklin.name !== ''" class="text-center">
       <div class="row">
         <q-tabs
           align="left"
@@ -141,9 +141,11 @@
         <div>{{ profile.name }} (@{{ profile.username }})</div>
         <div>Level: {{ profile.level }}</div>
         <div>{{ profile.lin }}
-          <img
+          <q-img
         src="statics/items/lin.png"
         style="width:15px;">
+        <q-tooltip content-class="bg-primary">{{ profile.lin }} Lin.</q-tooltip>
+        </q-img>
         </div>
       </div>
 
