@@ -2,6 +2,10 @@
   <q-page padding class="bg-auth">
     <div class="q-pa-md" style="max-width: 400px"></div>
 
+    <list-header bgColor="bg-primary">
+      <div class="index-header">If you've been redirected to this page but have already created your Tasklin, you can use the menu to head back to the home page. We're working on fixing this. If you haven't made your Tasklin yet, please enter your first tasks below to hatch your first egg!</div>
+    </list-header>
+
     <q-dialog
       v-model="showNewUser1"
       persistent
@@ -272,7 +276,8 @@ export default {
   components: {
     "add-task": require("components/Tasks/Modals/addTask.vue").default,
     "tasks-initial": require("components/Tasks/TasksInitial.vue").default,
-    tasklin: require("components/Tasklins/Tasklin.vue").default
+    tasklin: require("components/Tasklins/Tasklin.vue").default,
+    "list-header": require("components/Shared/ListHeader.vue").default,
   }
 };
 </script>

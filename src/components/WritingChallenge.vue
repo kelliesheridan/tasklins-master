@@ -168,6 +168,18 @@
       <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
 
         <div class="q-pa-md">
+          Dez
+          <q-linear-progress
+            rounded
+            size="15px"
+            :value="this.getProgress('desirae ')"
+            :style="{ color: getUserColor('desirae ') }"
+            class="q-mt-sm"
+            :key="update"
+          />
+        </div>
+
+        <div class="q-pa-md">
           Emma
           <q-linear-progress
             rounded
@@ -239,20 +251,6 @@
             :key="update"
           />
         </div>
-
-
-
-        <!-- <div class="q-pa-md">
-          Dez
-          <q-linear-progress
-            rounded
-            size="15px"
-            :value="this.getProgress('desirae ')"
-            :style="{ color: getUserColor('desirae ') }"
-            class="q-mt-sm"
-            :key="update"
-          />
-        </div> -->
 
         <!-- <div class="q-pa-md">
           Rachel

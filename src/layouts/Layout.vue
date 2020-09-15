@@ -58,8 +58,23 @@
 
     <q-footer v-if="loggedIn && this.tasklin.name !== ''" class="text-center">
       <div class="row">
+
+        <q-btn
+          color="secondary" text-color="primary"
+          round          
+          @click="showAddTask = true"
+          class="q-pa-lg add-task-btn-footer"
+          icon="add">
+        </q-btn>
+
+        <q-space/>
+
+        <img src="statics/items/scroll-1.png" v-show="showBonusItem" class="scrollImg2" @click="showBonus = true" />
+      </div>
+      <div class="row">
+        <q-space/>
         <q-tabs
-          align="left"
+          align="center"
           mobile-arrows
           shadow-2
           indicator-color="transparent"
@@ -69,21 +84,12 @@
           <q-route-tab class="q-pa-xs" dense to="/index" icon="home" />
           <q-route-tab class="q-pa-xs" dense to="/todo" icon="done" />
           <!-- <q-route-tab class="q-pa-xs" dense to="/tasklins" icon="pets" />
-          <q-route-tab class="q-pa-xs" dense to="/explore" icon="explore" />
           <q-route-tab class="q-pa-xs" dense to="/community" icon="chat" /> -->
           <q-route-tab class="q-pa-xs" dense to="/explore" icon="explore" />
           <q-route-tab class="q-pa-xs" dense to="/challenges" icon="assessment" />
           <q-route-tab class="q-pa-xs" dense to="/profile" icon="person" />
         </q-tabs>
-
-        <q-space />
-
-        <q-btn
-          flat
-          @click="showAddTask = true"
-          class="q-pa-xs add-task-btn-footer"
-          icon="add"
-        />
+        <q-space/>
       </div>
     </q-footer>
 
@@ -127,6 +133,7 @@
       <div class="text-center q-mb-lg">
         <q-btn
           @click="showAddTask = true"
+          @keyup.ctrl.76="showAddTask = true"
           class="add-task-btn"
           round
           color="primary"
@@ -229,7 +236,7 @@ export default {
       left: false,
       right: false,
       showBonus: false,
-      showBonusItem: true,
+      showBonusItem: false,
       essentialLinks: [
         {
           title: "Home",
@@ -340,16 +347,6 @@ export default {
 
 .eventBox {  
   margin: 0 auto;
-}
-
-.scrollImg {
-  width: 50%;
-  height: auto;
-}
-
-.scrollImg:hover {
-  animation: bounce;
-  animation-duration: 1s;
 }
 
 a:link {

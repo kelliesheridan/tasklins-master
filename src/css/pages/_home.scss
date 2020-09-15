@@ -3,10 +3,33 @@
     margin-bottom: -1rem;
 }
 
-.add-task-btn-footer {
-    margin: auto 0;
-    margin-right: 10px;    
+.add-task-btn-footer {    
+    margin-left: 20px;
+    margin-top: 20px;
+    padding: 0px;
+    width: 40px;
+    height: 40px;      
 }
+
+.scrollImg {
+    width: 50%;
+    height: auto;
+  }
+  
+  .scrollImg2 {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+    margin-left: 10px;
+    margin-top: 20px;
+    animation: bounce;
+    animation-duration: 1s;       
+  }
+    
+  .scrollImg:hover {
+    animation: bounce;
+    animation-duration: 1s;
+  }
 
 .index-header {
     
