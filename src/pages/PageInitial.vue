@@ -148,10 +148,8 @@
         class="q-pa-sm thinger tasklinDisplayInitialBox"
         v-if="hatched === true"
       >
-        <div
-          class="q-pa-xs tasklinDisplayInitial">
+        <div class="q-pa-xs tasklinDisplayInitial" style="width: 240px !important; height: 240px !important">
           <tasklin />
-
         </div>
 
         <div class="q-pa-sm" style="max-width: 300px">

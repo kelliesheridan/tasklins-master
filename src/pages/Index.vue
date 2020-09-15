@@ -32,8 +32,9 @@
             <div class="index-header">Your Tasklin</div>
           </list-header>
           <div class="section tasklin-section">
-          <div class="text-center">
-            <img
+          <div class="">
+            <tasklin />
+            <!-- <img
               v-if="this.tasklin.color === '#2196fs'"
               src="statics/tasklins/StarterBlue1.png"
             />
@@ -72,7 +73,7 @@
             <img
               v-if="this.tasklin.color === '#9e9e9e'"
               src="statics/tasklins/StarterGrey1.png"
-            />
+            /> -->
             <p class="tasklin-details">
               <q-item-label
                 ><b>Name: </b> {{ tasklin.name }}</q-item-label
@@ -205,7 +206,8 @@ export default {
     "tasks-today": require("components/Tasks/TasksToday.vue").default,
     "tasks-late": require("components/Tasks/TasksLate.vue").default,
     "list-header": require("components/Shared/ListHeader.vue").default,
-    "no-tasks": require("components/Tasks/NoTasks.vue").default
+    "no-tasks": require("components/Tasks/NoTasks.vue").default,
+    "tasklin": require("components/Tasklins/Tasklin.vue").default
   },
   computed: {
     ...mapGetters("profile", ["profile"]),
