@@ -59,6 +59,7 @@ const actions = {
     let taskWriting = firebaseDb.ref("writing/" + date);
     taskWriting.set(payload);
     dispatch("profile/addXP", true, { root: true })
+    dispatch("profile/addLin", true, { root: true })
     dispatch("fbReadWritingTasks");
   }
 };

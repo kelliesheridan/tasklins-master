@@ -352,6 +352,21 @@ const getters = {
 
     return tasks;
   },
+  tasksCompletedToday: (state, getters) => {
+    let tasksFiltered = getters.tasksFiltered;
+    let tasks = {};
+    
+
+    Object.keys(tasksFiltered).forEach(function(key) {
+      let task = tasksFiltered[key];
+      let today = moment().format();
+      
+      if (task.completedDate == moment(today).format("YYYY-MM-DD")) {
+        tasks[key] = task;
+      }
+    });
+    return tasks;
+  },
   projects: state => {
     return state.projects;
   }
