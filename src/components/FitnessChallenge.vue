@@ -205,8 +205,8 @@
           <q-linear-progress
             rounded
             size="15px"
-            :value="this.getProgress('adam')"
-            :style="{ color: getUserColor('adam') }"
+            :value="this.getProgress('adam montpetit')"
+            :style="{ color: getUserColor('adam montpetit') }"
             class="q-mt-sm"
             :key="update"
           />
@@ -391,7 +391,7 @@ export default {
         let fitness = this.fitness.fitness;
         if (fitness != undefined) {
           Object.keys(fitness).forEach(element => {
-            if (fitness[element].username == user) {
+            if (fitness[element].username == user.toLowerCase()) {
               intensityCount += fitness[element].intensity;
             }
           });
@@ -441,7 +441,7 @@ export default {
         if (fitness != undefined) {
           Object.keys(fitness).forEach(element => {
             if (Object.keys(fitness).indexOf(element) == elementToCheck) {
-              color = this.getUserColor(fitness[element].username)
+              color = this.getUserColor(fitness[element].username.toLowerCase())
             }
           });
         }
