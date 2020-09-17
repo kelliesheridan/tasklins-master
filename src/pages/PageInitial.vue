@@ -6,12 +6,7 @@
       <div class="index-header">If you've been redirected to this page but have already created your Tasklin, you can use the menu to head back to the home page. We're working on fixing this. If you haven't made your Tasklin yet, please enter your first tasks below to hatch your first egg!</div>
     </list-header>
 
-    <q-dialog
-      v-model="showNewUser1"
-      persistent
-      transition-show="scale"
-      transition-hide="scale"
-    >
+    <div class="col text-center" v-if="showNewUser1">
       <q-card class="card">
         <q-card-section class="bg-primary text-white">
           <div class="text-h6">Welcome to Tasklins!</div>
@@ -40,13 +35,13 @@
               flat
               label="Next"
               color="primary"
-              @click="showNewUser2 = true"
+              @click="showNewUser2 = true; showNewUser1 = false"
               v-close-popup
             />
           </q-card-actions>
         </q-card-section>
       </q-card>
-    </q-dialog>
+    </div>
 
     <div class="col text-center" v-if="showNewUser2">
       <q-card class="my-card">
