@@ -1,10 +1,26 @@
 <template>
-  <q-page padding class="bg-auth">
-    <list-header bgColor="bg-primary">
-      <div class="index-header">If you've been redirected to this page but have already created your Tasklin, you can use the menu to head back to the home page. We're working on fixing this. If you haven't made your Tasklin yet, please enter your first tasks below to hatch your first egg!</div>
-    </list-header>
-    <br>
+  <q-page padding>
 
+    <div style="width: 100%; max-width: 500px; margin: 0 auto;" v-if="this.tasklin.name !== ''">
+      <div>
+        <list-header bgColor="bg-primary">
+          <div class="index-header">We might be lost.</div>
+        </list-header>
+      </div>                 
+      <div style="width: 100%; max-width: 500px; margin-top: -150px;">
+        <tasklin />
+      </div>
+      <div class="text-center" style="width: 100%; max-width: 500px">
+        <q-btn
+          label="Take Me Home"
+          @click="backToHome"
+          type="submit"
+          color="primary"
+        />
+      </div>       
+    </div>
+
+    <div v-cloak v-if="this.tasklin.name == ''">
     <div class="text-center" v-if="showNewUser1">
       <q-card class="card center">
         <q-card-section class="bg-primary u-center-text text-white">
@@ -175,6 +191,10 @@
         </div>
       </div>
     </div>
+
+    </div>
+
+
     <q-dialog v-model="showAddTask">
       <add-task @close="showAddTask = false" />
     </q-dialog>
@@ -196,7 +216,8 @@ export default {
       tasklinName: "",
       tasklinType: "Monster",
       color: "blue",
-      newTasks: 0
+      newTasks: 0,
+      tasksFive: false,
     };
   },
   computed: {
@@ -216,6 +237,18 @@ export default {
       "updateTasklins",
       "updateColor"
     ]),
+        backToHome() {
+      this.$router.push("/index");
+    },
+    showLoading () {
+      this.$q.loading.show()
+
+      // hiding in 2s
+      this.timer = setTimeout(() => {
+        this.$q.loading.hide()
+        this.timer = void 0
+      }, 2000)
+    },
     ...mapActions("tasklins", ["updateTasklin"]),
     updateUserProfile() {
       let profile = {
@@ -271,6 +304,12 @@ export default {
     "tasks-initial": require("components/Tasks/TasksInitial.vue").default,
     tasklin: require("components/Tasklins/Tasklin.vue").default,
     "list-header": require("components/Shared/ListHeader.vue").default,
+  },
+  beforeDestroy () {
+    if (this.timer !== void 0) {
+      clearTimeout(this.timer)
+      this.$q.loading.hide()
+    }
   }
 };
 </script>

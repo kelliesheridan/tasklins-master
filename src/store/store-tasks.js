@@ -301,6 +301,17 @@ const getters = {
     });
     return tasks;
   },
+  tasksNoDate: (state, getters) => {
+    let tasksFiltered = getters.tasksFiltered;
+    let tasks = {};
+    Object.keys(tasksFiltered).forEach(function(key) {
+      let task = tasksFiltered[key];
+      if (task.dueDate = "") {
+        tasks[key] = task;
+      }
+    });
+    return tasks;
+  },
   tasksCompleted: (state, getters) => {
     let tasksFiltered = getters.tasksFiltered;
     let tasks = {};

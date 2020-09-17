@@ -52,7 +52,7 @@
     <div class="row">
  <div
           class="col-xs-12 col-sm-12 col-md-6 col-lg-4 q-pa-xs bg-accent"
-          style="overflow: auto; height: 570px"
+          style="overflow: auto; max-height: 65vh;"
         >
           <div v-for="n in 12" :key="n">
             <q-card dense flat square class="my-card q-pa-xs">

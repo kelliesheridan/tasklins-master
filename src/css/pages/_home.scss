@@ -74,3 +74,13 @@
     max-width: 90vw;
    }
 }
+
+.secretScroll {
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.secretScroll::-webkit-scrollbar {
+  display: none;
+}

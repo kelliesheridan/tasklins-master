@@ -69,7 +69,7 @@
 
         <q-space/>
 
-        <img src="statics/items/scroll-1.png" v-show="showBonusItem" class="bonusImg2" @click="showBonus = true" />
+        <img src="statics/items/chest-1.png" v-show="showBonusItem" class="bonusImg2" @click="showBonus = true" />
       </div>
       <div class="row">
         <q-space/>
