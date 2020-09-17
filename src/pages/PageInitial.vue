@@ -1,15 +1,13 @@
 <template>
   <q-page padding class="bg-auth">
-    <div class="q-pa-md" style="max-width: 400px"></div>
-
     <list-header bgColor="bg-primary">
       <div class="index-header">If you've been redirected to this page but have already created your Tasklin, you can use the menu to head back to the home page. We're working on fixing this. If you haven't made your Tasklin yet, please enter your first tasks below to hatch your first egg!</div>
     </list-header>
     <br>
 
-    <div class="col text-center" v-if="showNewUser1">
-      <q-card class="my-card">
-        <q-card-section class="bg-primary text-white">
+    <div class="center text-center" v-if="showNewUser1">
+      <q-card class="card">
+        <q-card-section class="bg-primary u-center-text text-white">
           <div class="text-h6">Welcome to Tasklins!</div>
         </q-card-section>
 
@@ -44,20 +42,20 @@
       </q-card>
     </div>
 
-    <div class="col text-center" v-if="showNewUser2">
-      <q-card class="my-card">
+    <div class="col center text-center" v-if="showNewUser2">
+      <q-card class="card">
         <div>
           <q-item>
-            <q-avatar rounded class="pip-avatar">
+            <q-avatar rounded class="pip-avatar ">
               <img src="statics/Piper.jpg" />
             </q-avatar>
 
-            <q-item-section top side>
+            <q-item-section class="q-pa-sm" top side>
               <q-item-label v-if="hatched === false"
                 >All Tasklins start out as eggs. You can store as many eggs as
                 you want to, but to meet the Tasklin inside, you're going to
                 have to give it something to work on. Use the + button to
-                <strong>add your first five tasks</strong>. These can be any
+                <strong>add your first five tasks</strong>.<br><br> These can be any
                 things you need to complete, such as 'Go for a walk' or 'Finish
                 Math Homework'.
                 <strong
@@ -277,121 +275,3 @@ export default {
   }
 };
 </script>
-
-<style>
-.initial-box {
-  overflow: auto;
-  flex: auto;
-  margin: 0 auto;
-}
-
-@media screen and (min-width: 768px) {
-  .card {
-    width: 700px;
-    max-width: 80vw;
-  }
-
-  .pip-avatar {
-    width: 200px;
-    height: auto;
-  }
-
-  .my-picker {
-    max-width: 250px;
-  }
-
-  .initial-box {
-    max-width: 20%;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .card {
-    width: 85%;
-  }
-
-  .pip-avatar {
-    width: 100px;
-    height: auto;
-  }
-
-  .my-picker {
-    max-width: 200px;
-  }
-
-  .initial-box {
-    max-width: 80%;
-  }
-}
-
-.egg {
-  width: 20%;
-  max-width: 50%;
-  height: auto;
-  margin: auto;
-  margin-left: 10px;
-  padding: 10px;
-  display: inline-block;
-}
-
-.egg2 {
-  width: 20%;
-  max-width: 50%;
-  height: auto;
-  margin: auto;
-  padding: 10px;
-  display: inline-block;
-}
-
-.egg1 {
-  max-width: 250px;
-}
-.st0 {
-  fill-rule: evenodd;
-  clip-rule: evenodd;
-}
-.st1 {
-  fill-rule: evenodd;
-  clip-rule: evenodd;
-}
-.st2 {
-  fill-rule: evenodd;
-  clip-rule: evenodd;
-}
-
-.eggShadow {
-  fill: black;
-  opacity: 0.3;
-}
-
-.eggHighlight {
-  fill: white;
-  opacity: 0.3;
-}
-
-.thinger {
-  text-align: center;
-  height: auto;
-  margin: auto;
-  display: inline-block;
-}
-
-.tasklin-size {
-  max-width: 1rem;
-  height: auto;
-}
-
-.tasklinDisplayInitialBox {
-  margin: 1rem;
-  max-width: 100%;
-  height: auto;
-}
-
-.tasklinDisplayInitial {
-  margin: 1rem;
-  max-width: 100%;
-  height: auto;
-  display: inline-block;
-  flex: auto;
-}
-</style>

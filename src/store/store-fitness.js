@@ -92,10 +92,6 @@ const actions = {
 }
 const getters = {
   fitness: state => {
-    state.kellieprogress = 0.3;
-    state.mattprogress = 0.9;
-    state.kaitlynprogress = 0.8;
-    state.adamprogress = 0.4;
     return state;
   }
 };

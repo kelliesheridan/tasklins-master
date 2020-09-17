@@ -50,232 +50,38 @@
     </div>
 
     <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 bg-accent" style="overflow: auto; height: 550px">
-        <q-card dense flat square class="my-card q-pa-xs">
-          <q-card-section
-            :style="{ 'background-color': getCardColor(0) }"
-            class="text-white"
-          >
-            <div class="text-h7">
-              {{ this.getActivity(0) }}
-
-              <q-card-actions class="q-pa-xs q-pa-xs" align="right">
-
-                <!-- <span>
-                  <q-btn @click="submit('cheer'); cheer = true" dense push>Cheer!</q-btn>
-                </span>
-
-                <span>
-                 # <q-icon name="thumb_up" />
-                </span>            -->
-
-              </q-card-actions>
-            </div>
-          </q-card-section>
-        </q-card>
-
-        <q-card dense flat square class="my-card q-pa-xs">
-          <q-card-section
-            :style="{ 'background-color': getCardColor(1) }"
-            class="text-white"
-          >
-            <div class="text-h7">
-              {{ this.getActivity(1) }}
-
-              <q-card-actions align="right">
-                <!-- <q-btn @click="submit('cheer')" dense flat>Cheer!</q-btn> -->
-              </q-card-actions>
-            </div>
-          </q-card-section>
-        </q-card>
-
-        <q-card dense flat square class="my-card q-pa-xs">
-          <q-card-section
-            :style="{ 'background-color': getCardColor(2) }"
-            class="text-white"
-          >
-            <div class="text-h7">
-              {{ this.getActivity(2) }}
-
-              <q-card-actions align="right">
-                <!-- <q-btn @click="submit('cheer')" dense flat>Cheer!</q-btn> -->
-              </q-card-actions>
-            </div>
-          </q-card-section>
-        </q-card>
-
-               <q-card dense flat square class="my-card q-pa-xs">
-          <q-card-section
-            :style="{ 'background-color': getCardColor(3) }"
-            class="text-white"
-          >
-            <div class="text-h7">
-              {{ this.getActivity(3) }}
-
-              <q-card-actions align="right">
-                <!-- <q-btn @click="submit('cheer')" dense flat>Cheer!</q-btn> -->
-              </q-card-actions>
-            </div>
-          </q-card-section>
-
-        </q-card>
-               <q-card dense flat square class="my-card q-pa-xs">
-          <q-card-section
-            :style="{ 'background-color': getCardColor(4) }"
-            class="text-white"
-          >
-            <div class="text-h7">
-              {{ this.getActivity(4) }}
-
-              <q-card-actions align="right">
-                <!-- <q-btn @click="submit('cheer')" dense flat>Cheer!</q-btn> -->
-              </q-card-actions>
-            </div>
-          </q-card-section>
-        </q-card>
-
-        <q-card dense flat square class="my-card q-pa-xs">
-          <q-card-section
-            :style="{ 'background-color': getCardColor(5) }"
-            class="text-white"
-          >
-            <div class="text-h7">
-              {{ this.getActivity(5) }}
-
-              <q-card-actions align="right">
-                <!-- <q-btn @click="submit('cheer')" dense flat>Cheer!</q-btn> -->
-              </q-card-actions>
-            </div>
-          </q-card-section>
-        </q-card>              
-
-        <q-card dense flat square class="my-card q-pa-xs">
-          <q-card-section
-            :style="{ 'background-color': getCardColor(6) }"
-            class="text-white"
-          >
-            <div class="text-h7">
-              {{ this.getActivity(6) }}
-
-              <q-card-actions align="right">
-                <!-- <q-btn @click="submit('cheer')" dense flat>Cheer!</q-btn> -->
-              </q-card-actions>
-            </div>
-          </q-card-section>
-        </q-card>  
-      </div>
-
-      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
-
-        <div class="q-pa-md">
-          Dez
-          <q-linear-progress
-            rounded
-            size="15px"
-            :value="this.getProgress('desirae ')"
-            :style="{ color: getUserColor('desirae ') }"
-            class="q-mt-sm"
-            :key="update"
-          />
+ <div
+          class="col-xs-12 col-sm-12 col-md-6 col-lg-4 q-pa-xs bg-accent"
+          style="overflow: auto; height: 570px"
+        >
+          <div v-for="n in 12" :key="n">
+            <q-card dense flat square class="my-card q-pa-xs">
+              <q-card-section
+                :style="{ 'background-color': getCardColor(n - 1) }"
+                class="text-white"
+              >
+                <div class="text-h7">
+                  {{ getActivity(n - 1) }}
+                </div>
+              </q-card-section>
+            </q-card>
+          </div>
         </div>
 
-        <div class="q-pa-md">
-          Emma
-          <q-linear-progress
-            rounded
-            size="15px"
-            :value="this.getProgress('emma')"
-            :style="{ color: getUserColor('emma') }"
-            class="q-mt-sm"
-            :key="update"
-          />
-        </div>
-        
-        <div class="q-pa-md">
-          Erin
-          <q-linear-progress
-            rounded
-            size="15px"
-            :value="this.getProgress('erin')"
-            :style="{ color: getUserColor('erin') }"
-            class="q-mt-sm"
-            :key="update"
-          />
-        </div>
-
-        <div class="q-pa-md">
-          Helen
-          <q-linear-progress
-            rounded
-            size="15px"
-            :value="this.getProgress('helen')"
-            :style="{ color: getUserColor('helen') }"
-            class="q-mt-sm"
-            :key="update"
-          />
-        </div>
-
-        
-          <div class="q-pa-md">
-            Kellie
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 q-pa-xs">
+        <div v-for="n in this.profileIDs" :key="n" >
+          <div v-if="calculateValues(getProfileName(n))">
+            {{ getProfileName(n) }}
             <q-linear-progress
               rounded
               size="15px"
-              :value="this.getProgress('kellie')"
-              :style="{ color: getUserColor('kellie') }"
-              class="q-mt-sm"
+              :value="getProgress(getProfileName(n))"
+              :style="{ color: getUserColor(getProfileName(n)) }"
               :key="update"
             />
           </div>
-
-        <div class="q-pa-md">
-          Kyra
-          <q-linear-progress
-            rounded
-            size="15px"
-            :value="this.getProgress('kyra')"
-            :style="{ color: getUserColor('kyra') }"
-            class="q-mt-sm"
-            :key="update"
-          />
         </div>
-
-        <div class="q-pa-md">
-          Meghan
-          <q-linear-progress
-            rounded
-            size="15px"
-            :value="this.getProgress('meghan')"
-            :style="{ color: getUserColor('meghan') }"
-            class="q-mt-sm"
-            :key="update"
-          />
-        </div>
-
-        <!-- <div class="q-pa-md">
-          Rachel
-          <q-linear-progress
-            rounded
-            size="15px"
-            :value="this.getProgress('rachel')"
-            :style="{ color: getUserColor('rachel') }"
-            class="q-mt-sm"
-            :key="update"
-          />
-        </div> -->
-
-        <!-- <div class="q-pa-md">
-          Calyn
-          <q-linear-progress
-            rounded
-            size="15px"
-            :value="this.getProgress('calyn')"
-            :style="{ color: getUserColor('calyn') }"
-            class="q-mt-sm"
-            :key="update"
-          />
-        </div> -->
-      </div>
+        </div>   
     </div>
   </q-page>
 </template>
@@ -291,7 +97,7 @@ export default {
   }),
   computed: {
     ...mapGetters("writing", ["writing"]),
-    ...mapGetters("profile", ["profile", "profiles"]),
+    ...mapGetters("profile", ["profile", "profiles", "profileIDs"]),
   },
   methods: {
     ...mapActions("writing", ["addWritingTask", "readWritingTasks"]),
@@ -310,7 +116,7 @@ export default {
         let writing = this.writing.writing;
         if (writing != undefined) {
           Object.keys(writing).forEach(element => {
-            if (writing[element].username == user) {
+            if (writing[element].username == user.toLowerCase()) {
               intensityCount += writing[element].intensity;
             }
           });
@@ -364,6 +170,26 @@ export default {
         return color;
       }
     },
+    getTaskDate(value) {
+      let date = "";
+      let cheer = "";
+      let fitness = this.writing.writing;
+      if (fitness != undefined) {
+        let elementToCheck =
+          value === 0
+            ? Object.keys(writing).length - 1
+            : Object.keys(writing).length - 1 - value;
+        if (writing != undefined) {
+          Object.keys(writing).forEach(element => {
+            if (Object.keys(writing).indexOf(element) == elementToCheck) {
+              if (date == "") date = fitness[element].date;
+              if (cheer == "") cheer = fitness[element].cheers;
+            }
+          });
+        }
+        return { date, cheer };
+      }
+    },
     getUsername(value) {
       let activity = "";
       let writing = this.writing.writing;
@@ -403,6 +229,9 @@ export default {
         return activity;
       }
       return activity;
+    },
+      getProfileName(value) {
+      return this.profiles[value].name;
     }
   }
 };
@@ -413,4 +242,5 @@ export default {
   padding: 10px 10px
 .row + .row
   margin-top: 1rem
+  
 </style>

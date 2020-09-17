@@ -1,0 +1,129 @@
+.center {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+}
+
+.initial-box {
+    overflow: auto;
+    flex: auto;
+    margin: 0 auto;
+  }
+  
+  @media screen and (min-width: 768px) {
+    .card {
+      width: 700px;
+      max-width: 80vw;
+      text-align: left;
+    }
+  
+    .pip-avatar {
+      width: 200px;
+      height: auto;
+    }
+  
+    .my-picker {
+      max-width: 250px;
+    }
+  
+    .initial-box {
+      max-width: 20%;
+    }
+  }
+  
+  @media screen and (max-width: 767px) {
+    .card {
+      width: 100%;
+      text-align: left;
+    }
+
+    .center {
+        margin: auto;
+        width: 90%;
+        text-align: center;
+    }
+  
+    .pip-avatar {
+      width: 100px;
+      height: auto;
+    }
+  
+    .my-picker {
+      max-width: 200px;
+    }
+  
+    .initial-box {
+      max-width: 80%;
+    }
+  }
+  
+  .egg {
+    width: 20%;
+    max-width: 50%;
+    height: auto;
+    margin: auto;
+    margin-left: 10px;
+    padding: 10px;
+    display: inline-block;
+  }
+  
+  .egg2 {
+    width: 20%;
+    max-width: 50%;
+    height: auto;
+    margin: auto;
+    padding: 10px;
+    display: inline-block;
+  }
+  
+  .egg1 {
+    max-width: 250px;
+  }
+  .st0 {
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+  }
+  .st1 {
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+  }
+  .st2 {
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+  }
+  
+  .eggShadow {
+    fill: black;
+    opacity: 0.3;
+  }
+  
+  .eggHighlight {
+    fill: white;
+    opacity: 0.3;
+  }
+  
+  .thinger {
+    text-align: center;
+    height: auto;
+    margin: auto;
+    display: inline-block;
+  }
+  
+  .tasklin-size {
+    max-width: 1rem;
+    height: auto;
+  }
+  
+  .tasklinDisplayInitialBox {
+    margin: 1rem;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .tasklinDisplayInitial {
+    margin: 1rem;
+    max-width: 100%;
+    height: auto;
+    display: inline-block;
+    flex: auto;
+  }

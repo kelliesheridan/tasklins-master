@@ -24,7 +24,7 @@
     </div>
 
     <list-header bgColor="bg-primary">
-      <div class="index-header">In the future, you'll be able to create custom and private challenges. For now, you can automatically participate in any of our existing challenge. If you'd like your progress to show on the challenge page, submit a help ticket through the ? icon at the top of the screen. </div>
+      <div class="index-header">In the future, you'll be able to create custom and private challenges. For now, you can automatically participate in any of our existing challenge.</div>
     </list-header>
     
   </q-page>

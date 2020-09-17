@@ -1,7 +1,7 @@
 <template>
   <q-page padding>
     <div class="q-pa-xs q-gutter-xs">
-      <div class="q-pa-md fitness row text-center">
+      <div class="q-pa-xs q-gutter-xs fitness row text-center">
         <div class="col-12">
           <q-btn-dropdown
             class="q-mr-sm"
@@ -58,7 +58,7 @@
 
       <div class="row">
         <div
-          class="col-xs-12 col-sm-12 col-md-4 col-lg-4 q-pa-xs bg-accent"
+          class="col-xs-12 col-sm-12 col-md-6 col-lg-4 q-pa-xs bg-accent"
           style="overflow: auto; height: 570px"
         >
           <div v-for="n in 9" :key="n">
@@ -75,19 +75,21 @@
           </div>
         </div>
 
-        <div v-for="n in this.profileIDs" :key="n" class="col-xs-12 col-sm-12 col-md-8 col-lg-8 q-pa-xs">
-          <div class="q-pa-xs" v-if="calculateValues(getProfileName(n))">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 q-pa-xs">
+        <div v-for="n in this.profileIDs" :key="n" >
+          <div v-if="calculateValues(getProfileName(n))">
             {{ getProfileName(n) }}
             <q-linear-progress
               rounded
               size="15px"
               :value="getProgress(getProfileName(n))"
               :style="{ color: getUserColor(getProfileName(n)) }"
-              class="q-mt-sm"
               :key="update"
             />
           </div>
         </div>
+        </div>        
+
       </div>
     </div>
   </q-page>
@@ -100,8 +102,6 @@ const moment = require("moment");
 export default {
   data: () => ({
     update: 0,
-    showFitness: false,
-    showWriting: false
   }),
   computed: {
     ...mapGetters("fitness", ["fitness"]),
