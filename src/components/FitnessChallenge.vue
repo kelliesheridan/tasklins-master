@@ -1,344 +1,101 @@
 <template>
   <q-page padding>
-      <div class="q-pa-xs q-gutter-xs">
-
+    <div class="q-pa-xs q-gutter-xs">
       <div class="q-pa-md fitness row text-center">
-      <div class="col-12">
-        <q-btn-dropdown
-        class="q-mr-sm"
-        color="light-green"
-        label="I Worked Out"
-        dropdown-icon="fitness_center"
-      >
-        <q-list>
-          <q-item clickable v-close-popup @click="submit('weights')">
-            <q-item-section>
-              <q-item-label>Lifted Weights</q-item-label>
-            </q-item-section>
-          </q-item>
+        <div class="col-12">
+          <q-btn-dropdown
+            class="q-mr-sm"
+            color="light-green"
+            label="I Worked Out"
+            dropdown-icon="fitness_center"
+          >
+            <q-list>
+              <q-item clickable v-close-popup @click="submit('weights')">
+                <q-item-section>
+                  <q-item-label>Lifted Weights</q-item-label>
+                </q-item-section>
+              </q-item>
 
-          <q-item clickable v-close-popup @click="submit('run')">
-            <q-item-section>
-              <q-item-label>Went for a Run</q-item-label>
-            </q-item-section>
-          </q-item>
+              <q-item clickable v-close-popup @click="submit('run')">
+                <q-item-section>
+                  <q-item-label>Went for a Run</q-item-label>
+                </q-item-section>
+              </q-item>
 
-          <q-item clickable v-close-popup @click="submit('walk')">
-            <q-item-section>
-              <q-item-label>Went for a Walk</q-item-label>
-            </q-item-section>
-          </q-item>
+              <q-item clickable v-close-popup @click="submit('walk')">
+                <q-item-section>
+                  <q-item-label>Went for a Walk</q-item-label>
+                </q-item-section>
+              </q-item>
 
-          <q-item clickable v-close-popup @click="submit('yoga')">
-            <q-item-section>
-              <q-item-label>Did Some Yoga</q-item-label>
-            </q-item-section>
-          </q-item>
+              <q-item clickable v-close-popup @click="submit('yoga')">
+                <q-item-section>
+                  <q-item-label>Did Some Yoga</q-item-label>
+                </q-item-section>
+              </q-item>
 
-          <q-item clickable v-close-popup @click="submit('home')">
-            <q-item-section>
-              <q-item-label>Home Workout</q-item-label>
-            </q-item-section>
-          </q-item>
+              <q-item clickable v-close-popup @click="submit('home')">
+                <q-item-section>
+                  <q-item-label>Home Workout</q-item-label>
+                </q-item-section>
+              </q-item>
 
-          <q-item clickable v-close-popup @click="submit('sports')">
-            <q-item-section>
-              <q-item-label>Sports!</q-item-label>
-            </q-item-section>
-          </q-item>
+              <q-item clickable v-close-popup @click="submit('sports')">
+                <q-item-section>
+                  <q-item-label>Sports!</q-item-label>
+                </q-item-section>
+              </q-item>
 
-          <q-item clickable v-close-popup @click="submit('other')">
-            <q-item-section>
-              <q-item-label>Did some other healthy thing</q-item-label>
-            </q-item-section>
-          </q-item>
-        </q-list>
-      </q-btn-dropdown>
+              <q-item clickable v-close-popup @click="submit('other')">
+                <q-item-section>
+                  <q-item-label>Did some other healthy thing</q-item-label>
+                </q-item-section>
+              </q-item>
+            </q-list>
+          </q-btn-dropdown>
+        </div>
       </div>
 
-      
-    </div>
-
-    
-
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 q-pa-xs bg-accent" style="overflow: auto; height: 570px">
-        <div v-for="index in 8" :key="index">
-           <q-card dense flat square class="my-card q-pa-xs">
-          <q-card-section
-            :style="{ 'background-color': getCardColor(index) }"
-            class="text-white"
-          >
-            <div class="text-h7">
-              {{ this.getActivity(index) }}
-            </div>
-          </q-card-section>
-        </q-card>
-        </div>
-        <!-- <q-card dense flat square class="my-card q-pa-xs">
-          <q-card-section
-            :style="{ 'background-color': getCardColor(0) }"
-            class="text-white"
-          >
-            <div class="text-h7">
-              {{ this.getActivity(0) }}
-            </div>
-          </q-card-section>
-        </q-card>
-
-        <q-card dense flat square class="my-card q-pa-xs">
-          <q-card-section
-            :style="{ 'background-color': getCardColor(1) }"
-            class="text-white"
-          >
-            <div class="text-h7">
-              {{ this.getActivity(1) }}
-            </div>
-          </q-card-section>
-        </q-card>
-
-        <q-card dense flat square class="my-card q-pa-xs">
-          <q-card-section
-            :style="{ 'background-color': getCardColor(2) }"
-            class="text-white"
-          >
-            <div class="text-h7">
-              {{ this.getActivity(2) }}
-            </div>
-          </q-card-section>
-        </q-card>
-
-        <q-card dense flat square class="my-card q-pa-xs">
-          <q-card-section
-            :style="{ 'background-color': getCardColor(3) }"
-            class="text-white"
-          >
-            <div class="text-h7">
-              {{ this.getActivity(3) }}
-            </div>
-          </q-card-section>
-        </q-card>
-
-        <q-card dense flat square class="my-card q-pa-xs">
-          <q-card-section
-            :style="{ 'background-color': getCardColor(4) }"
-            class="text-white">
-            <div class="text-h7">
-              {{ this.getActivity(4) }}
-            </div>
-          </q-card-section>
-        </q-card>
-
-        <q-card dense flat square class="my-card q-pa-xs">
-          <q-card-section
-            :style="{ 'background-color': getCardColor(5) }"
-            class="text-white">
-            <div class="text-h7">
-              {{ this.getActivity(5) }}
-            </div>
-          </q-card-section>
-        </q-card>
-
-        <q-card dense flat square class="my-card q-pa-xs">
-          <q-card-section
-            :style="{ 'background-color': getCardColor(6) }"
-            class="text-white">
-            <div class="text-h7">
-              {{ this.getActivity(6) }}
-            </div>
-          </q-card-section>
-        </q-card>
-
-        <q-card dense flat square class="my-card q-pa-xs">
-          <q-card-section
-            :style="{ 'background-color': getCardColor(7) }"
-            class="text-white">
-            <div class="text-h7">
-              {{ this.getActivity(7) }}
-            </div>
-          </q-card-section>
-        </q-card>
-
-        <q-card dense flat square class="my-card q-pa-xs">
-          <q-card-section
-            :style="{ 'background-color': getCardColor(8) }"
-            class="text-white">
-            <div class="text-h7">
-              {{ this.getActivity(8) }}
-            </div>
-          </q-card-section>
-        </q-card> -->
-      </div>
-
-      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 q-pa-xs">
-
-        <div class="q-pa-xs">
-          Adam
-          <q-linear-progress
-            rounded
-            size="15px"
-            :value="this.getProgress('adam montpetit')"
-            :style="{ color: getUserColor('adam montpetit') }"
-            class="q-mt-sm"
-            :key="update"
-          />
+      <div class="row">
+        <div
+          class="col-xs-12 col-sm-12 col-md-4 col-lg-4 q-pa-xs bg-accent"
+          style="overflow: auto; height: 570px"
+        >
+          <div v-for="n in 9" :key="n">
+            <q-card dense flat square class="my-card q-pa-xs">
+              <q-card-section
+                :style="{ 'background-color': getCardColor(n - 1) }"
+                class="text-white"
+              >
+                <div class="text-h7">
+                  {{ getActivity(n - 1) }}
+                </div>
+              </q-card-section>
+            </q-card>
+          </div>
         </div>
 
-        <div class="q-pa-xs">
-          Francis
-          <q-linear-progress
-            rounded
-            size="17px"
-            :value="this.getProgress('francis')"
-            :style="{ color: getUserColor('francis') }"
-            class="q-mt-sm"
-            :key="update"
-          />
+        <div v-for="n in this.profileIDs" :key="n" class="col-xs-12 col-sm-12 col-md-8 col-lg-8 q-pa-xs">
+          <div class="q-pa-xs" v-if="calculateValues(getProfileName(n))">
+            {{ getProfileName(n) }}
+            <q-linear-progress
+              rounded
+              size="15px"
+              :value="getProgress(getProfileName(n))"
+              :style="{ color: getUserColor(getProfileName(n)) }"
+              class="q-mt-sm"
+              :key="update"
+            />
+          </div>
         </div>
-
-        <div class="q-pa-xs">
-          Gloria
-          <q-linear-progress
-            rounded
-            size="15px"
-            :value="this.getProgress('gloria')"
-            :style="{ color: getUserColor('gloria') }"
-            class="q-mt-sm"
-            :key="update"
-          />
-        </div>
-
-        <div class="q-pa-xs">
-          Kaitlyn
-          <q-linear-progress
-            rounded
-            size="15px"
-            :value="this.getProgress('kaitlyn')"
-            :style="{ color: getUserColor('kaitlyn') }"
-            class="q-mt-sm"
-            :key="update"
-          />
-        </div>  
-
-        <div class="q-pa-xs">
-          Kellie
-          <q-linear-progress
-            rounded
-            size="15px"
-            :value="this.getProgress('kellie')"
-            :style="{ color: getUserColor('kellie') }"
-            class="q-mt-sm"
-            :key="update"
-          />
-        </div>
-
-        <div class="q-pa-xs">
-          Kylie
-          <q-linear-progress
-            rounded
-            size="15px"
-            :value="this.getProgress('kylie')"
-            :style="{ color: getUserColor('kylie') }"
-            class="q-mt-sm"
-            :key="update"
-          />
-        </div> 
-
-        <div class="q-pa-xs">
-          Matt
-          <q-linear-progress
-            rounded
-            size="15px"
-            :value="this.getProgress('matt')"
-            :style="{ color: getUserColor('matt') }"
-            class="q-mt-sm"
-            :key="update"
-          />
-        </div>  
-
-        <div class="q-pa-xs">
-          Meghan
-          <q-linear-progress
-            rounded
-            size="15px"
-            :value="this.getProgress('meghan')"
-            :style="{ color: getUserColor('meghan') }"
-            class="q-mt-sm"
-            :key="update"
-          />
-        </div>  
-
-        <div class="q-pa-xs">
-          Monica
-          <q-linear-progress
-            rounded
-            size="15px"
-            :value="this.getProgress('monica')"
-            :style="{ color: getUserColor('monica') }"
-            class="q-mt-sm"
-            :key="update"
-          />
-        </div>                        
-<!-- 
-        <div class="q-pa-md">
-          Paul
-          <q-linear-progress
-            rounded
-            size="15px"
-            :value="this.getProgress('paul')"
-            :style="{ color: getUserColor('paul') }"
-            class="q-mt-sm"
-            :key="update"
-          />
-        </div> -->
-
-        <!-- <div class="q-pa-md">
-          Perry
-          <q-linear-progress
-            rounded
-            size="15px"
-            :value="this.getProgress('perry')"
-            :style="{ color: getUserColor('perry') }"
-            class="q-mt-sm"
-            :key="update"
-          />
-        </div> -->
-
-        <!-- <div class="q-pa-md">
-          Ryan
-          <q-linear-progress
-            rounded
-            size="15px"
-            :value="this.getProgress('ryan')"
-            :style="{ color: getUserColor('ryan') }"
-            class="q-mt-sm"
-            :key="update"
-          />
-        </div> -->
-
-        <div class="q-pa-xs">
-          Sara
-          <q-linear-progress
-            rounded
-            size="15px"
-            :value="this.getProgress('sara')"
-            :style="{ color: getUserColor('sara') }"
-            class="q-mt-sm"
-            :key="update"
-          />
-        </div>
-
-        
       </div>
     </div>
-    </div>
-    
   </q-page>
 </template>
 
 <script>
 import { mapActions, mapState, mapGetters } from "vuex";
-const moment = require('moment') 
+const moment = require("moment");
 
 export default {
   data: () => ({
@@ -348,7 +105,7 @@ export default {
   }),
   computed: {
     ...mapGetters("fitness", ["fitness"]),
-    ...mapGetters("profile", ["profile", "profiles"])
+    ...mapGetters("profile", ["profile", "profiles", "profileIDs"])
   },
   methods: {
     ...mapActions("fitness", ["addFitnessTask", "readFitnessTasks", "cheer"]),
@@ -375,7 +132,7 @@ export default {
       this.update;
       return this.getUsername(number);
     },
-     getCheers(number) {
+    getCheers(number) {
       this.update;
       return this.getCheerNumber(number);
     },
@@ -395,10 +152,10 @@ export default {
         if (profiles != undefined) {
           Object.keys(profiles).forEach(element => {
             if (profiles[element].name.toLowerCase() == user.toLowerCase()) {
-                color = profiles[element].color;
-                if (color !== "") {
-                  return color;
-                }
+              color = profiles[element].color;
+              if (color !== "") {
+                return color;
+              }
             }
           });
           return color;
@@ -409,11 +166,16 @@ export default {
       let color = "";
       let fitness = this.fitness.fitness;
       if (fitness != undefined) {
-        let elementToCheck = value === 0 ? Object.keys(fitness).length - 1 : Object.keys(fitness).length - 1 - value;
+        let elementToCheck =
+          value === 0
+            ? Object.keys(fitness).length - 1
+            : Object.keys(fitness).length - 1 - value;
         if (fitness != undefined) {
           Object.keys(fitness).forEach(element => {
             if (Object.keys(fitness).indexOf(element) == elementToCheck) {
-              color = this.getUserColor(fitness[element].username.toLowerCase())
+              color = this.getUserColor(
+                fitness[element].username.toLowerCase()
+              );
             }
           });
         }
@@ -440,7 +202,7 @@ export default {
             }
           });
         }
-        return {date, cheer};
+        return { date, cheer };
       }
     },
     getCheerNumber(value) {
@@ -507,6 +269,9 @@ export default {
         return activity;
       }
       return activity;
+    },
+    getProfileName(value) {
+      return this.profiles[value].name;
     }
   }
 };
@@ -518,8 +283,7 @@ export default {
 .row + .row
   margin-top: 1rem
 
-  h4 
+  h4
     margin-bottom: 5px
     padding: 0
-     
 </style>
