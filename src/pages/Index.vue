@@ -136,12 +136,26 @@
           <list-header bgColor="bg-primary">
             <div class="index-header">News</div>
           </list-header>
-          <div class="text-left">
-            <div class="q-pa-md" style="max-width: 350px">
+          <div class="text-left row">
+            <div class="col q-pa-md" style="max-width: 350px">
               <q-list dense padding class="rounded-borders">
                 <q-item>
                   <q-item-section>
                     <q-item-label><strong>Recent Updates</strong></q-item-label>
+                  </q-item-section>
+                </q-item>
+
+                <q-item>
+                  <q-item-section>
+                    <q-item-label><strong>Challenge Open to All</strong></q-item-label>
+                    <q-item-label>Now anyone who participates in either challenge via the green button will automatically be added to the challenge tracker.</q-item-label>
+                  </q-item-section>
+                </q-item>
+                
+                <q-item>
+                  <q-item-section>
+                    <q-item-label><strong>Fixed Some Bugs</strong></q-item-label>
+                    <q-item-label>Less Things Are Broken!</q-item-label>
                   </q-item-section>
                 </q-item>
 
@@ -152,30 +166,14 @@
                       Found a bug or have a question? You can submit any issues from the help page (top right hand corner).</q-item-label>
                   </q-item-section>
                 </q-item>
-
-                <q-item> 
-                  <q-item-section>
-                    <q-item-label><strong>New Look</strong></q-item-label>
-                    <q-item-label 
-                      >Changed some colors and menus around. Not terribly exciting.</q-item-label>
-                  </q-item-section>
-                </q-item>
-
-                <q-item>
-                  <q-item-section>
-                    <q-item-label><strong>Repeating Tasks</strong></q-item-label>
-                    <q-item-label>Set tasks to repeat on specific days of the week (or every day). More options coming soon.</q-item-label>
-                  </q-item-section>
-                </q-item>
-
-                <q-item>
-                  <q-item-section>
-                    <q-item-label><strong>Due Times</strong></q-item-label>
-                    <q-item-label>Option to set a due time for your tasks.</q-item-label>
-                  </q-item-section>
-                </q-item>
-
               </q-list>
+            </div>
+            <div class="col q-pa-md" style="max-width: 350px">
+              <q-img
+            src="statics/items/lin.png"
+            style="width:15px;">
+            <q-tooltip content-class="bg-primary">{{ profile.lin }} Lin.</q-tooltip>
+            </q-img>
             </div>
           </div>
         </div>
