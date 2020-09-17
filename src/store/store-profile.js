@@ -1,5 +1,6 @@
 import { firebaseDb, firebaseAuth } from "boot/firebase";
 import moment from "moment";
+import { Notify } from 'quasar'
 
 const state = {
   profile: {
@@ -249,7 +250,12 @@ function getLevel() {
     level = "1";
   }
   if (level > state.profile.user.level) {
-    alert("Congratulations, You've leveled up! Welcome to level " + level)
+    Notify.create({
+      icon: 'grade',
+      message: "Congratulations. You leveled up!",
+      color: 'primary',
+      textColor: 'white'  
+    })
   }
   return level;
 }

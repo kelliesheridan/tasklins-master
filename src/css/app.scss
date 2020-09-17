@@ -8,18 +8,14 @@
 @import "base/utilities";
 
 @import "components/button";
+@import "components/eggs";
+@import "components/composition";
 @import "components/projects";
 @import "components/tasks";    
-@import "components/composition";
-@import "components/eggs"; 
-// @import "components/feature-box";
-// @import "components/story";   
+@import "components/tasklin";  
 
-// @import "layout/footer";  
-// @import "layout/grid";
 @import "layout/header";
  
-
 @import "pages/auth";
 @import "pages/home";
 @import "pages/help";
