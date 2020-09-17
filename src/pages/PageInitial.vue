@@ -5,9 +5,10 @@
     <list-header bgColor="bg-primary">
       <div class="index-header">If you've been redirected to this page but have already created your Tasklin, you can use the menu to head back to the home page. We're working on fixing this. If you haven't made your Tasklin yet, please enter your first tasks below to hatch your first egg!</div>
     </list-header>
+    <br>
 
     <div class="col text-center" v-if="showNewUser1">
-      <q-card class="card">
+      <q-card class="my-card">
         <q-card-section class="bg-primary text-white">
           <div class="text-h6">Welcome to Tasklins!</div>
         </q-card-section>
