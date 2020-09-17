@@ -69,7 +69,7 @@
 
         <q-space/>
 
-        <img src="statics/items/scroll-1.png" v-show="showBonusItem" class="scrollImg2" @click="showBonus = true" />
+        <img src="statics/items/scroll-1.png" v-show="showBonusItem" class="bonusImg2" @click="showBonus = true" />
       </div>
       <div class="row">
         <q-space/>
@@ -104,7 +104,7 @@
       <div>
         <q-img src="statics/background-forest.jpg" style="height: 250px">
           <div class="eventBox bg-transparent">                 
-              <img src="statics/items/scroll-1.png" v-show="showBonusItem" style="margin-top: 50px; margin-left: 50px" class="scrollImg" @click="showBonus = true" />
+              <img src="statics/items/chest-1.png" v-show="showBonusItem" style="margin-top: 50px; margin-left: 50px" class="bonusImg" @click="showBonus = true" />
           </div>
         </q-img>
       </div>
@@ -132,8 +132,7 @@
 
       <div class="text-center q-mb-lg">
         <q-btn
-          @click="showAddTask = true"
-          @keyup.ctrl.76="showAddTask = true"
+          @click="showAddTask = true"         
           class="add-task-btn"
           round
           color="primary"
@@ -196,19 +195,35 @@
       transition-show="scale"
       transition-hide="scale"
     >
-      <q-card class="bg-primary text-white" style="width: 400px">
-        <q-card-section>
-          <div class="text-h6">Something happened!</div>
+    <div class="text-center">
+      <q-card class="randomEvent center">
+        <q-card-section class="bg-primary u-center-text text-white">
+          <div class="text-h5 bonusHeader">Something Happened</div>
         </q-card-section>
 
-        <q-card-section class="q-pt-none">
-          Soon, this will be the space where you see the game world. Where you can find items and have unexpected things happen to you!
-        </q-card-section>
+        <q-card-section class="q-pt-md">
+          <div>
+            <q-item>
+              <q-item-section side top>
+                <q-avatar class="bonusImgFocus">
+                  <img src="statics/items/chest-1.png" />
+                </q-avatar>
+              </q-item-section>
+              <q-item-section top>
+                <q-item-label class="bonusBox">
+                  You found a chest! There's nothing in it because Kellie hasn't figured out how to do that yet. But yay! Finding stuff! Have an excellent day!
+                </q-item-label>
+              </q-item-section>
+            </q-item>
+          </div>
 
-        <q-card-actions align="right" class="bg-white text-teal">
-          <q-btn flat label="OK" v-close-popup @click="showBonusItem = false"/>
+        <q-card-actions align="right" class="bg-white text-teal" style="margin-top: -25px;">
+          <q-btn label="OK" color="primary" v-close-popup @click="showBonusItem = false"/>
         </q-card-actions>
+
+        </q-card-section>
       </q-card>
+    </div>
     </q-dialog>
 
     <q-page-container v-if="loggedIn" class="loggedIn">
@@ -236,7 +251,7 @@ export default {
       left: false,
       right: false,
       showBonus: false,
-      showBonusItem: false,
+      showBonusItem: true,
       essentialLinks: [
         {
           title: "Home",

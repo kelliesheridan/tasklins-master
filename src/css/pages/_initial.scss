@@ -1,6 +1,6 @@
 .center {
     margin: auto;
-    width: 50%;
+    width: 100%;
     text-align: center;
 }
 
@@ -93,20 +93,13 @@
   }
   
   .eggShadow {
-    fill: black;
-    opacity: 0.3;
+    fill: #1f4287;
+    opacity: 0.2;
   }
   
   .eggHighlight {
-    fill: white;
-    opacity: 0.3;
-  }
-  
-  .thinger {
-    text-align: center;
-    height: auto;
-    margin: auto;
-    display: inline-block;
+    fill: #21e6c1;
+    opacity: 0.2;
   }
   
   .tasklin-size {

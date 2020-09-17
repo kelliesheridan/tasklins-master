@@ -5,8 +5,8 @@
     </list-header>
     <br>
 
-    <div class="center text-center" v-if="showNewUser1">
-      <q-card class="card">
+    <div class="text-center" v-if="showNewUser1">
+      <q-card class="card center">
         <q-card-section class="bg-primary u-center-text text-white">
           <div class="text-h6">Welcome to Tasklins!</div>
         </q-card-section>
@@ -30,8 +30,7 @@
           </div>
 
           <q-card-actions align="right">
-            <q-btn
-              flat
+            <q-btn              
               label="Next"
               color="primary"
               @click="showNewUser2 = true; showNewUser1 = false"
@@ -42,8 +41,8 @@
       </q-card>
     </div>
 
-    <div class="col center text-center" v-if="showNewUser2">
-      <q-card class="card">
+    <div class="text-center" v-if="showNewUser2">
+      <q-card class="card center">
         <div>
           <q-item>
             <q-avatar rounded class="pip-avatar ">
@@ -59,12 +58,12 @@
                 things you need to complete, such as 'Go for a walk' or 'Finish
                 Math Homework'.
                 <strong
-                  >Once you've added all five tasks, the hatch button will
-                  appear!</strong
+                  >Once you've added all five tasks, you'll be able to hatch your Tasklin!</strong
                 ></q-item-label
               >
               <q-item-label v-if="hatched === true"
-                >Well done! Now it's time to name your first Tasklin, and then
+                >Well done!<br><br>
+                It's time to name your first Tasklin, and then
                 we're ready to start our adventure! And judging by the things
                 you need to get done, there's no time to waste. And keep an eye
                 out for the + button to add more tasks in the future. You can
@@ -110,8 +109,28 @@
           </svg>
         </div>
 
+        <div v-if="newTasks >= 5 && hatched != true">
+          <q-btn
+            color="primary"
+            @click="hatched = true"            
+            label="Hatch"
+          />
+        </div>
+
+        <div v-if="newTasks <= 4">
+          <q-btn          
+          round
+          color="primary"
+          size="18px"
+            @click="
+              showAddTask = true;
+              newTasks++;"            
+            icon="add"
+          />
+        </div>
+
         <div
-          class="initial-box col-xs-12 col-sm-12 col-md-6 col-lg-6 q-pa-xs"
+          class="initial-box col-xs-12 col-sm-12 col-md-6 col-lg-6 q-pa-md"
           style="overflow: auto; height: 90%"
         >
           <tasks-initial
@@ -120,37 +139,17 @@
           />
         </div>
 
-        <div v-if="newTasks >= 5 && hatched != true">
-          <q-btn
-            color="secondary"
-            @click="hatched = true"
-            glossy
-            label="Hatch"
-          />
-        </div>
-
-        <div v-if="newTasks <= 4">
-          <q-btn
-            color="secondary"
-            @click="
-              showAddTask = true;
-              newTasks++;
-            "
-            glossy
-            icon="add"
-          />
-        </div>
       </div>
 
       <div
-        class="q-pa-sm thinger tasklinDisplayInitialBox"
+        class="q-pa-sm tasklinDisplayInitialBox"
         v-if="hatched === true"
       >
-        <div class="q-pa-xs tasklinDisplayInitial" style="width: 240px !important; height: 240px !important">
+        <div class="q-pa-xs center tasklinDisplayInitial" style="width: 240px !important; height: 240px !important">
           <tasklin />
         </div>
 
-        <div class="q-pa-sm" style="max-width: 300px">
+        <div class="q-pa-sm center" style="max-width: 300px">
           <form class="q-gutter-md">
             <p>Species: Monster</p>
             <q-input
@@ -191,7 +190,7 @@ export default {
       showNewUser1: true,
       showNewUser2: false,
       showAddTask: false,
-      eggColor: "eggStarterPurple",
+      eggColor: "eggStarter",
       hatched: false,
       hex: "ff00ff",
       tasklinName: "",
