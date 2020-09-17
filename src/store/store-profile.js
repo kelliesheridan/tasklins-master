@@ -76,6 +76,9 @@ const mutations = {
   loadAllProfiles({}, profiles) {
     state.profiles = profiles;
   },
+  loadAllProfileIDs({}, profileIDs) {
+    state.profileIDs = profileIDs;
+  },
   printUsername({}, userNames) {
     console.debug("usernames: " + userNames);
   },
@@ -164,6 +167,12 @@ const actions = {
     userProfile.once("value", snapshot => {
       let profiles = snapshot.val();
       commit("loadAllProfiles", profiles);
+      // load profile IDs in to an array
+      let profileArray = new Array();
+      Object.keys(profiles).forEach(element => {
+        profileArray.push(element);
+        commit("loadAllProfileIDs", profileArray);
+      });
     });
   },
 
@@ -251,6 +260,9 @@ const getters = {
   },
   profiles: state => {
     return state.profiles;
+  },
+  profileIDs: state => {
+    return state.profileIDs;
   }
 };
 
