@@ -5,10 +5,7 @@
 	leave-active-class="animated zoomOut absolute-top"
 	>
 	<div>
-		<list-header
-		clickable
-		v-ripple
-		bgColor="bg-primary">Tasks</list-header>
+		<list-header class="textureBar">Tasks</list-header>
 
 				<q-list					
 					separator
