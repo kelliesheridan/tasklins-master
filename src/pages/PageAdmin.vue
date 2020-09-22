@@ -78,7 +78,7 @@ export default {
   }),
   mounted() {
 			if (this.profile) {
-        if (this.profile.id !== "QjYAo2oEvtU5aRmSOcayJrYnbXj2" && this.profile.id !== "tCtIxAjj5vhOARnNpYMaIHxFXJp1") {
+        if (this.profile.id !== "qqtRAKeAUjMWt5dkJx4BiOUbzEh2" && this.profile.id !== "iCDQBygGZyfrSx5vSb8jG5eJgcj2") {
           console.debug("redirecting from admin, id", this.profile.id)
           this.$router.replace("/todo").catch(err => {});
         }
