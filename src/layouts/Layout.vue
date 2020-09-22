@@ -98,6 +98,7 @@
       v-if="loggedIn && this.tasklin.color !== ''"
       :breakpoint="767"
       show-if-above
+      bordered
       content-class="felt"
       v-model="left"
       side="left"
