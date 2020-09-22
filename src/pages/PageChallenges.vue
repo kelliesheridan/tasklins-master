@@ -2,7 +2,7 @@
   <q-page padding>
       <div class="q-pa-xs q-gutter-xs">
 
-    <list-header bgColor="bg-primary">
+    <list-header class="textureBar">
       <div class="index-header">Global Challenges</div>
     </list-header>
 
@@ -23,7 +23,7 @@
       <writingChallenge />
     </div>
 
-    <list-header bgColor="bg-primary">
+    <list-header class="textureBar">
       <div class="index-header">In the future, you'll be able to create custom and private challenges. For now, you can automatically participate in any of our existing challenge.</div>
     </list-header>
     

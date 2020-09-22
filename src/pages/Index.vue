@@ -4,7 +4,7 @@
       <div class="row main justify-center q-pa-md">
         <div class="section col-xs-12 col-sm-12 col-md-6 col-lg-6 q-pa-xs" style="overflow: auto; height: 50%">
           <div>
-            <list-header bgColor="bg-primary">
+            <list-header class="textureBar">
               <div class="index-header">Today's Tasks</div>
             </list-header>
             <no-tasks
@@ -28,7 +28,7 @@
         <div
           class="section col-xs-12 col-sm-12 col-md-6 col-lg-6 justify-center q-pa-xs"
         >
-          <list-header bgColor="bg-primary">
+          <list-header class="textureBar">
             <div class="index-header">Your Tasklin</div>
           </list-header>
           <div class="section tasklin-section">
@@ -51,7 +51,7 @@
 
       <div class="row main justify-center q-pa-md">
         <div class="section col-xs-12 col-sm-12 col-md-6 news q-pa-xs">
-          <list-header bgColor="bg-primary">
+          <list-header class="textureBar">
             <div class="index-header">Follow Tasklins on Social Media</div>
           </list-header>
           <div class="text-center">
@@ -93,7 +93,7 @@
         </div>
 
         <div class="section col-xs-12 col-sm-12 col-md-6 news q-pa-xs">
-          <list-header bgColor="bg-primary">
+          <list-header class="textureBar">
             <div class="index-header">News</div>
           </list-header>
           <div class="text-left row">
@@ -195,7 +195,7 @@ img {
 }
 
 .tasklin-section {
-  background-image: url("http://www.testingtheapp.tasklins.com/statics/background-forest.jpg");   
+  background-image: url("/statics/backgrounds/backgroundTown2.jpg");   
   background-color: #eceff1;
   margin: 1rem;
   border-radius: 1rem;

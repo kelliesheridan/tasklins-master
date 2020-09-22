@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hHh lpR fFf">
     <q-header v-if="loggedIn" elevated class="bg-primary text-white">
-      <q-toolbar>
+      <q-toolbar class="textureBar">
         <!-- <q-btn dense flat round color="accent" icon="notifications"/> -->
         <q-btn
           v-if="loggedIn && this.tasklin.name !== ''"
@@ -56,7 +56,7 @@
       </q-toolbar>
     </q-header>
 
-    <q-footer v-if="loggedIn && this.tasklin.name !== ''" class="text-center">
+    <q-footer v-if="loggedIn && this.tasklin.name !== ''" class="text-center textureBar">
       <div class="row">
 
         <q-btn
@@ -77,9 +77,10 @@
           align="center"
           mobile-arrows
           shadow-2
+          background-color="transparent"
           indicator-color="transparent"
           active-color="accent"
-          class="text-secondary bg-primary col-10"
+          class="text-secondary col-10"
         >
           <q-route-tab class="q-pa-xs" dense to="/index" icon="home" />
           <q-route-tab class="q-pa-xs" dense to="/todo" icon="done" />
@@ -97,12 +98,12 @@
       v-if="loggedIn && this.tasklin.color !== ''"
       :breakpoint="767"
       show-if-above
-      content-class="bg-secondary"
+      content-class="felt"
       v-model="left"
       side="left"
     >
       <div>
-        <q-img src="statics/background-forest.jpg" style="height: 250px">
+        <q-img src="statics/backgrounds/backgroundTown1.jpg" style="height: 250px">
           <div class="eventBox bg-transparent">                 
               <img src="statics/items/chest-1.png" v-show="showBonusItem" style="margin-top: 50px; margin-left: 50px" class="bonusImg" @click="showBonus = true" />
           </div>
@@ -112,12 +113,13 @@
       <!-- <div class="text-center q-pa-md">
         <search />
       </div> -->
-      <div>
+      <div class="textureBar">
         <q-tabs
           outside-arrows
           indicator-color="transparent"
           active-color="accent"
-          class="col-10 text-secondary bg-primary"
+          background-color="transparent"
+          class="col-10 text-secondary"
         >
           <q-route-tab class="q-pa-sm" dense to="/index" icon="home" />
           <q-route-tab class="q-pa-xs" dense to="/todo" icon="done" />
@@ -133,9 +135,9 @@
       <div class="text-center q-mb-lg">
         <q-btn
           @click="showAddTask = true"         
-          class="add-task-btn"
+          class="add-task-btn textureBar"
           round
-          color="primary"
+          text-color="secondary"
           size="18px"
           icon="add"
         >
@@ -229,7 +231,7 @@ export default {
       left: false,
       right: false,
       showBonus: false,
-      showBonusItem: true,
+      showBonusItem: false,
       essentialLinks: [
         {
           title: "Home",
@@ -323,7 +325,13 @@ export default {
 }
 
 .loggedIn {
+  background-image: url("/statics/canvas.png");
   background-color: $accent;
+}
+
+.felt {
+  background-image: url("/statics/felt.png");
+  background-color: $secondary;
 }
 
 .bg-image2 {
@@ -331,8 +339,7 @@ export default {
   background-size: contain;
 }
 
-.layout-details {
-  background-color: #eceff190;
+.layout-details {  
   color: #607d8b;  
   padding: 1rem;
   margin: 0 auto;

@@ -3,7 +3,7 @@
 
     <div style="width: 100%; max-width: 500px; margin: 0 auto;" v-if="this.tasklin.name !== ''">
       <div>
-        <list-header bgColor="bg-primary">
+        <list-header class="textureBar">
           <div class="index-header">We might be lost.</div>
         </list-header>
       </div>                 
@@ -15,7 +15,8 @@
           label="Take Me Home"
           @click="backToHome"
           type="submit"
-          color="primary"
+          class="textureBar"
+          text-color="accent"          
         />
       </div>       
     </div>
