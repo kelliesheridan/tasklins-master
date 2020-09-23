@@ -158,6 +158,7 @@
         <q-tooltip content-class="bg-primary">{{ profile.lin }} Lin.</q-tooltip>
         </q-img>
         </div>
+        <div>Tasks Completed Today: {{Object.keys(tasksCompletedToday).length}} </div>
       </div>
 
       <br />
@@ -287,6 +288,7 @@ export default {
   computed: {
     ...mapGetters("profile", ["profile"]),
     ...mapGetters("tasklins", ["tasklin"]),
+    ...mapGetters("tasks", ["tasksCompletedToday"]),
     ...mapState("auth", ["loggedIn"])
   },
 
