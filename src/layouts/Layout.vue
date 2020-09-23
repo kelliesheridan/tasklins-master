@@ -10,12 +10,12 @@
           round
           class="side-menu"
           icon="games"
-          color="accent"
+          color="secondary"
           @click="left = !left"
         />
         <!-- <q-btn dense flat round icon="done" color="accent" @click="right = !right" /> -->
         <q-toolbar-title class="text-center">
-          Tasklins
+          <q-img class="mainLogo" src="statics/tasklinslogo.png"></q-img>
         </q-toolbar-title>
         <q-btn
           v-if="loggedIn && this.tasklin.name !== ''"
@@ -23,7 +23,7 @@
           flat
           to="/help"
           round
-          color="accent"
+          color="secondary"
           icon="help"
         />        
         <q-btn
@@ -32,7 +32,7 @@
           flat
           to="/settings"
           round
-          color="accent"
+          color="secondary"
           icon="settings"
         />
         <q-btn
@@ -41,7 +41,7 @@
           dense
           flat
           round
-          color="accent"
+          color="secondary"
           icon="exit_to_app"
         />
         <q-btn
@@ -50,15 +50,22 @@
           flat
           to="/auth"
           round
-          color="accent"
+          color="secondary"
           icon="account_circle"
         />
       </q-toolbar>
     </q-header>
 
-    <q-footer v-if="loggedIn && this.tasklin.name !== ''" class="text-center textureBar">
-      <div class="row">
+    <q-footer v-if="loggedIn && this.tasklin.name !== ''" class="text-center transparent">
+      <div class="row transparent">
 
+
+
+        <q-space/>
+
+        <img src="statics/items/chest-1.png" v-show="showBonusItem" class="bonusImg2" @click="showBonus = true" />
+      </div>
+      <div class="row textureBar">
         <q-btn
           color="secondary" text-color="primary"
           round          
@@ -67,11 +74,6 @@
           icon="add">
         </q-btn>
 
-        <q-space/>
-
-        <img src="statics/items/chest-1.png" v-show="showBonusItem" class="bonusImg2" @click="showBonus = true" />
-      </div>
-      <div class="row">
         <q-space/>
         <q-tabs
           align="center"
@@ -232,7 +234,7 @@ export default {
       left: false,
       right: false,
       showBonus: false,
-      showBonusItem: false,
+      showBonusItem: true,
       essentialLinks: [
         {
           title: "Home",
