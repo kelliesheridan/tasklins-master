@@ -342,6 +342,48 @@ const getters = {
 
     return tasks;
   },
+  tasksCompletedToday: (state, getters) => {
+    let tasksFiltered = getters.tasksFiltered;
+    let tasks = {};
+    Object.keys(tasksFiltered).forEach(function(key) {
+      let task = tasksFiltered[key];
+      if (task.completed && moment(moment(task.completedDate).format("YYYY-MM-DD")).isSame(moment().format("YYYY-MM-DD"), "day")) {
+        tasks[key] = task;
+      }
+    });
+    return tasks;
+  },
+  tasksThisWeek: (state, getters) => {
+    let tasksFiltered = getters.tasksFiltered;
+    let tasks = {};
+    Object.keys(tasksFiltered).forEach(function(key) {
+      let task = tasksFiltered[key];
+      let taskDueDate = task.dueDate;
+      let today = moment().format();
+      //console.debug("moment date: " +  moment().format() + ", normal date:" + today);
+
+      let formattedTaskDueDate = moment(taskDueDate).format("YYYY-MM-DD");
+      let formattedToday = moment(today).format("YYYY-MM-DD");
+
+      if (moment(formattedTaskDueDate).isSame(formattedToday, "week")) {
+        tasks[key] = task;
+      }
+    });
+
+    return tasks;
+  },
+  tasksCompletedThisWeek: (state, getters) => {
+    let tasksFiltered = getters.tasksFiltered;
+    let tasks = {};
+    Object.keys(tasksFiltered).forEach(function(key) {
+      let task = tasksFiltered[key];
+      if (task.completed && 
+        moment(moment(task.completedDate).format("YYYY-MM-DD")).isSame(moment().format("YYYY-MM-DD"), "week")) {
+        tasks[key] = task;
+      }
+    });
+    return tasks;
+  },
   tasksLate: (state, getters) => {
     let tasksFiltered = getters.tasksFiltered;
     let tasks = {};
@@ -361,21 +403,6 @@ const getters = {
       }
     });
 
-    return tasks;
-  },
-  tasksCompletedToday: (state, getters) => {
-    let tasksFiltered = getters.tasksFiltered;
-    let tasks = {};
-    
-
-    Object.keys(tasksFiltered).forEach(function(key) {
-      let task = tasksFiltered[key];
-      let today = moment().format();
-      
-      if (task.completedDate == moment(today).format("YYYY-MM-DD")) {
-        tasks[key] = task;
-      }
-    });
     return tasks;
   },
   projects: state => {

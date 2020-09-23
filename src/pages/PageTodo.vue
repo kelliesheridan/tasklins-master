@@ -28,8 +28,19 @@
             v-if="Object.keys(tasksCompleted).length"
             :tasksCompleted="tasksCompleted"
           />
-        </div>
 
+           <!-- <tasks-completed-today
+            class="toDoScroll"
+            :tasksCompletedToday="tasksCompletedToday"
+          />
+
+          <tasks-completed-this-week
+            class="toDoScroll"
+            :tasksCompletedThisWeek="tasksCompletedThisWeek"
+          /> -->
+
+        </div>
+        
         <q-dialog v-model="showAddProject">
           <add-project @close="showAddProject = false" />
         </q-dialog>
@@ -55,13 +66,15 @@ export default {
   },
   computed: {
     ...mapGetters("profile", ["profile"]),
-    ...mapGetters("tasks", ["tasksTodo", "tasksCompleted", "tasksSorted", "projectsFiltered"]),
+    ...mapGetters("tasks", ["tasksTodo", "tasksCompleted", "tasksSorted", "projectsFiltered", "tasksCompletedToday", "tasksCompletedThisWeek", "tasksThisWeek"]),
     ...mapState("tasks", ["search", "projectSearch", "tasksDownloaded"])
   },
   components: {
     "add-project": require("components/Tasks/Modals/addProject.vue").default,
     "tasks-todo": require("components/Tasks/TasksTodo.vue").default,
     "tasks-completed": require("components/Tasks/TasksCompleted.vue").default,
+    //"tasks-completed-today": require("components/Tasks/TasksCompletedToday.vue").default,
+    //"tasks-completed-this-week": require("components/Tasks/TasksCompletedThisWeek.vue").default,
     "sort": require("components/Tasks/Tools/Sort.vue").default,
     "projectList": require("components/Tasks/Tools/ProjectList.vue").default,
     "no-tasks": require("components/Tasks/NoTasks.vue").default,
