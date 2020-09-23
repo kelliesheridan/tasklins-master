@@ -1,15 +1,16 @@
 #tasklinContainer {
-    position: relative;
     width: auto;
     height: auto;
   }
 
 .tasklinBody {    
     z-index: 1;    
-    position: absolute;
 }
 
-.tasklinFace {    
+.tasklinEyes {    
     z-index: 2;
-    position: absolute;
+}
+
+.tasklinMouth {    
+    z-index: 3;
 }

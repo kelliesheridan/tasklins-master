@@ -23,7 +23,7 @@
     <img
       class="tasklin"
       v-if="this.tasklin.color === '#00bcd4'"
-      src="/statics/tasklins/StarterCyan1.png"
+      src="/statics/tasklins/StarterCyan1Body.png"
     />
     <img
       class="tasklin"
