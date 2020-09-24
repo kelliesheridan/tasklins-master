@@ -10,7 +10,7 @@
           round
           class="side-menu"
           icon="games"
-          color="secondary"
+          color="positive"
           @click="left = !left"
         />
         <!-- <q-btn dense flat round icon="done" color="accent" @click="right = !right" /> -->
@@ -23,7 +23,7 @@
           flat
           to="/help"
           round
-          color="secondary"
+          color="warning"
           icon="help"
         />        
         <q-btn
@@ -32,7 +32,7 @@
           flat
           to="/settings"
           round
-          color="secondary"
+          color="info"
           icon="settings"
         />
         <q-btn
@@ -41,7 +41,7 @@
           dense
           flat
           round
-          color="secondary"
+          color="negative"
           icon="exit_to_app"
         />
         <q-btn
@@ -50,7 +50,7 @@
           flat
           to="/auth"
           round
-          color="secondary"
+          color="positive"
           icon="account_circle"
         />
       </q-toolbar>
@@ -67,7 +67,7 @@
       </div>
       <div class="row textureBar">
         <q-btn
-          color="secondary" text-color="primary"
+          color="accent" text-color="primary"
           round          
           @click="showAddTask = true"
           class="q-pa-lg add-task-btn-footer"
@@ -120,9 +120,9 @@
         <q-tabs
           outside-arrows
           indicator-color="transparent"
-          active-color="accent"
+          active-color="secondary"
           background-color="transparent"
-          class="col-10 text-secondary"
+          class="col-10 text-accent"
         >
           <q-route-tab class="q-pa-sm" dense to="/index" icon="home" />
           <q-route-tab class="q-pa-xs" dense to="/todo" icon="done" />
@@ -140,7 +140,7 @@
           @click="showAddTask = true"         
           class="add-task-btn textureBar"
           round
-          text-color="secondary"
+          text-color="accent"
           size="18px"
           icon="add"
         >
@@ -330,12 +330,12 @@ export default {
 }
 
 .loggedIn {
-  background-image: url("/statics/canvas.png");
+  // background-image: url("/statics/canvas.png");
   background-color: $accent;
 }
 
 .felt {
-  background-image: url("/statics/felt.png");
+  // background-image: url("/statics/felt.png");
   background-color: $secondary;
 }
 

@@ -1,5 +1,5 @@
 <template>
-    <q-banner dense inline-actions :class="bgColor" class="list-header text-white text-center">
+    <q-banner dense inline-actions :class="bgColor" class="list-header text-accent text-center">
       <span class="text-bold text-subtitle1"><slot></slot></span>
     </q-banner>
 </template>
