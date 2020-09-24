@@ -45,7 +45,9 @@ const actions = {
           color: tasklinInfo.color,
           type: tasklinInfo.type,
           xp: tasklinInfo.xp,
-          creation_date: moment(tasklinInfo.creation_date).format("YYYY-MM-DD")
+          creation_date: moment(tasklinInfo.creation_date).format("YYYY-MM-DD"),
+          eyeType: tasklinInfo.eyeType,
+          mouth: tasklinInfo.mouth,
         };
         commit("setTasklin", payload);
       }

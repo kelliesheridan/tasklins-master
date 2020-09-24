@@ -347,8 +347,10 @@ const getters = {
     let tasks = {};
     Object.keys(tasksFiltered).forEach(function(key) {
       let task = tasksFiltered[key];
-      if (task.completed && moment(moment(task.completedDate).format("YYYY-MM-DD")).isSame(moment().format("YYYY-MM-DD"), "day")) {
-        tasks[key] = task;
+      if (task.completedDate != undefined) {
+        if (task.completed && moment(moment(task.completedDate).format("YYYY-MM-DD")).isSame(moment().format("YYYY-MM-DD"), "day")) {
+          tasks[key] = task;
+        }
       }
     });
     return tasks;
@@ -377,9 +379,11 @@ const getters = {
     let tasks = {};
     Object.keys(tasksFiltered).forEach(function(key) {
       let task = tasksFiltered[key];
-      if (task.completed && 
-        moment(moment(task.completedDate).format("YYYY-MM-DD")).isSame(moment().format("YYYY-MM-DD"), "week")) {
-        tasks[key] = task;
+      if (task.completedDate != undefined) {
+        if (task.completed && 
+          moment(moment(task.completedDate).format("YYYY-MM-DD")).isSame(moment().format("YYYY-MM-DD"), "week")) {
+          tasks[key] = task;
+        }
       }
     });
     return tasks;
