@@ -43,6 +43,9 @@ html {
 
 body {
     box-sizing: border-box;    
+    font-family: gopher, sans-serif;
+    font-style: normal;
+    font-weight: 100;
 
     // @include respond(tab-port) {
         

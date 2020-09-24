@@ -1,6 +1,6 @@
 <template>
   <q-page>
-    <div class="q-pa-md absolute full-width full-height">
+    <div class="q-pa-md absolute full-width full-height gopher">
       <div class="row q-mb-md">
         <sort />
         <projectList class="col-3 project-select" />

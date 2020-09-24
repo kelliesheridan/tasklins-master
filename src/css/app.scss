@@ -24,3 +24,12 @@
 @import "pages/todo"; 
 
 
+@font-face {
+    font-family: gopher;
+    src: url(https://use.typekit.net/sgg2fvh.css);
+  }
+  
+  // declare a class which applies it
+  .gopher {
+    font-family: 'gopher';
+  }

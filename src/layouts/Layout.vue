@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="hHh lpR fFf">
+  <q-layout view="hHh lpR fFf" class="gopher">
     <q-header v-if="loggedIn" elevated class="bg-primary text-white">
       <q-toolbar class="textureBar">
         <!-- <q-btn dense flat round color="accent" icon="notifications"/> -->
