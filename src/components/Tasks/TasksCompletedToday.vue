@@ -6,7 +6,7 @@
 >
 <div class="q-mt-lg" v-if="!settings.hideCompletedTasks">
 	<list-header
-	bgColor="bg-green-4">Completed Today</list-header>
+	class="textureBar">Completed Today</list-header>
 
 		<q-list
 			separator

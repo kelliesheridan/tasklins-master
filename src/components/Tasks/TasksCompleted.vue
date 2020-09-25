@@ -5,8 +5,7 @@
   leave-active-class="animated zoomOut"
 >
 <div class="q-mt-lg" v-if="!settings.hideCompletedTasks">
-	<list-header
-	bgColor="bg-green-4">Completed</list-header>
+	<list-header class="textureBar">Completed</list-header>
 
 		<q-list
 			separator
