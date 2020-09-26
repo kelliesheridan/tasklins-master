@@ -70,16 +70,16 @@
             no-footer
             default-view="palette"
             :palette="[
-              '#f44336',
-              '#e91e63',
-              '#9c27b0',
-              '#3f51b5',
-              '#00bcd4',
-              '#4caf50',
-              '#ffeb3b',
-              '#ff9800',
-              '#795548',
-              '#9e9e9e'
+              '#b15858',
+              '#cf7d95',
+              '#8c5688',
+              '#589fb1',
+              '#5cdcc4',
+              '#7eb158',
+              '#f9f871',
+              '#fa9f53',
+              '#bc987e',
+              '#8c8c8c'
             ]"
             class="my-picker"
           />

@@ -24,7 +24,7 @@
     <div v-cloak v-if="this.tasklin.name == ''">
     <div class="text-center" v-if="showNewUser1">
       <q-card class="card center">
-        <q-card-section class="bg-primary u-center-text text-white">
+        <q-card-section class="textureBar u-center-text text-white">
           <div class="text-h6">Welcome to Tasklins!</div>
         </q-card-section>
 
@@ -92,55 +92,55 @@
       </q-card>
 
       <div v-if="hatched === false">
-        <div>
+        <div class="egg">
           <img
             class="tasklin"
-            v-if="this.tasklin.color === '#f44336'"
+            v-if="this.tasklin.color === '#b15858'"
             src="/statics/eggs/Red.png"
           />
           <img
             class="tasklin"
-            v-if="this.tasklin.color === '#e91e63'"
+            v-if="this.tasklin.color === '#cf7d95'"
             src="/statics/eggs/Pink.png"
           />
           <img
             class="tasklin"
-            v-if="this.tasklin.color === '#9c27b0'"
+            v-if="this.tasklin.color === '#8c5688'"
             src="/statics/eggs/Purple.png"
           />
           <img
             class="tasklin"
-            v-if="this.tasklin.color === '#3f51b5'"
+            v-if="this.tasklin.color === '#589fb1'"
             src="/statics/eggs/Blue.png"
           />
           <img
             class="tasklin"
-            v-if="this.tasklin.color === '#00bcd4'"
+            v-if="this.tasklin.color === '#5cdcc4'"
             src="/statics/eggs/Cyan.png"
           />
           <img
             class="tasklin"
-            v-if="this.tasklin.color === '#4caf50'"
+            v-if="this.tasklin.color === '#7eb158'"
             src="/statics/eggs/Green.png"
           />
           <img
             class="tasklin"
-            v-if="this.tasklin.color === '#ffeb3b'"
+            v-if="this.tasklin.color === '#f9f871'"
             src="/statics/eggs/Yellow.png"
           />
           <img
             class="tasklin"
-            v-if="this.tasklin.color === '#ff9800'"
+            v-if="this.tasklin.color === '#fa9f53'"
             src="/statics/eggs/Orange.png"
           />
           <img
             class="tasklin"
-            v-if="this.tasklin.color === '#795548'"
+            v-if="this.tasklin.color === '#bc987e'"
             src="/statics/eggs/Brown.png"
           />
           <img
             class="tasklin"
-            v-if="this.tasklin.color === '#9e9e9e'"
+            v-if="this.tasklin.color === '#8c8c8c'"
             src="/statics/eggs/Grey.png"
           />
         </div>
@@ -218,6 +218,10 @@
     <q-dialog v-model="showAddTask">
       <add-task @close="showAddTask = false" />
     </q-dialog>
+
+
+
+
   </q-page>
 </template>
 
@@ -237,7 +241,7 @@ export default {
       tasklinType: "Monster",
       color: "blue",
       newTasks: 0,
-      tasksFive: false,
+      tasksFive: false,      
     };
   },
   computed: {

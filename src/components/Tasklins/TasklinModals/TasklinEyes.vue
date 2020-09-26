@@ -50,7 +50,7 @@ export default {
   components: {},
   computed: {
     ...mapGetters("tasklins", ["tasklin"]),
-    ...mapGetters("tasks", ["tasksCompletedToday"]),
+    // ...mapGetters("tasks", ["tasksCompletedToday"]),
   }
 };
 </script>

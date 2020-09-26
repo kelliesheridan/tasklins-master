@@ -17,6 +17,7 @@
       <q-item-label
       	:class="{ 'text-strikethrough' : task.completed }"
         v-html="$options.filters.searchHighlight(task.name, search)">
+        <q-badge outline class="q-pa-xs q-ma-xs" color="red-10">#</q-badge>
       </q-item-label>
     </q-item-section>
 
