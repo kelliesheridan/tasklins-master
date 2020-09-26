@@ -172,7 +172,7 @@ const actions = {
       }
     });
   },
-  fbUpdateTask({ dispatch }, payload) {
+  fbUpdateTask({ dispatch, commit }, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let taskRef = firebaseDb.ref("tasks/" + userId + "/" + payload.id);
     payload.updates.lastModified = moment().format("YYYY-MM-DD HH:mm:ss");
@@ -186,6 +186,7 @@ const actions = {
         showErrorMessage(error.message);
       }
     });
+    commit("tasksCompletedToday");
     // check for repeating task
     if (payload.updates.completed) {
       if (
