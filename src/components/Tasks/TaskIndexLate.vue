@@ -13,18 +13,21 @@
         class="no-pointer-events" />
     </q-item-section>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 
-    <q-item-section>
+    <q-item-section>          
       <q-item-label
       	:class="{ 'text-strikethrough' : task.completed }"
-        v-html="$options.filters.searchHighlight(task.name, search)">
-        <q-badge outline class="q-pa-xs q-ma-xs" color="red-10">#</q-badge>
-      </q-item-label>
+        v-html="$options.filters.searchHighlight(task.name, search)">        
+      </q-item-label>      
     </q-item-section>
 
     <q-item-section v-if="showProjects" side>
       <q-item-label
       	:class="{ 'text-strikethrough' : task.completed }"
         v-html="$options.filters.searchHighlight(task.project, search)">
+      </q-item-label>
+
+      <q-item-label>
+        # Days Late
       </q-item-label>
     </q-item-section>
 

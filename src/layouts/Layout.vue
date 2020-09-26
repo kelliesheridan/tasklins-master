@@ -124,7 +124,7 @@
           background-color="transparent"
           class="col-10 text-accent"
         >
-          <q-route-tab class="q-pa-sm" dense to="/index" icon="home" />
+          <q-route-tab class="q-pa-xs" dense to="/index" icon="home" />
           <q-route-tab class="q-pa-xs" dense to="/todo" icon="done" />
           <!-- <q-route-tab class="q-pa-xs" dense to="/tasklins" icon="pets" />
           <q-route-tab class="q-pa-xs" dense to="/explore" icon="explore" />
@@ -162,11 +162,11 @@
       </div>
 
       <br />
-      <!-- <div class="q-pa-lg fixed-center-bottom">
+      <div class="q-pa-lg text-center fixed-center-bottom">
             <a href="https://www.patreon.com/bePatron?u=9215033" target="_blank"
               >
-              <q-btn patron dense text-color="secondary" color="primary" label="Become a Patron" /></a>
-      </div> -->
+              <q-btn class="textureBar" dense text-color="secondary" label="- Become a Patron -" /></a>
+      </div>
     </q-drawer>
 
     <q-dialog v-model="showAddTask">
