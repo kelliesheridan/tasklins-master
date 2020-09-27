@@ -107,7 +107,6 @@ export default {
       this.update += 1;
     },
       cheer() {
-        
       this.update += 1;
     },
     calculateValues(user) {

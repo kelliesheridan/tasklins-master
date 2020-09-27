@@ -64,7 +64,7 @@ const actions = {
         dispatch("profile/fbCheckUsername", null, { root: true });
         if (this.state.profile.profile.user.name !== "") {
           if (this.state.tasklins.tasklin.name === "") {
-            this.$router.replace("/initial").catch(err => {});
+            this.$router.replace("/index").catch(err => {});
           } else {
             this.$router.replace("/index").catch(err => {});
           }

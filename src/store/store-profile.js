@@ -252,7 +252,7 @@ function getLevel() {
   if (level > state.profile.user.level) {
     Notify.create({
       icon: 'grade',
-      message: "Congratulations! You reached level " + this.profile.level + "!",
+      message: "Congratulations! You reached level " + level + "!",
       color: 'primary',
       textColor: 'white'  
     })
