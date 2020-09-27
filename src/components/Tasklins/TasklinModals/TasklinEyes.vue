@@ -1,18 +1,19 @@
 <template>
-    <div v-if="tasksCompletedToday = 0">
+<div>
+    <div v-if="tasksCompletedToday !== 0">
     <img
       class="tasklin"
       v-if="this.tasklin.eyeType === 'eyes1' || 'eyes3' || 'eyes5'"
       src="/statics/tasklins/eyes/sleepingeyes1.png"
     />
-    <!-- <img
+    <img
       class="tasklin"
       v-if="this.tasklin.eyeType === 'eyes2' || 'eyes4'"
       src="/statics/tasklins/eyes/sleepingeyes2.png"
-    /> -->
+    />
     </div>
 
-    <div v-else>
+    <div v-if="tasksCompletedToday === 0">
     <img
       class="tasklin"
       v-if="this.tasklin.eyeType === 'eyes1'"
@@ -39,6 +40,7 @@
       src="/statics/tasklins/eyes/babyeyes5.png"
     />
   </div>
+  </div>
 </template>
 
 <script>
@@ -50,7 +52,7 @@ export default {
   components: {},
   computed: {
     ...mapGetters("tasklins", ["tasklin"]),
-    // ...mapGetters("tasks", ["tasksCompletedToday"]),
+    ...mapGetters("tasks", ["tasksCompletedToday"]),
   }
 };
 </script>
