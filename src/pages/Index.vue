@@ -128,13 +128,9 @@
           <div class="">
             <tasklin />
             <p class="tasklin-details">
-              <q-item-label
-                ><b>Name: </b> {{ tasklin.name }}</q-item-label
-              >              
-              <q-item-label
-                ><b>Type: </b>{{ tasklin.type }}</q-item-label
-              >
-              <q-item-label><b>Mood: </b>So Happy!</q-item-label>
+              <q-item-label><b>Name: </b> {{ tasklin.name }}</q-item-label>              
+              <q-item-label v-if="tasksCompletedToday != 0"><b>Mood: </b>So Happy!</q-item-label>
+              <q-item-label v-if="tasksCompletedToday = 0"><b>Mood: </b>Asleep.</q-item-label>
             </p>
           </div>
           </div>
@@ -207,18 +203,18 @@
                 
                 <q-item>
                   <q-item-section>
-                    <q-item-label><strong>Fixed Some Bugs</strong></q-item-label>
-                    <q-item-label>Less Things Are Broken!</q-item-label>
+                    <q-item-label><strong>New Art</strong></q-item-label>
+                    <q-item-label>Changed the art for Tasklins to better fit our long term plan. There are now over 500 possible Tasklins.</q-item-label>
                   </q-item-section>
                 </q-item>
 
-                <q-item> 
+                <!-- <q-item> 
                   <q-item-section>
                     <q-item-label><strong>Help Button</strong></q-item-label>
                     <q-item-label>
                       Found a bug or have a question? You can submit any issues from the help page (top right hand corner).</q-item-label>
                   </q-item-section>
-                </q-item>
+                </q-item> -->
               </q-list>
             </div>
             <div class="col q-pa-md" style="max-width: 350px">
@@ -267,7 +263,7 @@ export default {
   },
   computed: {
     ...mapGetters("profile", ["profile"]),
-    ...mapGetters("tasks", ["tasksToday", "tasksLate"]),
+    ...mapGetters("tasks", ["tasksToday", "tasksLate", "tasksCompletedToday"]),
     ...mapGetters("tasklins", ["tasklin"]),
     ...mapState("tasks", ["search", "tasksDownloaded"])
   },
@@ -311,8 +307,8 @@ img {
 .tasklin-details {
   background-color: #eceff190; 
   width: 30%;
-  border-radius: 1.5rem;
-  padding: 4px;
+  border-radius: 1rem;
+  padding: 7px;
   margin: 0 auto;
   margin-top: -1rem;
   margin-bottom: 2rem;

@@ -20,8 +20,9 @@
       </q-item-label>      
     </q-item-section>
 
-    <q-item-section v-if="showProjects" side>
+    <q-item-section  side>
       <q-item-label
+        v-if="showProjects"
       	:class="{ 'text-strikethrough' : task.completed }"
         v-html="$options.filters.searchHighlight(task.project, search)">
       </q-item-label>
