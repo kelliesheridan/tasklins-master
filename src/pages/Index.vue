@@ -128,9 +128,8 @@
           <div class="">
             <tasklin />
             <p class="tasklin-details">
-              <q-item-label><b>Name: </b> {{ tasklin.name }}</q-item-label>              
-              <q-item-label v-if="tasksCompletedToday != 0"><b>Mood: </b>So Happy!</q-item-label>
-              <q-item-label v-if="tasksCompletedToday = 0"><b>Mood: </b>Asleep.</q-item-label>
+              <q-item-label><b>Name: </b> {{ tasklin.name }}</q-item-label>        
+              <q-item-label><b>Mood: </b>{{this.getMood(Object.keys(this.tasksCompletedToday).length)}}</q-item-label>
             </p>
           </div>
           </div>
@@ -269,7 +268,14 @@ export default {
   },
   methods: {
     ...mapActions("profile", ["addXP"]),
-    ...mapActions('tasks', ['setProjectSearch'])
+    ...mapActions('tasks', ['setProjectSearch']),
+    getMood(numToday) {
+      if (numToday == 0) {
+        return "Asleep";
+      } else {
+        return "So Happy!";
+      }
+    }
   }
 };
 </script>
