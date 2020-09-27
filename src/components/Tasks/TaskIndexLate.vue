@@ -151,9 +151,7 @@
         })
       },
       getDaysLate(taskDueDate) {
-        var start = moment(taskDueDate).format("YYYY-MM-DD");
-        var end = moment().format("YYYY-MM-DD");
-        return moment(end).diff(moment(start), 'days');
+        return moment(moment().format("YYYY-MM-DD")).diff(moment(moment(taskDueDate).format("YYYY-MM-DD")), 'days');
         }
     },
     filters: {
