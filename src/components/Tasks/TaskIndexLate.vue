@@ -27,7 +27,9 @@
       </q-item-label>
 
       <q-item-label>
-        # Days Late
+        <span v-if="task.dueDate != ''">
+        # Days Late: {{this.getDaysLate(task.dueDate)}}
+        </span>
       </q-item-label>
     </q-item-section>
 
@@ -101,7 +103,7 @@
 <script>
   import { mapState, mapActions, mapGetters } from 'vuex'
   import { date } from 'quasar'
-  const moment= require('moment') 
+  const moment = require('moment') 
 
 	export default {
 		props: ['task', 'id'],
@@ -148,6 +150,11 @@
           this.deleteTask(id)
         })
       },
+      getDaysLate(taskDueDate) {
+        var start = moment(taskDueDate).format("YYYY-MM-DD");
+        var end = moment().format("YYYY-MM-DD");
+        return moment(end).diff(moment(start), 'days');
+        }
     },
     filters: {
       niceDate(value) {
