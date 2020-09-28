@@ -273,7 +273,7 @@ export default {
       if (numToday == 0) {
         return "Asleep";
       } else {
-        return "So Happy!";
+        return "Okay.";
       }
     }
   }
