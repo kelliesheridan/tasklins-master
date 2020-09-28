@@ -16,18 +16,13 @@
   }
 
   .infoImg {
-    width: 330px;
-    height: 400px;
+    max-width: 80%;
     box-shadow: 0 1rem 2rem rgba(black,.4);
   }
 
   .starterInfo {
-    height: 60%;
-
-    @include respond(tab-port) {
-      height: 80%;
-      margin-bottom: -15px;
-     }
+    padding-bottom: 55px;
+    height: 80vh;        
   }
   
   .bonusImg2 {
