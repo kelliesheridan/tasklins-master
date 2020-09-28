@@ -69,7 +69,9 @@ const actions = {
       color: tasklin.color,
       type: tasklin.type,
       xp: tasklin.xp,
-      creation_date: moment(tasklin.creation_date).format("YYYY-MM-DD")
+      creation_date: moment(tasklin.creation_date).format("YYYY-MM-DD"),
+      eyeType: "eyes1",
+      mouth: "mouth1"
     };
     let fbTasklin = firebaseDb.ref("tasklins/" + userId);
     fbTasklin.set(payload);

@@ -186,7 +186,6 @@ const actions = {
         showErrorMessage(error.message);
       }
     });
-    commit("tasksCompletedToday");
     // check for repeating task
     if (payload.updates.completed) {
       if (
@@ -207,9 +206,28 @@ const actions = {
   fbPushDueDate({}, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let taskRef = firebaseDb.ref("tasks/" + userId + "/" + payload.id);
-    payload.dueDate = moment(payload.dueDate)
-      .add(1, "days")
-      .format("YYYY-MM-DD");
+    // check for repeating to get next required date, otherwise just move til tomorrow.
+    if (
+      payload.nrepeating.monday ||
+      payload.nrepeating.tuesday ||
+      payload.nrepeating.wednesday ||
+      payload.nrepeating.thursday ||
+      payload.nrepeating.friday ||
+      payload.nrepeating.saturday ||
+      payload.nrepeating.sunday
+    ) {
+      var newTask = {
+        nrepeating: payload.nrepeating
+      };
+      var newPayload = {};
+      newPayload = getRepeatingTask(newTask);
+      payload.dueDate = newPayload.task.dueDate;
+    } else {
+      payload.dueDate = moment(payload.dueDate)
+        .add(1, "days")
+        .format("YYYY-MM-DD");
+    }
+
     taskRef.update(payload, error => {
       if (error) {
         showErrorMessage(error.message);
@@ -307,7 +325,7 @@ const getters = {
     let tasks = {};
     Object.keys(tasksFiltered).forEach(function(key) {
       let task = tasksFiltered[key];
-      if (task.dueDate = "") {
+      if ((task.dueDate = "")) {
         tasks[key] = task;
       }
     });
@@ -349,7 +367,13 @@ const getters = {
     Object.keys(tasksFiltered).forEach(function(key) {
       let task = tasksFiltered[key];
       if (task.completedDate != undefined) {
-        if (task.completed && moment(moment(task.completedDate).format("YYYY-MM-DD")).isSame(moment().format("YYYY-MM-DD"), "day")) {
+        if (
+          task.completed &&
+          moment(moment(task.completedDate).format("YYYY-MM-DD")).isSame(
+            moment().format("YYYY-MM-DD"),
+            "day"
+          )
+        ) {
           tasks[key] = task;
         }
       }
@@ -381,8 +405,13 @@ const getters = {
     Object.keys(tasksFiltered).forEach(function(key) {
       let task = tasksFiltered[key];
       if (task.completedDate != undefined) {
-        if (task.completed && 
-          moment(moment(task.completedDate).format("YYYY-MM-DD")).isSame(moment().format("YYYY-MM-DD"), "week")) {
+        if (
+          task.completed &&
+          moment(moment(task.completedDate).format("YYYY-MM-DD")).isSame(
+            moment().format("YYYY-MM-DD"),
+            "week"
+          )
+        ) {
           tasks[key] = task;
         }
       }
@@ -485,7 +514,8 @@ function getRepeatingTask(task) {
     }
   }
 
-  if (requiredDay == 7) requiredDay = 0;
+  // if (requiredDay == 7) requiredDay = 0;
+  // if (currentDay == 7) currentDay = 0;
   if (requiredDay > currentDay) {
     newTask.dueDate = moment()
       .isoWeekday(requiredDay)
