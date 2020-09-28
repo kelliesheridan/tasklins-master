@@ -54,7 +54,7 @@
           <q-tooltip content-class="bg-primary">Delete</q-tooltip>
           </q-btn>
         <q-btn class="task-btn"
-          @click.stop="pushDueDate({ id: id, dueDate: task.dueDate })"
+          @click.stop="pushDueDate({ id: id, dueDate: task.dueDate, nrepeating: task.nrepeating })"
           flat
           round
           dense
