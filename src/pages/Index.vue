@@ -299,7 +299,7 @@ img {
 }
 
 .tasklin-section {
-  background-image: url("/statics/backgrounds/backgroundTown2.jpg");   
+  background-image: url("/statics/backgrounds/TownBackground2.jpg");   
   background-color: #eceff1;
   margin: 1rem;
   border-radius: 1rem;

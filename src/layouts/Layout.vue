@@ -106,7 +106,7 @@
       side="left"
     >
       <div>
-        <q-img src="statics/backgrounds/backgroundTown1.jpg" style="height: 250px">
+        <q-img src="statics/backgrounds/TownBackground.jpg" style="height: 250px">
           <div class="eventBox bg-transparent">                 
               <img src="statics/items/chest-1.png" v-show="showBonusItem" style="margin-top: 50px; margin-left: 50px" class="bonusImg" @click="showBonus = true" />
           </div>
@@ -330,7 +330,7 @@ export default {
 }
 
 .loggedIn {
-  // background-image: url("/statics/canvas.png");
+  background-image: url("/statics/canvas.png");
   background-color: $accent;
 }
 
