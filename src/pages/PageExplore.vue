@@ -1,7 +1,8 @@
 <template>
   <q-page padding>
       <div class="world-map">
-        <q-img class="world-map rounded-borders" src="statics/backgrounds/WorldMap.jpg">
+        <q-img usemap="#worldmap"
+        class="world-map rounded-borders" src="statics/backgrounds/WorldMap.jpg">
         </q-img>
       </div>
   </q-page>
