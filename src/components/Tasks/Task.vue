@@ -1,5 +1,5 @@
 <template>
-  <q-item class="task gopher"
+  <q-item class="task"
   	@click="updateTask({ id: id, updates: { completed: !task.completed, dueDate: task.dueDate, task: task } }); addLin(task.completed);"
   	:class="!task.completed ? 'bg-orange-1' : 'bg-green-1'"
     v-touch-hold:1000.mouse="showEditTaskModal"
@@ -102,7 +102,7 @@
           color="blue"
           icon="rotate_right"
           >
-          <q-tooltip content-class="bg-primary">+1 Day</q-tooltip>
+          <q-tooltip content-class="bg-primary">Postpone</q-tooltip>
           </q-btn>
       </div>
     </q-item-section>

@@ -60,7 +60,7 @@
           dense
           color="blue"
           icon="rotate_right">
-          <q-tooltip content-class="bg-primary">Move to Tomorrow</q-tooltip>
+          <q-tooltip content-class="bg-primary">Postpone</q-tooltip>
         </q-btn>
       </div>
     </q-item-section>
