@@ -14,7 +14,7 @@
         </div>
         <div>
         <q-img
-          src="statics/Piper.jpg"
+          src="statics/characters/Piper.png"
           draggable="false"
           class="infoImg"
         />
@@ -80,7 +80,9 @@
         <strong>Tasklins</strong>
         </div>
         <div>
-        <tasklin />
+        <q-img
+           src="/statics/placeholder/SampleTasklin.png"
+           draggable="false"/>
       </div>
           <div class="q-mt-md text-left">
             Right now, you have one Tasklin, but soon you'll be able to collect and care for more! You'll be able to pair your Tasklins with various projects so that they level up and grow as you make progress through the game. For now, complete your first task of the day to wake your Tasklin up.
@@ -103,7 +105,7 @@
           <div class="q-mt-md text-left">
             If something goes wrong, you can also submit a help ticket on this same page. If you have any ideas or suggestions, please feel very much encouraged to submit them this way as well!           
           </div>
-          <q-btn class="q-mt-xl" padding color="secondary" @click="newUserWalkthrough = false" label="Let's get started!" />  
+          <q-btn class="q-mt-xl" padding color="secondary" v-close-popup label="Let's get started!" />  
       </q-carousel-slide>
     </q-carousel>
 
@@ -115,7 +117,7 @@
 	export default {
     data() {
       return {
-        slide: 'style',
+      slide: 'style',
       lorem: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque voluptatem totam, architecto cupiditate officia rerum, error dignissimos praesentium libero ab nemo.'  
       }
     },

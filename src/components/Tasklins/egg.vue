@@ -1,9 +1,9 @@
 <template>
-        <div class="egg">
-          <div>
+        <div>
+          <!-- <div class="egg">
           <img
             class="tasklin"
-            v-if="this.tasklin.color === '#b15858'"
+            v-if="Object.keys(tasksCompletedToday).length === 1"
             src="/statics/eggs/crack1.png"
           />          
           <img
@@ -16,7 +16,7 @@
             v-if="this.tasklin.color === '#b15858'"
             src="/statics/eggs/crack3.png"
           />       
-          </div>
+          </div> -->
 
           <div>
           <img
@@ -84,7 +84,8 @@ export default {
   components: {
   },
   computed: {
-    ...mapGetters("tasklins", ["tasklin"])
+    ...mapGetters("tasklins", ["tasklin"]),
+    ...mapGetters("tasks", ["tasksTodo"])
   }
 };
 </script>

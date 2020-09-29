@@ -39,12 +39,12 @@
           <div class="section tasklin-section">
           <div class="">
             <tasklin v-if="tasklin.hatched"/>
-            <egg v-if="!tasklin.hatched" style="margin-left: 25%; height: 100%; width: 100%"/>
-            <div class="tasklin-details">
+            <egg v-if="!tasklin.hatched"/>
+            <div v-if="tasklin.name" class="tasklin-details">
               <q-item-label><b>Name: </b> {{ tasklin.name }}</q-item-label>        
               <q-item-label><b>Mood: </b>{{this.getMood(Object.keys(this.tasksCompletedToday).length)}}</q-item-label>
             </div>
-            <div class="justify-center tasklin-details" >
+            <div v-if="!tasklin.name" class="justify-center tasklin-details" >
               <q-form
                 @submit="onSubmit()"
                 class="tasklinName">
@@ -241,20 +241,6 @@ img {
   margin: 1rem;
   border-radius: 1rem;
   height: 100%; 
-  background-position: center; 
-  background-repeat: no-repeat; 
-  background-size: cover;
-}
-
-
-.tasklin-details {
-  background-color: #eceff190; 
-  width: 30%;
-  border-radius: 1rem;
-  padding: 7px;
-  margin: 0 auto;
-  margin-top: -1rem;
-  margin-bottom: 2rem;
   background-position: center; 
   background-repeat: no-repeat; 
   background-size: cover;

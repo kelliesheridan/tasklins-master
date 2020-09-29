@@ -10,6 +10,36 @@
     height: 40px;      
 }
 
+.tasklin-details {
+  background-color: #eceff190; 
+  width: 30%;
+  border-radius: 1rem;
+  padding: 7px;
+  margin: 0 auto;
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+  background-position: center; 
+  background-repeat: no-repeat; 
+  background-size: cover;
+
+  @include respond(tab-land) {
+    width: 50%;
+   }
+}
+
+  
+.egg {
+  width: 20%;
+  max-width: 50%;
+  height: auto;
+  margin: auto;
+  margin-top: -80px;
+  margin-left: 10px;
+  padding: 10px;
+  display: inline-block;
+}
+
+
 .tasklinName {
 align-content: center;
 border-radius: 1rem;
@@ -32,7 +62,6 @@ border-radius: 1rem;
 
   .infoImg {
     max-width: 80%;
-    box-shadow: 0 1rem 2rem rgba(black,.4);
   }
 
   .starterInfo {
