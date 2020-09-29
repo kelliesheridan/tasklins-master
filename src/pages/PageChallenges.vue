@@ -24,7 +24,7 @@
     </div>
 
     <list-header class="textureBar">
-      <div class="index-header">In the future, you'll be able to create custom and private challenges. For now, you can automatically participate in any of our existing challenge.</div>
+      <div class="index-header">In the future, you'll be able to create custom and private challenges. For now, you can automatically participate in any of our existing challenges.</div>
     </list-header>
     
   </q-page>
