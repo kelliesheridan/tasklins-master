@@ -217,7 +217,7 @@ export default {
 
       this.updateProfile(profile);
       this.addNewTasklin();
-      this.$router.push("/initial");
+      //this.$router.push("/initial");
     },
     
     addNewTasklin() {
@@ -241,7 +241,8 @@ export default {
         eyebrowsOrTail: "",
         earsOrHorns: "",
         bodyShape2: "",
-        pattern2: ""
+        pattern2: "",
+        hatched: false
       };
 
       this.addTasklin(tasklin);
@@ -252,7 +253,7 @@ export default {
       return re.test(String(email).toLowerCase());
     },
     submitForm() {
-      this.$router.push("/initial");
+      //this.$router.push("/initial");
     }
   }
 };

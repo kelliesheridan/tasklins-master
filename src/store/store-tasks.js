@@ -123,7 +123,7 @@ const actions = {
       commit("deleteTask", taskId);
     });
   },
-  fbAddTask({}, payload) {
+  fbAddTask({ dispatch }, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let taskRef = firebaseDb.ref("tasks/" + userId + "/" + payload.id);
     payload.task.createdDate = moment().format();
@@ -138,6 +138,20 @@ const actions = {
         showErrorMessage(error.message);
       } else {
         //Notify.create('New Task Added - + 1xp')
+      }
+      
+       // update tasklin to set hatched = true
+      if (Object.keys(state.tasks).length > 4) {
+       let tasklinRef = firebaseDb.ref("tasklins/" + userId);
+        var tasklin = { hatched: true};
+        tasklinRef.update(tasklin, error => {
+          if (error) {
+            showErrorMessage(error.message);
+          } else {
+            Notify.create('Your tasklin has hatched!')
+            dispatch("tasklins/getTasklin", null, { root: true });
+          }
+        });
       }
     });
   },
@@ -175,13 +189,17 @@ const actions = {
   fbUpdateTask({ dispatch, commit }, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let taskRef = firebaseDb.ref("tasks/" + userId + "/" + payload.id);
-    payload.updates.lastModified = moment().format("YYYY-MM-DD HH:mm:ss");
-    if (payload.updates.completed) {
-      payload.updates.completedDate = moment().format("YYYY-MM-DD HH:mm:ss");
-    } else {
-      payload.updates.completedDate = "";
+    var task = {
+      completed: payload.updates.completed,
+      dueDate: payload.updates.dueDate
     }
-    taskRef.update(payload.updates, error => {
+    task.lastModified = moment().format("YYYY-MM-DD HH:mm:ss");
+    if (task.completed) {
+      task.completedDate = moment().format("YYYY-MM-DD HH:mm:ss");
+    } else {
+      task.completedDate = "";
+    }
+    taskRef.update(task, error => {
       if (error) {
         showErrorMessage(error.message);
       }

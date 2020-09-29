@@ -38,15 +38,16 @@
           </list-header>
           <div class="section tasklin-section">
           <div class="">
-            <tasklin />
+            <tasklin v-if="tasklin.hatched"/>
+            <egg v-if="!tasklin.hatched" style="margin-left: 25%; height: 100%; width: 100%"/>
             <div class="tasklin-details">
               <q-item-label><b>Name: </b> {{ tasklin.name }}</q-item-label>        
               <q-item-label><b>Mood: </b>{{this.getMood(Object.keys(this.tasksCompletedToday).length)}}</q-item-label>
             </div>
             <div class="justify-center tasklin-details" >
               <q-form
-                @submit="onSubmit"
-                class="tasklinName"    >
+                @submit="onSubmit()"
+                class="tasklinName">
                 <q-input
                   filled
                   v-model="name"
@@ -181,11 +182,12 @@ export default {
     "list-header": require("components/Shared/ListHeader.vue").default,
     "no-tasks": require("components/Tasks/NoTasks.vue").default,
     "tasklin": require("components/Tasklins/Tasklin.vue").default,
-    "new-user": require("components/Help/NewUser.vue").default
+    "new-user": require("components/Help/NewUser.vue").default,
+    "egg": require("components/Tasklins/egg.vue").default
   },
   computed: {
     ...mapGetters("profile", ["profile"]),
-    ...mapGetters("tasks", ["tasksToday", "tasksLate", "tasksCompletedToday"]),
+    ...mapGetters("tasks", ["tasksToday", "tasksLate", "tasksCompletedToday", "tasksSorted"]),
     ...mapGetters("tasklins", ["tasklin"]),
     ...mapState("tasks", ["search", "tasksDownloaded"])
   },
@@ -198,6 +200,12 @@ export default {
       } else {
         return "Okay.";
       }
+    },
+    showTasklin(numTasks) {
+
+    },
+    onSubmit() {
+
     }
   }
 };

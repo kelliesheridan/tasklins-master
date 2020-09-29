@@ -48,6 +48,7 @@ const actions = {
           creation_date: moment(tasklinInfo.creation_date).format("YYYY-MM-DD"),
           eyeType: tasklinInfo.eyeType,
           mouth: tasklinInfo.mouth,
+          hatched: tasklinInfo.hatched
         };
         commit("setTasklin", payload);
       }
@@ -71,7 +72,8 @@ const actions = {
       xp: tasklin.xp,
       creation_date: moment(tasklin.creation_date).format("YYYY-MM-DD"),
       eyeType: "eyes1",
-      mouth: "mouth1"
+      mouth: "mouth1",
+      hatched: false
     };
     let fbTasklin = firebaseDb.ref("tasklins/" + userId);
     fbTasklin.set(payload);
