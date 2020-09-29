@@ -46,11 +46,12 @@ body {
     font-family: gopher, sans-serif;
     font-style: normal;
     font-weight: 100;
+    background-color: #ebf3f4;
+}
 
     // @include respond(tab-port) {
         
     // }
-}
 
 [v-cloak] {
     display:none;

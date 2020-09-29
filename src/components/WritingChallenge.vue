@@ -5,8 +5,7 @@
         class="q-mr-sm"
         color="light-green"
         label="I Did Something"
-        dropdown-icon="create"
-      >
+        dropdown-icon="create">
         <q-list>
           <q-item clickable v-close-popup @click="submit('writing')">
             <q-item-section>
@@ -49,10 +48,12 @@
       </q-btn-dropdown>
     </div>
 
-    <div class="row">
- <div
-          class="col-xs-12 col-sm-12 col-md-6 col-lg-4 q-pa-xs bg-accent"
-          style="overflow: auto; max-height: 65vh;"
+    <div 
+    class="row">
+      <div
+        class="col-xs-12 col-sm-12 col-md-6 col-lg-4 q-pa-xs"
+        :class="!settings.darkMode ? 'bg-accent' : 'bg-dark'"
+        style="overflow: auto; max-height: 65vh;"
         >
           <div v-for="n in 12" :key="n">
             <q-card dense flat square class="my-card q-pa-xs">
@@ -97,6 +98,7 @@ export default {
   }),
   computed: {
     ...mapGetters("writing", ["writing"]),
+    ...mapGetters('settings', ['settings']),
     ...mapGetters("profile", ["profile", "profiles", "profileIDs"]),
   },
   methods: {

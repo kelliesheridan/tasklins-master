@@ -1,7 +1,7 @@
 <template>
   <q-page padding>
-    <q-card class="card center">
-        <q-card-section class="q-pt-md">
+    <q-card class="card center bg-accent" flat bordered>
+        <q-card-section class="q-pt-md" >
           <div>
             <q-item>
               <q-item-section side top>
@@ -158,13 +158,6 @@
 
               <q-item>
                 <q-item-section>
-                  <q-item-label><strong>Turn Off Hints</strong></q-item-label>
-                  <q-item-label>Toggle hints on/off in settings.</q-item-label>
-                </q-item-section>
-              </q-item>
-
-              <q-item>
-                <q-item-section>
                   <q-item-label><strong>User Stats</strong></q-item-label>
                   <q-item-label>Keep track of how many tasks you're getting done each day.</q-item-label>
                 </q-item-section>
@@ -173,7 +166,7 @@
               <q-item>
                 <q-item-section>
                   <q-item-label><strong>Tasklin Evolution</strong></q-item-label>
-                  <q-item-label>New art for Tasklins along with the ability to level up and have moods.</q-item-label>
+                  <q-item-label>Tasklins will start gaining experience, and level up over time, changing their appearance as they do.</q-item-label>
                 </q-item-section>
               </q-item>
             </q-list>

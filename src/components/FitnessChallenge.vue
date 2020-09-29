@@ -58,7 +58,8 @@
 
       <div class="row">
         <div
-          class="col-xs-12 col-sm-12 col-md-6 col-lg-4 q-pa-xs bg-accent"
+          class="col-xs-12 col-sm-12 col-md-6 col-lg-4 q-pa-xs"
+          :class="!settings.darkMode ? 'bg-accent' : 'bg-dark'"
           style="overflow: auto; height: 570px"
         >
           <div v-for="n in 9" :key="n">
@@ -105,6 +106,7 @@ export default {
   }),
   computed: {
     ...mapGetters("fitness", ["fitness"]),
+    ...mapGetters('settings', ['settings']),
     ...mapGetters("profile", ["profile", "profiles", "profileIDs"])
   },
   methods: {

@@ -1,9 +1,7 @@
 <template>
   <q-item class="task"
-
   	@click="updateTask({ id: id, updates: { completed: !task.completed, dueDate: task.dueDate, task: task } }); addLin(task.completed);"
-  	:class="!task.completed ? 'bg-accent' : 'bg-positive'"
-
+    :class="[!settings.darkMode ? 'bg-accent' : 'bg-dark', !task.completed ? '' : 'bg-positive']" 
     v-touch-hold:1000.mouse="showEditTaskModal"
   	clickable
   	v-ripple>
@@ -84,7 +82,7 @@
 		props: ['task', 'id'],
     data() {
       return {
-        showEditTask: false
+        showEditTask: false,
       }
     },
     computed: {
@@ -102,7 +100,7 @@
         } else {
           return false;
         }
-      }
+      },
     },
     methods: {
       ...mapActions('tasks', ['updateTask', 'deleteTask', 'pushDueDate']),

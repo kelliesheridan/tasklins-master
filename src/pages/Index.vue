@@ -176,6 +176,10 @@ export default {
     // }
     this.setProjectSearch("");
   },
+    watch: {
+    '$q.dark.isActive' (val) {      
+    }
+  },
   components: {
     "tasks-today": require("components/Tasks/TasksToday.vue").default,
     "tasks-late": require("components/Tasks/TasksLate.vue").default,

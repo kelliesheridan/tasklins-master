@@ -208,7 +208,7 @@
     </div>
     </q-dialog>
 
-    <q-page-container v-if="loggedIn" class="loggedIn">
+    <q-page-container v-if="loggedIn">
       <router-view />
     </q-page-container>
 
@@ -286,6 +286,7 @@ export default {
   computed: {
     ...mapGetters("profile", ["profile"]),
     ...mapGetters("tasklins", ["tasklin"]),
+    ...mapGetters("settings", ["settings"]),
     ...mapGetters("tasks", ["tasksCompletedToday"]),
     ...mapState("auth", ["loggedIn"])
   },
@@ -327,14 +328,16 @@ export default {
   background-size: contain;
 }
 
-.loggedIn {
-  background-image: url("/statics/canvas.png");
-  background-color: $accent;
+.felt {  
+  background-color: $secondary;
 }
 
-.felt {
-  // background-image: url("/statics/felt.png");
-  background-color: $secondary;
+.loggedIn {    
+    background-color: $accent;
+  }
+  
+.loggedInDark { 
+    background-color: $dark;
 }
 
 .bg-image2 {
