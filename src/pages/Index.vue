@@ -115,6 +115,15 @@
           <div class="text-left">
             <div class="col q-pa-md">
               <q-list dense padding class="rounded-borders">
+                <q-item> 
+                  <q-item-section>
+                    <q-item-label><strong>Dark Mode Works Now!</strong></q-item-label>
+                    <q-item-label>
+                      Huzzah!</q-item-label>
+                  </q-item-section>
+                </q-item>
+                <br>
+
                 <q-item>
                   <q-item-section>
                     <q-item-label><strong>New User Walkthrough</strong></q-item-label>
@@ -128,14 +137,6 @@
                     <q-item-label>Changed the art for Tasklins to better fit our long term plan. There are now over 500 possible Tasklins.</q-item-label>
                   </q-item-section>
                 </q-item>
-
-                <!-- <q-item> 
-                  <q-item-section>
-                    <q-item-label><strong>Help Button</strong></q-item-label>
-                    <q-item-label>
-                      Found a bug or have a question? You can submit any issues from the help page (top right hand corner).</q-item-label>
-                  </q-item-section>
-                </q-item> -->
               </q-list>
             </div>
             <div class="col q-pa-md" style="max-width: 350px">

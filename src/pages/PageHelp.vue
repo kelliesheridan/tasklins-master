@@ -123,13 +123,6 @@
                 <q-list>
                   <q-item>
                     <q-item-section>
-                      <q-item-label><strong>Darkmode Doesn't Really Work Yet</strong></q-item-label>
-                      <q-item-label>It's wonky. We'll get there.</q-item-label>
-                    </q-item-section>
-                  </q-item>
-
-                  <q-item>
-                    <q-item-section>
                       <q-item-label><strong>Challenge Page Clearing</strong></q-item-label>
                       <q-item-label>If someone else enters a task on a challenge page, anyone currently on the page has their page cleared.</q-item-label>
                     </q-item-section>
