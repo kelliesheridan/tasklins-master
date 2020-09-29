@@ -71,7 +71,7 @@
                 >All Tasklins start out as eggs. You can store as many eggs as
                 you want to, but to meet the Tasklin inside, you're going to
                 have to give it something to work on. Use the + button to
-                <strong>add your first five tasks</strong>.<br><br> These can be any
+                <strong>add your first three tasks</strong>.<br><br> These can be any
                 things you need to complete, such as 'Go for a walk' or 'Finish
                 Math Homework'.
                 <strong
@@ -145,7 +145,7 @@
           />
         </div>
 
-        <div v-if="newTasks >= 5 && hatched != true">
+        <div v-if="newTasks >= 3 && hatched != true">
           <q-btn
             color="primary"
             @click="hatched = true"            

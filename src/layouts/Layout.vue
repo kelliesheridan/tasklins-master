@@ -56,10 +56,8 @@
       </q-toolbar>
     </q-header>
 
-    <q-footer v-if="loggedIn && this.tasklin.name !== ''" class="text-center transparent">
+    <q-footer v-if="loggedIn" class="text-center transparent">
       <div class="row transparent">
-
-
 
         <q-space/>
 
@@ -97,7 +95,7 @@
     </q-footer>
 
     <q-drawer
-      v-if="loggedIn && this.tasklin.color !== ''"
+      v-if="loggedIn"
       :breakpoint="767"
       show-if-above
       bordered
