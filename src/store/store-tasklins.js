@@ -28,6 +28,7 @@ const actions = {
   updateTasklin({ dispatch }, tasklin) {
     dispatch("fbUpdateTasklin", tasklin);
     dispatch("profile/fbReadProfile", null, { root: true });
+    dispatch("fbReadTasklins", {});
   },
   getTasklin({ dispatch }, payload) {
     dispatch("fbReadTasklins", {});

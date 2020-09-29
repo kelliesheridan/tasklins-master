@@ -50,7 +50,7 @@
                 class="tasklinName">
                 <q-input
                   filled
-                  v-model="name"
+                  v-model="tasklinName"
                   label="Tasklin Name"
                   bg-color="accent"                   
                   class="tasklinNameBox"                    
@@ -165,7 +165,7 @@ export default {
     data() {
     return {
       newUserWalkthrough: false,
-      name: "",
+      tasklinName: "",
       slide: 'style',
       lorem: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque voluptatem totam, architecto cupiditate officia rerum, error dignissimos praesentium libero ab nemo.'  
     };
@@ -194,6 +194,7 @@ export default {
   methods: {
     ...mapActions("profile", ["addXP"]),
     ...mapActions('tasks', ['setProjectSearch']),
+    ...mapActions("tasklins", ["updateTasklin"]),
     getMood(numToday) {
       if (numToday == 0) {
         return "Asleep";
@@ -205,7 +206,12 @@ export default {
 
     },
     onSubmit() {
-
+      if (this.tasklinName != "") { 
+      let tasklin = {
+        name: this.tasklinName,
+      };
+      this.updateTasklin(tasklin);
+    }
     }
   }
 };
