@@ -4,7 +4,7 @@
       <q-toolbar class="textureBar">
         <!-- <q-btn dense flat round color="accent" icon="notifications"/> -->
         <q-btn
-          v-if="loggedIn && this.tasklin.name !== ''"
+          v-if="loggedIn"
           dense
           flat
           round
@@ -18,23 +18,15 @@
           <q-img class="mainLogo" src="statics/tasklinslogo.png"></q-img>
         </q-toolbar-title>
         <q-btn
-          v-if="loggedIn && this.tasklin.name !== ''"
+          v-if="loggedIn"
           dense
           flat
           to="/help"
           round
           color="warning"
           icon="help"
-        />        
-        <q-btn
-          v-if="loggedIn && this.tasklin.name !== ''"
-          dense
-          flat
-          to="/settings"
-          round
-          color="info"
-          icon="settings"
         />
+        <q-btn v-if="loggedIn" dense flat  round class="q-mt-xs" color="info" @click="settings = true" icon="settings" />        
         <q-btn
           v-if="loggedIn"
           @click="logoutUser"
@@ -208,6 +200,11 @@
     </div>
     </q-dialog>
 
+    <q-dialog v-if="settings" v-model="settings" >
+      <settings />
+    </q-dialog>
+
+
     <q-page-container v-if="loggedIn">
       <router-view />
     </q-page-container>
@@ -227,6 +224,7 @@ export default {
   data() {
     return {
       showAddTask: false,
+      settings: false,
       levelUp: false,
       problem: null,
       accept: false,
@@ -301,7 +299,8 @@ export default {
   },
 
   components: {
-    "add-task": require("components/Tasks/Modals/addTask.vue").default
+    "add-task": require("components/Tasks/Modals/addTask.vue").default,
+    "settings": require("components/Help/Settings.vue").default,
     // search: require("components/Tasks/Tools/Search.vue").default,
     // 'new-user-info' : require('components/NewUserInfo.vue').default,
     // 'lin' : require('components/Shared/Lin.vue').default,
