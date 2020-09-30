@@ -36,7 +36,7 @@
           <list-header class="textureBar">
             <div class="index-header">Your Tasklin</div>
           </list-header>
-          <div class="section tasklin-section">
+          <div class="section tasklin-section" :class="!settings.darkMode ? 'tasklin-section-day' : 'tasklin-section-night'">
           <div class="">
             <tasklin v-if="tasklin.hatched"/>
             <egg v-if="!tasklin.hatched"/>
@@ -192,6 +192,7 @@ export default {
   },
   computed: {
     ...mapGetters("profile", ["profile"]),
+    ...mapGetters("settings", ["settings"]),
     ...mapGetters("tasks", ["tasksToday", "tasksLate", "tasksCompletedToday", "tasksSorted"]),
     ...mapGetters("tasklins", ["tasklin"]),
     ...mapState("tasks", ["search", "tasksDownloaded"])
@@ -241,7 +242,7 @@ img {
 }
 
 .tasklin-section {
-  background-image: url("/statics/backgrounds/TownBackground2.jpg");   
+  /* background-image: url("/statics/backgrounds/TownBackground2Day.jpg");    */
   background-color: #eceff1;
   margin: 1rem;
   border-radius: 1rem;
@@ -249,6 +250,14 @@ img {
   background-position: center; 
   background-repeat: no-repeat; 
   background-size: cover;
+}
+
+.tasklin-section-day {
+  background-image: url("/statics/backgrounds/TownBackground2Day.jpg");   
+}
+
+.tasklin-section-night {
+  background-image: url("/statics/backgrounds/TownBackground2Night.jpg");   
 }
 
 .icon-s {

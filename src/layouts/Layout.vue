@@ -104,7 +104,7 @@
       side="left"
     >
       <div>
-        <q-img src="statics/backgrounds/TownBackground.jpg" style="height: 250px">
+        <q-img :class="!settings.darkMode ? 'town-day' : 'town-night'" style="height: 250px;">
           <div class="eventBox bg-transparent">                 
               <img src="statics/items/chest-1.png" v-show="showBonusItem" style="margin-top: 50px; margin-left: 50px" class="bonusImg" @click="showBonus = true" />
           </div>
@@ -369,5 +369,15 @@ a:hover {
 
 a:active {
   text-decoration: none;
+}
+
+.town-day {
+  background-image: url("/statics/backgrounds/TownBackground1Day.jpg");   
+  background-size: contain;
+}
+
+.town-night {
+  background-image: url("/statics/backgrounds/TownBackground1Night.jpg");  
+  background-size: contain; 
 }
 </style>
