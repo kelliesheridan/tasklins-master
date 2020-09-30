@@ -373,11 +373,11 @@ a:active {
 
 .town-day {
   background-image: url("/statics/backgrounds/TownBackground1Day.jpg");   
-  background-size: contain;
+  background-size: cover;
 }
 
 .town-night {
   background-image: url("/statics/backgrounds/TownBackground1Night.jpg");  
-  background-size: contain; 
+  background-size: cover; 
 }
 </style>
