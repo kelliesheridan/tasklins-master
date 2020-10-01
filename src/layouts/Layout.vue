@@ -143,7 +143,7 @@
         <div>Level: {{ profile.level }}</div>
         <div>{{ profile.lin }}
           <q-img
-        src="statics/items/lin.png"
+        src="statics/items/lin.PNG"
         style="width:15px;">
         <q-tooltip content-class="bg-primary">{{ profile.lin }} Lin.</q-tooltip>
         </q-img>

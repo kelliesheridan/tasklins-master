@@ -1,11 +1,25 @@
 <template>
   <q-page padding>
-
     <q-dialog v-if="newUserWalkthrough" v-model="newUserWalkthrough" >
     <new-user />
     </q-dialog>
 
     <template v-if="tasksDownloaded">
+      
+    <q-card bordered flat v-if="newUserPanel" class="card center">
+      <q-card-section>
+        <div class="text-h6">Let's Get Started</div>
+        <div class="text-subtitle2">Welcome to Tasklins! Let's kick things off with a quick walkthrough of how everything works. You can also close this panel for now, and it will disappear after your first day here.</div>
+      </q-card-section>
+
+      <q-separator />
+
+      <q-card-actions vertical>
+        <q-btn class="q-mt-xs" padding color="secondary" @click="newUserWalkthrough = true" flat>New User Walkthrough</q-btn>
+        <q-btn class="q-mt-xs" padding color="secondary" flat @click="newUserPanel = false">Hide Panel</q-btn>
+      </q-card-actions>
+    </q-card>
+
       <div class="row main justify-center q-pa-md">
         <div class="section col-xs-12 col-sm-12 col-md-6 col-lg-6 q-pa-xs" style="overflow: auto; height: 50%">
           <div>
@@ -159,6 +173,7 @@
 <script>
 import { mapState, mapGetters, mapActions } from "vuex";
 import { openURL } from "quasar";
+import moment from "moment";
 
 export default {
   props: ["tasksTodo"],
@@ -167,6 +182,7 @@ export default {
     return {
       newUserWalkthrough: false,
       tasklinName: "",
+      newUserPanel: true,
       slide: 'style',
       lorem: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque voluptatem totam, architecto cupiditate officia rerum, error dignissimos praesentium libero ab nemo.'  
     };
