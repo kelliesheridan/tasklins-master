@@ -6,3 +6,12 @@
         width: 100%;
        }
   }
+
+  .explore-bar {
+    width: 80%;
+    margin-top: 20px;
+    
+    @include respond(tab-port) {
+        width: 100%;
+       }
+  }
