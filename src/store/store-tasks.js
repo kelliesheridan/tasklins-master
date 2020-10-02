@@ -139,23 +139,22 @@ const actions = {
       } else {
         //Notify.create('New Task Added - + 1xp')
       }
-
-      // update tasklin to set hatched = true
-      if (!state.tasklin.hatched) {
-        if (Object.keys(state.tasks).length > 4) {
-          let tasklinRef = firebaseDb.ref("tasklins/" + userId);
-          var tasklin = { hatched: true };
-          tasklinRef.update(tasklin, error => {
-            if (error) {
-              showErrorMessage(error.message);
-            } else {
-              Notify.create("Your tasklin has hatched!");
-              dispatch("tasklins/getTasklin", null, { root: true });
-            }
-          });
-        }
-      }
     });
+    // update tasklin to set hatched = true
+    if (!this.state.tasklins.tasklin.hatched) {
+      if (Object.keys(state.tasks).length > 4) {
+        let tasklinRef = firebaseDb.ref("tasklins/" + userId);
+        var tasklin = { hatched: true };
+        tasklinRef.update(tasklin, error => {
+          if (error) {
+            showErrorMessage(error.message);
+          } else {
+            Notify.create("Your tasklin has hatched!");
+            dispatch("tasklins/getTasklin", null, { root: true });
+          }
+        });
+      }
+    }
   },
   fbAddProject({ dispatch }, payload) {
     let userId = firebaseAuth.currentUser.uid;

@@ -201,7 +201,7 @@
     </q-dialog>
 
     <q-dialog v-if="settings" v-model="settings" >
-      <settings />
+      <settingsModal />
     </q-dialog>
 
 
@@ -300,7 +300,7 @@ export default {
 
   components: {
     "add-task": require("components/Tasks/Modals/addTask.vue").default,
-    "settings": require("components/Help/Settings.vue").default,
+    "settingsModal": require("components/Help/SettingsModal.vue").default,
     // search: require("components/Tasks/Tools/Search.vue").default,
     // 'new-user-info' : require('components/NewUserInfo.vue').default,
     // 'lin' : require('components/Shared/Lin.vue').default,

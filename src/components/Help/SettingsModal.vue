@@ -127,7 +127,7 @@ export default {
       set(value) {
         this.setDarkMode(value);
       }
-    }
+    },
   },
   methods: {
     ...mapActions("settings", [
