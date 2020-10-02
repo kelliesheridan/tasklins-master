@@ -154,7 +154,8 @@ const actions = {
         signup: profile.signup,
         admin: profile.admin,
         color: profile.color,
-        pronouns: profile.pronouns
+        pronouns: profile.pronouns,
+        dateCreated: profile.dateCreated
       };
       commit("updateProfile", payload);
       dispatch("fbReadAllProfiles")
