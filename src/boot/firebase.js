@@ -7,7 +7,7 @@ import "firebase/database"
 var firebaseConfig = {
   apiKey: "AIzaSyB7ehKa17EUJUOkrMLrmyvQ5qSz7j2xhJo",
   authDomain: "tasklins.firebaseapp.com",
-  databaseURL: "https://tasklins.firebaseio-test.com",
+  databaseURL: "https://tasklins.firebaseio.com",
   projectId: "tasklins",
   storageBucket: "tasklins.appspot.com",
   messagingSenderId: "236516275374",
