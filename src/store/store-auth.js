@@ -59,9 +59,9 @@ const actions = {
         dispatch("profile/fbReadProfile", null, { root: true });
         dispatch("fitness/readFitnessTasks", null, { root: true });
         dispatch("writing/readWritingTasks", null, { root: true });
-        dispatch("tasklins/getTasklin", null, { root: true });
         dispatch("settings/fbReadSettings", null, { root: true });
         dispatch("profile/fbCheckUsername", null, { root: true });
+        dispatch("tasklins/getTasklin", null, { root: true });
         if (this.state.profile.profile.user.name !== "") {
           if (this.state.tasklins.tasklin.name === "") {
             this.$router.replace("/index").catch(err => {});
@@ -127,7 +127,7 @@ const actions = {
       if (error) {
         showErrorMessage(error.message);
       } else {
-        dispatch("fbReadProjects");
+        dispatch("tasks/fbReadProjects", null, { root: true });
         //Notify.create('New Task Added - + 1xp')
       }
     });

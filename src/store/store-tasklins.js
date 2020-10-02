@@ -23,19 +23,18 @@ const actions = {
   addTasklin({ dispatch }, tasklin) {
     dispatch("fbAddTasklin", tasklin);
     dispatch("profile/fbReadProfile", null, { root: true });
-    this.$router.replace("/todo");
+    this.$router.replace("/index");
   },
   updateTasklin({ dispatch }, tasklin) {
     dispatch("fbUpdateTasklin", tasklin);
     dispatch("profile/fbReadProfile", null, { root: true });
     dispatch("fbReadTasklins", {});
   },
-  getTasklin({ dispatch }, payload) {
+  getTasklin({ dispatch, commit }, payload) {
     dispatch("fbReadTasklins", {});
   },
   fbReadTasklins({ commit }) {
     let userId = firebaseAuth.currentUser.uid;
-    
     let userSettings = firebaseDb.ref("tasklins/" + userId);
 
     userSettings.once("value", snapshot => {
