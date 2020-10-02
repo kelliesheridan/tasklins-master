@@ -200,7 +200,7 @@
     </div>
     </q-dialog>
 
-    <q-dialog v-if="settings" v-model="settings" >
+    <q-dialog v-if="showSettings" v-model="settings" >
       <settingsModal />
     </q-dialog>
 
@@ -224,7 +224,7 @@ export default {
   data() {
     return {
       showAddTask: false,
-      settings: false,
+      showSettings: false,
       levelUp: false,
       problem: null,
       accept: false,
