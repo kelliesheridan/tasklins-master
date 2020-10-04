@@ -242,7 +242,8 @@ export default {
         earsOrHorns: "",
         bodyShape2: "",
         pattern2: "",
-        hatched: false
+        hatched: false,
+        tongue: "tongue1"
       };
 
       this.addTasklin(tasklin);

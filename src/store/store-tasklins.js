@@ -71,9 +71,25 @@ const actions = {
       type: tasklin.type,
       xp: tasklin.xp,
       creation_date: moment(tasklin.creation_date).format("YYYY-MM-DD"),
-      eyeType: "eyes1",
-      mouth: "mouth1",
-      hatched: false
+      project: tasklin.project,
+      level: tasklin.level,
+      color: tasklin.color,
+      color2: tasklin.color2,
+      color3: tasklin.color3,
+      bodyShape: tasklin.bodyShape,
+      bodyTexture: tasklin.bodyTexture,
+      eyeColor: tasklin.eyeColor,
+      eyeType: tasklin.eyeType,
+      nose: tasklin.nose,
+      mouth: tasklin.mouth,
+      tongue: tasklin.tongue,
+      pattern1: tasklin.pattern1,
+      eyebrowsOrTail: tasklin.eyebrowsOrTail,
+      earsOrHorns: tasklin.earsOrHorns,
+      bodyShape2: tasklin.bodyShape2,
+      pattern2: tasklin.pattern2,
+      hatched: false,
+      tongue: tasklin.tongue
     };
     let fbTasklin = firebaseDb.ref("tasklins/" + userId);
     fbTasklin.set(payload);

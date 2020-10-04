@@ -5,7 +5,7 @@
     </q-dialog>
 
     <template v-if="tasksDownloaded">
-      <q-card bordered flat v-if="showNewUserPanel()" class="card center">
+      <q-card bordered flat v-if="showNewUserPanel() && !hideNewUserPanel" class="card center">
         <q-card-section>
           <div class="text-h6">Let's Get Started</div>
           <div class="text-subtitle2">
@@ -31,7 +31,7 @@
             padding
             color="secondary"
             flat
-            @click="!showNewUserPanel()"
+            @click="showNewUserPanel(true)"
             >Hide Panel</q-btn
           >
         </q-card-actions>
@@ -235,6 +235,7 @@ export default {
   data() {
     return {
       newUserWalkthrough: false,
+      hideNewUserPanel: false,
       tasklinName: "",
       slide: "style",
       lorem:
@@ -282,7 +283,10 @@ export default {
         return "Okay.";
       }
     },
-    showNewUserPanel() {
+    showNewUserPanel(hidePanel) {
+      if (hidePanel != undefined) {
+        this.hideNewUserPanel = true;
+      }
       if (this.profile.dateCreated) {
         if (moment(this.profile.dateCreated).format("YYYY-MM-DD") == moment().format("YYYY-MM-DD")) {
           return true;
