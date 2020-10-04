@@ -192,7 +192,9 @@ const actions = {
     let taskRef = firebaseDb.ref("tasks/" + userId + "/" + payload.id);
     var task = {
       completed: payload.updates.completed,
-      dueDate: payload.updates.dueDate
+      dueDate: payload.updates.dueDate,
+      dueTime: payload.updates.dueTime
+
     };
     task.lastModified = moment().format("YYYY-MM-DD HH:mm:ss");
     if (task.completed) {
