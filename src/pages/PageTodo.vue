@@ -73,7 +73,7 @@ export default {
     "add-project": require("components/Tasks/Modals/addProject.vue").default,
     "tasks-todo": require("components/Tasks/TasksTodo.vue").default,
     "tasks-completed": require("components/Tasks/TasksCompleted.vue").default,
-    // "tasks-completed-today": require("components/Tasks/TasksCompletedToday.vue").default,
+    //"tasks-completed-today": require("components/Tasks/TasksCompletedToday.vue").default,
     //"tasks-completed-this-week": require("components/Tasks/TasksCompletedThisWeek.vue").default,
     "sort": require("components/Tasks/Tools/Sort.vue").default,
     "projectList": require("components/Tasks/Tools/ProjectList.vue").default,

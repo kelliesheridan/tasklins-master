@@ -193,8 +193,7 @@ const actions = {
     var task = {
       completed: payload.updates.completed,
       dueDate: payload.updates.dueDate,
-      dueTime: payload.updates.dueTime
-
+      dueTime: payload.updates.dueTime != undefined ? payload.updates.dueTime : ""
     };
     task.lastModified = moment().format("YYYY-MM-DD HH:mm:ss");
     if (task.completed) {
@@ -205,6 +204,8 @@ const actions = {
     taskRef.update(task, error => {
       if (error) {
         showErrorMessage(error.message);
+      } else {
+        dispatch("fbReadData");
       }
     });
     // check for repeating task

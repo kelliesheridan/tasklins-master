@@ -284,7 +284,7 @@ export default {
   computed: {
     ...mapGetters("profile", ["profile"]),
     ...mapGetters("tasklins", ["tasklin"]),
-    ...mapGetters("settings", ["settings"]),
+    //...mapGetters("settings", ["settings"]),
     ...mapGetters("tasks", ["tasksCompletedToday"]),
     ...mapState("auth", ["loggedIn"])
   },
