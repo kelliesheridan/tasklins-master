@@ -108,8 +108,11 @@ const actions = {
 const getters = {
   settings: state => {
     return state.settings;
-  }
-};
+  },
+  darkMode: state => { 
+    return state.settings.darkMode;
+    }
+  };
 
 export default {
   namespaced: true,

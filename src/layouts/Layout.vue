@@ -96,7 +96,7 @@
       side="left"
     >
       <div>
-        <q-img :class="!settings.darkMode ? 'town-day' : 'town-night'" style="height: 250px;">
+        <q-img :class="!darkMode ? 'town-day' : 'town-night'" style="height: 250px;">
           <div class="eventBox bg-transparent">                 
               <img src="statics/items/chest-1.png" v-show="showBonusItem" style="margin-top: 50px; margin-left: 50px" class="bonusImg" @click="showBonus = true" />
           </div>
@@ -284,7 +284,7 @@ export default {
   computed: {
     ...mapGetters("profile", ["profile"]),
     ...mapGetters("tasklins", ["tasklin"]),
-    //...mapGetters("settings", ["settings"]),
+    ...mapGetters("settings", ["darkMode"]),
     ...mapGetters("tasks", ["tasksCompletedToday"]),
     ...mapState("auth", ["loggedIn"])
   },
