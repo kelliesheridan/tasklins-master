@@ -91,7 +91,7 @@
                   }}</q-item-label
                 >
               </div>
-              <div v-if="!tasklin.name && !tasklin.hatched" class="tasklin-details"><q-item-label>Add your first 5 tasks to hatch your Tasklin</q-item-label></div>
+              <div v-if="!tasklin.name && !tasklin.hatched" class="tasklin-details"><q-item-label>Use the + button to add your first 5 tasks to hatch your Tasklin</q-item-label></div>
               <div v-if="!tasklin.name && tasklin.hatched" class="justify-center tasklin-details">
                 <q-form @submit="onSubmit()" class="tasklinName">
                   <q-input

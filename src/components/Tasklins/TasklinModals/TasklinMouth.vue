@@ -4,22 +4,27 @@
     <img
       class="tasklin"
       v-if="this.tasklin.mouth === 'mouth1'"
-      src="/statics/tasklins/mouth/mouth1.png"
+      src="/statics/tasklins/mouth/mouth1/neutral.png"
     />
     <img
       class="tasklin"
       v-if="this.tasklin.mouth === 'mouth2'"
-      src="/statics/tasklins/mouth/mouth2.png"
+      src="/statics/tasklins/mouth/mouth2/neutral.png"
     />
     <img
       class="tasklin"
       v-if="this.tasklin.mouth === 'mouth3'"
-      src="/statics/tasklins/mouth/mouth3.png"
+      src="/statics/tasklins/mouth/mouth3/neutral.png"
     />
     <img
       class="tasklin"
       v-if="this.tasklin.mouth === 'mouth4'"
-      src="/statics/tasklins/mouth/mouth4.png"
+      src="/statics/tasklins/mouth/mouth4/neutral.png"
+    />
+    <img
+      class="tasklin"
+      v-if="this.tasklin.mouth === 'mouth5'"
+      src="/statics/tasklins/mouth/mouth5/neutral.png"
     />
     </div>
     <!-- <div v-else>
