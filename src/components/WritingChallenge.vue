@@ -123,7 +123,7 @@ export default {
           });
         }
       }
-      return intensityCount;
+      return intensityCount / 3;
     },
     getActivity(number) {
       this.update;
