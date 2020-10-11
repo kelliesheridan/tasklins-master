@@ -2,6 +2,7 @@
     
     	<q-card-actions align="right">
 	      <q-btn
+		  	v-close-popup
 	      	label="Save"
 	      	color="primary"
 	      	type="submit" />
