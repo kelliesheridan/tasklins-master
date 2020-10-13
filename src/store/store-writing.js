@@ -16,7 +16,13 @@ const mutations = {
     let sortedArray = new Array();
     sortedArray = payload.sort();
     state.writingSorted = payload;
-  }
+  },
+  addWritingTask(state, payload) {
+    Vue.set(state.writing, payload.id, payload.writingTask);
+  },
+  updateWritingTask(state, payload) {
+    Object.assign(state.writing[payload.userId], payload);
+  },
 };
 
 const actions = {
@@ -39,8 +45,12 @@ const actions = {
     // child added
     writingTasks.on("child_added", snapshot => {
       let writingRecord = snapshot.val();
-      commit("setWritingTask", writingRecord);
-    });
+      let payload = {
+        id: snapshot.key,
+        writingTask: writingRecord
+      };
+      commit("addWritingTask", payload);
+    });      
   },
   fbAddWritingTask({ dispatch }, writingTask) {
     let userId = firebaseAuth.currentUser.uid;
