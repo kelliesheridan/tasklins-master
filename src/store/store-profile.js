@@ -174,7 +174,7 @@ const actions = {
       Object.keys(profiles).forEach(element => {
         profileArray.push(element);
         commit("loadAllProfileIDs", profileArray);
-      });
+      });    
     });
   },
 
