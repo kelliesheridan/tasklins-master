@@ -61,14 +61,31 @@ const actions = {
     let payload = {
       date: date,
       username: username.toLowerCase(),
+      userId: userId,
       type: writingTask,
       intensity: 0.01,
       goal: 10,
       cheers: 0,
-      color: userColor
+      color: userColor,
     };
     let taskWriting = firebaseDb.ref("writing/" + date);
     taskWriting.set(payload);
+
+    var intensityCount = 0.0;
+    Object.keys(this.state.writing.writing).forEach(element => {
+      if (this.state.writing.writing[element].userId == userId) {
+        intensityCount += this.state.writing.writing[element].intensity;
+      }
+    });
+
+    let taskWritingChallenge = firebaseDb.ref("writingChallenge/" + userId);
+    let writingActivity = {
+      username: username.toLowerCase(),
+      intensity: intensityCount + 0.01,
+      color: userColor
+    };
+    taskWritingChallenge.set(writingActivity);
+
     dispatch("profile/addXP", true, { root: true })
     dispatch("profile/addLin", true, { root: true })
     dispatch("fbReadWritingTasks");
