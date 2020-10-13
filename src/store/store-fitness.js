@@ -24,6 +24,7 @@ const mutations = {
     state.fitness = payload;
   },
   addFitnessTask(state, payload) {
+    if (state.fitness != undefined) 
     Vue.set(state.fitness, payload.id, payload.fitnessTask);
   },
   updateFitnessTask(state, payload) {

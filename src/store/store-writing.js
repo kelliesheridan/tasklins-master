@@ -18,6 +18,7 @@ const mutations = {
     state.writingSorted = payload;
   },
   addWritingTask(state, payload) {
+    if (state.writing != undefined) 
     Vue.set(state.writing, payload.id, payload.writingTask);
   },
   updateWritingTask(state, payload) {
