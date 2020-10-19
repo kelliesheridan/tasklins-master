@@ -170,6 +170,20 @@
               <q-list dense padding class="rounded-borders">
                 <q-item>
                   <q-item-section>
+                    <q-item-label
+                      ><strong>Patreon Update</strong></q-item-label
+                    >
+                    <q-item-label>
+                      New update on Patreon, going over some of our goals for the rest of the month! Available to all, not just patrons.             
+                      <a href="https://www.patreon.com/posts/42927673" target="_blank"
+                        >Click here to read it!</a>
+                    </q-item-label>
+                  </q-item-section>
+                </q-item> 
+                <br />       
+
+                <q-item>
+                  <q-item-section>
                     <q-item-label><strong>Small Updates</strong></q-item-label>
                     <q-item-label
                       >Just a few bug fixes this week, plus readjusting the Writing challenge page to account for some full bars.</q-item-label
@@ -184,28 +198,7 @@
                     >
                     <q-item-label> Huzzah!</q-item-label>
                   </q-item-section>
-                </q-item>
-                <br />
-
-                <q-item>
-                  <q-item-section>
-                    <q-item-label
-                      ><strong>New User Walkthrough</strong></q-item-label
-                    >
-                    <q-item-label
-                      >We've added a new user walkthrough to demonstrate the
-                      basics of Tasklins! For existing users, you can click here
-                      to see it.<br /><br />
-                      <q-btn
-                        class="q-mt-xs"
-                        padding
-                        color="secondary"
-                        @click="newUserWalkthrough = true"
-                        label="?"
-                      />
-                    </q-item-label>
-                  </q-item-section>
-                </q-item>                
+                </q-item>        
               </q-list>
             </div>
             <div class="col q-pa-md" style="max-width: 350px"></div>
