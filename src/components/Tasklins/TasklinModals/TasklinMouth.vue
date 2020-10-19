@@ -1,54 +1,10 @@
 <template>
   <div>
     <div>
-    <img
-      class="tasklin"
-      v-if="this.tasklin.mouth === 'mouth1'"
-      src="/statics/tasklins/mouth/mouth1/neutral.png"
-    />
-    <img
-      class="tasklin"
-      v-if="this.tasklin.mouth === 'mouth2'"
-      src="/statics/tasklins/mouth/mouth2/neutral.png"
-    />
-    <img
-      class="tasklin"
-      v-if="this.tasklin.mouth === 'mouth3'"
-      src="/statics/tasklins/mouth/mouth3/neutral.png"
-    />
-    <img
-      class="tasklin"
-      v-if="this.tasklin.mouth === 'mouth4'"
-      src="/statics/tasklins/mouth/mouth4/neutral.png"
-    />
-    <img
-      class="tasklin"
-      v-if="this.tasklin.mouth === 'mouth5'"
-      src="/statics/tasklins/mouth/mouth5/neutral.png"
-    />
+      <div>
+        <img class="tasklin" :src="this.getMouth(this.tasklin.mouth)" />
+      </div>
     </div>
-    <!-- <div v-else>
-    <img
-      class="tasklin"
-      v-if="this.tasklin.mouth === 'mouth1'"
-      src="/statics/tasklins/mouth/mouth1smile.png"
-    />
-    <img
-      class="tasklin"
-      v-if="this.tasklin.mouth === 'mouth2'"
-      src="/statics/tasklins/mouth/mouth2smile.png"
-    />
-    <img
-      class="tasklin"
-      v-if="this.tasklin.mouth === 'mouth3'"
-      src="/statics/tasklins/mouth/mouth3smile.png"
-    />
-    <img
-      class="tasklin"
-      v-if="this.tasklin.mouth === 'mouth4'"
-      src="/statics/tasklins/mouth/mouth4smile.png"
-    />      
-    </div> -->
   </div>
 </template>
 
@@ -62,6 +18,32 @@ export default {
   computed: {
     ...mapGetters("tasklins", ["tasklin"]),
     ...mapGetters("tasks", ["tasksCompletedToday"])
+  },
+  methods: {
+    getMouth(mouthType) {
+      if (Object.keys(this.tasksCompletedToday).length == 0) {
+        switch (mouthType) {
+          case "mouth1":
+          case "mouth3":
+          case "mouth5":
+            return "/statics/tasklins/mouth/mouth1/neutral.png";
+            break;
+          case "mouth2":
+          case "mouth4":
+            return "/statics/tasklins/mouth/mouth4/neutral.png";
+            break;
+        }
+      } else {
+        if (mouthType != undefined) {
+          // return (
+          //   "/statics/tasklins/eyes/babyeyes" +
+          //   mouthType.charAt(mouthType.length - 1) +
+          //   ".png"
+          // );
+          return "/statics/tasklins/mouth/mouth4/neutral.png";
+        }
+      }
+    }
   }
 };
 </script>
