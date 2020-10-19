@@ -170,6 +170,15 @@
               <q-list dense padding class="rounded-borders">
                 <q-item>
                   <q-item-section>
+                    <q-item-label><strong>Small Updates</strong></q-item-label>
+                    <q-item-label
+                      >Just a few bug fixes this week, plus readjusting the Writing challenge page to account for some full bars.</q-item-label
+                    >
+                  </q-item-section>
+                </q-item>
+                <br />
+                <q-item>
+                  <q-item-section>
                     <q-item-label
                       ><strong>Dark Mode Works Now!</strong></q-item-label
                     >
@@ -196,18 +205,7 @@
                       />
                     </q-item-label>
                   </q-item-section>
-                </q-item>
-                <br />
-                <q-item>
-                  <q-item-section>
-                    <q-item-label><strong>New Art</strong></q-item-label>
-                    <q-item-label
-                      >Changed the art for Tasklins to better fit our long term
-                      plan. There are now over 500 possible
-                      Tasklins.</q-item-label
-                    >
-                  </q-item-section>
-                </q-item>
+                </q-item>                
               </q-list>
             </div>
             <div class="col q-pa-md" style="max-width: 350px"></div>

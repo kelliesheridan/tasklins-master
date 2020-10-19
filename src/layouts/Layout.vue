@@ -53,7 +53,7 @@
 
         <q-space/>
 
-        <img src="statics/items/chest-1.png" v-show="showBonusItem" class="bonusImg2" @click="showBonus = true" />
+        <img src="statics/items/scroll-1.png" v-show="showBonusItem" class="bonusImg2" @click="showBonus = true" />
       </div>
       <div class="row textureBar">
         <q-btn
@@ -98,7 +98,7 @@
       <div>
         <q-img :class="!darkMode ? 'town-day' : 'town-night'" style="height: 250px;">
           <div class="eventBox bg-transparent">                 
-              <img src="statics/items/chest-1.png" v-show="showBonusItem" style="margin-top: 50px; margin-left: 50px" class="bonusImg" @click="showBonus = true" />
+              <img src="statics/items/scroll-1.png" v-show="showBonusItem" style="margin-top: 50px; margin-left: 50px" class="bonusImg" @click="showBonus = true" />
           </div>
         </q-img>
       </div>
@@ -180,12 +180,12 @@
             <q-item>
               <q-item-section side top>
                 <q-avatar class="bonusImgFocus">
-                  <img src="statics/items/chest-1.png" />
+                  <img src="statics/items/scroll-1.png" />
                 </q-avatar>
               </q-item-section>
               <q-item-section top>
                 <q-item-label class="bonusBox">
-                  You found a chest! There's nothing in it because Kellie hasn't figured out how to do that yet. But yay! Finding stuff! Have an excellent day!
+                  Hoping you all have a fantastic week! -Kellie
                 </q-item-label>
               </q-item-section>
             </q-item>
