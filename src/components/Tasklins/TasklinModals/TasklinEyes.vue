@@ -1,6 +1,9 @@
 <template>
-  <div>
-    <img class="tasklin" :src="this.getEyes(this.tasklin.eyeType)" />
+  <div class="tasklin">
+    <img class="baseType" :src="this.getEyes('base', this.tasklin.eyeType)" />
+    <img class="colorType" :src="this.getEyes('color', this.tasklin.eyeType, this.tasklin.color)"/>
+    <img class="pupilType" :src="this.getEyes('pupil', this.tasklin.eyeType)" />
+    <img class="highlightType" :src="this.getEyes('highlight', this.tasklin.eyeType)"/>
   </div>
 </template>
 
@@ -16,8 +19,27 @@ export default {
     ...mapGetters("tasks", ["tasksCompletedToday"])
   },
   methods: {
-    getEyes(eyeType) {
-      if (Object.keys(this.tasksCompletedToday).length == 0) {
+    getEyes(layerNumber, eyeType, arg) {
+    //   if (Object.keys(this.tasksCompletedToday).length != 0) {
+    //     switch (layerNumber) {
+    //       case "base":
+    //         return "/statics/tasklins/eyes/eyes1/Base7.png";
+    //         break;
+    //       case "color":
+    //         return "/statics/tasklins/eyes/eyes1/ColorCyan7.png";
+    //         break;
+    //       case "highlight":
+    //         return "/statics/tasklins/eyes/eyes1/Highlight1.png";
+    //         break;
+    //       case "pupil":
+    //         return "/statics/tasklins/eyes/eyes1/Pupil7.png";
+    //         break;
+    //     }
+    //   } else {
+    //      return "/statics/tasklins/eyes/sleepingeyes1.png";
+    // }
+    // }
+    if (Object.keys(this.tasksCompletedToday).length == 0) {
         switch (eyeType) {
           case "eyes1":
           case "eyes3":
@@ -50,4 +72,34 @@ export default {
   position: relative;
   color: black !important;
 }
+.baseType {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  position: relative;
+}
+.colorType {
+  width: 100%;
+  height: 100%;
+  margin-top: -5px;
+  margin-left: -100%;
+  display: inline-block;
+  position: absolute;
+  }
+.highlightType {
+  width: 100%;
+  height: 100%;
+  margin-top: -5px;
+  margin-left: -100%;
+  display: inline-block;
+  position: absolute;
+  }
+.pupilType {
+  width: 100%;
+  height: 100%;
+  margin-top: -5px;
+  margin-left: -100%;
+  display: inline-block;
+  position: absolute;
+  }
 </style>
