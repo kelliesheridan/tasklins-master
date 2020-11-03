@@ -1,0 +1,25 @@
+.tamo-list {
+    width: 100%;
+  }
+
+.tamo-task {
+    height: 100px;
+    width: 100px;
+    text-align: center;
+    padding: 4px;
+    border: 4px dashed black;
+    margin: 5px;
+  }
+
+.task-false {
+    background-color: #bf8686;
+}
+
+.task-true {
+    background-color: #89be85;
+}
+
+.tamo-text {
+    width: 80%;
+    margin: 15px;
+}

@@ -121,7 +121,7 @@
       <div class="row main justify-center q-pa-md">
         <div class="section col-xs-12 col-sm-12 col-md-6 news q-pa-xs">
           <list-header class="textureBar">
-            <div class="index-header">Follow Tasklins on Social Media</div>
+            <div class="index-header">Extras!</div>
           </list-header>
           <div class="text-center">
             <a
@@ -129,45 +129,87 @@
               target="_blank"
               ><img
                 src="statics/social/facebook.png"
-                width="82"
-                height="86"
+                width="62"
+                height="66"
                 title="Facebook"
                 alt="Tasklins on Facebook"
             /></a>
             <a href="https://twitter.com/tasklins" target="_blank"
               ><img
                 src="statics/social/twitter.png"
-                width="82"
-                height="86"
+                width="62"
+                height="66"
                 title="Facebook"
                 alt="Tasklins on Facebook"
             /></a>
             <a href="https://www.instagram.com/tasklins/" target="_blank"
               ><img
                 src="statics/social/instagram.png"
-                width="82"
-                height="86"
+                width="62"
+                height="66"
                 title="Facebook"
                 alt="Tasklins on Facebook"
             /></a>
             <a href="https://www.pinterest.ca/Tasklins/" target="_blank"
               ><img
                 src="statics/social/pinterest.png"
-                width="82"
-                height="86"
+                width="62"
+                height="66"
                 title="Facebook"
                 alt="Tasklins on Facebook"
             /></a>
           </div>
-        </div>
+          <div class="text-center">
+            <q-btn          
+              dense
+              flat
+              to="/help"
+              rounded
+              color="primary"
+              label="Help"
+              icon="help"
+            />
+            <q-btn        
+            dense 
+            flat 
+            rounded
+            label="Settings"
+            color="primary" 
+            @click="settings = true"
+            icon="settings"
+            />     
+            </div>
+            <br>
+            <div class="text-center">
+              <q-btn     
+              rounded
+              label="November Tasklins Progress"
+              color="primary" 
+              to="/november"          
+              />     
+            </div>
+          </div>
 
         <div class="section col-xs-12 col-sm-12 col-md-6 news q-pa-xs">
           <list-header class="textureBar">
             <div class="index-header">News</div>
           </list-header>
+          <div>
+            
+          </div>
           <div class="text-left">
             <div class="col q-pa-md">
               <q-list dense padding class="rounded-borders">
+                <q-item>
+                  <q-item-section>
+                    <q-item-label
+                      ><strong>It's going to be a big month!</strong></q-item-label
+                    >
+                    <q-item-label>The new year is coming, and there's still so much we want to have ready here on Tasklins! This month, we're aiming for 30 updates in 30 days. Visit our <a href="/#/november/"
+              >November Challenge Page</a> to learn more!</q-item-label>
+                  </q-item-section>
+                </q-item>   
+                <br />
                 <q-item>
                   <q-item-section>
                     <q-item-label
@@ -190,15 +232,6 @@
                     >
                   </q-item-section>
                 </q-item>
-                <br />
-                <q-item>
-                  <q-item-section>
-                    <q-item-label
-                      ><strong>Dark Mode Works Now!</strong></q-item-label
-                    >
-                    <q-item-label> Huzzah!</q-item-label>
-                  </q-item-section>
-                </q-item>        
               </q-list>
             </div>
             <div class="col q-pa-md" style="max-width: 350px"></div>

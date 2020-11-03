@@ -26,7 +26,15 @@
           color="warning"
           icon="help"
         />
-        <q-btn v-if="loggedIn" dense flat  round class="q-mt-xs" color="info" @click="settings = true" icon="settings" />        
+        <q-btn
+        v-if="loggedIn" 
+        dense 
+        flat 
+        round 
+        color="info" 
+        @click="settings = true"
+        icon="settings"
+        />        
         <q-btn
           v-if="loggedIn"
           @click="logoutUser"
