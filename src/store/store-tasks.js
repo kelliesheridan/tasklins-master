@@ -397,6 +397,23 @@ const getters = {
     });
     return tasks;
   },
+  tasksCreatedToday: (state, getters) => {
+    let tasksFiltered = getters.tasksFiltered;
+    let tasks = {};
+    Object.keys(tasksFiltered).forEach(function(key) {
+      let task = tasksFiltered[key];
+      if (task.createdDate != undefined) {
+        if (moment(moment(task.createdDate).format("YYYY-MM-DD")).isSame(
+            moment().format("YYYY-MM-DD"),
+            "day"
+          )
+        ) {
+          tasks[key] = task;
+        }
+      }
+    });
+    return tasks;
+  },
   tasksThisWeek: (state, getters) => {
     let tasksFiltered = getters.tasksFiltered;
     let tasks = {};

@@ -293,7 +293,7 @@ export default {
     ...mapGetters("profile", ["profile"]),
     ...mapGetters("tasklins", ["tasklin"]),
     ...mapGetters("settings", ["darkMode"]),
-    ...mapGetters("tasks", ["tasksCompletedToday"]),
+    ...mapGetters("tasks", ["tasksCompletedToday", "tasksCreatedToday", "tasksToday"]),
     ...mapState("auth", ["loggedIn"])
   },
 

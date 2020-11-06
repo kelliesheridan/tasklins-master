@@ -17,11 +17,11 @@ export default {
   components: {},
   computed: {
     ...mapGetters("tasklins", ["tasklin"]),
-    ...mapGetters("tasks", ["tasksCompletedToday"])
+    ...mapGetters("tasks", ["tasksCompletedToday", "tasksToday", "tasksCreatedToday"])
   },
   methods: {
     getMouth(mouthType) {
-      if (Object.keys(this.tasksCompletedToday).length == 0) {
+      if (Object.keys(this.tasksCompletedToday).length <= 3) {
         switch (mouthType) {
           case "mouth1":
           case "mouth3":
@@ -35,12 +35,13 @@ export default {
         }
       } else {
         if (mouthType != undefined) {
-          // return (
-          //   "/statics/tasklins/eyes/babyeyes" +
-          //   mouthType.charAt(mouthType.length - 1) +
-          //   ".png"
-          // );
-          return "/statics/tasklins/mouth/mouth4/neutral.png";
+          if (Object.keys(this.tasksCompletedToday).length > 3 && Object.keys(this.tasksToday).length == 0 && Object.keys(this.tasksCreatedToday).length >= 2) {
+            return "/statics/tasklins/mouth/mouth" + mouthType.charAt(mouthType.length - 1) +
+             "/happy2.png";
+          } else {
+            return "/statics/tasklins/mouth/mouth" + mouthType.charAt(mouthType.length - 1) +
+             "/happy1.png";
+          }
         }
       }
     }

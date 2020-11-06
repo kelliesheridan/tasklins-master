@@ -20,25 +20,6 @@ export default {
   },
   methods: {
     getEyes(layerNumber, eyeType, arg) {
-    //   if (Object.keys(this.tasksCompletedToday).length != 0) {
-    //     switch (layerNumber) {
-    //       case "base":
-    //         return "/statics/tasklins/eyes/eyes1/Base7.png";
-    //         break;
-    //       case "color":
-    //         return "/statics/tasklins/eyes/eyes1/ColorCyan7.png";
-    //         break;
-    //       case "highlight":
-    //         return "/statics/tasklins/eyes/eyes1/Highlight1.png";
-    //         break;
-    //       case "pupil":
-    //         return "/statics/tasklins/eyes/eyes1/Pupil7.png";
-    //         break;
-    //     }
-    //   } else {
-    //      return "/statics/tasklins/eyes/sleepingeyes1.png";
-    // }
-    // }
     if (Object.keys(this.tasksCompletedToday).length == 0) {
         switch (eyeType) {
           case "eyes1":
@@ -52,6 +33,7 @@ export default {
             break;
         }
       } else {
+        // we've completed a task, so.. build this up.
         if (eyeType != undefined) {
           return (
             "/statics/tasklins/eyes/babyeyes" +
