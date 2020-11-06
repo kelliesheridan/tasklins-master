@@ -303,8 +303,12 @@ export default {
     getMood(numToday) {
       if (numToday == 0) {
         return "Asleep";
-      } else {
+      } else if (numToday >= 1 && <= 3) {
         return "Okay.";
+      } else if (numToday <= 4 ) {
+        return "Thrilled!";
+      } else {
+        return "Happy";
       }
     },
     showNewUserPanel(hidePanel) {

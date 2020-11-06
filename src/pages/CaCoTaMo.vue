@@ -39,7 +39,7 @@
         </div>
 
         <div class="tamo-list row">
-          <div class="tamo-task task-false">Update Tasklin Moods</div>
+          <div class="tamo-task task-true">Update Tasklin Moods</div>
           <div class="tamo-task task-false">Tasklins Show Level 2+ Art</div>
           <div class="tamo-task task-false">Complete Tasklin Creator</div>
           <div class="tamo-task task-false">Add Tasklin Stats</div>
@@ -65,7 +65,7 @@
         <div class="tamo-list row">
           <div class="tamo-task task-false">Better Project Sorting</div>
           <div class="tamo-task task-false">Project Color From Tasklin</div>
-          <div class="tamo-task task-false">???</div>
+          <div class="tamo-task task-false">Improve Mobile Experience</div>
           <div class="tamo-task task-false">Repeating By # of Days</div>
           <div class="tamo-task task-false">Repeating by Day of Month</div>
         </div>
