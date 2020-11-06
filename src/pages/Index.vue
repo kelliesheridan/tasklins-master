@@ -208,6 +208,7 @@
                     >
                   </q-item-section>
                 </q-item>
+                <br />
                 <q-item>
                   <q-item-section>
                     <q-item-label
