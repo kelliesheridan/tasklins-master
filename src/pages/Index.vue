@@ -202,6 +202,14 @@
               <q-list dense padding class="rounded-borders">
                 <q-item>
                   <q-item-section>
+                    <q-item-label><strong>Tasklin Moods!</strong></q-item-label>
+                    <q-item-label
+                      >It's been a hectic/distracting week, but your Tasklins can now be more than just okay! Get those tasks done and see how it changes your Tasklins mood.</q-item-label
+                    >
+                  </q-item-section>
+                </q-item>
+                <q-item>
+                  <q-item-section>
                     <q-item-label
                       ><strong>It's going to be a big month!</strong></q-item-label
                     >
@@ -222,16 +230,6 @@
                     </q-item-label>
                   </q-item-section>
                 </q-item> 
-                <br />       
-
-                <q-item>
-                  <q-item-section>
-                    <q-item-label><strong>Small Updates</strong></q-item-label>
-                    <q-item-label
-                      >Just a few bug fixes this week, plus readjusting the Writing challenge page to account for some full bars.</q-item-label
-                    >
-                  </q-item-section>
-                </q-item>
               </q-list>
             </div>
             <div class="col q-pa-md" style="max-width: 350px"></div>
@@ -303,10 +301,8 @@ export default {
     getMood(numToday) {
       if (numToday == 0) {
         return "Asleep";
-      } else if (numToday >= 1 && <= 3) {
+      } else if (numToday >= 1 && numToday <= 3) {
         return "Okay.";
-      } else if (numToday <= 4 ) {
-        return "Thrilled!";
       } else {
         return "Happy";
       }
