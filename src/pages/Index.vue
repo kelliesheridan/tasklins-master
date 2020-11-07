@@ -220,7 +220,8 @@
                     <q-item-label
                       >It's been a hectic/distracting week, but your Tasklins
                       can now be more than just okay! Get those tasks done and
-                      see how it changes your Tasklins mood.</q-item-label
+                      see how it changes your Tasklins mood. There are now five
+                      possible moods.</q-item-label
                     >
                   </q-item-section>
                 </q-item>
@@ -329,6 +330,8 @@ export default {
     getMood(completedToday, lateToday, createdToday, tasksDueTodayButNotCompleted) {      
       if (completedToday == 0) {
         return "Asleep";
+      } else if (lateToday > 0 && completedToday > 0) {
+        return "Concerned";
       } else if (completedToday >= 1 && completedToday <= 3) {
         return "Okay.";
       } else if (

@@ -55,6 +55,14 @@ export default {
               mouthType.charAt(mouthType.length - 1) +
               "/happy2.png"
             );
+          } else if (
+            Object.keys(this.tasksLate).length > 0
+          ) {
+            return (
+              "/statics/tasklins/mouth/mouth" +
+              mouthType.charAt(mouthType.length - 1) +
+              "/worried.png"
+            );
           } else {
             return (
               "/statics/tasklins/mouth/mouth" +
