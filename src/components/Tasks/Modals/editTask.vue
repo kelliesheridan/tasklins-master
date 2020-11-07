@@ -103,8 +103,6 @@ export default {
         dueDate: "",
         dueTime: "",
         completed: false,
-        createdDate: "",
-        lastModified: ""
       }
     };
   },

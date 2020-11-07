@@ -155,7 +155,7 @@ const actions = {
         admin: profile.admin,
         color: profile.color,
         pronouns: profile.pronouns,
-        dateCreated: profile.dateCreated
+        createdDate: profile.createdDate == undefined ? "" : profile.createdDate
       };
       commit("updateProfile", payload);
       dispatch("fbReadAllProfiles")

@@ -378,6 +378,25 @@ const getters = {
 
     return tasks;
   },
+  tasksTodayNotCompleted: (state, getters) => {
+    let tasksFiltered = getters.tasksFiltered;
+    let tasks = {};
+    Object.keys(tasksFiltered).forEach(function(key) {
+      let task = tasksFiltered[key];
+      let taskDueDate = task.dueDate;
+      let today = moment().format();
+      //console.debug("moment date: " +  moment().format() + ", normal date:" + today);
+
+      let formattedTaskDueDate = moment(taskDueDate).format("YYYY-MM-DD");
+      let formattedToday = moment(today).format("YYYY-MM-DD");
+
+      if (moment(formattedTaskDueDate).isSame(formattedToday, "day") && !task.completed) {
+        tasks[key] = task;
+      }
+    });
+
+    return tasks;
+  },
   tasksCompletedToday: (state, getters) => {
     let tasksFiltered = getters.tasksFiltered;
     let tasks = {};

@@ -5,7 +5,12 @@
     </q-dialog>
 
     <template v-if="tasksDownloaded">
-      <q-card bordered flat v-if="showNewUserPanel() && !hideNewUserPanel" class="card center">
+      <q-card
+        bordered
+        flat
+        v-if="showNewUserPanel() && !hideNewUserPanel"
+        class="card center"
+      >
         <q-card-section>
           <div class="text-h6">Let's Get Started</div>
           <div class="text-subtitle2">
@@ -87,12 +92,23 @@
                 <q-item-label
                   ><b>Mood: </b
                   >{{
-                    this.getMood(Object.keys(this.tasksCompletedToday).length)
+                    this.getMood(Object.keys(this.tasksCompletedToday).length, Object.keys(this.tasksLate).length, Object.keys(this.tasksCreatedToday).length, Object.keys(this.tasksTodayNotCompleted).length)
                   }}</q-item-label
                 >
               </div>
-              <div v-if="!tasklin.name && !tasklin.hatched" class="tasklin-details"><q-item-label>Use the + button to add your first 5 tasks to hatch your Tasklin</q-item-label></div>
-              <div v-if="!tasklin.name && tasklin.hatched" class="justify-center tasklin-details">
+              <div
+                v-if="!tasklin.name && !tasklin.hatched"
+                class="tasklin-details"
+              >
+                <q-item-label
+                  >Use the + button to add your first 5 tasks to hatch your
+                  Tasklin</q-item-label
+                >
+              </div>
+              <div
+                v-if="!tasklin.name && tasklin.hatched"
+                class="justify-center tasklin-details"
+              >
                 <q-form @submit="onSubmit()" class="tasklinName">
                   <q-input
                     filled
@@ -160,7 +176,7 @@
             /></a>
           </div>
           <div class="text-center">
-            <q-btn          
+            <q-btn
               dense
               flat
               to="/help"
@@ -169,34 +185,32 @@
               label="Help"
               icon="help"
             />
-            <q-btn        
-            dense 
-            flat 
-            rounded
-            label="Settings"
-            color="primary" 
-            @click="settings = true"
-            icon="settings"
-            />     
-            </div>
-            <br>
-            <div class="text-center">
-              <q-btn     
+            <q-btn
+              dense
+              flat
+              rounded
+              label="Settings"
+              color="primary"
+              @click="settings = true"
+              icon="settings"
+            />
+          </div>
+          <br />
+          <div class="text-center">
+            <q-btn
               rounded
               label="November Tasklins Progress"
-              color="primary" 
-              to="/november"          
-              />     
-            </div>
+              color="primary"
+              to="/november"
+            />
           </div>
+        </div>
 
         <div class="section col-xs-12 col-sm-12 col-md-6 news q-pa-xs">
           <list-header class="textureBar">
             <div class="index-header">News</div>
           </list-header>
-          <div>
-            
-          </div>
+          <div></div>
           <div class="text-left">
             <div class="col q-pa-md">
               <q-list dense padding class="rounded-borders">
@@ -204,7 +218,9 @@
                   <q-item-section>
                     <q-item-label><strong>Tasklin Moods!</strong></q-item-label>
                     <q-item-label
-                      >It's been a hectic/distracting week, but your Tasklins can now be more than just okay! Get those tasks done and see how it changes your Tasklins mood.</q-item-label
+                      >It's been a hectic/distracting week, but your Tasklins
+                      can now be more than just okay! Get those tasks done and
+                      see how it changes your Tasklins mood.</q-item-label
                     >
                   </q-item-section>
                 </q-item>
@@ -212,25 +228,34 @@
                 <q-item>
                   <q-item-section>
                     <q-item-label
-                      ><strong>It's going to be a big month!</strong></q-item-label
+                      ><strong
+                        >It's going to be a big month!</strong
+                      ></q-item-label
                     >
-                    <q-item-label>The new year is coming, and there's still so much we want to have ready here on Tasklins! This month, we're aiming for 30 updates in 30 days. Visit our <a href="/#/november/"
-              >November Challenge Page</a> to learn more!</q-item-label>
+                    <q-item-label
+                      >The new year is coming, and there's still so much we want
+                      to have ready here on Tasklins! This month, we're aiming
+                      for 30 updates in 30 days. Visit our
+                      <a href="/#/november/">November Challenge Page</a> to
+                      learn more!</q-item-label
+                    >
                   </q-item-section>
-                </q-item>   
+                </q-item>
                 <br />
                 <q-item>
                   <q-item-section>
-                    <q-item-label
-                      ><strong>Patreon Update</strong></q-item-label
-                    >
+                    <q-item-label><strong>Patreon Update</strong></q-item-label>
                     <q-item-label>
-                      New update on Patreon, going over some of our goals for the rest of the month! Available to all, not just patrons.             
-                      <a href="https://www.patreon.com/posts/42927673" target="_blank"
-                        >Click here to read it!</a>
+                      New update on Patreon, going over some of our goals for
+                      the rest of the month! Available to all, not just patrons.
+                      <a
+                        href="https://www.patreon.com/posts/42927673"
+                        target="_blank"
+                        >Click here to read it!</a
+                      >
                     </q-item-label>
                   </q-item-section>
-                </q-item> 
+                </q-item>
               </q-list>
             </div>
             <div class="col q-pa-md" style="max-width: 350px"></div>
@@ -288,9 +313,11 @@ export default {
     ...mapGetters("settings", ["settings"]),
     ...mapGetters("tasks", [
       "tasksToday",
+      "tasksTodayNotCompleted",
       "tasksLate",
       "tasksCompletedToday",
-      "tasksSorted"
+      "tasksSorted",
+      "tasksCreatedToday"
     ]),
     ...mapGetters("tasklins", ["tasklin"]),
     ...mapState("tasks", ["search", "tasksDownloaded"])
@@ -299,11 +326,18 @@ export default {
     ...mapActions("profile", ["addXP"]),
     ...mapActions("tasks", ["setProjectSearch"]),
     ...mapActions("tasklins", ["updateTasklin"]),
-    getMood(numToday) {
-      if (numToday == 0) {
+    getMood(completedToday, lateToday, createdToday, tasksDueTodayButNotCompleted) {      
+      if (completedToday == 0) {
         return "Asleep";
-      } else if (numToday >= 1 && numToday <= 3) {
+      } else if (completedToday >= 1 && completedToday <= 3) {
         return "Okay.";
+      } else if (
+            completedToday > 3 &&
+            tasksDueTodayButNotCompleted == 0 &&
+            createdToday >= 2 &&
+            lateToday == 0
+          ) {
+        return "Thrilled!";
       } else {
         return "Happy";
       }
@@ -312,8 +346,11 @@ export default {
       if (hidePanel != undefined) {
         this.hideNewUserPanel = true;
       }
-      if (this.profile.dateCreated) {
-        if (moment(this.profile.dateCreated).format("YYYY-MM-DD") == moment().format("YYYY-MM-DD")) {
+      if (this.profile.createdDate) {
+        if (
+          moment(this.profile.createdDate).format("YYYY-MM-DD") ==
+          moment().format("YYYY-MM-DD")
+        ) {
           return true;
         }
       } else {

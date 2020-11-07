@@ -17,7 +17,12 @@ export default {
   components: {},
   computed: {
     ...mapGetters("tasklins", ["tasklin"]),
-    ...mapGetters("tasks", ["tasksCompletedToday", "tasksToday", "tasksCreatedToday"])
+    ...mapGetters("tasks", [
+      "tasksCompletedToday",
+      "tasksTodayNotCompleted",
+      "tasksCreatedToday",
+      "tasksLate"
+    ])
   },
   methods: {
     getMouth(mouthType) {
@@ -26,21 +31,36 @@ export default {
           case "mouth1":
           case "mouth3":
           case "mouth5":
-            return "/statics/tasklins/mouth/mouth1/neutral.png";
+            return "/statics/tasklins/mouth/mouth" +
+              mouthType.charAt(mouthType.length - 1) +
+              "/neutral.png";
             break;
           case "mouth2":
           case "mouth4":
-            return "/statics/tasklins/mouth/mouth4/neutral.png";
+            return "/statics/tasklins/mouth/mouth" +
+              mouthType.charAt(mouthType.length - 1) +
+              "/neutral.png";
             break;
         }
       } else {
         if (mouthType != undefined) {
-          if (Object.keys(this.tasksCompletedToday).length > 3 && Object.keys(this.tasksToday).length == 0 && Object.keys(this.tasksCreatedToday).length >= 2) {
-            return "/statics/tasklins/mouth/mouth" + mouthType.charAt(mouthType.length - 1) +
-             "/happy2.png";
+          if (
+            Object.keys(this.tasksCompletedToday).length > 3 &&
+            Object.keys(this.tasksTodayNotCompleted).length == 0 &&
+            Object.keys(this.tasksCreatedToday).length >= 2 &&
+            Object.keys(this.tasksLate).length == 0
+          ) {
+            return (
+              "/statics/tasklins/mouth/mouth" +
+              mouthType.charAt(mouthType.length - 1) +
+              "/happy2.png"
+            );
           } else {
-            return "/statics/tasklins/mouth/mouth" + mouthType.charAt(mouthType.length - 1) +
-             "/happy1.png";
+            return (
+              "/statics/tasklins/mouth/mouth" +
+              mouthType.charAt(mouthType.length - 1) +
+              "/happy1.png"
+            );
           }
         }
       }

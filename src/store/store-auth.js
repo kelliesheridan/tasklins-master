@@ -95,7 +95,7 @@ const actions = {
       private: "",
       signup: true,
       admin: false,
-      dateCreated: moment().format("YYYY-MM-DD")
+      createdDate: moment().format("YYYY-MM-DD")
     };
     let taskRef = firebaseDb.ref("profile/" + userId);
     taskRef.set(payload);
