@@ -1,55 +1,52 @@
 <template>
-	<transition
-	appear
-	enter-active-class="animated zoomIn"
-	leave-active-class="animated zoomOut absolute-top"
-	>
-	<div>
-		<list-header class="textureBar">Tasks</list-header>
+  <transition
+    appear
+    enter-active-class="animated zoomIn"
+    leave-active-class="animated zoomOut absolute-top"
+  >
+    <div>
+      <list-header class="textureBar">Tasks</list-header>
 
-				<q-list					
-					separator
-					bordered>
-
-				<task
-					:class="{ hidden: hideTasks }"
-					v-for="(task, key) in tasksTodo"
-					:key="key"
-					:task="task"
-					:id="key">
-					</task>
-				</q-list>
-	</div>
-	</transition>
+      <q-list separator bordered>
+        <task
+          :class="{ hidden: hideTasks }"
+          v-for="(task, key) in tasksTodo"
+          :key="key"
+          :task="task"
+          :id="key"
+        >
+        </task>
+      </q-list>
+    </div>
+  </transition>
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from 'vuex'
-const moment= require('moment') 
+import { mapState, mapGetters, mapActions } from "vuex";
+const moment = require("moment");
 
 export default {
-	props: ['tasksTodo'],
-	data() {
-      return {
-        hideTasks: false
-      }
-    },
-    components: {
-        'task' : require('components/Tasks/Task.vue').default,
-        'list-header' : require('components/Shared/ListHeader.vue').default
-	},
-	computed: {
-    ...mapGetters('profile', ['profile']),
-    },
-      methods: {
-	...mapActions('profile', ['addXP']),
-		 },
-    }
-    
+  props: ["tasksTodo"],
+  data() {
+    return {
+      hideTasks: false
+    };
+  },
+  components: {
+    task: require("components/Tasks/Task.vue").default,
+    "list-header": require("components/Shared/ListHeader.vue").default
+  },
+  computed: {
+    ...mapGetters("profile", ["profile"])
+  },
+  methods: {
+    ...mapActions("profile", ["addXP"])
+  }
+};
 </script>
 
 <style scoped>
 .hidden {
-	display: none
+  display: none;
 }
 </style>

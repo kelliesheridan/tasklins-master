@@ -217,6 +217,9 @@ const actions = {
         var newPayload = {};
         newPayload = getRepeatingTask(payload.updates.task);
         dispatch("fbAddTask", newPayload);
+      } else if (payload.updates.task.nrepeating.numDay) {
+        newPayload = getNumDayTask(payload.updates.task);
+        dispatch("fbAddTask", newPayload);
       }
     }
   },
@@ -239,6 +242,10 @@ const actions = {
       var newPayload = {};
       newPayload = getRepeatingTask(newTask);
       payload.dueDate = newPayload.task.dueDate;
+    } else if (payload.nrepeating.numDay) {
+      console.debug(
+        "repeat every " + payload.nrepeating.numDay + " number of days."
+      );
     } else {
       payload.dueDate = moment(payload.dueDate)
         .add(1, "days")
@@ -390,7 +397,10 @@ const getters = {
       let formattedTaskDueDate = moment(taskDueDate).format("YYYY-MM-DD");
       let formattedToday = moment(today).format("YYYY-MM-DD");
 
-      if (moment(formattedTaskDueDate).isSame(formattedToday, "day") && !task.completed) {
+      if (
+        moment(formattedTaskDueDate).isSame(formattedToday, "day") &&
+        !task.completed
+      ) {
         tasks[key] = task;
       }
     });
@@ -422,7 +432,8 @@ const getters = {
     Object.keys(tasksFiltered).forEach(function(key) {
       let task = tasksFiltered[key];
       if (task.createdDate != undefined) {
-        if (moment(moment(task.createdDate).format("YYYY-MM-DD")).isSame(
+        if (
+          moment(moment(task.createdDate).format("YYYY-MM-DD")).isSame(
             moment().format("YYYY-MM-DD"),
             "day"
           )
@@ -579,6 +590,38 @@ function getRepeatingTask(task) {
       .isoWeekday(requiredDay)
       .format("YYYY-MM-DD");
   }
+
+  var newPayload = {};
+  newPayload.task = newTask;
+  newPayload.id = uid();
+  return newPayload;
+}
+function getNumDayTask(task) {
+  // task.nrepeating.numDay
+  // moment addNum of days - check to make sure it handles the month carry-over
+  var newTask = {
+    name: task.name,
+    project: task.project,
+    npublic: task.npublic,
+    nrepeating: {
+      monday: task.nrepeating.monday,
+      tuesday: task.nrepeating.tuesday,
+      wednesday: task.nrepeating.wednesday,
+      thursday: task.nrepeating.thursday,
+      friday: task.nrepeating.friday,
+      saturday: task.nrepeating.saturday,
+      sunday: task.nrepeating.sunday,
+      numDay: task.nrepeating.numDay
+    },
+    dueDate: "",
+    dueTime: "",
+    completed: false,
+    createdDate: moment().format(),
+    lastModified: moment().format()
+  };
+  newTask.dueDate = moment()
+    .add(task.nrepeating.numDay, "days")
+    .format("YYYY-MM-DD");
 
   var newPayload = {};
   newPayload.task = newTask;
