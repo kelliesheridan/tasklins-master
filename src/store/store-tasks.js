@@ -619,7 +619,7 @@ function getNumDayTask(task) {
     createdDate: moment().format(),
     lastModified: moment().format()
   };
-  newTask.dueDate = moment()
+  newTask.dueDate = moment(task.dueDate)
     .add(task.nrepeating.numDay, "days")
     .format("YYYY-MM-DD");
 

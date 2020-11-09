@@ -508,7 +508,7 @@
           <q-input
             label="Repeat every ___ days"
             @change="$emit('update:nrepeating.numDay', $event)"
-			      v-model="nrepeating.numDay"
+			      v-model="numberOfDays"
             type="number"
             placeholder="1"
             style="max-width: 200px"
@@ -530,6 +530,16 @@ export default {
       byDayNumber: false,
       everyNumDays: false
     };
+  },
+  computed: {
+    numberOfDays: {
+      get() {
+        return this.nrepeating.numDay;
+      },
+      set(value) {
+        this.nrepeating.numDay = value;
+      }
+    }
   }
 };
 </script>
