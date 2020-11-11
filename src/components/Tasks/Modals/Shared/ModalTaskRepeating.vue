@@ -7,7 +7,8 @@
           daily = !daily;
           monthly = false;
           byDayNumber = false;
-          everyNumDays = true;
+          everyNumDays = false;
+          nrepeating.numDay = 1;
         "
         flat
         dense
@@ -16,6 +17,31 @@
       >
         <q-tooltip content-class="bg-secondary"
           >Repeat Task Daily/Days of the Week</q-tooltip
+        >
+      </q-btn>
+
+      <q-btn
+        class="task-btn q-pa-xs"
+        @click="
+          daily = false;
+          monthly = false;
+          byDayNumber = false;
+          everyNumDays = !everyNumDays;
+          nrepeating.monday = false;
+          nrepeating.tuesday = false;
+          nrepeating.wednesday = false;
+          nrepeating.thursday = false;
+          nrepeating.friday = false;
+          nrepeating.saturday = false;
+          nrepeating.sunday = false;
+        "
+        flat
+        dense
+        color="blue"
+        icon="date_range"
+      >
+        <q-tooltip content-class="bg-secondary"
+          >Repeat Task Every ___ of days</q-tooltip
         >
       </q-btn>
       <div>
@@ -528,7 +554,7 @@ export default {
       daily: false,
       monthly: false,
       byDayNumber: false,
-      everyNumDays: false
+      everyNumDays: true
     };
   },
   computed: {
