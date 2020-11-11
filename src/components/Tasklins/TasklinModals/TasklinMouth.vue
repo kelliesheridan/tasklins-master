@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     getMouth(mouthType) {
-      if (Object.keys(this.tasksCompletedToday).length <= 3) {
+      if (Object.keys(this.tasksCompletedToday).length <= 3 && Object.keys(this.tasksLate).length == 0) {
         switch (mouthType) {
           case "mouth1":
           case "mouth3":

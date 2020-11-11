@@ -20,16 +20,15 @@ export default {
   },
   methods: {
     getEyes(layerNumber, eyeType, arg) {
-    if (Object.keys(this.tasksCompletedToday).length == 0) {
+    if (Object.keys(this.tasksCompletedToday).length == 0 ) {
         switch (eyeType) {
           case "eyes1":
           case "eyes3":
           case "eyes5":
-            return "/statics/tasklins/eyes/sleepingeyes1.png";
-            break;
           case "eyes2":
           case "eyes4":
-            return "/statics/tasklins/eyes/sleepingeyes2.png";
+            return "/statics/tasklins/eyes/eyes" +
+            eyeType.charAt(eyeType.length - 1) + "/sleeping1.png";
             break;
         }
       } else {
