@@ -4,7 +4,14 @@
 
       <div class="section-world-menu col-xs-12 col-sm-12 col-md-2 col-lg-2 q-pa-xs">
         <div class="q-pa-md q-gutter-sm">
-          <q-btn @mouseover="showTown = true" @mouseleave="showTown = false" class="btn-fixed-width" push to="/start/pick-quasar-flavour" label="Town" color="secondary" />
+          <q-btn @mouseover="showTown = true" @mouseleave="showTown = false" class="btn-fixed-width block q-pa-xs" push to="/start/pick-quasar-flavour" label="Town" color="secondary" />
+          <q-btn disable @mouseover="showTown = true" @mouseleave="showTown = false" class="btn-fixed-width block q-pa-xs" push to="/start/pick-quasar-flavour" label="Forest" color="secondary" />
+          <q-btn disable @mouseover="showTown = true" @mouseleave="showTown = false" class="btn-fixed-width block q-pa-xs" push to="/start/pick-quasar-flavour" label="Mountain" color="secondary" />
+          <q-btn disable @mouseover="showTown = true" @mouseleave="showTown = false" class="btn-fixed-width block q-pa-xs" push to="/start/pick-quasar-flavour" label="City" color="secondary" />
+          <q-btn disable @mouseover="showTown = true" @mouseleave="showTown = false" class="btn-fixed-width block q-pa-xs" push to="/start/pick-quasar-flavour" label="Island" color="secondary" />
+          <q-btn disable @mouseover="showTown = true" @mouseleave="showTown = false" class="btn-fixed-width block q-pa-xs" push to="/start/pick-quasar-flavour" label="Mountains" color="secondary" />
+          <q-btn disable @mouseover="showTown = true" @mouseleave="showTown = false" class="btn-fixed-width block q-pa-xs" push to="/start/pick-quasar-flavour" label="Floating" color="secondary" />
+          
         </div>
       </div>
 

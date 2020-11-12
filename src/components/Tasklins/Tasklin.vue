@@ -2,9 +2,9 @@
   <div id="tasklinContainer">
     <div>
       <div>
-        <tasklin-body />
-        <tasklin-eyes style="margin-top: -100%;"/>
-        <tasklin-mouth style="margin-top: -100%;"/>
+        <tasklin-body class="tasklinBody" />
+        <tasklin-eyes class="tasklinEyes" style="margin-top: -100%;"/>
+        <tasklin-mouth class="tasklinMouth" style="margin-top: -100%;"/>
     </div>
   </div>
 </div>
