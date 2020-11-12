@@ -86,9 +86,8 @@
               !settings.darkMode
                 ? 'tasklin-section-day'
                 : 'tasklin-section-night'
-            "
-          >
-            <div class="">
+            ">
+            <div>
               <tasklin v-if="tasklin.hatched" />
               <egg v-if="!tasklin.hatched" />
               <div v-if="tasklin.name" class="tasklin-details">

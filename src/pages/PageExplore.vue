@@ -1,20 +1,35 @@
 <template>
   <q-page padding>
-      <div class="world-map">
-        <q-img
-        class="world-map rounded-borders" src="statics/backgrounds/WorldMap.jpg">
-        </q-img>
-        <list-header class="textureBar explore-bar">
-          <div>Let's be honest... this page doesn't do anything yet. But one of the focuses for October is being able to go into the world of Tasklins and start exploring!</div>
-        </list-header>
+    <div class="row section-world justify-center">
+
+      <div class="section-world-menu col-xs-12 col-sm-12 col-md-2 col-lg-2 q-pa-xs">
+        <div class="q-pa-md q-gutter-sm">
+          <q-btn @mouseover="showTown = true" @mouseleave="showTown = false" class="btn-fixed-width" push to="/start/pick-quasar-flavour" label="Town" color="secondary" />
+        </div>
       </div>
+
+      
+      
+      <div class="world-map col-xs-12 col-sm-12 col-md-10 col-lg-10 q-pa-xs" :class="!darkMode ? 'world-day' : 'world-night'">   
+      <div class="world-map map-town col-xs-12 col-sm-12 col-md-10 col-lg-10 q-pa-xs" style="margin-top: -100%;"></div> 
+      </div>   
+
+    </div> 
   </q-page>
 </template>
 
 <script>
+import { mapGetters} from "vuex";
+
 export default {
-    components: {
-    "list-header": require("components/Shared/ListHeader.vue").default,
+
+    data() {
+    return {
+      showTown: false
+    };
+  },
+  computed: {
+    ...mapGetters("settings", ["darkMode"])
   },
 }
 </script>

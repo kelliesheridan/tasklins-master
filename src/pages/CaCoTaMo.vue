@@ -66,13 +66,13 @@
           <div class="tamo-task task-false">Better Project Sorting</div>
           <div class="tamo-task task-false">Project Color From Tasklin</div>
           <div class="tamo-task task-false">Improve Mobile Experience</div>
-          <div class="tamo-task task-false">Repeating By # of Days</div>
+          <div class="tamo-task task-true">Repeating By # of Days</div>
           <div class="tamo-task task-false">Repeating by Day of Month</div>
         </div>
 
         <div class="tamo-list row">
           <div class="tamo-task task-true">Bug Fix Day</div>
-          <div class="tamo-task task-false">Bug Fix Day</div>
+          <div class="tamo-task task-true">Bug Fix Day</div>
           <div class="tamo-task task-false">Bug Fix Day</div>
           <div class="tamo-task task-false">Bug Fix Day</div>
           <div class="tamo-task task-false">Bug Fix Day</div>
