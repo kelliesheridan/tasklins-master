@@ -1,9 +1,15 @@
 <template>
   <div class="tasklin">
     <img class="baseType" :src="this.getEyes('base', this.tasklin.eyeType)" />
-    <img class="colorType" :src="this.getEyes('color', this.tasklin.eyeType, this.tasklin.color)"/>
+    <img
+      class="colorType"
+      :src="this.getEyes('color', this.tasklin.eyeType, this.tasklin.color)"
+    />
     <img class="pupilType" :src="this.getEyes('pupil', this.tasklin.eyeType)" />
-    <img class="highlightType" :src="this.getEyes('highlight', this.tasklin.eyeType)"/>
+    <img
+      class="highlightType"
+      :src="this.getEyes('highlight', this.tasklin.eyeType)"
+    />
   </div>
 </template>
 
@@ -20,15 +26,18 @@ export default {
   },
   methods: {
     getEyes(layerNumber, eyeType, arg) {
-    if (Object.keys(this.tasksCompletedToday).length == 0 ) {
+      if (Object.keys(this.tasksCompletedToday).length == 0) {
         switch (eyeType) {
           case "eyes1":
           case "eyes3":
           case "eyes5":
           case "eyes2":
           case "eyes4":
-            return "/statics/tasklins/eyes/eyes" +
-            eyeType.charAt(eyeType.length - 1) + "/sleeping1.png";
+            return (
+              "/statics/tasklins/eyes/eyes" +
+              eyeType.charAt(eyeType.length - 1) +
+              "/sleeping1.png"
+            );
             break;
         }
       } else {
@@ -66,7 +75,7 @@ export default {
   margin-left: -100%;
   display: inline-block;
   position: absolute;
-  }
+}
 .highlightType {
   width: 100%;
   height: 100%;
@@ -74,7 +83,7 @@ export default {
   margin-left: -100%;
   display: inline-block;
   position: absolute;
-  }
+}
 .pupilType {
   width: 100%;
   height: 100%;
@@ -82,5 +91,5 @@ export default {
   margin-left: -100%;
   display: inline-block;
   position: absolute;
-  }
+}
 </style>

@@ -221,6 +221,11 @@ export default {
     },
     
     addNewTasklin() {
+      // static fields
+      const eyes = 19;
+      const mouth = 9;
+      const body = 10;
+
       let tasklin = {
         name: "",
         creation_date: Date.now(),
