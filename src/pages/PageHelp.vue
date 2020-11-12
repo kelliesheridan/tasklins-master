@@ -127,6 +127,12 @@
                       <q-item-label>If someone else enters a task on a challenge page, anyone currently on the page has their page cleared.</q-item-label>
                     </q-item-section>
                   </q-item>
+                  <q-item>
+                    <q-item-section>
+                      <q-item-label><strong>Creating Extra Repeating Tasks</strong></q-item-label>
+                      <q-item-label>There have been some instances of repeating tasks making too many versions.</q-item-label>
+                    </q-item-section>
+                  </q-item>
                 </q-list>
             </q-expansion-item>
 

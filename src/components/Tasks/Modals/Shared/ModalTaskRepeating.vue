@@ -38,7 +38,7 @@
         flat
         dense
         color="blue"
-        icon="date_range"
+        icon="forward_5"
       >
         <q-tooltip content-class="bg-secondary"
           >Repeat Task Every ___ of days</q-tooltip
@@ -554,7 +554,7 @@ export default {
       daily: false,
       monthly: false,
       byDayNumber: false,
-      everyNumDays: true
+      everyNumDays: false
     };
   },
   computed: {

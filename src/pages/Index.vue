@@ -4,6 +4,10 @@
       <new-user />
     </q-dialog>
 
+    <q-dialog v-if="settings" v-model="settings" >
+      <settingsModal />
+    </q-dialog>
+
     <template v-if="tasksDownloaded">
       <q-card
         bordered
@@ -216,47 +220,39 @@
               <q-list dense padding class="rounded-borders">
                 <q-item>
                   <q-item-section>
-                    <q-item-label><strong>Tasklin Moods!</strong></q-item-label>
-                    <q-item-label
-                      >It's been a hectic/distracting week, but your Tasklins
-                      can now be more than just okay! Get those tasks done and
-                      see how it changes your Tasklins mood. There are now five
-                      possible moods.</q-item-label
-                    >
-                  </q-item-section>
-                </q-item>
-                <br />
-                <q-item>
-                  <q-item-section>
-                    <q-item-label
-                      ><strong
-                        >It's going to be a big month!</strong
-                      ></q-item-label
-                    >
-                    <q-item-label
-                      >The new year is coming, and there's still so much we want
-                      to have ready here on Tasklins! This month, we're aiming
-                      for 30 updates in 30 days. Visit our
-                      <a href="/#/november/">November Challenge Page</a> to
-                      learn more!</q-item-label
-                    >
-                  </q-item-section>
-                </q-item>
-                <br />
-                <q-item>
-                  <q-item-section>
-                    <q-item-label><strong>Patreon Update</strong></q-item-label>
+                    <q-item-label><strong>New Repeating Task Option</strong></q-item-label>
                     <q-item-label>
-                      New update on Patreon, going over some of our goals for
-                      the rest of the month! Available to all, not just patrons.
-                      <a
-                        href="https://www.patreon.com/posts/42927673"
-                        target="_blank"
-                        >Click here to read it!</a
-                      >
+                      <p>When creating new tasks, you can now have them repeat every set number of days (every 3 days, every 10 days, whatever you need). 
+                      To do this, create a new task as usual and then select the second blue button at the bottom of the form. You can't use both repeating 
+                      options on one task. </p>                      
+                      <p>There have also been a few bug fixes and a dark mode version added to the main world map. We're also likely going to be shutting down the 
+                      challenge pages soon in order to redo how those work long term.</p>
                     </q-item-label>
                   </q-item-section>
                 </q-item>
+                <q-separator />
+                <q-item>
+                  <q-item-section>
+                    <q-item-label><strong>Tasklin Moods!</strong></q-item-label>
+                    <q-item-label>
+                      <p>It's been a hectic/distracting week, but your Tasklins
+                      can now be more than just okay! Get those tasks done and
+                      see how it changes your Tasklins mood. There are now five
+                      possible moods.</p></q-item-label>
+                  </q-item-section>
+                </q-item>
+                <q-separator />
+                <q-item>
+                  <q-item-section>
+                    <q-item-label><strong>It's going to be a big month!</strong></q-item-label>
+                    <q-item-label>
+                      <p>The new year is coming, and there's still so much we want
+                      to have ready here on Tasklins! This month, we're aiming
+                      for 30 updates in 30 days. Visit our
+                      <a href="/#/november/">November Challenge Page</a> to
+                      learn more!</p></q-item-label>
+                  </q-item-section>
+                </q-item>              
               </q-list>
             </div>
             <div class="col q-pa-md" style="max-width: 350px"></div>
@@ -286,6 +282,7 @@ export default {
       newUserWalkthrough: false,
       hideNewUserPanel: false,
       tasklinName: "",
+      settings: false,
       slide: "style",
       lorem:
         "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque voluptatem totam, architecto cupiditate officia rerum, error dignissimos praesentium libero ab nemo."
@@ -304,6 +301,7 @@ export default {
     "tasks-today": require("components/Tasks/TasksToday.vue").default,
     "tasks-late": require("components/Tasks/TasksLate.vue").default,
     "list-header": require("components/Shared/ListHeader.vue").default,
+    "settingsModal": require("components/Help/SettingsModal.vue").default,
     "no-tasks": require("components/Tasks/NoTasks.vue").default,
     tasklin: require("components/Tasklins/Tasklin.vue").default,
     "new-user": require("components/Help/NewUser.vue").default,
@@ -321,6 +319,7 @@ export default {
       "tasksCreatedToday"
     ]),
     ...mapGetters("tasklins", ["tasklin"]),
+    ...mapGetters("settings", ["darkMode"]),
     ...mapState("tasks", ["search", "tasksDownloaded"])
   },
   methods: {
