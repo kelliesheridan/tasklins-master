@@ -3,6 +3,16 @@
     background-size: contain;
   }
 
+  .map-size {
+    width: 80%;
+    height: 80%;
+
+    @include respond(tab-port) {
+      width: 97%;
+      height: 97%;
+     }
+  }
+
   .btn-fixed-width {
     width: 200px
   }

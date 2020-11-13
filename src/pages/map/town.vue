@@ -1,24 +1,40 @@
 <template>
-  <div class="fixed-center text-center">
-    <p>
-      <img
-        src="statics/sad404.png"
-        style="width:30vw;max-width:150px;">
-    </p>
-    <p class="text-faded">
-      Look, you found a town!
-    </p>
-    <q-btn
-      color="secondary"
-      style="width:200px;"
-      to="/"
-      label="Go back"
-    />
-  </div>
+  <q-page padding>
+    <div class="q-ma-lg">
+      <div class="town-map" :class="!darkMode ? 'town-map-day' : 'town-map-night'"></div> 
+      <!-- <div v-show="showTown" class="world-map map-town map-size" style="margin-top: 0%;  position: absolute;"></div> -->
+    </div>
+   </q-page>
 </template>
 
 <script >
+import { mapGetters} from "vuex";
+
 export default {
-  name: 'Error404'
+    data() {
+    return {
+
+    };
+  },
+  computed: {
+    ...mapGetters("settings", ["darkMode"])
+  }
 }
 </script>
+
+<style lang="scss">
+.town-map {
+    width: 80vw;
+    height: 80vh;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+.town-map-day {
+    background-image: url("/statics/backgrounds/town-day.jpg");    
+    }
+  
+.town-map-night {
+    background-image: url("/statics/backgrounds/town-night.jpg");  
+   }
+</style>
