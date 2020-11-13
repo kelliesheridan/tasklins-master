@@ -1,19 +1,20 @@
 <template>
   <q-page padding>
-    <div class="row">
-    <div class="col-lg-2">
-        <q-btn @mouseover="showTown = true" @mouseleave="showTown = false" class="btn-fixed-width block q-pa-xs" push to="/start/pick-quasar-flavour" label="Town" color="secondary" />
-          <q-btn disable @mouseover="showTown = true" @mouseleave="showTown = false" class="btn-fixed-width block q-pa-xs" push to="/start/pick-quasar-flavour" label="Forest" color="secondary" />
-          <q-btn disable @mouseover="showTown = true" @mouseleave="showTown = false" class="btn-fixed-width block q-pa-xs" push to="/start/pick-quasar-flavour" label="Mountain" color="secondary" />
-          <q-btn disable @mouseover="showTown = true" @mouseleave="showTown = false" class="btn-fixed-width block q-pa-xs" push to="/start/pick-quasar-flavour" label="City" color="secondary" />
-          <q-btn disable @mouseover="showTown = true" @mouseleave="showTown = false" class="btn-fixed-width block q-pa-xs" push to="/start/pick-quasar-flavour" label="Island" color="secondary" />
-          <q-btn disable @mouseover="showTown = true" @mouseleave="showTown = false" class="btn-fixed-width block q-pa-xs" push to="/start/pick-quasar-flavour" label="Mountains" color="secondary" />
-          <q-btn disable @mouseover="showTown = true" @mouseleave="showTown = false" class="btn-fixed-width block q-pa-xs" push to="/start/pick-quasar-flavour" label="Floating" color="secondary" />
-       
+    <div class="q-gutter-sm" style="width: 75%;">
+    <div class="center">
+      <q-btn @mouseover="showTown = true" @mouseleave="showTown = false" class="btn-fixed-width q-ma-sm" push to="/town" label="Town" color="secondary" />
+      <q-btn disable @mouseover="showForest = true" @mouseleave="showForest = false" class="btn-fixed-width q-ma-sm" push to="/start/pick-quasar-flavour" label="???" color="secondary" />
+      <q-btn disable @mouseover="showTown = true" @mouseleave="showTown = false" class="btn-fixed-width q-ma-sm" push to="/start/pick-quasar-flavour" label="???" color="secondary" />
+      <q-btn disable @mouseover="showTown = true" @mouseleave="showTown = false" class="btn-fixed-width q-ma-sm" push to="/start/pick-quasar-flavour" label="???" color="secondary" />
+      <!-- <q-btn disable @mouseover="showTown = true" @mouseleave="showTown = false" class="btn-fixed-width q-ma-sm" push to="/start/pick-quasar-flavour" label="Island" color="secondary" />
+      <q-btn disable @mouseover="showTown = true" @mouseleave="showTown = false" class="btn-fixed-width q-ma-sm" push to="/start/pick-quasar-flavour" label="Mountains" color="secondary" />
+      <q-btn disable @mouseover="showTown = true" @mouseleave="showTown = false" class="btn-fixed-width q-ma-sm" push to="/start/pick-quasar-flavour" label="Floating" color="secondary" /> -->
     </div>
-    <div class="col-lg-10">
-            <div class="world-map" style="width: 80%; height: 80%; position: absolute" :class="!darkMode ? 'world-day' : 'world-night'">   </div> 
-            <div v-show="showTown" class="world-map map-town" style="width: 80%; height: 80%;  margin-top: 0%;  position: absolute;"></div>   
+
+    <div>
+      <div class="world-map map-size" style="position: absolute;" :class="!darkMode ? 'world-day' : 'world-night'">   </div> 
+      <div v-show="showTown" class="world-map map-town map-size" style="margin-top: 0%;  position: absolute;"></div>
+      <div v-show="showForest" class="world-map map-forest map-size" style="margin-top: 0%;  position: absolute;"></div>      
     </div>
     </div>
 
@@ -25,9 +26,10 @@ import { mapGetters} from "vuex";
 
 export default {
 
-    data() {
+  data() {
     return {
-      showTown: false
+      showTown: false,
+      showForest: false
     };
   },
   computed: {

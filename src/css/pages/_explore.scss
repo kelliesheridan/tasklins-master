@@ -1,7 +1,20 @@
 .world-map {
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: contain; /* Resize the background image to cover the entire container */   
-    border-radius: 20px;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .map-size {
+    width: 80%;
+    height: 80%;
+
+    @include respond(tab-port) {
+      width: 97%;
+      height: 97%;
+     }
+  }
+
+  .btn-fixed-width {
+    width: 200px
   }
 
   .world-day {
@@ -16,16 +29,6 @@
     background-image: url("/statics/backgrounds/map-town.png"); 
    }
 
-   .section-world {
-    text-align: center;
-    width: 100%;
-    height: 100vh;
-  }
-
-  .section-world-menu {
-    text-align: center;
-  }
-
-  .btn-fixed-width {
-    width: 250px
-  }
+   .map-forest {
+    background-image: url("/statics/backgrounds/map-forest.png"); 
+   }

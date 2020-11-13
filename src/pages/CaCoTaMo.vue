@@ -31,8 +31,8 @@
 
 
          <div class="tamo-list row">
-          <div class="tamo-task task-false">Make World Map Interactive</div>
-          <div class="tamo-task task-false">Add First Town</div>
+          <div class="tamo-task task-true">Make World Map Interactive</div>
+          <div class="tamo-task task-true">Add First Town</div>
           <div class="tamo-task task-false">Create Piper's Store</div>
           <div class="tamo-task task-false">Set Task Goal Feature</div>
           <div class="tamo-task task-false">Create Blacksmith Shop</div>
