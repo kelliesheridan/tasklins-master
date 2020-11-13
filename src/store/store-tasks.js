@@ -217,7 +217,7 @@ const actions = {
         var newPayload = {};
         newPayload = getRepeatingTask(payload.updates.task);
         dispatch("fbAddTask", newPayload);
-      } else if (payload.updates.task.nrepeating.numDay) {
+      } else if (payload.updates.task.nrepeating.numDay > "0") {
         newPayload = getNumDayTask(payload.updates.task);
         dispatch("fbAddTask", newPayload);
       }
@@ -619,7 +619,7 @@ function getNumDayTask(task) {
     createdDate: moment().format(),
     lastModified: moment().format()
   };
-  newTask.dueDate = moment(task.dueDate)
+  newTask.dueDate = moment(task.dueDate == "" ? moment().format("YYYY-MM-DD") : task.dueDate)
     .add(task.nrepeating.numDay, "days")
     .format("YYYY-MM-DD");
 

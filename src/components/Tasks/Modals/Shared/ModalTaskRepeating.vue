@@ -8,7 +8,8 @@
           monthly = false;
           byDayNumber = false;
           everyNumDays = false;
-          nrepeating.numDay = 1;
+          nrepeating.numDay = '';
+          nrepeating.numDaySet = false;
         "
         flat
         dense
@@ -536,7 +537,6 @@
             @change="$emit('update:nrepeating.numDay', $event)"
 			      v-model="numberOfDays"
             type="number"
-            placeholder="1"
             style="max-width: 200px"
           />
         </div>
