@@ -17,10 +17,8 @@
 
       
       
-      <div class="world-map col-xs-12 col-sm-12 col-md-10 col-lg-10 q-pa-xs" :class="!darkMode ? 'world-day' : 'world-night'">   
-      <div class="world-map map-town col-xs-12 col-sm-12 col-md-10 col-lg-10 q-pa-xs" style="margin-top: -100%;"></div> 
-      </div>   
-
+      <div class="world-map col-xs-12 col-sm-12 col-md-10 col-lg-10 q-pa-xs" :class="!darkMode ? 'world-day' : 'world-night'">   </div> 
+      <div class="world-map map-town col-xs-12 col-sm-12 col-md-10 col-lg-10 q-pa-xs" style="margin-top: -100%; position: absolute"></div>   
     </div> 
   </q-page>
 </template>
