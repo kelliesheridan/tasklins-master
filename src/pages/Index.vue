@@ -4,7 +4,7 @@
       <new-user />
     </q-dialog>
 
-    <q-dialog v-if="settings" v-model="settings" >
+ <q-dialog v-if="settings" v-model="settings" >
       <settingsModal />
     </q-dialog>
 
@@ -83,11 +83,12 @@
           <div
             class="section tasklin-section"
             :class="
-              !settings.darkMode
+              !darkMode
                 ? 'tasklin-section-day'
                 : 'tasklin-section-night'
-            ">
-            <div>
+            "
+          >
+            <div class="">
               <tasklin v-if="tasklin.hatched" />
               <egg v-if="!tasklin.hatched" />
               <div v-if="tasklin.name" class="tasklin-details">
@@ -308,7 +309,7 @@ export default {
   },
   computed: {
     ...mapGetters("profile", ["profile"]),
-    ...mapGetters("settings", ["settings"]),
+    ...mapGetters("settings", ["darkMode"]),
     ...mapGetters("tasks", [
       "tasksToday",
       "tasksTodayNotCompleted",
@@ -318,7 +319,6 @@ export default {
       "tasksCreatedToday"
     ]),
     ...mapGetters("tasklins", ["tasklin"]),
-    ...mapGetters("settings", ["darkMode"]),
     ...mapState("tasks", ["search", "tasksDownloaded"])
   },
   methods: {
