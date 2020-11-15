@@ -12,6 +12,9 @@ const mutations = {
   setWritingTask(state, payload) {
     state.writing = payload;
   },
+  setWritingLevels(state, payload) {
+    state.writingChallenge = payload;
+  },
   setSortedWritingTask(state, payload) {
     let sortedArray = new Array();
     sortedArray = payload.sort();
@@ -30,13 +33,17 @@ const actions = {
   addWritingTask({ commit, dispatch }, writingTask) {
     dispatch("fbAddWritingTask", writingTask);
     dispatch("fbReadWritingTasks");
+    dispatch("fbReadWritingLevels");
   },
   readWritingTasks({ dispatch }) {
     dispatch("fbReadWritingTasks");
   },
+  readWritingLevels({ dispatch }) {
+    dispatch("fbReadWritingLevels");
+  },
   fbReadWritingTasks({ commit }) {
     let userId = firebaseAuth.currentUser.uid;
-    let writingTasks = firebaseDb.ref("writing").orderByKey();
+    let writingTasks = firebaseDb.ref("writing").orderByKey().limitToLast(15);
     let writingArray = new Array();
     writingTasks.once("value").then(function(snapshot) {
       let writingRecord = snapshot.val();
@@ -52,6 +59,14 @@ const actions = {
       };
       commit("addWritingTask", payload);
     });      
+  },
+  fbReadWritingLevels({ commit }) {
+    let userId = firebaseAuth.currentUser.uid;
+    let writingTasks = firebaseDb.ref("writingChallenge");
+    writingTasks.once("value").then(function(snapshot) {
+      let writingRecord = snapshot.val();
+      commit("setWritingLevels", writingRecord);
+    });
   },
   fbAddWritingTask({ dispatch }, writingTask) {
     let userId = firebaseAuth.currentUser.uid;
@@ -91,11 +106,15 @@ const actions = {
     dispatch("profile/addXP", true, { root: true })
     dispatch("profile/addLin", true, { root: true })
     dispatch("fbReadWritingTasks");
+    dispatch("fbReadWritingLevels");
   }
 };
 
 const getters = {
   writing: state => {
+    return state;
+  },
+  writingChallenge: state => {
     return state;
   }
 };

@@ -78,7 +78,7 @@
 
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 q-pa-xs">
         <div v-for="n in this.profileIDs" :key="n" >
-          <div v-if="calculateValues(getProfileName(n))">
+          <div v-if="getIntensity(getProfileName(n))">
             {{ getProfileName(n) }}
             <q-linear-progress
               rounded
@@ -105,7 +105,7 @@ export default {
     update: 0,
   }),
   computed: {
-    ...mapGetters("fitness", ["fitness"]),
+    ...mapGetters("fitness", ["fitness", "fitnessChallenge"]),
     ...mapGetters('settings', ['settings']),
     ...mapGetters("profile", ["profile", "profiles", "profileIDs"])
   },
@@ -130,6 +130,20 @@ export default {
       }
       return intensityCount;
     },
+    getIntensity(user) {
+      let intensityCount = 0.0;
+      if (user) {
+        let fitness = this.fitness.fitnessChallenge;
+        if (fitness != undefined) {
+          Object.keys(fitness).forEach(element => {
+            if (fitness[element].username == user.toLowerCase()) {
+              intensityCount = fitness[element].intensity;
+            }
+          });
+        }
+      }
+      return intensityCount;
+    },
     getActivity(number) {
       this.update;
       return this.getUsername(number);
@@ -145,7 +159,8 @@ export default {
     },
     getProgress(username) {
       this.update;
-      return this.calculateValues(username);
+      //return this.calculateValues(username);
+      return this.getIntensity(username);
     },
     getUserColor(user) {
       let color = "";

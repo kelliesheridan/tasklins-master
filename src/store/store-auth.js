@@ -58,7 +58,9 @@ const actions = {
         dispatch("tasks/fbReadProjects", null, { root: true });
         dispatch("profile/fbReadProfile", null, { root: true });
         dispatch("fitness/readFitnessTasks", null, { root: true });
+        dispatch("fitness/readFitnessLevels", null, { root: true });
         dispatch("writing/readWritingTasks", null, { root: true });
+        dispatch("writing/readWritingLevels", null, { root: true });
         dispatch("settings/fbReadSettings", null, { root: true });
         dispatch("profile/fbCheckUsername", null, { root: true });
         dispatch("tasklins/getTasklin", null, { root: true });

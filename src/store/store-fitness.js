@@ -23,6 +23,9 @@ const mutations = {
   setFitnessTask(state, payload) {
     state.fitness = payload;
   },
+  setFitnessChallengeTask(state, payload) {
+    state.fitnessChallenge = payload;
+  },
   addFitnessTask(state, payload) {
     if (state.fitness != undefined) 
     Vue.set(state.fitness, payload.id, payload.fitnessTask);
@@ -45,12 +48,15 @@ const actions = {
   readFitnessTasks({ dispatch }) {
     dispatch("fbReadFitnessTasks");
   },
+  readFitnessLevels({ dispatch }) {
+    dispatch("fbReadFitnessLevels");
+  },
   cheer({ dispatch }, value) {
     dispatch("fbCheerFitnessTask", value)
   },
   fbReadFitnessTasks({ commit }) {
     let userId = firebaseAuth.currentUser.uid;
-    let fitnessTasks = firebaseDb.ref("fitness").orderByKey();
+    let fitnessTasks = firebaseDb.ref("fitness").orderByKey().limitToLast(10);
     fitnessTasks.once("value").then(function(snapshot) {
       let fitnessRecord = snapshot.val();
       commit("setFitnessTask", fitnessRecord);
@@ -65,6 +71,16 @@ const actions = {
       commit("addFitnessTask", payload);
     });
   },
+
+  fbReadFitnessLevels({ commit }) {
+    let userId = firebaseAuth.currentUser.uid;
+    let fitnessTasks = firebaseDb.ref("fitnessChallenge");
+    fitnessTasks.once("value").then(function(snapshot) {
+      let fitnessRecord = snapshot.val();
+      commit("setFitnessChallengeTask", fitnessRecord);
+    });
+  },
+
   fbAddFitnessTask({ dispatch }, fitnessTask) {
     let userId = firebaseAuth.currentUser.uid;
     let username = this.state.profile.profile.user.name;
@@ -99,6 +115,7 @@ const actions = {
     taskFitnessChallenge.set(fitnessActivity);
 
     dispatch("fbReadFitnessTasks");
+    dispatch("fbReadFitnessLevels");
     dispatch("profile/addXP", true, { root: true })
     dispatch("profile/addLin", true, { root: true })
   },
@@ -120,6 +137,9 @@ const actions = {
 }
 const getters = {
   fitness: state => {
+    return state;
+  },
+  fitnessChallenge: state => {
     return state;
   }
 };

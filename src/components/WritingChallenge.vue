@@ -71,7 +71,7 @@
 
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 q-pa-xs">
         <div v-for="n in this.profileIDs" :key="n" >
-          <div v-if="calculateValues(getProfileName(n))">
+          <div v-if="getIntensity(getProfileName(n))">
             {{ getProfileName(n) }}
             <q-linear-progress
               rounded
@@ -94,10 +94,10 @@ const moment = require('moment')
 export default {
   data: () => ({
     update: 0,
-    cheer: false
+    //cheer: false
   }),
   computed: {
-    ...mapGetters("writing", ["writing"]),
+    ...mapGetters("writing", ["writing", "writingChallenge"]),
     ...mapGetters('settings', ['settings']),
     ...mapGetters("profile", ["profile", "profiles", "profileIDs"]),
   },
@@ -125,13 +125,28 @@ export default {
       }
       return intensityCount / 3;
     },
+    getIntensity(user) {
+      let intensityCount = 0.0;
+      if (user) {
+        let writing = this.writing.writingChallenge;
+        if (writing != undefined) {
+          Object.keys(writing).forEach(element => {
+            if (writing[element].username == user.toLowerCase()) {
+              intensityCount = writing[element].intensity;
+            }
+          });
+        }
+      }
+      return intensityCount;
+    },
     getActivity(number) {
       this.update;
       return this.getUsername(number);
     },
     getProgress(username) {
       this.update;
-      return this.calculateValues(username);
+      //return this.calculateValues(username);
+      return this.getIntensity(username);
     },
     getUserColor(user) {
       let color = "";
