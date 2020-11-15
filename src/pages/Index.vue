@@ -125,12 +125,6 @@
                       val => (val && val.length > 0) || 'Please type something'
                     ]"
                   />
-                  <q-btn
-                    class="tasklinNameBtn"
-                    label="Submit"
-                    type="submit"
-                    color="primary"
-                  />
                 </q-form>
               </div>
             </div>

@@ -164,6 +164,7 @@
             <a href="https://www.patreon.com/bePatron?u=9215033" target="_blank"
               >
               <q-btn class="textureBar" dense text-color="secondary" label="- Become a Patron -" /></a>
+              <q-btn class="textureBar" dense text-color="secondary" label="- Generate a Random Tasklin -" @click=" generateRandomTasklin()" />
       </div>
     </q-drawer>
 
@@ -304,6 +305,40 @@ export default {
       this.problem = null;
       this.accept = false;
     },
+    generateRandomTasklin() {
+      const bodyShapeArray = ["Ghost", "Round", "Squat"]
+      const bodyTextureArray = ["Charred", "Crumpled", "Stitched"]
+      const eyeArray = ["1", "2", "3", "4", "5"];
+      const mouthArray = 5;
+      const tongueArray = ["happy1", "happy2", "shock1", "shock2", "worried"]
+      const tongueArrayColors = ["cyan", "green", "pink", "red"]
+      let tasklin = {
+        name: "",
+        creation_date: Date.now(),
+        type: "Monster",
+        project: "Tasks",
+        xp: 0,
+        level: 1,
+        color: this.profile.color,
+        color2: "",
+        color3: "",
+        bodyShape: bodyShapeArray[Math.floor(Math.random() * bodyShapeArray.length)],
+        bodyTexture: bodyTextureArray[Math.floor(Math.random() * bodyTextureArray.length)],
+        eyeColor: this.profile.color,
+        eyeType: "eyes" + eyeArray[Math.floor(Math.random() * eyeArray.length)],
+        nose: "",
+        mouth: "mouth" + mouthArray[Math.floor(Math.random() * mouthArray.length)],
+        pattern1: "",
+        eyebrowsOrTail: "",
+        earsOrHorns: "",
+        bodyShape2: "",
+        pattern2: "",
+        hatched: false,
+        tongue: tongueArrayColors[Math.floor(Math.random() * tongueArrayColors.length)]
+      };
+
+      console.debug(tasklin);
+    }
   },
 
   components: {

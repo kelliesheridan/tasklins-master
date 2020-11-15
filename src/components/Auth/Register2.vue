@@ -222,10 +222,12 @@ export default {
     
     addNewTasklin() {
       // static fields
-      const eyes = 19;
-      const mouth = 9;
-      const body = 10;
-
+      const bodyShapeArray = ["Ghost", "Round", "Squat"]
+      const bodyTextureArray = ["Charred", "Crumpled", "Stitched"]
+      const eyeArray = ["1", "2", "3", "4", "5"];
+      const mouthArray = 5;
+      const tongueArray = ["happy1", "happy2", "shock1", "shock2", "worried"]
+      const tongueArrayColors = ["cyan", "green", "pink", "red"]
       let tasklin = {
         name: "",
         creation_date: Date.now(),
@@ -236,19 +238,19 @@ export default {
         color: this.profile.color,
         color2: "",
         color3: "",
-        bodyShape: "",
-        bodyTexture: "",
+        bodyShape: bodyShapeArray[Math.floor(Math.random() * bodyShapeArray.length)],
+        bodyTexture: bodyTextureArray[Math.floor(Math.random() * bodyTextureArray.length)],
         eyeColor: this.profile.color,
-        eyeType: "eyes1",
+        eyeType: "eyes" + eyeArray[Math.floor(Math.random() * eyeArray.length)],
         nose: "",
-        mouth: "mouth1",
+        mouth: "mouth" + mouthArray[Math.floor(Math.random() * mouthArray.length)],
         pattern1: "",
         eyebrowsOrTail: "",
         earsOrHorns: "",
         bodyShape2: "",
         pattern2: "",
         hatched: false,
-        tongue: "tongue1"
+        tongue: tongueArrayColors[Math.floor(Math.random() * tongueArrayColors.length)]
       };
 
       this.addTasklin(tasklin);
