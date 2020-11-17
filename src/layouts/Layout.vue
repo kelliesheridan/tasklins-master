@@ -306,9 +306,11 @@ export default {
       this.accept = false;
     },
     generateRandomTasklin() {
-      const bodyShapeArray = ["Ghost", "Round", "Squat"]
-      const bodyTextureArray = ["Charred", "Crumpled", "Stitched"]
+      const colorArray = ["#b15858", "#cf7d95", "#8c5688", "#589fb1", "#5cdcc4", "#7eb158", "#f9f871", "#fa9f53", "#bc987e","#8c8c8c"];
+      const bodyShapeArray = ["Ghost", "Round", "Squat"];
+      const bodyTextureArray = ["Charred", "Crumpled", "Stitched"];
       const eyeArray = ["1", "2", "3", "4", "5"];
+      const noseArray = ["1", "2", "3", "4"]
       const mouthArray = 5;
       const tongueArray = ["happy1", "happy2", "shock1", "shock2", "worried"]
       const tongueArrayColors = ["cyan", "green", "pink", "red"]
@@ -320,11 +322,11 @@ export default {
         xp: 0,
         level: 1,
         color: this.profile.color,
-        color2: "",
-        color3: "",
+        color2: colorArray[Math.floor(Math.random() * colorArray.length)],
+        color3: colorArray[Math.floor(Math.random() * colorArray.length)],
         bodyShape: bodyShapeArray[Math.floor(Math.random() * bodyShapeArray.length)],
         bodyTexture: bodyTextureArray[Math.floor(Math.random() * bodyTextureArray.length)],
-        eyeColor: this.profile.color,
+        eyeColor: colorArray[Math.floor(Math.random() * colorArray.length)],,
         eyeType: "eyes" + eyeArray[Math.floor(Math.random() * eyeArray.length)],
         nose: "",
         mouth: "mouth" + mouthArray[Math.floor(Math.random() * mouthArray.length)],

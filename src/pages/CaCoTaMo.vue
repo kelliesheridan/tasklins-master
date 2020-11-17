@@ -73,7 +73,7 @@
         <div class="tamo-list row">
           <div class="tamo-task task-true">Bug Fix Day</div>
           <div class="tamo-task task-true">Bug Fix Day</div>
-          <div class="tamo-task task-false">Bug Fix Day</div>
+          <div class="tamo-task task-true">Bug Fix Day</div>
           <div class="tamo-task task-false">Bug Fix Day</div>
           <div class="tamo-task task-false">Bug Fix Day</div>
         </div>
