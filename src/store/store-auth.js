@@ -62,7 +62,7 @@ const actions = {
         dispatch("writing/readWritingTasks", null, { root: true });
         dispatch("writing/readWritingLevels", null, { root: true });
         dispatch("settings/fbReadSettings", null, { root: true });
-        dispatch("profile/fbCheckUsername", null, { root: true });
+        //dispatch("profile/fbCheckUsername", null, { root: true });
         dispatch("tasklins/getTasklin", null, { root: true });
         if (this.state.profile.profile.user.name !== "") {
           if (this.state.tasklins.tasklin.name === "") {

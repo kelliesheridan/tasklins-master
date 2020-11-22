@@ -27,7 +27,7 @@
         />
 
         <q-input
-          id="userID"
+          id="username"
           stack-label
           class="col auth-input"
           bg-color="green-2"
@@ -35,13 +35,13 @@
           ref="username"
           placeholder="Choose a Username"
           lazy-rules
-          :rules="[val => val.length >= 1 || 'Please enter your username!']"
+          :rules="[val => val.length >= 1 || 'Please enter your username!', disable => !disableUsername || 'Username in use']"
         />
       </div>
 
       <div class="row auth-section">
         <q-select
-          id="userID"
+          id="userPronoun"
           outlined
           v-model="changePronouns"
           bg-color="green-2"
@@ -95,9 +95,8 @@
           class="auth-register-btn"
           label="Register"
           :disable="
-            formData.email2 != formData.email &&
-            formData.password2 != formData.email
-          "
+            this.profile.name == '' ||
+            disableUsername || this.profile.color == undefined"
           type="submit"
         />
       </div>
@@ -126,11 +125,12 @@ export default {
       },
       model: null,
       filterOptions: stringOptions,
-      hex: "#FF00FF"
+      hex: "#FF00FF",
+      disableUsername: false
     };
   },
   computed: {
-    ...mapGetters("profile", ["profile"]),
+    ...mapGetters("profile", ["profile", "profiles"]),
     ...mapGetters("tasklins", ["tasklin"]),
     ...mapGetters("settings", ["fbReadSettings"]),
     changeAbout: {
@@ -155,7 +155,8 @@ export default {
       },
       set(value) {
         this.updateUsername(value);
-      }
+        this.checkUsername()
+      },
     },
     togglePrivate: {
       get() {
@@ -262,6 +263,19 @@ export default {
     },
     submitForm() {
       //this.$router.push("/initial");
+    },
+    checkUsername() {
+      this.disableUsername = false;
+  
+      let allProfiles = this.profiles;
+        if (allProfiles != undefined) {
+          Object.keys(allProfiles).forEach(element => {
+            if (allProfiles[element].username == this.profile.username) {
+              this.disableUsername = true;
+              return;
+            }
+          });
+        }
     }
   }
 };
