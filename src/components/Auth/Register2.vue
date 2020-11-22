@@ -155,7 +155,7 @@ export default {
       },
       set(value) {
         this.updateUsername(value);
-        this.checkUsername()
+        this.checkUsername();
       },
     },
     togglePrivate: {

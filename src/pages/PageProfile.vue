@@ -14,7 +14,9 @@
           filled
           v-model="changeUsername"
           label="Username *"
+          ref="username"
           lazy-rules
+          :rules="[val => val.length >= 1 || 'Please enter your username!', disable => !disableUsername || 'Username in use']"
         />
 
         <!-- <q-select
@@ -75,10 +77,12 @@ const stringOptions = ["She/Her", "He/Him", "They/Them", "Other/Prefer Not to Sa
 
 export default {
   data() {
-    return {};
+    return {
+      disableUsername: false
+    };
   },
   computed: {
-    ...mapGetters("profile", ["profile"]),
+    ...mapGetters("profile", ["profile", "profiles"]),
     changeAbout: {
       get() {
         return this.profile.about;
@@ -101,6 +105,7 @@ export default {
       },
       set(value) {
         this.updateUsername(value);
+         this.checkUsername();
       }
     },
     changePronouns: {
@@ -160,6 +165,19 @@ export default {
     },
     submitForm() {
     		this.fbUpdateProfile();
+    },
+     checkUsername() {
+      this.disableUsername = false;
+  
+      let allProfiles = this.profiles;
+        if (allProfiles != undefined) {
+          Object.keys(allProfiles).forEach(element => {
+            if (allProfiles[element].username.toLowerCase() == this.profile.username.toLowerCase() && allProfiles[element].id != this.profile.id) {
+              this.disableUsername = true;
+              return;
+            }
+          });
+        }
     }
   }
 };
