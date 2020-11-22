@@ -62,7 +62,9 @@
         <!-- <q-toggle v-model="togglePrivate" label="My profile is public" /> -->
 
         <div>
-          <q-btn @click="updateUserProfile" label="Save" color="primary" />
+          <q-btn @click="updateUserProfile" label="Save" color="primary" :disable="
+            this.profile.name == '' ||
+            disableUsername || this.profile.username == ''"/>
         </div>
       </q-form>
     </div>
