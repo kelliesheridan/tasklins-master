@@ -3,7 +3,7 @@
       <div class="q-pa-xs q-gutter-xs">
 
     <list-header class="textureBar">
-      <div class="index-header">Global Challenges</div>
+      <div class="index-header">PLEASE NOTE: All current challenges will end on December 20th in order to update the system for 2021 (when we can start new challenges)! </div>
     </list-header>
 
     <q-banner inline-actions rounded class="u-center-text bg-transparent text-primary">      

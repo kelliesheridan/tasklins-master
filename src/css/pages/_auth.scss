@@ -81,6 +81,44 @@
     margin-left: 5px;
   }
 
+  .about-section {
+    padding: 15px;
+    width: 50%;
+    margin: 0 auto;
+    
+    @include respond(tab-port) {
+      width: 90%;
+    }
+  }
+
+  .section-features {
+    width: 50%;
+    margin: 0 auto;
+    padding: 20rem 0;
+    // background-image:linear-gradient(
+    //     to right bottom,
+    //     rgba($color-green-light, 0.7),
+    //     rgba($color-green-dark, 0.7)),
+    //     url(../img/hero.jpg);
+    //     background-size: cover;
+    //     transform: skewY(3.5deg);
+    //     margin-top: -10vh;
+
+        & > * {
+            transform: skewY(-3.5deg);
+        }
+
+        @include respond(tab-port) {
+            width: 90%;
+            margin-top: -2vh;
+            padding: 10rem 0;
+        }
+
+        @include respond(tab-land) {
+            margin-top: -15vh;            
+        }
+}
+
   // .bg-auth {
   //   background-image: url("http://www.tasklins.com/AboutPageAssets/images/trythis3.png");
   //   margin: auto;
