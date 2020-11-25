@@ -47,7 +47,7 @@
         </div>
 
         <div class="tamo-list row">
-          <div class="tamo-task task-false">Cheer Button</div>
+          <div class="tamo-task task-true">View Tomorrow's Tasks</div>
           <div class="tamo-task task-false">Better Sort on Challenges</div>
           <div class="tamo-task task-false">Update Tasklins.com</div>
           <div class="tamo-task task-false">Open for Public SignUps</div>

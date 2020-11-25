@@ -425,6 +425,27 @@ const getters = {
 
     return tasks;
   },
+  tasksTomorrowNotCompleted: (state, getters) => {
+    let tasksFiltered = getters.tasksFiltered;
+    let tasks = {};
+    Object.keys(tasksFiltered).forEach(function(key) {
+      let task = tasksFiltered[key];
+      let taskDueDate = task.dueDate;
+      let tomorrow = moment().add(1,'days').format();      
+
+      let formattedTaskDueDate = moment(taskDueDate).format("YYYY-MM-DD");
+      let formattedTomorrow = moment(tomorrow).format("YYYY-MM-DD");
+
+      if (
+        moment(formattedTaskDueDate).isSame(formattedTomorrow, "day") &&
+        !task.completed
+      ) {
+        tasks[key] = task;
+      }
+    });
+
+    return tasks;
+  },
   tasksCompletedToday: (state, getters) => {
     let tasksFiltered = getters.tasksFiltered;
     let tasks = {};
@@ -433,6 +454,25 @@ const getters = {
       if (task.completedDate != undefined) {
         if (
           task.completed &&
+          moment(moment(task.completedDate).format("YYYY-MM-DD")).isSame(
+            moment().format("YYYY-MM-DD"),
+            "day"
+          )
+        ) {
+          tasks[key] = task;
+        }
+      }
+    });
+    return tasks;
+  },
+  tasksNotCompletedToday: (state, getters) => {
+    let tasksFiltered = getters.tasksFiltered;
+    let tasks = {};
+    Object.keys(tasksFiltered).forEach(function(key) {
+      let task = tasksFiltered[key];
+      if (task.completedDate != undefined) {
+        if (
+          !task.completed &&
           moment(moment(task.completedDate).format("YYYY-MM-DD")).isSame(
             moment().format("YYYY-MM-DD"),
             "day"

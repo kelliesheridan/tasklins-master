@@ -53,7 +53,8 @@
         >
           <div>
             <list-header class="textureBar">
-              <div class="index-header">Today's Tasks</div>
+              <div v-show="tomorrow == false" class="index-header">Today's Tasks</div>
+              <div v-show="tomorrow == true" class="index-header">Tomorrow's Tasks</div>
             </list-header>
             <no-tasks
               v-if="
@@ -62,6 +63,7 @@
             </no-tasks>
             <tasks-late
               v-if="Object.keys(tasksLate).length"
+              v-show="tomorrow == false"
               :tasksLate="tasksLate"
               class="lateTasks task-box"
             />
@@ -78,8 +80,10 @@
               :tasksToday="tasksTomorrow"
             />
 
-              <div class="q-pa-sm u-center-text">Remaining Tasks ({{ Object.keys(tasksTodayNotCompleted).length + Object.keys(tasksLate).length }}) </div>
-              <div class="q-pa-sm u-center-text"><q-btn @click="tomorrow = !tomorrow" dense label="Show Tomorrow's Tasks" /> </div>
+              <div v-show="tomorrow == false" class="q-pa-sm u-center-text">Remaining Tasks ({{ Object.keys(tasksTodayNotCompleted).length + Object.keys(tasksLate).length }}) </div>
+              <div v-show="tomorrow == true" class="q-pa-sm u-center-text">Remaining Tasks ({{ Object.keys(tasksTodayNotCompleted).length + Object.keys(tasksLate).length + Object.keys(tasksTomorrowNotCompleted).length }}) </div>
+              <div v-show="tomorrow == false" class="q-pa-sm u-center-text"><q-btn @click="tomorrow = !tomorrow" dense label="Show Tomorrow's Tasks" /> </div>
+              <div v-show="tomorrow == true" class="q-pa-sm u-center-text"><q-btn @click="tomorrow = !tomorrow" dense label="Show Today's Tasks" /> </div>
 
           </div>
         </div>
@@ -320,6 +324,7 @@ export default {
       "tasksToday",
       "tasksTomorrow",
       "tasksTodayNotCompleted",
+      "tasksTomorrowNotCompleted",
       "tasksLate",
       "tasksCompletedToday",
       "tasksSorted",
