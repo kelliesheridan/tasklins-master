@@ -56,7 +56,7 @@
 
         <div class="tamo-list row">
           <div class="tamo-task task-false">Tasklin Nose/Eyelid Art</div>
-          <div class="tamo-task task-false">More Tasklin Body Types</div>
+          <div class="tamo-task task-true">More Tasklin Body Types</div>
           <div class="tamo-task task-true">Blacksmith Art</div>
           <div class="tamo-task task-false">Tasklin Ears/Horns Art</div>
           <div class="tamo-task task-false">Tasklin Pattern Art</div>
