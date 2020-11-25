@@ -12,13 +12,13 @@
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);  
     
     @include respond(tab-land) {
-        height: 95vh;
-        clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+        height: 85vh;
+        clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
     }
 
     @include respond(phone) {
         height: 90vh;
-        clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
     }
     
 
@@ -38,8 +38,81 @@
         left: 50%;
         transform: translate(-50%, -50%);
         text-align: center;
+
+        @include respond(phone) {
+            top: 65%;
+        }
     }
 
+}
+
+.heading-primary {
+    color: #fff;
+    text-transform: uppercase;
+
+    backface-visibility: hidden;
+    margin-bottom: 14rem;
+    
+    &--main {
+        display: block;
+        font-size: 6rem;
+        font-weight: 400;
+        letter-spacing: 2.5rem;
+        text-align: center;
+    
+        animation-name: moveInLeft;
+        animation-duration: 2s;
+        animation-timing-function: ease-out;
+
+        @include respond(phone) {
+            margin-top: -25rem;
+            letter-spacing: 1rem;
+            font-family: 5rem;
+        }
+
+        @include respond(tab-port) {
+            margin-top: -25rem;
+        }
+    }
+    
+    &--sub {
+        display: block;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1rem;
+        text-align: center;
+        animation: moveInRight 2s ease-out;
+
+        @include respond(phone) {
+            letter-spacing: .5rem;
+            line-height: 200%;          
+        }
+    }
+}
+
+.heading-secondary {
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: inline-block;
+    background-image: linear-gradient(to right, #30575a, #94b0b2);
+    -webkit-background-clip: text;
+    color: transparent;
+
+    @include respond(tab-port) {
+        font-size: 3rem;
+    }
+
+    @include respond(phone) {
+        font-size: 2.5rem;
+    }
+}
+
+.heading-tertiary {
+    font-size: 1.6rem;
+    margin: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
 }
 
 // .signups {

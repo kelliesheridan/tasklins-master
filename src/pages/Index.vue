@@ -81,7 +81,7 @@
             />
 
               <div v-show="tomorrow == false" class="q-pa-sm u-center-text">Remaining Tasks ({{ Object.keys(tasksTodayNotCompleted).length + Object.keys(tasksLate).length }}) </div>
-              <div v-show="tomorrow == true" class="q-pa-sm u-center-text">Remaining Tasks ({{ Object.keys(tasksTodayNotCompleted).length + Object.keys(tasksLate).length + Object.keys(tasksTomorrowNotCompleted).length }}) </div>
+              <div v-show="tomorrow == true" class="q-pa-sm u-center-text">Remaining Tasks ({{ Object.keys(tasksTomorrowNotCompleted).length }}) </div>
               <div v-show="tomorrow == false" class="q-pa-sm u-center-text"><q-btn @click="tomorrow = !tomorrow" dense label="Show Tomorrow's Tasks" /> </div>
               <div v-show="tomorrow == true" class="q-pa-sm u-center-text"><q-btn @click="tomorrow = !tomorrow" dense label="Show Today's Tasks" /> </div>
 

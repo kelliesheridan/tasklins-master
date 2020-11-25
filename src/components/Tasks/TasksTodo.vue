@@ -49,4 +49,22 @@ export default {
 .hidden {
   display: none;
 }
+
+.late-highlight {
+  border: 2px dotted red;
+  margin: 0px;
+}
+
+.late-warning {
+  animation: .4s jump ease 10 alternate;
+}
+
+@keyframes jump {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.15);
+  }
+}
 </style>
