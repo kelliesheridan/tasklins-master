@@ -58,9 +58,8 @@
             <no-tasks
               v-if="
                 !Object.keys(tasksToday).length &&
-                  !Object.keys(tasksLate).length
-              "
-            ></no-tasks>
+                  !Object.keys(tasksLate).length">
+            </no-tasks>
             <tasks-late
               v-if="Object.keys(tasksLate).length"
               :tasksLate="tasksLate"
@@ -69,8 +68,19 @@
             <tasks-today
               class="task-box"
               v-if="Object.keys(tasksToday).length"
+              v-show="tomorrow == false"
               :tasksToday="tasksToday"
             />
+            <tasks-tomorrow
+              class="task-box"
+              v-if="Object.keys(tasksTomorrow).length"
+              v-show="tomorrow == true"
+              :tasksToday="tasksTomorrow"
+            />
+
+              <div class="q-pa-sm u-center-text">Remaining Tasks ({{ Object.keys(tasksTodayNotCompleted).length + Object.keys(tasksLate).length }}) </div>
+              <div class="q-pa-sm u-center-text"><q-btn @click="tomorrow = !tomorrow" dense label="Show Tomorrow's Tasks" /> </div>
+
           </div>
         </div>
 
@@ -278,6 +288,7 @@ export default {
       tasklinName: "",
       settings: false,
       slide: "style",
+      tomorrow: false,
       lorem:
         "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque voluptatem totam, architecto cupiditate officia rerum, error dignissimos praesentium libero ab nemo."
     };
@@ -293,6 +304,7 @@ export default {
   },
   components: {
     "tasks-today": require("components/Tasks/TasksToday.vue").default,
+    "tasks-tomorrow": require("components/Tasks/TasksToday.vue").default,
     "tasks-late": require("components/Tasks/TasksLate.vue").default,
     "list-header": require("components/Shared/ListHeader.vue").default,
     "settingsModal": require("components/Help/SettingsModal.vue").default,
@@ -306,6 +318,7 @@ export default {
     ...mapGetters("settings", ["darkMode"]),
     ...mapGetters("tasks", [
       "tasksToday",
+      "tasksTomorrow",
       "tasksTodayNotCompleted",
       "tasksLate",
       "tasksCompletedToday",
