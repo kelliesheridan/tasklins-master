@@ -257,9 +257,7 @@ function getLevel() {
   } else {
     level = "1";
   }
-  if (level > state.profile.user.level) {
-    //manually update profile with new level
-    
+  if (level > state.profile.user.maxLevel) {
     Notify.create({
       icon: 'grade',
       message: "Congratulations! You reached level " + level + "!",
