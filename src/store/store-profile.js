@@ -55,6 +55,12 @@ const mutations = {
   },
   setLevel(state) {
     state.profile.user.level = getLevel();
+    if (state.profile.user.maxLevel < state.profile.user.level) {
+      state.profile.user.maxLevel = state.profile.user.level;
+    }
+  },
+  setLevelValue(state, value) {
+    state.profile.user.level = value;
   },
   setAbout(state, value) {
     state.profile.user.about = value;
@@ -148,6 +154,7 @@ const actions = {
         lin: profile.lin,
         xp: profile.xp,
         level: profile.level,
+        maxLevel: profile.maxLevel,
         friends: profile.friends,
         inventory: profile.inventory,
         private: profile.private,
@@ -251,6 +258,8 @@ function getLevel() {
     level = "1";
   }
   if (level > state.profile.user.level) {
+    //manually update profile with new level
+    
     Notify.create({
       icon: 'grade',
       message: "Congratulations! You reached level " + level + "!",

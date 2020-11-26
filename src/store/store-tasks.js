@@ -638,15 +638,19 @@ function getRepeatingTask(task) {
 
   // if (requiredDay == 7) requiredDay = 0;
   // if (currentDay == 7) currentDay = 0;
-  if (requiredDay > currentDay) {
-    newTask.dueDate = moment()
-      .isoWeekday(requiredDay)
-      .format("YYYY-MM-DD");
+  if (requiredDay > currentDay && task.dueDate >= moment().format("YYYY-MM-DD")) {
+    newTask.dueDate = moment().isoWeekday(requiredDay).format("YYYY-MM-DD");
+  } else if (task.dueDate < moment().format("YYYY-MM-DD")) {
+  // if task repeats monday and thursday, and i complete the thursday on wednesday, I want the next on the following monday.
+  daysNeeded.reverse();
+  daysNeeded.forEach(element => {
+    if (element > currentDay) {
+      newTask.dueDate = moment().add(1, "weeks").isoWeekday(element).format("YYYY-MM-DD");
+      throw BREAKEXCEPTION;
+    }
+  });
   } else {
-    newTask.dueDate = moment()
-      .add(1, "weeks")
-      .isoWeekday(requiredDay)
-      .format("YYYY-MM-DD");
+    newTask.dueDate = moment().add(1, "weeks").isoWeekday(requiredDay).format("YYYY-MM-DD");
   }
 
   var newPayload = {};

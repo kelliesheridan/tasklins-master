@@ -92,6 +92,7 @@ const actions = {
       lin: 0,
       xp: 0,
       level: 0,
+      maxLevel: 0,
       friends: "",
       inventory: "",
       private: "",
