@@ -228,6 +228,14 @@
               <q-list dense padding class="rounded-borders">
                 <q-item>
                   <q-item-section>
+                    <q-item-label><strong>Tomorrow, tomorrow... I love ya tomorrow.</strong></q-item-label>
+                    <q-item-label>
+                      <p>You can now look ahead to tomorrow's tasks from the home page as well as get a count of your remaining tasks to do today.</p></q-item-label>
+                  </q-item-section>
+                </q-item>  
+                <q-separator />
+                <q-item>
+                  <q-item-section>
                     <q-item-label><strong>New Repeating Task Option</strong></q-item-label>
                     <q-item-label>
                       <p>When creating new tasks, you can now have them repeat every set number of days (every 3 days, every 10 days, whatever you need). 
@@ -248,19 +256,7 @@
                       see how it changes your Tasklins mood. There are now five
                       possible moods.</p></q-item-label>
                   </q-item-section>
-                </q-item>
-                <q-separator />
-                <q-item>
-                  <q-item-section>
-                    <q-item-label><strong>It's going to be a big month!</strong></q-item-label>
-                    <q-item-label>
-                      <p>The new year is coming, and there's still so much we want
-                      to have ready here on Tasklins! This month, we're aiming
-                      for 30 updates in 30 days. Visit our
-                      <a href="/#/november/">November Challenge Page</a> to
-                      learn more!</p></q-item-label>
-                  </q-item-section>
-                </q-item>              
+                </q-item>            
               </q-list>
             </div>
             <div class="col q-pa-md" style="max-width: 350px"></div>
