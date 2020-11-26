@@ -36,7 +36,13 @@
   }
 
   .auth-btn {
-    margin: 5px;        
+    margin: 5px;
+    width: 225px;        
+    margin-bottom: 50px;
+
+    @include respond(phone) {
+      margin-bottom: 10px;
+    }
   }
 
   .auth-register-btn {
@@ -86,7 +92,7 @@
     width: 50%;
     margin: 0 auto;
     
-    @include respond(tab-port) {
+    @include respond(tab-land) {
       width: 90%;
     }
   }
@@ -109,7 +115,7 @@
     }
 
     @include respond(phone) {
-        height: 1100px;
+        height: 1200px;
     }
 }
 
@@ -120,6 +126,10 @@
   @include respond(phone) {                
     width: 90%;
 }
+
+  @include respond(tab-land) {                
+    width: 90%;
+  }
 }
 
 .text-design-main {
