@@ -379,8 +379,16 @@ const getters = {
       let formattedToday = moment(today).format("YYYY-MM-DD");
 
       if (moment(formattedTaskDueDate).isSame(formattedToday, "day")) {
-        tasks[key] = task;
+        tasks[key] = task;}
+
+      if (task.completedDate != undefined) {
+        if (
+          task.completed &&
+          moment(moment(task.completedDate).format("YYYY-MM-DD")).isSame(
+            moment().format("YYYY-MM-DD"), "day")
+        ) {tasks[key] = task;}
       }
+      
     });
 
     return tasks;
@@ -455,12 +463,8 @@ const getters = {
         if (
           task.completed &&
           moment(moment(task.completedDate).format("YYYY-MM-DD")).isSame(
-            moment().format("YYYY-MM-DD"),
-            "day"
-          )
-        ) {
-          tasks[key] = task;
-        }
+            moment().format("YYYY-MM-DD"), "day")
+        ) {tasks[key] = task;}
       }
     });
     return tasks;

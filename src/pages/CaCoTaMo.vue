@@ -17,7 +17,7 @@
           and once a week, likely every Sunday I'll be taking a day to do some cleanup and bug fixes. I'm hoping to do something every day, but like with NaNoWriMo, the end goal is what's important.
           Some days I may fall ahead, and others I might do more than one task. But you'll be able to check in every step of the way to see where we're headed.
           <br><br>
-          Most days probably won't involve a full site update, but the plan is to get new features up and running once their working, so you can expect progress at least every Monday throughout November.
+          Most days probably won't involve a full site update, but the plan is to get new features up and running once they're working (the Tasklin level up stuff will need to be tested first though), so you can expect progress at least every Monday throughout November.
           And, as always, if you have any issues, please use the help button via the ? button and submit a ticket (you should be able to access this on mobile now as well from the home page). 
         </div>
         </div>
@@ -40,10 +40,10 @@
 
         <div class="tamo-list row">
           <div class="tamo-task task-true">Update Tasklin Moods</div>
-          <div class="tamo-task task-false">Tasklins Show Level 2+ Art</div>
-          <div class="tamo-task task-false">Complete Tasklin Creator</div>
-          <div class="tamo-task task-false">Add Tasklin Stats</div>
-          <div class="tamo-task task-false">Tasklins Can Level Up</div>
+          <div class="tamo-task task-true">Tasklins Show Level 2+ Art</div>
+          <div class="tamo-task task-true">Complete Tasklin Creator</div>
+          <div class="tamo-task task-true">Add Tasklin Stats</div>
+          <div class="tamo-task task-true">Tasklins Can Level Up</div>
         </div>
 
         <div class="tamo-list row">
@@ -51,15 +51,15 @@
           <div class="tamo-task task-false">Better Sort on Challenges</div>
           <div class="tamo-task task-false">Update Tasklins.com</div>
           <div class="tamo-task task-false">Open for Public SignUps</div>
-          <div class="tamo-task task-false">Update Home Page To Do List</div>
+          <div class="tamo-task task-true">Update Home Page To Do List</div>
         </div>
 
         <div class="tamo-list row">
           <div class="tamo-task task-true">Tasklin Nose/Eyelid Art</div>
           <div class="tamo-task task-true">More Tasklin Body Types</div>
           <div class="tamo-task task-true">Blacksmith Art</div>
-          <div class="tamo-task task-false">Tasklin Ears/Horns Art</div>
-          <div class="tamo-task task-false">Tasklin Pattern Art</div>
+          <div class="tamo-task task-true">Tasklin Ears/Horns Art</div>
+          <div class="tamo-task task-true">Tasklin Pattern Art</div>
         </div>
 
         <div class="tamo-list row">
