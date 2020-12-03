@@ -208,14 +208,6 @@
             />
           </div>
           <br />
-          <div class="text-center">
-            <q-btn
-              rounded
-              label="November Tasklins Progress"
-              color="primary"
-              to="/november"
-            />
-          </div>
         </div>
 
         <div class="section col-xs-12 col-sm-12 col-md-6 news q-pa-xs">

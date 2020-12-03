@@ -2,8 +2,8 @@
   <q-page padding>
     <div class="q-ma-lg">
     <div class="center">
-      <q-btn @mouseover="showPiper = true" @mouseleave="showPiper = false" class="btn-fixed-width q-ma-sm" push to="/town" label="Piper's Place" color="secondary" />
-      <q-btn @mouseover="showBlacksmith = true" @mouseleave="showBlacksmith = false" class="btn-fixed-width q-ma-sm" push to="/start/pick-quasar-flavour" label="The Blacksmith" color="secondary" />
+      <q-btn @mouseover="showPiper = true" @mouseleave="showPiper = false" class="btn-fixed-width q-ma-sm" push to="/piper-store" label="Piper's Place" color="secondary" />
+      <q-btn @mouseover="showBlacksmith = true" @mouseleave="showBlacksmith = false" class="btn-fixed-width q-ma-sm" push to="/town-blacksmith" label="The Blacksmith" color="secondary" />
       <q-btn class="btn-fixed-width q-ma-sm" push to="/explore" label="<--" color="secondary" />
      <!--  <q-btn disable @mouseover="showTown = true" @mouseleave="showTown = false" class="btn-fixed-width q-ma-sm" push to="/start/pick-quasar-flavour" label="Island" color="secondary" />
       <q-btn disable @mouseover="showTown = true" @mouseleave="showTown = false" class="btn-fixed-width q-ma-sm" push to="/start/pick-quasar-flavour" label="Mountains" color="secondary" />

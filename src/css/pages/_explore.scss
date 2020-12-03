@@ -40,3 +40,13 @@
    .town-blacksmith {
     background-image: url("/statics/backgrounds/town-blacksmith.png"); 
    }
+
+   .coming-soon-sign {
+     width: 30%;
+     height: 30%;
+
+     @include respond(tab-port) {
+      width: 50%;
+      height: 50%;
+     }
+   }

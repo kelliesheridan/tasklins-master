@@ -19,8 +19,9 @@ const routes = [
       { path: 'auth', component: () => import('pages/PageAuth.vue') },
       { path: 'auth2', component: () => import('pages/PageAuth2.vue') },      
       { path: 'challenges', component: () => import('pages/PageChallenges.vue') },
-      { path: 'november', component: () => import('pages/CaCoTaMo.vue') },
-      { path: 'town', component: () => import('pages/map/town.vue') }
+      { path: 'town', component: () => import('pages/map/town.vue') },
+      { path: 'piper-store', component: () => import('pages/stores/Piper.vue') },
+      { path: 'town-blacksmith', component: () => import('pages/stores/town-Blacksmith.vue') }
     ]
   }
 ]
