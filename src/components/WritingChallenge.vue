@@ -55,7 +55,7 @@
         :class="!settings.darkMode ? 'bg-accent' : 'bg-dark'"
         style="overflow: auto; max-height: 65vh;"
         >
-          <div v-for="n in 12" :key="n">
+          <div v-for="n in this.count" :key="n">
             <q-card dense flat square class="my-card q-pa-xs">
               <q-card-section
                 :style="{ 'background-color': getCardColor(n - 1) }"
@@ -94,6 +94,7 @@ const moment = require('moment')
 export default {
   data: () => ({
     update: 0,
+    count: 12
     //cheer: false
   }),
   computed: {
@@ -107,6 +108,7 @@ export default {
       console.debug("writing event: ", event);
       this.addWritingTask(event);
       this.update += 1;
+      this.count += 1;
     },
       cheer() {
       this.update += 1;
