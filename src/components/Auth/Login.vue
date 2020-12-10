@@ -2,17 +2,17 @@
 
 
     <q-card bordered
-      class="my-card card-register panel-details"      
+      class="card-register panel-details"      
     >
       <q-card-section>
-        <div class="text-h5 text-center">Welcome Back to Tasklins</div>
+        <div class="text-h3 text-center ">Welcome Back to Tasklins</div>
 
       </q-card-section>
 
 <q-form @submit.prevent="submitForm">
     <div class="row q-mb-md">
-            <q-banner dense class="panel-details col">
-           <div class="text-h6"> It's time to login and get back to work!</div>
+            <q-banner dense class="panel-details col ">
+           <div class="text-h5 text-center"> It's time to login and get back to work!</div>
             </q-banner>
     </div>
 

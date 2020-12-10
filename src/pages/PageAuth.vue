@@ -15,8 +15,8 @@
             </h1>
 
             <div>
-              <q-btn class="auth-btn" @click.stop="login = true" color="white" text-color="secondary" push label="Login" />
-              <q-btn class="auth-btn" @click.stop="register = true" color="white" text-color="secondary" push label="Register"/>
+              <q-btn v-show="login != true && register != true" class="auth-btn" @click.stop="login = true" color="white" text-color="secondary" push label="Login" />
+              <q-btn v-show="login != true && register != true" class="auth-btn" @click.stop="register = true" color="white" text-color="secondary" push label="Register"/>
             </div>
 
             </div>
@@ -32,7 +32,6 @@
         <q-dialog v-model="register2" transition-hide="scale">
           <register2 @close="register2 = false" />
         </q-dialog>
-
 
        </header>
 

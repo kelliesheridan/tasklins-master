@@ -4,17 +4,21 @@
       <new-user />
     </q-dialog>
 
- <q-dialog v-if="settings" v-model="settings" >
+    <q-dialog v-if="settings" v-model="settings" >
       <settingsModal />
     </q-dialog>
 
     <template v-if="tasksDownloaded">
+      <q-banner dense class="bg-primary text-white rounded-borders u-center-text q-ma-md">
+        <span class="text-h5">Planuary is coming! Starting on January 1st, embark on a month long organizational adventure with thirty-one days of personal challenges, goal setting and dream-crafting! More details coming soon!</span>
+      </q-banner>
+
       <q-card
         bordered
         flat
         v-if="showNewUserPanel() && !hideNewUserPanel"
-        class="card center"
-      >
+        class="card center">
+
         <q-card-section>
           <div class="text-h6">Let's Get Started</div>
           <div class="text-subtitle2">
@@ -47,10 +51,12 @@
       </q-card>
 
       <div class="row main justify-center q-pa-md">
+        
         <div
           class="section col-xs-12 col-sm-12 col-md-6 col-lg-6 q-pa-xs"
           style="overflow: auto; height: 50%"
         >
+        
           <div>
             <list-header class="textureBar">
               <div v-show="tomorrow == false" class="index-header">Today's Tasks</div>
