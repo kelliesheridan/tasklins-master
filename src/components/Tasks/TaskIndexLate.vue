@@ -60,7 +60,7 @@
           </q-btn>
 
           <q-btn class="task-btn"
-          @click.stop="pushDueDate({ id: id, dueDate: task.dueDate, nrepeating: task.nrepeating })"
+          @click.stop="pushDueDate({ id: id, task: task })"
           flat
           round
           dense

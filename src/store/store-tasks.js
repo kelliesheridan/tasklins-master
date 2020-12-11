@@ -228,26 +228,24 @@ const actions = {
     let taskRef = firebaseDb.ref("tasks/" + userId + "/" + payload.id);
     // check for repeating to get next required date, otherwise just move til tomorrow.
     if (
-      payload.nrepeating.monday ||
-      payload.nrepeating.tuesday ||
-      payload.nrepeating.wednesday ||
-      payload.nrepeating.thursday ||
-      payload.nrepeating.friday ||
-      payload.nrepeating.saturday ||
-      payload.nrepeating.sunday
+      payload.task.nrepeating.monday ||
+      payload.task.nrepeating.tuesday ||
+      payload.task.nrepeating.wednesday ||
+      payload.task.nrepeating.thursday ||
+      payload.task.nrepeating.friday ||
+      payload.task.nrepeating.saturday ||
+      payload.task.nrepeating.sunday
     ) {
-      var newTask = {
-        nrepeating: payload.nrepeating
-      };
+      var newTask = payload.task;
       var newPayload = {};
       newPayload = getRepeatingTask(newTask);
-      payload.dueDate = newPayload.task.dueDate;
-    } else if (payload.nrepeating.numDay) {
+      payload.task = newPayload.task;
+    } else if (payload.task.nrepeating.numDay) {
       console.debug(
-        "repeat every " + payload.nrepeating.numDay + " number of days."
+        "repeat every " + payload.task.nrepeating.numDay + " number of days."
       );
     } else {
-      payload.dueDate = moment(payload.dueDate)
+      payload.task.dueDate = moment(payload.task.dueDate)
         .add(1, "days")
         .format("YYYY-MM-DD");
     }
@@ -631,8 +629,9 @@ function getRepeatingTask(task) {
         if (element > currentDay) {
           requiredDay = element;
         } else if (requiredDay == -1) {
-          requiredDay = daysNeeded.pop();
-          throw BREAKEXCEPTION;
+          //requiredDay = daysNeeded(daysNeeded.length - 1);
+          //requiredDay = daysNeeded.remove(element);
+          //throw BREAKEXCEPTION;
         }
       });
     } catch (e) {
@@ -640,19 +639,27 @@ function getRepeatingTask(task) {
     }
   }
 
-  // if (requiredDay == 7) requiredDay = 0;
-  // if (currentDay == 7) currentDay = 0;
-  if (requiredDay > currentDay && task.dueDate >= moment().format("YYYY-MM-DD")) {
+  if (requiredDay == -1) {
+    daysNeeded.reverse();
+    requiredDay = daysNeeded[0];
+    newTask.dueDate = moment().add(1, "weeks").isoWeekday(requiredDay).format("YYYY-MM-DD");
+  } else if (requiredDay > currentDay && task.dueDate >= moment().format("YYYY-MM-DD")) {
     newTask.dueDate = moment().isoWeekday(requiredDay).format("YYYY-MM-DD");
   } else if (task.dueDate < moment().format("YYYY-MM-DD")) {
   // if task repeats monday and thursday, and i complete the thursday on wednesday, I want the next on the following monday.
   daysNeeded.reverse();
+  try {
   daysNeeded.forEach(element => {
     if (element > currentDay) {
       newTask.dueDate = moment().add(1, "weeks").isoWeekday(element).format("YYYY-MM-DD");
       throw BREAKEXCEPTION;
+    } else {
+      newTask.dueDate = moment().add(1, "weeks").isoWeekday(element).format("YYYY-MM-DD");
+      throw BREAKEXCEPTION;
     }
-  });
+  }); } catch (e) {
+    //
+  }
   } else {
     newTask.dueDate = moment().add(1, "weeks").isoWeekday(requiredDay).format("YYYY-MM-DD");
   }

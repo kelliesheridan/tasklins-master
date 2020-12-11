@@ -95,7 +95,7 @@
         <q-tooltip content-class="bg-primary">Do Today</q-tooltip>
           </q-btn>
         <q-btn
-          @click.stop="pushDueDate({ id: id, dueDate: task.dueDate, nrepeating: task.nrepeating })"
+          @click.stop="pushDueDate({ id: id, task: task })"
           flat
           round
           dense
