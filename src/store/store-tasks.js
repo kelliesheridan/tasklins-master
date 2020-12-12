@@ -223,10 +223,13 @@ const actions = {
       }
     }
   },
-  fbPushDueDate({}, payload) {
+  fbPushDueDate({ dispatch }, payload) {
     let userId = firebaseAuth.currentUser.uid;
-    let taskRef = firebaseDb.ref("tasks/" + userId + "/" + payload.id);
+    //let taskRef = firebaseDb.ref("tasks/" + userId + "/" + payload.id);
     // check for repeating to get next required date, otherwise just move til tomorrow.
+    if (payload.task.dueDate == undefined || payload.task.dueDate == "Invalid date") {
+      payload.task.dueDate = moment().format("YYYY-MM-DD");
+    }
     if (
       payload.task.nrepeating.monday ||
       payload.task.nrepeating.tuesday ||
@@ -243,17 +246,42 @@ const actions = {
       console.debug(
         "repeat every " + payload.task.nrepeating.numDay + " number of days."
       );
+      // if it's before today, add one to today
+      if (
+        moment(moment(payload.task.dueDate).format("YYYY-MM-DD")).isBefore(
+          moment().format("YYYY-MM-DD"),
+          "day"
+        )
+      ) {
+        payload.task.dueDate = moment()
+          .add(payload.task.nrepeating.numDay, "days")
+          .format("YYYY-MM-DD");
+      } else {
+        // else add one to due date
+        payload.task.dueDate = moment(payload.task.dueDate)
+          .add(payload.task.nrepeating.numDay, "days")
+          .format("YYYY-MM-DD");
+      }
+    } else if (
+      moment(moment(payload.task.dueDate).format("YYYY-MM-DD")).isBefore(
+        moment().format("YYYY-MM-DD"),
+        "day"
+      )
+    ) {
+      payload.task.dueDate = moment()
+        .add(1, "days")
+        .format("YYYY-MM-DD");
     } else {
       payload.task.dueDate = moment(payload.task.dueDate)
         .add(1, "days")
         .format("YYYY-MM-DD");
     }
 
-    taskRef.update(payload, error => {
-      if (error) {
-        showErrorMessage(error.message);
-      }
-    });
+    var task = {};
+    task.updates = {};
+    task.updates.dueDate = payload.task.dueDate;
+    task.id = payload.id;
+    dispatch("fbUpdateTask", task);
   },
   fbDueDateToday({}, payload) {
     let userId = firebaseAuth.currentUser.uid;
@@ -376,16 +404,20 @@ const getters = {
       let formattedToday = moment(today).format("YYYY-MM-DD");
 
       if (moment(formattedTaskDueDate).isSame(formattedToday, "day")) {
-        tasks[key] = task;}
+        tasks[key] = task;
+      }
 
       if (task.completedDate != undefined) {
         if (
           task.completed &&
           moment(moment(task.completedDate).format("YYYY-MM-DD")).isSame(
-            moment().format("YYYY-MM-DD"), "day")
-        ) {tasks[key] = task;}
+            moment().format("YYYY-MM-DD"),
+            "day"
+          )
+        ) {
+          tasks[key] = task;
+        }
       }
-      
     });
 
     return tasks;
@@ -396,7 +428,9 @@ const getters = {
     Object.keys(tasksFiltered).forEach(function(key) {
       let task = tasksFiltered[key];
       let taskDueDate = task.dueDate;
-      let tomorrow = moment().add(1,'days').format();
+      let tomorrow = moment()
+        .add(1, "days")
+        .format();
 
       let formattedTaskDueDate = moment(taskDueDate).format("YYYY-MM-DD");
       let formattedTomorrow = moment(tomorrow).format("YYYY-MM-DD");
@@ -436,7 +470,9 @@ const getters = {
     Object.keys(tasksFiltered).forEach(function(key) {
       let task = tasksFiltered[key];
       let taskDueDate = task.dueDate;
-      let tomorrow = moment().add(1,'days').format();      
+      let tomorrow = moment()
+        .add(1, "days")
+        .format();
 
       let formattedTaskDueDate = moment(taskDueDate).format("YYYY-MM-DD");
       let formattedTomorrow = moment(tomorrow).format("YYYY-MM-DD");
@@ -460,8 +496,12 @@ const getters = {
         if (
           task.completed &&
           moment(moment(task.completedDate).format("YYYY-MM-DD")).isSame(
-            moment().format("YYYY-MM-DD"), "day")
-        ) {tasks[key] = task;}
+            moment().format("YYYY-MM-DD"),
+            "day"
+          )
+        ) {
+          tasks[key] = task;
+        }
       }
     });
     return tasks;
@@ -595,9 +635,11 @@ function getRepeatingTask(task) {
     dueDate: "",
     dueTime: "",
     completed: false,
-    createdDate: moment().format(),
+    createdDate: task.createdDate,
     lastModified: moment().format()
   };
+
+
 
   if (task.nrepeating.monday) {
     daysNeeded.push(1);
@@ -622,7 +664,14 @@ function getRepeatingTask(task) {
   }
 
   if (daysNeeded.length > 0) {
-    daysNeeded.reverse();
+    if (
+      moment(moment(task.dueDate).format("YYYY-MM-DD")).isBefore(
+        moment().format("YYYY-MM-DD"),
+        "day"
+      )
+    ) {
+      daysNeeded.reverse();
+    }
     try {
       daysNeeded.forEach(element => {
         if (element > currentDay) {
@@ -638,29 +687,76 @@ function getRepeatingTask(task) {
     }
   }
 
+  // if task.dueDate.day == requiredDay && daysNeeded.count > 1, skip
+
   if (requiredDay == -1) {
-    daysNeeded.reverse();
-    requiredDay = daysNeeded[0];
-    newTask.dueDate = moment().add(1, "weeks").isoWeekday(requiredDay).format("YYYY-MM-DD");
-  } else if (requiredDay > currentDay && task.dueDate >= moment().format("YYYY-MM-DD")) {
-    newTask.dueDate = moment().isoWeekday(requiredDay).format("YYYY-MM-DD");
-  } else if (task.dueDate < moment().format("YYYY-MM-DD")) {
-  // if task repeats monday and thursday, and i complete the thursday on wednesday, I want the next on the following monday.
-  daysNeeded.reverse();
-  try {
-  daysNeeded.forEach(element => {
-    if (element > currentDay) {
-      newTask.dueDate = moment().add(1, "weeks").isoWeekday(element).format("YYYY-MM-DD");
-      throw BREAKEXCEPTION;
-    } else {
-      newTask.dueDate = moment().add(1, "weeks").isoWeekday(element).format("YYYY-MM-DD");
-      throw BREAKEXCEPTION;
+    var dueDateDay = moment(task.dueDate).day();
+     if (daysNeeded.length > 0 && dueDateDay == daysNeeded[0]) {
+       for (let i = 0; i < daysNeeded.length; i++) {
+        if (daysNeeded[i] > dueDateDay) {
+          requiredDay = daysNeeded[i];
+        }
+       }
+     } else {
+      requiredDay = daysNeeded[0];
     }
-  }); } catch (e) {
-    //
-  }
+
+    if (task.dueDate == undefined) {
+      newTask.dueDate = moment()
+      .add(1, "weeks")
+      .isoWeekday(requiredDay)
+      .format("YYYY-MM-DD");
+    } else {
+      newTask.dueDate = moment(task.dueDate)
+      .add(1, "weeks")
+      .isoWeekday(requiredDay)
+      .format("YYYY-MM-DD");
+    }
+    
+  } else if (
+    requiredDay > currentDay &&
+    task.dueDate >= moment().format("YYYY-MM-DD")
+  ) {
+    // check the daysNeeded. 
+    if (daysNeeded.length > 1) {
+
+    }
+    newTask.dueDate = moment(task.dueDate)
+      .add(1, "day")
+      .isoWeekday(requiredDay)
+      .format("YYYY-MM-DD");
+  } else if (task.dueDate < moment().format("YYYY-MM-DD")) {
+    // if task repeats monday and thursday, and i complete the thursday on wednesday, I want the next on the following monday.
+    daysNeeded.reverse();
+    try {
+      daysNeeded.forEach(element => {
+        if (element > currentDay) {
+          newTask.dueDate = moment()
+            .add(1, "weeks")
+            .isoWeekday(element)
+            .format("YYYY-MM-DD");
+          throw BREAKEXCEPTION;
+        } else {
+          newTask.dueDate = moment()
+            .add(1, "weeks")
+            .isoWeekday(element)
+            .format("YYYY-MM-DD");
+          throw BREAKEXCEPTION;
+        }
+      });
+    } catch (e) {
+      //
+    }
+  } else if (moment(moment().format("YYYY-MM-DD")).isBefore(moment(task.dueDate).format("YYYY-MM-DD"), "day")) { 
+    newTask.dueDate = moment(task.dueDate)
+      .add(1, "weeks")
+      .isoWeekday(requiredDay)
+      .format("YYYY-MM-DD");
   } else {
-    newTask.dueDate = moment().add(1, "weeks").isoWeekday(requiredDay).format("YYYY-MM-DD");
+    newTask.dueDate = moment()
+      .add(1, "weeks")
+      .isoWeekday(requiredDay)
+      .format("YYYY-MM-DD");
   }
 
   var newPayload = {};
@@ -691,7 +787,9 @@ function getNumDayTask(task) {
     createdDate: moment().format(),
     lastModified: moment().format()
   };
-  newTask.dueDate = moment(task.dueDate == "" ? moment().format("YYYY-MM-DD") : task.dueDate)
+  newTask.dueDate = moment(
+    task.dueDate == "" ? moment().format("YYYY-MM-DD") : task.dueDate
+  )
     .add(task.nrepeating.numDay, "days")
     .format("YYYY-MM-DD");
 
