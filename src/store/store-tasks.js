@@ -236,9 +236,8 @@ const actions = {
       payload.task.nrepeating.saturday ||
       payload.task.nrepeating.sunday
     ) {
-      var newTask = payload.task;
       var newPayload = {};
-      newPayload = getRepeatingTask(newTask);
+      newPayload = getRepeatingTask(payload.task);
       payload.task = newPayload.task;
     } else if (payload.task.nrepeating.numDay) {
       console.debug(
