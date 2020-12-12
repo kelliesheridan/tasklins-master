@@ -564,6 +564,7 @@ export default {
       },
       set(value) {
         this.nrepeating.numDay = value;
+        numberOfDays = value;
       }
     }
   }

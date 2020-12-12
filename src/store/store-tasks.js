@@ -639,8 +639,6 @@ function getRepeatingTask(task) {
     lastModified: moment().format()
   };
 
-
-
   if (task.nrepeating.monday) {
     daysNeeded.push(1);
   }
