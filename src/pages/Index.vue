@@ -226,6 +226,15 @@
               <q-list dense padding class="rounded-borders">
                 <q-item>
                   <q-item-section>
+                    <q-item-label><strong>2021 is Coming, and things are slightly less broken!</strong></q-item-label>
+                    <q-item-label>
+                      <p>The year is almost over, and Tasklins is switching gears to get ready for 2021 and launching our month long planning and goal setting adventure, Planuary! For now though, repeating tasks are less broken, along with a few other things.
+                        You can read more about our latest update and <a href="https://www.patreon.com/posts/44994351" target="_blank">plans for Planuary here.</a></p></q-item-label>
+                  </q-item-section>
+                </q-item>    
+                <q-separator />    
+                <q-item>
+                  <q-item-section>
                     <q-item-label><strong>Tomorrow, tomorrow... I love ya tomorrow.</strong></q-item-label>
                     <q-item-label>
                       <p>You can now look ahead to tomorrow's tasks from the home page as well as get a count of your remaining tasks to do today.</p></q-item-label>
@@ -244,17 +253,7 @@
                     </q-item-label>
                   </q-item-section>
                 </q-item>
-                <q-separator />
-                <q-item>
-                  <q-item-section>
-                    <q-item-label><strong>Tasklin Moods!</strong></q-item-label>
-                    <q-item-label>
-                      <p>It's been a hectic/distracting week, but your Tasklins
-                      can now be more than just okay! Get those tasks done and
-                      see how it changes your Tasklins mood. There are now five
-                      possible moods.</p></q-item-label>
-                  </q-item-section>
-                </q-item>            
+    
               </q-list>
             </div>
             <div class="col q-pa-md" style="max-width: 350px"></div>
