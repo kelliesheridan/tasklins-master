@@ -9,6 +9,7 @@ import fitness from "./store-fitness";
 import writing from "./store-writing";
 import tasklins from "./store-tasklins";
 import tickets from "./store-tickets";
+import planuary from "./store-planuary";
 
 Vue.use(Vuex);
 
@@ -31,7 +32,8 @@ export default function(/* { ssrContext } */) {
       fitness,
       tasklins,
       tickets,
-      writing
+      writing,
+      planuary
     },
 
     // enable strict mode (adds overhead!)
