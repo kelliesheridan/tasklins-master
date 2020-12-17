@@ -9,10 +9,6 @@
     </q-dialog>
 
     <template v-if="tasksDownloaded">
-      <q-banner dense class="bg-primary text-white rounded-borders u-center-text q-ma-md">
-        <span class="text-h5">Planuary is coming! Starting on January 1st, embark on a month long organizational adventure with thirty-one days of personal challenges, goal setting and dream-crafting! More details coming soon!</span>
-      </q-banner>
-
       <q-card
         bordered
         flat

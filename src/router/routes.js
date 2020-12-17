@@ -22,6 +22,7 @@ const routes = [
       { path: 'planuary', component: () => import('pages/PagePlanuary.vue') },
       { path: 'journal', component: () => import('pages/PageJournal.vue') },
       { path: 'town', component: () => import('pages/map/town.vue') },
+      { path: 'wish-sky', component: () => import('pages/map/wishSky.vue') },
       { path: 'piper-store', component: () => import('pages/stores/Piper.vue') },
       { path: 'town-blacksmith', component: () => import('pages/stores/town-Blacksmith.vue') }
     ]

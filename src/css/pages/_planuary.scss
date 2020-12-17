@@ -2,8 +2,22 @@
     padding: 1rem;
     max-width: 50%;
     margin: 0 auto;
+
+    @include respond(tab-port) {
+        max-width: 80%;        
+       }    
 }
 
 .focus-boxes {
-    width: 250px;
+    width: 350px;
+}
+
+.wish-moon {
+    width: 10%;
+    height: auto;
+
+    @include respond(tab-port) {
+        width: 30%;
+    height: auto;     
+       }    
 }

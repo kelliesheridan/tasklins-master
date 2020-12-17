@@ -33,6 +33,22 @@
     background-image: url("/statics/backgrounds/map-forest.png"); 
    }
 
+   .map-moon {
+    background-image: url("/statics/backgrounds/map-moon.png"); 
+   }
+
+   .night-sky {
+    background-image: url("/statics/backgrounds/nightSky.png"); 
+   }
+
+   .night-stars {
+    background-image: url("/statics/backgrounds/nightSky-stars.png"); 
+   }
+
+   .wish-star {
+    margin-top: random(150) + px;
+   }
+
    .town-piper {
     background-image: url("/statics/backgrounds/town-piper.png"); 
    }

@@ -2,14 +2,14 @@ import Vue from "vue";
 import moment from "moment";
 
 const state = {
-  planuary: {
+ wishes: {
     wish: "my wish",
   }
 };
 
 const mutations = {
   setPlanuaryWish(state, value) {
-    state.planuary.planuaryWish = value;
+    state.community.wishes = value;
   },
 };
 
