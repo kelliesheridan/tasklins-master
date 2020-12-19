@@ -23,6 +23,15 @@
 
       <q-item tag="label" v-ripple>
         <q-item-section>
+          <q-item-label>Week Start Day</q-item-label>
+        </q-item-section>
+        <q-item-section side top>
+          <q-toggle color="primary" v-model="hideCompletedTasks" />
+        </q-item-section>
+      </q-item>
+
+      <q-item tag="label" v-ripple>
+        <q-item-section>
           <q-item-label>Hide Completed Tasks</q-item-label>
         </q-item-section>
         <q-item-section side top>

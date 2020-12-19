@@ -24,6 +24,15 @@
 
       <q-item tag="label" v-ripple>
         <q-item-section>
+          <q-item-label>Week Starts on Monday</q-item-label>
+        </q-item-section>
+        <q-item-section side top>
+          <q-toggle color="primary" v-model="sundayStart" />
+        </q-item-section>
+      </q-item>
+
+      <q-item tag="label" v-ripple>
+        <q-item-section>
           <q-item-label>Hide Completed Tasks</q-item-label>
         </q-item-section>
         <q-item-section side top>
@@ -120,6 +129,14 @@ export default {
         this.setHideCompletedTasks(value);
       }
     },
+    sundayStart: {
+      get() {
+        return this.settings.sundayStart;
+      },
+      set(value) {
+        this.sundayStart(value);
+      }
+    },
     darkMode: {
       get() {
         return this.settings.darkMode;
@@ -135,6 +152,7 @@ export default {
       "setShowProjectsOnPage",
       "setHideCompletedTasks",
       "setDarkMode",
+      "setSundayStart",
       "fbUpdateSettings"
     ]),
     submit() {

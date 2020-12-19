@@ -8,7 +8,8 @@ const state = {
     show24hrTimeFormat: false,
     showProjectsOnPage: false,
     hideCompletedTasks: false,
-    darkMode: false
+    darkMode: false,
+    sundayStart: false
   }
 };
 
@@ -25,6 +26,9 @@ const mutations = {
   setDarkMode(state, value) {
     Dark.toggle();
     state.settings.darkMode = value;
+  },
+  setSundayStart(state, value) {
+    state.settings.sundayStart = value;
   },
   setSettings(state, settings) {
     if (
@@ -54,6 +58,10 @@ const actions = {
     commit("setDarkMode", value);
     // dispatch('saveSettings')
   },
+  setSundayStart({ commit, dispatch }, value) {
+    commit("setSundayStart", value);
+    // dispatch('saveSettings')
+  },
   saveSettings({ state, dispatch }) {
     LocalStorage.set("settings", state.settings);
     dispatch("fbUpdateSettings");
@@ -70,6 +78,7 @@ const actions = {
       let payload = {
         darkMode: settings.darkMode,
         showProjectsOnPage: settings.showProjectsOnPage,
+        sundayStart: settings.sundayStart,
         hideCompletedTasks: settings.hideCompletedTasks,
         show24hrTimeFormat: settings.show24hrTimeFormat
       };
