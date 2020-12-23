@@ -83,7 +83,7 @@
           class="text-secondary col-10"
         >
           <q-route-tab class="q-pa-xs" dense to="/index" icon="home" />
-          <q-route-tab class="q-pa-xs" dense to="/todo" icon="done" />
+          <q-route-tab class="q-pa-xs" dense to="/todo" icon="menu_book" />
           <!-- <q-route-tab class="q-pa-xs" dense to="/tasklins" icon="pets" />
           <q-route-tab class="q-pa-xs" dense to="/community" icon="chat" /> -->
           <q-route-tab class="q-pa-xs" dense to="/explore" icon="explore" />
@@ -125,7 +125,6 @@
           <q-route-tab class="q-pa-xs" dense to="/index" icon="home" />
           <q-route-tab class="q-pa-xs" dense to="/journal" icon="menu_book" />
           <!-- <q-route-tab class="q-pa-xs" dense to="/tasklins" icon="pets" />
-          <q-route-tab class="q-pa-xs" dense to="/explore" icon="explore" />
           <q-route-tab class="q-pa-xs" dense to="/community" icon="chat" /> -->
           <q-route-tab class="q-pa-xs" dense to="/explore" icon="explore" />
           <q-route-tab class="q-pa-xs" dense to="/challenges" icon="assessment" />

@@ -70,6 +70,70 @@
           </q-card-section>
       </q-card>
     </div>
+
+    <div class="planuaryDay day-3">
+      <q-card>
+          <q-card-section>
+            <div class="text-h7 row">
+              <q-btn dense flat @click="dayThree = !dayThree">
+                Planuary. Day Three.
+              </q-btn>
+              <q-space />         
+
+              <q-btn v-if="dayThree" class="no-margin no-padding" flat round dense icon="edit" />
+              <q-btn @click="dayThree = !dayThree" v-if="!dayThree" color="secondary" padding="none" class="no-margin no-padding" flat round dense icon="add" />
+            </div>
+          </q-card-section>
+
+          <q-card-section v-if="dayThree">
+            <p>How are you feeling today?</p>
+            <p>No, really. This is important. As we start to plan for our new year, and then as we go through and turn our plans into actions, it can be so important to keep track of your emotional state. </p>
+            
+            <div>
+              <div class="q-pa-sm rounded-borders">
+                <q-option-group
+                  name="mood_1"
+                  v-model="mood_1"
+                  :options="options"
+                  type="checkbox"
+                  color="primary"
+                  inline
+                />
+              </div>
+              <div class="center q-pa-md">
+                <q-btn class="q-pa-xs" color="primary" size="md" label="Let's Go!" />
+              </div>
+            </div>
+
+            <div v-show="dayThree">
+              Thank you! From today onward, you'll now be able to log your mood for each day from the home page, and soon we'll have tools in place to help you track your mood over time. If you'd like, you can also let us know what your mood was like yesterday and the day before so you can work toward keeping a record for the entire year.
+              <div class="q-pa-sm rounded-borders">
+                January 1st: 
+                <q-option-group
+                  name="mood_2"
+                  v-model="mood_2"
+                  :options="options"
+                  type="checkbox"
+                  color="primary"
+                  inline
+                />
+              </div>
+
+              <div class="q-pa-sm rounded-borders">
+                January 2nd: 
+                <q-option-group
+                  name="mood_3"
+                  v-model="mood_3"
+                  :options="options"
+                  type="checkbox"
+                  color="primary"
+                  inline
+                />
+              </div>
+            </div>
+          </q-card-section>
+      </q-card>
+    </div>
   </q-page>
 </template>
 
@@ -88,6 +152,30 @@ export default {
       focusFour: null,
       focusFive: "",
       dayThree: false,
+
+      options: [
+        {
+          label: ':D',
+          value: 'great'
+        },
+        {
+          label: ':)',
+          value: 'happy'
+        },
+        {
+          label: ':|',
+          value: 'fine'
+        },
+        {
+          label: ':(',
+          value: 'lousy'
+        },
+        {
+          label: '>:(',
+          value: 'awful'
+        }
+      ],
+      mood_1: null,
       dayFour: false,
       dayFive: false,
       daySix: false,
