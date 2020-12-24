@@ -23,7 +23,7 @@
               <q-input class="q-m-xs" rounded label="Make a Wish!" outlined v-model="yourWish"></q-input>
             </div>
             <div class="center q-pa-md">
-              <q-btn @click="'wishSubmitted == true' && submitWish()"  class="q-pa-xs" color="primary" size="md" label="Send Your Wish!" />              
+              <q-btn @click="'wishSubmitted == true' && setPlanuaryWish()"  class="q-pa-xs" color="primary" size="md" label="Send Your Wish!" />              
             </div>
             </div>
 
@@ -152,6 +152,7 @@ export default {
       focusFour: null,
       focusFive: "",
       dayThree: false,
+      wish1: "",
 
       options: [
         {
@@ -209,13 +210,16 @@ export default {
    computed: {
     ...mapGetters("planuary", ["planuary"]),
     ...mapGetters("community", ["community"]),
+    ...mapGetters("profile", ["profile"]),
 
-    planuaryWish: {
+    yourWish: {
       get() {
-        return this.planuary.planuaryWish;
+        var wish = "";
+        var userId = this.profile.id;
+        return this.planuary[userId].wish;
       },
       set(value) {
-        this.setPlanuaryWish(value);
+        this.wish1 = value;
       }
     },
     // showProjectsOnPage: {
@@ -244,11 +248,22 @@ export default {
     // }
   },
     methods: {
-    ...mapActions("community", [
-      "setPlanuaryWish"
-    ]),
-    submitWish() {
-      this.fbUpdateWish();
+    ...mapActions("planuary", ["addWish", "fbUpdateWish"]),
+    setPlanuaryWish() {
+      let payload = {
+      username: this.profile.username,
+      wish: this.wish1
+    };
+    if (this.planuary[this.profile.id] == undefined) {
+      this.addWish(payload);
+    } else {
+      this.fbUpdateWish(payload);
+      this.$q.notify({
+        message: "Your wish has been saved!",
+        color: "primary",
+      });
+      this.dayOne = !this.dayOne;
+    }
     }
   }
 }
