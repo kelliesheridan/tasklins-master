@@ -8,7 +8,7 @@
       <q-btn disable @mouseover="showTown = true" @mouseleave="showTown = false" class="btn-fixed-width q-ma-sm" push to="/start/pick-quasar-flavour" label="???" color="secondary" />
       <!-- <q-btn disable @mouseover="showTown = true" @mouseleave="showTown = false" class="btn-fixed-width q-ma-sm" push to="/start/pick-quasar-flavour" label="Island" color="secondary" />
       <q-btn disable @mouseover="showTown = true" @mouseleave="showTown = false" class="btn-fixed-width q-ma-sm" push to="/start/pick-quasar-flavour" label="Mountains" color="secondary" /> -->
-      <!-- <q-btn v-if="darkMode" @mouseover="showMoon = true" @mouseleave="showMoon = false" class="btn-fixed-width q-ma-sm" push to="/wish-sky" label="Look Up" color="secondary" />  -->
+      <q-btn v-if="darkMode" @mouseover="showMoon = true" @mouseleave="showMoon = false" class="btn-fixed-width q-ma-sm" push to="/wish-sky" label="Look Up" color="secondary" /> 
     </div>
 
     <div>

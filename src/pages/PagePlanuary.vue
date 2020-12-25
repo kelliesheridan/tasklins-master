@@ -208,13 +208,14 @@ export default {
     };
   },
    computed: {
-    ...mapGetters("planuary", ["planuary"]),
+    ...mapGetters("planuary", ["planuary", "random16"]),
     ...mapGetters("community", ["community"]),
     ...mapGetters("profile", ["profile"]),
 
     yourWish: {
       get() {
         var wish = "";
+        var stuff = this.random16;
         var userId = this.profile.id;
         if (this.planuary[this.profile.id] != undefined) {
         return this.planuary[userId].wish;

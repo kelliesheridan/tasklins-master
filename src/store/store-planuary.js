@@ -4,9 +4,7 @@ import { firebaseDb, firebaseAuth } from "boot/firebase";
 import { showErrorMessage } from "src/functions/function-show-error-message";
 
 const state = {
-  planuary: {
-   
-  }
+  planuary: {}
 };
 
 const mutations = {
@@ -14,12 +12,12 @@ const mutations = {
     state.planuary.planuaryWish = value;
   },
   setWishes(state, wishes) {
-    Object.assign(state.planuary, wishes);
+    state.planuary = wishes;
   },
   addWish(state, wishes) {
     Vue.set(state.planuary, wishes, wishes);
     console.debug("state.planuary are: ", state.planuary);
-  },
+  }
 };
 
 const actions = {
@@ -45,10 +43,12 @@ const actions = {
     let wishes = firebaseDb.ref("wishes");
 
     //initial check for data
-    wishes.once("value", snapshot => {
-      let wishes = snapshot.val();
-      console.debug("wishes are: ", wishes);
-      commit("setWishes", wishes);
+    wishes.once(
+      "value",
+      snapshot => {
+        let wishes = snapshot.val();
+        console.debug("wishes are: ", wishes);
+        commit("setWishes", wishes);
       },
       error => {
         showErrorMessage(error.message);
@@ -76,7 +76,7 @@ const actions = {
   fbUpdateWish({ dispatch, commit }, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let taskRef = firebaseDb.ref("wishes/" + userId);
-      
+
     taskRef.update(payload, error => {
       if (error) {
         showErrorMessage(error.message);
@@ -84,13 +84,17 @@ const actions = {
         dispatch("fbReadWishes");
       }
     });
-  },
+  }
 };
 
 const getters = {
   planuary: state => {
     return state.planuary;
   },
+  random16: state => {
+    var array = state.planuary;
+    return Object.entries(array).sort( () => Math.random() - 0.5);
+  }
 };
 
 export default {

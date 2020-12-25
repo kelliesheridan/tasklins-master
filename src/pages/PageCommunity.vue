@@ -15,7 +15,6 @@
         </q-card-section>
       </q-card>
     </div>
-    Î
   </q-page>
 </template>
 
@@ -28,40 +27,13 @@ export default {
     };
   },
    computed: {
-    ...mapGetters("planuary", ["planuary"]),
+    ...mapGetters("planuary", ["planuary", "random16"]),
     ...mapGetters("community", ["community"]),
     ...mapGetters("profile", ["profile"]),
-    // showProjectsOnPage: {
-    //   get() {
-    //     return this.settings.showProjectsOnPage;
-    //   },
-    //   set(value) {
-    //     this.setShowProjectsOnPage(value);
-    //   }
-    // },
-    // hideCompletedTasks: {
-    //   get() {
-    //     return this.settings.hideCompletedTasks;
-    //   },
-    //   set(value) {
-    //     this.setHideCompletedTasks(value);
-    //   }
-    // },
-    // darkMode: {
-    //   get() {
-    //     return this.settings.darkMode;
-    //   },
-    //   set(value) {
-    //     this.setDarkMode(value);
-    //   }
-    // }
   },
     methods: {
     getWish(number) {
-      
-      Object.entries(this.planuary).forEach(element => {
-       console.debug(element);
-      })
+      return this.random16[number];
     },
   }
 }

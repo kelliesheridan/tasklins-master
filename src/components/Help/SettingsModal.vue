@@ -134,7 +134,7 @@ export default {
         return this.settings.sundayStart;
       },
       set(value) {
-        this.sundayStart(value);
+        this.setSundayStart(value);
       }
     },
     darkMode: {
