@@ -1,6 +1,7 @@
 import Vue from "vue";
 import moment from "moment";
 import { firebaseDb, firebaseAuth } from "boot/firebase";
+import { showErrorMessage } from "src/functions/function-show-error-message";
 
 const state = {
   planuary: {
@@ -31,7 +32,7 @@ const actions = {
   },
   fbAddWish({ dispatch }, payload) {
     let userId = firebaseAuth.currentUser.uid;
-    let wishRef = firebaseDb.ref("planuary/" + userId);
+    let wishRef = firebaseDb.ref("wishes/" + userId);
     payload.createdDate = moment().format();
     wishRef.set(payload, error => {
       if (error) {
@@ -41,7 +42,7 @@ const actions = {
     });
   },
   fbReadWishes({ commit }) {
-    let wishes = firebaseDb.ref("planuary");
+    let wishes = firebaseDb.ref("wishes");
 
     //initial check for data
     wishes.once("value", snapshot => {
@@ -74,7 +75,7 @@ const actions = {
   },
   fbUpdateWish({ dispatch, commit }, payload) {
     let userId = firebaseAuth.currentUser.uid;
-    let taskRef = firebaseDb.ref("planuary/" + userId);
+    let taskRef = firebaseDb.ref("wishes/" + userId);
       
     taskRef.update(payload, error => {
       if (error) {

@@ -146,11 +146,11 @@ export default {
       dayOne: false,
       wishSubmitted: false,
       dayTwo: false,
-      focusOne: "",
-      focusTwo: "",
-      focusThree: null,
-      focusFour: null,
-      focusFive: "",
+      focus1: "",
+      focus2: "",
+      focus3: "",
+      focus4: "",
+      focus5: "",
       dayThree: false,
       wish1: "",
 
@@ -216,10 +216,54 @@ export default {
       get() {
         var wish = "";
         var userId = this.profile.id;
+        if (this.planuary[this.profile.id] != undefined) {
         return this.planuary[userId].wish;
+        } else {
+          return "";
+        }
       },
       set(value) {
         this.wish1 = value;
+      }
+    },
+    focusOne: {
+      get() {
+        return "Focus1"
+      },
+      set(value) {
+        this.focus1 = value;
+      }
+    },
+    focusTwo: {
+      get() {
+        return "Focus2"
+      },
+      set(value) {
+        this.focus2 = value;
+      }
+    },
+    focusThree: {
+      get() {
+        return "Focus3"
+      },
+      set(value) {
+        this.focus3 = value;
+      }
+    },
+    focusFour: {
+      get() {
+        return ""
+      },
+      set(value) {
+        this.focus4 = value;
+      }
+    },
+    focusFive: {
+      get() {
+        return ""
+      },
+      set(value) {
+        this.focus5 = value;
       }
     },
     // showProjectsOnPage: {
@@ -262,7 +306,8 @@ export default {
         message: "Your wish has been saved!",
         color: "primary",
       });
-      this.dayOne = !this.dayOne;
+      this.dayOne = false;
+      this.dayTwo = true;
     }
     }
   }
