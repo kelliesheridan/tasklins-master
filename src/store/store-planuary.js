@@ -28,11 +28,31 @@ const actions = {
     };
     dispatch("fbAddWish", payload);
   },
+  addFocus({ dispatch, commit }, focus) {
+    let payload = {
+      username: focus.username,
+      focus1: focus.focus1,
+      focus2: focus.focus2,
+      focus3: focus.focus3,
+    };
+    dispatch("fbAddFocus", payload);
+  },
   fbAddWish({ dispatch }, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let wishRef = firebaseDb.ref("wishes/" + userId);
     payload.createdDate = moment().format();
     wishRef.set(payload, error => {
+      if (error) {
+        showErrorMessage(error.message);
+      } else {
+      }
+    });
+  },
+  fbAddFocus({ dispatch }, payload) {
+    let userId = firebaseAuth.currentUser.uid;
+    let focusRef = firebaseDb.ref("focus/" + userId);
+    payload.createdDate = moment().format();
+    focusRef.set(payload, error => {
       if (error) {
         showErrorMessage(error.message);
       } else {

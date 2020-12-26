@@ -60,7 +60,7 @@
                 <q-input class="q-pa-xs" v-if="focusFour != null" rounded label="Focus Five" outlined v-model="focusFive"></q-input>
               </div>
               <div class="center q-pa-md">
-                <q-btn class="q-pa-xs" color="primary" size="md" label="Let's Go!" />
+                <q-btn @click="setFocus()" class="q-pa-xs" color="primary" size="md" label="Let's Go!" />
               </div>
             </div>
 
@@ -229,7 +229,7 @@ export default {
     },
     focusOne: {
       get() {
-        return "Focus1"
+        return this.focus1
       },
       set(value) {
         this.focus1 = value;
@@ -237,7 +237,7 @@ export default {
     },
     focusTwo: {
       get() {
-        return "Focus2"
+        return this.focus2
       },
       set(value) {
         this.focus2 = value;
@@ -245,7 +245,7 @@ export default {
     },
     focusThree: {
       get() {
-        return "Focus3"
+        return this.focus3
       },
       set(value) {
         this.focus3 = value;
@@ -293,7 +293,7 @@ export default {
     // }
   },
     methods: {
-    ...mapActions("planuary", ["addWish", "fbUpdateWish"]),
+    ...mapActions("planuary", ["addWish", "fbUpdateWish", "addFocus"]),
     setPlanuaryWish() {
       let payload = {
       username: this.profile.username,
@@ -310,6 +310,15 @@ export default {
       this.dayOne = false;
       this.dayTwo = true;
     }
+    },
+    setFocus() {
+      let payload = {
+        focus1: this.focus1,
+        focus2: this.focus2,
+        focus3: this.focus3,
+        username: this.profile.username
+      }
+      this.addFocus(payload);
     }
   }
 }
