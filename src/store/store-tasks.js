@@ -691,7 +691,7 @@ function getRepeatingTask(task) {
     var dueDateDay = moment(task.dueDate).day();
      if (daysNeeded.length > 0 && dueDateDay == daysNeeded[0]) {
        for (let i = 0; i < daysNeeded.length; i++) {
-        if (daysNeeded[i] > dueDateDay) {
+        if (daysNeeded[i] >= dueDateDay) {
           requiredDay = daysNeeded[i];
         }
        }
