@@ -293,15 +293,16 @@ export default {
   },
   methods: {
     getName(number) {
-      return this.random16[number] == undefined ? "" : this.random16[number][1].username;
+      //return this.random16[number] == undefined ? "" : this.random16[number][1].username;
+      return "Someone is wishing..."
     },
     getWish(number) {
       var array = [];
-      if (this.random16[number] == undefined ) {
+      if (this.random16[number - 1] == undefined ) {
         array.push("");
         return array;
       } else {
-         array.push(this.random16[number][1].wish);
+         array.push(this.random16[number - 1][1].wish);
         return array;
       }
     },

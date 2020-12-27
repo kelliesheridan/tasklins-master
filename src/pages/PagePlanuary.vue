@@ -134,6 +134,84 @@
           </q-card-section>
       </q-card>
     </div>
+
+    <div class="planuaryDay day-4">
+      <q-card>
+          <q-card-section>
+            <div class="text-h7 row">
+              <q-btn dense flat @click="dayFour = !dayFour">
+                Planuary. Day Four.
+              </q-btn>
+              <q-space />         
+
+              <q-btn v-if="dayFour" class="no-margin no-padding" flat round dense icon="edit" />
+              <q-btn @click="dayFour = !daFour" v-if="!dayFour" color="secondary" padding="none" class="no-margin no-padding" flat round dense icon="add" />
+            </div>
+          </q-card-section>
+
+          <q-card-section v-if="dayFour">
+            <p>Four days in and we still haven't talked about the traditional <i>New Year's Resolutions</i>. So, it's time to fix that! It's time to set your goals for the year, but there are a few things to keep in mind.</p>
+            <p></p>
+            
+            <div>
+              <div class="text-h7 focus-boxes center">
+                <q-input class="q-pa-xs" rounded label="Goal One" outlined v-model="focusOne"></q-input>
+                <q-input class="q-pa-xs" rounded label="Goal Two" outlined v-model="focusTwo"></q-input>
+                <q-input class="q-pa-xs" rounded label="Goal Three" outlined v-model="focusThree"></q-input>
+                <q-input class="q-pa-xs" v-if="focusThree != null" rounded label="Goal Four" outlined v-model="goalFour"></q-input>
+                <q-input class="q-pa-xs" v-if="goalFour != null" rounded label="Goal Five" outlined v-model="goalFive"></q-input>
+                <q-input class="q-pa-xs" v-if="goalSix != null" rounded label="Goal Six" outlined v-model="goalSix"></q-input>
+              </div>
+              <div class="center q-pa-md">
+                <q-btn @click="setFocus()" class="q-pa-xs" color="primary" size="md" label="Let's Go!" />
+              </div>
+            </div>
+
+            <div v-show="focusThree != null">
+              Done! If you haven't already, consider creating new projects here on Tasklins to go along with each of your focus areas, which you can do from the journal page.
+            </div>
+          </q-card-section>
+      </q-card>
+    </div>
+
+    <div class="planuaryDay day-5">
+      <q-card>
+          <q-card-section>
+            <div class="text-h7 row">
+              <q-btn dense flat @click="dayFive = !dayFive">
+                Planuary. Day Five.
+              </q-btn>
+              <q-space />         
+
+              <q-btn v-if="dayFive" class="no-margin no-padding" flat round dense icon="edit" />
+              <q-btn @click="dayFive = !dayFive" v-if="!dayFive" color="secondary" padding="none" class="no-margin no-padding" flat round dense icon="add" />
+            </div>
+          </q-card-section>
+
+          <q-card-section v-if="dayFive">
+            <p>Our wishes are now out there in the universe, but it's time to focus our efforts. Today's task is all about honing in on which areas of our life we most want to focus on for the new year. Take some time to come up with three to five general areas you want to focus your goals on this year. These can be anything from school to a side buisness to a skill you want to learn... anything! But don't worry too much about including the things you HAVE TO work on this year. They're going to be there no matter what, so instead try to focus on areas of your life you <i>want</i> to put more energy toward.</p>
+            <p>We're limiting these to six. If you have more than six things you're working toward this year, we'll be able to focus on those later as well. For now, hone in on the between one and six goals that feel most important to you.</p>
+            <div>
+              <div class="text-h7 focus-boxes center">
+                <q-input class="q-pa-xs" rounded label="Focus One" outlined v-model="focusOne"></q-input>
+                <q-input class="q-pa-xs" rounded label="Focus Two" outlined v-model="focusTwo"></q-input>
+                <q-input class="q-pa-xs" rounded label="Focus Three" outlined v-model="focusThree"></q-input>
+                <q-input class="q-pa-xs" v-if="goalThree != ''" rounded label="Focus Four" outlined v-model="focusFour"></q-input>
+                <q-input class="q-pa-xs" v-if="goalFour != ''" rounded label="Focus Five" outlined v-model="focusFive"></q-input>
+                <q-input class="q-pa-xs" v-if="goalFove != ''" rounded label="Focus Six" outlined v-model="focusSix"></q-input>
+              </div>
+              <div class="center q-pa-md">
+                <q-btn @click="setGoals()" class="q-pa-xs" color="primary" size="md" label="Let's Go!" />
+              </div>
+            </div>
+
+            <div v-show="focusThree != null">
+              Done! If you haven't already, consider creating new projects here on Tasklins to go along with each of your focus areas, which you can do from the journal page.
+            </div>
+          </q-card-section>
+      </q-card>
+    </div>
+
   </q-page>
 </template>
 
@@ -178,6 +256,12 @@ export default {
       ],
       mood_1: null,
       dayFour: false,
+      goal1: "",
+      goal2: "",
+      goal3: "",
+      goal4: "",
+      goal5: "",
+      goal6: "",
       dayFive: false,
       daySix: false,
       daySeven: false,
@@ -267,6 +351,54 @@ export default {
         this.focus5 = value;
       }
     },
+    goalOne: {
+      get() {
+        return this.goal1
+      },
+      set(value) {
+        this.goal1 = value;
+      }
+    },
+    goalTwo: {
+      get() {
+        return this.goal2
+      },
+      set(value) {
+        this.goal2 = value;
+      }
+    },
+    goalThree: {
+      get() {
+        return this.goal3
+      },
+      set(value) {
+        this.goal3 = value;
+      }
+    },
+    goalFour: {
+      get() {
+        return this.goal4
+      },
+      set(value) {
+        this.goal4 = value;
+      }
+    },
+    goalFive: {
+      get() {
+        return this.goal5
+      },
+      set(value) {
+        this.goal5 = value;
+      }
+    },
+    goalSix: {
+      get() {
+        return this.goal6
+      },
+      set(value) {
+        this.goal6 = value;
+      }
+    },
     // showProjectsOnPage: {
     //   get() {
     //     return this.settings.showProjectsOnPage;
@@ -316,9 +448,23 @@ export default {
         focus1: this.focus1,
         focus2: this.focus2,
         focus3: this.focus3,
+        focus4: this.focus4,
+        focus5: this.focus5,
         username: this.profile.username
       }
       this.addFocus(payload);
+    },
+    setGoals() {
+      let payload = {
+        goal1: this.goal1,
+        goal2: this.goal2,
+        goal3: this.goal3,
+        goal4: this.goal1,
+        goal5: this.goal2,
+        goal6: this.goal3,
+        username: this.profile.username
+      }
+      this.addGoals(payload);
     }
   }
 }

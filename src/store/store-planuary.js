@@ -34,8 +34,22 @@ const actions = {
       focus1: focus.focus1,
       focus2: focus.focus2,
       focus3: focus.focus3,
+      focus4: focus.focus4,
+      focus5: focus.focus5,
     };
     dispatch("fbAddFocus", payload);
+  },
+  addGoals({ dispatch, commit }, goal) {
+    let payload = {
+      username: goal.username,
+      goal1:  goal.goal1,
+      goal2: goal.goal2,
+      goal3: goal.goal3,
+      goal4: goal.goal4,
+      goal5: goal.goal5,
+      goal6: goal.goal6,
+    };
+    dispatch("fbAddGoals", payload);
   },
   fbAddWish({ dispatch }, payload) {
     let userId = firebaseAuth.currentUser.uid;
@@ -53,6 +67,17 @@ const actions = {
     let focusRef = firebaseDb.ref("focus/" + userId);
     payload.createdDate = moment().format();
     focusRef.set(payload, error => {
+      if (error) {
+        showErrorMessage(error.message);
+      } else {
+      }
+    });
+  },
+  fbAddGoals({ dispatch }, payload) {
+    let userId = firebaseAuth.currentUser.uid;
+    let goalsRef = firebaseDb.ref("goals/" + userId);
+    payload.createdDate = moment().format();
+    goalsRef.set(payload, error => {
       if (error) {
         showErrorMessage(error.message);
       } else {

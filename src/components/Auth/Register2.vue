@@ -223,12 +223,17 @@ export default {
     
     addNewTasklin() {
       // static fields
-      const bodyShapeArray = ["Ghost", "Round", "Squat"]
+      const bodyShapeArray = ["Ghost", "Round", "Squat", "Felt"]
+      const bodyShape2Array = ["Tall", "Short"]
       const bodyTextureArray = ["Charred", "Crumpled", "Stitched"]
       const eyeArray = ["1", "2", "3", "4", "5"];
-      const mouthArray = 5;
-      const tongueArray = ["happy1", "happy2", "shock1", "shock2", "worried"]
-      const tongueArrayColors = ["cyan", "green", "pink", "red"]
+      const mouthArray = ["1", "2", "3", "4", "5"];
+      const noseArray =["1", "2", "3", "4"];
+      const patternArray =["1", "2", "3", "4"];
+      const tongueArray = ["1", "2"]
+      const colorArray = ["blue", "brown", "cyan", "green", "grey", "orange", "pink", "purple", "red", "yellow"]
+      const tailEyebrowsArray = ["1", "2", "3"];
+      const earsHornsArray = ["1", "2", "3"];
       let tasklin = {
         name: "",
         creation_date: Date.now(),
@@ -237,19 +242,19 @@ export default {
         xp: 0,
         level: 1,
         color: this.profile.color,
-        color2: "",
-        color3: "",
+        color2: colorArray[Math.floor(Math.random() * colorArray.length)],
+        color3: colorArray[Math.floor(Math.random() * colorArray.length)],
         bodyShape: bodyShapeArray[Math.floor(Math.random() * bodyShapeArray.length)],
         bodyTexture: bodyTextureArray[Math.floor(Math.random() * bodyTextureArray.length)],
         eyeColor: this.profile.color,
         eyeType: "eyes" + eyeArray[Math.floor(Math.random() * eyeArray.length)],
-        nose: "",
+        nose: "nose" + noseArray[Math.floor(Math.random() * noseArray.length)],
         mouth: "mouth" + mouthArray[Math.floor(Math.random() * mouthArray.length)],
-        pattern1: "",
-        eyebrowsOrTail: "",
-        earsOrHorns: "",
-        bodyShape2: "",
-        pattern2: "",
+        pattern1: "pattern" + patternArray[Math.floor(Math.random() * patternArray.length)],
+        eyebrowsOrTail: "tailEyebrows" + tailEyebrowsArray[Math.floor(Math.random() * tailEyebrowsArray.length)],
+        earsOrHorns: "earsHorns" + earsHornsArray[Math.floor(Math.random() * earsHornsArray.length)],
+        bodyShape2: bodyShape2Array[Math.floor(Math.random() * bodyShape2Array.length)],
+        pattern2: "pattern" + patternArray[Math.floor(Math.random() * patternArray.length)],
         hatched: false,
         tongue: tongueArrayColors[Math.floor(Math.random() * tongueArrayColors.length)]
       };
