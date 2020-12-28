@@ -34,7 +34,7 @@
       </q-card>
     </div>
 
-    <div class="planuaryDay day-2">
+    <div class="planuaryDay day-2" v-if="dayTwo">
       <q-card>
           <q-card-section>
             <div class="text-h7 row">
@@ -71,7 +71,7 @@
       </q-card>
     </div>
 
-    <div class="planuaryDay day-3">
+    <div class="planuaryDay day-3" v-if="dayThree">
       <q-card>
           <q-card-section>
             <div class="text-h7 row">
@@ -135,7 +135,7 @@
       </q-card>
     </div>
 
-    <div class="planuaryDay day-4">
+    <div class="planuaryDay day-4" v-if="dayFour">
       <q-card>
           <q-card-section>
             <div class="text-h7 row">
@@ -174,7 +174,7 @@
       </q-card>
     </div>
 
-    <div class="planuaryDay day-5">
+    <div class="planuaryDay day-5" v-if="dayFive">
       <q-card>
           <q-card-section>
             <div class="text-h7 row">
@@ -221,15 +221,17 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   data() {
     return {
-      dayOne: false,
+      dayOne: true,
       wishSubmitted: false,
       dayTwo: false,
+      dayThree: false,
+      dayFour: false,
+      dayFive: false,
       focus1: "",
       focus2: "",
       focus3: "",
       focus4: "",
       focus5: "",
-      dayThree: false,
       wish1: "",
 
       options: [
@@ -255,14 +257,12 @@ export default {
         }
       ],
       mood_1: null,
-      dayFour: false,
       goal1: "",
       goal2: "",
       goal3: "",
       goal4: "",
       goal5: "",
       goal6: "",
-      dayFive: false,
       daySix: false,
       daySeven: false,
       dayEight: false,
@@ -453,6 +453,8 @@ export default {
         username: this.profile.username
       }
       this.addFocus(payload);
+      this.dayTwo = false;
+      this.dayThree = true;
     },
     setGoals() {
       let payload = {

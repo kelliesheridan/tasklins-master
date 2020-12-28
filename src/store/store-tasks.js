@@ -200,7 +200,7 @@ const actions = {
       if (error) {
         showErrorMessage(error.message);
       } else {
-        dispatch("fbReadData");
+        //dispatch("fbReadData");
       }
     });
     // check for repeating task
