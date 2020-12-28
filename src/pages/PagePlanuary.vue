@@ -145,14 +145,16 @@
               <q-space />         
 
               <q-btn v-if="dayFour" class="no-margin no-padding" flat round dense icon="edit" />
-              <q-btn @click="dayFour = !daFour" v-if="!dayFour" color="secondary" padding="none" class="no-margin no-padding" flat round dense icon="add" />
+              <q-btn @click="dayFour = !dayFour" v-if="!dayFour" color="secondary" padding="none" class="no-margin no-padding" flat round dense icon="add" />
             </div>
           </q-card-section>
 
           <q-card-section v-if="dayFour">
             <p>Four days in and we still haven't talked about the traditional <i>New Year's Resolutions</i>. So, it's time to fix that! It's time to set your goals for the year, but there are a few things to keep in mind.</p>
-            <p></p>
-            
+            <p>1) Make sure your goals are things you have control over. Things like winning the lottery, having someone fall in love with you or getting a book agent rely on luck or other people's choices and don't usually make for strong goals.</p>
+            <p>2) Try to focus on goals you can measure. Practicing Spanish for 20 minutes every day vs. getting better at Spanish.</p>
+            <p>3) At the end of the day, there are no rules! Your goals can be whatever you need them to be.</p>
+
             <div>
               <div class="text-h7 focus-boxes center">
                 <q-input class="q-pa-xs" rounded label="Goal One" outlined v-model="focusOne"></q-input>

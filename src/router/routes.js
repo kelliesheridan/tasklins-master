@@ -20,6 +20,7 @@ const routes = [
       { path: 'auth2', component: () => import('pages/PageAuth2.vue') },      
       { path: 'challenges', component: () => import('pages/PageChallenges.vue') },
       { path: 'planuary', component: () => import('pages/PagePlanuary.vue') },
+      { path: 'news', component: () => import('pages/PageNews.vue') },
       { path: 'journal', component: () => import('pages/PageJournal.vue') },
       { path: 'town', component: () => import('pages/map/town.vue') },
       { path: 'wish-sky', component: () => import('pages/map/wishSky.vue') },
