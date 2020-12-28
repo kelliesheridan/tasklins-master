@@ -425,7 +425,7 @@ export default {
     // }
   },
     methods: {
-    ...mapActions("planuary", ["addWish", "fbUpdateWish", "addFocus"]),
+    ...mapActions("planuary", ["addWish", "fbUpdateWish", "addFocus", "addGoals"]),
     setPlanuaryWish() {
       let payload = {
       username: this.profile.username,
