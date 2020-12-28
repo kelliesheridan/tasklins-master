@@ -9,6 +9,12 @@
 
       <template v-if="tasksDownloaded">
         <div class="section col-xs-12 col-sm-12 col-md-6 col-lg-6 q-pa-xs" style="overflow: auto; height: 90%">
+          <div class="notebookMain">
+            <div class="notebook__inner">
+              
+            </div>
+
+          </div>
           <!-- <p
             v-if="(search || projectSearch) && !Object.keys(tasksTodo).length && !Object.keys(tasksCompleted).length"
           >
