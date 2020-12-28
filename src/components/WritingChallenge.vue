@@ -112,7 +112,7 @@ export default {
     //cheer: false
   }),
     components: {
-    "challengeModal": require("components/Tasks/Modals/addChallengeTask.vue").default,
+    "challengeModal": require("components/Tasks/Modals/addWritingTask.vue").default,
   },
   computed: {
     ...mapGetters("writing", ["writing", "writingChallenge"]),
@@ -255,6 +255,9 @@ export default {
                   break;
                 case "homework":
                   activity += " did homework! There was writing involved.";
+                  break;
+                default:
+                  activity += " " + writing[element].type;
                   break;
               }
             }

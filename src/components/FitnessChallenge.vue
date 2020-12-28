@@ -275,6 +275,9 @@ export default {
                   activity +=
                     " did something else? It was probably a healthy thing!";
                   break;
+                default:
+                  activity += " " + fitness[element].type;
+                  break;
                 // case "cheer":
                 //   activity += " cheered for someone! Who? We'll figure that out later."
                 //   break;
