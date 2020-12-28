@@ -1,7 +1,20 @@
 <template>
   <q-page padding>
+
+    <q-dialog v-if="addChallengeTask" v-model="addChallengeTask" >
+      <challengeModal />
+    </q-dialog>
+
     <div class="q-pa-md text-center">
-      <q-btn-dropdown
+      <q-btn
+        class="q-mr-sm"
+        color="light-green"
+        label="I Did Something"
+        icon="create"
+        @click="addChallengeTask = true">
+      </q-btn>
+
+      <!-- <q-btn-dropdown
         class="q-mr-sm"
         color="light-green"
         label="I Did Something"
@@ -45,7 +58,7 @@
           
 
         </q-list>
-      </q-btn-dropdown>
+      </q-btn-dropdown> -->
     </div>
 
     <div 
@@ -94,9 +107,13 @@ const moment = require('moment')
 export default {
   data: () => ({
     update: 0,
+    addChallengeTask: false,
     count: 12
     //cheer: false
   }),
+    components: {
+    "challengeModal": require("components/Tasks/Modals/addChallengeTask.vue").default,
+  },
   computed: {
     ...mapGetters("writing", ["writing", "writingChallenge"]),
     ...mapGetters('settings', ['settings']),
