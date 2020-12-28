@@ -4,11 +4,11 @@
       <q-card>
           <q-card-section>
             <div class="text-h7 row">
-              <q-btn dense flat @click="dayOne = !dayOne">
+              <q-btn  v-show="!wishSubmitted" dense flat @click="dayOne = !dayOne">
                 Planuary. Day One.
-              </q-btn>                  
+              </q-btn>
+              <p class="center" v-show="wishSubmitted">That's all for today! Check back tomorrow, or visit the explore page and look up at the night's sky. <i>Hint: This will only work in dark mode, which you can access through settings.</i></p>         
               <q-space />       
-              <q-btn v-if="dayOne" flat round dense icon="edit" />
               <q-btn @click="dayOne = !dayOne" v-if="!dayOne" padding="none" class="no-margin" flat color="secondary" round dense icon="add" />
             </div>
           </q-card-section>
@@ -23,13 +23,9 @@
               <q-input class="q-m-xs" rounded label="Make a Wish!" outlined v-model="yourWish"></q-input>
             </div>
             <div class="center q-pa-md">
-              <q-btn @click="'wishSubmitted == true' && setPlanuaryWish()"  class="q-pa-xs" color="primary" size="md" label="Send Your Wish!" />              
+              <q-btn @click="'wishSubmitted = true' && setPlanuaryWish()"  class="q-pa-xs" color="primary" size="md" label="Send Your Wish!" />              
             </div>
-            </div>
-
-            <div class="center" v-show="wishSubmitted">
-              <p>That's all for today! Check back tomorrow, or visit the explore page and look up at the night's sky. <i>Hint: This will only work in dark mode, which you can access through settings.</i></p>
-            </div>          
+            </div>       
           </q-card-section>
       </q-card>
     </div>
@@ -191,8 +187,8 @@
           </q-card-section>
 
           <q-card-section v-if="dayFive">
-            <p>Our wishes are now out there in the universe, but it's time to focus our efforts. Today's task is all about honing in on which areas of our life we most want to focus on for the new year. Take some time to come up with three to five general areas you want to focus your goals on this year. These can be anything from school to a side buisness to a skill you want to learn... anything! But don't worry too much about including the things you HAVE TO work on this year. They're going to be there no matter what, so instead try to focus on areas of your life you <i>want</i> to put more energy toward.</p>
-            <p>We're limiting these to six. If you have more than six things you're working toward this year, we'll be able to focus on those later as well. For now, hone in on the between one and six goals that feel most important to you.</p>
+            <p>There's no way to know for sure what is coming for any of us this year, but we all have things we're looking forward to! Today's task is to focus on the good, the exciting, the fun!</P>
+            <p>Let's make a list of all the things you're looking forward to this year. </p>
             <div>
               <div class="text-h7 focus-boxes center">
                 <q-input class="q-pa-xs" rounded label="Focus One" outlined v-model="focusOne"></q-input>
