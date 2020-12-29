@@ -1,11 +1,17 @@
 <template>
-	 <q-select
+	 <!-- <q-select
       outlined
       v-model="projectSearchField"      
       label="Project"
       class="col"
       :options="projectOptions">
-  </q-select>
+  </q-select> -->
+
+  <ul id="project-list">
+  <li v-for="project in projectOptions">
+    {{ project }}
+  </li>
+</ul>
 </template>
 
 <script>
