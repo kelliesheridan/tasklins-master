@@ -1,169 +1,41 @@
-
-.card-register {
-  padding: .5rem;
-  
-  @include respond(big-desktop) {
-    max-width: 50vw;
-    margin: 0 auto;    
-  }
-
-  @include respond(tab-land) {
-    max-width: 70vw;
-    margin: 0 auto;
-  }
- 
-  @include respond(tab-port) {
-    max-width: 80vw;
-    margin: 0 auto;
-  }
-
-  @include respond(phone) {
-    max-width: 100vw;
-    margin: 0 auto;
-  }
+.notebookMain {
+	max-width: 800px;
+	min-width: 550px;
+	min-height: 670px;
+	border-radius: 16px;
+	background: #30575a;
+  padding: 20px 10px 20px;
 }
-
-  .bg-auth {
-    background-color: #eceff1;
-  }
-
-  .auth-input {
-      margin: 0px;
-      margin-right: 10px;
-      margin-left: 10px;        
-  }
-
-  .auth-section {
-    padding: 5px;    
-  }
-
-  .auth-btn {
-    margin: 5px;
-    width: 225px;        
-    margin-bottom: 50px;
-
-    @include respond(phone) {
-      margin-bottom: 10px;
-    }
-  }
-
-  .auth-register-btn {
-    margin: 10px;
-  }
-
-  .auth-picker {
-    max-width: 250px
-  }
-
-  .panel-details {
-    background-color: #607d8b;
-    color: #ffffff;
-  }
-
-  input {
-    margin-left: 5px;
-  }
-
-  input:invalid {
-    color: black;
-  }
   
-  .q-field {
-    margin-left: 5px;
-  }
-
-  input:-webkit-autofill,
-  input:-webkit-autofill:hover, 
-  input:-webkit-autofill:focus,
-  textarea:-webkit-autofill,
-  textarea:-webkit-autofill:hover,
-  textarea:-webkit-autofill:focus,
-  select:-webkit-autofill,
-  select:-webkit-autofill:hover,
-  select:-webkit-autofill:focus {
-    border: 0px solid white;
-    -webkit-text-fill-color: black;
-    -webkit-box-shadow: 0 0 0px 1000px #c8e6c9 inset;
-    box-shadow: 0 0 0px 1000px #c8e6c9 inset;
-    transition: background-color 5000s ease-in-out 0s;
-    margin-left: 5px;
-  }
-
-  .about-section {
-    padding: 15px;
-    width: 50%;
-    margin: 0 auto;
-    
-    @include respond(tab-land) {
-      width: 90%;
-    }
-  }
-
-  .section-features {
-    margin: 0 auto;
-    padding: 10rem 0;
-    height: 800px;
-    background-image:linear-gradient(
-        to right bottom,
-        rgba(#607d8b, 0.6),
-        rgba(#c8e6c9, 0.6)),
-        url("https://www.testingtheapp.tasklins.com/statics/trees.jpg");
-    background-size: cover;
-    background-position: top;
+	.notebookInner {
+		width: 100%;
+		height: 100%;
     position: relative;
-    
-    @include respond(tab-land) {
-        height: 800px;
-    }
-
-    @include respond(phone) {
-        height: 1200px;
-    }
-}
-
-.feature-list {
-  width: 55%;
-  margin: 0 auto;
-
-  @include respond(phone) {                
-    width: 90%;
-}
-
-  @include respond(tab-land) {                
-    width: 90%;
-  }
-}
-
-.text-design-main {
-  color: #30575a;
-}
-
-.feature-box {
-  background-color: rgba(#fff, .8);
-  font-size: 1.5rem;
-  padding: 2.5rem;
-  text-align: center;
-  border-radius: 3px;
-  box-shadow: 0 1.5rem rgba(#000, .15);
-  transition: transform .3s;
-
-  @include respond(tab-port) {                
-      padding: 2rem;
+		border-radius: 6px;
+		background: linear-gradient(90deg, #fbfae8 15px, transparent 1%) center,
+			linear-gradient(#fbfae8 15px, transparent 1%) center, #ccc;
+		background-size: 16px 16px;
+		padding: 650px 20px 25px;
+		// grid-template-areas:
+		// 	"title expenses picture"
+		// 	"days expenses picture"
+		// 	"days expenses picture"
+		// 	"days goals quote"
+		// 	"notes tracker tracker";
+		// grid-template-columns: 50% 30% 20%;
+		// grid-template-rows: 18% auto auto 30% 25%;
+		// &:after {
+		// 	content: "";
+		// 	width: 100px;
+		// 	height: 100%;
+		// 	top: 0;
+		// 	margin: auto;
+		// 	left: 0;
+		// 	right: 0;
+		// 	position: absolute;
+		// }
   }
 
-  &__icon {
-      font-size: 6rem;
-      margin-bottom: .5rem;
-      display: inline-block;
-      color:  #30575a;
-      -webkit-background-clip: text;
-
-      @include respond(tab-port) {                
-          margin-bottom: 0;
-      }
+  .buttonRowJournal {
+    margin-bottom: -12px;
   }
-
-  &:hover {
-      transform: translateY(-1.5rem) scale(1.03);
-  }
-}

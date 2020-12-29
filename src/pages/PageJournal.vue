@@ -1,44 +1,45 @@
 <template>
   <q-page>
     <div class="q-pa-md absolute full-width full-height gopher">
-      <div class="row q-mb-md">
+      <!-- <div class="row q-mb-md">
         <sort />
         <projectList class="col-3 project-select" />
-        <q-btn @click="showAddProject = true" class="new-project-btn" color="primary" label="New Project" />
-      </div>
+      </div> -->
 
       <template v-if="tasksDownloaded">
-        <div class="section col-xs-12 col-sm-12 col-md-6 col-lg-6 q-pa-xs" style="overflow: auto; height: 90%">
+        <div class="col-6" style="overflow: auto;">
           <div class="notebookMain">
-            <div class="notebook__inner">
+            <div class="notebookInner">
+              <div class="notebookPages">
+                <div v-show="pageNumber == 0" class="notebookPage0 center">Journal</div>
+                <div v-show="pageNumber == 1" class="notebookPage1">
+                  <header>Index</header>
+                  <br>
+                  
+                </div>
+                <div v-show="pageNumber == 2" class="notebookPage1">
+                  <header>Projects</header>
+                  <br>
+                  <q-btn @click="showAddProject = true" class="new-project-btn" color="primary" label="New Project" />
+                </div>
+
+            
+              </div>
+
+            </div>
+            <div>
+        <div class="q-pa-sm row buttonRowJournal">
+          <div class="col-6 center">
+          <q-btn color="secondary" v-show="pageNumber >= 1" push icon="keyboard_arrow_left" @click = "pageNumber--" />
+          <span class="q-pa-md"> {{ pageNumber }} </span>
+          <q-btn color="secondary" v-show="pageNumber <= 8" push icon="keyboard_arrow_right" @click = "pageNumber++" />
+          </div>
+        </div>
               
             </div>
 
           </div>
-          <!-- <p
-            v-if="(search || projectSearch) && !Object.keys(tasksTodo).length && !Object.keys(tasksCompleted).length"
-          >
-            No search results.
-          </p>
 
-          <no-tasks v-if="!Object.keys(tasksTodo).length && !search"></no-tasks>
-
-          <tasks-todo
-            class="toDoScroll"
-            v-if="Object.keys(tasksTodo).length"
-            :tasksTodo="tasksTodo"
-          />
-
-          <tasks-completed
-            class="toDoScroll"
-            v-if="Object.keys(tasksCompleted).length"
-            :tasksCompleted="tasksCompleted"
-          /> -->
-
-           <!-- <tasks-completed-today
-            class="toDoScroll"
-            :tasksCompletedToday="tasksCompletedToday"
-          /> -->
 
 <!--         <tasks-completed-this-week
             class="toDoScroll"
@@ -46,6 +47,8 @@
           /> -->
 
         </div>
+
+        
         
         <q-dialog v-model="showAddProject">
           <add-project @close="showAddProject = false" />
@@ -67,7 +70,8 @@ import { mapGetters, mapState } from "vuex";
 export default {
   data() {
     return {
-      showAddProject: false
+      showAddProject: false,
+      pageNumber: 1
     };
   },
   computed: {
@@ -81,8 +85,8 @@ export default {
     // "tasks-completed": require("components/Tasks/TasksCompleted.vue").default,
     //"tasks-completed-today": require("components/Tasks/TasksCompletedToday.vue").default,
     //"tasks-completed-this-week": require("components/Tasks/TasksCompletedThisWeek.vue").default,
-    "sort": require("components/Tasks/Tools/Sort.vue").default,
-    "projectList": require("components/Tasks/Tools/ProjectList.vue").default,
+    // "sort": require("components/Tasks/Tools/Sort.vue").default,
+    // "projectList": require("components/Tasks/Tools/ProjectList.vue").default,
     // "no-tasks": require("components/Tasks/NoTasks.vue").default,
   }
 };
