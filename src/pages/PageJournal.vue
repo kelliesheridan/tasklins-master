@@ -29,10 +29,12 @@
                 </div>
                 <div
                   v-show="pageNumber == 2"
-                  class="notebookPage1"
+                  class="notebookPage2"
                   style="margin-top: -80%"
                 >
-                  <header><project></project></header>
+                  <h4>Projects</h4>
+                  <project></project>
+                  
                   <br />
                   <q-btn
                     @click="showAddProject = true"
@@ -40,6 +42,21 @@
                     color="primary"
                     label="New Project"
                   />
+
+                  <q-btn
+                    @click="showMoodPicker = true"
+                    class="new-project-btn"
+                    color="primary"
+                    label="Mood Picker"
+                  />
+                </div>
+                <div
+                  v-show="pageNumber == 3"
+                  class="notebookPage3"
+                  style="margin-top: -80%"
+                >
+                  <h4>This Week</h4>
+
                 </div>
               </div>
             </div>
@@ -75,6 +92,10 @@
         <q-dialog v-model="showAddProject">
           <add-project @close="showAddProject = false" />
         </q-dialog>
+
+        <q-dialog v-model="showMoodPicker">
+          <mood-picker @close="showMoodPicker = false" />
+        </q-dialog>
       </template>
 
       <template v-else>
@@ -93,6 +114,7 @@ export default {
   data() {
     return {
       showAddProject: false,
+      showMoodPicker: false,
       pageNumber: 1
     };
   },
@@ -111,6 +133,7 @@ export default {
   },
   components: {
     "add-project": require("components/Tasks/Modals/addProject.vue").default,
+    "mood-picker": require("components/Tasks/Modals/moodPicker.vue").default,
     project: require("components/Tasks/Tools/ProjectList.vue").default
     // "tasks-todo": require("components/Tasks/TasksTodo.vue").default,
     // "tasks-completed": require("components/Tasks/TasksCompleted.vue").default,
