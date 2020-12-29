@@ -140,6 +140,10 @@ const actions = {
     commit("setPronouns", value);
     //dispatch('fbUpdateProfile')
   },
+  setMood({ commit, dispatch }, value) {
+    dispatch("fbSetMood", value);
+    //dispatch('fbUpdateProfile')
+  },
   fbReadProfile({ dispatch, commit }) {
     let userId = firebaseAuth.currentUser.uid;
     let userProfile = firebaseDb.ref("profile/" + userId);
@@ -218,7 +222,18 @@ const actions = {
         );
       }
     });
-  }
+  },
+  fbSetMood({ dispatch }, payload) {
+    let userId = firebaseAuth.currentUser.uid;
+    let currentDate = moment().format("YYYY-MM-DD");
+    let moodRef = firebaseDb.ref("mood/" + userId + "/" + currentDate);
+    moodRef.set(payload, error => {
+      if (error) {
+        showErrorMessage(error.message);
+      } else {
+      }
+    });
+  },
 };
 function mutateLin(min, max) {
   var lin = Math.floor(Math.random() * (max - min + 1)) + min;

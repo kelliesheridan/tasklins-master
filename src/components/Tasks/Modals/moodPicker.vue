@@ -5,19 +5,19 @@
       src="/statics/moods/happy.png"
       spinner-color="white"
       style="height: 100px; max-width: 100px"
-      @click="mood = 'happy'"
+      @click="mood = 'happy'; setUserMood(mood)"
     />
     <q-img
       src="/statics/moods/fine.png"
       spinner-color="white"
       style="height: 100px; max-width: 100px"
-      @click="mood = 'fine'"
+      @click="mood = 'fine'; setUserMood(mood)"
     />
     <q-img
       src="/statics/moods/glum.png"
       spinner-color="white"
       style="height: 100px; max-width: 100px"
-      @click="mood = 'glum'"
+      @click="mood = 'glum'; setUserMood(mood)"
     />
   </q-card>
 </template>
@@ -37,6 +37,10 @@ export default {
   components: {
   },
   methods: {
+    ...mapActions("profile", ["setMood"]),
+    setUserMood(mood) {
+      this.setMood(mood);
+    }
   }
 };
 </script>
