@@ -9,12 +9,19 @@
       <template v-if="tasksDownloaded">
         <div class="col-6" style="overflow: auto;">
           <div class="notebookMain">
-            <div class="notebookInner">
+              <div v-show="pageNumber == 0" class="notebookTitle">
+                <div class="notebookPage0 center">
+                  <h1 class="traced-header">Journal</h1>
+                </div>
+              </div>
+
+            <div v-show="pageNumber !== 0" class="notebookInner">
               <div class="notebookPages">
-                <div v-show="pageNumber == 0" class="notebookPage0 center">Journal</div>
                 <div v-show="pageNumber == 1" class="notebookPage1">
-                  <header>Index</header>
+                  <h4>Index</h4>
                   <br>
+                  <p>Projects</p>
+                  <p>This Week</p>
                   
                 </div>
                 <div v-show="pageNumber == 2" class="notebookPage1">

@@ -55,6 +55,7 @@
                 <q-input class="q-pa-xs" v-if="focusThree != null" rounded label="Focus Four" outlined v-model="focusFour"></q-input>
                 <q-input class="q-pa-xs" v-if="focusFour != null" rounded label="Focus Five" outlined v-model="focusFive"></q-input>
               </div>
+              <p><i>Anything listed here will remain private and not be posted elsewhere on the website.</i></p>
               <div class="center q-pa-md">
                 <q-btn @click="setFocus()" class="q-pa-xs" color="primary" size="md" label="Let's Go!" />
               </div>
@@ -160,8 +161,9 @@
                 <q-input class="q-pa-xs" v-if="goalFour != null" rounded label="Goal Five" outlined v-model="goalFive"></q-input>
                 <q-input class="q-pa-xs" v-if="goalSix != null" rounded label="Goal Six" outlined v-model="goalSix"></q-input>
               </div>
+              <p><i>Anything listed here will remain private and not be posted elsewhere on the website.</i></p>
               <div class="center q-pa-md">
-                <q-btn @click="setFocus()" class="q-pa-xs" color="primary" size="md" label="Let's Go!" />
+                <q-btn @click="setFocus()" class="q-pa-xs" color="primary" size="md" label="Onward" />
               </div>
             </div>
 
@@ -188,18 +190,20 @@
 
           <q-card-section v-if="dayFive">
             <p>There's no way to know for sure what is coming for any of us this year, but we all have things we're looking forward to! Today's task is to focus on the good, the exciting, the fun!</P>
-            <p>Let's make a list of all the things you're looking forward to this year. </p>
+            <p>Let's make a list of all the things you're looking forward to this year. This can be anything from a big birthday to a new album or movie you're looking forward to, or a class you're going to take!</p>
+            
             <div>
               <div class="text-h7 focus-boxes center">
-                <q-input class="q-pa-xs" rounded label="Focus One" outlined v-model="focusOne"></q-input>
-                <q-input class="q-pa-xs" rounded label="Focus Two" outlined v-model="focusTwo"></q-input>
-                <q-input class="q-pa-xs" rounded label="Focus Three" outlined v-model="focusThree"></q-input>
-                <q-input class="q-pa-xs" v-if="goalThree != ''" rounded label="Focus Four" outlined v-model="focusFour"></q-input>
-                <q-input class="q-pa-xs" v-if="goalFour != ''" rounded label="Focus Five" outlined v-model="focusFive"></q-input>
-                <q-input class="q-pa-xs" v-if="goalFove != ''" rounded label="Focus Six" outlined v-model="focusSix"></q-input>
+                <q-input class="q-pa-xs" rounded label="Focus One" outlined v-model="hightlightOne"></q-input>
+                <q-input class="q-pa-xs" rounded label="Focus Two" outlined v-model="hightlightTwo"></q-input>
+                <q-input class="q-pa-xs" rounded label="Focus Three" outlined v-model="hightlightThree"></q-input>
+                <q-input class="q-pa-xs" v-if="goalThree != ''" rounded label="Focus Four" outlined v-model="hightlightFour"></q-input>
+                <q-input class="q-pa-xs" v-if="goalFour != ''" rounded label="Focus Five" outlined v-model="hightlightFive"></q-input>
+                <q-input class="q-pa-xs" v-if="goalFove != ''" rounded label="Focus Six" outlined v-model="hightlightSix"></q-input>
               </div>
+              <p><i>Anything listed here will remain private and not be posted elsewhere on the website.</i></p>
               <div class="center q-pa-md">
-                <q-btn @click="setGoals()" class="q-pa-xs" color="primary" size="md" label="Let's Go!" />
+                <q-btn @click="setGoals()" class="q-pa-xs" color="primary" size="md" label="Now, let's see what happens!" />
               </div>
             </div>
 

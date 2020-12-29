@@ -15,7 +15,7 @@
 		background: linear-gradient(90deg, #fbfae8 15px, transparent 1%) center,
 			linear-gradient(#fbfae8 15px, transparent 1%) center, #ccc;
 		background-size: 16px 16px;
-		padding: 650px 20px 25px;
+		padding: 600px 20px 25px;
 		// grid-template-areas:
 		// 	"title expenses picture"
 		// 	"days expenses picture"
@@ -36,6 +36,26 @@
 		// }
   }
 
+  .notebookTitle {
+		width: 100%;
+		height: 100%;
+    position: relative;
+		border-radius: 6px;
+		background-size: 16px 16px;
+		padding: 650px 20px 25px;
+  }
+
+
   .buttonRowJournal {
     margin-bottom: -12px;
+  }
+
+  .traced-header {
+    grid-column: 1 / -1;
+    margin-top: -500px;
+  }
+  
+  .notebookPage0 {
+    border-radius: 6px;
+    background: #fbfae8;
   }
