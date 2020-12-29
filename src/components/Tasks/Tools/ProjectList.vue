@@ -1,5 +1,5 @@
 <template>
-	 <!-- <q-select
+  <!-- <q-select
       outlined
       v-model="projectSearchField"      
       label="Project"
@@ -8,42 +8,44 @@
   </q-select> -->
 
   <ul id="project-list">
-  <li v-for="project in projectOptions">
-    {{ project }}
-  </li>
-</ul>
+    <p v-for="project in this.projectOptions" :key="project">
+      <q-btn dense flat @click="projectClick(project)">
+        {{ project }}
+      </q-btn>
+    </p>
+  </ul>
 </template>
 
 <script>
-	import { mapStore, mapState, mapActions } from 'vuex'
-	
-	export default {
-		computed: {
-      ...mapState('tasks', ['projectSearch']),
-      projectOptions: {
-        get() {
-          if (this.$store.state.tasks.projects.length == undefined) {
-            return [];
-          } else {
-          return this.$store.state.tasks.projects
-        }
-        },
-        set() {
+import { mapStore, mapState, mapActions } from "vuex";
 
+export default {
+  computed: {
+    ...mapState("tasks", ["projectSearch"]),
+    projectOptions: {
+      get() {
+        if (this.$store.state.tasks.projects.length == undefined) {
+          return [];
+        } else {
+          return this.$store.state.tasks.projects;
         }
       },
-			projectSearchField: {
-				get() {
-					return this.projectSearch
-				},
-				set(value) {
-					this.setProjectSearch(value)
-				}
-			}
-		},
-		methods: {
-			...mapActions('tasks', ['setProjectSearch'])
-		},
-	
-	}
+      set() {}
+    },
+    projectSearchField: {
+      get() {
+        return this.projectSearch;
+      },
+      set(value) {
+        this.setProjectSearch(value);
+      }
+    }
+  },
+  methods: {
+    ...mapActions("tasks", ["setProjectSearch"]),
+    projectClick(project) {
+      console.debug(project);
+    }
+  }
+};
 </script>
