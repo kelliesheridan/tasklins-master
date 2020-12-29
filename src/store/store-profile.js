@@ -225,9 +225,9 @@ const actions = {
   },
   fbSetMood({ dispatch }, payload) {
     let userId = firebaseAuth.currentUser.uid;
-    let currentDate = moment().format("YYYY-MM-DD");
-    let moodRef = firebaseDb.ref("mood/" + userId + "/" + currentDate);
-    moodRef.set(payload, error => {
+    let moodDate = payload.moodDate;
+    let moodRef = firebaseDb.ref("mood/" + userId + "/" + moodDate);
+    moodRef.set(payload.mood, error => {
       if (error) {
         showErrorMessage(error.message);
       } else {

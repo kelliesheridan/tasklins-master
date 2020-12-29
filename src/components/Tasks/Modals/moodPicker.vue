@@ -6,29 +6,29 @@
 
     <div class="q-pa-md">
       <q-form
-        @submit="onSubmit"
+        @submit="setUserMood()"
         class="q-gutter-md"
       >
       <q-img
         src="/statics/moods/happy.png"
         spinner-color="white"
         style="height: 100px; max-width: 100px"
-        @click="mood = 'happy'; setUserMood(mood)"
+        @click="mood = 'happy'"
       />
       <q-img
         src="/statics/moods/fine.png"
         spinner-color="white"
         style="height: 100px; max-width: 100px"
-        @click="mood = 'fine'; setUserMood(mood)"
+        @click="mood = 'fine'"
       />
       <q-img
         src="/statics/moods/glum.png"
         spinner-color="white"
         style="height: 100px; max-width: 100px"
-        @click="mood = 'glum'; setUserMood(mood)"
+        @click="mood = 'glum'"
       />
       
-        <q-input filled v-model="date" mask="date" :rules="['date']">
+        <q-input filled v-model="date" mask="date">
           <template v-slot:append>
             <q-icon name="event" class="cursor-pointer">
               <q-popup-proxy ref="qDateProxy" transition-show="scale" transition-hide="scale">
@@ -59,7 +59,7 @@ export default {
   data() {
     return {
       mood: " ",
-      date: null,
+      date: moment().format("YYYY-MM-DD"),
     }
   },
   computed: {
@@ -70,7 +70,11 @@ export default {
   },
   methods: {
     ...mapActions("profile", ["setMood"]),
-    setUserMood(mood) {
+    setUserMood() {
+      let mood = {
+        mood: this.mood,
+        moodDate: moment(this.date).format("YYYY-MM-DD"),
+      }
       this.setMood(mood);
     }
   }
