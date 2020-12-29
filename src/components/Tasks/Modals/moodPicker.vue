@@ -24,6 +24,7 @@
 
 <script>
 import { mapState, mapActions, mapGetters } from "vuex";
+const moment = require("moment");
 
 export default {
   data() {
