@@ -16,6 +16,16 @@ const state = {
 const mutations = {
   setTasklin(state, payload) {
     state.tasklin = payload;
+  },
+  updateXP(state, isCompleted) {
+    if (isCompleted) {
+      state.tasklin.xp += 1;
+    } else {
+      state.tasklin.xp -= 1;
+    }
+  },
+  addXP(state) {
+    state.tasklin.xp += 1;
   }
 };
 
@@ -32,6 +42,14 @@ const actions = {
   },
   getTasklin({ dispatch, commit }, payload) {
     dispatch("fbReadTasklins", {});
+  },
+  addXPToTasklin({ dispatch, commit }, task) {
+    commit("updateXP", task.updates.completed);
+    dispatch("fbUpdateTasklin", state.tasklin);
+  },
+  addXP({ dispatch, commit }, task) {
+    commit("addXP");
+    dispatch("fbUpdateTasklin", state.tasklin);
   },
   fbReadTasklins({ commit }) {
     let userId = firebaseAuth.currentUser.uid;

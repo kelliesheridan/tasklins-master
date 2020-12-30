@@ -116,7 +116,8 @@ const actions = {
 
     dispatch("fbReadFitnessTasks");
     dispatch("fbReadFitnessLevels");
-    dispatch("profile/addXP", true, { root: true })
+    //dispatch("profile/addXP", true, { root: true })
+    dispatch("tasklins/addXP", true, { root: true })
     dispatch("profile/addLin", true, { root: true })
   },
   fbCheerFitnessTask({dispatch}, payload) {

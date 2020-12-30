@@ -13,7 +13,7 @@
             </div>
           </q-card-section>
 
-          <q-card-section v-if="dayOne">
+          <q-card-section v-if="!hasWish()">
             <p>It's a new year! There are 365 days ahead of us, each one as full of possibility as the night sky. We're going to spend a lot of time this month making goals and turning those goals into plans, while also focusing on ways to find balance in our day to day lives. But goals and plans aren't the only things that matter here at Tasklins. Your heart is just as important as your head.</p>
             <p>So, before we get started on planning our years, all you need to do today is make a wish! A wish can be whatever you want it to be. The important part is sending it out into the universe, which is exactly what we're going to do today. Send your wish out into the world and make it real. With a little luck, someone else who is working hard on their dreams this year too will see it and send a little extra luck your way.</p>
             <p><i>Please keep in mind that other Tasklins users will be able to see your wish (but not your name or which wish belongs to which user). So with that in mind, please avoid using any inappropriate language, or sharing information you wouldn't want others to see.</i></p>
@@ -30,7 +30,7 @@
       </q-card>
     </div>
 
-    <div class="planuaryDay day-2" v-if="dayTwo">
+    <div class="planuaryDay day-2" v-if="dayTwo || hasWish()">
       <q-card>
           <q-card-section>
             <div class="text-h7 row">
@@ -444,6 +444,14 @@ export default {
       this.dayOne = false;
       this.dayTwo = true;
     }
+    },
+    hasWish() {
+      if (this.yourWish) {
+        this.dayTwo = true;
+        return true;
+      } else {
+        return false;
+      }
     },
     setFocus() {
       let payload = {

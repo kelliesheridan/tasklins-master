@@ -103,7 +103,8 @@ const actions = {
       taskWritingChallenge.set(writingActivity);  
     }
     
-    dispatch("profile/addXP", true, { root: true })
+    //dispatch("profile/addXP", true, { root: true })
+    dispatch("tasklins/addXP", true, { root: true })
     dispatch("profile/addLin", true, { root: true })
     dispatch("fbReadWritingTasks");
     dispatch("fbReadWritingLevels");
