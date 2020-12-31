@@ -44,6 +44,7 @@ export default {
   methods: {
     ...mapActions("tasks", ["setProjectSearch"]),
     projectClick(project) {
+      this.setProjectSearch(project);
       console.debug(project);
     }
   }
