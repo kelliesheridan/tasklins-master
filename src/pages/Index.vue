@@ -222,33 +222,14 @@
               <q-list dense padding class="rounded-borders">
                 <q-item>
                   <q-item-section>
-                    <q-item-label><strong>2021 is Coming, and things are slightly less broken!</strong></q-item-label>
+                    <q-item-label><strong>Planuary Starts Tomorrow</strong></q-item-label>
                     <q-item-label>
-                      <p>The year is almost over, and Tasklins is switching gears to get ready for 2021 and launching our month long planning and goal setting adventure, Planuary! For now though, repeating tasks are less broken, along with a few other things.
-                        You can read more about our latest update and <a href="https://www.patreon.com/posts/44994351" target="_blank">plans for Planuary here.</a></p></q-item-label>
-                  </q-item-section>
-                </q-item>    
-                <q-separator />    
-                <q-item>
-                  <q-item-section>
-                    <q-item-label><strong>Tomorrow, tomorrow... I love ya tomorrow.</strong></q-item-label>
-                    <q-item-label>
-                      <p>You can now look ahead to tomorrow's tasks from the home page as well as get a count of your remaining tasks to do today.</p></q-item-label>
-                  </q-item-section>
-                </q-item>  
-                <q-separator />
-                <q-item>
-                  <q-item-section>
-                    <q-item-label><strong>New Repeating Task Option</strong></q-item-label>
-                    <q-item-label>
-                      <p>When creating new tasks, you can now have them repeat every set number of days (every 3 days, every 10 days, whatever you need). 
-                      To do this, create a new task as usual and then select the second blue button at the bottom of the form. You can't use both repeating 
-                      options on one task. </p>                      
-                      <p>There have also been a few bug fixes and a dark mode version added to the main world map. We're also likely going to be shutting down the 
-                      challenge pages soon in order to redo how those work long term.</p>
+                      <p>big things are coming... starting tomorrow! Which is when you can expect the return of challenge, explore and our Planuary kick-off!</p>
                     </q-item-label>
                   </q-item-section>
-                </q-item>
+                </q-item>    
+
+                <!-- <a href="https://www.patreon.com/posts/44994351" target="_blank">plans for Planuary here.</a> -->
     
               </q-list>
             </div>

@@ -25,7 +25,19 @@ export default {
     ])
   },
   methods: {
-    getNose(noseType) {      
+    getMouth(noseType) {
+      if (Object.keys(this.tasksCompletedToday).length <= 3 && Object.keys(this.tasksLate).length == 0) {
+        switch (noseType) {
+          case "nose1":
+          case "nose3":
+          case "nose5":
+          case "nose5":
+            return "/statics/tasklins/nose/nose" +
+              noseType.charAt(noseType.length - 1) +
+              "/black.png";
+            break;
+        }
+      } else {
         if (mouthType != undefined) {
           if (
             Object.keys(this.tasksCompletedToday).length > 3 &&
