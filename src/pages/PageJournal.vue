@@ -46,7 +46,6 @@
 
                   </div>
                   <div>
-                    <br />
                     <tasks-todo
                       class="toDoScroll"
                       v-if="Object.keys(tasksTodo).length"
