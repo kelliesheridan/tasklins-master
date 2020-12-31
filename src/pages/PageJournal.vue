@@ -44,12 +44,6 @@
                       label="New Project"
                     />
 
-                    <q-btn
-                      @click="showMoodPicker = true"
-                      class="new-project-btn"
-                      color="primary"
-                      label="Mood Picker"
-                    />
                   </div>
                   <div>
                     <br />
@@ -102,9 +96,6 @@
           <add-project @close="showAddProject = false" />
         </q-dialog>
 
-        <q-dialog v-model="showMoodPicker">
-          <mood-picker @close="showMoodPicker = false" />
-        </q-dialog>
       </template>
 
       <template v-else>
@@ -142,7 +133,6 @@ export default {
   },
   components: {
     "add-project": require("components/Tasks/Modals/addProject.vue").default,
-    "mood-picker": require("components/Tasks/Modals/moodPicker.vue").default,
     project: require("components/Tasks/Tools/ProjectList.vue").default,
     "tasks-todo": require("components/Tasks/TasksTodo.vue").default
     // "tasks-todo": require("components/Tasks/TasksTodo.vue").default,
