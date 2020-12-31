@@ -5,8 +5,7 @@
     leave-active-class="animated zoomOut absolute-top"
   >
     <div>
-      <list-header class="textureBar">Tasks</list-header>
-
+      <br />
       <q-list separator bordered>
         <task
           :class="{ hidden: hideTasks }"
