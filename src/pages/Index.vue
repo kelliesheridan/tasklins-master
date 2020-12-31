@@ -115,7 +115,7 @@
                     this.getMood(Object.keys(this.tasksCompletedToday).length, Object.keys(this.tasksLate).length, Object.keys(this.tasksCreatedToday).length, Object.keys(this.tasksTodayNotCompleted).length)
                   }}</q-item-label
                 >
-                <q-item-label><b>XP: </b> {{ tasklin.xp }}</q-item-label>
+                <!-- <q-item-label><b>XP: </b> {{ tasklin.xp }}</q-item-label> -->
                 <q-item-label><b>Level: </b> {{ tasklin.level }}</q-item-label>
               </div>
               <div
