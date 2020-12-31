@@ -627,7 +627,7 @@ export default {
             return "";
           }
         } else {
-          return "";
+          return this.wish1 != "" ? this.wish1 : "";
         }
       },
       set(value) {
@@ -776,8 +776,8 @@ export default {
           message: "Your wish has been saved!",
           color: "primary"
         });
-        this.dayOne = false;
-        this.dayTwo = false;
+        //this.dayOne = false;
+        //this.dayTwo = false;
       }
     },
     hasWish() {
