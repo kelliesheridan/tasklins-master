@@ -164,7 +164,6 @@
             <a href="https://www.patreon.com/bePatron?u=9215033" target="_blank"
               >
               <q-btn class="textureBar" dense text-color="secondary" label="- Become a Patron -" /></a>
-              <q-btn class="textureBar" dense text-color="secondary" label="- Generate a Random Tasklin -" @click=" generateRandomTasklin()" />
       </div>
     </q-drawer>
 

@@ -1,58 +1,21 @@
 <template>
   <q-page padding>
+
+    <q-dialog v-if="addChallengeTask" v-model="addChallengeTask">
+      <challengeModal />
+    </q-dialog>
+
     <div class="q-pa-xs q-gutter-xs">
       <div class="q-pa-xs q-gutter-xs fitness row text-center">
         <div class="col-12">
-          <q-btn-dropdown
+          <q-btn
             class="q-mr-sm"
             color="light-green"
-            label="I Worked Out"
-            dropdown-icon="fitness_center"
+            label="I Did Something"
+            icon="create"
+            @click="addChallengeTask = true"
           >
-            <q-list>
-              <q-item clickable v-close-popup @click="submit('weights')">
-                <q-item-section>
-                  <q-item-label>Lifted Weights</q-item-label>
-                </q-item-section>
-              </q-item>
-
-              <q-item clickable v-close-popup @click="submit('run')">
-                <q-item-section>
-                  <q-item-label>Went for a Run</q-item-label>
-                </q-item-section>
-              </q-item>
-
-              <q-item clickable v-close-popup @click="submit('walk')">
-                <q-item-section>
-                  <q-item-label>Went for a Walk</q-item-label>
-                </q-item-section>
-              </q-item>
-
-              <q-item clickable v-close-popup @click="submit('yoga')">
-                <q-item-section>
-                  <q-item-label>Did Some Yoga</q-item-label>
-                </q-item-section>
-              </q-item>
-
-              <q-item clickable v-close-popup @click="submit('home')">
-                <q-item-section>
-                  <q-item-label>Home Workout</q-item-label>
-                </q-item-section>
-              </q-item>
-
-              <q-item clickable v-close-popup @click="submit('sports')">
-                <q-item-section>
-                  <q-item-label>Sports!</q-item-label>
-                </q-item-section>
-              </q-item>
-
-              <q-item clickable v-close-popup @click="submit('other')">
-                <q-item-section>
-                  <q-item-label>Did some other healthy thing</q-item-label>
-                </q-item-section>
-              </q-item>
-            </q-list>
-          </q-btn-dropdown>
+          </q-btn>
         </div>
       </div>
 
@@ -101,8 +64,13 @@ const moment = require("moment");
 
 export default {
   data: () => ({
-    update: 0
+    update: 0,
+    addChallengeTask: false,
   }),
+    components: {
+    challengeModal: require("components/Tasks/Modals/addFitnessTask.vue")
+      .default
+  },
   computed: {
     ...mapGetters("fitness", ["fitness", "fitnessChallenge"]),
     ...mapGetters("settings", ["settings"]),
