@@ -66,7 +66,9 @@ const actions = {
           creation_date: moment(tasklinInfo.creation_date).format("YYYY-MM-DD"),
           eyeType: tasklinInfo.eyeType,
           mouth: tasklinInfo.mouth,
-          hatched: tasklinInfo.hatched
+          nose: tasklinInfo.nose,
+          hatched: tasklinInfo.hatched,
+          level: tasklinInfo.level
         };
         commit("setTasklin", payload);
       }
