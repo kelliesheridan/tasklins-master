@@ -25,24 +25,7 @@ export default {
     ])
   },
   methods: {
-    getMouth(noseType) {
-      if (Object.keys(this.tasksCompletedToday).length <= 3 && Object.keys(this.tasksLate).length == 0) {
-        switch (mouthType) {
-          case "mouth1":
-          case "mouth3":
-          case "mouth5":
-            return "/statics/tasklins/mouth/mouth" +
-              mouthType.charAt(mouthType.length - 1) +
-              "/neutral.png";
-            break;
-          case "mouth2":
-          case "mouth4":
-            return "/statics/tasklins/mouth/mouth" +
-              mouthType.charAt(mouthType.length - 1) +
-              "/neutral.png";
-            break;
-        }
-      } else {
+    getNose(noseType) {      
         if (mouthType != undefined) {
           if (
             Object.keys(this.tasksCompletedToday).length > 3 &&
