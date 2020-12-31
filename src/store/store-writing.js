@@ -81,7 +81,7 @@ const actions = {
       intensity: 0.01,
       goal: 10,
       cheers: 0,
-      color: userColor,
+      color: userColor == undefined ? "#fa9f53" : userColor,
     };
     let taskWriting = firebaseDb.ref("writing/" + date);
     taskWriting.set(payload);
@@ -98,7 +98,7 @@ const actions = {
       let writingActivity = {
         username: username.toLowerCase(),
         intensity: intensityCount + 0.01,
-        color: userColor
+        color: userColor == undefined ? "#fa9f53" : userColor,
       };
       taskWritingChallenge.set(writingActivity);  
     }

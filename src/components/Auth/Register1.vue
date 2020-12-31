@@ -149,7 +149,7 @@ export default {
 
       if (!this.$refs.email.hasError && !this.$refs.password.hasError) {
         this.registerUser(this.formData);
-        this.$router.push("/auth2");
+        //this.$router.push("/auth2");
       }
     }
   }

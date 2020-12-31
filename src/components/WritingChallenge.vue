@@ -1,7 +1,6 @@
 <template>
   <q-page padding>
-
-    <q-dialog v-if="addChallengeTask" v-model="addChallengeTask" >
+    <q-dialog v-if="addChallengeTask" v-model="addChallengeTask">
       <challengeModal />
     </q-dialog>
 
@@ -11,7 +10,8 @@
         color="light-green"
         label="I Did Something"
         icon="create"
-        @click="addChallengeTask = true">
+        @click="addChallengeTask = true"
+      >
       </q-btn>
 
       <!-- <q-btn-dropdown
@@ -61,48 +61,47 @@
       </q-btn-dropdown> -->
     </div>
 
-    <div 
-    class="row">
+    <div class="row">
       <div
         class="col-xs-12 col-sm-12 col-md-6 col-lg-4 q-pa-xs"
         :class="!settings.darkMode ? 'bg-accent' : 'bg-dark'"
         style="overflow: auto; max-height: 65vh;"
-        >
-          <div v-for="n in this.count" :key="n">
-            <q-card dense flat square class="my-card q-pa-xs">
-              <q-card-section
-                :style="{ 'background-color': getCardColor(n - 1) }"
-                class="text-white"
-              >
-                <div class="text-h7">
-                  {{ getActivity(n - 1) }}
-                </div>
-              </q-card-section>
-            </q-card>
-          </div>
+      >
+        <div v-for="n in this.count" :key="n">
+          <q-card dense flat square class="my-card q-pa-xs">
+            <q-card-section
+              :style="{ 'background-color': getCardColor(n - 1) }"
+              class="text-white"
+            >
+              <div class="text-h7">
+                {{ getActivity(n - 1) }}
+              </div>
+            </q-card-section>
+          </q-card>
         </div>
+      </div>
 
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 q-pa-xs">
-        <div v-for="n in this.profileIDs" :key="n" >
-          <div v-if="getIntensity(getProfileName(n))">
-            {{ getProfileName(n) }}
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 q-pa-xs">
+        <div v-for="n in this.profileIDs" :key="n">
+          <div v-if="getIntensity(getProfileName(n - 1))">
+            {{ getProfileName(n - 1) }}
             <q-linear-progress
               rounded
               size="15px"
-              :value="getProgress(getProfileName(n))"
-              :style="{ color: getUserColor(getProfileName(n)) }"
+              :value="getProgress(getProfileName(n - 1))"
+              :style="{ color: getUserColor(getProfileName(n - 1)) }"
               :key="update"
             />
           </div>
         </div>
-        </div>   
+      </div>
     </div>
   </q-page>
 </template>
 
 <script>
 import { mapActions, mapState, mapGetters } from "vuex";
-const moment = require('moment') 
+const moment = require("moment");
 
 export default {
   data: () => ({
@@ -111,13 +110,14 @@ export default {
     count: 12
     //cheer: false
   }),
-    components: {
-    "challengeModal": require("components/Tasks/Modals/addWritingTask.vue").default,
+  components: {
+    challengeModal: require("components/Tasks/Modals/addWritingTask.vue")
+      .default
   },
   computed: {
     ...mapGetters("writing", ["writing", "writingChallenge"]),
-    ...mapGetters('settings', ['settings']),
-    ...mapGetters("profile", ["profile", "profiles", "profileIDs"]),
+    ...mapGetters("settings", ["settings"]),
+    ...mapGetters("profile", ["profile", "profiles", "profileIDs"])
   },
   methods: {
     ...mapActions("writing", ["addWritingTask", "readWritingTasks"]),
@@ -127,7 +127,7 @@ export default {
       this.update += 1;
       this.count += 1;
     },
-      cheer() {
+    cheer() {
       this.update += 1;
     },
     calculateValues(user) {
@@ -174,10 +174,10 @@ export default {
         if (profiles != undefined) {
           Object.keys(profiles).forEach(element => {
             if (profiles[element].name.toLowerCase() == user.toLowerCase()) {
-                color = profiles[element].color;
-                if (color !== "") {
-                  return color;
-                }
+              color = profiles[element].color;
+              if (color !== "") {
+                return color;
+              }
             }
           });
           return color;
@@ -195,7 +195,7 @@ export default {
         if (writing != undefined) {
           Object.keys(writing).forEach(element => {
             if (Object.keys(writing).indexOf(element) == elementToCheck) {
-             color = this.getUserColor(writing[element].username)
+              color = this.getUserColor(writing[element].username);
             }
           });
         }
@@ -249,7 +249,7 @@ export default {
                   break;
                 case "reading":
                   activity += " spent time reading!";
-                  break;                  
+                  break;
                 case "query":
                   activity += " sent a query letter!";
                   break;
@@ -268,8 +268,12 @@ export default {
       }
       return activity;
     },
-      getProfileName(value) {
-      return this.profiles[value].name;
+    getProfileName(value) {
+      if (this.profiles != undefined && value.toString() != "NaN") {
+        return this.profiles[value].name;
+      } else {
+        return "";
+      }
     }
   }
 };
@@ -280,5 +284,4 @@ export default {
   padding: 10px 10px
 .row + .row
   margin-top: 1rem
-  
 </style>

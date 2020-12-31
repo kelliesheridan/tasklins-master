@@ -138,7 +138,9 @@ const getters = {
   },
   random16: state => {
     var array = state.planuary;
-    return Object.entries(array).sort( () => Math.random() - 0.5);
+    if (array != undefined) {
+      return Object.entries(array).sort( () => Math.random() - 0.5);
+    }
   }
 };
 

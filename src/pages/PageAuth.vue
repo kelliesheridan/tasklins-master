@@ -26,7 +26,7 @@
         </q-dialog>
 
         <q-dialog @click="register = true" v-model="register" transition-hide="scale">
-          <register1 @close="register2 = true" />
+          <register1 @close="register2 = false" />
         </q-dialog>
 
         <q-dialog v-model="register2" transition-hide="scale">

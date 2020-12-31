@@ -256,7 +256,7 @@ export default {
         bodyShape2: bodyShape2Array[Math.floor(Math.random() * bodyShape2Array.length)],
         pattern2: "pattern" + patternArray[Math.floor(Math.random() * patternArray.length)],
         hatched: false,
-        tongue: tongueArrayColors[Math.floor(Math.random() * tongueArrayColors.length)]
+        tongue: ""
       };
 
       this.addTasklin(tasklin);

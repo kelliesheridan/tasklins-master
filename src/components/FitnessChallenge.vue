@@ -77,20 +77,19 @@
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 q-pa-xs">
-        <div v-for="n in this.profileIDs" :key="n" >
-          <div v-if="getIntensity(getProfileName(n))">
-            {{ getProfileName(n) }}
-            <q-linear-progress
-              rounded
-              size="15px"
-              :value="getProgress(getProfileName(n))"
-              :style="{ color: getUserColor(getProfileName(n)) }"
-              :key="update"
-            />
+          <div v-for="n in this.profileIDs" :key="n">
+            <div v-if="getIntensity(getProfileName(n))">
+              {{ getProfileName(n) }}
+              <q-linear-progress
+                rounded
+                size="15px"
+                :value="getProgress(getProfileName(n))"
+                :style="{ color: getUserColor(getProfileName(n)) }"
+                :key="update"
+              />
+            </div>
           </div>
         </div>
-        </div>        
-
       </div>
     </div>
   </q-page>
@@ -102,11 +101,11 @@ const moment = require("moment");
 
 export default {
   data: () => ({
-    update: 0,
+    update: 0
   }),
   computed: {
     ...mapGetters("fitness", ["fitness", "fitnessChallenge"]),
-    ...mapGetters('settings', ['settings']),
+    ...mapGetters("settings", ["settings"]),
     ...mapGetters("profile", ["profile", "profiles", "profileIDs"])
   },
   methods: {
@@ -291,7 +290,11 @@ export default {
       return activity;
     },
     getProfileName(value) {
-      return this.profiles[value].name;
+      if (this.profiles != undefined && value.toString() != "NaN") {
+        return this.profiles[value].name;
+      } else {
+        return "";
+      }
     }
   }
 };

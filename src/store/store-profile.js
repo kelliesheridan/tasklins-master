@@ -164,8 +164,8 @@ const actions = {
         private: profile.private,
         signup: profile.signup,
         admin: profile.admin,
-        color: profile.color,
-        pronouns: profile.pronouns,
+        color: profile.color == undefined ? "" : "#fa9f53",
+        pronouns: profile.pronouns == undefined ? "" : profile.pronouns,
         createdDate: profile.createdDate == undefined ? "" : profile.createdDate
       };
       commit("updateProfile", payload);

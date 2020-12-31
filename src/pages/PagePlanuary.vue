@@ -619,8 +619,12 @@ export default {
         var wish = "";
         var stuff = this.random16;
         var userId = this.profile.id;
-        if (this.planuary[this.profile.id] != undefined) {
-          return this.planuary[userId].wish;
+        if (this.planuary != undefined) {
+          if (this.planuary[this.profile.id] != undefined) {
+            return this.planuary[userId].wish;
+          } else {
+            return "";
+          }
         } else {
           return "";
         }
