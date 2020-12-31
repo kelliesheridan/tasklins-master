@@ -533,7 +533,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapGetters, mapActions, mapState } from "vuex";
 const moment = require("moment");
 
 export default {
@@ -613,6 +613,7 @@ export default {
     ...mapGetters("planuary", ["planuary", "random16"]),
     ...mapGetters("community", ["community"]),
     ...mapGetters("profile", ["profile"]),
+    ...mapState("tasks", ["projectSearch"]),
 
     yourWish: {
       get() {
@@ -720,7 +721,7 @@ export default {
       set(value) {
         this.goal6 = value;
       }
-    }
+    },
     // showProjectsOnPage: {
     //   get() {
     //     return this.settings.showProjectsOnPage;
@@ -745,6 +746,14 @@ export default {
     //     this.setDarkMode(value);
     //   }
     // }
+    projectSearchField: {
+      get() {
+        return this.projectSearch;
+      },
+      set(value) {
+        this.setProjectSearch(value);
+      }
+    }
   },
   methods: {
     ...mapActions("planuary", [
@@ -753,6 +762,7 @@ export default {
       "addFocus",
       "addGoals"
     ]),
+    ...mapActions("tasks", ["setProjectSearch"]),
     setPlanuaryWish() {
       let payload = {
         username: this.profile.username,
