@@ -83,13 +83,13 @@
 
       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 q-pa-xs">
         <div v-for="n in this.profileIDs" :key="n">
-          <div v-if="getIntensity(getProfileName(n - 1))">
-            {{ getProfileName(n - 1) }}
+          <div v-if="getIntensity(getProfileName(n))">
+            {{ getProfileName(n) }}
             <q-linear-progress
               rounded
               size="15px"
-              :value="getProgress(getProfileName(n - 1))"
-              :style="{ color: getUserColor(getProfileName(n - 1)) }"
+              :value="getProgress(getProfileName(n))"
+              :style="{ color: getUserColor(getProfileName(n)) }"
               :key="update"
             />
           </div>
