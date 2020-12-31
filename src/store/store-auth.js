@@ -42,6 +42,7 @@ const actions = {
       })
       .catch(error => {
         showErrorMessage(error.message);
+        this.$router.push("/auth").catch(err => {});
       });
   },
   logoutUser() {
