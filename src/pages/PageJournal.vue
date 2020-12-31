@@ -7,7 +7,7 @@
       </div> -->
 
       <template v-if="tasksDownloaded">
-        <div class="col-6" style="overflow: auto;">
+        <div class="col-xs-12 col-sm-12 col-md-6" style="overflow: auto;">
           <div class="notebookMain">
             <div v-show="pageNumber == 0" class="notebookTitle">
               <div class="notebookPage0 center">
@@ -19,8 +19,7 @@
               <div class="notebookPages">
                 <div
                   v-show="pageNumber == 1"
-                  class="notebookPage1"
-                  style="margin-top: -80%"
+                  class="notebookPage1 notebookMargin"                  
                 >
                   <h4>Index</h4>
                   <br />
@@ -35,8 +34,7 @@
                 </div>
                 <div
                   v-show="pageNumber == 2"
-                  class="notebookPage2"
-                  style="margin-top: -80%"
+                  class="notebookPage2 notebookMargin"                  
                 >
                   <div>
                     <h4>Projects</h4>
@@ -46,7 +44,7 @@
 
                   </div>
                   <div>
-                    <tasks-todo
+                    <tasks-todo                    
                       class="toDoScroll"
                       v-if="Object.keys(tasksTodo).length"
                       :tasksTodo="tasksTodo"
@@ -61,7 +59,7 @@
                 </div>
                 <div
                   v-show="pageNumber == 3"
-                  class="notebookPage3"
+                  class="notebookPage3 notebookMargin"
                   style="margin-top: -80%"
                 >
                   <h4>Coming Soon</h4>
@@ -122,6 +120,7 @@ export default {
     return {
       showAddProject: false,
       showMoodPicker: false,
+      showTaskList: false,
       pageNumber: 1
     };
   },

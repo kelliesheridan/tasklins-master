@@ -11,7 +11,7 @@
                     style="height: 100%; max-width: 100%;"
                   />
                   <br>
-                <span class="heading-primary--sub">Organize your life, explore our world</span>
+                <span class="heading-primary--sub">Make planning fun again!</span>
             </h1>
 
             <div>
@@ -38,7 +38,7 @@
        <section class="about-section text-design-main">
         <div class="u-center-text">
           <h2 class="heading-secondary">
-              Your Projects and To Do Lists on a whole new level
+              Your productivity partner has arrived... err, hatched!
             </h2>
          </div>
           <br>
