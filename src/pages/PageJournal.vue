@@ -24,8 +24,14 @@
                 >
                   <h4>Index</h4>
                   <br />
-                  <p>Projects</p>
-                  <p>This Week</p>
+                    <q-btn dense flat @click="pageNumber = 2">
+                    Projects
+                    </q-btn>
+                    <br>
+
+                    <q-btn dense flat @click="pageNumber = 3">
+                      This Week
+                      </q-btn>
                 </div>
                 <div
                   v-show="pageNumber == 2"
@@ -37,12 +43,6 @@
                     <project></project>
 
                     <br />
-                    <q-btn
-                      @click="showAddProject = true"
-                      class="new-project-btn"
-                      color="primary"
-                      label="New Project"
-                    />
 
                   </div>
                   <div>
@@ -52,13 +52,19 @@
                       :tasksTodo="tasksTodo"
                     />
                   </div>
+                  <q-btn
+                      @click="showAddProject = true"
+                      class="new-project-btn"
+                      color="primary"
+                      label="New Project"
+                    />
                 </div>
                 <div
                   v-show="pageNumber == 3"
                   class="notebookPage3"
                   style="margin-top: -80%"
                 >
-                  <h4>This Week</h4>
+                  <h4>Coming Soon</h4>
                 </div>
               </div>
             </div>
@@ -80,6 +86,8 @@
                     icon="keyboard_arrow_right"
                     @click="pageNumber++"
                   />
+                  <br>
+                  <q-btn @click="pageNumber = 1" dense flat text-color="black" push icon="home" />
                 </div>
               </div>
             </div>

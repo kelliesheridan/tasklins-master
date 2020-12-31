@@ -8,7 +8,7 @@
   </q-select> -->
 
   <ul id="project-list">
-    <p v-for="project in this.projectOptions" :key="project">
+    <p class="q-m-xs" v-for="project in this.projectOptions" :key="project">
       <q-btn dense flat @click="projectClick(project)">
         {{ project }}
       </q-btn>

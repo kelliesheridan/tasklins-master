@@ -5,7 +5,6 @@
     leave-active-class="animated zoomOut absolute-top"
   >
     <div>
-      <br />
       <q-list separator bordered>
         <task
           :class="{ hidden: hideTasks }"
