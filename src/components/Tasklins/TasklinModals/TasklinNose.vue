@@ -32,6 +32,8 @@ export default {
           noseType.charAt(noseType.length - 1) +
           "/black.png"
         );
+      } else {
+        return "/statics/tasklins/nose/nose1/black.png";
       }
     }
   }

@@ -246,6 +246,9 @@
         <q-spinner-audio size="3em" color="secondary" />
       </span>
     </template>
+    <q-dialog v-model="register2" transition-hide="scale">
+        <register2 />
+      </q-dialog>
   </q-page>
 </template>
 
@@ -265,13 +268,14 @@ export default {
       settings: false,
       slide: "style",
       tomorrow: false,
+      register2: false,
       lorem:
         "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque voluptatem totam, architecto cupiditate officia rerum, error dignissimos praesentium libero ab nemo."
     };
   },
   mounted() {
-    // if (this.profile.signup) {
-    //   this.$router.push("/initial")
+    // if (this.tasklin.eyeType == undefined || this.tasklin.eyeType == "") {
+    //   this.register2 = true;
     // }
     this.setProjectSearch("");
   },
@@ -287,7 +291,8 @@ export default {
     "no-tasks": require("components/Tasks/NoTasks.vue").default,
     tasklin: require("components/Tasklins/Tasklin.vue").default,
     "new-user": require("components/Help/NewUser.vue").default,
-    egg: require("components/Tasklins/egg.vue").default
+    egg: require("components/Tasklins/egg.vue").default,
+    "register2": require("components/Auth/Register2.vue").default
   },
   computed: {
     ...mapGetters("profile", ["profile"]),
@@ -328,6 +333,12 @@ export default {
       }
     },
     showNewUserPanel(hidePanel) {
+      if (this.tasklin.eyeType == undefined || this.tasklin.eyeType == "") {
+        this.register2 = true;
+      } else {
+        this.register2 = false;
+      }
+
       if (hidePanel != undefined) {
         this.hideNewUserPanel = true;
       }
@@ -350,7 +361,7 @@ export default {
         };
         this.updateTasklin(tasklin);
       }
-    }
+    },
   }
 };
 </script>

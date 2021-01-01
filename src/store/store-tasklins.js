@@ -5,11 +5,16 @@ import moment from "moment";
 
 const state = {
   tasklin: {
-    name: "",
-    color: "",
-    type: "",
-    xp: 0,
-    creation_date: ""
+    // name: "",
+    // color: "",
+    // type: "",
+    // xp: 0,
+    // creation_date: "",
+    // eyeType: "",
+    // mouth: "",
+    // nose: "",
+    // hatched: "",
+    // level: ""
   }
 };
 
