@@ -39,14 +39,15 @@
 
    .night-sky {
     background-image: url("/statics/backgrounds/nightSky.png"); 
+
+    
+    @include respond(phone) {
+      background-image: none;
+     }
    }
 
    .night-stars {
     background-image: url("/statics/backgrounds/nightSky-stars.png"); 
-   }
-
-   .wish-star {
-    margin-top: random(150) + px;
    }
 
    .town-piper {
@@ -64,5 +65,51 @@
      @include respond(tab-port) {
       width: 50%;
       height: 50%;
+     }
+   }
+
+   .wishStar1 {
+    width: 50px;
+    height: 50px;
+    background-image: url("/statics/backgrounds/stars/star1.png"); 
+   }
+
+   .wishGap1 {
+    width: 120px;
+    height: 120px;
+   }
+
+   .wishStar2 {
+    width: 50px;
+    height: 50px;
+    background-image: url("/statics/backgrounds/stars/star2.png"); 
+   }
+
+   .wishStar3 {
+    margin-top: 50px;
+    margin-left: 200px;
+    width: 50px;
+    height: 50px;
+    background-image: url("/statics/backgrounds/stars/star3.png"); 
+
+    @include respond(tab-port) {
+      margin-top: 5px;
+     }
+   }
+
+   .wishGap2 {
+    width: 120px;
+    height: 120px;
+   }
+
+   .wishStar4 {
+    margin-top: 50px;
+    margin-left: 150px;
+    width: 50px;
+    height: 50px;
+    background-image: url("/statics/backgrounds/stars/star4.png"); 
+
+    @include respond(phone) {
+      margin-bottom: 80px;
      }
    }

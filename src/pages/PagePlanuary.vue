@@ -42,8 +42,7 @@
           <p>
             So, before we get started on planning our years, all you need to do
             today is make a wish! A wish can be whatever you want it to be. The
-            important part is sending it out into the universe, which is exactly
-            what we're going to do today. Send your wish out into the world and
+            important part is sending it out into the universe. Send your wish out into the world and
             make it real. With a little luck, someone else who is working hard
             on their dreams this year too will see it and send a little extra
             luck your way.

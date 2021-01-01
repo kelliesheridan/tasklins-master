@@ -11,6 +11,33 @@
     <template v-if="tasksDownloaded">
       <q-card
         bordered
+        flat        
+        class="card center">
+
+        <q-card-section>
+          <div class="center text-h6">Planuary Begins!</div>
+          <div class="text-subtitle2">
+            <p>January... nah. Instead, let's start the year off right with Planuary, an entire month dedicated to making plans for the new year, exploring our goals and wishes, and building the tools and communities that help dreams become reality.</p>
+            <p>Every day this month, check back to the Planuary page for a new question, challenge or prompt to help you plan for making 2021 your best year yet.</p>
+          </div>
+        </q-card-section>
+
+        <q-separator />
+
+        <q-card-actions vertical>
+          <q-btn
+            class="q-mt-xs"
+            padding
+            color="secondary"
+            push
+            to="/planuary"
+            >Start Planuary</q-btn
+          >
+        </q-card-actions>
+      </q-card>
+
+      <q-card
+        bordered
         flat
         v-if="showNewUserPanel() && !hideNewUserPanel"
         class="card center">

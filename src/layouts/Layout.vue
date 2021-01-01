@@ -86,7 +86,7 @@
           <q-route-tab class="q-pa-xs" dense to="/journal" icon="menu_book" />
           <!-- <q-route-tab class="q-pa-xs" dense to="/tasklins" icon="pets" />
           <q-route-tab class="q-pa-xs" dense to="/community" icon="chat" /> -->
-          <!-- <q-route-tab class="q-pa-xs" dense to="/explore" icon="explore" /> -->
+          <q-route-tab class="q-pa-xs" dense to="/explore" icon="explore" />
           <q-route-tab class="q-pa-xs" dense to="/challenges" icon="assessment" />
           <q-route-tab class="q-pa-xs" dense to="/profile" icon="person" />
         </q-tabs>
@@ -126,10 +126,10 @@
           <q-route-tab class="q-pa-xs" dense to="/journal" icon="menu_book" />
           <!-- <q-route-tab class="q-pa-xs" dense to="/tasklins" icon="pets" />
           <q-route-tab class="q-pa-xs" dense to="/community" icon="chat" /> -->
-          <!-- <q-route-tab class="q-pa-xs" dense to="/explore" icon="explore" /> -->
+          <q-route-tab class="q-pa-xs" dense to="/explore" icon="explore" />
           <q-route-tab class="q-pa-xs" dense to="/challenges" icon="assessment" />
           <q-route-tab class="q-pa-xs" dense to="/profile" icon="person" />
-          <q-route-tab class="q-pa-xs" dense to="/planuary" icon="eco" />
+          <!-- <q-route-tab class="q-pa-xs" dense to="/planuary" icon="eco" /> -->
         </q-tabs>
       </div>
 
