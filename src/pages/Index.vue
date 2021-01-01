@@ -224,9 +224,9 @@
               <q-list dense padding class="rounded-borders">
                 <q-item>
                   <q-item-section>
-                    <q-item-label><strong>Planuary Starts Tomorrow</strong></q-item-label>
+                    <q-item-label><strong>Welcome to 2021!</strong></q-item-label>
                     <q-item-label>
-                      <p>big things are coming... starting tomorrow! Which is when you can expect the return of challenge, explore and our Planuary kick-off!</p>
+                      <p>Happy New Year! It's time to put 2020 behind us and start anew. For now, rest, relax, and celebrate. Planuary begins mid-day January 1st!</p>
                     </q-item-label>
                   </q-item-section>
                 </q-item>    
