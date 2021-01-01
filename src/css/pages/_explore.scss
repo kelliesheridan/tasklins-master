@@ -68,6 +68,17 @@
      }
    }
 
+   .wishBubble {
+     margin-right: 200px;
+     margin-bottom: 150px;
+     width: 100%;
+
+     @include respond(phone) {
+      width: 300%;
+      margin-bottom: 20px;
+     }
+   }
+
    .wishStar1 {
     width: 50px;
     height: 50px;

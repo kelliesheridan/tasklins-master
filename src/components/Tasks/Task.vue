@@ -1,4 +1,7 @@
 <template>
+
+<!-- :class="[!settings.darkMode ? 'bg-orange1' : 'bg-dark', !task.completed ? '' : 'bg-positive']" -->
+
   <q-item class="task"
   	@click="updateTask({ id: id, updates: { completed: !task.completed, dueDate: task.dueDate, task: task } }); addLin(task.completed);"  	
     :class="[!settings.darkMode ? 'bg-orange1' : 'bg-dark', !task.completed ? '' : 'bg-positive']"
@@ -38,13 +41,6 @@
 
         </div>
       </div>
-    </q-item-section>
-
-    <q-item-section v-if="showProjects" side>
-      <q-item-label
-      	:class="{ 'text-strikethrough' : task.completed }"
-        v-html="$options.filters.searchHighlight(task.project, search)">
-      </q-item-label>
     </q-item-section>
 
     <!-- <q-item-section v-if="task.dueDate" side>

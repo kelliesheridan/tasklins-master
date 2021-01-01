@@ -8,7 +8,7 @@
       
       <div class="world-map map-size col-xs-12 col-sm-12 col-md-10 col-lg-10">
         <div
-        @mouseover="wish1 = true"
+        @mouseover="wish1 == true"
         @mouseleave="wish1 = false"
         class="wishStar1"
         >
@@ -38,14 +38,12 @@
         @mouseleave="wish4 = false"
         class="wishStar4"
         >
-        </div>
-
-      
+        </div>      
       </div>
 
-      <div class="center">
+      <div class="wishBubble absolute-bottom">
         <q-chat-message
-          v-show="wish1"
+          v-show="wish1"         
           :name= getName(1)
           :text=getWish(1)
           size="3"
@@ -183,7 +181,7 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      wish1: false,
+      wish1: true,
       wish2: false,
       wish3: false,
       wish4: false,
