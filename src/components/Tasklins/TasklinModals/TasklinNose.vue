@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     getNose(noseType) {
-      if (this.tasklin.level >= 3 && (noseType != undefined || noseType != "")) {
+      if (noseType != undefined && noseType != "") {
         return (
           "/statics/tasklins/nose/nose" +
           noseType.charAt(noseType.length - 1) +

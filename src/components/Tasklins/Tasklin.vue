@@ -5,7 +5,7 @@
         <tasklin-body class="tasklinBody" />
         <tasklin-eyes class="tasklinEyes" style="margin-top: -100%;" />
         <tasklin-mouth class="tasklinMouth" style="margin-top: -100%;" />
-        <tasklin-nose class="tasklinNose" style="margin-top: -100%;" />
+        <tasklin-nose class="tasklinNose" style="margin-top: -100%;" v-if="showNose()" />
       </div>
     </div>
   </div>
@@ -31,7 +31,13 @@ export default {
     ...mapGetters("tasklins", ["tasklin"])
   },
   methods: {
-    
+    showNose() {
+      if (this.tasklin.level >= 3) {
+        return true;
+      } else {
+        return false
+      }
+    }
   }
 };
 </script>
