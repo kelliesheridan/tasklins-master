@@ -24,8 +24,8 @@ var firebaseTestConfig = {
   messagingSenderId: "975816351714",
   appId: "1:975816351714:web:65f7e5397131ee6cf463bb"
 }
-//let firebaseApp = firebase.initializeApp(firebaseConfig)
-let firebaseApp = firebase.initializeApp(firebaseTestConfig)
+let firebaseApp = firebase.initializeApp(firebaseConfig)
+//let firebaseApp = firebase.initializeApp(firebaseTestConfig)
 
 let firebaseAuth = firebaseApp.auth()
 let firebaseDb = firebaseApp.database()
