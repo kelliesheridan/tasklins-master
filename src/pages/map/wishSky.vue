@@ -7,38 +7,47 @@
       ></div>
       
       <div class="world-map map-size col-xs-12 col-sm-12 col-md-10 col-lg-10">
-        <div
-        @mouseover="wish1 == true"
-        @mouseleave="wish1 = false"
-        class="wishStar1"
-        >
-        </div>
+        <q-img
+          @mouseover="wish1 = true"
+          @mouseleave="wish1 = false"
+          src="/statics/backgrounds/stars/star1.png"
+          class="wishStar1"
+        />
+
+        <q-img
+          @mouseover="wish2 = true"
+          @mouseleave="wish2 = false"
+          src="/statics/backgrounds/stars/star2.png"
+          class="wishStar2"
+        />
 
         <div
         class="wishGap1"
         >
         </div>
 
-        <div
-        @mouseover="wish2 = true"
-        @mouseleave="wish2 = false"
-        class="wishStar2"
-        >
-        </div>
+        <q-img
+          @mouseover="wish3 = true"
+          @mouseleave="wish3 = false"
+          src="/statics/backgrounds/stars/star3.png"
+          class="wishStar3"
+        />
 
-        <div
-        @mouseover="wish3 = true"
-        @mouseleave="wish3 = false"
-        class="wishStar3"
-        >
-        </div>
+        <q-img
+          @mouseover="wish4 = true"
+          @mouseleave="wish4 = false"
+          src="/statics/backgrounds/stars/star4.png"
+          class="wishStar4"
+        />
 
-        <div
-        @mouseover="wish4 = true"
-        @mouseleave="wish4 = false"
-        class="wishStar4"
-        >
-        </div>      
+        <q-img
+          @mouseover="wish5 = true"
+          @mouseleave="wish5 = false"
+          src="/statics/backgrounds/stars/star5.png"
+          class="wishStar5"
+        />
+
+   
       </div>
 
       <div class="wishBubble absolute-bottom">
@@ -181,7 +190,7 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      wish1: true,
+      wish1: false,
       wish2: false,
       wish3: false,
       wish4: false,

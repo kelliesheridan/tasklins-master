@@ -7,14 +7,7 @@
             <q-btn v-show="!wishSubmitted" dense flat @click="dayOne = !dayOne">
               Planuary. Day One.
             </q-btn>
-            <p class="center" v-show="wishSubmitted">
-              That's all for today! Check back tomorrow, or visit the explore
-              page and look up at the night's sky.
-              <i
-                >Hint: This will only work in dark mode, which you can access
-                through settings.</i
-              >
-            </p>
+
             <q-space />
             <q-btn
               @click="dayOne = !dayOne"
@@ -23,7 +16,7 @@
               class="no-margin"
               flat
               color="secondary"
-              round
+              push
               dense
               icon="add"
             />
@@ -69,19 +62,26 @@
             </div>
             <div class="center q-pa-md">
               <q-btn
-                @click="'wishSubmitted = true' && setPlanuaryWish()"
+                @click="'wishSubmitted == true' && setPlanuaryWish()"
                 class="q-pa-xs"
                 color="primary"
                 size="md"
                 label="Send Your Wish!"
               />
             </div>
+              <p class="center">
+              That's all for today! Check back tomorrow, or visit the explore
+              page and look up at the night's sky.
+              <i>Hint: This will only work in dark mode, which you can access
+                through settings.</i
+              >
+            </p>
           </div>
         </q-card-section>
       </q-card>
     </div>
 
-    <div class="planuaryDay day-2" v-if="dayTwo">
+    <!-- <div class="planuaryDay day-2" v-if="dayTwo">
       <q-card>
         <q-card-section>
           <div class="text-h7 row">
@@ -527,7 +527,7 @@
           </div>
         </q-card-section>
       </q-card>
-    </div>
+    </div> -->
   </q-page>
 </template>
 

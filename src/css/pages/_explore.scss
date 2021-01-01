@@ -70,11 +70,16 @@
 
    .wishBubble {
      margin-right: 200px;
+     margin-left: 12px;
      margin-bottom: 150px;
      width: 100%;
+     height: 100px;
+     max-width: 100%;
+     display: block;
 
      @include respond(phone) {
       width: 300%;
+      max-width: 300%;
       margin-bottom: 20px;
      }
    }
@@ -82,7 +87,7 @@
    .wishStar1 {
     width: 50px;
     height: 50px;
-    background-image: url("/statics/backgrounds/stars/star1.png"); 
+    display: block;
    }
 
    .wishGap1 {
@@ -93,7 +98,7 @@
    .wishStar2 {
     width: 50px;
     height: 50px;
-    background-image: url("/statics/backgrounds/stars/star2.png"); 
+    display: block;
    }
 
    .wishStar3 {
@@ -101,7 +106,6 @@
     margin-left: 200px;
     width: 50px;
     height: 50px;
-    background-image: url("/statics/backgrounds/stars/star3.png"); 
 
     @include respond(tab-port) {
       margin-top: 5px;
@@ -115,12 +119,24 @@
 
    .wishStar4 {
     margin-top: 50px;
-    margin-left: 150px;
+    margin-left: 280px;
     width: 50px;
     height: 50px;
     background-image: url("/statics/backgrounds/stars/star4.png"); 
 
     @include respond(phone) {
       margin-bottom: 80px;
+     }
+   }
+
+   .wishStar5 {
+    margin-bottom: 100px;
+    margin-left: 150px;
+    width: 50px;
+    height: 50px;
+    background-image: url("/statics/backgrounds/stars/star5.png"); 
+
+    @include respond(phone) {
+      margin-top: -200px;
      }
    }
