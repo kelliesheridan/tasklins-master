@@ -35,10 +35,10 @@
           <p>
             So, before we get started on planning our years, all you need to do
             today is make a wish! A wish can be whatever you want it to be. The
-            important part is sending it out into the universe. Send your wish out into the world and
-            make it real. With a little luck, someone else who is working hard
-            on their dreams this year too will see it and send a little extra
-            luck your way.
+            important part is sending it out into the universe. Send your wish
+            out into the world and make it real. With a little luck, someone
+            else who is working hard on their dreams this year too will see it
+            and send a little extra luck your way.
           </p>
           <p>
             <i
@@ -69,10 +69,11 @@
                 label="Send Your Wish!"
               />
             </div>
-              <p class="center">
+            <p class="center">
               That's all for today! Check back tomorrow, or visit the explore
               page and look up at the night's sky.
-              <i>Hint: This will only work in dark mode, which you can access
+              <i
+                >Hint: This will only work in dark mode, which you can access
                 through settings.</i
               >
             </p>
@@ -81,7 +82,7 @@
       </q-card>
     </div>
 
-    <!-- <div class="planuaryDay day-2" v-if="dayTwo">
+    <div class="planuaryDay day-2" v-if="dayTwo">
       <q-card>
         <q-card-section>
           <div class="text-h7 row">
@@ -191,7 +192,7 @@
       </q-card>
     </div>
 
-    <div class="planuaryDay day-3" v-if="dayThree">
+    <!-- <div class="planuaryDay day-3" v-if="dayThree">
       <q-card>
         <q-card-section>
           <div class="text-h7 row">
@@ -763,25 +764,34 @@ export default {
     ]),
     ...mapActions("tasks", ["setProjectSearch"]),
     setPlanuaryWish() {
-      let payload = {
-        username: this.profile.username,
-        wish: this.wish1
-      };
-      if (this.planuary[this.profile.id] == undefined) {
-        this.addWish(payload);
+      if (this.wish1 != "") {
+        let payload = {
+          username: this.profile.username,
+          wish: this.wish1
+        };
+        if (this.planuary[this.profile.id] == undefined) {
+          this.addWish(payload);
+          this.dayOne = false;
+          this.dayTwo = true;
+        } else {
+          this.fbUpdateWish(payload);
+          this.$q.notify({
+            message: "Your wish has been saved!",
+            color: "primary"
+          });
+          this.dayOne = false;
+          this.dayTwo = true;
+        }
       } else {
-        this.fbUpdateWish(payload);
         this.$q.notify({
-          message: "Your wish has been saved!",
+          message: "You need to set a wish!",
           color: "primary"
         });
-        //this.dayOne = false;
-        //this.dayTwo = false;
       }
     },
     hasWish() {
       if (this.yourWish) {
-        this.dayTwo = false;
+        //this.dayTwo = false;
         return true;
       } else {
         return false;
@@ -1842,6 +1852,7 @@ export default {
     }
   },
   mounted() {
+    this.wish1 = yourWish;
     var date = moment().date();
     if (moment().month() == 1) this.showDate(date);
   }
