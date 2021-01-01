@@ -126,7 +126,7 @@
           <q-route-tab class="q-pa-xs" dense to="/journal" icon="menu_book" />
           <!-- <q-route-tab class="q-pa-xs" dense to="/tasklins" icon="pets" />
           <q-route-tab class="q-pa-xs" dense to="/community" icon="chat" /> -->
-          <q-route-tab class="q-pa-xs" dense to="/explore" icon="explore" /> 
+          <q-route-tab class="q-pa-xs" dense to="/explore" icon="explore" />
           <q-route-tab class="q-pa-xs" dense to="/challenges" icon="assessment" />
           <q-route-tab class="q-pa-xs" dense to="/profile" icon="person" />
           <q-route-tab class="q-pa-xs" dense to="/planuary" icon="eco" />
@@ -148,7 +148,7 @@
 
       <div class="q-ma-sm layout-details">
         <div>{{ profile.name }} (@{{ profile.username }})</div>
-        <!-- <div>Level: {{ tasklin.level }}</div> -->
+        <div>Level: {{ profile.level }}</div>
         <div>{{ profile.lin }}
           <q-img
         src="statics/items/lin.PNG"
@@ -180,22 +180,25 @@
     <div class="text-center">
       <q-card class="randomEvent center">
         <q-card-section class="bg-primary u-center-text text-white">
-          <div class="text-h5 bonusHeader">Something Happened</div>
+          <div class="text-h5 bonusHeader">Happy New Year</div>
         </q-card-section>
 
         <q-card-section class="q-pt-md">
           <div>
             <q-item>
               <q-item-section side top>
-                <q-avatar class="bonusImgFocus">
+                <!-- <q-avatar class="bonusImgFocus">
                   <img src="statics/items/scroll-1.png" />
-                </q-avatar>
+                </q-avatar> -->
               </q-item-section>
               <q-item-section top>
-                <q-item-label class="bonusBox">
-                  Hoping you all have a fantastic week! -Kellie
-                </q-item-label>
-              </q-item-section>
+                <q-item-label class="bonusBox" />
+                  <p>Happy New Year! 2020 is finally over and an exciting new year has begun, along with big changes here at Tasklins. 
+                  Most importantly, we are now open for new friends! We're open for new signups and are looking forward to seeing how our community grows and changes over the course of the year.</p>
+                  <p>We've also launched the first over several big updates! Our challenges are more dynamic, our task page has taken its first steps toward its new journal form, and your Tasklins can now (start) to evolve as they level up. There's so much more to come, and we can't wait to share it with you!</p>
+                  <p>Finally, our last big news... Planuary is here! Throughout the entire month of January, we'll be posting daily planning and goal setting exercises, along with new features and tools to help make your 2021 dreams into a reality.</p>
+                  <p>That's all for now, but there will be plenty of more details to come over the course of the next week. For now, happy new year, happy planning, and thank you so very, very much for being here with us on this exciting new adventure.</p>
+            </q-item-section>
             </q-item>
           </div>
 
@@ -239,7 +242,7 @@ export default {
       left: false,
       right: false,
       showBonus: false,
-      showBonusItem: false,
+      showBonusItem: true,
       essentialLinks: [
         {
           title: "Home",
