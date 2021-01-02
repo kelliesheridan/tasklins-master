@@ -38,7 +38,7 @@
    }
 
    .night-sky {
-    background-image: url("/statics/backgrounds/nightSky.png"); 
+    background-image: url("/statics/backgrounds/nightSky2.png"); 
 
     
     @include respond(phone) {
@@ -47,7 +47,7 @@
    }
 
    .night-stars {
-    background-image: url("/statics/backgrounds/nightSky-stars.png"); 
+    background-image: none;
    }
 
    .town-piper {
@@ -81,6 +81,12 @@
       width: 300%;
       max-width: 300%;
       margin-bottom: 20px;
+     }
+
+     @include respond(tab-port) {
+      width: 300%;
+      max-width: 300%;
+      margin-bottom: 220px;
      }
    }
 
