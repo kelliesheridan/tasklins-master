@@ -10,8 +10,7 @@
 
             <q-space />
             <q-btn
-              @click="dayOne = !dayOne"
-              v-if="!dayOne"
+              @click="dayOne = !dayOne"              
               padding="none"
               class="no-margin"
               flat
@@ -82,7 +81,7 @@
       </q-card>
     </div>
 
-    <!-- <div class="planuaryDay day-2" v-if="dayTwo">
+    <div class="planuaryDay day-2">
       <q-card>
         <q-card-section>
           <div class="text-h7 row">
@@ -91,22 +90,14 @@
             </q-btn>
             <q-space />
 
+            <q-space />
             <q-btn
-              v-if="dayTwo"
-              class="no-margin no-padding"
-              flat
-              round
-              dense
-              icon="edit"
-            />
-            <q-btn
-              @click="dayTwo = !dayTwo"
-              v-if="!dayTwo"
-              color="secondary"
+              @click="dayTwo = !dayTwo"              
               padding="none"
-              class="no-margin no-padding"
+              class="no-margin"
               flat
-              round
+              color="secondary"
+              push
               dense
               icon="add"
             />
@@ -125,6 +116,20 @@
             They're going to be there no matter what, so instead try to focus on
             areas of your life you <i>want</i> to put more energy toward.
           </p>
+
+           <p>
+            <i
+              >Anything listed here will remain private and not be posted
+              elsewhere on the website.</i
+            >
+          </p>
+
+          <p>
+            Once you're done, if you haven't already, consider creating new projects here on
+            Tasklins to go along with each of your focus areas, which you can do
+            from the journal page.
+          </p>
+
 
           <div>
             <div class="text-h7 focus-boxes center">
@@ -150,28 +155,20 @@
                 v-model="focusThree"
               ></q-input>
               <q-input
-                class="q-pa-xs"
-                v-if="focusThree != null"
+                class="q-pa-xs"                
                 rounded
                 label="Focus Four"
                 outlined
                 v-model="focusFour"
               ></q-input>
               <q-input
-                class="q-pa-xs"
-                v-if="focusFour != null"
+                class="q-pa-xs"                
                 rounded
                 label="Focus Five"
                 outlined
                 v-model="focusFive"
               ></q-input>
             </div>
-            <p>
-              <i
-                >Anything listed here will remain private and not be posted
-                elsewhere on the website.</i
-              >
-            </p>
             <div class="center q-pa-md">
               <q-btn
                 @click="setFocus()"
@@ -182,15 +179,9 @@
               />
             </div>
           </div>
-
-          <div v-show="focusThree != null">
-            Done! If you haven't already, consider creating new projects here on
-            Tasklins to go along with each of your focus areas, which you can do
-            from the journal page.
-          </div>
         </q-card-section>
       </q-card>
-    </div> -->
+    </div>
 
     <!-- <div class="planuaryDay day-3" v-if="dayThree">
       <q-card>
@@ -541,7 +532,7 @@ export default {
     return {
       dayOne: false,
       wishSubmitted: false,
-      dayTwo: false,
+      dayTwo: true,
       dayThree: false,
       dayFour: false,
       dayFive: false,
@@ -806,9 +797,12 @@ export default {
         focus5: this.focus5,
         username: this.profile.username
       };
-      this.addFocus(payload);
-      this.dayTwo = false;
+      this.addFocus(payload);      
       this.dayThree = true;
+      this.$q.notify({
+            message: "Your 2021 Focus List has been saved",
+            color: "primary"
+          });
     },
     setGoals() {
       let payload = {
