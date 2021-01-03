@@ -778,43 +778,43 @@ export default {
       this.addGoals(payload);
     },
     showDate(dayNumber) {
-      if (dayNumber <= 1) { (this.dayOne = true)}
-      if (dayNumber <= 2) { (this.dayTwo = true)}
-      if (dayNumber <= 3) { (this.dayThree = true)}
-      if (dayNumber <= 4) { (this.dayFour = true)}
-      if (dayNumber <= 5) { (this.dayFive = true)}
-      if (dayNumber <= 6) { (this.daySix = true)}
-      if (dayNumber <= 7) { (this.daySeven = true)}
-      if (dayNumber <= 8) { (this.dayEight = true)}
-      if (dayNumber <= 9) { (this.dayNine = true)}
-      if (dayNumber <= 10) { (this.dayTen = true)}
-      if (dayNumber <= 11) { (this.dayEleven = true)}
-      if (dayNumber <= 12) { (this.dayTwelve = true)}
-      if (dayNumber <= 13) { (this.dayThirteen = true)}
-      if (dayNumber <= 14) { (this.dayFourteen = true)}
-      if (dayNumber <= 15) { (this.dayFifteen = true)}
-      if (dayNumber <= 16) { (this.daySixteen = true)}
-      if (dayNumber <= 17) { (this.daySeventeen = true)}
-      if (dayNumber <= 18) { (this.dayEighteen = true)}
-      if (dayNumber <= 19) { (this.dayNineteen = true)}
-      if (dayNumber <= 20) { (this.dayTwenty = true)}
-      if (dayNumber <= 21) { (this.dayTwentyOne = true)}
-      if (dayNumber <= 22) { (this.dayTwentyTwo = true)}
-      if (dayNumber <= 23) { (this.dayTwentyThree = true)}
-      if (dayNumber <= 24) { (this.dayTwentyFour = true)}
-      if (dayNumber <= 25) { (this.dayTwentyFive = true)}
-      if (dayNumber <= 26) { (this.dayTwentySix = true)}
-      if (dayNumber <= 27) { (this.dayTwentySeven = true)}
-      if (dayNumber <= 28) { (this.dayTwentyEight = true)}
-      if (dayNumber <= 29) { (this.dayTwentyNine = true)}
-      if (dayNumber <= 30) { (this.dayThirty = true)}
-      if (dayNumber <= 31) { (this.dayThirtyOne = true)}
+      if (dayNumber >= 1) { (this.dayOne = true)}
+      if (dayNumber >= 2) { (this.dayTwo = true)}
+      if (dayNumber >= 3) { (this.dayThree = true)}
+      if (dayNumber >= 4) { (this.dayFour = true)}
+      if (dayNumber >= 5) { (this.dayFive = true)}
+      if (dayNumber >= 6) { (this.daySix = true)}
+      if (dayNumber >= 7) { (this.daySeven = true)}
+      if (dayNumber >= 8) { (this.dayEight = true)}
+      if (dayNumber >= 9) { (this.dayNine = true)}
+      if (dayNumber >= 10) { (this.dayTen = true)}
+      if (dayNumber >= 11) { (this.dayEleven = true)}
+      if (dayNumber >= 12) { (this.dayTwelve = true)}
+      if (dayNumber >= 13) { (this.dayThirteen = true)}
+      if (dayNumber >= 14) { (this.dayFourteen = true)}
+      if (dayNumber >= 15) { (this.dayFifteen = true)}
+      if (dayNumber >= 16) { (this.daySixteen = true)}
+      if (dayNumber >= 17) { (this.daySeventeen = true)}
+      if (dayNumber >= 18) { (this.dayEighteen = true)}
+      if (dayNumber >= 19) { (this.dayNineteen = true)}
+      if (dayNumber >= 20) { (this.dayTwenty = true)}
+      if (dayNumber >= 21) { (this.dayTwentyOne = true)}
+      if (dayNumber >= 22) { (this.dayTwentyTwo = true)}
+      if (dayNumber >= 23) { (this.dayTwentyThree = true)}
+      if (dayNumber >= 24) { (this.dayTwentyFour = true)}
+      if (dayNumber >= 25) { (this.dayTwentyFive = true)}
+      if (dayNumber >= 26) { (this.dayTwentySix = true)}
+      if (dayNumber >= 27) { (this.dayTwentySeven = true)}
+      if (dayNumber >= 28) { (this.dayTwentyEight = true)}
+      if (dayNumber >= 29) { (this.dayTwentyNine = true)}
+      if (dayNumber >= 30) { (this.dayThirty = true)}
+      if (dayNumber >= 31) { (this.dayThirtyOne = true)}
   },
   },
   mounted() {
     this.wish1 = this.yourWish;
     var date = moment().date();
-    if (moment().month() == 1) this.showDate(date);
+    this.showDate(date);
   }
 };
 </script>
