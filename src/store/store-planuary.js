@@ -47,7 +47,6 @@ const actions = {
       goal3: goal.goal3,
       goal4: goal.goal4,
       goal5: goal.goal5,
-      goal6: goal.goal6,
     };
     dispatch("fbAddGoals", payload);
   },
@@ -75,7 +74,7 @@ const actions = {
   },
   fbAddGoals({ dispatch }, payload) {
     let userId = firebaseAuth.currentUser.uid;
-    let goalsRef = firebaseDb.ref("goals/" + userId);
+    let goalsRef = firebaseDb.ref("planuary/goals/" + userId);
     payload.createdDate = moment().format();
     goalsRef.set(payload, error => {
       if (error) {

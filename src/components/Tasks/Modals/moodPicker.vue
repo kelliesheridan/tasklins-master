@@ -92,6 +92,11 @@ export default {
           moodDate: moment(this.date).format("YYYY-MM-DD")
         };
         this.setMood(mood);
+        this.$q.notify({
+        message: "Your mood for " + mood.moodDate + " has been set!",
+        color: "primary",
+        icon: "settings"
+      });
       }
     },
     checkMemberType(memberType) {

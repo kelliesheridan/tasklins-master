@@ -258,7 +258,7 @@
       </q-card>
     </div> 
 
-    <!-- <div class="planuaryDay day-4" v-if="dayFour"> 
+    <div class="planuaryDay day-4" v-if="dayFour"> 
       <q-card>
         <q-card-section>
           <div class="text-h7 row">
@@ -318,21 +318,21 @@
                 rounded
                 label="Goal One"
                 outlined
-                v-model="focusOne"
+                v-model="goalOne"
               ></q-input>
               <q-input
                 class="q-pa-xs"
                 rounded
                 label="Goal Two"
                 outlined
-                v-model="focusTwo"
+                v-model="goalTwo"
               ></q-input>
               <q-input
                 class="q-pa-xs"
                 rounded
                 label="Goal Three"
                 outlined
-                v-model="focusThree"
+                v-model="goalThree"
               ></q-input>
               <q-input
                 class="q-pa-xs"
@@ -350,14 +350,6 @@
                 outlined
                 v-model="goalFive"
               ></q-input>
-              <q-input
-                class="q-pa-xs"
-                v-if="goalSix != null"
-                rounded
-                label="Goal Six"
-                outlined
-                v-model="goalSix"
-              ></q-input>
             </div>
             <p>
               <i
@@ -367,7 +359,7 @@
             </p>
             <div class="center q-pa-md">
               <q-btn
-                @click="setFocus()"
+                @click="setGoals()"
                 class="q-pa-xs"
                 color="primary"
                 size="md"
@@ -380,7 +372,7 @@
       </q-card>
     </div>
 
-    <div class="planuaryDay day-5" v-if="dayFive">
+    <!-- <div class="planuaryDay day-5" v-if="dayFive">
       <q-card>
         <q-card-section>
           <div class="text-h7 row">
@@ -506,12 +498,7 @@ const moment = require("moment");
 export default {
   data() {
     return {
-      dayOne: false,
       wishSubmitted: false,
-      dayTwo: false,
-      dayThree: true,
-      dayFour: false,
-      dayFive: false,
       focus1: "",
       focus2: "",
       focus3: "",
@@ -547,7 +534,11 @@ export default {
       goal3: "",
       goal4: "",
       goal5: "",
-      goal6: "",
+      dayOne: false,
+      dayTwo: false,
+      dayThree: false,
+      dayFour: false,
+      dayFive: false,
       daySix: false,
       daySeven: false,
       dayEight: false,
@@ -681,14 +672,6 @@ export default {
         this.goal5 = value;
       }
     },
-    goalSix: {
-      get() {
-        return this.goal6;
-      },
-      set(value) {
-        this.goal6 = value;
-      }
-    },
     // showProjectsOnPage: {
     //   get() {
     //     return this.settings.showProjectsOnPage;
@@ -788,9 +771,8 @@ export default {
         goal1: this.goal1,
         goal2: this.goal2,
         goal3: this.goal3,
-        goal4: this.goal1,
-        goal5: this.goal2,
-        goal6: this.goal3,
+        goal4: this.goal4,
+        goal5: this.goal5,
         username: this.profile.username
       };
       this.addGoals(payload);
