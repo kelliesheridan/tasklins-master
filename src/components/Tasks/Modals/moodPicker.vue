@@ -29,11 +29,13 @@
           spinner-color="white"
           style="height: 80px; max-width: 80px"
           @click="mood = 'tired'"
+          v-if="this.profile.memberType > 1"
         />
         <q-img
           src="/statics/moods/tired.png"
           spinner-color="white"
-          style="height: 80px; max-width: 80px; opacity: 20%;"          
+          style="height: 80px; max-width: 80px; opacity: 20%;" 
+          v-if="this.profile.memberType == 1"         
         />
 
         <div>More moods coming soon as quest rewards. Tired available for $3+ patrons. </div>
@@ -75,7 +77,9 @@ export default {
       date: moment().format("YYYY-MM-DD")
     };
   },
-  computed: {},
+  computed: {
+    ...mapGetters("profile", ["profile"]),
+  },
   components: {
     "list-header": require("components/Shared/ListHeader.vue").default
   },
@@ -89,6 +93,9 @@ export default {
         };
         this.setMood(mood);
       }
+    },
+    checkMemberType(memberType) {
+      return memberType == 1 ? true : false;
     }
   }
 };

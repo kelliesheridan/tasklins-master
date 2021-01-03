@@ -166,7 +166,8 @@ const actions = {
         admin: profile.admin,
         color: profile.color == undefined ? "" : "#fa9f53",
         pronouns: profile.pronouns == undefined ? "" : profile.pronouns,
-        createdDate: profile.createdDate == undefined ? "" : profile.createdDate
+        createdDate: profile.createdDate == undefined ? "" : profile.createdDate,
+        memberType: profile.memberType == undefined ? 1 : profile.memberType
       };
       commit("updateProfile", payload);
       dispatch("fbReadAllProfiles")
