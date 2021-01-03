@@ -82,7 +82,7 @@
       </q-card>
     </div>
 
-    <div class="planuaryDay day-2" v-if="dayTwo">
+    <!-- <div class="planuaryDay day-2" v-if="dayTwo">
       <q-card>
         <q-card-section>
           <div class="text-h7 row">
@@ -190,7 +190,7 @@
           </div>
         </q-card-section>
       </q-card>
-    </div>
+    </div> -->
 
     <!-- <div class="planuaryDay day-3" v-if="dayThree">
       <q-card>
