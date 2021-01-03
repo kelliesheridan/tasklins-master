@@ -222,26 +222,7 @@
             so important to keep track of your emotional state.
           </p>
 
-          <div>
-            <div class="q-pa-sm rounded-borders">
-              <q-option-group
-                name="mood_1"
-                v-model="mood_1"
-                :options="options"
-                type="checkbox"
-                color="primary"
-                inline
-              />
-            </div>
-            <div class="center q-pa-md">
-              <q-btn
-                class="q-pa-xs"
-                color="primary"
-                size="md"
-                label="Let's Go!"
-              />
-            </div>
-          </div>
+          <mood-picker></mood-picker>
 
           <div v-show="dayThree">
             Thank you! From today onward, you'll now be able to log your mood
@@ -249,7 +230,7 @@
             to help you track your mood over time. If you'd like, you can also
             let us know what your mood was like yesterday and the day before so
             you can work toward keeping a record for the entire year.
-            <div class="q-pa-sm rounded-borders">
+            <!-- <div class="q-pa-sm rounded-borders">
               January 1st:
               <q-option-group
                 name="mood_2"
@@ -271,7 +252,7 @@
                 color="primary"
                 inline
               />
-            </div>
+            </div> -->
           </div>
         </q-card-section>
       </q-card>
@@ -740,6 +721,9 @@ export default {
         this.setProjectSearch(value);
       }
     }
+  },
+  components: {
+    "mood-picker": require("components/Tasks/Modals/moodPicker.vue").default,
   },
   methods: {
     ...mapActions("planuary", [
