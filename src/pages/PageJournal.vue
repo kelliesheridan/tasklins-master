@@ -30,7 +30,12 @@
 
                     <q-btn dense flat @click="pageNumber = 3">
                       This Week
-                      </q-btn>
+                    </q-btn>
+                    <br>
+                    
+                    <q-btn dense flat @click="pageNumber = 4">
+                      Mood Tracker
+                    </q-btn>
                 </div>
                 <div
                   v-show="pageNumber == 2"
@@ -63,6 +68,34 @@
                   style="margin-top: -80%"
                 >
                   <h4>Coming Soon</h4>
+                </div>
+
+                <div
+                  v-show="pageNumber == 4"
+                  class="notebookPage3 notebookMargin"
+                  style="margin-top: -80%"
+                >
+                  <h4>Mood Tracker</h4>
+                  <br>
+                  <div>
+                    <div>More moods and tracking options coming soon!</div>
+                    <br>
+                    <div>Recent Moods</div>
+                    <q-img
+                      src="/statics/moods/happy.png"
+                      spinner-color="white"
+                      style="height: 80px; max-width: 80px"
+                      @click="mood = 'happy'"
+                    />
+                  </div>
+                  <div>
+                    <q-btn
+                      @click="showMoodPicker = true"
+                      class="new-project-btn"
+                      color="primary"
+                      label="Add a Mood"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -100,6 +133,11 @@
         <q-dialog v-model="showAddProject">
           <add-project @close="showAddProject = false" />
         </q-dialog>
+
+        <q-dialog v-model="showMoodPicker">
+          <mood-picker @close="showMoodPicker = false" />
+        </q-dialog>
+
 
       </template>
 
@@ -140,7 +178,8 @@ export default {
   components: {
     "add-project": require("components/Tasks/Modals/addProject.vue").default,
     project: require("components/Tasks/Tools/ProjectList.vue").default,
-    "tasks-todo": require("components/Tasks/TasksTodo.vue").default
+    "tasks-todo": require("components/Tasks/TasksTodo.vue").default,
+    "mood-picker": require("components/Tasks/Modals/MoodPicker.vue").default,
     // "tasks-todo": require("components/Tasks/TasksTodo.vue").default,
     // "tasks-completed": require("components/Tasks/TasksCompleted.vue").default,
     //"tasks-completed-today": require("components/Tasks/TasksCompletedToday.vue").default,

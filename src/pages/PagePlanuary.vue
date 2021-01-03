@@ -183,7 +183,7 @@
       </q-card>
     </div>
 
-    <!-- <div class="planuaryDay day-3" v-if="dayThree">
+    <div class="planuaryDay day-3" v-if="dayThree">
       <q-card>
         <q-card-section>
           <div class="text-h7 row">
@@ -275,9 +275,9 @@
           </div>
         </q-card-section>
       </q-card>
-    </div>
+    </div> 
 
-    <div class="planuaryDay day-4" v-if="dayFour">
+    <!-- <div class="planuaryDay day-4" v-if="dayFour"> 
       <q-card>
         <q-card-section>
           <div class="text-h7 row">
@@ -395,11 +395,6 @@
             </div>
           </div>
 
-          <div v-show="focusThree != null">
-            Done! If you haven't already, consider creating new projects here on
-            Tasklins to go along with each of your focus areas, which you can do
-            from the journal page.
-          </div>
         </q-card-section>
       </q-card>
     </div>
@@ -532,8 +527,8 @@ export default {
     return {
       dayOne: false,
       wishSubmitted: false,
-      dayTwo: true,
-      dayThree: false,
+      dayTwo: false,
+      dayThree: true,
       dayFour: false,
       dayFive: false,
       focus1: "",

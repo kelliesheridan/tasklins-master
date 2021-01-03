@@ -4,26 +4,39 @@
       {{ mood }}
     </list-header>
 
-    <div class="q-pa-md">
+    <div class="q-pa-md center">      
       <q-form @submit="setUserMood()" class="q-gutter-md">
         <q-img
           src="/statics/moods/happy.png"
           spinner-color="white"
-          style="height: 100px; max-width: 100px"
+          style="height: 80px; max-width: 80px"
           @click="mood = 'happy'"
         />
         <q-img
           src="/statics/moods/fine.png"
           spinner-color="white"
-          style="height: 100px; max-width: 100px"
+          style="height: 80px; max-width: 80px"
           @click="mood = 'fine'"
         />
         <q-img
           src="/statics/moods/glum.png"
           spinner-color="white"
-          style="height: 100px; max-width: 100px"
+          style="height: 80px; max-width: 80px"
           @click="mood = 'glum'"
         />
+        <q-img
+          src="/statics/moods/tired.png"
+          spinner-color="white"
+          style="height: 80px; max-width: 80px"
+          @click="mood = 'tired'"
+        />
+        <q-img
+          src="/statics/moods/tired.png"
+          spinner-color="white"
+          style="height: 80px; max-width: 80px; opacity: 20%;"          
+        />
+
+        <div>More moods coming soon as quest rewards. Tired available for $3+ patrons. </div>
 
         <q-input filled v-model="date" mask="date">
           <template v-slot:append>
@@ -44,7 +57,7 @@
         </q-input>
 
         <div>
-          <q-btn label="Submit" type="submit" color="primary" />
+          <q-btn label="Submit" type="submit" color="primary" />          
         </div>
       </q-form>
     </div>
