@@ -80,13 +80,13 @@
                   <div>
                     <div>More moods and tracking options coming soon!</div>
                     <br>
-                    <div>Recent Moods</div>
+                    <!-- <div>Recent Moods</div>
                     <q-img
                       src="/statics/moods/happy.png"
                       spinner-color="white"
                       style="height: 80px; max-width: 80px"
                       @click="mood = 'happy'"
-                    />
+                    /> -->
                   </div>
                   <div>
                     <q-btn

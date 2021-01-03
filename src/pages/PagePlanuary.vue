@@ -183,7 +183,7 @@
       </q-card>
     </div>
 
-    <div class="planuaryDay day-3" v-if="dayThree">
+    <div class="planuaryDay day-3">
       <q-card>
         <q-card-section>
           <div class="text-h7 row">
@@ -193,16 +193,7 @@
             <q-space />
 
             <q-btn
-              v-if="dayThree"
-              class="no-margin no-padding"
-              flat
-              round
-              dense
-              icon="edit"
-            />
-            <q-btn
               @click="dayThree = !dayThree"
-              v-if="!dayThree"
               color="secondary"
               padding="none"
               class="no-margin no-padding"
@@ -222,38 +213,26 @@
             so important to keep track of your emotional state.
           </p>
 
-          <mood-picker></mood-picker>
+          <p>Today, we're introducing a new feature to let you track how you felt
+            on each day of the year. Just click on a mood, pick a date, and go!
+            For now, there are three options to choose from
+            (four for patrons), but we'll be adding more over the next little while
+            to include more variety to the selections.
+          </p>
 
-          <div v-show="dayThree">
-            Thank you! From today onward, you'll now be able to log your mood
-            for each day from the home page, and soon we'll have tools in place
-            to help you track your mood over time. If you'd like, you can also
-            let us know what your mood was like yesterday and the day before so
-            you can work toward keeping a record for the entire year.
-            <!-- <div class="q-pa-sm rounded-borders">
-              January 1st:
-              <q-option-group
-                name="mood_2"
-                v-model="mood_2"
-                :options="options"
-                type="checkbox"
-                color="primary"
-                inline
-              />
-            </div>
+          <p>It's also worth keeping in mind that you can choose the date when you
+            select an emotion, so if you want to set moods for the previous days 2021
+            so far, you can absolutely do that! There is also a new page in your journal
+            to access the mood picker whenever you need to. We'll also be adding some
+            stats and tracking in the near future!
+          </p>
 
-            <div class="q-pa-sm rounded-borders">
-              January 2nd:
-              <q-option-group
-                name="mood_3"
-                v-model="mood_3"
-                :options="options"
-                type="checkbox"
-                color="primary"
-                inline
-              />
-            </div> -->
-          </div>
+          <p>
+            Have a great day!
+          </p>
+
+          <mood-picker class="center"></mood-picker>
+
         </q-card-section>
       </q-card>
     </div> 
@@ -778,10 +757,10 @@ export default {
       this.addGoals(payload);
     },
     showDate(dayNumber) {
-      if (dayNumber >= 1) { (this.dayOne = true)}
-      if (dayNumber >= 2) { (this.dayTwo = true)}
-      if (dayNumber >= 3) { (this.dayThree = true)}
-      if (dayNumber >= 4) { (this.dayFour = true)}
+      if (dayNumber == 1) { (this.dayOne = true)}
+      if (dayNumber == 2) { (this.dayTwo = true)}
+      if (dayNumber == 3) { (this.dayThree = true)}
+      if (dayNumber == 4) { (this.dayFour = true)}
       if (dayNumber >= 5) { (this.dayFive = true)}
       if (dayNumber >= 6) { (this.daySix = true)}
       if (dayNumber >= 7) { (this.daySeven = true)}
