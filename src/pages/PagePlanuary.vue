@@ -1846,7 +1846,7 @@ export default {
     }
   },
   mounted() {
-    this.wish1 = yourWish;
+    this.wish1 = this.yourWish;
     var date = moment().date();
     if (moment().month() == 1) this.showDate(date);
   }
