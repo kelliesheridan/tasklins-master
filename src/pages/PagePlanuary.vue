@@ -695,7 +695,7 @@ export default {
     },
     focusFour: {
       get() {
-        return "";
+        return this.focus4;
       },
       set(value) {
         this.focus4 = value;
@@ -703,7 +703,7 @@ export default {
     },
     focusFive: {
       get() {
-        return "";
+        return this.focus5;
       },
       set(value) {
         this.focus5 = value;
@@ -895,6 +895,13 @@ export default {
   },
   mounted() {
     this.wish1 = this.yourWish;
+    if (this.planuary.focus != undefined) {
+      this.focusOne = this.planuary.focus.focus1;
+      this.focusTwo = this.planuary.focus.focus2;
+      this.focusThree = this.planuary.focus.focus3;
+      this.focusFour = this.planuary.focus.focus4;
+      this.focusFive = this.planuary.focus.focus5;
+    }
     var date = moment().date();
     this.showDate(date);
   }
