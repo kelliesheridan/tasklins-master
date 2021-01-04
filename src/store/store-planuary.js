@@ -14,9 +14,17 @@ const mutations = {
   setWishes(state, wishes) {
     state.planuary = wishes;
   },
+  setFocus(state, focus) {
+    state.planuary.focus = focus;
+  },
   addWish(state, wishes) {
     Vue.set(state.planuary, wishes, wishes);
-    console.debug("state.planuary are: ", state.planuary);
+    //console.debug("state.planuary are: ", state.planuary);
+  },
+  addFocus(state, focus) {
+    state.planuary.focus = focus;
+    //Vue.set(state.planuary, focus, focus);
+    //console.debug("state.planuary are: ", state.planuary);
   }
 };
 
@@ -69,6 +77,7 @@ const actions = {
       if (error) {
         showErrorMessage(error.message);
       } else {
+        dispatch("fbReadFocus");
       }
     });
   },
@@ -128,7 +137,42 @@ const actions = {
         dispatch("fbReadWishes");
       }
     });
-  }
+  },
+  fbReadFocus({ commit }) {
+    let userId = firebaseAuth.currentUser.uid;
+    let focuses = firebaseDb.ref("focus/" + userId);
+
+    //initial check for data
+    focuses.once(
+      "value",
+      snapshot => {
+        let focuses = snapshot.val();
+        console.debug("focuses are: ", focuses);
+        commit("setFocus", focuses);
+      },
+      error => {
+        showErrorMessage(error.message);
+      }
+    );
+
+    // child added
+    focuses.on("child_added", snapshot => {
+      let focuses = snapshot.val();
+      commit("addFocus", focuses);
+    });
+
+    // child changed
+    focuses.on("child_changed", snapshot => {
+      let focuses = snapshot.val();
+      commit("setFocus", focuses);
+    });
+
+    // child removed
+    focuses.on("child_removed", snapshot => {
+      let focuses = snapshot.val();
+      commit("deleteFocus", focuses);
+    });
+  },
 };
 
 const getters = {
