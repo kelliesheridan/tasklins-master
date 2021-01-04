@@ -242,7 +242,7 @@ export default {
       left: false,
       right: false,
       showBonus: false,
-      showBonusItem: true,
+      showBonusItem: false,
       essentialLinks: [
         {
           title: "Home",

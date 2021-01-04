@@ -271,7 +271,7 @@
         <q-card-section v-if="dayFour">
           <p>
             Four days in and we still haven't talked about the traditional
-            <i>New Year's Resolutions</i>. So, it's time to fix that! It's time
+            <i>New Year's Resolutions</i>. Let's fix that! It's time
             to set your goals for the year, but there are a few things to keep
             in mind.
           </p>
@@ -279,15 +279,22 @@
             1) Make sure your goals are things you have control over. Things
             like winning the lottery, having someone fall in love with you or
             getting a book agent rely on luck or other people's choices and
-            don't usually make for strong goals.
+            don't usually make for achieveable goals.
           </p>
           <p>
             2) Try to focus on goals you can measure. Practicing Spanish for 20
-            minutes every day vs. getting better at Spanish.
+            minutes three times a week vs. getting better at Spanish.
           </p>
           <p>
-            3) At the end of the day, there are no rules! Your goals can be
-            whatever you need them to be.
+            3) That being said, allow some room to mess up. If you set a goal to
+            do something every day and then mess up the first week, there's no reason
+            to throw out the whole year. Your goals probably don't need specific
+            deadlines.
+          </p>
+          <p>
+            4) At the end of the day, there are no rules! You can ignore all of this
+            and make your goals whatever you need them to be. Try something new, and
+            we'll see how it goes!
           </p>
 
           <div>
@@ -351,7 +358,7 @@
       </q-card>
     </div>
 
-    <!-- <div class="planuaryDay day-5" v-if="dayFive">
+    <div class="planuaryDay day-5" v-if="dayFive">
       <q-card>
         <q-card-section>
           <div class="text-h7 row">
@@ -360,14 +367,6 @@
             </q-btn>
             <q-space />
 
-            <q-btn
-              v-if="dayFive"
-              class="no-margin no-padding"
-              flat
-              round
-              dense
-              icon="edit"
-            />
             <q-btn
               @click="dayFive = !dayFive"
               v-if="!dayFive"
@@ -389,7 +388,7 @@
             is to focus on the good, the exciting, the fun!
           </p>
           <p>
-            Let's make a list of all the things you're looking forward to this
+            Let's make a list of some of the things you're looking forward to this
             year. This can be anything from a big birthday to a new album or
             movie you're looking forward to, or a class you're going to take!
           </p>
@@ -458,15 +457,113 @@
               />
             </div>
           </div>
-
-          <div v-show="focusThree != null">
-            Done! If you haven't already, consider creating new projects here on
-            Tasklins to go along with each of your focus areas, which you can do
-            from the journal page.
-          </div>
         </q-card-section>
       </q-card>
-    </div> -->
+    </div>
+
+          <div class="planuaryDay day-6" v-if="daySix">
+            <q-card>
+              <q-card-section>
+                <div class="text-h7 row">
+                  <q-btn dense flat @click="daySix = !daySix">
+                    Planuary. Day Six.
+                  </q-btn>
+                  <q-space />
+
+                  <q-btn
+                    @click="daySix = !daySix"
+                    v-if="!daySix"
+                    color="secondary"
+                    padding="none"
+                    class="no-margin no-padding"
+                    flat
+                    round
+                    dense
+                    icon="add"
+                  />
+                </div>
+              </q-card-section>
+
+              <q-card-section v-if="daySix">
+                <p>
+                  There's no way to know for sure what is coming for any of us this
+                  year, but we all have things we're looking forward to! Today's task
+                  is to focus on the good, the exciting, the fun!
+                </p>
+                <p>
+                  Let's make a list of some of the things you're looking forward to this
+                  year. This can be anything from a big birthday to a new album or
+                  movie you're looking forward to, or a class you're going to take!
+                </p>
+
+                <div>
+                  <div class="text-h7 focus-boxes center">
+                    <q-input
+                      class="q-pa-xs"
+                      rounded
+                      label="Focus One"
+                      outlined
+                      v-model="hightlightOne"
+                    ></q-input>
+                    <q-input
+                      class="q-pa-xs"
+                      rounded
+                      label="Focus Two"
+                      outlined
+                      v-model="hightlightTwo"
+                    ></q-input>
+                    <q-input
+                      class="q-pa-xs"
+                      rounded
+                      label="Focus Three"
+                      outlined
+                      v-model="hightlightThree"
+                    ></q-input>
+                    <q-input
+                      class="q-pa-xs"
+                      v-if="goalThree != ''"
+                      rounded
+                      label="Focus Four"
+                      outlined
+                      v-model="hightlightFour"
+                    ></q-input>
+                    <q-input
+                      class="q-pa-xs"
+                      v-if="goalFour != ''"
+                      rounded
+                      label="Focus Five"
+                      outlined
+                      v-model="hightlightFive"
+                    ></q-input>
+                    <q-input
+                      class="q-pa-xs"
+                      v-if="goalFove != ''"
+                      rounded
+                      label="Focus Six"
+                      outlined
+                      v-model="hightlightSix"
+                    ></q-input>
+                  </div>
+                  <p>
+                    <i
+                      >Anything listed here will remain private and not be posted
+                      elsewhere on the website.</i
+                    >
+                  </p>
+                  <div class="center q-pa-md">
+                    <q-btn
+                      @click="setGoals()"
+                      class="q-pa-xs"
+                      color="primary"
+                      size="md"
+                      label="Now, let's see what happens!"
+                    />
+                  </div>
+                </div>
+
+              </q-card-section>
+            </q-card>
+          </div>
   </q-page>
 </template>
 
