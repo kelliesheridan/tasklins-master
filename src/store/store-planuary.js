@@ -4,7 +4,8 @@ import { firebaseDb, firebaseAuth } from "boot/firebase";
 import { showErrorMessage } from "src/functions/function-show-error-message";
 
 const state = {
-  planuary: {}
+  planuary: {
+  }
 };
 
 const mutations = {
@@ -15,7 +16,7 @@ const mutations = {
     state.planuary = wishes;
   },
   setFocus(state, focus) {
-    state.planuary.focus = focus;
+    if (focus != undefined)     state.planuary.focus = focus;
   },
   addWish(state, wishes) {
     Vue.set(state.planuary, wishes, wishes);
