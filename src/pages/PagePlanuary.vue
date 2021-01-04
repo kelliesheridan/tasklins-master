@@ -853,6 +853,11 @@ export default {
         username: this.profile.username
       };
       this.addGoals(payload);
+      this.dayFour = false;
+      this.$q.notify({
+            message: "Your Goals have been set!",
+            color: "primary"
+          });
     },
     showDate(dayNumber) {
       if (dayNumber == 1) { (this.dayOne = true)}
