@@ -47,6 +47,14 @@
           class="wishStar5"
         />
 
+        <q-img
+          @mouseover="wish6 = true"
+          @mouseleave="wish6 = false"
+          src="/statics/backgrounds/stars/star6.png"
+          class="wishStar6"
+        />
+
+
    
       </div>
 

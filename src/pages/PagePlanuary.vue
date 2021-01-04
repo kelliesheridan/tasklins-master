@@ -398,45 +398,42 @@
               <q-input
                 class="q-pa-xs"
                 rounded
-                label="Focus One"
+                label="What are you looking forward to?"
                 outlined
                 v-model="hightlightOne"
               ></q-input>
               <q-input
                 class="q-pa-xs"
                 rounded
-                label="Focus Two"
+                label="What are you looking forward to?"
                 outlined
                 v-model="hightlightTwo"
               ></q-input>
               <q-input
                 class="q-pa-xs"
                 rounded
-                label="Focus Three"
+                label="What are you looking forward to?"
                 outlined
                 v-model="hightlightThree"
               ></q-input>
               <q-input
-                class="q-pa-xs"
-                v-if="goalThree != ''"
+                class="q-pa-xs"                
                 rounded
-                label="Focus Four"
+                label="What are you looking forward to?"
                 outlined
                 v-model="hightlightFour"
               ></q-input>
               <q-input
-                class="q-pa-xs"
-                v-if="goalFour != ''"
+                class="q-pa-xs"                
                 rounded
-                label="Focus Five"
+                label="What are you looking forward to?"
                 outlined
                 v-model="hightlightFive"
               ></q-input>
               <q-input
                 class="q-pa-xs"
-                v-if="goalFove != ''"
                 rounded
-                label="Focus Six"
+                label="What are you looking forward to?"
                 outlined
                 v-model="hightlightSix"
               ></q-input>
@@ -449,7 +446,7 @@
             </p>
             <div class="center q-pa-md">
               <q-btn
-                @click="setGoals()"
+                @click="setHighlights()"
                 class="q-pa-xs"
                 color="primary"
                 size="md"
@@ -486,38 +483,47 @@
 
               <q-card-section v-if="daySix">
                 <p>
-                  There's no way to know for sure what is coming for any of us this
-                  year, but we all have things we're looking forward to! Today's task
-                  is to focus on the good, the exciting, the fun!
+                  Yesterday we talked about the things we're looking forward to this year,
+                  but now it's time to dig a little deeper, into the things that might be
+                  a little scarier. The things that you're not so excited about. Maybe even
+                  worried or nervous about. What are the big, scary things in your life
+                  these days?
                 </p>
+
                 <p>
-                  Let's make a list of some of the things you're looking forward to this
-                  year. This can be anything from a big birthday to a new album or
-                  movie you're looking forward to, or a class you're going to take!
+                  We added some prompts below (such as what scares you, or what are you
+                  worried about) but you don't have to use them. Anything you put here
+                  is just for you, so be honest and maybe one day when you look back
+                  on these, they won't seem so scary.
                 </p>
+
+                <p><i>Note: There's still so much going on in the world, and a lot of us
+                  are maybe even more anxious than usual. It's totally up to you whether
+                  these are the things you want to focus on, or if you want to keep these
+                  more personal. Anything goes!</i></p>
 
                 <div>
                   <div class="text-h7 focus-boxes center">
                     <q-input
                       class="q-pa-xs"
                       rounded
-                      label="Focus One"
+                      label="What have you been worrying about lately?"
                       outlined
-                      v-model="hightlightOne"
+                      v-model="scaryOne"
                     ></q-input>
                     <q-input
                       class="q-pa-xs"
                       rounded
-                      label="Focus Two"
+                      label="What scares you about this year?"
                       outlined
-                      v-model="hightlightTwo"
+                      v-model="scaryTwo"
                     ></q-input>
                     <q-input
                       class="q-pa-xs"
                       rounded
                       label="Focus Three"
                       outlined
-                      v-model="hightlightThree"
+                      v-model="scaryThree"
                     ></q-input>
                     <q-input
                       class="q-pa-xs"
@@ -525,7 +531,7 @@
                       rounded
                       label="Focus Four"
                       outlined
-                      v-model="hightlightFour"
+                      v-model="scaryFour"
                     ></q-input>
                     <q-input
                       class="q-pa-xs"
@@ -533,7 +539,7 @@
                       rounded
                       label="Focus Five"
                       outlined
-                      v-model="hightlightFive"
+                      v-model="scaryFive"
                     ></q-input>
                     <q-input
                       class="q-pa-xs"
@@ -541,22 +547,17 @@
                       rounded
                       label="Focus Six"
                       outlined
-                      v-model="hightlightSix"
+                      v-model="scarySix"
                     ></q-input>
                   </div>
-                  <p>
-                    <i
-                      >Anything listed here will remain private and not be posted
-                      elsewhere on the website.</i
-                    >
-                  </p>
+
                   <div class="center q-pa-md">
                     <q-btn
-                      @click="setGoals()"
+                      @click="setScary()"
                       class="q-pa-xs"
                       color="primary"
                       size="md"
-                      label="Now, let's see what happens!"
+                      label="Close your eyes and leap"
                     />
                   </div>
                 </div>
