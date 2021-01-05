@@ -358,7 +358,7 @@
       </q-card>
     </div>
 
-    <div class="planuaryDay day-5" v-if="dayFive">
+    <!-- <div class="planuaryDay day-5" v-if="dayFive">
       <q-card>
         <q-card-section>
           <div class="text-h7 row">
@@ -564,7 +564,7 @@
 
               </q-card-section>
             </q-card>
-          </div>
+          </div> -->
   </q-page>
 </template>
 
@@ -747,6 +747,86 @@ export default {
       },
       set(value) {
         this.goal5 = value;
+      }
+    },
+    highlightOne: {
+      get() {
+        return this.highlight1;
+      },
+      set(value) {
+        this.highlight1 = value;
+      }
+    },
+    highlightTwo: {
+      get() {
+        return this.highlight2;
+      },
+      set(value) {
+        this.highlight2 = value;
+      }
+    },
+    highlightThree: {
+      get() {
+        return this.highlight3;
+      },
+      set(value) {
+        this.highlight3 = value;
+      }
+    },
+    highlightFour: {
+      get() {
+        return this.highlight4;
+      },
+      set(value) {
+        this.highlight4 = value;
+      }
+    },
+    highlightFive: {
+      get() {
+        return this.highlight5;
+      },
+      set(value) {
+        this.highlight5 = value;
+      }
+    },
+    scaryOne: {
+      get() {
+        return this.scary1;
+      },
+      set(value) {
+        this.scary1 = value;
+      }
+    },
+    scaryTwo: {
+      get() {
+        return this.scary2;
+      },
+      set(value) {
+        this.scary2 = value;
+      }
+    },
+    scaryThree: {
+      get() {
+        return this.scary3;
+      },
+      set(value) {
+        this.scary3 = value;
+      }
+    },
+    scaryFour: {
+      get() {
+        return this.scary4;
+      },
+      set(value) {
+        this.scary4 = value;
+      }
+    },
+    scaryFive: {
+      get() {
+        return this.scary5;
+      },
+      set(value) {
+        this.scary5 = value;
       }
     },
     // showProjectsOnPage: {
