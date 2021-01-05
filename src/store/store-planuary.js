@@ -59,6 +59,28 @@ const actions = {
     };
     dispatch("fbAddGoals", payload);
   },
+  addHighlights({ dispatch, commit }, highlight) {
+    let payload = {
+      username: highlight.username,
+      highlight1:  highlight.highlight1,
+      highlight2: highlight.highlight2,
+      highlight3: highlight.highlight3,
+      highlight4: highlight.highlight4,
+      highlight5: highlight.highlight5,
+    };
+    dispatch("fbAddHighlights", payload);
+  },
+  addScary({ dispatch, commit }, scary) {
+    let payload = {
+      username: scary.username,
+      scary1:  scary.scary1,
+      scary2: scary.scary2,
+      scary3: scary.scary3,
+      scary4: scary.scary4,
+      scary5: scary.scary5,
+    };
+    dispatch("fbAddGScary", payload);
+  },
   fbAddWish({ dispatch }, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let wishRef = firebaseDb.ref("wishes/" + userId);
@@ -87,6 +109,28 @@ const actions = {
     let goalsRef = firebaseDb.ref("planuary/goals/" + userId);
     payload.createdDate = moment().format();
     goalsRef.set(payload, error => {
+      if (error) {
+        showErrorMessage(error.message);
+      } else {
+      }
+    });
+  },
+  fbAddHighlight({ dispatch }, payload) {
+    let userId = firebaseAuth.currentUser.uid;
+    let highlightRef = firebaseDb.ref("planuary/highlight/" + userId);
+    payload.createdDate = moment().format();
+    highlightRef.set(payload, error => {
+      if (error) {
+        showErrorMessage(error.message);
+      } else {
+      }
+    });
+  },
+  fbAddScary({ dispatch }, payload) {
+    let userId = firebaseAuth.currentUser.uid;
+    let highlightRef = firebaseDb.ref("planuary/scary/" + userId);
+    payload.createdDate = moment().format();
+    highlightRef.set(payload, error => {
       if (error) {
         showErrorMessage(error.message);
       } else {
