@@ -67,6 +67,9 @@ const actions = {
         dispatch("tasklins/getTasklin", null, { root: true });
         dispatch("planuary/fbReadWishes", null, { root: true });
         dispatch("planuary/fbReadFocus", null, { root: true });
+        dispatch("planuary/fbReadGoals", null, { root: true });
+        dispatch("planuary/fbReadPlanuary", {type: "highlights"}, { root: true });
+        dispatch("planuary/fbReadPlanuary", {type: "scary"}, { root: true });
         if (this.state.profile.profile.user.name !== "") {
           if (this.state.tasklins.tasklin.name === "") {
             this.$router.replace("/index").catch(err => {});

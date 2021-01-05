@@ -358,7 +358,7 @@
       </q-card>
     </div>
 
-    <div class="planuaryDay day-5" v-if="dayFive">
+    <div class="planuaryDay day-5">
       <q-card>
         <q-card-section>
           <div class="text-h7 row">
@@ -400,42 +400,35 @@
                 rounded
                 label="What are you looking forward to?"
                 outlined
-                v-model="hightlightOne"
+                v-model="highlightOne"
               ></q-input>
               <q-input
                 class="q-pa-xs"
                 rounded
                 label="What are you looking forward to?"
                 outlined
-                v-model="hightlightTwo"
+                v-model="highlightTwo"
               ></q-input>
               <q-input
                 class="q-pa-xs"
                 rounded
                 label="What are you looking forward to?"
                 outlined
-                v-model="hightlightThree"
+                v-model="highlightThree"
               ></q-input>
               <q-input
                 class="q-pa-xs"                
                 rounded
                 label="What are you looking forward to?"
                 outlined
-                v-model="hightlightFour"
+                v-model="highlightFour"
               ></q-input>
               <q-input
                 class="q-pa-xs"                
                 rounded
                 label="What are you looking forward to?"
                 outlined
-                v-model="hightlightFive"
-              ></q-input>
-              <q-input
-                class="q-pa-xs"
-                rounded
-                label="What are you looking forward to?"
-                outlined
-                v-model="hightlightSix"
+                v-model="highlightFive"
               ></q-input>
             </div>
             <p>
@@ -521,7 +514,7 @@
                     <q-input
                       class="q-pa-xs"
                       rounded
-                      label="Focus Three"
+                      label="Scary Three"
                       outlined
                       v-model="scaryThree"
                     ></q-input>
@@ -529,7 +522,7 @@
                       class="q-pa-xs"
                       v-if="goalThree != ''"
                       rounded
-                      label="Focus Four"
+                      label="Scary Four"
                       outlined
                       v-model="scaryFour"
                     ></q-input>
@@ -537,17 +530,9 @@
                       class="q-pa-xs"
                       v-if="goalFour != ''"
                       rounded
-                      label="Focus Five"
+                      label="Scary Five"
                       outlined
                       v-model="scaryFive"
-                    ></q-input>
-                    <q-input
-                      class="q-pa-xs"
-                      v-if="goalFove != ''"
-                      rounded
-                      label="Focus Six"
-                      outlined
-                      v-model="scarySix"
                     ></q-input>
                   </div>
 
@@ -611,6 +596,16 @@ export default {
       goal3: "",
       goal4: "",
       goal5: "",
+      highlight1: "",
+      highlight2: "",
+      highlight3: "",
+      highlight4: "",
+      highlight5: "",
+      scary1: "",
+      scary2: "",
+      scary3: "",
+      scary4: "",
+      scary5: "",
       dayOne: false,
       dayTwo: false,
       dayThree: false,
@@ -749,30 +744,86 @@ export default {
         this.goal5 = value;
       }
     },
-    // showProjectsOnPage: {
-    //   get() {
-    //     return this.settings.showProjectsOnPage;
-    //   },
-    //   set(value) {
-    //     this.setShowProjectsOnPage(value);
-    //   }
-    // },
-    // hideCompletedTasks: {
-    //   get() {
-    //     return this.settings.hideCompletedTasks;
-    //   },
-    //   set(value) {
-    //     this.setHideCompletedTasks(value);
-    //   }
-    // },
-    // darkMode: {
-    //   get() {
-    //     return this.settings.darkMode;
-    //   },
-    //   set(value) {
-    //     this.setDarkMode(value);
-    //   }
-    // }
+    highlightOne: {
+      get() {
+        return this.highlight1;
+      },
+      set(value) {
+        this.highlight1 = value;
+      }
+    },
+    highlightTwo: {
+      get() {
+        return this.highlight2;
+      },
+      set(value) {
+        this.highlight2 = value;
+      }
+    },
+    highlightThree: {
+      get() {
+        return this.highlight3;
+      },
+      set(value) {
+        this.highlight3 = value;
+      }
+    },
+    highlightFour: {
+      get() {
+        return this.highlight4;
+      },
+      set(value) {
+        this.highlight4 = value;
+      }
+    },
+    highlightFive: {
+      get() {
+        return this.highlight5;
+      },
+      set(value) {
+        this.highlight5 = value;
+      }
+    },
+    scaryOne: {
+      get() {
+        return this.scary1;
+      },
+      set(value) {
+        this.scary1 = value;
+      }
+    },
+    scaryTwo: {
+      get() {
+        return this.scary2;
+      },
+      set(value) {
+        this.scary2 = value;
+      }
+    },
+    scaryThree: {
+      get() {
+        return this.scary3;
+      },
+      set(value) {
+        this.scary3 = value;
+      }
+    },
+    scaryFour: {
+      get() {
+        return this.scary4;
+      },
+      set(value) {
+        this.scary4 = value;
+      }
+    },
+    scaryFive: {
+      get() {
+        return this.scary5;
+      },
+      set(value) {
+        this.scary5 = value;
+      }
+    },
     projectSearchField: {
       get() {
         return this.projectSearch;
@@ -790,7 +841,9 @@ export default {
       "addWish",
       "fbUpdateWish",
       "addFocus",
-      "addGoals"
+      "addGoals",
+      "addHighlights",
+      "addScary"
     ]),
     ...mapActions("tasks", ["setProjectSearch"]),
     setPlanuaryWish() {
@@ -859,6 +912,40 @@ export default {
             color: "primary"
           });
     },
+      setHighlights() {
+      let payload = {
+        type: "highlights",
+        highlight1: this.highlight1,
+        highlight2: this.highlight2,
+        highlight3: this.highlight3,
+        highlight4: this.highlight4,
+        highlight5: this.highlight5,
+        username: this.profile.username
+      };
+      this.addHighlights(payload);
+      this.dayFive = false;
+      this.$q.notify({
+            message: "Now we have something to look forward to!",
+            color: "primary"
+          });
+    },
+      setScary() {
+      let payload = {
+        type: "scary",
+        scary1: this.scary1,
+        scary2: this.scary2,
+        scary3: this.scary3,
+        scary4: this.scary4,
+        scary5: this.scary5,
+        username: this.profile.username
+      };
+      this.addScary(payload);
+      this.daySix = false;
+      this.$q.notify({
+            message: "Nothing to fear!",
+            color: "primary"
+          });
+    },
     showDate(dayNumber) {
       if (dayNumber == 1) { (this.dayOne = true)}
       if (dayNumber == 2) { (this.dayTwo = true)}
@@ -901,6 +988,27 @@ export default {
       this.focusThree = this.planuary.focus.focus3;
       this.focusFour = this.planuary.focus.focus4;
       this.focusFive = this.planuary.focus.focus5;
+    };
+    if (this.planuary.goals != undefined) {
+      this.goalOne = this.planuary.goals.goal1;
+      this.goalTwo = this.planuary.goals.goal2;
+      this.goalThree = this.planuary.goals.goal3;
+      this.goalFour = this.planuary.goals.goal4;
+      this.goalFive = this.planuary.goals.goal5;
+    };
+    if (this.planuary.highlights != undefined) {
+      this.highlightOne = this.planuary.highlights.highlight1;
+      this.highlightTwo = this.planuary.highlights.highlight2;
+      this.highlightThree = this.planuary.highlights.highlight3;
+      this.highlightFour = this.planuary.highlights.highlight4;
+      this.highlightFive = this.planuary.highlights.highlight5;
+    };
+    if (this.planuary.scary != undefined) {
+      this.scaryOne = this.planuary.scary.scary1;
+      this.scaryTwo = this.planuary.scary.scary2;
+      this.scaryThree = this.planuary.scary.scary3;
+      this.scaryFour = this.planuary.scary.scary4;
+      this.scaryFive = this.planuary.scary.scary5;
     }
     var date = moment().date();
     this.showDate(date);
