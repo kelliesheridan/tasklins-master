@@ -939,6 +939,38 @@ export default {
             color: "primary"
           });
     },
+        setHighlight() {
+      let payload = {
+        highlight1: this.highlight1,
+        highlight2: this.highlight2,
+        highlight3: this.highlight3,
+        highlight4: this.highlight4,
+        highlight5: this.highlight5,
+        username: this.profile.username
+      };
+      this.addPayload(payload);
+      this.dayFive = false;
+      this.$q.notify({
+            message: "Now we have something to look forward to!",
+            color: "primary"
+          });
+    },
+      setScary() {
+      let payload = {
+        scary1: this.scary1,
+        scary2: this.scary2,
+        scary3: this.scary3,
+        scary4: this.scary4,
+        scary5: this.scary5,
+        username: this.profile.username
+      };
+      this.addScary(payload);
+      this.daySix = false;
+      this.$q.notify({
+            message: "Nothing to fear!",
+            color: "primary"
+          });
+    },
     showDate(dayNumber) {
       if (dayNumber == 1) { (this.dayOne = true)}
       if (dayNumber == 2) { (this.dayTwo = true)}
