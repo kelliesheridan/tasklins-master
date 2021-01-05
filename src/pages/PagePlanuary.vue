@@ -237,7 +237,7 @@
       </q-card>
     </div> 
 
-    <div class="planuaryDay day-4" v-if="dayFour"> 
+    <div class="planuaryDay day-4"> 
       <q-card>
         <q-card-section>
           <div class="text-h7 row">
@@ -358,7 +358,7 @@
       </q-card>
     </div>
 
-    <!-- <div class="planuaryDay day-5" v-if="dayFive">
+    <div class="planuaryDay day-5">
       <q-card>
         <q-card-section>
           <div class="text-h7 row">
@@ -400,42 +400,35 @@
                 rounded
                 label="What are you looking forward to?"
                 outlined
-                v-model="hightlightOne"
+                v-model="highlightOne"
               ></q-input>
               <q-input
                 class="q-pa-xs"
                 rounded
                 label="What are you looking forward to?"
                 outlined
-                v-model="hightlightTwo"
+                v-model="highlightTwo"
               ></q-input>
               <q-input
                 class="q-pa-xs"
                 rounded
                 label="What are you looking forward to?"
                 outlined
-                v-model="hightlightThree"
+                v-model="highlightThree"
               ></q-input>
               <q-input
                 class="q-pa-xs"                
                 rounded
                 label="What are you looking forward to?"
                 outlined
-                v-model="hightlightFour"
+                v-model="highlightFour"
               ></q-input>
               <q-input
                 class="q-pa-xs"                
                 rounded
                 label="What are you looking forward to?"
                 outlined
-                v-model="hightlightFive"
-              ></q-input>
-              <q-input
-                class="q-pa-xs"
-                rounded
-                label="What are you looking forward to?"
-                outlined
-                v-model="hightlightSix"
+                v-model="highlightFive"
               ></q-input>
             </div>
             <p>
@@ -521,7 +514,7 @@
                     <q-input
                       class="q-pa-xs"
                       rounded
-                      label="Focus Three"
+                      label="Scary Three"
                       outlined
                       v-model="scaryThree"
                     ></q-input>
@@ -529,7 +522,7 @@
                       class="q-pa-xs"
                       v-if="goalThree != ''"
                       rounded
-                      label="Focus Four"
+                      label="Scary Four"
                       outlined
                       v-model="scaryFour"
                     ></q-input>
@@ -537,17 +530,9 @@
                       class="q-pa-xs"
                       v-if="goalFour != ''"
                       rounded
-                      label="Focus Five"
+                      label="Scary Five"
                       outlined
                       v-model="scaryFive"
-                    ></q-input>
-                    <q-input
-                      class="q-pa-xs"
-                      v-if="goalFove != ''"
-                      rounded
-                      label="Focus Six"
-                      outlined
-                      v-model="scarySix"
                     ></q-input>
                   </div>
 
@@ -564,7 +549,7 @@
 
               </q-card-section>
             </q-card>
-          </div> -->
+          </div>
   </q-page>
 </template>
 
@@ -611,6 +596,16 @@ export default {
       goal3: "",
       goal4: "",
       goal5: "",
+      highlight1: "",
+      highlight2: "",
+      highlight3: "",
+      highlight4: "",
+      highlight5: "",
+      scary1: "",
+      scary2: "",
+      scary3: "",
+      scary4: "",
+      scary5: "",
       dayOne: false,
       dayTwo: false,
       dayThree: false,
@@ -829,30 +824,6 @@ export default {
         this.scary5 = value;
       }
     },
-    // showProjectsOnPage: {
-    //   get() {
-    //     return this.settings.showProjectsOnPage;
-    //   },
-    //   set(value) {
-    //     this.setShowProjectsOnPage(value);
-    //   }
-    // },
-    // hideCompletedTasks: {
-    //   get() {
-    //     return this.settings.hideCompletedTasks;
-    //   },
-    //   set(value) {
-    //     this.setHideCompletedTasks(value);
-    //   }
-    // },
-    // darkMode: {
-    //   get() {
-    //     return this.settings.darkMode;
-    //   },
-    //   set(value) {
-    //     this.setDarkMode(value);
-    //   }
-    // }
     projectSearchField: {
       get() {
         return this.projectSearch;
@@ -870,7 +841,9 @@ export default {
       "addWish",
       "fbUpdateWish",
       "addFocus",
-      "addGoals"
+      "addGoals",
+      "addHighlights",
+      "addScary"
     ]),
     ...mapActions("tasks", ["setProjectSearch"]),
     setPlanuaryWish() {
@@ -939,8 +912,9 @@ export default {
             color: "primary"
           });
     },
-        setHighlight() {
+      setHighlights() {
       let payload = {
+        type: "highlights",
         highlight1: this.highlight1,
         highlight2: this.highlight2,
         highlight3: this.highlight3,
@@ -948,7 +922,7 @@ export default {
         highlight5: this.highlight5,
         username: this.profile.username
       };
-      this.addPayload(payload);
+      this.addHighlights(payload);
       this.dayFive = false;
       this.$q.notify({
             message: "Now we have something to look forward to!",
@@ -957,6 +931,7 @@ export default {
     },
       setScary() {
       let payload = {
+        type: "scary",
         scary1: this.scary1,
         scary2: this.scary2,
         scary3: this.scary3,
@@ -1013,6 +988,27 @@ export default {
       this.focusThree = this.planuary.focus.focus3;
       this.focusFour = this.planuary.focus.focus4;
       this.focusFive = this.planuary.focus.focus5;
+    };
+    if (this.planuary.goals != undefined) {
+      this.goalOne = this.planuary.goals.goal1;
+      this.goalTwo = this.planuary.goals.goal2;
+      this.goalThree = this.planuary.goals.goal3;
+      this.goalFour = this.planuary.goals.goal4;
+      this.goalFive = this.planuary.goals.goal5;
+    };
+    if (this.planuary.highlights != undefined) {
+      this.highlightOne = this.planuary.highlights.highlight1;
+      this.highlightTwo = this.planuary.highlights.highlight2;
+      this.highlightThree = this.planuary.highlights.highlight3;
+      this.highlightFour = this.planuary.highlights.highlight4;
+      this.highlightFive = this.planuary.highlights.highlight5;
+    };
+    if (this.planuary.scary != undefined) {
+      this.scaryOne = this.planuary.scary.scary1;
+      this.scaryTwo = this.planuary.scary.scary2;
+      this.scaryThree = this.planuary.scary.scary3;
+      this.scaryFour = this.planuary.scary.scary4;
+      this.scaryFive = this.planuary.scary.scary5;
     }
     var date = moment().date();
     this.showDate(date);
