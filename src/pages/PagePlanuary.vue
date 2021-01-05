@@ -237,7 +237,7 @@
       </q-card>
     </div> 
 
-    <div class="planuaryDay day-4" v-if="dayFour"> 
+    <div class="planuaryDay day-4"> 
       <q-card>
         <q-card-section>
           <div class="text-h7 row">
