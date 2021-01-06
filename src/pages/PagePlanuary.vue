@@ -247,14 +247,6 @@
             <q-space />
 
             <q-btn
-              v-if="dayFour"
-              class="no-margin no-padding"
-              flat
-              round
-              dense
-              icon="edit"
-            />
-            <q-btn
               @click="dayFour = !dayFour"
               v-if="!dayFour"
               color="secondary"
@@ -392,6 +384,12 @@
             year. This can be anything from a big birthday to a new album or
             movie you're looking forward to, or a class you're going to take!
           </p>
+          <p>
+              <i
+                >Anything listed here will remain private and not be posted
+                elsewhere on the website.</i
+              >
+            </p>
 
           <div>
             <div class="text-h7 focus-boxes center">
@@ -431,12 +429,7 @@
                 v-model="highlightFive"
               ></q-input>
             </div>
-            <p>
-              <i
-                >Anything listed here will remain private and not be posted
-                elsewhere on the website.</i
-              >
-            </p>
+
             <div class="center q-pa-md">
               <q-btn
                 @click="setHighlights()"
@@ -451,7 +444,7 @@
       </q-card>
     </div>
 
-          <div class="planuaryDay day-6" v-if="daySix">
+          <div class="planuaryDay day-6">
             <q-card>
               <q-card-section>
                 <div class="text-h7 row">
@@ -514,7 +507,7 @@
                     <q-input
                       class="q-pa-xs"
                       rounded
-                      label="Scary Three"
+                      label="Is something making you anxious?"
                       outlined
                       v-model="scaryThree"
                     ></q-input>
@@ -522,7 +515,7 @@
                       class="q-pa-xs"
                       v-if="goalThree != ''"
                       rounded
-                      label="Scary Four"
+                      label="These prompts are kind of depressing..."
                       outlined
                       v-model="scaryFour"
                     ></q-input>
@@ -530,7 +523,7 @@
                       class="q-pa-xs"
                       v-if="goalFour != ''"
                       rounded
-                      label="Scary Five"
+                      label="It's okay to be worried. We're going to be okay."
                       outlined
                       v-model="scaryFive"
                     ></q-input>
