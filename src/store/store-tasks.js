@@ -133,6 +133,9 @@ const actions = {
     if (payload.task.project == "") {
       payload.task.project = "Tasks";
     }
+    if (payload.task.task != undefined) {
+
+    }
     taskRef.set(payload.task, error => {
       if (error) {
         showErrorMessage(error.message);
@@ -196,6 +199,15 @@ const actions = {
     } else {
       payload.updates.completedDate = "";
     }
+    var payloadOld = payload.updates;
+    if (payload.updates.task != undefined) {
+      payload.updates = {};
+      payload.updates.completed = payloadOld.completed;
+      payload.updates.completedDate = payloadOld.completedDate;
+      payload.updates.dueDate = payloadOld.dueDate;
+      payload.updates.lastModified = payloadOld.lastModified;
+    }
+
     taskRef.update(payload.updates, error => {
       if (error) {
         showErrorMessage(error.message);
@@ -203,6 +215,7 @@ const actions = {
         //dispatch("fbReadData");
       }
     });
+    payload.updates = payloadOld;
     // check for repeating task
     if (payload.updates.completed) {
       if (

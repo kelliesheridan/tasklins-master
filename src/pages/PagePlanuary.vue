@@ -643,8 +643,6 @@
                       label="Close your eyes and leap"
                     />
                   </div>
-                </div>
-
               </q-card-section>
             </q-card>
           </div>          
