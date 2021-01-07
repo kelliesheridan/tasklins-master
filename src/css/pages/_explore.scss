@@ -155,6 +155,19 @@
     background-image: url("/statics/backgrounds/stars/star6.png"); 
 
     @include respond(phone) {
-      margin-left: 50px;
+      margin-left: 120px;
+      margin-top: -160px;
+     }
+   }
+
+   .wishStar7 {
+    margin-top: -50px;
+    margin-left: -140px;
+    width: 50px;
+    height: 50px;
+    background-image: url("/statics/backgrounds/stars/star7.png"); 
+
+    @include respond(phone) {
+      margin-top: -150px;
      }
    }
