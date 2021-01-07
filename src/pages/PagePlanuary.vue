@@ -975,6 +975,34 @@ export default {
         });
       }
     },
+      setEncouragement() {
+      if (this.encouragement1 != "") {
+        let payload = {
+          username: this.profile.username,
+          encouragement: this.encouragement1,
+          encouragement: this.encouragement2,
+          encouragement: this.encouragement3,
+          encouragement: this.encouragement4,
+          encouragement: this.encouragement5,
+        };
+        if (this.planuary[this.profile.id] == undefined) {
+          this.addEncouragement(payload);
+          this.daySeven = false;
+        } else {
+          this.fbUpdateEncouragement(payload);
+          this.$q.notify({
+            message: "Thank you! Have a great day!",
+            color: "primary"
+          });
+          this.daySeven = false;
+        }
+      } else {
+        this.$q.notify({
+          message: "No encouragement for now? Have a great day!",
+          color: "primary"
+        });
+      }
+    },
     hasWish() {
       if (this.yourWish) {
         //this.dayTwo = false;
