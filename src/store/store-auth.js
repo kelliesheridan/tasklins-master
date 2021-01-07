@@ -70,6 +70,7 @@ const actions = {
         dispatch("planuary/fbReadGoals", null, { root: true });
         dispatch("planuary/fbReadPlanuary", {type: "highlights"}, { root: true });
         dispatch("planuary/fbReadPlanuary", {type: "scary"}, { root: true });
+        dispatch("community/fbReadCommunity", {type: "encouragement"}, { root: true });
         if (this.state.profile.profile.user.name !== "") {
           if (this.state.tasklins.tasklin.name === "") {
             this.$router.replace("/index").catch(err => {});

@@ -924,6 +924,46 @@ export default {
       set(value) {
         this.scary5 = value;
       }
+    }, 
+    encouragementOne: {
+      get() {
+        return this.encouragement1;
+      },
+      set(value) {
+        this.encouragement1 = value;
+      }
+    },
+    encouragementTwo: {
+      get() {
+        return this.encouragement2;
+      },
+      set(value) {
+        this.encouragement2 = value;
+      }
+    },
+    encouragementThree: {
+      get() {
+        return this.encouragement3;
+      },
+      set(value) {
+        this.encouragement3 = value;
+      }
+    },
+    encouragementFour: {
+      get() {
+        return this.encouragement4;
+      },
+      set(value) {
+        this.encouragement4 = value;
+      }
+    },
+    encouragementFive: {
+      get() {
+        return this.encouragement5;
+      },
+      set(value) {
+        this.encouragement5 = value;
+      }
     },
     projectSearchField: {
       get() {
@@ -947,6 +987,7 @@ export default {
       "addScary"
     ]),
     ...mapActions("tasks", ["setProjectSearch"]),
+    ...mapActions("community", ["addEncouragement"]),
     setPlanuaryWish() {
       if (this.wish1 != "") {
         let payload = {
@@ -977,28 +1018,17 @@ export default {
       if (this.encouragement1 != "") {
         let payload = {
           username: this.profile.username,
-          encouragement: this.encouragement1,
-          encouragement: this.encouragement2,
-          encouragement: this.encouragement3,
-          encouragement: this.encouragement4,
-          encouragement: this.encouragement5,
+          encouragement1: this.encouragement1,
+          encouragement2: this.encouragement2,
+          encouragement3: this.encouragement3,
+          encouragement4: this.encouragement4,
+          encouragement5: this.encouragement5,
         };
-        if (this.planuary[this.profile.id] == undefined) {
-          this.addEncouragement(payload);
-          this.daySeven = false;
-        } else {
-          this.fbUpdateEncouragement(payload);
-          this.$q.notify({
-            message: "Thank you! Have a great day!",
+        this.addEncouragement(payload);
+         this.$q.notify({
+            message: "Great encouragement!",
             color: "primary"
           });
-          this.daySeven = false;
-        }
-      } else {
-        this.$q.notify({
-          message: "No encouragement for now? Have a great day!",
-          color: "primary"
-        });
       }
     },
     hasWish() {
@@ -1139,7 +1169,7 @@ export default {
       this.scaryFour = this.planuary.scary.scary4;
       this.scaryFive = this.planuary.scary.scary5;
     };
-    if (this.community.scary != undefined) {
+    if (this.community.encouragement != undefined) {
       this.encouragementOne = this.community.encouragement.encouragement1;
       this.encouragementTwo = this.community.encouragement.encouragement2;
       this.encouragementThree = this.community.encouragement.encouragement3;
