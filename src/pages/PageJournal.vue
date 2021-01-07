@@ -7,7 +7,7 @@
       </div> -->
 
       <template v-if="tasksDownloaded">
-        <div class="col-xs-12 col-sm-12 col-md-6" style="overflow: auto;">
+        <div class="col-xs-12 col-sm-12 col-md-6 " style="overflow: auto;">
           <div class="notebookMain">
             <div v-show="pageNumber == 0" class="notebookTitle">
               <div class="notebookPage0 center">
@@ -29,12 +29,17 @@
                     <br>
 
                     <q-btn dense flat @click="pageNumber = 3">
-                      This Week
+                      Overview
                     </q-btn>
                     <br>
                     
                     <q-btn dense flat @click="pageNumber = 4">
                       Mood Tracker
+                    </q-btn>
+                    <br>
+
+                    <q-btn dense flat @click="pageNumber = 5">
+                      This Week
                     </q-btn>
                 </div>
                 <div
@@ -67,7 +72,16 @@
                   class="notebookPage3 notebookMargin"
                   style="margin-top: -80%"
                 >
-                  <h4>Coming Soon</h4>
+                  <h4>Overview</h4>
+                  <br>
+                  <div>
+                    <div>Tasks Completed Today: {{Object.keys(tasksCompletedToday).length}} </div>
+                    <div>Tasks Completed This Week: {{Object.keys(tasksCompletedThisWeek).length}} </div>
+                    <div>Tasks Completed This Month: {{Object.keys(tasksCompletedThisMonth).length}} </div>
+                    <div>Tasks Completed This Year: {{Object.keys(tasksCompletedThisYear).length}} </div>
+                    <br>
+                    <div>Uncompleted Tasks: {{Object.keys(tasksTodo).length}} </div>
+                  </div>
                 </div>
 
                 <div
@@ -78,8 +92,8 @@
                   <h4>Mood Tracker</h4>
                   <br>
                   <div class="row-xs-12 row-sm-10 row-md-6 row-lg-6">
-                    <div class="row u-center-text">
-                      <div class="col">
+                    <div class="row">
+                      <div class="col ">
                       <q-img
                         src="/statics/moods/happy.png"
                         spinner-color="white"
@@ -114,7 +128,6 @@
                           Glum
                       </div>
                       </div>
-
                       
                       <div class="col" v-if="this.profile.memberType > 1">
                       <q-img
@@ -130,21 +143,108 @@
 
                     
                     </div>
-                    <br>
-                    <!-- <div>Recent Moods</div>
-                    <q-img
-                      src="/statics/moods/happy.png"
-                      spinner-color="white"
-                      style="height: 80px; max-width: 80px"
-                      @click="mood = 'happy'"
-                    /> -->
+
                   </div>
                   <div>
+                  <div class="row moodTracker items-start">
+
+                    <div class="col items-start"> 
+                      <div class="row">-</div>
+                      <div class="row">1</div>
+                      <div class="row">2</div>
+                      <div class="row">3</div>
+                      <div class="row">4</div>
+                      <div class="row">5</div>
+                      <div class="row">6</div>
+                      <div class="row">7</div>
+                      <div class="row">8</div>
+                      <div class="row">9</div>
+                      <div class="row">10</div>
+                      <div class="row">11</div>
+                      <div class="row">12</div>
+                      <div class="row">13</div>
+                      <div class="row">14</div>
+                      <div class="row">15</div>
+                      <div class="row">16</div>
+                      <div class="row">17</div>
+                      <div class="row">18</div>
+                      <div class="row">19</div>
+                      <div class="row">20</div>
+                      <div class="row">21</div>
+                      <div class="row">22</div>
+                      <div class="row">23</div>
+                      <div class="row">24</div>
+                      <div class="row">25</div>
+                      <div class="row">26</div>
+                      <div class="row">27</div>
+                      <div class="row">28</div>
+                      <div class="row">29</div>
+                      <div class="row">30</div>
+                      <div class="row">31</div>
+                    </div>
+
                     <div class="januaryMoods col"> J
                       <div class="moodSquare moodTired row"></div>
-                      <div class="moodSquare moodFine row"></div>
+                      <div class="moodSquare moodGlum row"></div>
+                    </div>
+
+                    <div class="februaryMoods col"> F
+                      <div class="moodSquare row"></div>
+                      <div class="moodSquare row"></div>
+                    </div>
+
+                    <div class="marchMoods col"> M
+                      <div class="moodSquare row"></div>
+                      <div class="moodSquare row"></div>
+                    </div>
+
+                    <div class="marchMoods col"> A
+                      <div class="moodSquare row"></div>
+                      <div class="moodSquare row"></div>
+                    </div>
+
+                    <div class="marchMoods col"> M
+                      <div class="moodSquare row"></div>
+                      <div class="moodSquare row"></div>
+                    </div>
+
+                    <div class="januaryMoods col"> J
+                      <div class="moodSquare row"></div>
+                      <div class="moodSquare row"></div>
+                    </div>
+
+                    <div class="februaryMoods col"> J
+                      <div class="moodSquare row"></div>
+                      <div class="moodSquare row"></div>
+                    </div>
+
+                    <div class="marchMoods col"> A
+                      <div class="moodSquare row"></div>
+                      <div class="moodSquare row"></div>
+                    </div>
+
+                    <div class="marchMoods col"> S
+                      <div class="moodSquare row"></div>
+                      <div class="moodSquare row"></div>
+                    </div>
+
+                    <div class="marchMoods col"> O
+                      <div class="moodSquare row"></div>
+                      <div class="moodSquare row"></div>
+                    </div>
+                    
+                    <div class="marchMoods col"> N
+                      <div class="moodSquare row"></div>
+                      <div class="moodSquare row"></div>
+                    </div>
+
+                    <div class="marchMoods col"> D
+                      <div class="moodSquare row"></div>
+                      <div class="moodSquare row"></div>
+                    </div>                                                        
 
                     </div>
+
                   </div>
                   <div class="q-pa-md">
                     <q-btn
@@ -156,7 +256,19 @@
                   </div>
                 </div>
               </div>
+
+                          <div
+                  v-show="pageNumber == 5"
+                  class="notebookPage3 notebookMargin"
+                  style="margin-top: -80%"
+                >
+                  <h4>This Week</h4>
+                  <div>
+                    Coming Soon!
+                  </div>
+                </div>
             </div>
+
             <div>
               <div class="q-pa-sm row buttonRowJournal">
                 <div class="col-6 center">
@@ -182,10 +294,6 @@
             </div>
           </div>
 
-          <!--         <tasks-completed-this-week
-            class="toDoScroll"
-            :tasksCompletedThisWeek="tasksCompletedThisWeek"
-          /> -->
         </div>
 
         <q-dialog v-model="showAddProject">
@@ -229,6 +337,8 @@ export default {
       "projectsFiltered",
       "tasksCompletedToday",
       "tasksCompletedThisWeek",
+      "tasksCompletedThisMonth",
+      "tasksCompletedThisYear",
       "tasksThisWeek"
     ]),
     ...mapState("tasks", ["search", "projectSearch", "tasksDownloaded"])

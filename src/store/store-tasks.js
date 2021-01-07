@@ -594,6 +594,44 @@ const getters = {
     });
     return tasks;
   },
+  tasksCompletedThisMonth: (state, getters) => {
+    let tasksFiltered = getters.tasksFiltered;
+    let tasks = {};
+    Object.keys(tasksFiltered).forEach(function(key) {
+      let task = tasksFiltered[key];
+      if (task.completedDate != undefined) {
+        if (
+          task.completed &&
+          moment(moment(task.completedDate).format("YYYY-MM-DD")).isSame(
+            moment().format("YYYY-MM-DD"),
+            "month"
+          )
+        ) {
+          tasks[key] = task;
+        }
+      }
+    });
+    return tasks;
+  },
+  tasksCompletedThisYear: (state, getters) => {
+    let tasksFiltered = getters.tasksFiltered;
+    let tasks = {};
+    Object.keys(tasksFiltered).forEach(function(key) {
+      let task = tasksFiltered[key];
+      if (task.completedDate != undefined) {
+        if (
+          task.completed &&
+          moment(moment(task.completedDate).format("YYYY-MM-DD")).isSame(
+            moment().format("YYYY-MM-DD"),
+            "year"
+          )
+        ) {
+          tasks[key] = task;
+        }
+      }
+    });
+    return tasks;
+  },
   tasksLate: (state, getters) => {
     let tasksFiltered = getters.tasksFiltered;
     let tasks = {};
