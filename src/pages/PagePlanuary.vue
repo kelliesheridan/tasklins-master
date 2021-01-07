@@ -618,15 +618,13 @@
                     ></q-input>
                     <q-input
                       class="q-pa-xs"
-                      v-if="encouragementThree != ''"
                       rounded
                       label="We're often our own toughest critics..."
                       outlined
-                      v-model="scaryFour"
+                      v-model="encouragementFour"
                     ></q-input>
                     <q-input
                       class="q-pa-xs"
-                      v-if="encouragementFour != ''"
                       rounded
                       label="Be positive!"
                       outlined
