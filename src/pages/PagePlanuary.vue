@@ -513,7 +513,6 @@
                     ></q-input>
                     <q-input
                       class="q-pa-xs"
-                      v-if="goalThree != ''"
                       rounded
                       label="These prompts are kind of depressing..."
                       outlined
@@ -521,7 +520,6 @@
                     ></q-input>
                     <q-input
                       class="q-pa-xs"
-                      v-if="goalFour != ''"
                       rounded
                       label="It's okay to be worried. We're going to be okay."
                       outlined
@@ -543,6 +541,113 @@
               </q-card-section>
             </q-card>
           </div>
+
+          <div class="planuaryDay day-">
+            <q-card>
+              <q-card-section>
+                <div class="text-h7 row">
+                  <q-btn dense flat @click="daySeven = !daySeven">
+                    Planuary. Day Six.
+                  </q-btn>
+                  <q-space />
+
+                  <q-btn
+                    @click="daySeven = !daySeven"
+                    v-if="!daySeven"
+                    color="secondary"
+                    padding="none"
+                    class="no-margin no-padding"
+                    flat
+                    round
+                    dense
+                    icon="add"
+                  />
+                </div>
+              </q-card-section>
+
+              <q-card-section>
+                <p>
+                  Ooof! Well, we sure picked the wrong day to talk about, big, scary things,
+                  and we hope you're all hanging in there. Today's original plan was going to be
+                  fairly straightforward, asking another question to get you thinking about the
+                  year ahead. But that can all wait... so let's spread some positivity instead.
+                </p>
+
+                <p>
+                  Your task today, is all about encouraging your fellow Tasklners? Tasklinites? Taskliners?
+                  Okay, I don't know what we're called yet, but the thought remains the same. We're sending
+                  encouragement to those who might need it. Use the prompt boxes today to send some anonymous
+                  love to someone who might be struggling, lacking motivation, unsure or in any other way
+                  needing a helping hand.
+                </p>
+
+                <p>
+                  Since this is a last minute change, we won't have a way to use these for a few more weeks,
+                   the plan is to eventually have a button that can be used by any member of our community who
+                   needs some encouragent. Much like how our wish-sky works, they'll then see a randomly chosen
+                   message in hopes that it will be able to help them on their journey.
+                </p>                
+
+                <p>
+                  So, let's go forward with good thoughts today! As always, the prompts are there for you to use if
+                  you need them, but you don't need to. So spread some love and cheer, and we'll be back
+                  with more tomorrow!
+                </p>  
+
+                  <div class="text-h7 focus-boxes center">
+                    <q-input
+                      class="q-pa-xs"
+                      rounded
+                      label="What have you been worrying about lately?"
+                      outlined
+                      v-model="encouragementOne"
+                    ></q-input>
+                    <q-input
+                      class="q-pa-xs"
+                      rounded
+                      label="What scares you about this year?"
+                      outlined
+                      v-model="encouragementTwo"
+                    ></q-input>
+                    <q-input
+                      class="q-pa-xs"
+                      rounded
+                      label="Is something making you anxious?"
+                      outlined
+                      v-model="encouragementThree"
+                    ></q-input>
+                    <q-input
+                      class="q-pa-xs"
+                      v-if="encouragementThree != ''"
+                      rounded
+                      label="These prompts are kind of depressing..."
+                      outlined
+                      v-model="scaryFour"
+                    ></q-input>
+                    <q-input
+                      class="q-pa-xs"
+                      v-if="encouragementFour != ''"
+                      rounded
+                      label="It's okay to be worried. We're going to be okay."
+                      outlined
+                      v-model="encouragementFive"
+                    ></q-input>
+                  </div>
+
+                  <div class="center q-pa-md">
+                    <q-btn
+                      @click="setScary()"
+                      class="q-pa-xs"
+                      color="primary"
+                      size="md"
+                      label="Close your eyes and leap"
+                    />
+                  </div>
+                </div>
+
+              </q-card-section>
+            </q-card>
+          </div>          
   </q-page>
 </template>
 
@@ -599,6 +704,11 @@ export default {
       scary3: "",
       scary4: "",
       scary5: "",
+      encouragement1: "",
+      encouragement2: "",
+      encouragement3: "",
+      encouragement4: "",
+      encouragement5: "",
       dayOne: false,
       dayTwo: false,
       dayThree: false,
