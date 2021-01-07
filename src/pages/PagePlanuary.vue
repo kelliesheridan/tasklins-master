@@ -547,7 +547,7 @@
               <q-card-section>
                 <div class="text-h7 row">
                   <q-btn dense flat @click="daySeven = !daySeven">
-                    Planuary. Day Six.
+                    Planuary. Day Seven.
                   </q-btn>
                   <q-space />
 
@@ -598,21 +598,21 @@
                     <q-input
                       class="q-pa-xs"
                       rounded
-                      label="What have you been worrying about lately?"
+                      label="Got an encouraging motto you use?"
                       outlined
                       v-model="encouragementOne"
                     ></q-input>
                     <q-input
                       class="q-pa-xs"
                       rounded
-                      label="What scares you about this year?"
+                      label="A bit of sage advice?"
                       outlined
                       v-model="encouragementTwo"
                     ></q-input>
                     <q-input
                       class="q-pa-xs"
                       rounded
-                      label="Is something making you anxious?"
+                      label="Something that cheers you up when you're feeling defeated?"
                       outlined
                       v-model="encouragementThree"
                     ></q-input>
@@ -620,7 +620,7 @@
                       class="q-pa-xs"
                       v-if="encouragementThree != ''"
                       rounded
-                      label="These prompts are kind of depressing..."
+                      label="We're often our own toughest critics..."
                       outlined
                       v-model="scaryFour"
                     ></q-input>
@@ -628,7 +628,7 @@
                       class="q-pa-xs"
                       v-if="encouragementFour != ''"
                       rounded
-                      label="It's okay to be worried. We're going to be okay."
+                      label="Be positive!"
                       outlined
                       v-model="encouragementFive"
                     ></q-input>
