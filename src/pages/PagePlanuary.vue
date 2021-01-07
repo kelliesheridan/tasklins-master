@@ -542,7 +542,7 @@
             </q-card>
           </div>
 
-          <div class="planuaryDay day-">
+          <div class="planuaryDay day-7">
             <q-card>
               <q-card-section>
                 <div class="text-h7 row">
@@ -574,7 +574,7 @@
                 </p>
 
                 <p>
-                  Your task today, is all about encouraging your fellow Tasklners? Tasklinites? Taskliners?
+                  Your task today, is all about encouraging your fellow Taskners? Tasklinites? Taskliners?
                   Okay, I don't know what we're called yet, but the thought remains the same. We're sending
                   encouragement to those who might need it. Use the prompt boxes today to send some anonymous
                   love to someone who might be struggling, lacking motivation, unsure or in any other way
@@ -636,7 +636,7 @@
 
                   <div class="center q-pa-md">
                     <q-btn
-                      @click="setScary()"
+                      @click="setEncouragement()"
                       class="q-pa-xs"
                       color="primary"
                       size="md"
@@ -1140,6 +1140,13 @@ export default {
       this.scaryThree = this.planuary.scary.scary3;
       this.scaryFour = this.planuary.scary.scary4;
       this.scaryFive = this.planuary.scary.scary5;
+    };
+    if (this.community.scary != undefined) {
+      this.encouragementOne = this.community.encouragement.encouragement1;
+      this.encouragementTwo = this.community.encouragement.encouragement2;
+      this.encouragementThree = this.community.encouragement.encouragement3;
+      this.encouragementFour = this.community.encouragement.encouragement4;
+      this.encouragementFive = this.community.encouragement.encouragement5;
     }
     var date = moment().date();
     this.showDate(date);
