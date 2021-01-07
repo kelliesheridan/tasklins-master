@@ -87,3 +87,29 @@
 		margin-top: -140%; 
 	}
   }
+
+  .moodSquare {
+	width: 12px;
+	height: 12px;
+	border: 1.5px solid;
+	margin-top: 2px;
+
+	@include respond(phone) {
+		
+	}
+  }
+  .moodHappy {
+	background-color: #5cdcc4;
+  }
+  
+  .moodFine {
+	background-color: #7eb158;
+  }
+  
+  .moodGlum {
+	background-color: #8c5688;
+  }
+  
+  .moodTired {
+	background-color: #8c8c8c;
+  }

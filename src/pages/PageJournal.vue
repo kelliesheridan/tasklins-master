@@ -77,8 +77,59 @@
                 >
                   <h4>Mood Tracker</h4>
                   <br>
-                  <div>
-                    <div>More moods and tracking options coming soon!</div>
+                  <div class="row-xs-12 row-sm-10 row-md-6 row-lg-6">
+                    <div class="row u-center-text">
+                      <div class="col">
+                      <q-img
+                        src="/statics/moods/happy.png"
+                        spinner-color="white"
+                        style="height: 80px; max-width: 80px"
+                        class="row"
+                      />
+                      <div class="row">
+                          Happy
+                      </div>
+                      </div>
+
+                      <div class="col">
+                      <q-img
+                        src="/statics/moods/fine.png"
+                        spinner-color="white"
+                        style="height: 80px; max-width: 80px"
+                        class="row"
+                      />
+                      <div class="row text-center">
+                          Fine
+                      </div>
+                      </div>
+
+                      <div class="col">
+                      <q-img
+                        src="/statics/moods/glum.png"
+                        spinner-color="white"
+                        style="height: 80px; max-width: 80px"
+                        class="row"
+                      />
+                      <div class="row text-center">
+                          Glum
+                      </div>
+                      </div>
+
+                      
+                      <div class="col" v-if="this.profile.memberType > 1">
+                      <q-img
+                        src="/statics/moods/tired.png"
+                        spinner-color="white"
+                        style="height: 80px; max-width: 80px"
+                        class="row"
+                      />
+                      <div class="row text-center">
+                          Tired
+                      </div>
+                      </div>                             
+
+                    
+                    </div>
                     <br>
                     <!-- <div>Recent Moods</div>
                     <q-img
@@ -89,6 +140,13 @@
                     /> -->
                   </div>
                   <div>
+                    <div class="januaryMoods col"> J
+                      <div class="moodSquare moodTired row"></div>
+                      <div class="moodSquare moodFine row"></div>
+
+                    </div>
+                  </div>
+                  <div class="q-pa-md">
                     <q-btn
                       @click="showMoodPicker = true"
                       class="new-project-btn"
