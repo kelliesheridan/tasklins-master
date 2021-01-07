@@ -26,6 +26,9 @@ const mutations = {
   setScary(state, scary) {
     if (scary != undefined) state.planuary.scary = scary;
   },
+  setWeekOne(state, weekOne) {
+    if (weekOne != undefined) state.planuary.weekOne = weekOne;
+  },
   addWish(state, wishes) {
     Vue.set(state.planuary, wishes, wishes);
   },
@@ -34,6 +37,9 @@ const mutations = {
   },
   addGoals(state, goals) {
     state.planuary.goals = goals;
+  },
+  addWeekOne(state, weekOne) {
+    state.planuary.weekOne = weekOne;
   },
 };
 
@@ -90,6 +96,16 @@ const actions = {
       scary5: scary.scary5
     };
     dispatch("fbAddPlanuary", payload);
+  },
+  addWeekOne({ dispatch, commit }, scary) {
+    let payload = {
+      type: "weekOne",
+      username: weekOne.username,
+      weekOneWin: this.weekOneWin,
+      weekOneStruggle: this.weekOneStruggle,
+      weekOneMemory: this.weekOneMemory,
+    };
+    dispatch("fbAddWeekOne", payload);
   },
   fbAddPlanuary({ dispatch }, payload) {
     let userId = firebaseAuth.currentUser.uid;
@@ -149,7 +165,10 @@ const actions = {
           break;
         case "scary":
           commit("setScary", planuary);
-            break;
+          break;
+          case "weekOne":
+            commit("setWeekOne", planuary);
+          break;
       }
     });
   },

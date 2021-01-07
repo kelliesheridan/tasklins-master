@@ -1,5 +1,43 @@
 <template>
   <q-page padding>
+    <div class="planuaryDay">
+      <q-card>
+        <q-card-section>
+          <div class="text-h7 row">
+            <q-btn dense flat @click="weekOne = !weekOne">
+              Planuary. Week One.
+            </q-btn>
+
+            <q-space />
+            <q-btn
+              @click="weekOne = !weekOne"
+              v-if="!weekOne"              
+              padding="none"
+              class="no-margin"
+              flat
+              color="secondary"
+              push
+              dense
+              icon="keyboard_arrow_down"
+            />
+
+            <q-btn
+              @click="weekOne = !weekOne"
+              v-if="weekOne"              
+              padding="none"
+              class="no-margin"
+              flat
+              color="secondary"
+              push
+              dense
+              icon="keyboard_arrow_up"
+            />
+          </div>
+        </q-card-section>
+      </q-card>
+    </div>
+
+    <div v-if="weekOne">
     <div class="planuaryDay day-1">
       <q-card>
         <q-card-section>
@@ -444,206 +482,284 @@
       </q-card>
     </div>
 
-          <div class="planuaryDay day-6">
-            <q-card>
-              <q-card-section>
-                <div class="text-h7 row">
-                  <q-btn dense flat @click="daySix = !daySix">
-                    Planuary. Day Six.
-                  </q-btn>
-                  <q-space />
+    <div class="planuaryDay day-6">
+      <q-card>
+        <q-card-section>
+          <div class="text-h7 row">
+            <q-btn dense flat @click="daySix = !daySix">
+              Planuary. Day Six.
+            </q-btn>
+            <q-space />
 
-                  <q-btn
-                    @click="daySix = !daySix"
-                    v-if="!daySix"
-                    color="secondary"
-                    padding="none"
-                    class="no-margin no-padding"
-                    flat
-                    round
-                    dense
-                    icon="add"
-                  />
-                </div>
-              </q-card-section>
+            <q-btn
+              @click="daySix = !daySix"
+              v-if="!daySix"
+              color="secondary"
+              padding="none"
+              class="no-margin no-padding"
+              flat
+              round
+              dense
+              icon="add"
+            />
+          </div>
+        </q-card-section>
 
-              <q-card-section v-if="daySix">
-                <p>
-                  Yesterday we talked about the things we're looking forward to this year,
-                  but now it's time to dig a little deeper, into the things that might be
-                  a little scarier. The things that you're not so excited about. Maybe even
-                  worried or nervous about. What are the big, scary things in your life
-                  these days?
-                </p>
+        <q-card-section v-if="daySix">
+          <p>
+            Yesterday we talked about the things we're looking forward to this year,
+            but now it's time to dig a little deeper, into the things that might be
+            a little scarier. The things that you're not so excited about. Maybe even
+            worried or nervous about. What are the big, scary things in your life
+            these days?
+          </p>
 
-                <p>
-                  We added some prompts below (such as what scares you, or what are you
-                  worried about) but you don't have to use them. Anything you put here
-                  is just for you, so be honest and maybe one day when you look back
-                  on these, they won't seem so scary.
-                </p>
+          <p>
+            We added some prompts below (such as what scares you, or what are you
+            worried about) but you don't have to use them. Anything you put here
+            is just for you, so be honest and maybe one day when you look back
+            on these, they won't seem so scary.
+          </p>
 
-                <p><i>Note: There's still so much going on in the world, and a lot of us
-                  are maybe even more anxious than usual. It's totally up to you whether
-                  these are the things you want to focus on, or if you want to keep these
-                  more personal. Anything goes!</i></p>
+          <p><i>Note: There's still so much going on in the world, and a lot of us
+            are maybe even more anxious than usual. It's totally up to you whether
+            these are the things you want to focus on, or if you want to keep these
+            more personal. Anything goes!</i></p>
 
-                <div>
-                  <div class="text-h7 focus-boxes center">
-                    <q-input
-                      class="q-pa-xs"
-                      rounded
-                      label="What have you been worrying about lately?"
-                      outlined
-                      v-model="scaryOne"
-                    ></q-input>
-                    <q-input
-                      class="q-pa-xs"
-                      rounded
-                      label="What scares you about this year?"
-                      outlined
-                      v-model="scaryTwo"
-                    ></q-input>
-                    <q-input
-                      class="q-pa-xs"
-                      rounded
-                      label="Is something making you anxious?"
-                      outlined
-                      v-model="scaryThree"
-                    ></q-input>
-                    <q-input
-                      class="q-pa-xs"
-                      rounded
-                      label="These prompts are kind of depressing..."
-                      outlined
-                      v-model="scaryFour"
-                    ></q-input>
-                    <q-input
-                      class="q-pa-xs"
-                      rounded
-                      label="It's okay to be worried. We're going to be okay."
-                      outlined
-                      v-model="scaryFive"
-                    ></q-input>
-                  </div>
+          <div>
+            <div class="text-h7 focus-boxes center">
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="What have you been worrying about lately?"
+                outlined
+                v-model="scaryOne"
+              ></q-input>
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="What scares you about this year?"
+                outlined
+                v-model="scaryTwo"
+              ></q-input>
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="Is something making you anxious?"
+                outlined
+                v-model="scaryThree"
+              ></q-input>
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="These prompts are kind of depressing..."
+                outlined
+                v-model="scaryFour"
+              ></q-input>
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="It's okay to be worried. We're going to be okay."
+                outlined
+                v-model="scaryFive"
+              ></q-input>
+            </div>
 
-                  <div class="center q-pa-md">
-                    <q-btn
-                      @click="setScary()"
-                      class="q-pa-xs"
-                      color="primary"
-                      size="md"
-                      label="Close your eyes and leap"
-                    />
-                  </div>
-                </div>
-
-              </q-card-section>
-            </q-card>
+            <div class="center q-pa-md">
+              <q-btn
+                @click="setScary()"
+                class="q-pa-xs"
+                color="primary"
+                size="md"
+                label="Close your eyes and leap"
+              />
+            </div>
           </div>
 
-          <div class="planuaryDay day-7">
-            <q-card>
-              <q-card-section>
-                <div class="text-h7 row">
-                  <q-btn dense flat @click="daySeven = !daySeven">
-                    Planuary. Day Seven.
-                  </q-btn>
-                  <q-space />
+        </q-card-section>
+      </q-card>
+    </div>
 
-                  <q-btn
-                    @click="daySeven = !daySeven"
-                    v-if="!daySeven"
-                    color="secondary"
-                    padding="none"
-                    class="no-margin no-padding"
-                    flat
-                    round
-                    dense
-                    icon="add"
-                  />
-                </div>
-              </q-card-section>
+    <div class="planuaryDay day-7">
+      <q-card>
+        <q-card-section>
+          <div class="text-h7 row">
+            <q-btn dense flat @click="daySeven = !daySeven">
+              Planuary. Day Seven.
+            </q-btn>
+            <q-space />
 
-              <q-card-section>
-                <p>
-                  Ooof! Well, we sure picked the wrong day to talk about, big, scary things,
-                  and we hope you're all hanging in there. Today's original plan was going to be
-                  fairly straightforward, asking another question to get you thinking about the
-                  year ahead. But that can all wait... so let's spread some positivity instead.
-                </p>
+            <q-btn
+              @click="daySeven = !daySeven"
+              v-if="!daySeven"
+              color="secondary"
+              padding="none"
+              class="no-margin no-padding"
+              flat
+              round
+              dense
+              icon="add"
+            />
+          </div>
+        </q-card-section>
 
-                <p>
-                  Your task today, is all about encouraging your fellow Taskners? Tasklinites? Taskliners?
-                  Okay, I don't know what we're called yet, but the thought remains the same. We're sending
-                  encouragement to those who might need it. Use the prompt boxes today to send some anonymous
-                  love to someone who might be struggling, lacking motivation, unsure or in any other way
-                  needing a helping hand.
-                </p>
+        <q-card-section>
+          <p>
+            Ooof! Well, we sure picked the wrong day to talk about, big, scary things,
+            and we hope you're all hanging in there. Today's original plan was going to be
+            fairly straightforward, asking another question to get you thinking about the
+            year ahead. But that can all wait... so let's spread some positivity instead.
+          </p>
 
-                <p>
-                  Since this is a last minute change, we won't have a way to use these for a few more weeks,
-                   the plan is to eventually have a button that can be used by any member of our community who
-                   needs some encouragent. Much like how our wish-sky works, they'll then see a randomly chosen
-                   message in hopes that it will be able to help them on their journey.
-                </p>                
+          <p>
+            Your task today, is all about encouraging your fellow Taskners? Tasklinites? Taskliners?
+            Okay, I don't know what we're called yet, but the thought remains the same. We're sending
+            encouragement to those who might need it. Use the prompt boxes today to send some anonymous
+            love to someone who might be struggling, lacking motivation, unsure or in any other way
+            needing a helping hand.
+          </p>
 
-                <p>
-                  So, let's go forward with good thoughts today! As always, the prompts are there for you to use if
-                  you need them, but you don't need to. So spread some love and cheer, and we'll be back
-                  with more tomorrow!
-                </p>  
+          <p>
+            Since this is a last minute change, we won't have a way to use these for a few more weeks,
+              the plan is to eventually have a button that can be used by any member of our community who
+              needs some encouragent. Much like how our wish-sky works, they'll then see a randomly chosen
+              message in hopes that it will be able to help them on their journey.
+          </p>                
 
-                  <div class="text-h7 focus-boxes center">
-                    <q-input
-                      class="q-pa-xs"
-                      rounded
-                      label="Got an encouraging motto you use?"
-                      outlined
-                      v-model="encouragementOne"
-                    ></q-input>
-                    <q-input
-                      class="q-pa-xs"
-                      rounded
-                      label="A bit of sage advice?"
-                      outlined
-                      v-model="encouragementTwo"
-                    ></q-input>
-                    <q-input
-                      class="q-pa-xs"
-                      rounded
-                      label="Something that cheers you up when you're feeling defeated?"
-                      outlined
-                      v-model="encouragementThree"
-                    ></q-input>
-                    <q-input
-                      class="q-pa-xs"
-                      rounded
-                      label="We're often our own toughest critics..."
-                      outlined
-                      v-model="encouragementFour"
-                    ></q-input>
-                    <q-input
-                      class="q-pa-xs"
-                      rounded
-                      label="Be positive!"
-                      outlined
-                      v-model="encouragementFive"
-                    ></q-input>
-                  </div>
+          <p>
+            So, let's go forward with good thoughts today! As always, the prompts are there for you to use if
+            you need them, but you don't need to. So spread some love and cheer, and we'll be back
+            with more tomorrow!
+          </p>  
 
-                  <div class="center q-pa-md">
-                    <q-btn
-                      @click="setEncouragement()"
-                      class="q-pa-xs"
-                      color="primary"
-                      size="md"
-                      label="Close your eyes and leap"
-                    />
-                  </div>
-              </q-card-section>
-            </q-card>
-          </div>          
+            <div class="text-h7 focus-boxes center">
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="Got an encouraging motto you use?"
+                outlined
+                v-model="encouragementOne"
+              ></q-input>
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="A bit of sage advice?"
+                outlined
+                v-model="encouragementTwo"
+              ></q-input>
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="Something that cheers you up when you're feeling defeated?"
+                outlined
+                v-model="encouragementThree"
+              ></q-input>
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="We're often our own toughest critics..."
+                outlined
+                v-model="encouragementFour"
+              ></q-input>
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="Be positive!"
+                outlined
+                v-model="encouragementFive"
+              ></q-input>
+            </div>
+
+            <div class="center q-pa-md">
+              <q-btn
+                @click="setEncouragement()"
+                class="q-pa-xs"
+                color="primary"
+                size="md"
+                label="Close your eyes and leap"
+              />
+            </div>
+        </q-card-section>
+      </q-card>
+    </div>
+  </div>   
+
+  <div class="planuaryDay day-8">
+    <q-card>
+      <q-card-section>
+        <div class="text-h7 row">
+          <q-btn dense flat @click="dayEight = !dayEight">
+            Planuary. Day Eight.
+          </q-btn>
+          <q-space />
+
+          <q-btn
+            @click="dayEight = !dayEight"
+            v-if="!dayEight"
+            color="secondary"
+            padding="none"
+            class="no-margin no-padding"
+            flat
+            round
+            dense
+            icon="add"
+          />
+        </div>
+      </q-card-section>
+
+      <q-card-section>
+        <p>
+          We made it through the first week of 2021! We're one one step closer to reaching out goals,
+          but in order to give ourselves the best chance we can of success, we can't only focus on moving
+          forward. It's important to also take a moment to pause and reflect on what we've already done.
+          What went well? Where did we struggle? What can we learn from?
+        </p>
+
+        <p>
+          Unlike most days on Planuary, we're not going to do this here on this page. Instead, you can head
+          over to the journal page to check out some new tracking features. You can see get an overview not
+          only on what you got finished, but how you were feeling. But we've also included some bonus questions
+          below in order to give ourselves time to think about how we feel things went this first week, and
+          what we might want to change in the future. Plus, having memories to look back on later might be fun!
+        </p>
+ 
+
+          <div class="text-h7 focus-boxes center">
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="What went well this week?"
+              outlined
+              v-model="week1Win"
+            ></q-input>
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="What did you struggle with?"
+              outlined
+              v-model="week1Struggle"
+            ></q-input>
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="What do you want to remember?"
+              outlined
+              v-model="week1Memory"
+            ></q-input>
+          </div>
+
+          <div class="center q-pa-md">
+            <q-btn
+              @click="setWeekOne()"
+              class="q-pa-xs"
+              color="primary"
+              size="md"
+              label="On to week two!"
+            />
+          </div>
+      </q-card-section>
+    </q-card>
+  </div>                  
   </q-page>
 </template>
 
@@ -654,6 +770,7 @@ const moment = require("moment");
 export default {
   data() {
     return {
+      weekOne: false,
       wishSubmitted: false,
       focus1: "",
       focus2: "",
@@ -705,6 +822,9 @@ export default {
       encouragement3: "",
       encouragement4: "",
       encouragement5: "",
+      week1Win: "",
+      week1Struggle: "",
+      week1Memory: "",
       dayOne: false,
       dayTwo: false,
       dayThree: false,
@@ -922,7 +1042,31 @@ export default {
       set(value) {
         this.scary5 = value;
       }
-    }, 
+    },
+    weekOneWin: {
+      get() {
+        return this.weekOneWin;
+      },
+      set(value) {
+        this.weekOneWin = value;
+      }
+    },
+    weekOneStruggle: {
+      get() {
+        return this.weekOneStruggle;
+      },
+      set(value) {
+        this.weekOneStruggle = value;
+      }
+    },
+    weekOneMemory: {
+      get() {
+        return this.weekOneMemory;
+      },
+      set(value) {
+        this.weekOneMemory = value;
+      }
+    },          
     encouragementOne: {
       get() {
         return this.encouragement1;
@@ -1103,38 +1247,53 @@ export default {
             color: "primary"
           });
     },
+      setWeekOne() {
+      let payload = {
+        type: "weekOne",
+        weekOneWin: this.weekOneWin,
+        weekOneStruggle: this.weekOneStruggle,
+        weekOneMemory: this.weekOneMemory,
+        username: this.profile.username
+      };
+      this.addWeekOne(payload);
+      this.dayEight = false;
+      this.$q.notify({
+            message: "On to week two!",
+            color: "primary"
+          });
+    },
     showDate(dayNumber) {
       if (dayNumber == 1) { (this.dayOne = true)}
       if (dayNumber == 2) { (this.dayTwo = true)}
       if (dayNumber == 3) { (this.dayThree = true)}
       if (dayNumber == 4) { (this.dayFour = true)}
-      if (dayNumber >= 5) { (this.dayFive = true)}
-      if (dayNumber >= 6) { (this.daySix = true)}
-      if (dayNumber >= 7) { (this.daySeven = true)}
-      if (dayNumber >= 8) { (this.dayEight = true)}
-      if (dayNumber >= 9) { (this.dayNine = true)}
-      if (dayNumber >= 10) { (this.dayTen = true)}
-      if (dayNumber >= 11) { (this.dayEleven = true)}
-      if (dayNumber >= 12) { (this.dayTwelve = true)}
-      if (dayNumber >= 13) { (this.dayThirteen = true)}
-      if (dayNumber >= 14) { (this.dayFourteen = true)}
-      if (dayNumber >= 15) { (this.dayFifteen = true)}
-      if (dayNumber >= 16) { (this.daySixteen = true)}
-      if (dayNumber >= 17) { (this.daySeventeen = true)}
-      if (dayNumber >= 18) { (this.dayEighteen = true)}
-      if (dayNumber >= 19) { (this.dayNineteen = true)}
-      if (dayNumber >= 20) { (this.dayTwenty = true)}
-      if (dayNumber >= 21) { (this.dayTwentyOne = true)}
-      if (dayNumber >= 22) { (this.dayTwentyTwo = true)}
-      if (dayNumber >= 23) { (this.dayTwentyThree = true)}
-      if (dayNumber >= 24) { (this.dayTwentyFour = true)}
-      if (dayNumber >= 25) { (this.dayTwentyFive = true)}
-      if (dayNumber >= 26) { (this.dayTwentySix = true)}
-      if (dayNumber >= 27) { (this.dayTwentySeven = true)}
-      if (dayNumber >= 28) { (this.dayTwentyEight = true)}
-      if (dayNumber >= 29) { (this.dayTwentyNine = true)}
-      if (dayNumber >= 30) { (this.dayThirty = true)}
-      if (dayNumber >= 31) { (this.dayThirtyOne = true)}
+      if (dayNumber == 5) { (this.dayFive = true)}
+      if (dayNumber == 6) { (this.daySix = true)}
+      if (dayNumber == 7) { (this.daySeven = true)}
+      if (dayNumber == 8) { (this.dayEight = true)}
+      if (dayNumber == 9) { (this.dayNine = true)}
+      if (dayNumber == 10) { (this.dayTen = true)}
+      if (dayNumber == 11) { (this.dayEleven = true)}
+      if (dayNumber == 12) { (this.dayTwelve = true)}
+      if (dayNumber == 13) { (this.dayThirteen = true)}
+      if (dayNumber == 14) { (this.dayFourteen = true)}
+      if (dayNumber == 15) { (this.dayFifteen = true)}
+      if (dayNumber == 16) { (this.daySixteen = true)}
+      if (dayNumber == 17) { (this.daySeventeen = true)}
+      if (dayNumber == 18) { (this.dayEighteen = true)}
+      if (dayNumber == 19) { (this.dayNineteen = true)}
+      if (dayNumber == 20) { (this.dayTwenty = true)}
+      if (dayNumber == 21) { (this.dayTwentyOne = true)}
+      if (dayNumber == 22) { (this.dayTwentyTwo = true)}
+      if (dayNumber == 23) { (this.dayTwentyThree = true)}
+      if (dayNumber == 24) { (this.dayTwentyFour = true)}
+      if (dayNumber == 25) { (this.dayTwentyFive = true)}
+      if (dayNumber == 26) { (this.dayTwentySix = true)}
+      if (dayNumber == 27) { (this.dayTwentySeven = true)}
+      if (dayNumber == 28) { (this.dayTwentyEight = true)}
+      if (dayNumber == 29) { (this.dayTwentyNine = true)}
+      if (dayNumber == 30) { (this.dayThirty = true)}
+      if (dayNumber == 31) { (this.dayThirtyOne = true)}
   },
   },
   mounted() {
