@@ -148,8 +148,13 @@ border-radius: 1rem;
 }
 
 .indexMenuBar {
-  width: 500px;
+  width: 80%;
   margin: 0 auto;
+  margin-bottom: 10px;
+
+  @include respond(tab-port) {
+    width: 100%;
+   }
 }
 
 .indexMenuButton {

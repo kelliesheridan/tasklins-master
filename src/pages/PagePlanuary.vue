@@ -1,6 +1,7 @@
 <template>
   <q-page padding>
     <div class="planuaryDay">
+      <index-menu />
       <q-card>
         <q-card-section>
           <div class="text-h7 row">
@@ -1190,7 +1191,8 @@ export default {
     }
   },
   components: {
-    "mood-picker": require("components/Tasks/Modals/moodPicker.vue").default
+    "mood-picker": require("components/Tasks/Modals/moodPicker.vue").default,
+    "index-menu": require("components/IndexMenu.vue").default
   },
   methods: {
     ...mapActions("planuary", [

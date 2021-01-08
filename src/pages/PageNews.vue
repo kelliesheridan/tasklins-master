@@ -1,6 +1,8 @@
 <template>
   <q-page padding>
     <div class="q-pa-xs">
+      <index-menu />
+
       <div class="row q-pa-xs">
         <div class="col-2 newsMenuSection q-pa-sm">
 
@@ -62,6 +64,9 @@ export default {
     return {
       news: 2,
     }
-  }
+  },
+      components: {
+    "index-menu": require("components/IndexMenu.vue").default
+  },
 }
 </script>

@@ -23,15 +23,6 @@
           :dueTime.sync="taskToSubmit.dueTime"
         />
 
-        <!-- <q-btn class="task-btn"
-          @click.stop="pushDueDate({ id: id, dueDate: task.dueDate, nrepeating: task.nrepeating })"
-          flat
-          round
-          dense
-          color="blue"
-          icon="rotate_right">
-          <q-tooltip content-class="bg-secondary">Move to Tomorrow</q-tooltip>
-        </q-btn> -->
       </q-card-section>
 
       <q-card-section class="q-pt-none">

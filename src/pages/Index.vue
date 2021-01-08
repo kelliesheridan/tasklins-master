@@ -9,26 +9,7 @@
     </q-dialog>
 
     <template v-if="tasksDownloaded">
-      <div bordered class="row indexMenuBar">
-        <div>
-          <q-btn
-            class="q-mt-sm col indexMenuButton"
-            padding
-            color="secondary"
-            push
-            to="/planuary"
-            >Planuary</q-btn
-          >
-          <q-btn
-            class="q-mt-sm col indexMenuButton"
-            padding
-            color="secondary"
-            push
-            to="/news"
-            >News</q-btn
-          >
-        </div>
-      </div>
+      <index-menu />
 
       <q-card
         bordered
@@ -290,7 +271,8 @@ export default {
     tasklin: require("components/Tasklins/Tasklin.vue").default,
     "new-user": require("components/Help/NewUser.vue").default,
     egg: require("components/Tasklins/egg.vue").default,
-    "register2": require("components/Auth/Register2.vue").default
+    "register2": require("components/Auth/Register2.vue").default,
+    "index-menu": require("components/IndexMenu.vue").default
   },
   computed: {
     ...mapGetters("profile", ["profile"]),
