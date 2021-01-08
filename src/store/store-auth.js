@@ -71,6 +71,8 @@ const actions = {
         dispatch("planuary/fbReadPlanuary", {type: "highlights"}, { root: true });
         dispatch("planuary/fbReadPlanuary", {type: "scary"}, { root: true });
         dispatch("planuary/fbReadPlanuary", {type: "weekOne"}, { root: true });
+        dispatch("planuary/fbReadPlanuary", {type: "weekTwo"}, { root: true });
+        dispatch("planuary/fbReadPlanuary", {type: "weekThree"}, { root: true });
         dispatch("community/fbReadCommunity", {type: "encouragement"}, { root: true });
         if (this.state.profile.profile.user.name !== "") {
           if (this.state.tasklins.tasklin.name === "") {

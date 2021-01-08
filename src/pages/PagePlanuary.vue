@@ -844,6 +844,12 @@ export default {
       week1Win: "",
       week1Struggle: "",
       week1Memory: "",
+      week2Win: "",
+      week2Struggle: "",
+      week2Memory: "",
+      week3Win: "",
+      week3Struggle: "",
+      week3Memory: "",
       dayOne: false,
       dayTwo: false,
       dayThree: false,
@@ -1086,6 +1092,54 @@ export default {
         this.week1Memory = value;
       }
     },
+    weekTwoWin: {
+      get() {
+        return this.week2Win;
+      },
+      set(value) {
+        this.week2Win = value;
+      }
+    },
+    weekTwoStruggle: {
+      get() {
+        return this.week2Struggle;
+      },
+      set(value) {
+        this.week2Struggle = value;
+      }
+    },
+    weekTwoMemory: {
+      get() {
+        return this.week1Memory;
+      },
+      set(value) {
+        this.week2Memory = value;
+      }
+    },
+    weekThreeWin: {
+      get() {
+        return this.week3Win;
+      },
+      set(value) {
+        this.week3Win = value;
+      }
+    },
+    weekThreeStruggle: {
+      get() {
+        return this.week3Struggle;
+      },
+      set(value) {
+        this.week3Struggle = value;
+      }
+    },
+    weekThreeMemory: {
+      get() {
+        return this.week3Memory;
+      },
+      set(value) {
+        this.week3Memory = value;
+      }
+    },
     encouragementOne: {
       get() {
         return this.encouragement1;
@@ -1282,6 +1336,36 @@ export default {
         color: "primary"
       });
     },
+    setWeekTwo() {
+      let payload = {
+        type: "weekTwo",
+        weekTwoWin: this.weekTwoWin,
+        weekTwoStruggle: this.weekTwoStruggle,
+        weekTwoMemory: this.weekTwoMemory,
+        username: this.profile.username
+      };
+      this.addWeekTwo(payload);
+      //this.dayEight = false;
+      this.$q.notify({
+        message: "On to week three!",
+        color: "primary"
+      });
+    },
+    setWeekThree() {
+      let payload = {
+        type: "weekThree",
+        weekThreeWin: this.weekThreeWin,
+        weekThreeStruggle: this.weekThreeStruggle,
+        weekThreeMemory: this.weekThreeMemory,
+        username: this.profile.username
+      };
+      this.addWeekThree(payload);
+      //this.dayEight = false;
+      this.$q.notify({
+        message: "On to week four!",
+        color: "primary"
+      });
+    },
     showDate(dayNumber) {
       if (dayNumber == 1) {
         this.dayOne = true;
@@ -1419,6 +1503,16 @@ export default {
       this.weekOneWin = this.planuary.weekOne.weekOneWin;
       this.weekOneStruggle = this.planuary.weekOne.weekOneStruggle;
       this.weekOneMemory = this.planuary.weekOne.weekOneMemory;
+    }
+    if (this.planuary.weekTwo != undefined) {
+      this.weekTwoWin = this.planuary.weekTwo.weekTwoWin;
+      this.weekTwoStruggle = this.planuary.weekTwo.weekTwoStruggle;
+      this.weekTwoMemory = this.planuary.weekTwo.weekTwoMemory;
+    }
+    if (this.planuary.weekThree != undefined) {
+      this.weekThreeWin = this.planuary.weekThree.weekThreeWin;
+      this.weekThreeStruggle = this.planuary.weekThree.weekThreeStruggle;
+      this.weekThreeMemory = this.planuary.weekThree.weekThreeMemory;
     }
     var date = moment().date();
     this.showDate(date);

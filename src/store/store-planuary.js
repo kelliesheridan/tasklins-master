@@ -29,6 +29,12 @@ const mutations = {
   setWeekOne(state, weekOne) {
     if (weekOne != undefined) state.planuary.weekOne = weekOne;
   },
+  setWeekTwo(state, weekTwo) {
+    if (weekTwo != undefined) state.planuary.weekTwo = weekTwo;
+  },
+  setWeekThree(state, weekThree) {
+    if (weekThree != undefined) state.planuary.weekThree = weekThree;
+  },
   addWish(state, wishes) {
     Vue.set(state.planuary, wishes, wishes);
   },
@@ -38,9 +44,6 @@ const mutations = {
   addGoals(state, goals) {
     state.planuary.goals = goals;
   },
-  addWeekOne(state, weekOne) {
-    state.planuary.weekOne = weekOne;
-  }
 };
 
 const actions = {
@@ -107,6 +110,26 @@ const actions = {
     };
     dispatch("fbAddPlanuary", payload);
   },
+  addWeekTwo({ dispatch, commit }, weekTwo) {
+    let payload = {
+      type: "weekOne",
+      username: weekTwo.username,
+      weekTwoWin: weekTwo.weekTwoWin,
+      weekTwoStruggle: weekTwo.weekTwoStruggle,
+      weekTwoMemory: weekTwo.weekTwoMemory
+    };
+    dispatch("fbAddPlanuary", payload);
+  },
+  addWeekThree({ dispatch, commit }, weekThree) {
+    let payload = {
+      type: "weekOne",
+      username: weekThree.username,
+      weekThreeWin: weekThree.weekThreeWin,
+      weekThreeStruggle: weekThree.weekThreeStruggle,
+      weekThreeMemory: weekThree.weekThreeMemory
+    };
+    dispatch("fbAddPlanuary", payload);
+  },
   fbAddPlanuary({ dispatch }, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let planuaryRef = firebaseDb.ref("planuary/" + payload.type + "/" + userId);
@@ -139,6 +162,12 @@ const actions = {
           case "weekOne":
             commit("setWeekOne", planuary);
             break;
+          case "weekTwo":
+            commit("setWeekTwo", planuary);
+            break;
+          case "weekThree":
+            commit("setWeekThree", planuary);
+            break;
         }
       },
       error => {
@@ -159,6 +188,12 @@ const actions = {
         case "weekOne":
           commit("setWeekOne", planuary);
           break;
+        case "weekTwo":
+          commit("setWeekTwo", planuary);
+          break;
+        case "weekThree":
+          commit("setWeekThree", planuary);
+          break;
       }
     });
 
@@ -177,6 +212,12 @@ const actions = {
           break;
         case "weekOne":
           commit("setWeekOne", planuary);
+          break;
+        case "weekTwo":
+          commit("setWeekTwo", planuary);
+          break;
+        case "weekThree":
+          commit("setWeekThree", planuary);
           break;
       }
     });
