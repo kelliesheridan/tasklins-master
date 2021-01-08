@@ -80,6 +80,15 @@
 	}
   }
 
+  .notebookPage4 {
+	border-radius: 3px;
+	margin-top: -80%; 
+	
+	@include respond(phone) {
+		margin-top: -200%; 
+	}
+  }
+
   .notebookMargin {
 	margin-top: -80%;
 
@@ -89,20 +98,46 @@
   }
 
   .moodTracker {
-	display: flex;
-	justify-content: start;
-    align-items: left;
+	width: 40%;
+
+	@include respond(phone) {
+		width: 100%; 
+	}
+  }
+
+  .moodTrackerHeader {
+	width: 55%;
+
+	@include respond(phone) {
+		width: 100%; 
+	}
   }
 
   .moodSquare {
-	width: 12px;
-	height: 12px;
-	border: 1.5px solid;
-	margin-top: 8px;
+	width: 15px;
+	height: 15px;
+	border: 2px solid;
+	margin-top: 7.9px;
 
 	@include respond(phone) {
-		
+		width: 14px;
+		height: 14px;
+		border: 1.5px solid;
+		margin-top: 8.8px;
 	}
+  }
+
+  .moodImage {
+	height: 60px;
+	width: 60px;
+  }
+
+  .moodImageText {
+	margin-left: 12px;
+  }
+
+  .moodImageText1 {
+	margin-left: 5px;
   }
 
   .moodHappy {

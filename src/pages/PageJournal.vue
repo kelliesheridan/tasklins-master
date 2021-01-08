@@ -103,25 +103,22 @@
 
                 <div
                   v-show="pageNumber == 4"
-                  class="notebookPage3 notebookMargin"
-                  style="margin-top: -80%"
+                  class="notebookPage4"
                 >
                   <h4>Mood Tracker</h4>
                   <br />
                   <p>We do still have some final touches to do on this page (for example, if you add a new mood, you won't see it until the next time you visit), but it works! If you're not seeing the any boxes filled in after selecting at least one mood, try refreshing, and we'll get things working a bit more smoothly soon!</p>
                   <div
-                    class="row-xs-12 row-sm-10 row-md-6 row-lg-6"
-                    style="width: 45%"
+                    class="moodTrackerHeader row-xs-12 row-sm-10 row-md-6 row-lg-6"                    
                   >
                     <div class="row">
                       <div class="col ">
                         <q-img
                           src="/statics/moods/happy.png"
-                          spinner-color="white"
-                          style="height: 80px; max-width: 80px"
-                          class="row"
+                          spinner-color="white"                          
+                          class="row moodImage"
                         />
-                        <div class="row">
+                        <div class="row moodImageText1">
                           Happy
                         </div>
                       </div>
@@ -130,10 +127,9 @@
                         <q-img
                           src="/statics/moods/fine.png"
                           spinner-color="white"
-                          style="height: 80px; max-width: 80px"
-                          class="row"
+                          class="row moodImage"
                         />
-                        <div class="row text-center">
+                        <div class="row moodImageText text-center">
                           Fine
                         </div>
                       </div>
@@ -141,11 +137,10 @@
                       <div class="col">
                         <q-img
                           src="/statics/moods/glum.png"
-                          spinner-color="white"
-                          style="height: 80px; max-width: 80px"
-                          class="row"
+                          spinner-color="white"                          
+                          class="row moodImage"
                         />
-                        <div class="row text-center">
+                        <div class="row moodImageText  text-center">
                           Glum
                         </div>
                       </div>
@@ -153,25 +148,25 @@
                       <div class="col" v-if="this.profile.memberType > 1">
                         <q-img
                           src="/statics/moods/tired.png"
-                          spinner-color="white"
-                          style="height: 80px; max-width: 80px"
-                          class="row"
+                          spinner-color="white"                          
+                          class="row moodImage"
                         />
-                        <div class="row text-center">
+                        <div class="row moodImageText text-center">
                           Tired
                         </div>
                       </div>
                     </div>
                   </div>
+                  <br>
                   <div>
-                    <div class="row moodTracker items-start" style="width: 40%">
+                    <div class="row moodTracker">
                       <div class="col">
                         <div class="col">
                           <br />
-                          <!-- <div v-for="n in 31" :key="n">
+                          <div v-for="n in 31" :key="n">
                             <div style="height: 0px">{{ n }}</div>
                             <br />
-                          </div> -->
+                          </div>
                         </div>
                       </div>
 
