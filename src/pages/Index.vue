@@ -213,6 +213,14 @@
               icon="settings"
             />
           </div>
+          <div>
+          
+          <div class="q-pa-lg text-center fixed-center-bottom">
+            <a href="https://www.patreon.com/bePatron?u=9215033" target="_blank">
+          <q-btn class="textureBar" dense text-color="white" label="- Become a Patron -" /></a>
+          
+      </div>
+          </div>
           <br />
         </div>
 

@@ -616,7 +616,7 @@
             </div>
           </q-card-section>
 
-          <q-card-section>
+          <q-card-section v-if="daySeven">
             <p>
               Ooof! Well, we sure picked the wrong day to talk about, big, scary
               things, and we hope you're all hanging in there. Today's original
@@ -725,7 +725,7 @@
           </div>
         </q-card-section>
 
-        <q-card-section>
+        <q-card-section v-if="dayEight">
           <p>
             We made it through the first week of 2021! We're one one step closer
             to reaching out goals, but in order to give ourselves the best
@@ -782,6 +782,65 @@
         </q-card-section>
       </q-card>
     </div>
+
+    <div class="planuaryDay day-9">
+      <q-card>
+        <q-card-section>
+          <div class="text-h7 row">
+            <q-btn dense flat @click="dayNine = !dayNine">
+              Planuary. Day Nine.
+            </q-btn>
+            <q-space />
+
+            <q-btn
+              @click="dayNine = !dayNine"
+              v-if="!dayNine"
+              color="secondary"
+              padding="none"
+              class="no-margin no-padding"
+              flat
+              round
+              dense
+              icon="add"
+            />
+          </div>
+        </q-card-section>
+
+        <q-card-section v-if="dayNine">
+          <p>
+            Today, we're talking about slowing down. It can be tempting to add every task that needs to be done right to the top of your to do list, especially if you're worried you won't remember. 
+            But it can be all too easy to get overwhelmed by too easily throwing our plan for the day aside. So instead of giving you any prompts for day nine, instead we're introducing a new feature,
+            the tomorrow button. Now, when you go to add a new task, there's a button to add it to tomorrow's list as easily as today's (and of course, you can always still add a due date for any point
+            in the future).
+          </p>
+
+          <p>
+            Your homework for the day is to look at the list of tasks that's due today on the home page, and consider if you're putting too much on your plate. Are there tasks that can wait? Or overdue
+            tasks that can be finished later than you initially thought? Finishing a task late on tasklins (or post-poning it) does effect the amount of experience points your Tasklin will earn, but you can always
+            change the due date without any penalty. So be honest with yourself, try to set realistic expecations, and remember that the only way we can accomplish anything long-term is by being kind to ourselves.
+            Set big goals, but remember you don't have to get them done all at once!
+          </p>
+
+          <div class="center">
+            <q-btn
+              @click="showAddTask = true"         
+              class="add-task-btn textureBar"
+              round
+              text-color="accent"
+              size="18px"
+              icon="add"
+            >
+            <q-tooltip content-class="bg-primary">Add New Task</q-tooltip>
+            </q-btn>
+          </div>
+          <br>
+        </q-card-section>
+      </q-card>
+    </div>
+
+    <q-dialog v-model="showAddTask">
+      <add-task @close="showAddTask = false" />
+    </q-dialog>
   </q-page>
 </template>
 
@@ -853,6 +912,7 @@ export default {
       week3Win: "",
       week3Struggle: "",
       week3Memory: "",
+      showAddTask: false,
       dayOne: false,
       dayTwo: false,
       dayThree: false,
@@ -1194,7 +1254,8 @@ export default {
   },
   components: {
     "mood-picker": require("components/Tasks/Modals/moodPicker.vue").default,
-    "index-menu": require("components/IndexMenu.vue").default
+    "index-menu": require("components/IndexMenu.vue").default,
+    "add-task": require("components/Tasks/Modals/addTask.vue").default
   },
   methods: {
     ...mapActions("planuary", [

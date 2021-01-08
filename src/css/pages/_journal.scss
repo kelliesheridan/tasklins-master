@@ -63,7 +63,11 @@
 
 
   .buttonRowJournal {
-    margin-bottom: -12px;
+	margin-bottom: -12px;
+	
+	@include respond(phone) {
+		margin-bottom: 45px;
+	}
   }
 
   .traced-header {
@@ -77,6 +81,30 @@
 	
 	@include respond(phone) {
 		margin-top: -30%; 
+	}
+  }
+
+  .notebookPage1 {
+	margin-top: -80%; 
+	
+	@include respond(phone) {
+		margin-top: -100%; 
+	}
+  }
+
+  .notebookPage2 {
+	margin-top: -80%; 
+	
+	@include respond(phone) {
+		margin-top: -100%; 
+	}
+  }
+
+  .notebookPage3 {
+	margin-top: -80%; 
+	
+	@include respond(phone) {
+		margin-top: -100%; 
 	}
   }
 

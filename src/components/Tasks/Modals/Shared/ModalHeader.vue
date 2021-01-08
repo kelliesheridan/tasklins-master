@@ -1,6 +1,6 @@
 <template>
         <q-card-section class="row">
-          <div class="text-h6"><slot></slot></div>
+          <div class="modal-header-task"><slot></slot></div>
           <q-space />
           <q-btn
           v-close-popup
