@@ -108,9 +108,10 @@
                 >
                   <h4>Mood Tracker</h4>
                   <br />
+                  <p>We do still have some final touches to do on this page (for example, if you add a new mood, you won't see it until the next time you visit), but it works! If you're not seeing the any boxes filled in after selecting at least one mood, try refreshing, and we'll get things working a bit more smoothly soon!</p>
                   <div
                     class="row-xs-12 row-sm-10 row-md-6 row-lg-6"
-                    style="width: 30%"
+                    style="width: 45%"
                   >
                     <div class="row">
                       <div class="col ">
@@ -165,12 +166,12 @@
                   <div>
                     <div class="row moodTracker items-start" style="width: 40%">
                       <div class="col">
-                        <div class="col items-start">
+                        <div class="col">
                           <br />
-                          <div v-for="n in 31" :key="n">
+                          <!-- <div v-for="n in 31" :key="n">
                             <div style="height: 0px">{{ n }}</div>
                             <br />
-                          </div>
+                          </div> -->
                         </div>
                       </div>
 
