@@ -1,7 +1,6 @@
 <template>
-      <div bordered class="row indexMenuBar">
-        <div>
-            <q-space />
+      <div bordered>
+        <div class="indexMenuBar u-center-text">
         <q-btn
             class="q-mt-sm col indexMenuButton"
             padding
@@ -26,7 +25,6 @@
             to="/news"
             >News</q-btn
           >
-          <q-space />
         </div>
       </div>
     </template>

@@ -225,8 +225,8 @@
         <q-spinner-audio size="3em" color="secondary" />
       </span>
     </template>
-    <q-dialog v-model="register2" transition-hide="scale">
-        <register2 />
+      <q-dialog v-model="register2" transition-hide="scale">
+          <register2 />
       </q-dialog>
   </q-page>
 </template>

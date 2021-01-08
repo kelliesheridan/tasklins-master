@@ -427,7 +427,7 @@ const getters = {
 
       if (task.completedDate != undefined) {
         if (
-          task.completed &&
+          task.completedDate &&
           moment(moment(task.completedDate).format("YYYY-MM-DD")).isSame(
             moment().format("YYYY-MM-DD"),
             "day"

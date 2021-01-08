@@ -1,7 +1,9 @@
 <template>
   <q-page padding>
-    <div class="planuaryDay">
+    <div>
       <index-menu />
+    </div>
+    <div class="planuaryDay">
       <q-card>
         <q-card-section>
           <div class="text-h7 row">
