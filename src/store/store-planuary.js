@@ -4,7 +4,9 @@ import { firebaseDb, firebaseAuth } from "boot/firebase";
 import { showErrorMessage } from "src/functions/function-show-error-message";
 
 const state = {
-  planuary: {}
+  planuary: {
+    wishes: {}
+  }
 };
 
 const mutations = {
@@ -12,7 +14,7 @@ const mutations = {
     state.planuary.planuaryWish = value;
   },
   setWishes(state, wishes) {
-    state.planuary = wishes;
+    state.planuary.wishes = wishes;
   },
   setFocus(state, focus) {
     if (focus != undefined) state.planuary.focus = focus;
@@ -36,7 +38,7 @@ const mutations = {
     if (weekThree != undefined) state.planuary.weekThree = weekThree;
   },
   addWish(state, wishes) {
-    Vue.set(state.planuary, wishes, wishes);
+    Vue.set(state.planuary.wishes, wishes, wishes);
   },
   addFocus(state, focus) {
     state.planuary.focus = focus;
@@ -368,7 +370,7 @@ const getters = {
     return state.planuary;
   },
   random16: state => {
-    var array = state.planuary;
+    var array = state.planuary.wishes;
     if (array != undefined) {
       array = Object.entries(array).sort(() => Math.random() - 0.5);
       return array;

@@ -1,12 +1,12 @@
 <template>
   <q-page padding>
-    <div class="q-gutter-sm row" style="width: 75%;">
+    <div class="q-gutter-sm row" style="width: 100%; overflow: hidden !important">
       <div
         class="world-map map-size night-sky"
-        style="position: absolute;"
+        style="position: absolute; overflow: hidden !important; position: absolute;"
       ></div>
       
-      <div class="world-map map-size col-xs-12 col-sm-12 col-md-10 col-lg-10">
+      <div class="world-map map-size " style="overflow: hidden !important; position: absolute;">
         <q-img
           @mouseover="wish1 = true"
           @mouseleave="wish1 = false"
@@ -65,7 +65,7 @@
    
       </div>
 
-      <div class="wishBubble absolute-bottom">
+      <div class="wishBubble absolute-bottom" style="overflow: hidden !important;">
         <q-chat-message
           v-show="wish1"         
           :name= getName(1)
@@ -245,3 +245,9 @@ export default {
   }
 };
 </script>
+<style scoped>
+body {
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+</style>
