@@ -40,7 +40,7 @@ const mutations = {
   },
   addWeekOne(state, weekOne) {
     state.planuary.weekOne = weekOne;
-  },
+  }
 };
 
 const actions = {
@@ -97,15 +97,15 @@ const actions = {
     };
     dispatch("fbAddPlanuary", payload);
   },
-  addWeekOne({ dispatch, commit }, scary) {
+  addWeekOne({ dispatch, commit }, weekOne) {
     let payload = {
       type: "weekOne",
       username: weekOne.username,
-      weekOneWin: this.weekOneWin,
-      weekOneStruggle: this.weekOneStruggle,
-      weekOneMemory: this.weekOneMemory,
+      weekOneWin: weekOne.weekOneWin,
+      weekOneStruggle: weekOne.weekOneStruggle,
+      weekOneMemory: weekOne.weekOneMemory
     };
-    dispatch("fbAddWeekOne", payload);
+    dispatch("fbAddPlanuary", payload);
   },
   fbAddPlanuary({ dispatch }, payload) {
     let userId = firebaseAuth.currentUser.uid;
@@ -115,7 +115,7 @@ const actions = {
       if (error) {
         showErrorMessage(error.message);
       } else {
-          dispatch("fbReadPlanuary", payload);
+        dispatch("fbReadPlanuary", payload);
       }
     });
   },
@@ -135,7 +135,10 @@ const actions = {
             break;
           case "scary":
             commit("setScary", planuary);
-              break;
+            break;
+          case "weekOne":
+            commit("setWeekOne", planuary);
+            break;
         }
       },
       error => {
@@ -152,7 +155,10 @@ const actions = {
           break;
         case "scary":
           commit("setScary", planuary);
-            break;
+          break;
+        case "weekOne":
+          commit("setWeekOne", planuary);
+          break;
       }
     });
 
@@ -166,8 +172,11 @@ const actions = {
         case "scary":
           commit("setScary", planuary);
           break;
-          case "weekOne":
-            commit("setWeekOne", planuary);
+        case "weekOne":
+          commit("setWeekOne", planuary);
+          break;
+        case "weekOne":
+          commit("setWeekOne", planuary);
           break;
       }
     });
