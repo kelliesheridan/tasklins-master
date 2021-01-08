@@ -19,53 +19,52 @@
               <div class="notebookPages">
                 <div
                   v-show="pageNumber == 1"
-                  class="notebookPage1 notebookMargin"                  
+                  class="notebookPage1 notebookMargin"
                 >
                   <h4>Index</h4>
                   <br />
-                    <q-btn dense flat @click="pageNumber = 2">
+                  <q-btn dense flat @click="pageNumber = 2">
                     Projects
-                    </q-btn>
-                    <br>
+                  </q-btn>
+                  <br />
 
-                    <q-btn dense flat @click="pageNumber = 3">
-                      Overview
-                    </q-btn>
-                    <br>
-                    
-                    <q-btn dense flat @click="pageNumber = 4">
-                      Mood Tracker
-                    </q-btn>
-                    <br>
+                  <q-btn dense flat @click="pageNumber = 3">
+                    Overview
+                  </q-btn>
+                  <br />
 
-                    <q-btn dense flat @click="pageNumber = 5">
-                      This Week
-                    </q-btn>
+                  <q-btn dense flat @click="pageNumber = 4">
+                    Mood Tracker
+                  </q-btn>
+                  <br />
+
+                  <q-btn dense flat @click="pageNumber = 5">
+                    This Week
+                  </q-btn>
                 </div>
                 <div
                   v-show="pageNumber == 2"
-                  class="notebookPage2 notebookMargin"                  
+                  class="notebookPage2 notebookMargin"
                 >
                   <div>
                     <h4>Projects</h4>
                     <project></project>
 
                     <br />
-
                   </div>
                   <div>
-                    <tasks-todo                    
+                    <tasks-todo
                       class="toDoScroll"
                       v-if="Object.keys(tasksTodo).length"
                       :tasksTodo="tasksTodo"
                     />
                   </div>
                   <q-btn
-                      @click="showAddProject = true"
-                      class="new-project-btn"
-                      color="primary"
-                      label="New Project"
-                    />
+                    @click="showAddProject = true"
+                    class="new-project-btn"
+                    color="primary"
+                    label="New Project"
+                  />
                 </div>
                 <div
                   v-show="pageNumber == 3"
@@ -73,14 +72,32 @@
                   style="margin-top: -80%"
                 >
                   <h4>Overview</h4>
-                  <br>
+                  <br />
                   <div>
-                    <div>Tasks Completed Today: {{Object.keys(tasksCompletedToday).length}} </div>
-                    <div>Tasks Completed This Week: {{Object.keys(tasksCompletedThisWeek).length}} </div>
-                    <div>Tasks Completed This Month: {{Object.keys(tasksCompletedThisMonth).length}} </div>
-                    <div>Tasks Completed This Year: {{Object.keys(tasksCompletedThisYear).length}} </div>
-                    <br>
-                    <div>Uncompleted Tasks: {{Object.keys(tasksTodo).length}} </div>
+                    <div>
+                      Tasks Completed Today:
+                      {{ Object.keys(tasksCompletedToday).length }}
+                    </div>
+                    <div>
+                      Tasks Completed This Week:
+                      {{ Object.keys(tasksCompletedThisWeek).length }}
+                    </div>
+                    <div>
+                      Tasks Completed This Month:
+                      {{ Object.keys(tasksCompletedThisMonth).length }}
+                    </div>
+                    <div>
+                      Tasks Completed This Year:
+                      {{ Object.keys(tasksCompletedThisYear).length }}
+                    </div>
+                    <br />
+                    <div>
+                      Uncompleted Tasks: {{ Object.keys(tasksTodo).length }}
+                    </div>
+                    <div>
+                      Tasks Completed Late:
+                      {{ Object.keys(tasksCompletedLate).length }}
+                    </div>
                   </div>
                 </div>
 
@@ -90,161 +107,158 @@
                   style="margin-top: -80%"
                 >
                   <h4>Mood Tracker</h4>
-                  <br>
-                  <div class="row-xs-12 row-sm-10 row-md-6 row-lg-6">
+                  <br />
+                  <div
+                    class="row-xs-12 row-sm-10 row-md-6 row-lg-6"
+                    style="width: 30%"
+                  >
                     <div class="row">
                       <div class="col ">
-                      <q-img
-                        src="/statics/moods/happy.png"
-                        spinner-color="white"
-                        style="height: 80px; max-width: 80px"
-                        class="row"
-                      />
-                      <div class="row">
+                        <q-img
+                          src="/statics/moods/happy.png"
+                          spinner-color="white"
+                          style="height: 80px; max-width: 80px"
+                          class="row"
+                        />
+                        <div class="row">
                           Happy
-                      </div>
+                        </div>
                       </div>
 
                       <div class="col">
-                      <q-img
-                        src="/statics/moods/fine.png"
-                        spinner-color="white"
-                        style="height: 80px; max-width: 80px"
-                        class="row"
-                      />
-                      <div class="row text-center">
+                        <q-img
+                          src="/statics/moods/fine.png"
+                          spinner-color="white"
+                          style="height: 80px; max-width: 80px"
+                          class="row"
+                        />
+                        <div class="row text-center">
                           Fine
-                      </div>
+                        </div>
                       </div>
 
                       <div class="col">
-                      <q-img
-                        src="/statics/moods/glum.png"
-                        spinner-color="white"
-                        style="height: 80px; max-width: 80px"
-                        class="row"
-                      />
-                      <div class="row text-center">
+                        <q-img
+                          src="/statics/moods/glum.png"
+                          spinner-color="white"
+                          style="height: 80px; max-width: 80px"
+                          class="row"
+                        />
+                        <div class="row text-center">
                           Glum
+                        </div>
                       </div>
-                      </div>
-                      
+
                       <div class="col" v-if="this.profile.memberType > 1">
-                      <q-img
-                        src="/statics/moods/tired.png"
-                        spinner-color="white"
-                        style="height: 80px; max-width: 80px"
-                        class="row"
-                      />
-                      <div class="row text-center">
+                        <q-img
+                          src="/statics/moods/tired.png"
+                          spinner-color="white"
+                          style="height: 80px; max-width: 80px"
+                          class="row"
+                        />
+                        <div class="row text-center">
                           Tired
+                        </div>
                       </div>
-                      </div>                             
-
-                    
                     </div>
-
                   </div>
                   <div>
-                  <div class="row moodTracker items-start">
+                    <div class="row moodTracker items-start" style="width: 40%">
+                      <div class="col">
+                        <div class="col items-start">
+                          <br />
+                          <div v-for="n in 31" :key="n">
+                            <div style="height: 0px">{{ n }}</div>
+                            <br />
+                          </div>
+                        </div>
+                      </div>
 
-                    <div class="col items-start"> 
-                      <div class="row">-</div>
-                      <div class="row">1</div>
-                      <div class="row">2</div>
-                      <div class="row">3</div>
-                      <div class="row">4</div>
-                      <div class="row">5</div>
-                      <div class="row">6</div>
-                      <div class="row">7</div>
-                      <div class="row">8</div>
-                      <div class="row">9</div>
-                      <div class="row">10</div>
-                      <div class="row">11</div>
-                      <div class="row">12</div>
-                      <div class="row">13</div>
-                      <div class="row">14</div>
-                      <div class="row">15</div>
-                      <div class="row">16</div>
-                      <div class="row">17</div>
-                      <div class="row">18</div>
-                      <div class="row">19</div>
-                      <div class="row">20</div>
-                      <div class="row">21</div>
-                      <div class="row">22</div>
-                      <div class="row">23</div>
-                      <div class="row">24</div>
-                      <div class="row">25</div>
-                      <div class="row">26</div>
-                      <div class="row">27</div>
-                      <div class="row">28</div>
-                      <div class="row">29</div>
-                      <div class="row">30</div>
-                      <div class="row">31</div>
+                      <div class="col"></div>
+                      <div class="januaryMoods col">
+                        J
+                        <div v-for="n in 31" :key="n">
+                          <div v-bind:class="getMoodForDate('01', n)"></div>
+                        </div>
+                      </div>
+
+                      <div class="februaryMoods col">
+                        F
+                        <div v-for="n in 28" :key="n">
+                          <div v-bind:class="getMoodForDate('02', n)"></div>
+                        </div>
+                      </div>
+
+                      <div class="marchMoods col">
+                        M
+                        <div v-for="n in 31" :key="n">
+                          <div v-bind:class="getMoodForDate('03', n)"></div>
+                        </div>
+                      </div>
+
+                      <div class="marchMoods col">
+                        A
+                        <div v-for="n in 30" :key="n">
+                          <div v-bind:class="getMoodForDate('04', n)"></div>
+                        </div>
+                      </div>
+
+                      <div class="marchMoods col">
+                        M
+                        <div v-for="n in 31" :key="n">
+                          <div v-bind:class="getMoodForDate('05', n)"></div>
+                        </div>
+                      </div>
+
+                      <div class="januaryMoods col">
+                        J
+                      <div v-for="n in 30" :key="n">
+                          <div v-bind:class="getMoodForDate('06', n)"></div>
+                        </div>
+                      </div>
+
+                      <div class="februaryMoods col">
+                        J
+                       <div v-for="n in 31" :key="n">
+                          <div v-bind:class="getMoodForDate('07', n)"></div>
+                        </div>
+                      </div>
+
+                      <div class="marchMoods col">
+                        A
+                       <div v-for="n in 31" :key="n">
+                          <div v-bind:class="getMoodForDate('08', n)"></div>
+                        </div>
+                      </div>
+
+                      <div class="marchMoods col">
+                        S
+                        <div v-for="n in 30" :key="n">
+                          <div v-bind:class="getMoodForDate('09', n)"></div>
+                        </div>
+                      </div>
+
+                      <div class="marchMoods col">
+                        O
+                       <div v-for="n in 31" :key="n">
+                          <div v-bind:class="getMoodForDate(10, n)"></div>
+                        </div>
+                      </div>
+
+                      <div class="marchMoods col">
+                        N
+                       <div v-for="n in 30" :key="n">
+                          <div v-bind:class="getMoodForDate(11, n)"></div>
+                        </div>
+                      </div>
+
+                      <div class="marchMoods col">
+                        D
+                        <div v-for="n in 31" :key="n">
+                          <div v-bind:class="getMoodForDate(12, n)"></div>
+                        </div>
+                      </div>
                     </div>
-
-                    <div class="januaryMoods col"> J
-                      <div class="moodSquare moodTired row"></div>
-                      <div class="moodSquare moodGlum row"></div>
-                    </div>
-
-                    <div class="februaryMoods col"> F
-                      <div class="moodSquare row"></div>
-                      <div class="moodSquare row"></div>
-                    </div>
-
-                    <div class="marchMoods col"> M
-                      <div class="moodSquare row"></div>
-                      <div class="moodSquare row"></div>
-                    </div>
-
-                    <div class="marchMoods col"> A
-                      <div class="moodSquare row"></div>
-                      <div class="moodSquare row"></div>
-                    </div>
-
-                    <div class="marchMoods col"> M
-                      <div class="moodSquare row"></div>
-                      <div class="moodSquare row"></div>
-                    </div>
-
-                    <div class="januaryMoods col"> J
-                      <div class="moodSquare row"></div>
-                      <div class="moodSquare row"></div>
-                    </div>
-
-                    <div class="februaryMoods col"> J
-                      <div class="moodSquare row"></div>
-                      <div class="moodSquare row"></div>
-                    </div>
-
-                    <div class="marchMoods col"> A
-                      <div class="moodSquare row"></div>
-                      <div class="moodSquare row"></div>
-                    </div>
-
-                    <div class="marchMoods col"> S
-                      <div class="moodSquare row"></div>
-                      <div class="moodSquare row"></div>
-                    </div>
-
-                    <div class="marchMoods col"> O
-                      <div class="moodSquare row"></div>
-                      <div class="moodSquare row"></div>
-                    </div>
-                    
-                    <div class="marchMoods col"> N
-                      <div class="moodSquare row"></div>
-                      <div class="moodSquare row"></div>
-                    </div>
-
-                    <div class="marchMoods col"> D
-                      <div class="moodSquare row"></div>
-                      <div class="moodSquare row"></div>
-                    </div>                                                        
-
-                    </div>
-
                   </div>
                   <div class="q-pa-md">
                     <q-btn
@@ -257,16 +271,16 @@
                 </div>
               </div>
 
-                          <div
-                  v-show="pageNumber == 5"
-                  class="notebookPage3 notebookMargin"
-                  style="margin-top: -80%"
-                >
-                  <h4>This Week</h4>
-                  <div>
-                    Coming Soon!
-                  </div>
+              <div
+                v-show="pageNumber == 5"
+                class="notebookPage3 notebookMargin"
+                style="margin-top: -80%"
+              >
+                <h4>This Week</h4>
+                <div>
+                  Coming Soon!
                 </div>
+              </div>
             </div>
 
             <div>
@@ -287,13 +301,19 @@
                     icon="keyboard_arrow_right"
                     @click="pageNumber++"
                   />
-                  <br>
-                  <q-btn @click="pageNumber = 1" dense flat text-color="black" push icon="home" />
+                  <br />
+                  <q-btn
+                    @click="pageNumber = 1"
+                    dense
+                    flat
+                    text-color="black"
+                    push
+                    icon="home"
+                  />
                 </div>
               </div>
             </div>
           </div>
-
         </div>
 
         <q-dialog v-model="showAddProject">
@@ -303,8 +323,6 @@
         <q-dialog v-model="showMoodPicker">
           <mood-picker @close="showMoodPicker = false" />
         </q-dialog>
-
-
       </template>
 
       <template v-else>
@@ -318,6 +336,8 @@
 
 <script>
 import { mapGetters, mapState } from "vuex";
+import { date } from 'quasar'
+const moment= require('moment') 
 
 export default {
   data() {
@@ -339,15 +359,17 @@ export default {
       "tasksCompletedThisWeek",
       "tasksCompletedThisMonth",
       "tasksCompletedThisYear",
-      "tasksThisWeek"
+      "tasksThisWeek",
+      "tasksCompletedLate"
     ]),
-    ...mapState("tasks", ["search", "projectSearch", "tasksDownloaded"])
+    ...mapState("tasks", ["search", "projectSearch", "tasksDownloaded"]),
+    ...mapState("profile", ["moods"])
   },
   components: {
     "add-project": require("components/Tasks/Modals/addProject.vue").default,
     project: require("components/Tasks/Tools/ProjectList.vue").default,
     "tasks-todo": require("components/Tasks/TasksTodo.vue").default,
-    "mood-picker": require("components/Tasks/Modals/moodPicker.vue").default,
+    "mood-picker": require("components/Tasks/Modals/moodPicker.vue").default
     // "tasks-todo": require("components/Tasks/TasksTodo.vue").default,
     // "tasks-completed": require("components/Tasks/TasksCompleted.vue").default,
     //"tasks-completed-today": require("components/Tasks/TasksCompletedToday.vue").default,
@@ -355,6 +377,21 @@ export default {
     // "sort": require("components/Tasks/Tools/Sort.vue").default,
     // "projectList": require("components/Tasks/Tools/ProjectList.vue").default,
     // "no-tasks": require("components/Tasks/NoTasks.vue").default,
+  },
+  methods: {
+    getMoodForDate(month, number) {
+      if (this.moods)
+      if (month != undefined && number != undefined) {
+        var moods = Object.keys(this.moods).filter(e => e == moment("2021-" + month + "-" + number).format("YYYY-MM-DD"));
+        if (moods.length > 0) {
+          if (number.toString().length == 1) number = "0" + number;
+          var moodOnDate = this.moods["2021-" + month + "-" + number]; 
+          return "moodSquare mood" + moodOnDate.charAt(0).toUpperCase() + moodOnDate.slice(1) + " row";
+        } else {
+          return "moodSquare row";
+        }
+      }
+    }
   }
 };
 </script>

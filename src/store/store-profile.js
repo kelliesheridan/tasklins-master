@@ -86,6 +86,9 @@ const mutations = {
   loadAllProfileIDs({}, profileIDs) {
     state.profileIDs = profileIDs;
   },
+  loadAllMoods({}, moods) {
+    state.moods = moods;
+  },
   printUsername({}, userNames) {
     console.debug("usernames: " + userNames);
   },
@@ -232,9 +235,25 @@ const actions = {
       if (error) {
         showErrorMessage(error.message);
       } else {
+        dispatch("fbReadAllMoods");
       }
     });
   },
+  fbReadAllMoods({ dispatch, commit }) {
+    let userId = firebaseAuth.currentUser.uid;
+    let userProfile = firebaseDb.ref("mood/" + userId);
+
+    userProfile.once("value", snapshot => {
+      let profiles = snapshot.val();
+      commit("loadAllMoods", profiles);
+    });
+
+    userProfile.on("child_added", snapshot => {
+      let profiles = snapshot.val();
+      commit("loadAllMoods", profiles);
+    });
+  },
+
 };
 function mutateLin(min, max) {
   var lin = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -293,7 +312,10 @@ const getters = {
   },
   profileIDs: state => {
     return state.profileIDs;
-  }
+  },
+  profileIDs: state => {
+    return state.profileIDs;
+  },
 };
 
 export default {

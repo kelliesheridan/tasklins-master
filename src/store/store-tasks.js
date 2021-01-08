@@ -134,7 +134,6 @@ const actions = {
       payload.task.project = "Tasks";
     }
     if (payload.task.task != undefined) {
-
     }
     taskRef.set(payload.task, error => {
       if (error) {
@@ -240,7 +239,10 @@ const actions = {
     let userId = firebaseAuth.currentUser.uid;
     //let taskRef = firebaseDb.ref("tasks/" + userId + "/" + payload.id);
     // check for repeating to get next required date, otherwise just move til tomorrow.
-    if (payload.task.dueDate == undefined || payload.task.dueDate == "Invalid date") {
+    if (
+      payload.task.dueDate == undefined ||
+      payload.task.dueDate == "Invalid date"
+    ) {
       payload.task.dueDate = moment().format("YYYY-MM-DD");
     }
     if (
@@ -653,6 +655,26 @@ const getters = {
 
     return tasks;
   },
+  tasksCompletedLate: (state, getters) => {
+    let tasksCompleted = getters.tasksCompleted;
+    let tasks = {};
+    Object.keys(tasksCompleted).forEach(function(key) {
+      let task = tasksCompleted[key];
+      let taskDueDate = task.dueDate;
+      let taskCompletedDate = task.completedDate;
+
+      let formattedTaskDueDate = moment(taskDueDate).format("YYYY-MM-DD");
+      let formattedTaskCompletedDate = moment(taskCompletedDate).format("YYYY-MM-DD");
+
+      if (
+        moment(formattedTaskDueDate).isBefore(formattedTaskCompletedDate) &&
+        task.completed
+      ) {
+        tasks[key] = task;
+      }
+    });
+    return tasks;
+  },
   projects: state => {
     return state.projects;
   }
@@ -740,35 +762,33 @@ function getRepeatingTask(task) {
 
   if (requiredDay == -1) {
     var dueDateDay = moment(task.dueDate).day();
-     if (daysNeeded.length > 0 && dueDateDay == daysNeeded[0]) {
-       for (let i = 0; i < daysNeeded.length; i++) {
+    if (daysNeeded.length > 0 && dueDateDay == daysNeeded[0]) {
+      for (let i = 0; i < daysNeeded.length; i++) {
         if (daysNeeded[i] >= dueDateDay) {
           requiredDay = daysNeeded[i];
         }
-       }
-     } else {
+      }
+    } else {
       requiredDay = daysNeeded[0];
     }
 
     if (task.dueDate == undefined) {
       newTask.dueDate = moment()
-      .add(1, "weeks")
-      .isoWeekday(requiredDay)
-      .format("YYYY-MM-DD");
+        .add(1, "weeks")
+        .isoWeekday(requiredDay)
+        .format("YYYY-MM-DD");
     } else {
       newTask.dueDate = moment(task.dueDate)
-      .add(1, "weeks")
-      .isoWeekday(requiredDay)
-      .format("YYYY-MM-DD");
+        .add(1, "weeks")
+        .isoWeekday(requiredDay)
+        .format("YYYY-MM-DD");
     }
-    
   } else if (
     requiredDay > currentDay &&
     task.dueDate >= moment().format("YYYY-MM-DD")
   ) {
-    // check the daysNeeded. 
+    // check the daysNeeded.
     if (daysNeeded.length > 1) {
-
     }
     newTask.dueDate = moment(task.dueDate)
       .add(1, "day")
@@ -796,7 +816,12 @@ function getRepeatingTask(task) {
     } catch (e) {
       //
     }
-  } else if (moment(moment().format("YYYY-MM-DD")).isBefore(moment(task.dueDate).format("YYYY-MM-DD"), "day")) { 
+  } else if (
+    moment(moment().format("YYYY-MM-DD")).isBefore(
+      moment(task.dueDate).format("YYYY-MM-DD"),
+      "day"
+    )
+  ) {
     newTask.dueDate = moment(task.dueDate)
       .add(1, "weeks")
       .isoWeekday(requiredDay)
