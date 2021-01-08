@@ -10,6 +10,10 @@
 
 .focus-boxes {
     width: 350px;
+
+    @include respond(tab-port) {
+        width: 280px;        
+       }    
 }
 
 .wish-moon {

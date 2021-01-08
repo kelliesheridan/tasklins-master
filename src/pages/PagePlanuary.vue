@@ -665,7 +665,7 @@
               <q-input
                 class="q-pa-xs"
                 rounded
-                label="Something that cheers you up when you're feeling defeated?"
+                label="What do you like to do to cheer yourself up?"
                 outlined
                 v-model="encouragementThree"
               ></q-input>
