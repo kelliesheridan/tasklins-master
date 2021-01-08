@@ -155,6 +155,11 @@ border-radius: 1rem;
 .indexMenuButton {
   width: 175px;
   margin: 3px;
+
+  @include respond(tab-port) {
+    width: 140px;
+   }
+
 }
 
 .newsMenuSection {
@@ -163,9 +168,14 @@ border-radius: 1rem;
 
 .newsBtn {
   margin-top: 6px;
+  margin-left: -12px;
+  width: 100%;
 }
 
 .newsSection {
   background-color: #c2d4d5;
+}
+
+.newsPost {
   height: 80%;
 }

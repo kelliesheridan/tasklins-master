@@ -61,6 +61,9 @@ const actions = {
   dueDateToday({ dispatch }, payload) {
     dispatch("fbDueDateToday", payload);
   },
+  dueDateTomorrow({ dispatch }, payload) {
+    dispatch("fbDueDateTomorrow", payload);
+  },
   addTask({ dispatch, commit }, task) {
     let taskId = uid();
     let payload = {

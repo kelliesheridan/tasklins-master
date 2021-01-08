@@ -17,14 +17,26 @@
 
 <!-- @click.stop="dueDateToday({ id: id, dueDate: task.dueDate })" -->
 
-        <q-btn
+        <q-btn class="task-btn"
           @click="setDueDate()"    
           flat
-          round
           dense
+          size="md"
           color="purple"
           icon="today"
-           ><q-tooltip content-class="bg-primary">Do Today</q-tooltip></q-btn>
+        ><q-tooltip content-class="bg-primary">Due Today</q-tooltip>
+        </q-btn>
+
+        <q-btn class="task-btn"
+          @click.stop="setDueTomorrow()"  
+          flat
+          dense
+          color="blue"
+          icon="rotate_right">
+          <q-tooltip content-class="bg-primary">Due Tomorrow</q-tooltip>
+        </q-btn> 
+
+        
 
   </div>
 </template>
@@ -36,10 +48,13 @@ import moment from "moment";
 export default {
   props: ["dueDate", "task", "id"],
   methods: {
-    ...mapActions("tasks", ["pushDueDate", "dueDateToday"]),
+    ...mapActions("tasks", ["pushDueDate", "dueDateToday", "dueDateTomorrow"]),
     setDueDate() {
       this.$emit('update:dueDate', moment().format("YYYY-MM-DD"));
+    },
+    setDueTomorrow() {
+      this.$emit('update:dueDate', moment().add(1,'days').format("YYYY-MM-DD"));
     }
-  }
+  },
 };
 </script>

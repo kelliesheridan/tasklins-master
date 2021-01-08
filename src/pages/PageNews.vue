@@ -4,7 +4,7 @@
       <div class="row q-pa-xs">
         <div class="col-2 newsMenuSection q-pa-sm">
 
-        <div class="col">
+        <div class="col center">
         <q-btn class="row newsBtn" color="primary" @click="news = 2">
          One Week Down
         </q-btn>
@@ -17,7 +17,7 @@
 
         </div>
         <div class="col newsSection q-pa-sm">
-          <div v-if="news == 2">
+          <div class="newsPost" v-if="news == 2">
             <h4>One Week Down</h4>
             <br>
             <p>We're now a week in to the new year, and what a week it's been. Even aside from everything going on out there in the real world, it's been a hectic week 
