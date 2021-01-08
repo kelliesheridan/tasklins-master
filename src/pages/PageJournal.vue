@@ -107,7 +107,8 @@
                 >
                   <h4>Mood Tracker</h4>
                   <br />
-                  <p>We do still have some final touches to do on this page (for example, if you add a new mood, you won't see it until the next time you visit), but it works! If you're not seeing the any boxes filled in after selecting at least one mood, try refreshing, and we'll get things working a bit more smoothly soon!</p>
+                  <p>We do still have some final touches to do on this page (for example, if you add a new mood, you won't see it until the next time you visit), but it works!
+                    If you're not seeing the any boxes filled in after selecting at least one mood, try refreshing, and we'll get things working a bit more smoothly soon!</p>
                   <div
                     class="moodTrackerHeader row-xs-12 row-sm-10 row-md-6 row-lg-6"                    
                   >

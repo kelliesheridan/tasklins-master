@@ -9,32 +9,26 @@
     </q-dialog>
 
     <template v-if="tasksDownloaded">
-      <q-card
-        bordered
-        flat        
-        class="card center">
-
-        <q-card-section>
-          <div class="center text-h6">Planuary Begins!</div>
-          <div class="text-subtitle2">
-            <p>January... nah. Instead, let's start the year off right with Planuary, an entire month dedicated to making plans for the new year, exploring our goals and wishes, and building the tools and communities that help dreams become reality.</p>
-            <p>Every day this month, check back to the Planuary page for a new question, challenge or prompt to help you plan for making 2021 your best year yet.</p>
-          </div>
-        </q-card-section>
-
-        <q-separator />
-
-        <q-card-actions vertical>
+      <div bordered class="row indexMenuBar">
+        <div>
           <q-btn
-            class="q-mt-xs"
+            class="q-mt-sm col indexMenuButton"
             padding
             color="secondary"
             push
             to="/planuary"
-            >Start Planuary</q-btn
+            >Planuary</q-btn
           >
-        </q-card-actions>
-      </q-card>
+          <q-btn
+            class="q-mt-sm col indexMenuButton"
+            padding
+            color="secondary"
+            push
+            to="/news"
+            >News</q-btn
+          >
+        </div>
+      </div>
 
       <q-card
         bordered
@@ -77,7 +71,7 @@
         
         <div
           class="section col-xs-12 col-sm-12 col-md-6 col-lg-6 q-pa-xs"
-          style="overflow: auto; height: 50%"
+          style="overflow: auto;"
         >
         
           <div>
@@ -124,7 +118,7 @@
             <div class="index-header">Your Tasklin</div>
           </list-header>
           <div
-            class="section tasklin-section"
+            class="tasklin-section"
             :class="
               !darkMode
                 ? 'tasklin-section-day'
@@ -178,7 +172,7 @@
       </div>
 
       <div class="row main justify-center q-pa-md">
-        <div class="section col-xs-12 col-sm-12 col-md-6 news q-pa-xs">
+        <div class="section q-pa-xs">
           <list-header class="textureBar">
             <div class="index-header">Extras!</div>
           </list-header>
@@ -241,30 +235,7 @@
           <br />
         </div>
 
-        <div class="section col-xs-12 col-sm-12 col-md-6 news q-pa-xs">
-          <list-header class="textureBar">
-            <div class="index-header">News</div>
-          </list-header>
-          <div></div>
-          <div class="text-left">
-            <div class="col q-pa-md">
-              <q-list dense padding class="rounded-borders">
-                <q-item>
-                  <q-item-section>
-                    <q-item-label><strong>Welcome to 2021!</strong></q-item-label>
-                    <q-item-label>
-                      <p>Happy New Year! It's time to put 2020 behind us and start anew. For now, rest, relax, and celebrate. Planuary begins mid-day January 1st!</p>
-                    </q-item-label>
-                  </q-item-section>
-                </q-item>    
 
-                <!-- <a href="https://www.patreon.com/posts/44994351" target="_blank">plans for Planuary here.</a> -->
-    
-              </q-list>
-            </div>
-            <div class="col q-pa-md" style="max-width: 350px"></div>
-          </div>
-        </div>
       </div>
     </template>
 

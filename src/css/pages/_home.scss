@@ -139,3 +139,33 @@ border-radius: 1rem;
 .secretScroll::-webkit-scrollbar {
   display: none;
 }
+
+.section {
+  overflow: auto;
+  flex: auto;
+  width: 30%;
+  margin-bottom: 4rem;
+}
+
+.indexMenuBar {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.indexMenuButton {
+  width: 175px;
+  margin: 3px;
+}
+
+.newsMenuSection {
+  margin: 0 auto;
+}
+
+.newsBtn {
+  margin-top: 6px;
+}
+
+.newsSection {
+  background-color: #c2d4d5;
+  height: 80%;
+}
