@@ -935,6 +935,67 @@
       </q-card>
     </div>
 
+    <div class="planuaryDay day-11">
+      <q-card>
+        <q-card-section>
+          <div class="text-h7 row">
+            <q-btn dense flat @click="dayEleven = !dayEleven">
+              Planuary. Day Eleven.
+            </q-btn>
+            <q-space />
+
+            <q-btn
+              @click="dayEleven = !dayEleven"
+              v-if="!dayEleven"
+              color="secondary"
+              padding="none"
+              class="no-margin no-padding"
+              flat
+              round
+              dense
+              icon="add"
+            />
+          </div>
+        </q-card-section>
+
+        <q-card-section v-if="dayEleven">
+          <p>
+            We never stop learning and growing as people, and as a result not every goal has a clear cut finish line. For example, we can never be finished learning to code or getting better at an art form. 
+            We'll also never finish reading every book, or listening to every podcast on a topic we're interested in. So today, let's take a few minutes to think about some of the things we want to make more 
+            time for in 2021.   
+          </p>
+
+          <div class="text-h7 focus-boxes center">
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="Practice One"
+              outlined
+              v-model="practiceOne"
+            ></q-input>
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="Practice Two"
+              outlined
+              v-model="practiceTwo"
+            ></q-input>
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="Practice Three"
+              outlined
+              v-model="PracticeThree"
+            ></q-input>
+          </div>
+          <br>
+
+          <br>
+        </q-card-section>
+      </q-card>
+    </div>
+
+
     <q-dialog v-model="showAddTask">
       <add-task @close="showAddTask = false" />
     </q-dialog>
@@ -1016,6 +1077,9 @@ export default {
       quarter2Milestone: "",
       quarter3Milestone: "",
       quarter4Milestone: "",
+      practice1: "",
+      practice2: "",
+      practice3: "",
       dayOne: false,
       dayTwo: false,
       dayThree: false,
@@ -1377,7 +1441,31 @@ export default {
       set(value) {
         this.quarter4Milestone = value;
       }
-    },    
+    },
+    practiceOne: {
+      get() {
+        return this.practice1;
+      },
+      set(value) {
+        this.practice1 = value;
+      }
+    },
+    practiceTwo: {
+      get() {
+        return this.practice2;
+      },
+      set(value) {
+        this.practice2 = value;
+      }
+    },
+    practiceThree: {
+      get() {
+        return this.practice3;
+      },
+      set(value) {
+        this.practice3 = value;
+      }
+    },   
     projectSearchField: {
       get() {
         return this.projectSearch;
@@ -1401,7 +1489,8 @@ export default {
       "addHighlights",
       "addScary",
       "addWeekOne",
-      "addQuarterlyGoals"
+      "addQuarterlyGoals",
+      "addPractices"
     ]),
     ...mapActions("tasks", ["setProjectSearch"]),
     ...mapActions("community", ["addEncouragement"]),
@@ -1531,7 +1620,7 @@ export default {
         username: this.profile.username
       };
       this.addWeekOne(payload);
-      //this.dayEight = false;
+      this.dayEight = false;
       this.$q.notify({
         message: "On to week two!",
         color: "primary"
@@ -1592,9 +1681,24 @@ export default {
         username: this.profile.username
       };
       this.addQuarterlyGoals(payload);
-      //this.dayEight = false;
+      this.dayTen = false;
       this.$q.notify({
         message: "Your quarterly goals are set!",
+        color: "primary"
+      });
+    },
+     setPractices() {
+      let payload = {
+        type: "practices",
+        practice1: this.practice1,
+        practice2: this.practice2,
+        practice3: this.practice3,
+        username: this.profile.username
+      };
+      this.addPractices(payload);
+      this.dayEleven = false;
+      this.$q.notify({
+        message: "Practice, practice, practice!",
         color: "primary"
       });
     },
@@ -1756,6 +1860,11 @@ export default {
       this.quarterTwoMilestone = this.planuary.quarterlyGoals.quarter2Milestone;
       this.quarterThreeMilestone = this.planuary.quarterlyGoals.quarter3Milestone;
       this.quarterFourMilestone = this.planuary.quarterlyGoals.quarter4Milestone;
+    }
+    if (this.planuary.practices != undefined) {
+      this.practiceOne = this.planuary.practices.practiceOne;
+      this.practiceTwo = this.planuary.practices.practiceTwo;
+      this.practiceThree = this.planuary.practices.practiceThree;
     }
     var date = moment().date();
     this.showDate(date);

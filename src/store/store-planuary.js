@@ -37,6 +37,9 @@ const mutations = {
   setWeekThree(state, weekThree) {
     if (weekThree != undefined) state.planuary.weekThree = weekThree;
   },
+  setWeekFour(state, weekThree) {
+    if (weekFour != undefined) state.planuary.weekFour = weekFour;
+  },
   addWish(state, wishes) {
     Vue.set(state.planuary.wishes, wishes, wishes);
   },
@@ -132,7 +135,7 @@ const actions = {
     };
     dispatch("fbAddPlanuary", payload);
   },
-  addWeekFour({ dispatch, commit }, weekThree) {
+  addWeekFour({ dispatch, commit }, weekFour) {
     let payload = {
       type: "weekFour",
       username: weekThree.username,
@@ -142,7 +145,7 @@ const actions = {
     };
     dispatch("fbAddPlanuary", payload);
   },
-  addWeekThree({ dispatch, commit }, weekThree) {
+  addQuarterlyGoals({ dispatch, commit }, quarterlyGoals) {
     let payload = {
       type: "quarterlyGoals",
       username: weekThree.username,
@@ -151,7 +154,17 @@ const actions = {
       quarterThreeMilestone: quarterlyGoals.quarterThreeMilestone,
       quarterFourMilestone: quarterlyGoals.quarterFourMilestone,
     };
-    dispatch("fbAddQuarterlyGoals", payload);
+    dispatch("fbAddPlanuary", payload);
+  },
+  addPractices({ dispatch, commit }, practices) {
+    let payload = {
+      type: "practices",
+      username: practices.username,
+      quarterOneMilestone: practices.quarterOneMilestone,
+      quarterTwoMilestone: practices.quarterTwoMilestone,
+      quarterThreeMilestone: practices.quarterThreeMilestone,
+    };
+    dispatch("fbAddPlanuary", payload);
   },
   fbAddPlanuary({ dispatch }, payload) {
     let userId = firebaseAuth.currentUser.uid;
@@ -194,9 +207,12 @@ const actions = {
           case "weekFour":
             commit("setWeekFour", planuary);
             break;
-        case "quarterlyGoals":
+          case "quarterlyGoals":
             commit("setQuarterlyGoals", planuary);
-            break;     
+            break;
+          case "practices":
+            commit("setPractices", planuary);
+            break;         
         }
       },
       error => {
@@ -223,6 +239,15 @@ const actions = {
         case "weekThree":
           commit("setWeekThree", planuary);
           break;
+        case "weekFour":
+          commit("setWeekFour", planuary);
+          break;
+        case "quarterlyGoals":
+          commit("setQuarterlyGoals", planuary);
+          break;
+        case "practices":
+          commit("setPractices", planuary);
+          break;   
       }
     });
 
@@ -248,6 +273,15 @@ const actions = {
         case "weekThree":
           commit("setWeekThree", planuary);
           break;
+        case "weekFour":
+          commit("setWeekFour", planuary);
+          break;
+        case "quarterlyGoals":
+          commit("setQuarterlyGoals", planuary);
+          break;
+        case "practices":
+          commit("setPractices", planuary);
+          break;            
       }
     });
   },

@@ -75,6 +75,7 @@ const actions = {
         dispatch("planuary/fbReadPlanuary", {type: "weekThree"}, { root: true });
         dispatch("community/fbReadCommunity", {type: "encouragement"}, { root: true });
         dispatch("planuary/fbReadPlanuary", {type: "quarterlyGoals"}, { root: true });
+        dispatch("planuary/fbReadPlanuary", {type: "practices"}, { root: true });
         dispatch("profile/fbReadAllMoods", null, { root: true });
         if (this.state.profile.profile.user.name !== "") {
           if (this.state.tasklins.tasklin.name === "") {
