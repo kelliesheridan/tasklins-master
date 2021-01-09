@@ -29,7 +29,7 @@
             <q-card dense flat square class="my-card q-pa-xs">
               <q-card-section
                 :style="{ 'background-color': getCardColor(n - 1) }"
-                class="text-white"
+                class="text-black"
               >
                 <div class="text-h7">
                   {{ getActivity(n - 1) }}
