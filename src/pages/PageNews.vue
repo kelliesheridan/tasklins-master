@@ -20,6 +20,10 @@
             <h4>One Week Down</h4>
             <br />
             <p>
+              Heyyyy, we think we fixed the thing where everyone using challenges
+              was randomly changing to orange. If not, we'll keep trying!
+            </p>  
+            <p>
               We're now a week in to the new year, and what a week it's been.
               Even aside from everything going on out there in the real world,
               it's been a hectic week with plenty of changes around here.
