@@ -852,6 +852,8 @@ export default {
   data() {
     return {
       weekOne: false,
+      weekTwo: false,
+      weekThree: false,
       wishSubmitted: false,
       focus1: "",
       focus2: "",
