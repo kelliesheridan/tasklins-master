@@ -838,6 +838,103 @@
       </q-card>
     </div>
 
+    <div class="planuaryDay day-10">
+      <q-card>
+        <q-card-section>
+          <div class="text-h7 row">
+            <q-btn dense flat @click="dayTen = !dayTen">
+              Planuary. Day Ten.
+            </q-btn>
+            <q-space />
+
+            <q-btn
+              @click="dayTen = !dayTen"
+              v-if="!dayTen"
+              color="secondary"
+              padding="none"
+              class="no-margin no-padding"
+              flat
+              round
+              dense
+              icon="add"
+            />
+          </div>
+        </q-card-section>
+
+        <q-card-section v-if="dayTen">
+          <p>
+            Back to our goals and the year ahead! We've already talked a little about our focuses for the year and some of the goals we want to work toward in 2021, but it's time to start breaking things down. 
+            There are four quarters in the year, each made up of three months. And it's a lot easier to look three months ahead than twelve. For now, let's focus on setting some overall goal posts for 
+            ourselves to guide the rest of the year by coming up with one main goal for each quarter to help guide the way to where we'd like to be by the beginning of 2022.
+          </p>
+
+          <div class="row center">
+            <div class="col">
+              <h5>Goals</h5>
+              <div>{{ this.planuary.goals.goal1 }}</div>
+            </div>
+            <div class="col">
+              <h5>Focuses</h5>
+
+            </div>
+          </div>
+
+          <div class="text-h7 focus-boxes center">
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="Where would you like to be by March 31st?"
+              outlined
+              v-model="quarterOneMilestone"
+            ></q-input>
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="Where would you like to be by June 30th?"
+              outlined
+              v-model="quarterTwoMilestone"
+            ></q-input>
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="Where would you like to be by September 30th?"
+              outlined
+              v-model="quarterThreeMilestone"
+            ></q-input>
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="Where would you like to be by December 31st?"
+              outlined
+              v-model="quarterFourMilestone"
+            ></q-input>
+          </div>
+          <br>
+
+          <div>
+          <p> We'll revisit your quarterly goals throughout the year in order to see how we're progressing, but if you have the time, we recommend breaking down those milestones even further by turning them into tasks. Have a look
+             at your focus and goal lists above and see if you can come up with a quarterly goal for each of them (some may overlap, that's okay!) and create tasks to go along with those goals, so if you're feeling stuck later, we
+             can always look back on these goals as a road map for the rest of the year. 
+          </p>
+          </div>
+
+          <div class="center">
+            <q-btn
+              @click="showAddTask = true"         
+              class="add-task-btn textureBar"
+              round
+              text-color="accent"
+              size="18px"
+              icon="add"
+            >
+            <q-tooltip content-class="bg-primary">Add New Task</q-tooltip>
+            </q-btn>
+          </div>
+          <br>
+        </q-card-section>
+      </q-card>
+    </div>
+
     <q-dialog v-model="showAddTask">
       <add-task @close="showAddTask = false" />
     </q-dialog>
@@ -915,6 +1012,10 @@ export default {
       week3Struggle: "",
       week3Memory: "",
       showAddTask: false,
+      quarter1Milestone: "",
+      quarter2Milestone: "",
+      quarter3Milestone: "",
+      quarter4Milestone: "",
       dayOne: false,
       dayTwo: false,
       dayThree: false,
@@ -1245,6 +1346,38 @@ export default {
         this.encouragement5 = value;
       }
     },
+    quarterOneMilestone: {
+      get() {
+        return this.quarter1Milestone;
+      },
+      set(value) {
+        this.quarter1Milestone = value;
+      }
+    },
+    quarterTwoMilestone: {
+      get() {
+        return this.quarter2Milestone;
+      },
+      set(value) {
+        this.quarter2Milestone = value;
+      }
+    },
+    quarterThreeMilestone: {
+      get() {
+        return this.quarter3Milestone;
+      },
+      set(value) {
+        this.quarter3Milestone = value;
+      }
+    },
+    quarterFourMilestone: {
+      get() {
+        return this.quarter4Milestone;
+      },
+      set(value) {
+        this.quarter4Milestone = value;
+      }
+    },    
     projectSearchField: {
       get() {
         return this.projectSearch;
@@ -1267,7 +1400,8 @@ export default {
       "addGoals",
       "addHighlights",
       "addScary",
-      "addWeekOne"
+      "addWeekOne",
+      "addQuarterlyGoals"
     ]),
     ...mapActions("tasks", ["setProjectSearch"]),
     ...mapActions("community", ["addEncouragement"]),
@@ -1433,6 +1567,37 @@ export default {
         color: "primary"
       });
     },
+    setWeekFour() {
+      let payload = {
+        type: "weekFour",
+        weekFourWin: this.weekFourWin,
+        weekFourStruggle: this.weekFourStruggle,
+        weekFourMemory: this.weekFourMemory,
+        username: this.profile.username
+      };
+      this.addWeekFour(payload);
+      //this.dayEight = false;
+      this.$q.notify({
+        message: "Thank you!",
+        color: "primary"
+      });
+    },
+    setQuarterlyGoals() {
+      let payload = {
+        type: "quarterlyGoals",
+        quarterOneMilestone: this.quarterOneMilestone,
+        quarterTwoMilestone: this.quarterTwoMilestone,
+        quarterThreeMilestone: this.quarterThreeMilestone,
+        quarterFourMilestone: this.quarterFourMilestone,
+        username: this.profile.username
+      };
+      this.addQuarterlyGoals(payload);
+      //this.dayEight = false;
+      this.$q.notify({
+        message: "Your quarterly goals are set!",
+        color: "primary"
+      });
+    },
     showDate(dayNumber) {
       if (dayNumber == 1) {
         this.dayOne = true;
@@ -1580,6 +1745,17 @@ export default {
       this.weekThreeWin = this.planuary.weekThree.weekThreeWin;
       this.weekThreeStruggle = this.planuary.weekThree.weekThreeStruggle;
       this.weekThreeMemory = this.planuary.weekThree.weekThreeMemory;
+    }
+    if (this.planuary.weekFour != undefined) {
+      this.weekFourWin = this.planuary.weekFour.weekThreeWin;
+      this.weekFourStruggle = this.planuary.weekFour.weekThreeStruggle;
+      this.weekFourMemory = this.planuary.weekFour.weekThreeMemory;
+    }
+    if (this.planuary.quarterlyGoals != undefined) {
+      this.quarterOneMilestone = this.planuary.quarterlyGoals.quarter1Milestone;
+      this.quarterTwoMilestone = this.planuary.quarterlyGoals.quarter2Milestone;
+      this.quarterThreeMilestone = this.planuary.quarterlyGoals.quarter3Milestone;
+      this.quarterFourMilestone = this.planuary.quarterlyGoals.quarter4Milestone;
     }
     var date = moment().date();
     this.showDate(date);

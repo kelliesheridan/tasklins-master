@@ -132,6 +132,27 @@ const actions = {
     };
     dispatch("fbAddPlanuary", payload);
   },
+  addWeekFour({ dispatch, commit }, weekThree) {
+    let payload = {
+      type: "weekFour",
+      username: weekThree.username,
+      weekThreeWin: weekThree.weekThreeWin,
+      weekThreeStruggle: weekThree.weekThreeStruggle,
+      weekThreeMemory: weekThree.weekThreeMemory
+    };
+    dispatch("fbAddPlanuary", payload);
+  },
+  addWeekThree({ dispatch, commit }, weekThree) {
+    let payload = {
+      type: "quarterlyGoals",
+      username: weekThree.username,
+      quarterOneMilestone: quarterlyGoals.quarterOneMilestone,
+      quarterTwoMilestone: quarterlyGoals.quarterTwoMilestone,
+      quarterThreeMilestone: quarterlyGoals.quarterThreeMilestone,
+      quarterFourMilestone: quarterlyGoals.quarterFourMilestone,
+    };
+    dispatch("fbAddQuarterlyGoals", payload);
+  },
   fbAddPlanuary({ dispatch }, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let planuaryRef = firebaseDb.ref("planuary/" + payload.type + "/" + userId);
@@ -170,6 +191,12 @@ const actions = {
           case "weekThree":
             commit("setWeekThree", planuary);
             break;
+          case "weekFour":
+            commit("setWeekFour", planuary);
+            break;
+        case "quarterlyGoals":
+            commit("setQuarterlyGoals", planuary);
+            break;     
         }
       },
       error => {
