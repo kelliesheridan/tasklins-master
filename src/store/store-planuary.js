@@ -40,6 +40,12 @@ const mutations = {
   setWeekFour(state, weekThree) {
     if (weekFour != undefined) state.planuary.weekFour = weekFour;
   },
+  setQuarterlyGoals(state, quarterlyGoals) {
+    if (quarterlyGoals != undefined) state.planuary.quarterlyGoals = quarterlyGoals;
+  },
+  setPractices(state, practices) {
+    if (practices != undefined) state.planuary.practices = practices;
+  },
   addWish(state, wishes) {
     Vue.set(state.planuary.wishes, wishes, wishes);
   },
@@ -148,7 +154,7 @@ const actions = {
   addQuarterlyGoals({ dispatch, commit }, quarterlyGoals) {
     let payload = {
       type: "quarterlyGoals",
-      username: weekThree.username,
+      username: quarterlyGoals.username,
       quarterOneMilestone: quarterlyGoals.quarterOneMilestone,
       quarterTwoMilestone: quarterlyGoals.quarterTwoMilestone,
       quarterThreeMilestone: quarterlyGoals.quarterThreeMilestone,
@@ -160,9 +166,9 @@ const actions = {
     let payload = {
       type: "practices",
       username: practices.username,
-      quarterOneMilestone: practices.quarterOneMilestone,
-      quarterTwoMilestone: practices.quarterTwoMilestone,
-      quarterThreeMilestone: practices.quarterThreeMilestone,
+      practice1: practices.practiceOne,
+      practice2: practices.practiceTwo,
+      practice3: practices.practiceThree,
     };
     dispatch("fbAddPlanuary", payload);
   },

@@ -808,32 +808,43 @@
 
         <q-card-section v-if="dayNine">
           <p>
-            Today, we're talking about slowing down. It can be tempting to add every task that needs to be done right to the top of your to do list, especially if you're worried you won't remember. 
-            But it can be all too easy to get overwhelmed by too easily throwing our plan for the day aside. So instead of giving you any prompts for day nine, instead we're introducing a new feature,
-            the tomorrow button. Now, when you go to add a new task, there's a button to add it to tomorrow's list as easily as today's (and of course, you can always still add a due date for any point
-            in the future).
+            Today, we're talking about slowing down. It can be tempting to add
+            every task that needs to be done right to the top of your to do
+            list, especially if you're worried you won't remember. But it can be
+            all too easy to get overwhelmed by too easily throwing our plan for
+            the day aside. So instead of giving you any prompts for day nine,
+            instead we're introducing a new feature, the tomorrow button. Now,
+            when you go to add a new task, there's a button to add it to
+            tomorrow's list as easily as today's (and of course, you can always
+            still add a due date for any point in the future).
           </p>
 
           <p>
-            Your homework for the day is to look at the list of tasks that's due today on the home page, and consider if you're putting too much on your plate. Are there tasks that can wait? Or overdue
-            tasks that can be finished later than you initially thought? Finishing a task late on tasklins (or post-poning it) does effect the amount of experience points your Tasklin will earn, but you can always
-            change the due date without any penalty. So be honest with yourself, try to set realistic expecations, and remember that the only way we can accomplish anything long-term is by being kind to ourselves.
-            Set big goals, but remember you don't have to get them done all at once!
+            Your homework for the day is to look at the list of tasks that's due
+            today on the home page, and consider if you're putting too much on
+            your plate. Are there tasks that can wait? Or overdue tasks that can
+            be finished later than you initially thought? Finishing a task late
+            on tasklins (or post-poning it) does effect the amount of experience
+            points your Tasklin will earn, but you can always change the due
+            date without any penalty. So be honest with yourself, try to set
+            realistic expecations, and remember that the only way we can
+            accomplish anything long-term is by being kind to ourselves. Set big
+            goals, but remember you don't have to get them done all at once!
           </p>
 
           <div class="center">
             <q-btn
-              @click="showAddTask = true"         
+              @click="showAddTask = true"
               class="add-task-btn textureBar"
               round
               text-color="accent"
               size="18px"
               icon="add"
             >
-            <q-tooltip content-class="bg-primary">Add New Task</q-tooltip>
+              <q-tooltip content-class="bg-primary">Add New Task</q-tooltip>
             </q-btn>
           </div>
-          <br>
+          <br />
         </q-card-section>
       </q-card>
     </div>
@@ -863,19 +874,33 @@
 
         <q-card-section v-if="dayTen">
           <p>
-            Back to our goals and the year ahead! We've already talked a little about our focuses for the year and some of the goals we want to work toward in 2021, but it's time to start breaking things down. 
-            There are four quarters in the year, each made up of three months. And it's a lot easier to look three months ahead than twelve. For now, let's focus on setting some overall goal posts for 
-            ourselves to guide the rest of the year by coming up with one main goal for each quarter to help guide the way to where we'd like to be by the beginning of 2022.
+            Back to our goals and the year ahead! We've already talked a little
+            about our focuses for the year and some of the goals we want to work
+            toward in 2021, but it's time to start breaking things down. There
+            are four quarters in the year, each made up of three months. And
+            it's a lot easier to look three months ahead than twelve. For now,
+            let's focus on setting some overall goal posts for ourselves to
+            guide the rest of the year by coming up with one main goal for each
+            quarter to help guide the way to where we'd like to be by the
+            beginning of 2022.
           </p>
 
           <div class="row center">
             <div class="col">
-              <h5>Goals</h5>
+              <h4>Goals</h4>
               <div>{{ this.planuary.goals.goal1 }}</div>
+              <div>{{ this.planuary.goals.goal2 }}</div>
+              <div>{{ this.planuary.goals.goal3 }}</div>
+              <div>{{ this.planuary.goals.goal4 }}</div>
+              <div>{{ this.planuary.goals.goal5 }}</div>
             </div>
             <div class="col">
-              <h5>Focuses</h5>
-
+              <h4>Focuses</h4>
+              <div>{{ this.planuary.focus.focus1 }}</div>
+              <div>{{ this.planuary.focus.focus2 }}</div>
+              <div>{{ this.planuary.focus.focus3 }}</div>
+              <div>{{ this.planuary.focus.focus4 }}</div>
+              <div>{{ this.planuary.focus.focus5 }}</div>
             </div>
           </div>
 
@@ -909,28 +934,31 @@
               v-model="quarterFourMilestone"
             ></q-input>
           </div>
-          <br>
+          <br />
 
           <div>
-          <p> We'll revisit your quarterly goals throughout the year in order to see how we're progressing, but if you have the time, we recommend breaking down those milestones even further by turning them into tasks. Have a look
-             at your focus and goal lists above and see if you can come up with a quarterly goal for each of them (some may overlap, that's okay!) and create tasks to go along with those goals, so if you're feeling stuck later, we
-             can always look back on these goals as a road map for the rest of the year. 
-          </p>
+            <p>
+              We'll revisit your quarterly goals throughout the year in order to
+              see how we're progressing, but if you have the time, we recommend
+              breaking down those milestones even further by turning them into
+              tasks. Have a look at your focus and goal lists above and see if
+              you can come up with a quarterly goal for each of them (some may
+              overlap, that's okay!) and create tasks to go along with those
+              goals, so if you're feeling stuck later, we can always look back
+              on these goals as a road map for the rest of the year.
+            </p>
           </div>
 
-          <div class="center">
+            <div class="center q-pa-md">
             <q-btn
-              @click="showAddTask = true"         
-              class="add-task-btn textureBar"
-              round
-              text-color="accent"
-              size="18px"
-              icon="add"
-            >
-            <q-tooltip content-class="bg-primary">Add New Task</q-tooltip>
-            </q-btn>
+              @click="setQuarterlyGoals()"
+              class="q-pa-xs"
+              color="primary"
+              size="md"
+              label="Set Quarterly Goals!"
+            />
           </div>
-          <br>
+          <br />
         </q-card-section>
       </q-card>
     </div>
@@ -960,9 +988,13 @@
 
         <q-card-section v-if="dayEleven">
           <p>
-            We never stop learning and growing as people, and as a result not every goal has a clear cut finish line. For example, we can never be finished learning to code or getting better at an art form. 
-            We'll also never finish reading every book, or listening to every podcast on a topic we're interested in. So today, let's take a few minutes to think about some of the things we want to make more 
-            time for in 2021.   
+            We never stop learning and growing as people, and as a result not
+            every goal has a clear cut finish line. For example, we can never be
+            finished learning to code or getting better at an art form. We'll
+            also never finish reading every book, or listening to every podcast
+            on a topic we're interested in. So today, let's take a few minutes
+            to think about some of the things we want to make more time for in
+            2021.
           </p>
 
           <div class="text-h7 focus-boxes center">
@@ -985,16 +1017,22 @@
               rounded
               label="Practice Three"
               outlined
-              v-model="PracticeThree"
+              v-model="practiceThree"
             ></q-input>
           </div>
-          <br>
-
-          <br>
+            <div class="center q-pa-md">
+            <q-btn
+              @click="setPractices()"
+              class="q-pa-xs"
+              color="primary"
+              size="md"
+              label="Set Practices!"
+            />
+          </div>
+          <br />
         </q-card-section>
       </q-card>
     </div>
-
 
     <q-dialog v-model="showAddTask">
       <add-task @close="showAddTask = false" />
@@ -1465,7 +1503,7 @@ export default {
       set(value) {
         this.practice3 = value;
       }
-    },   
+    },
     projectSearchField: {
       get() {
         return this.projectSearch;
@@ -1687,12 +1725,12 @@ export default {
         color: "primary"
       });
     },
-     setPractices() {
+    setPractices() {
       let payload = {
         type: "practices",
-        practice1: this.practice1,
-        practice2: this.practice2,
-        practice3: this.practice3,
+        practiceOne: this.practiceOne,
+        practiceTwo: this.practiceTwo,
+        practiceThree: this.practiceThree,
         username: this.profile.username
       };
       this.addPractices(payload);
@@ -1862,9 +1900,9 @@ export default {
       this.quarterFourMilestone = this.planuary.quarterlyGoals.quarter4Milestone;
     }
     if (this.planuary.practices != undefined) {
-      this.practiceOne = this.planuary.practices.practiceOne;
-      this.practiceTwo = this.planuary.practices.practiceTwo;
-      this.practiceThree = this.planuary.practices.practiceThree;
+      this.practiceOne = this.planuary.practices.practice1;
+      this.practiceTwo = this.planuary.practices.practice2;
+      this.practiceThree = this.planuary.practices.practice3;
     }
     var date = moment().date();
     this.showDate(date);
