@@ -95,6 +95,12 @@ const mutations = {
   setPronouns(state, value) {
     state.profile.user.pronouns = value;
   },
+  setMoodDate(state, value, mood) {
+    if (value != undefined) {
+      state.profile.user.moodDate = value;
+      state.profile.user.currentMood = value;
+    }
+  },
 };
 // addNewUser(state, payload) {
 // 	Vue.set(state.profile, payload.id, payload.task)
@@ -227,9 +233,10 @@ const actions = {
       }
     });
   },
-  fbSetMood({ dispatch }, payload) {
+  fbSetMood({ dispatch, commit }, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let moodDate = payload.moodDate;
+    commit('setMoodDate', moodDate, payload.mood);
     let moodRef = firebaseDb.ref("mood/" + userId + "/" + moodDate);
     moodRef.set(payload.mood, error => {
       if (error) {

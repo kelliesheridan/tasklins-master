@@ -101,22 +101,25 @@
                   </div>
                 </div>
 
-                <div
-                  v-show="pageNumber == 4"
-                  class="notebookPage4"
-                >
+                <div v-show="pageNumber == 4" class="notebookPage4">
                   <h4>Mood Tracker</h4>
                   <br />
-                  <p>We do still have some final touches to do on this page (for example, if you add a new mood, you won't see it until the next time you visit), but it works!
-                    If you're not seeing the any boxes filled in after selecting at least one mood, try refreshing, and we'll get things working a bit more smoothly soon!</p>
+                  <p>
+                    We do still have some final touches to do on this page (for
+                    example, if you add a new mood, you won't see it until the
+                    next time you visit), but it works! If you're not seeing the
+                    any boxes filled in after selecting at least one mood, try
+                    refreshing, and we'll get things working a bit more smoothly
+                    soon!
+                  </p>
                   <div
-                    class="moodTrackerHeader row-xs-12 row-sm-10 row-md-6 row-lg-6"                    
+                    class="moodTrackerHeader row-xs-12 row-sm-10 row-md-6 row-lg-6"
                   >
                     <div class="row">
                       <div class="col ">
                         <q-img
                           src="/statics/moods/happy.png"
-                          spinner-color="white"                          
+                          spinner-color="white"
                           class="row moodImage"
                         />
                         <div class="row moodImageText1">
@@ -138,7 +141,7 @@
                       <div class="col">
                         <q-img
                           src="/statics/moods/glum.png"
-                          spinner-color="white"                          
+                          spinner-color="white"
                           class="row moodImage"
                         />
                         <div class="row moodImageText  text-center">
@@ -149,7 +152,7 @@
                       <div class="col" v-if="this.profile.memberType > 1">
                         <q-img
                           src="/statics/moods/tired.png"
-                          spinner-color="white"                          
+                          spinner-color="white"
                           class="row moodImage"
                         />
                         <div class="row moodImageText text-center">
@@ -158,7 +161,7 @@
                       </div>
                     </div>
                   </div>
-                  <br>
+                  <br />
                   <div>
                     <div class="row moodTracker">
                       <div class="col">
@@ -209,21 +212,21 @@
 
                       <div class="januaryMoods col">
                         J
-                      <div v-for="n in 30" :key="n">
+                        <div v-for="n in 30" :key="n">
                           <div v-bind:class="getMoodForDate('06', n)"></div>
                         </div>
                       </div>
 
                       <div class="februaryMoods col">
                         J
-                       <div v-for="n in 31" :key="n">
+                        <div v-for="n in 31" :key="n">
                           <div v-bind:class="getMoodForDate('07', n)"></div>
                         </div>
                       </div>
 
                       <div class="marchMoods col">
                         A
-                       <div v-for="n in 31" :key="n">
+                        <div v-for="n in 31" :key="n">
                           <div v-bind:class="getMoodForDate('08', n)"></div>
                         </div>
                       </div>
@@ -237,14 +240,14 @@
 
                       <div class="marchMoods col">
                         O
-                       <div v-for="n in 31" :key="n">
+                        <div v-for="n in 31" :key="n">
                           <div v-bind:class="getMoodForDate(10, n)"></div>
                         </div>
                       </div>
 
                       <div class="marchMoods col">
                         N
-                       <div v-for="n in 30" :key="n">
+                        <div v-for="n in 30" :key="n">
                           <div v-bind:class="getMoodForDate(11, n)"></div>
                         </div>
                       </div>
@@ -318,7 +321,8 @@
         </q-dialog>
 
         <q-dialog v-model="showMoodPicker">
-          <mood-picker @close="showMoodPicker = false" />
+          <mood-picker @close="showMoodPicker = false; updateGrid();"
+          />
         </q-dialog>
       </template>
 
@@ -332,9 +336,9 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from "vuex";
-import { date } from 'quasar'
-const moment= require('moment') 
+import { mapActions, mapGetters, mapState } from "vuex";
+import { date } from "quasar";
+const moment = require("moment");
 
 export default {
   data() {
@@ -376,18 +380,38 @@ export default {
     // "no-tasks": require("components/Tasks/NoTasks.vue").default,
   },
   methods: {
+    ...mapActions("profile", ["fbReadAllMoods"]),
     getMoodForDate(month, number) {
       if (this.moods)
-      if (month != undefined && number != undefined) {
-        var moods = Object.keys(this.moods).filter(e => e == moment("2021-" + month + "-" + number).format("YYYY-MM-DD"));
-        if (moods.length > 0) {
-          if (number.toString().length == 1) number = "0" + number;
-          var moodOnDate = this.moods["2021-" + month + "-" + number]; 
-          return "moodSquare mood" + moodOnDate.charAt(0).toUpperCase() + moodOnDate.slice(1) + " row";
-        } else {
-          return "moodSquare row";
+        if (month != undefined && number != undefined) {
+          var moods = Object.keys(this.moods).filter(
+            e =>
+              e == moment("2021-" + month + "-" + number).format("YYYY-MM-DD")
+          );
+          if (moods.length > 0) {
+            if (number.toString().length == 1) number = "0" + number;
+            var moodOnDate = this.moods["2021-" + month + "-" + number];
+            return (
+              "moodSquare mood" +
+              moodOnDate.charAt(0).toUpperCase() +
+              moodOnDate.slice(1) +
+              " row"
+            );
+          } else {
+            return "moodSquare row";
+          }
         }
-      }
+    },
+    updateGrid() {
+      this.$router.push("/journal");
+      // this.fbReadAllMoods();
+      // setTimeout(() => {
+      //   console.debug(this.profile.moodDate);
+      //   this.getMoodForDate(
+      //     moment(this.profile.moodDate).month() + 1,
+      //     moment(this.profile.moodDate).date()
+      //   );
+      // }, 2000);
     }
   }
 };
