@@ -196,63 +196,63 @@
                         </div>
                       </div>
 
-                      <div class="marchMoods col">
+                      <div class="aprilMoods col">
                         A
                         <div v-for="n in 30" :key="n">
                           <div v-bind:class="getMoodForDate('04', n)"></div>
                         </div>
                       </div>
 
-                      <div class="marchMoods col">
+                      <div class="mayMoods col">
                         M
                         <div v-for="n in 31" :key="n">
                           <div v-bind:class="getMoodForDate('05', n)"></div>
                         </div>
                       </div>
 
-                      <div class="januaryMoods col">
+                      <div class="juneMoods col">
                         J
                         <div v-for="n in 30" :key="n">
                           <div v-bind:class="getMoodForDate('06', n)"></div>
                         </div>
                       </div>
 
-                      <div class="februaryMoods col">
+                      <div class="julyMoods col">
                         J
                         <div v-for="n in 31" :key="n">
                           <div v-bind:class="getMoodForDate('07', n)"></div>
                         </div>
                       </div>
 
-                      <div class="marchMoods col">
+                      <div class="augustMoods col">
                         A
                         <div v-for="n in 31" :key="n">
                           <div v-bind:class="getMoodForDate('08', n)"></div>
                         </div>
                       </div>
 
-                      <div class="marchMoods col">
+                      <div class="septemberMoods col">
                         S
                         <div v-for="n in 30" :key="n">
                           <div v-bind:class="getMoodForDate('09', n)"></div>
                         </div>
                       </div>
 
-                      <div class="marchMoods col">
+                      <div class="octoberMoods col">
                         O
                         <div v-for="n in 31" :key="n">
                           <div v-bind:class="getMoodForDate(10, n)"></div>
                         </div>
                       </div>
 
-                      <div class="marchMoods col">
+                      <div class="novemberMoods col">
                         N
                         <div v-for="n in 30" :key="n">
                           <div v-bind:class="getMoodForDate(11, n)"></div>
                         </div>
                       </div>
 
-                      <div class="marchMoods col">
+                      <div class="decemberMoods col">
                         D
                         <div v-for="n in 31" :key="n">
                           <div v-bind:class="getMoodForDate(12, n)"></div>
