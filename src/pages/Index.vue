@@ -234,7 +234,7 @@
       </span>
     </template>
       <q-dialog v-model="register2" transition-hide="scale">
-          <register2 />
+          <register2 v-if="register2" />
       </q-dialog>
   </q-page>
 </template>
