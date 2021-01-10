@@ -6,6 +6,12 @@
 
 .task-btn {
     margin: 1.5px;
+    font-size: medium;
+
+    @include respond(phne) {
+        margin: 1px;
+        font-size: small;
+       }
 }
 
 .task-box {

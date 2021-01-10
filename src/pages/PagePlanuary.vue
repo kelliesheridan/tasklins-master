@@ -962,7 +962,7 @@
         </q-card-section>
       </q-card>
     </div>
-<!-- 
+
     <div class="planuaryDay day-11">
       <q-card>
         <q-card-section>
@@ -1032,7 +1032,7 @@
           <br />
         </q-card-section>
       </q-card>
-    </div> -->
+    </div>
 
     <q-dialog v-model="showAddTask">
       <add-task @close="showAddTask = false" />
