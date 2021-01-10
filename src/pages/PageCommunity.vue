@@ -31,30 +31,19 @@
         <br>
 
         <div>
-          <q-card dense square class="my-card q-m-md">
-            <q-card-section          
-            >
-              <div class="text-h7">
-                <div
-                  class="col-xs-12 col-sm-12 col-md-6 col-lg-4 q-pa-xs"
-                  :class="!settings.darkMode ? 'bg-accent' : 'bg-dark'"
-                  style="overflow: auto; max-height: 65vh;"
-                >
-                  <div v-for="n in this.count" :key="n">
-                    <q-card dense flat square class="my-card q-pa-xs">
-                      <q-card-section
-                        :style="{ 'background-color': getCardColor(n - 1) }"
-                        class="text-black"
-                      >
-                        <div class="text-h7">
-                          {{ getActivity(n - 1) }}
-                        </div>
-                      </q-card-section>
-                    </q-card>
-                  </div>
-                </div>
-              </div>
-            </q-card-section>
+          <q-card dense square bg-secondary class="my-card q-m-md">
+            <q-card-section class="text-black row">
+              <q-avatar rounded size="55px">
+                <img src="https://cdn.quasar.dev/img/avatar.png">
+              </q-avatar>
+                <div class="text-h7 q-pa-xs">
+                  <p>Name - @Username</p>
+                  <p>12:03pm</p>
+                </div>                
+              </q-card-section>
+              <q-card-section>
+                <div>Update here</div>
+              </q-card-section>
           </q-card>
         </div>
         
