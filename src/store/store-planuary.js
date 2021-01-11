@@ -144,10 +144,10 @@ const actions = {
   addWeekFour({ dispatch, commit }, weekFour) {
     let payload = {
       type: "weekFour",
-      username: weekThree.username,
-      weekThreeWin: weekThree.weekThreeWin,
-      weekThreeStruggle: weekThree.weekThreeStruggle,
-      weekThreeMemory: weekThree.weekThreeMemory
+      username: weekFour.username,
+      weekFourWin: weekFour.weekFourWin,
+      weekFourStruggle: weekFour.weekFourStruggle,
+      weekFourMemory: weekFour.weekFourMemory
     };
     dispatch("fbAddPlanuary", payload);
   },

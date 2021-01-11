@@ -55,6 +55,40 @@ const actions = {
       }
     });
   },
+  fbReadEnouragement({ commit }) {
+    let encouragement = firebaseDb.ref("encouragement");
+
+    //initial check for data
+    encouragement.once(
+      "value",
+      snapshot => {
+        let encouragement = snapshot.val();
+        console.debug("encouragement is: ", encouragement);
+        commit("setEncouragement", encouragement);
+      },
+      error => {
+        showErrorMessage(error.message);
+      }
+    );
+
+    // child added
+    encouragement.on("child_added", snapshot => {
+      let encouragement = snapshot.val();
+      commit("addEncouragement", encouragement);
+    });
+
+    // child changed
+    encouragement.on("child_changed", snapshot => {
+      let encouragement = snapshot.val();
+      commit("setEncouragement", encouragement);
+    });
+
+    // child removed
+    encouragement.on("child_removed", snapshot => {
+      let encouragement = snapshot.val();
+      commit("deleteEncouragement", taskId);
+    });
+  },
   fbReadCommunity({ commit }, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let community = firebaseDb.ref("community/" + payload.type);
@@ -108,6 +142,13 @@ const actions = {
 const getters = {
   community: state => {
     return state.community;
+  },
+  randomEncouragement: state => {
+    var array = state.community.encouragement;
+    if (array != undefined) {
+      array = Object.entries(array).sort(() => Math.random() - 0.5);
+      return array;
+    }
   }
 };
 

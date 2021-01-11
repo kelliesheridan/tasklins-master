@@ -98,10 +98,22 @@ export default {
   },
   computed: {
     ...mapGetters("community", ["community"]),
+    ...mapGetters("community", ["getEncouragement"]),
     ...mapGetters("profile", ["profile", "profiles", "profileIDs"])
   },
   methods: {
     ...mapActions("community", ["setCommunityUpdate"]),
+
+      getEncouragement() {
+      var array = [];
+      if (this.random16[number - 1] == undefined ) {
+        array.push("");
+        return array;
+      } else {
+         array.push(this.random16[number - 1][1].wish);
+        return array;
+      }
+    },
 
     getCommunityUpdatesLength() {
       if (this.community.communityUpdate) {
