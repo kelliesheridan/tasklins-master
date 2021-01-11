@@ -54,6 +54,7 @@
         </div>
       </div>
       <div class="col-4"></div>
+      
     </div>
 
     <div></div>
@@ -104,6 +105,7 @@ export default {
         communityUpdate: this.text
       };
       this.setCommunityUpdate(payload);
+      this.getCommunityUpdatesLength();
     }
   }
 };
