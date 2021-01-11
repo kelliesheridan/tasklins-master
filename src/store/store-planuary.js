@@ -46,6 +46,9 @@ const mutations = {
   setPractices(state, practices) {
     if (practices != undefined) state.planuary.practices = practices;
   },
+  setGratitude(state, gratitude) {
+    if (gratitude != undefined) state.planuary.gratitude = gratitude;
+  },
   addWish(state, wishes) {
     Vue.set(state.planuary.wishes, wishes, wishes);
   },
@@ -172,6 +175,18 @@ const actions = {
     };
     dispatch("fbAddPlanuary", payload);
   },
+  addGratitude({ dispatch, commit }, gratitude) {
+    let payload = {
+      type: "gratitude",
+      username: gratitude.username,
+      gratitude1: gratitude.gratitudeOne,
+      gratitude2: gratitude.gratitudeeTwo,
+      gratitude3: gratitude.gratitudeThree,
+      gratitude4: gratitude.gratitudeeFour,
+      gratitude5: gratitude.gratitudeFive,
+    };
+    dispatch("fbAddPlanuary", payload);
+  },
   fbAddPlanuary({ dispatch }, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let planuaryRef = firebaseDb.ref("planuary/" + payload.type + "/" + userId);
@@ -218,7 +233,10 @@ const actions = {
             break;
           case "practices":
             commit("setPractices", planuary);
-            break;         
+            break;
+          case "gratitude":
+              commit("setGratitude", planuary);
+              break;                    
         }
       },
       error => {
@@ -253,7 +271,10 @@ const actions = {
           break;
         case "practices":
           commit("setPractices", planuary);
-          break;   
+          break;
+        case "gratitude":
+            commit("setGratitude", planuary);
+            break;        
       }
     });
 
@@ -287,7 +308,10 @@ const actions = {
           break;
         case "practices":
           commit("setPractices", planuary);
-          break;            
+          break;
+        case "gratitude":
+          commit("setGratitude", planuary);
+          break;             
       }
     });
   },

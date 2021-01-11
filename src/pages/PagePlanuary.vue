@@ -1034,7 +1034,7 @@
       </q-card>
     </div>
 
-        <div class="planuaryDay day-12">
+    <div class="planuaryDay day-12">
       <q-card>
         <q-card-section>
           <div class="text-h7 row">
@@ -1087,6 +1087,94 @@
         </q-card-section>
       </q-card>
     </div>
+
+    <div class="planuaryDay day-13">
+      <q-card>
+        <q-card-section>
+          <div class="text-h7 row">
+            <q-btn dense flat @click="dayThirteen = !dayThirteen">
+              Planuary. Day Thirteen.
+            </q-btn>
+            <q-space />
+
+            <q-btn
+              @click="dayThirteen = !dayThirteen"
+              v-if="!dayThirteen"
+              color="secondary"
+              padding="none"
+              class="no-margin no-padding"
+              flat
+              round
+              dense
+              icon="add"
+            />
+          </div>
+        </q-card-section>
+
+        <q-card-section v-if="dayThirteen">
+          <p>
+            We never stop learning and growing as people, and as a result not
+            every goal has a clear cut finish line. For example, we can never be
+            finished learning to code or getting better at an art form. We'll
+            also never finish reading every book, or listening to every podcast
+            on a topic we're interested in. So today, let's take a few minutes
+            to think about some of the things we want to make more time for in
+            2021.
+          </p>
+
+          <div class="text-h7 focus-boxes center">
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="What are you grateful for?"
+              outlined
+              v-model="gratitudeOne"
+            ></q-input>
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="What are you grateful for?"
+              outlined
+              v-model="gratitudeTwo"
+            ></q-input>
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="What are you grateful for?"
+              outlined
+              v-model="gratitudeThree"
+            ></q-input>
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="What are you grateful for?"
+              outlined
+              v-model="gratitudeFour"
+            ></q-input>
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="What are you grateful for?"
+              outlined
+              v-model="gratitudeFive"
+            ></q-input>
+          </div>
+
+          <div class="center q-pa-md">
+            <q-btn
+              @click="setGratitude()"
+              class="q-pa-xs"
+              color="primary"
+              size="md"
+              label="Send a little gratitude"
+            />
+          </div>
+          <br />
+        </q-card-section>
+      </q-card>
+    </div>
+
+    
 
     <q-dialog v-model="showAddTask">
       <add-task @close="showAddTask = false" />
@@ -1172,6 +1260,11 @@ export default {
       practice1: "",
       practice2: "",
       practice3: "",
+      gratititude1: "",
+      gratititude2: "",
+      gratititude3: "",
+      gratititude4: "",
+      gratititude5: "",
       dayOne: false,
       dayTwo: false,
       dayThree: false,
@@ -1558,6 +1651,46 @@ export default {
         this.practice3 = value;
       }
     },
+    gratitudeOne: {
+      get() {
+        return this.gratitude1;
+      },
+      set(value) {
+        this.gratitude1 = value;
+      }
+    },
+    gratitudeTwo: {
+      get() {
+        return this.gratitude2;
+      },
+      set(value) {
+        this.gratitude2 = value;
+      }
+    },
+    gratitudeThree: {
+      get() {
+        return this.gratitude3;
+      },
+      set(value) {
+        this.gratitude3 = value;
+      }
+    },
+    gratitudeFour: {
+      get() {
+        return this.gratitude4;
+      },
+      set(value) {
+        this.gratitude4 = value;
+      }
+    },
+    gratitudeFive: {
+      get() {
+        return this.gratitude5;
+      },
+      set(value) {
+        this.gratitude5 = value;
+      }
+    },
     projectSearchField: {
       get() {
         return this.projectSearch;
@@ -1582,7 +1715,8 @@ export default {
       "addScary",
       "addWeekOne",
       "addQuarterlyGoals",
-      "addPractices"
+      "addPractices",
+      "addGratitude"
     ]),
     ...mapActions("tasks", ["setProjectSearch"]),
     ...mapActions("community", ["addEncouragement"]),
@@ -1794,6 +1928,23 @@ export default {
         color: "primary"
       });
     },
+    setGratitude() {
+      let payload = {
+        type: "gratitude",
+        gratitudeOne: this.gratitudeOne,
+        gratitudeTwo: this.gratitudeTwo,
+        gratitudeThree: this.gratitudeThree,
+        gratitudeFour: this.gratitudeFour,
+        gratitudeFive: this.gratitudeFive,
+        username: this.profile.username
+      };
+      this.addGratitude(payload);
+      this.dayThirteen = false;
+      this.$q.notify({
+        message: "Thank you for finding the good!",
+        color: "primary"
+      });
+    },
     showDate(dayNumber) {
       if (dayNumber == 1) {
         this.dayOne = true;
@@ -1957,6 +2108,13 @@ export default {
       this.practiceOne = this.planuary.practices.practice1;
       this.practiceTwo = this.planuary.practices.practice2;
       this.practiceThree = this.planuary.practices.practice3;
+    }
+    if (this.planuary.gratitude != undefined) {
+      this.gratitudeOne = this.planuary.gratitude.gratitude1;
+      this.gratitudeTwo = this.planuary.gratitude.gratitude2;
+      this.gratitudeThree = this.planuary.gratitude.gratitude3;
+      this.gratitudeFour = this.planuary.gratitude.gratitude4;
+      this.gratitudeFive = this.planuary.gratitude.gratitude5;
     }
     var date = moment().date();
     this.showDate(date);
