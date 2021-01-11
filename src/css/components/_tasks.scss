@@ -17,6 +17,37 @@
        }
 }
 
+.task-btn-popup {
+    margin: .5px;
+    margin-left: 6px;
+    font-size: medium;
+
+    @include respond(tab-port) {
+        margin: 2px;
+        font-size: small;
+       }
+}
+
+.popup-box {
+    width: 350px;
+
+    @include respond(tab-port) {
+        width: 365px;
+       }
+}
+
+.due-box {
+    width: 225px;
+    
+    @include respond(phone) {
+        width: 200px;
+       }
+
+       @include respond(small-phone) {
+        width: 160px;
+       }   
+}
+
 .task-box {
     margin: 0;
 }
@@ -56,4 +87,18 @@
 
  .task-name-section {
      margin-left: -8px;
+ }
+
+ .popup-save-btn {
+     margin-top: -30px;
+ }
+
+ .popup-seperator {
+     margin: 0 auto;
+     width: 85%;
+     margin-bottom: 5px;
+ }
+
+ .task-input {
+     margin-top: -5px;
  }

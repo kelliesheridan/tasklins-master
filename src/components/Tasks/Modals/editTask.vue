@@ -24,6 +24,8 @@
         />
       </q-card-section>
 
+      <q-separator class="popup-seperator"/>
+
       <q-card-section class="q-pt-none">
         <!-- <modal-task-npublic :npublic.sync="taskToSubmit.npublic"/> -->
         <q-card-section class="q-pt-none">
@@ -34,7 +36,7 @@
         </q-card-section>
       </q-card-section>
 
-      <modal-task-save></modal-task-save>
+      <modal-task-save class="popup-save-btn"></modal-task-save>
     </q-form>
   </q-card>
 </template>

@@ -2,6 +2,7 @@
   <div class="row q-mb-sm">
     <q-input
       outlined
+      class="due-box"
       label="Due date"
       :value="dueDate"
       @input="$emit('update:dueDate', $event)"
@@ -17,27 +18,25 @@
 
 <!-- @click.stop="dueDateToday({ id: id, dueDate: task.dueDate })" -->
 
-        <q-btn class="task-btn"
-          @click="setDueDate()"    
-          flat
-          dense
-          size="md"
-          color="purple"
-          icon="today"
-        ><q-tooltip content-class="bg-primary">Due Today</q-tooltip>
-        </q-btn>
+    <q-btn class="task-btn-popup"
+      @click="setDueDate()"    
+      flat
+      dense
+      size="md"
+      color="purple"
+      icon="today"
+    ><q-tooltip content-class="bg-primary">Due Today</q-tooltip>
+    </q-btn>
 
-        <q-btn class="task-btn"
-          @click.stop="setDueTomorrow()"  
-          flat
-          dense
-          color="blue"
-          icon="rotate_right">
-          <q-tooltip content-class="bg-primary">Due Tomorrow</q-tooltip>
-        </q-btn> 
-
+    <q-btn class="task-btn-popup"
+      @click.stop="setDueTomorrow()"  
+      flat
+      dense
+      color="blue"
+      icon="rotate_right">
+      <q-tooltip content-class="bg-primary">Due Tomorrow</q-tooltip>
+    </q-btn>    
         
-
   </div>
 </template>
 

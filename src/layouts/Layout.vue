@@ -148,7 +148,6 @@
 
       <div class="q-ma-sm layout-details">
         <div>{{ profile.name }} (@{{ profile.username }})</div>
-        <div>Level: {{ profile.level }}</div>
         <div>{{ profile.lin }}
           <q-img
         src="statics/items/lin.PNG"

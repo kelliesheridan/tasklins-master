@@ -1,5 +1,5 @@
 <template>
-  <q-card style="width: 350px">
+  <q-card class="popup-box">
     <modal-header>Add Task</modal-header>
 
     <q-form @submit.prevent="submitForm">
@@ -25,6 +25,8 @@
 
       </q-card-section>
 
+      <q-separator class="popup-seperator"/>
+
       <q-card-section class="q-pt-none">
         <modal-task-nrepeating
           :nrepeating.sync="taskToSubmit.nrepeating"
@@ -32,7 +34,7 @@
         />
       </q-card-section>
 
-      <modal-task-save></modal-task-save>
+      <modal-task-save class="popup-save-btn"></modal-task-save>
     </q-form>
   </q-card>
 </template>
