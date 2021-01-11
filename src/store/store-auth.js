@@ -74,6 +74,7 @@ const actions = {
         dispatch("planuary/fbReadPlanuary", {type: "weekTwo"}, { root: true });
         dispatch("planuary/fbReadPlanuary", {type: "weekThree"}, { root: true });
         dispatch("community/fbReadCommunity", {type: "encouragement"}, { root: true });
+        dispatch("community/fbReadCommunity", {type: "communityUpdate"}, { root: true });
         dispatch("planuary/fbReadPlanuary", {type: "quarterlyGoals"}, { root: true });
         dispatch("planuary/fbReadPlanuary", {type: "practices"}, { root: true });
         dispatch("profile/fbReadAllMoods", null, { root: true });
