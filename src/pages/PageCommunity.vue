@@ -1,10 +1,26 @@
 <template>
   <q-page>
     <div class="q-pa-md communityMain row">
-      <div>
-        <div>
-          <h5></h5>
-        </div>
+
+     <div class="q-pa-md col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <q-card dense square class="community-card center">
+          <q-card-section>   
+            <div class="text-h6 q-pa-xs">
+              Encouragement Station
+            </div>                
+          </q-card-section>
+          <q-card-section>
+            <q-btn @click="encouragement = true" class="glossy" rounded color="primary" label="Get Encouragement!" />
+          </q-card-section>
+          <q-card-section>
+            <div class="community-post-text" v-show="encouragement">
+              {{ encouragementText }}
+            </div>
+           </q-card-section>
+        </q-card>
+      </div>
+
+      <div class="q-pa-md col-xs-12 col-sm-12 col-md-6 col-lg-6">
         <div>
           <q-card dense square class="my-card q-pa-xs">
             <q-card-section class="row">
@@ -37,11 +53,11 @@
         <div v-for="n in getCommunityUpdatesLength()" :key="n">
           <div>
             <q-card dense square bg-secondary class="community-card">
-              <q-card-section class="community-like-section absolute-top-right row">
+              <!-- <q-card-section class="community-like-section absolute-top-right row">
                 <div class="community-like-count">{{ likedCount }}</div>
                 <q-btn v-show="liked == false" flat round class="community-like-btn-default" color="secondary" icon="favorite_border" />
                 <q-btn v-show="liked == true" flat round class="community-like-btn-default" color="secondary" icon="favorite" />
-              </q-card-section>
+              </q-card-section> -->
               <q-card-section class="row">
                 <q-avatar rounded size="55px">
                   <img src="https://cdn.quasar.dev/img/avatar.png" />
@@ -51,8 +67,8 @@
                   <p class="community-update-time">{{getCommunityUpdateTime(n - 1)}}</p>
                 </div>                
               </q-card-section>
-              <q-card-section class="community-post-text">
-                <div>{{getCommunityUpdate(n - 1)}}</div>
+              <q-card-section>
+                <div class="community-post-text">{{getCommunityUpdate(n - 1)}}</div>
               </q-card-section>
             </q-card>
           </div>
@@ -62,7 +78,7 @@
       
     </div>
 
-    <div></div>
+    
   </q-page>
 </template>
 
@@ -75,7 +91,9 @@ export default {
     return {
       text: "",
       liked: false,
-      likedCount: 0
+      likedCount: 0,
+      encouragement: false,
+      encouragementText: "We're still working on this, but check back soon!"
     };
   },
   computed: {

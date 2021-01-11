@@ -1,6 +1,6 @@
 .communityMain {
     padding: 1rem;
-    width: 800px;
+    width: 80%;
     margin: 0 auto;
 
     @include respond(phone) {
@@ -13,7 +13,8 @@
 }
 
 .shareUpdate-form {
-    width: 100%;
+    width: 400px;
+    margin-left: 10px;
     
     @include respond(tab-port) {
         width: 300px;
@@ -45,18 +46,12 @@
     color: black;
 }
 
-.community-card {
-    margin-bottom: 4px;
-}
 .community-avater {
     
 
     @include respond(phone) {
         display: none;
     }
-}
-
-.community-like-btn-default {
 }
 
 .community-like-section {
