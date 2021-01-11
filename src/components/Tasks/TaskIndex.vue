@@ -6,14 +6,16 @@
   	clickable
   	v-ripple>
     <q-item-section side top>
-      <q-checkbox 
+      <q-checkbox
+        size="sm" 
         v-model="task.completed"
-        class="no-pointer-events" />
+        class="no-pointer-events checkbox-style" />
     </q-item-section>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 
-    <q-item-section>
+    <q-item-section class="task-name-section">
       <q-item-label
       	:class="{ 'text-strikethrough' : task.completed }"
+        class="task-label"
         v-html="$options.filters.searchHighlight(task.name, search)">
       </q-item-label>
 
@@ -27,6 +29,7 @@
     <q-item-section v-if="showProjects" side>
       <q-item-label
       	:class="{ 'text-strikethrough' : task.completed }"
+        class="project-label"
         v-html="$options.filters.searchHighlight(task.project, search)">
       </q-item-label>
     </q-item-section>

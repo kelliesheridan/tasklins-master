@@ -31,6 +31,7 @@ const actions = {
     dispatch("fbAddCommunity", payload);
   },
   setCommunityUpdate({ dispatch, commit }, community) {
+    const format1 = "YYYY-MM-DD HH:mm:ss"
     let payload = {
       username: community.username,
       communityUpdate: community.communityUpdate,

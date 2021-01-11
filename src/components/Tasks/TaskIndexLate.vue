@@ -11,12 +11,14 @@
       <q-checkbox 
         v-model="task.completed"
         keep-color
+        size="sm" 
         color="red" 
-        class="no-pointer-events late-warning" />
+        class="no-pointer-events late-warning checkbox-style" />
     </q-item-section>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 
-    <q-item-section>             
+    <q-item-section class="task-name-section">             
       <q-item-label
+        class="task-label"
       	:class="{ 'text-strikethrough' : task.completed }"
         v-html="$options.filters.searchHighlight(task.name, search)">        
       </q-item-label>      
@@ -25,12 +27,13 @@
     <q-item-section  side>
       <q-item-label
         v-if="showProjects"
+        class="project-label"
       	:class="{ 'text-strikethrough' : task.completed }"
         v-html="$options.filters.searchHighlight(task.project, search)">
       </q-item-label>
 
       <q-item-label class="late-warning">
-        <span v-if="task.dueDate != ''">
+        <span class="project-label" v-if="task.dueDate != ''">
         # Days Late: {{this.getDaysLate(task.dueDate)}}
         </span>
       </q-item-label>

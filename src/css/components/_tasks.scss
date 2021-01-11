@@ -1,15 +1,18 @@
 .task {
-    padding: 4px;
+    padding: 2px;
     border: 0px;
-    margin-bottom: -3px;
+    margin-bottom: 0px;
+    margin-top: -2px;
 }
 
 .task-btn {
-    margin: 1.5px;
-    font-size: medium;
+    margin: .5px;
+    margin-left: -5px;
+    font-size: small;
 
-    @include respond(phne) {
-        margin: 1px;
+    @include respond(tab-port) {
+        margin: -1px;
+        margin-left: -4px;
         font-size: small;
        }
 }
@@ -37,3 +40,20 @@
      text-transform: uppercase;
      margin-left: 8px;
  }  
+
+ .project-label {
+     font-size: smaller;
+ }
+
+ .task-label {
+     font-size: small;
+ }
+
+ .checkbox-style {
+     margin-top: 4px;
+     margin-right: -2px;
+ }
+
+ .task-name-section {
+     margin-left: -8px;
+ }

@@ -37,17 +37,17 @@
         <div v-for="n in getCommunityUpdatesLength()" :key="n">
           <div>
             <q-card dense square bg-secondary class="my-card q-m-md">
-              <q-card-section class="text-black row">
+              <q-card-section class="row">
                 <q-avatar rounded size="55px">
                   <img src="https://cdn.quasar.dev/img/avatar.png" />
                 </q-avatar>
                 <div class="text-h7 q-pa-xs">
                   <p>{{getCommunityUpdateUsername(n - 1)}}</p>
-                  <p>{{getCommunityUpdateTime(n - 1)}}</p>
+                  <p class="community-update-time">{{getCommunityUpdateTime(n - 1)}}</p>
                 </div>
               </q-card-section>
               <q-card-section>
-                <div>{{getCommunityUpdate(n - 1)}}</div>
+                <div class="community-post-text">{{getCommunityUpdate(n - 1)}}</div>
               </q-card-section>
             </q-card>
           </div>

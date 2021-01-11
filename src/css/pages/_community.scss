@@ -1,16 +1,41 @@
 .communityMain {
     padding: 1rem;
-    width: 80%;
+    width: 85%;
     margin: 0 auto;
+
+    @include respond(phone) {
+        width: 100%;
+    }
+
+    @include respond(tab-port) {
+        width: 90%;
+    }
 }
 
 .shareUpdate-form {
-    width: 250px;
+    width: 400px;
     margin-left: 10px;
+
+    @include respond(tab-port) {
+        width: 300px;
+    }
 }
 
 .shareUpdate-btn {
     width: 65px;
     margin-left: 23px;
     margin-top: 10px;
+}
+
+.community-update-time {
+    margin-top: -10px;
+    margin-bottom: 4px;
+}
+
+.community-post-text {
+    margin-top: -20px;
+    background-color: #ebf3f4;
+    padding: 3px;
+    border-radius: 3px;
+    color: black;
 }
