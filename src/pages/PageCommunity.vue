@@ -1,15 +1,14 @@
 <template>
   <q-page>
     <div class="q-pa-md communityMain row">
-      <div class="col-4"></div>
-      <div class="col-4">
+      <div>
         <div>
           <h5></h5>
         </div>
         <div>
           <q-card dense square class="my-card q-pa-xs">
             <q-card-section class="row">
-              <q-avatar rounded size="55px">
+              <q-avatar rounded class="community-avater" size="55px">
                 <img src="https://cdn.quasar.dev/img/avatar.png" />
               </q-avatar>
               <div class="text-h7">
@@ -33,27 +32,33 @@
           </q-card>
         </div>
         <br />
+        <br />
 
         <div v-for="n in getCommunityUpdatesLength()" :key="n">
           <div>
-            <q-card dense square bg-secondary class="my-card q-m-md">
+            <q-card dense square bg-secondary class="community-card">
+              <q-card-section class="community-like-section absolute-top-right row">
+                <div class="community-like-count">{{ likedCount }}</div>
+                <q-btn v-show="liked == false" flat round class="community-like-btn-default" color="secondary" icon="favorite_border" />
+                <q-btn v-show="liked == true" flat round class="community-like-btn-default" color="secondary" icon="favorite" />
+              </q-card-section>
               <q-card-section class="row">
                 <q-avatar rounded size="55px">
                   <img src="https://cdn.quasar.dev/img/avatar.png" />
-                </q-avatar>
+                </q-avatar>                
                 <div class="text-h7 q-pa-xs">
-                  <p>{{getCommunityUpdateUsername(n - 1)}}</p>
+                  <p>@{{getCommunityUpdateUsername(n - 1)}}</p>
                   <p class="community-update-time">{{getCommunityUpdateTime(n - 1)}}</p>
-                </div>
+                </div>                
               </q-card-section>
-              <q-card-section>
-                <div class="community-post-text">{{getCommunityUpdate(n - 1)}}</div>
+              <q-card-section class="community-post-text">
+                <div>{{getCommunityUpdate(n - 1)}}</div>
               </q-card-section>
             </q-card>
           </div>
+          <br>
         </div>
       </div>
-      <div class="col-4"></div>
       
     </div>
 
@@ -68,7 +73,9 @@ const moment = require("moment");
 export default {
   data() {
     return {
-      text: ""
+      text: "",
+      liked: false,
+      likedCount: 0
     };
   },
   computed: {
