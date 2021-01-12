@@ -76,7 +76,7 @@
         </div> -->
 
         <div
-          v-for="(n, update) in this.updatesSorted"
+          v-for="(n, update) in this.filteredItems"
           :key="update"
         >
           <div>
@@ -121,6 +121,12 @@ export default {
   computed: {
     ...mapGetters("community", ["community", "updatesSorted"]),
     ...mapGetters("profile", ["profile", "profiles", "profileIDs"]),
+    filteredItems: function() {
+      //return this.community.communityUpdate.orderBy(this.community.communityUpdate, 'id')
+      // let result = this.updatesSorted;
+      let result = this.community.communityUpdate;
+      return result;
+    }
   },
   methods: {
     ...mapActions("community", ["setCommunityUpdate"]),
