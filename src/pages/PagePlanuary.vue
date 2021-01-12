@@ -1034,7 +1034,7 @@
       </q-card>
     </div>
 
-    <div class="planuaryDay day-12">
+    <!-- <div class="planuaryDay day-12">
       <q-card>
         <q-card-section>
           <div class="text-h7 row">
@@ -1086,7 +1086,7 @@
           <br />
         </q-card-section>
       </q-card>
-    </div>
+    </div> -->
 
     <div class="planuaryDay day-12">
       <q-card>
