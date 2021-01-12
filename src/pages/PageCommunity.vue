@@ -75,10 +75,7 @@
           <br>
         </div> -->
 
-        <div
-          v-for="(n, update) in this.filteredItems"
-          :key="update"
-        >
+        <div v-for="(n, update) in this.filteredItems" :key="update">
           <div>
             <q-card dense square bg-secondary class="community-card">
               <q-card-section class="row">
@@ -122,10 +119,17 @@ export default {
     ...mapGetters("community", ["community", "updatesSorted"]),
     ...mapGetters("profile", ["profile", "profiles", "profileIDs"]),
     filteredItems: function() {
-      //return this.community.communityUpdate.orderBy(this.community.communityUpdate, 'id')
-      // let result = this.updatesSorted;
-      let result = this.community.communityUpdate;
-      return result;
+      // let updatesSorted = {},
+      //   keysOrdered = Object.keys(this.community.communityUpdate)
+      //     .sort()
+      //     .reverse();
+      // if (keysOrdered.length > 0) {
+      //   keysOrdered.forEach(key => {
+      //     updatesSorted[key] = this.community.communityUpdate[key];
+      //   });
+      // }
+      // return updatesSorted;
+      return this.community.communityUpdate;
     }
   },
   methods: {
@@ -174,8 +178,11 @@ export default {
         communityUpdate: this.text
       };
       this.setCommunityUpdate(payload);
-      this.reload();
-      this.sortedUpdates();
+      setTimeout(() => {
+        this.reload();
+      }, 200);
+
+      //this.sortedUpdates();
     },
     sortedUpdates() {
       return this.updatesSorted;
