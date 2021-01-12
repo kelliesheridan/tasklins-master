@@ -1,22 +1,27 @@
 <template>
   <q-page>
     <div class="q-pa-md communityMain row">
-
-     <div class="q-pa-md col-xs-12 col-sm-12 col-md-6 col-lg-6">
+      <div class="q-pa-md col-xs-12 col-sm-12 col-md-6 col-lg-6">
         <q-card dense square class="community-card center">
-          <q-card-section>   
+          <q-card-section>
             <div class="text-h6 q-pa-xs">
               Encouragement Station
-            </div>                
+            </div>
           </q-card-section>
           <q-card-section>
-            <q-btn @click="encouragement = true" class="glossy" rounded color="primary" label="Get Encouragement!" />
+            <q-btn
+              @click="encouragement = true"
+              class="glossy"
+              rounded
+              color="primary"
+              label="Get Encouragement!"
+            />
           </q-card-section>
           <q-card-section>
             <div class="community-post-text" v-show="encouragement">
               {{ encouragementText }}
             </div>
-           </q-card-section>
+          </q-card-section>
         </q-card>
       </div>
 
@@ -50,14 +55,9 @@
         <br />
         <br />
 
-        <div v-for="n in getCommunityUpdatesLength()" :key="n">
+        <!-- <div v-for="n in getCommunityUpdatesLength()" :key="n">
           <div>
             <q-card dense square bg-secondary class="community-card">
-              <!-- <q-card-section class="community-like-section absolute-top-right row">
-                <div class="community-like-count">{{ likedCount }}</div>
-                <q-btn v-show="liked == false" flat round class="community-like-btn-default" color="secondary" icon="favorite_border" />
-                <q-btn v-show="liked == true" flat round class="community-like-btn-default" color="secondary" icon="favorite" />
-              </q-card-section> -->
               <q-card-section class="row">
                 <q-avatar rounded size="55px">
                   <img src="https://cdn.quasar.dev/img/avatar.png" />
@@ -73,17 +73,39 @@
             </q-card>
           </div>
           <br>
+        </div> -->
+
+        <div
+          v-for="(n, update) in this.updatesSorted"
+          :key="update"
+        >
+          <div>
+            <q-card dense square bg-secondary class="community-card">
+              <q-card-section class="row">
+                <q-avatar rounded size="55px">
+                  <img src="https://cdn.quasar.dev/img/avatar.png" />
+                </q-avatar>
+                <div class="text-h7 q-pa-xs">
+                  <p>@{{ n.username }}</p>
+                  <p class="community-update-time">
+                    {{ getTime(n.createdDate) }}
+                  </p>
+                </div>
+              </q-card-section>
+              <q-card-section>
+                <div class="community-post-text">{{ n.communityUpdate }}</div>
+              </q-card-section>
+            </q-card>
+          </div>
+          <br />
         </div>
       </div>
-      
     </div>
-
-    
   </q-page>
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapState, mapGetters, mapActions } from "vuex";
 const moment = require("moment");
 
 export default {
@@ -97,24 +119,15 @@ export default {
     };
   },
   computed: {
-    ...mapGetters("community", ["community"]),
-    ...mapGetters("community", ["getEncouragement"]),
-    ...mapGetters("profile", ["profile", "profiles", "profileIDs"])
+    ...mapGetters("community", ["community", "updatesSorted"]),
+    ...mapGetters("profile", ["profile", "profiles", "profileIDs"]),
   },
   methods: {
     ...mapActions("community", ["setCommunityUpdate"]),
 
-      getEncouragement() {
-      var array = [];
-      if (this.random16[number - 1] == undefined ) {
-        array.push("");
-        return array;
-      } else {
-         array.push(this.random16[number - 1][1].wish);
-        return array;
-      }
+    reload() {
+      this.$forceUpdate();
     },
-
     getCommunityUpdatesLength() {
       if (this.community.communityUpdate) {
         return Object.keys(this.community.communityUpdate).length;
@@ -122,17 +135,30 @@ export default {
     },
     getCommunityUpdateUsername(number) {
       if (this.community.communityUpdate) {
-        return this.community.communityUpdate[Object.keys(this.community.communityUpdate)[number]].username;
+        return this.community.communityUpdate[
+          Object.keys(this.community.communityUpdate)[number]
+        ].username;
       }
     },
     getCommunityUpdateTime(number) {
       if (this.community.communityUpdate) {
-       return moment(this.community.communityUpdate[Object.keys(this.community.communityUpdate)[number]].createdDate).format("YYYY-MM-DD hh:mm:ss A");
+        return moment(
+          this.community.communityUpdate[
+            Object.keys(this.community.communityUpdate)[number]
+          ].createdDate
+        ).format("YYYY-MM-DD hh:mm:ss A");
       }
     },
-     getCommunityUpdate(number) {
+    getCommunityUpdate(number) {
       if (this.community.communityUpdate) {
-        return this.community.communityUpdate[Object.keys(this.community.communityUpdate)[number]].communityUpdate;
+        return this.community.communityUpdate[
+          Object.keys(this.community.communityUpdate)[number]
+        ].communityUpdate;
+      }
+    },
+    getTime(time) {
+      if (time) {
+        return moment(time).format("dddd, MMMM DD hh:mm:ss A");
       }
     },
     sendCommunityUpdate() {
@@ -142,7 +168,11 @@ export default {
         communityUpdate: this.text
       };
       this.setCommunityUpdate(payload);
-      this.getCommunityUpdatesLength();
+      this.reload();
+      this.sortedUpdates();
+    },
+    sortedUpdates() {
+      return this.updatesSorted;
     }
   }
 };

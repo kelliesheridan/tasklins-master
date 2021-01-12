@@ -8,6 +8,14 @@ const state = {
 };
 
 const mutations = {
+  addEncouragement(state, encouragement) {
+    if (state.community.encouragement != undefined) 
+    Vue.set(state.community.encouragement, encouragement.id, encouragement.community);
+  },
+  addCommunity(state, community) {
+    if (state.community.communityUpdate != undefined) 
+    Vue.set(state.community.communityUpdate, community.id, community.community);
+  },
   setEncouragement(state, encouragement) {
     if (encouragement != undefined)
       state.community.encouragement = encouragement;
@@ -42,7 +50,7 @@ const actions = {
   },
   fbAddCommunity({ dispatch }, payload) {
     let userId = firebaseAuth.currentUser.uid;
-    let createdDate = moment().format("YYYY-MM-DD hh:mm:ss");
+    let createdDate = moment().format("YYYY-MM-DD HH:mm:ss");
     let communityRef = firebaseDb.ref(
       "community/" + payload.type + "/" + createdDate
     );
@@ -96,8 +104,12 @@ const actions = {
       "value",
       snapshot => {
         let community = snapshot.val();
-        console.debug("community: " + payload.type + " are: ", community);
-        switch (payload.type) {
+        let payload = {
+          id: snapshot.key,
+          community: community
+        };
+        //console.debug("community: " + payload.type + " are: ", community);
+        switch (payload.id) {
           case "encouragement":
             commit("setEncouragement", community);
             break;
@@ -114,12 +126,16 @@ const actions = {
     // child added
     community.on("child_added", snapshot => {
       let community = snapshot.val();
+      let payload = {
+        id: snapshot.key,
+        community: community
+      };
       switch (community.type) {
         case "encouragement":
-          commit("setEncouragement", community);
+          commit("addEncouragement", payload);
           break;
         case "communityUpdate":
-          commit("setCommunity", community);
+          commit("addCommunity", payload);
           break;
       }
     });
@@ -149,7 +165,17 @@ const getters = {
       array = Object.entries(array).sort(() => Math.random() - 0.5);
       return array;
     }
-  }
+  },
+  updatesSorted: state => {
+    let updatesSorted = {},
+      keysOrdered = Object.keys(state.community.communityUpdate).reverse();
+    if (keysOrdered.length > 0) {
+      keysOrdered.forEach(key => {
+        updatesSorted[key] = state.community.communityUpdate[key];
+      });
+    }
+    return updatesSorted;
+  },
 };
 
 export default {
