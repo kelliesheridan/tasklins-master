@@ -1034,60 +1034,6 @@
       </q-card>
     </div>
 
-    <!-- <div class="planuaryDay day-12">
-      <q-card>
-        <q-card-section>
-          <div class="text-h7 row">
-            <q-btn dense flat @click="dayTwelve = !dayTwelve">
-              Planuary. Day Twelve.
-            </q-btn>
-            <q-space />
-
-            <q-btn
-              @click="dayTwelve = !dayTwelve"
-              v-if="!dayTwelve"
-              color="secondary"
-              padding="none"
-              class="no-margin no-padding"
-              flat
-              round
-              dense
-              icon="add"
-            />
-          </div>
-        </q-card-section>
-
-        <q-card-section v-if="dayTwelve">
-          <p>
-            Whatever goals you've set so far, however you imagine your year going, it's important to remember that you're not in this alone. Whether we're talking about your friends or family, or the community that we're building here on Tasklins, we're all in this together.
-          </p>
-
-          <p>
-            So today's prompt has less to do with making more plans, and everything to do with sharing those plans with other people for both accountability and encouragement. By sharing your goals, you can not only make them more real, but also add an extra dash of accountability 
-            when you know there's someone else out there who will know whether you reach your goal. And of course, don't forget to encourage and support anyone who chooses to share their own goals with you.
-          </p>
-
-          <p>
-            We're also so excited to announce a new area of the website to help us build our communities and support one another in the future... our community page! It's still a work in progress, but consider this a corner of the internet you can turn to to share what you're working 
-            on, what you're proud of, a new project, or something your struggling with as you finish your tasks and work towards your goals. Admittedly, the functionality is still fairly limited, but <i>our goal</i> is to continue to build on this, adding features like friends, the 
-            ability to reply to certain posts or like someone else's post, and more.
-          </p>
-
-          <div class="text-h7 focus-boxes center">
-        <q-btn
-            class="q-mt-sm col"
-            padding
-            color="primary"
-            push
-            to="/community"
-            >Check Out the New Community Page</q-btn
-          >
-          </div>
-          <br />
-        </q-card-section>
-      </q-card>
-    </div> -->
-
     <div class="planuaryDay day-12">
       <q-card>
         <q-card-section>
@@ -1173,7 +1119,60 @@
         </q-card-section>
       </q-card>
     </div>
+    
+    <div class="planuaryDay day-13">
+      <q-card>
+        <q-card-section>
+          <div class="text-h7 row">
+            <q-btn dense flat @click="dayThirteen = !dayThirteen">
+              Planuary. Day Thirteen.
+            </q-btn>
+            <q-space />
 
+            <q-btn
+              @click="dayThirteen = !dayThirteen"
+              v-if="!dayThirteen"
+              color="secondary"
+              padding="none"
+              class="no-margin no-padding"
+              flat
+              round
+              dense
+              icon="add"
+            />
+          </div>
+        </q-card-section>
+
+        <q-card-section v-if="dayThirteen">
+          <p>
+            Whatever goals you've set so far, however you imagine your year going, it's important to remember that you're not in this alone. Whether we're talking about your friends or family, or the community that we're building here on Tasklins, we're all in this together.
+          </p>
+
+          <p>
+            So today's prompt has less to do with making more plans, and everything to do with sharing those plans with other people for both accountability and encouragement. By sharing your goals, you can not only make them more real, but also add an extra dash of accountability 
+            when you know there's someone else out there who will know whether you reach your goal. And of course, don't forget to encourage and support anyone who chooses to share their own goals with you.
+          </p>
+
+          <p>
+            We're also so excited to announce a new area of the website to help us build our communities and support one another in the future... our community page! It's still a work in progress, but consider this a corner of the internet you can turn to to share what you're working 
+            on, what you're proud of, a new project, or something your struggling with as you finish your tasks and work towards your goals. Admittedly, the functionality is still fairly limited, but <i>our goal</i> is to continue to build on this, adding features like friends, the 
+            ability to reply to certain posts or like someone else's post, and more.
+          </p>
+
+          <div class="text-h7 focus-boxes center">
+        <q-btn
+            class="q-mt-sm col"
+            padding
+            color="primary"
+            push
+            to="/community"
+            >Check Out the New Community Page</q-btn
+          >
+          </div>
+          <br />
+        </q-card-section>
+      </q-card>
+    </div>
     
 
     <q-dialog v-model="showAddTask">

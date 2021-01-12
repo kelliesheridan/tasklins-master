@@ -10,7 +10,7 @@
           </q-card-section>
           <q-card-section>
             <q-btn
-              @click="encouragement = true"
+              @click="generateEncouragement() && encouragement == true"
               class="glossy"
               rounded
               color="primary"
@@ -18,8 +18,8 @@
             />
           </q-card-section>
           <q-card-section>
-            <div class="community-post-text" v-show="encouragement">
-              {{ encouragementText }}
+            <div v-show="encouragement" class="community-post-text">
+              {{ encouragementText }} hi
             </div>
           </q-card-section>
         </q-card>
@@ -114,8 +114,8 @@ export default {
       text: "",
       liked: false,
       likedCount: 0,
-      encouragement: false,
-      encouragementText: "We're still working on this, but check back soon!"
+      encouragementText: "",
+      encouragement: false      
     };
   },
   computed: {
@@ -140,6 +140,47 @@ export default {
   },
   methods: {
     ...mapActions("community", ["setCommunityUpdate"]),
+
+    generateEncouragement() {
+      possibleEncouragement = [
+            'Remember: Time heals all wounds',
+            'Treat Yourself: Take a bath and do a face mask',
+            'Give them the Old Razzle Dazzle',
+            'Focus on your strengths and you will get through this',
+            'You have come so far already, you can do this!',
+            'Treat Yourself: Cake? A nap?  Whatever your body needs!',
+            'Act as if what you do makes a difference. It does. - William James',
+            'Believe you can and you are halfway there. - Theodore Roosevelt',
+            'Life is like riding a bicycle. To keep your balance, you must keep moving. - Albert Einstein',
+            'Limit your "always" and your "nevers." - Amy Poehler',
+            'You are never too old to set another goal or to dream a new dream. - C.S. Lewis',
+            'You do not find the happy life. You make it. - Camilla Eyring Kimball',
+            'Sometimes you will never know the value of a moment, until it becomes a memory. - Dr. Seuss',
+            'You must do the things you think you cannot do. - Eleanor Roosevelt',
+            'It is never too late to be what you might have been. - George Eliot',
+            'We must be willing to let go of the life we planned so as to have the life that is waiting for us. - Joseph Campbell',
+            'Happiness is not by chance, but by choice. - Jim Rohn',
+            'Life changes very quickly, in a very positive way, if you let it. - Lindsey Vonn',
+            'Be the change that you wish to see in the world. - Mahatma Gandhi',
+            'If I cannot do great things, I can do small things in a great way." - Martin Luther King Jr.',
+            'The bad news is time flies. The good news is you are the pilot. - Michael Altshuler',
+            'Do not wait. The time will never be just right. - Napoleon Hill',
+            'No matter what people tell you, words and ideas can change the world. - Robin Williams',
+            'A champion is defined not by their wins but by how they can recover when they fall. - Serena Williams',
+            'Motivation comes from working on things we care about. - Sheryl Sandberg',
+            'Keep your face always toward the sunshine, and shadows will fall behind you. - Walt Whitman',
+            'Find the easiest task on your list for today and get that done, you will feel a lot better.',
+            'Whoever you are, I know you can do it',
+            'Take ten minutes to do something you love',
+            "If you're struggling today, know that I'm thinking about you",
+            "One wat or another, we're all thin this together. I'm rooting for you.",
+            "There's no doubt in my mind that you're going to do incredible things"
+        ]
+
+        let encouragementText = this.possibleEncouragement[Math.floor(Math.random() * this.possibleEncouragement.length)]
+
+        return encouragementText
+        },
 
     reload() {
       this.$forceUpdate();
