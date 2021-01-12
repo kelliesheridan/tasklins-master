@@ -75,7 +75,9 @@
           <br>
         </div> -->
 
-        <div v-for="(n, update) in this.filteredItems" :key="update">
+        <div class="flex-container">
+        <div 
+        v-for="(n, update) in this.filteredItems" :key="update">
           <div>
             <q-card dense square bg-secondary class="community-card">
               <q-card-section class="row">
@@ -97,6 +99,7 @@
           <br />
         </div>
       </div>
+      </div>
     </div>
   </q-page>
 </template>
@@ -116,7 +119,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters("community", ["community", "updatesSorted"]),
+    ...mapGetters("community", ["community", "updatesSorted", "updateMessages"]),
     ...mapGetters("profile", ["profile", "profiles", "profileIDs"]),
     filteredItems: function() {
       // let updatesSorted = {},
@@ -130,6 +133,9 @@ export default {
       // }
       // return updatesSorted;
       return this.community.communityUpdate;
+    },
+    updateMessages() {
+        return this.community.communityUpdate;
     }
   },
   methods: {
@@ -183,9 +189,6 @@ export default {
       }, 200);
 
       //this.sortedUpdates();
-    },
-    sortedUpdates() {
-      return this.updatesSorted;
     }
   }
 };
