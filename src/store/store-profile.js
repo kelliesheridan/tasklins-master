@@ -320,9 +320,6 @@ const getters = {
   profileIDs: state => {
     return state.profileIDs;
   },
-  profileIDs: state => {
-    return state.profileIDs;
-  },
 };
 
 export default {

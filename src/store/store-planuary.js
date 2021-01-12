@@ -180,9 +180,9 @@ const actions = {
       type: "gratitude",
       username: gratitude.username,
       gratitude1: gratitude.gratitudeOne,
-      gratitude2: gratitude.gratitudeeTwo,
+      gratitude2: gratitude.gratitudeTwo,
       gratitude3: gratitude.gratitudeThree,
-      gratitude4: gratitude.gratitudeeFour,
+      gratitude4: gratitude.gratitudeFour,
       gratitude5: gratitude.gratitudeFive,
     };
     dispatch("fbAddPlanuary", payload);
