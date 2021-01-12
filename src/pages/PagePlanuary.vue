@@ -1088,18 +1088,18 @@
       </q-card>
     </div>
 
-    <div class="planuaryDay day-13">
+    <div class="planuaryDay day-12">
       <q-card>
         <q-card-section>
           <div class="text-h7 row">
-            <q-btn dense flat @click="dayThirteen = !dayThirteen">
-              Planuary. Day Thirteen.
+            <q-btn dense flat @click="dayTwelve = !dayTwelve">
+              Planuary. Day Twelve.
             </q-btn>
             <q-space />
 
             <q-btn
-              @click="dayThirteen = !dayThirteen"
-              v-if="!dayThirteen"
+              @click="daydayTwelveThirteen = !dayTwelve"
+              v-if="!dayTwelve"
               color="secondary"
               padding="none"
               class="no-margin no-padding"
@@ -1111,7 +1111,7 @@
           </div>
         </q-card-section>
 
-        <q-card-section v-if="dayThirteen">
+        <q-card-section v-if="dayTwelve">
           <p>
             We never stop learning and growing as people, and as a result not
             every goal has a clear cut finish line. For example, we can never be
