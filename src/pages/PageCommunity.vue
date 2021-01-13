@@ -29,9 +29,7 @@
         <div>
           <q-card dense square class="my-card q-pa-xs">
             <q-card-section class="row">
-              <q-avatar rounded class="community-avater" size="55px">
-                <img src="https://cdn.quasar.dev/img/avatar.png" />
-              </q-avatar>
+              <q-icon name="fas fa-user" class="text-primary" style="font-size: 4rem;" />
               <div class="text-h7">
                 <q-input
                   standout="bg-secondary text-white"
@@ -81,9 +79,7 @@
           <div>
             <q-card dense square bg-secondary class="community-card">
               <q-card-section class="row">
-                <q-avatar rounded size="55px">
-                  <img src="https://cdn.quasar.dev/img/avatar.png" />
-                </q-avatar>
+                <q-icon name="fas fa-user" class="text-primary community-avatar" style="font-size: 4rem;" />
                 <div class="text-h7 q-pa-xs">
                   <p>@{{ n.username }}</p>
                   <p class="community-update-time">
