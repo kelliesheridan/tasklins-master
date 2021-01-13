@@ -206,6 +206,8 @@ export default {
         this.reload();
       }, 200);
 
+      this.text = "";
+
       //this.sortedUpdates();
     },
     getAvatarColor(color) {
