@@ -43,6 +43,7 @@ const actions = {
     let payload = {
       username: community.username,
       communityUpdate: community.communityUpdate,
+      color: community.color,
       createdDate: moment().format(),
       type: "communityUpdate"
     };

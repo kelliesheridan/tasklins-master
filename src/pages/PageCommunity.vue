@@ -29,7 +29,7 @@
         <div>
           <q-card dense square class="my-card q-pa-xs">
             <q-card-section class="row">
-              <q-icon name="fas fa-user" class="text-primary" style="font-size: 4rem;" />
+              <q-icon name="fas fa-user" :style="{color: this.profile.color}" style="font-size: 4rem;" />
               <div class="text-h7">
                 <q-input
                   standout="bg-secondary text-white"
@@ -79,7 +79,7 @@
           <div>
             <q-card dense square bg-secondary class="community-card">
               <q-card-section class="row">
-                <q-icon name="fas fa-user" class="text-primary community-avatar" style="font-size: 4rem;" />
+                <q-icon name="fas fa-user" :style="{color: getAvatarColor(n.color)}" style="font-size: 4rem;" />
                 <div class="text-h7 q-pa-xs">
                   <p>@{{ n.username }}</p>
                   <p class="community-update-time">
@@ -218,7 +218,8 @@ export default {
       this.update;
       let payload = {
         username: this.profile.username,
-        communityUpdate: this.text
+        communityUpdate: this.text,
+        color: this.profile.color,
       };
       this.setCommunityUpdate(payload);
       setTimeout(() => {
@@ -226,6 +227,9 @@ export default {
       }, 200);
 
       //this.sortedUpdates();
+    },
+    getAvatarColor(color) {
+      return color == undefined ? "" : color;
     }
   }
 };
