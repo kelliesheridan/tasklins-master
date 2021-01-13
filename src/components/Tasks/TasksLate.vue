@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="tasks-late-section">
 		<q-list
 		separator>
 

@@ -37,7 +37,7 @@ const mutations = {
   setWeekThree(state, weekThree) {
     if (weekThree != undefined) state.planuary.weekThree = weekThree;
   },
-  setWeekFour(state, weekThree) {
+  setWeekFour(state, weekFour) {
     if (weekFour != undefined) state.planuary.weekFour = weekFour;
   },
   setQuarterlyGoals(state, quarterlyGoals) {
@@ -48,6 +48,9 @@ const mutations = {
   },
   setGratitude(state, gratitude) {
     if (gratitude != undefined) state.planuary.gratitude = gratitude;
+  },
+  setLetGo(state, letGo) {
+    if (letGo != undefined) state.planuary.letGo = letGo;
   },
   addWish(state, wishes) {
     Vue.set(state.planuary.wishes, wishes, wishes);
@@ -187,6 +190,16 @@ const actions = {
     };
     dispatch("fbAddPlanuary", payload);
   },
+  addLetGo({ dispatch, commit }, letGo) {
+    let payload = {
+      type: "letGo",
+      username: letGo.username,
+      letGo1: letGo.letGoOne,
+      letGo2: letGo.letGoTwo,
+      letGo: letGo.letGoThree,
+    };
+    dispatch("fbAddPlanuary", payload);
+  },
   fbAddPlanuary({ dispatch }, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let planuaryRef = firebaseDb.ref("planuary/" + payload.type + "/" + userId);
@@ -236,7 +249,10 @@ const actions = {
             break;
           case "gratitude":
               commit("setGratitude", planuary);
-              break;                    
+              break; 
+          case "letGo":
+                commit("setLetGo", planuary);
+                break;                      
         }
       },
       error => {
@@ -275,6 +291,9 @@ const actions = {
         case "gratitude":
             commit("setGratitude", planuary);
             break;        
+        case "letGo":
+            commit("setLetGo", planuary);
+            break;     
       }
     });
 
@@ -311,7 +330,10 @@ const actions = {
           break;
         case "gratitude":
           commit("setGratitude", planuary);
-          break;             
+          break;      
+        case "letGo":
+              commit("setLetGo", planuary);
+              break;            
       }
     });
   },

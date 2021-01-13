@@ -78,6 +78,7 @@ const actions = {
         dispatch("planuary/fbReadPlanuary", {type: "quarterlyGoals"}, { root: true });
         dispatch("planuary/fbReadPlanuary", {type: "practices"}, { root: true });
         dispatch("planuary/fbReadPlanuary", {type: "gratitude"}, { root: true });
+        dispatch("planuary/fbReadPlanuary", {type: "letGo"}, { root: true });
         dispatch("profile/fbReadAllMoods", null, { root: true });
         if (this.state.profile.profile.user.name !== "") {
           if (this.state.tasklins.tasklin.name === "") {

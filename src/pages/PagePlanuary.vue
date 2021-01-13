@@ -1199,60 +1199,40 @@
 
         <q-card-section v-if="dayFourteen">
           <p>
-            We never stop learning and growing as people, and as a result not
-            every goal has a clear cut finish line. For example, we can never be
-            finished learning to code or getting better at an art form. We'll
-            also never finish reading every book, or listening to every podcast
-            on a topic we're interested in. So today, let's take a few minutes
-            to think about some of the things we want to make more time for in
-            2021.
+           2020 ended two weeks ago now, but for so many of us it's next to impossible to fully move into a new year and embrace the future. 
           </p>
 
           <div class="text-h7 focus-boxes center">
             <q-input
               class="q-pa-xs"
               rounded
-              label="What are you grateful for?"
+              label="What are you trying to let go of?"
               outlined
-              v-model="gratitudeOne"
+              v-model="letGoOne"
             ></q-input>
             <q-input
               class="q-pa-xs"
               rounded
-              label="What are you grateful for?"
+              label="What are you trying to let go of?"
               outlined
-              v-model="gratitudeTwo"
+              v-model="letGoTwo"
             ></q-input>
             <q-input
               class="q-pa-xs"
               rounded
-              label="What are you grateful for?"
+              label="What are you trying to let go of?"
               outlined
-              v-model="gratitudeThree"
-            ></q-input>
-            <q-input
-              class="q-pa-xs"
-              rounded
-              label="What are you grateful for?"
-              outlined
-              v-model="gratitudeFour"
-            ></q-input>
-            <q-input
-              class="q-pa-xs"
-              rounded
-              label="What are you grateful for?"
-              outlined
-              v-model="gratitudeFive"
+              v-model="letGoThree"
             ></q-input>
           </div>
 
           <div class="center q-pa-md">
             <q-btn
-              @click="setGratitude()"
+              @click="setLetGo()"
               class="q-pa-xs"
               color="primary"
               size="md"
-              label="Send a little gratitude"
+              label="Let it go... Let it go..."
             />
           </div>
           <br />
@@ -1350,6 +1330,9 @@ export default {
       gratitude3: "",
       gratitude4: "",
       gratitude5: "",
+      letGo1: "",
+      letGo2: "",
+      letGo3: "",
       dayOne: false,
       dayTwo: false,
       dayThree: false,
@@ -1776,6 +1759,30 @@ export default {
         this.gratitude5 = value;
       }
     },
+    letGoOne: {
+      get() {
+        return this.letGo1;
+      },
+      set(value) {
+        this.letGo1 = value;
+      }
+    },
+    letGoTwo: {
+      get() {
+        return this.letGo2;
+      },
+      set(value) {
+        this.letGo2 = value;
+      }
+    },
+    letGoThree: {
+      get() {
+        return this.letGo3;
+      },
+      set(value) {
+        this.letGo3 = value;
+      }
+    },
     projectSearchField: {
       get() {
         return this.projectSearch;
@@ -1801,7 +1808,8 @@ export default {
       "addWeekOne",
       "addQuarterlyGoals",
       "addPractices",
-      "addGratitude"
+      "addGratitude",
+      "addLetGo"
     ]),
     ...mapActions("tasks", ["setProjectSearch"]),
     ...mapActions("community", ["addEncouragement"]),
@@ -2030,6 +2038,21 @@ export default {
         color: "primary"
       });
     },
+    setLetGo() {
+      let payload = {
+        type: "letGo",
+        letGoOne: this.letGoOne,
+        letGoTwo: this.letGoTwo,
+        letGoThree: this.letGoThree,
+        username: this.profile.username
+      };
+      this.addLetGo(payload);
+      this.dayFourteen = false;
+      this.$q.notify({
+        message: "We're putting that behind us!",
+        color: "primary"
+      });
+    },
     showDate(dayNumber) {
       if (dayNumber == 1) {
         this.dayOne = true;
@@ -2200,6 +2223,11 @@ export default {
       this.gratitudeThree = this.planuary.gratitude.gratitude3;
       this.gratitudeFour = this.planuary.gratitude.gratitude4;
       this.gratitudeFive = this.planuary.gratitude.gratitude5;
+    }
+    if (this.planuary.letGo != undefined) {
+      this.letGoOne = this.planuary.letGo.letGo1;
+      this.letGoTwo = this.planuary.letGo.letGo2;
+      this.letGoThree = this.planuary.letGo.letGo3;
     }
     var date = moment().date();
     this.showDate(date);
