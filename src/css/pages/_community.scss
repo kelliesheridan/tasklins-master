@@ -39,7 +39,7 @@
 }
 
 .community-post-text {
-    margin-top: -15px;
+    margin-top: -30px;
     background-color: #ebf3f4;
     padding: 7px;
     border-radius: 3px;
@@ -47,10 +47,10 @@
 }
 
 .community-avater {
-    
 
-    @include respond(phone) {
-        display: none;
+    @include respond(tab-port) {
+        margin-top: 10px;
+        margin-right: 3px;
     }
 }
 

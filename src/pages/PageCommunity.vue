@@ -29,7 +29,7 @@
         <div>
           <q-card dense square class="my-card q-pa-xs">
             <q-card-section class="row">
-              <q-icon name="fas fa-user" :style="{color: this.profile.color}" style="font-size: 4rem;" />
+              <q-icon name="fas fa-user" class="community-avater" :style="{color: this.profile.color}" style="font-size: 4rem;" />
               <div class="text-h7">
                 <q-input
                   standout="bg-secondary text-white"
@@ -53,33 +53,13 @@
         <br />
         <br />
 
-        <!-- <div v-for="n in getCommunityUpdatesLength()" :key="n">
-          <div>
-            <q-card dense square bg-secondary class="community-card">
-              <q-card-section class="row">
-                <q-avatar rounded size="55px">
-                  <img src="https://cdn.quasar.dev/img/avatar.png" />
-                </q-avatar>                
-                <div class="text-h7 q-pa-xs">
-                  <p>@{{getCommunityUpdateUsername(n - 1)}}</p>
-                  <p class="community-update-time">{{getCommunityUpdateTime(n - 1)}}</p>
-                </div>                
-              </q-card-section>
-              <q-card-section>
-                <div class="community-post-text">{{getCommunityUpdate(n - 1)}}</div>
-              </q-card-section>
-            </q-card>
-          </div>
-          <br>
-        </div> -->
-
         <div class="flex-container">
         <div 
         v-for="(n, update) in this.filteredItems" :key="update">
           <div>
             <q-card dense square bg-secondary class="community-card">
               <q-card-section class="row">
-                <q-icon name="fas fa-user" :style="{color: getAvatarColor(n.color)}" style="font-size: 4rem;" />
+                <q-icon class="community-avater" name="fas fa-user" :style="{color: getAvatarColor(n.color)}" style="font-size: 4rem;" />
                 <div class="text-h7 q-pa-xs">
                   <p>@{{ n.username }}</p>
                   <p class="community-update-time">
