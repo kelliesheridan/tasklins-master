@@ -59,8 +59,8 @@
           <div>
             <q-card dense square bg-secondary class="community-card">
               <q-card-section class="row">
-                <q-icon class="community-avater" name="fas fa-user" :style="{color: getAvatarColor(n.color)}" style="font-size: 4rem;" />
-                <div class="text-h7 q-pa-xs">
+                <q-icon class="community-avater" name="fas fa-user" :style="{color: getAvatarColor(n.color)}" style="font-size: 3.2rem;" />
+                <div class="text-h7 q-pa-xs community-update-stats">
                   <p>@{{ n.username }}</p>
                   <p class="community-update-time">
                     {{ getTime(n.createdDate) }}
