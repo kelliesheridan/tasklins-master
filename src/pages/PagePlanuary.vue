@@ -1044,7 +1044,7 @@
             <q-space />
 
             <q-btn
-              @click="daydayTwelveThirteen = !dayTwelve"
+              @click="dayTwelve = !dayTwelve"
               v-if="!dayTwelve"
               color="secondary"
               padding="none"
@@ -1168,6 +1168,92 @@
             to="/community"
             >Check Out the New Community Page</q-btn
           >
+          </div>
+          <br />
+        </q-card-section>
+      </q-card>
+    </div>
+
+    <div class="planuaryDay day-14">
+      <q-card>
+        <q-card-section>
+          <div class="text-h7 row">
+            <q-btn dense flat @click="dayFourteen = !dayFourteen">
+              Planuary. Day Fourteen.
+            </q-btn>
+            <q-space />
+
+            <q-btn
+              @click="dayFourteen = !dayFourteen"
+              v-if="!dayFourteen"
+              color="secondary"
+              padding="none"
+              class="no-margin no-padding"
+              flat
+              round
+              dense
+              icon="add"
+            />
+          </div>
+        </q-card-section>
+
+        <q-card-section v-if="dayFourteen">
+          <p>
+            We never stop learning and growing as people, and as a result not
+            every goal has a clear cut finish line. For example, we can never be
+            finished learning to code or getting better at an art form. We'll
+            also never finish reading every book, or listening to every podcast
+            on a topic we're interested in. So today, let's take a few minutes
+            to think about some of the things we want to make more time for in
+            2021.
+          </p>
+
+          <div class="text-h7 focus-boxes center">
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="What are you grateful for?"
+              outlined
+              v-model="gratitudeOne"
+            ></q-input>
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="What are you grateful for?"
+              outlined
+              v-model="gratitudeTwo"
+            ></q-input>
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="What are you grateful for?"
+              outlined
+              v-model="gratitudeThree"
+            ></q-input>
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="What are you grateful for?"
+              outlined
+              v-model="gratitudeFour"
+            ></q-input>
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="What are you grateful for?"
+              outlined
+              v-model="gratitudeFive"
+            ></q-input>
+          </div>
+
+          <div class="center q-pa-md">
+            <q-btn
+              @click="setGratitude()"
+              class="q-pa-xs"
+              color="primary"
+              size="md"
+              label="Send a little gratitude"
+            />
           </div>
           <br />
         </q-card-section>
