@@ -46,6 +46,12 @@ const mutations = {
 };
 
 const actions = {
+  archiveTasks({ dispatch }) {
+    dispatch("fbArchiveTasks");
+  },
+  readData({ dispatch }, today) {
+    dispatch("fbReadData", today);
+  },
   updateTask({ dispatch }, payload) {
     dispatch("fbUpdateTask", payload);
     dispatch("tasklins/addXPToTasklin", payload, { root: true });
@@ -84,8 +90,10 @@ const actions = {
   setSort({ commit }, value) {
     commit("setSort", value);
   },
-  fbReadData({ commit }) {
+  fbReadData({ commit }, today) {
     let userId = firebaseAuth.currentUser.uid;
+    //let userTasks = today ? firebaseDb.ref("tasks/" + userId).orderByChild("dueDate").equalTo(moment().format("YYYY-MM-DD")) : firebaseDb.ref("tasks/" + userId);
+    // let userTasks = firebaseDb.ref("tasks/" + userId).orderByChild("dueDate").equalTo(moment().format("YYYY-MM-DD"));
     let userTasks = firebaseDb.ref("tasks/" + userId);
 
     //initial check for data
@@ -318,6 +326,46 @@ const actions = {
       if (error) {
         showErrorMessage(error.message);
       }
+    });
+  },
+  fbArchiveTasks() {
+    let userId = firebaseAuth.currentUser.uid;
+    let taskRef = firebaseDb.ref("tasks/" + userId);
+    let taskArchiveRef = firebaseDb.ref("taskArchive/" + userId);
+    taskRef.once("value").then(function(snapshot) {
+      let payload = snapshot.val();
+      taskArchiveRef.set(payload, error => {
+        if (error) {
+          showErrorMessage(error.message);
+        } else {
+          // go through payload and delete all completed tasks over 3 months old
+          let tasks = Object.keys(payload);
+          let tasksToDelete = [];
+          tasks.forEach(taskID => {
+            if (
+              payload[taskID].completed &&
+              moment(payload[taskID].dueDate).isBefore(
+                moment().subtract(3, "month")
+              )
+            ) {
+              tasksToDelete.push(taskID);
+            }
+          });
+
+          // if (tasksToDelete.length > 0) {
+          //   tasksToDelete.forEach(deleteID => {
+          //     let taskRef = firebaseDb.ref("tasks/" + userId + "/" + deleteID);
+          //     taskRef.remove(error => {
+          //       if (error) {
+          //         showErrorMessage(error.message);
+          //       }
+          //     });
+          //   });
+          // }
+
+          Notify.create("Tasks archived!");
+        }
+      });
     });
   }
 };
@@ -667,7 +715,9 @@ const getters = {
       let taskCompletedDate = task.completedDate;
 
       let formattedTaskDueDate = moment(taskDueDate).format("YYYY-MM-DD");
-      let formattedTaskCompletedDate = moment(taskCompletedDate).format("YYYY-MM-DD");
+      let formattedTaskCompletedDate = moment(taskCompletedDate).format(
+        "YYYY-MM-DD"
+      );
 
       if (
         moment(formattedTaskDueDate).isBefore(formattedTaskCompletedDate) &&

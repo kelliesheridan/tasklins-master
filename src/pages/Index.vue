@@ -265,6 +265,7 @@ export default {
     //   this.register2 = true;
     // }
     this.setProjectSearch("");
+    //this.getData(false);
   },
   watch: {
     "$q.dark.isActive"(val) {}
@@ -300,7 +301,7 @@ export default {
   },
   methods: {
     ...mapActions("profile", ["addXP"]),
-    ...mapActions("tasks", ["setProjectSearch"]),
+    ...mapActions("tasks", ["readData", "setProjectSearch"]),
     ...mapActions("tasklins", ["updateTasklin"]),
     getMood(completedToday, lateToday, createdToday, tasksDueTodayButNotCompleted) {      
       if (completedToday == 0) {

@@ -1,46 +1,58 @@
 <template>
-<q-card style="max-width: 350px">
-  <div class="q-pa-md">
-    <q-list padding>
-      <q-item-label header>User Controls</q-item-label>
+  <q-card style="max-width: 350px">
+    <div class="q-pa-md">
+      <q-list padding>
+        <q-item-label header>User Controls</q-item-label>
 
-      <q-item tag="label" v-ripple>
-        <q-item-section>
-          <q-item-label>24hr Clock</q-item-label>
-        </q-item-section>
-        <q-item-section side>
-          <q-toggle color="primary" v-model="show24hrTimeFormat" />
-        </q-item-section>
-      </q-item>
+        <!-- <q-item tag="label" v-ripple>
+          <q-item-section>
+            <q-btn
+              class="q-mr-sm"
+              color="primary"
+              label="Archive Old Tasks"
+              @click="archiveTasks()"
+            >
+            </q-btn>
+          </q-item-section>
+        </q-item> -->
 
-      <q-item tag="label" v-ripple>
-        <q-item-section>
-          <q-item-label>Show Projects on Tasks</q-item-label>
-        </q-item-section>
-        <q-item-section side>
-          <q-toggle color="primary" v-model="showProjectsOnPage" />
-        </q-item-section>
-      </q-item>
+        <q-item tag="label" v-ripple>
+          <q-item-section>
+            <q-item-label>24hr Clock</q-item-label>
+          </q-item-section>
+          <q-item-section side>
+            <q-toggle color="primary" v-model="show24hrTimeFormat" />
+          </q-item-section>
+        </q-item>
 
-      <q-item tag="label" v-ripple>
-        <q-item-section>
-          <q-item-label>Week Starts on Monday</q-item-label>
-        </q-item-section>
-        <q-item-section side top>
-          <q-toggle color="primary" v-model="sundayStart" />
-        </q-item-section>
-      </q-item>
+        <q-item tag="label" v-ripple>
+          <q-item-section>
+            <q-item-label>Show Projects on Tasks</q-item-label>
+          </q-item-section>
+          <q-item-section side>
+            <q-toggle color="primary" v-model="showProjectsOnPage" />
+          </q-item-section>
+        </q-item>
 
-      <q-item tag="label" v-ripple>
-        <q-item-section>
-          <q-item-label>Hide Completed Tasks</q-item-label>
-        </q-item-section>
-        <q-item-section side top>
-          <q-toggle color="primary" v-model="hideCompletedTasks" />
-        </q-item-section>
-      </q-item>
+        <q-item tag="label" v-ripple>
+          <q-item-section>
+            <q-item-label>Week Starts on Monday</q-item-label>
+          </q-item-section>
+          <q-item-section side top>
+            <q-toggle color="primary" v-model="sundayStart" />
+          </q-item-section>
+        </q-item>
 
-      <!-- <q-item tag="label" v-ripple>
+        <q-item tag="label" v-ripple>
+          <q-item-section>
+            <q-item-label>Hide Completed Tasks</q-item-label>
+          </q-item-section>
+          <q-item-section side top>
+            <q-toggle color="primary" v-model="hideCompletedTasks" />
+          </q-item-section>
+        </q-item>
+
+        <!-- <q-item tag="label" v-ripple>
         <q-item-section>
           <q-item-label>Hide Tips</q-item-label>
         </q-item-section>
@@ -49,21 +61,26 @@
         </q-item-section>
       </q-item> -->
 
-      <q-item tag="label" v-ripple>
-        <q-item-section>
-          <q-item-label>Dark Mode</q-item-label>
-        </q-item-section>
-        <q-item-section side top>
-          <q-toggle color="red" v-model="darkMode" />
-        </q-item-section>
-      </q-item>
+        <q-item tag="label" v-ripple>
+          <q-item-section>
+            <q-item-label>Dark Mode</q-item-label>
+          </q-item-section>
+          <q-item-section side top>
+            <q-toggle color="red" v-model="darkMode" />
+          </q-item-section>
+        </q-item>
 
-      <div class="row q-mb-md">
-        <q-space />
-        <q-btn color="primary" v-close-popup label="Save Settings" @click="submit()" />
-      </div>
+        <div class="row q-mb-md">
+          <q-space />
+          <q-btn
+            color="primary"
+            v-close-popup
+            label="Save Settings"
+            @click="submit()"
+          />
+        </div>
 
-      <!-- <q-separator spaced />
+        <!-- <q-separator spaced />
       <q-item-label header>Notifications</q-item-label>
 
       <q-item tag="label" v-ripple>
@@ -94,9 +111,9 @@
           <q-toggle color="red" v-model="notif3" val="picture" />
         </q-item-section>
       </q-item> -->
-    </q-list>
-  </div>
-</q-card>
+      </q-list>
+    </div>
+  </q-card>
 </template>
 
 <script>
@@ -144,7 +161,7 @@ export default {
       set(value) {
         this.setDarkMode(value);
       }
-    },
+    }
   },
   methods: {
     ...mapActions("settings", [
@@ -155,6 +172,7 @@ export default {
       "setSundayStart",
       "fbUpdateSettings"
     ]),
+    ...mapActions("tasks", ["archiveTasks"]),
     submit() {
       this.fbUpdateSettings();
       this.$q.notify({

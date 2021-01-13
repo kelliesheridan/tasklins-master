@@ -207,8 +207,6 @@ export default {
       }, 200);
 
       this.text = "";
-
-      //this.sortedUpdates();
     },
     getAvatarColor(color) {
       return color == undefined ? "" : color;
