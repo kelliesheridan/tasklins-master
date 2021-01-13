@@ -18,8 +18,8 @@
             />
           </q-card-section>
           <q-card-section>
-            <div v-show="encouragement" class="community-post-text">
-              {{ encouragementText }} hi
+            <div v-show="this.encouragement" class="community-post-text">
+              {{ this.encouragementText }}
             </div>
           </q-card-section>
         </q-card>
@@ -142,7 +142,7 @@ export default {
     ...mapActions("community", ["setCommunityUpdate"]),
 
     generateEncouragement() {
-      possibleEncouragement = [
+      let possibleEncouragement = [
             'Remember: Time heals all wounds',
             'Treat Yourself: Take a bath and do a face mask',
             'Give them the Old Razzle Dazzle',
@@ -176,10 +176,10 @@ export default {
             "One wat or another, we're all thin this together. I'm rooting for you.",
             "There's no doubt in my mind that you're going to do incredible things"
         ]
+        this.encouragement = true;
+        this.encouragementText = possibleEncouragement[Math.floor(Math.random() * possibleEncouragement.length)]
 
-        let encouragementText = this.possibleEncouragement[Math.floor(Math.random() * this.possibleEncouragement.length)]
-
-        return encouragementText
+        //return encouragementText
         },
 
     reload() {
