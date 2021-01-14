@@ -29,7 +29,7 @@
         <div>
           <q-card dense square class="my-card q-pa-xs">
             <q-card-section class="row">
-              <q-icon name="fas fa-user" class="community-avater" :style="{color: this.profile.color}" style="font-size: 4rem;" />
+              <q-icon name="person_pin" class="community-avater" :style="{color: this.profile.color}" style="font-size: 4rem;" />
               <div class="text-h7">
                 <q-input
                   standout="bg-secondary text-white"
@@ -59,7 +59,7 @@
           <div>
             <q-card dense square bg-secondary class="community-card">
               <q-card-section class="row">
-                <q-icon class="community-avater" name="fas fa-user" :style="{color: getAvatarColor(n.color)}" style="font-size: 3.2rem;" />
+                <q-icon class="community-avater" name="person_pin" :style="{color: getAvatarColor(n.color)}" style="font-size: 3.2rem;" />
                 <div class="text-h7 q-pa-xs community-update-stats">
                   <p>@{{ n.username }}</p>
                   <p class="community-update-time">
