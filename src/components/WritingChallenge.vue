@@ -13,52 +13,6 @@
         @click="addChallengeTask = true"
       >
       </q-btn>
-
-      <!-- <q-btn-dropdown
-        class="q-mr-sm"
-        color="light-green"
-        label="I Did Something"
-        dropdown-icon="create">
-        <q-list>
-          <q-item clickable v-close-popup @click="submit('writing')">
-            <q-item-section>
-              <q-item-label>Wrote 250 Words</q-item-label>
-            </q-item-section>
-          </q-item>
-
-          <q-item clickable v-close-popup @click="submit('editing')">
-            <q-item-section>
-              <q-item-label>Edited for 20 Minutes</q-item-label>
-            </q-item-section>
-          </q-item>
-
-          <q-item clickable v-close-popup @click="submit('plotting')">
-            <q-item-section>
-              <q-item-label>Plotted for 20 Minutes</q-item-label>
-            </q-item-section>
-          </q-item>
-
-          <q-item clickable v-close-popup @click="submit('reading')">
-            <q-item-section>
-              <q-item-label>Read for 20 Minutes</q-item-label>
-            </q-item-section>
-          </q-item>
-
-          <q-item clickable v-close-popup @click="submit('query')">
-            <q-item-section>
-              <q-item-label>Sent a Query Letter</q-item-label>
-            </q-item-section>
-          </q-item>
-
-          <q-item clickable v-close-popup @click="submit('homework')">
-            <q-item-section>
-              <q-item-label>Did Homework</q-item-label>
-            </q-item-section>
-          </q-item>
-          
-
-        </q-list>
-      </q-btn-dropdown> -->
     </div>
 
     <div class="row">
@@ -76,13 +30,15 @@
               <div class="text-h7">
                 {{ getActivity(n - 1) }}
               </div>
+              <!-- <div style="position: relative; float: right; color: white; margin-left: 5px; margin-top: -5px"> {{ likes }}</div>
+              <div style="position: relative; float: right; color: white; margin-right: -2px; margin-top: -2px" class="fas fa-thumbs-up" @click="increaseLike()"></div> -->
             </q-card-section>
           </q-card>
         </div>
       </div>
 
       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 q-pa-xs">
-        <div v-for="n in this.writing.writingChallenge" :key="n">
+        <div v-for="n in this.writing.writingChallenge" :key="n.username">
           <div v-if="getIntensity(getProfileName(n))">
             {{ getProfileName(n) }}
             <q-linear-progress
@@ -107,7 +63,8 @@ export default {
   data: () => ({
     update: 0,
     addChallengeTask: false,
-    count: 12
+    count: 12,
+    likes: 0
     //cheer: false
   }),
   components: {
@@ -272,6 +229,9 @@ export default {
       if (value) {
         return value.username;
       }
+    },
+    increaseLike() {
+      this.likes += 1;
     }
   }
 };

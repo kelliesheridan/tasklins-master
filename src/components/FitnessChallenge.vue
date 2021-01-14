@@ -1,6 +1,5 @@
 <template>
   <q-page padding>
-
     <q-dialog v-if="addChallengeTask" v-model="addChallengeTask">
       <challengeModal />
     </q-dialog>
@@ -34,13 +33,15 @@
                 <div class="text-h7">
                   {{ getActivity(n - 1) }}
                 </div>
+                <!-- <div style="position: relative; float: right; color: white; margin-left: 5px; margin-top: -5px">{{ likes }} </div>
+                <div style="position: relative; float: right; color: white; margin-right: -2px; margin-top: -2px" class="fas fa-thumbs-up" @click="increaseLike()"></div> -->
               </q-card-section>
             </q-card>
           </div>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 q-pa-xs">
-          <div v-for="n in this.fitness.fitnessChallenge" :key="n">
+          <div v-for="n in this.fitness.fitnessChallenge" :key="n.username">
             <div v-if="getIntensity(getProfileName(n))">
               {{ getProfileName(n) }}
               <q-linear-progress
@@ -66,8 +67,9 @@ export default {
   data: () => ({
     update: 0,
     addChallengeTask: false,
+    likes: 0
   }),
-    components: {
+  components: {
     challengeModal: require("components/Tasks/Modals/addFitnessTask.vue")
       .default
   },
@@ -258,9 +260,12 @@ export default {
       return activity;
     },
     getProfileName(value) {
-     if (value) {
-       return value.username;
-     }
+      if (value) {
+        return value.username;
+      }
+    },
+    increaseLike() {
+      this.likes += 1;
     }
   }
 };

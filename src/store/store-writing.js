@@ -116,7 +116,7 @@ const getters = {
     return state;
   },
   writingChallenge: state => {
-    return state;
+    return state.writing.writingChallenge;
   }
 };
 

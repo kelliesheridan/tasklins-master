@@ -141,7 +141,7 @@ const getters = {
     return state;
   },
   fitnessChallenge: state => {
-    return state;
+    return state.fitness.fitnessChallenge;
   }
 };
 
