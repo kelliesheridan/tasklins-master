@@ -1199,7 +1199,14 @@
 
         <q-card-section v-if="dayFourteen">
           <p>
-           2020 ended two weeks ago now, but for so many of us it's next to impossible to fully move into a new year and embrace the future. 
+           2020 ended two weeks ago now, but for so many of us it's next to impossible to fully move into a new year and embrace the future. And while it's
+           important to remember where we came from and the lessons we learned, there are also things we need to work to leave in the past. Is there something 
+           you've been holding on to that you need to let go of? Is there a memory you want to put in the past? A part of yourself your trying to move on from?
+          </p>
+
+          <p>
+            Today, your job is to give some thought to three things you want to let go of. You can interpret this in whatever way makes the most sense for you and
+            your own goals. You
           </p>
 
           <div class="text-h7 focus-boxes center">
