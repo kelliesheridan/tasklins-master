@@ -25,6 +25,14 @@
             to="/news"
             >News</q-btn
           >
+          <q-btn
+            class="q-mt-sm col indexMenuButton"
+            padding
+            color="secondary"
+            push
+            to="/roadmap"
+            >Roadmap</q-btn
+          >
         </div>
       </div>
     </template>
