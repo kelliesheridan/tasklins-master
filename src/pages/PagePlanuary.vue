@@ -40,6 +40,43 @@
       </q-card>
     </div>
 
+    <div class="planuaryDay">
+      <q-card>
+        <q-card-section>
+          <div class="text-h7 row">
+            <q-btn dense flat @click="weekTwo = !weekTwo">
+              Planuary. Week Two.
+            </q-btn>
+
+            <q-space />
+            <q-btn
+              @click="weekTwo = !weekTwo"
+              v-if="!weekTwo"
+              padding="none"
+              class="no-margin"
+              flat
+              color="secondary"
+              push
+              dense
+              icon="keyboard_arrow_down"
+            />
+
+            <q-btn
+              @click="weekTwo = !weekTwo"
+              v-if="weekTwo"
+              padding="none"
+              class="no-margin"
+              flat
+              color="secondary"
+              push
+              dense
+              icon="keyboard_arrow_up"
+            />
+          </div>
+        </q-card-section>
+      </q-card>
+    </div>
+
     <div v-if="weekOne">
       <div class="planuaryDay day-1">
         <q-card>
@@ -702,6 +739,7 @@
       </div>
     </div>
 
+    <div v-if="weekTwo">
     <div class="planuaryDay day-8">
       <q-card>
         <q-card-section>
@@ -736,10 +774,9 @@
           </p>
 
           <p>
-            Unlike most days on Planuary, we're not going to do this here on
-            this page. Instead, you can head over to the journal page to check
+            You can head over to the journal page to check
             out some new tracking features. You can see get an overview not only
-            on what you got finished, but how you were feeling. But we've also
+            on what you got finished, but how you were feeling. For today's prompts, we've also
             included some bonus questions below in order to give ourselves time
             to think about how we feel things went this first week, and what we
             might want to change in the future. Plus, having memories to look
@@ -1246,6 +1283,74 @@
         </q-card-section>
       </q-card>
     </div>
+    </div>
+
+    <div class="planuaryDay day-15">
+      <q-card>
+        <q-card-section>
+          <div class="text-h7 row">
+            <q-btn dense flat @click="dayFifteen = !dayFifteen">
+              Planuary. Day Fifteen.
+            </q-btn>
+            <q-space />
+
+            <q-btn
+              @click="dayFifteen = !dayFifteen"
+              v-if="!dayFifteen"
+              color="secondary"
+              padding="none"
+              class="no-margin no-padding"
+              flat
+              round
+              dense
+              icon="add"
+            />
+          </div>
+        </q-card-section>
+
+        <q-card-section v-if="dayFifteen">
+          <p>
+            Another week has come and gone and it's time to reflect.
+          </p>
+
+          <div class="text-h7 focus-boxes center">
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="What went well this week?"
+              outlined
+              v-model="weekTwoWin"
+            ></q-input>
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="What did you struggle with?"
+              outlined
+              v-model="weekTwoStruggle"
+            ></q-input>
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="What do you want to remember?"
+              outlined
+              v-model="weekTwoMemory"
+            ></q-input>
+          </div>
+
+          <div class="center q-pa-md">
+            <q-btn
+              @click="setWeekTwo()"
+              class="q-pa-xs"
+              color="primary"
+              size="md"
+              label="On to week three!"
+            />
+          </div>
+          <br />
+        </q-card-section>
+      </q-card>
+    </div>
+    
     
 
     <q-dialog v-model="showAddTask">

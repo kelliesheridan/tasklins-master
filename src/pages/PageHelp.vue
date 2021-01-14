@@ -121,12 +121,12 @@
               label="Known Bugs"              
             >
                 <q-list>
-                  <q-item>
+                  <!-- <q-item>
                     <q-item-section>
                       <q-item-label><strong>Challenge Page Colors</strong></q-item-label>
                       <q-item-label>We don't know why so many people's colors keep switching to orange, but we're on it!</q-item-label>
                     </q-item-section>
-                  </q-item>
+                  </q-item> -->
                   <!-- <q-item>
                     <q-item-section>
                       <q-item-label><strong>Creating Extra Repeating Tasks</strong></q-item-label>
@@ -141,12 +141,12 @@
               label="Features In Progress"
             >
             <q-list>
-              <q-item>
+              <!-- <q-item>
                 <q-item-section>
                   <q-item-label><strong>Cheer Button</strong></q-item-label>
                   <q-item-label>Cheer your friends on as they complete challenge tasks.</q-item-label>
                 </q-item-section>
-              </q-item>
+              </q-item> -->
 
               <q-item>
                 <q-item-section>
@@ -155,19 +155,19 @@
                 </q-item-section>
               </q-item>
 
-              <q-item>
+              <!-- <q-item>
                 <q-item-section>
                   <q-item-label><strong>User Stats</strong></q-item-label>
                   <q-item-label>Keep track of how many tasks you're getting done each day.</q-item-label>
                 </q-item-section>
-              </q-item>
+              </q-item> -->
 
-              <q-item>
+              <!-- <q-item>
                 <q-item-section>
                   <q-item-label><strong>Tasklin Evolution</strong></q-item-label>
                   <q-item-label>Tasklins will start gaining experience, and level up over time, changing their appearance as they do.</q-item-label>
                 </q-item-section>
-              </q-item>
+              </q-item> -->
             </q-list>
             </q-expansion-item>
 
