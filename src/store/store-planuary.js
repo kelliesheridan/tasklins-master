@@ -196,7 +196,7 @@ const actions = {
       username: letGo.username,
       letGo1: letGo.letGoOne,
       letGo2: letGo.letGoTwo,
-      letGo: letGo.letGoThree,
+      letGo3: letGo.letGoThree,
     };
     dispatch("fbAddPlanuary", payload);
   },
@@ -251,8 +251,8 @@ const actions = {
               commit("setGratitude", planuary);
               break; 
           case "letGo":
-                commit("setLetGo", planuary);
-                break;                      
+              commit("setLetGo", planuary);
+              break;                      
         }
       },
       error => {
@@ -332,8 +332,8 @@ const actions = {
           commit("setGratitude", planuary);
           break;      
         case "letGo":
-              commit("setLetGo", planuary);
-              break;            
+          commit("setLetGo", planuary);
+          break;            
       }
     });
   },
