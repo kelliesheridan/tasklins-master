@@ -82,7 +82,7 @@
       </div>
 
       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 q-pa-xs">
-        <div v-for="n in this.profileIDs" :key="n">
+        <div v-for="n in this.writing.writingChallenge" :key="n">
           <div v-if="getIntensity(getProfileName(n))">
             {{ getProfileName(n) }}
             <q-linear-progress
@@ -269,10 +269,8 @@ export default {
       return activity;
     },
     getProfileName(value) {
-      if (this.profiles != undefined && value.toString() != "NaN") {
-        return this.profiles[value].name;
-      } else {
-        return "";
+      if (value) {
+        return value.username;
       }
     }
   }
