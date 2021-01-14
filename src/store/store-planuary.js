@@ -129,7 +129,7 @@ const actions = {
   },
   addWeekTwo({ dispatch, commit }, weekTwo) {
     let payload = {
-      type: "weekOne",
+      type: "weekTwo",
       username: weekTwo.username,
       weekTwoWin: weekTwo.weekTwoWin,
       weekTwoStruggle: weekTwo.weekTwoStruggle,
@@ -139,7 +139,7 @@ const actions = {
   },
   addWeekThree({ dispatch, commit }, weekThree) {
     let payload = {
-      type: "weekOne",
+      type: "weekThree",
       username: weekThree.username,
       weekThreeWin: weekThree.weekThreeWin,
       weekThreeStruggle: weekThree.weekThreeStruggle,

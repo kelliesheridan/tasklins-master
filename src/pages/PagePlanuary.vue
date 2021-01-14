@@ -1705,7 +1705,7 @@ export default {
     },
     weekTwoMemory: {
       get() {
-        return this.week1Memory;
+        return this.week2Memory;
       },
       set(value) {
         this.week2Memory = value;
@@ -1918,6 +1918,7 @@ export default {
       "addHighlights",
       "addScary",
       "addWeekOne",
+      "addWeekTwo",
       "addQuarterlyGoals",
       "addPractices",
       "addGratitude",
@@ -2066,7 +2067,7 @@ export default {
         username: this.profile.username
       };
       this.addWeekTwo(payload);
-      //this.dayEight = false;
+      this.dayFifteen = false;
       this.$q.notify({
         message: "On to week three!",
         color: "primary"
