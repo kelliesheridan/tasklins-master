@@ -26,15 +26,12 @@
         >
           <div v-for="n in 9" :key="n">
             <q-card dense flat square class="my-card q-pa-xs">
-              <q-card-section
-                :style="{ 'background-color': getCardColor(n - 1) }"
-                class="text-black"
-              >
+              <q-card-section :style="{ 'background-color': getCardColor(n - 1) }" class="text-black">
                 <div class="text-h7">
                   {{ getActivity(n - 1) }}
                 </div>
-                <!-- <div style="position: relative; float: right; color: white; margin-left: 5px; margin-top: -5px">{{ likes }} </div>
-                <div style="position: relative; float: right; color: white; margin-right: -2px; margin-top: -2px" class="fas fa-thumbs-up" @click="increaseLike()"></div> -->
+                <!-- <div style="position: relative; float: right; color: white; margin-left: 5px; margin-top: -5px"> {{ getLikes(n - 1) }}</div>
+                <div style="position: relative; float: right; color: white; margin-right: -2px; margin-top: -2px" class="fas fa-thumbs-up" @click="increaseLike(n - 1)"></div> -->
               </q-card-section>
             </q-card>
           </div>
@@ -76,10 +73,12 @@ export default {
   computed: {
     ...mapGetters("fitness", ["fitness", "fitnessChallenge"]),
     ...mapGetters("settings", ["settings"]),
-    ...mapGetters("profile", ["profile", "profiles", "profileIDs"])
+    ...mapGetters("profile", ["profile", "profiles", "profileIDs"]),
+    ...mapState("community", ["likedFitness"])
   },
   methods: {
     ...mapActions("fitness", ["addFitnessTask", "readFitnessTasks", "cheer"]),
+    ...mapActions("community", ["addLike", "removeLike"]),
     submit(event) {
       console.debug("fitness event: ", event);
       this.addFitnessTask(event);
@@ -264,8 +263,64 @@ export default {
         return value.username;
       }
     },
-    increaseLike() {
+    getLikes(value) {
+      if (this.$store.state.community.fitnessLikes) {
+        let fitness = this.fitness.fitness;
+        let likes = this.$store.state.community.fitnessLikes;
+        if (likes != undefined && fitness != undefined) {
+        let elementToCheck = value === 0 ? Object.keys(fitness).length - 1 : Object.keys(fitness).length - 1 - value;
+          let fitnessElement = "";
+          Object.keys(fitness).forEach(element => {
+            if (Object.keys(fitness).indexOf(element) == elementToCheck) {
+              fitnessElement = element;
+            }
+          });
+
+  
+
+          if (fitnessElement != "") {
+            if (likes[fitnessElement] != undefined) {
+              return Object.values(likes[fitnessElement]).length;
+            } else {
+              return 0;
+            }
+          } else {
+            return 0;
+          }
+        } else {
+          return 0;
+        }
+      }
+    },
+    increaseLike(value) {
       this.likes += 1;
+
+      let fitness = this.fitness.fitness;
+      if (fitness != undefined) {
+        let elementToCheck =
+          value === 0
+            ? Object.keys(fitness).length - 1
+            : Object.keys(fitness).length - 1 - value;
+        if (fitness != undefined) {
+          let fitnessElement = "";
+          Object.keys(fitness).forEach(element => {
+            if (Object.keys(fitness).indexOf(element) == elementToCheck) {
+              fitnessElement = element;
+            }
+          });
+
+          if (fitnessElement != "") {
+            let payload = {
+              username: this.profile.username,
+              type: "fitness",
+              id: fitnessElement
+            };
+            this.addLike(payload);
+          }
+        }
+
+        //return activity;
+      }
     }
   }
 };

@@ -81,6 +81,7 @@ const actions = {
         dispatch("planuary/fbReadPlanuary", {type: "gratitude"}, { root: true });
         dispatch("planuary/fbReadPlanuary", {type: "letGo"}, { root: true });
         dispatch("profile/fbReadAllMoods", null, { root: true });
+        dispatch("community/fbReadLikes", null, { root: true });
         if (this.state.profile.profile.user.name !== "") {
           if (this.state.tasklins.tasklin.name === "") {
             this.$router.replace("/index").catch(err => {});

@@ -8,6 +8,14 @@ const state = {
 };
 
 const mutations = {
+  addFitnessLikes(state, likes) {
+    if (state.fitnessLikes != undefined) 
+    Vue.set(state.fitnessLikes, likes.id, likes);
+  },
+  setFitnessLikes(state, likes) {
+    if (likes != undefined)
+      state.fitnessLikes = likes;
+  },
   addEncouragement(state, encouragement) {
     if (state.community.encouragement != undefined) 
     Vue.set(state.community.encouragement, encouragement.id, encouragement.community);
@@ -26,6 +34,22 @@ const mutations = {
 };
 
 const actions = {
+  addLike({ dispatch, commit}, payload) {
+    let like = {
+      type: payload.type,
+      id: payload.id,
+    };
+    dispatch("fbAddLike", like);
+  },
+  updateLike({ dispatch, commit}, payload) {
+    let like = {
+      username: payload.username,
+      type: payload.type,
+      id: payload.id,
+      createdDate: moment().format("YYYY-MM-DD HH:mm:ss")
+    };
+    dispatch("fbAddLike", like);
+  },
   addEncouragement({ dispatch, commit }, encouragement) {
     let payload = {
       username: encouragement.username,
@@ -48,6 +72,53 @@ const actions = {
       type: "communityUpdate"
     };
     dispatch("fbAddCommunity", payload);
+  },
+  fbAddLike({ dispatch }, payload) {
+    let userId = firebaseAuth.currentUser.uid;
+    let likeRef = firebaseDb.ref("likes/" + payload.type + "/" + payload.id);
+    let like = {
+      userId: userId
+    }
+    likeRef.set(like, error => {
+      if (error) {
+        showErrorMessage(error.message);
+      } else {
+      }
+    });
+  },
+  fbReadLikes({ commit }, type) {
+    let likes = firebaseDb.ref("likes/fitness");
+
+    //initial check for data
+    likes.once(
+      "value",
+      snapshot => {
+        let likes = snapshot.val();
+        console.debug("likes is: ", likes);
+        commit("setFitnessLikes", likes);
+      },
+      error => {
+        showErrorMessage(error.message);
+      }
+    );
+
+    // child added
+    likes.on("child_added", snapshot => {
+      let likes = snapshot.val();
+      commit("addFitnessLikes", likes);
+    });
+
+    // child changed
+    likes.on("child_changed", snapshot => {
+      let likes = snapshot.val();
+      commit("setFitnessLikes", likes);
+    });
+
+    // child removed
+    likes.on("child_removed", snapshot => {
+      let likes = snapshot.val();
+      commit("deleteLike", taskId);
+    });
   },
   fbAddCommunity({ dispatch }, payload) {
     let userId = firebaseAuth.currentUser.uid;
@@ -177,6 +248,9 @@ const getters = {
     }
     return updatesSorted;
   },
+  likedFitness: state => {
+    return state.likedFitness;
+  }
 };
 
 export default {
