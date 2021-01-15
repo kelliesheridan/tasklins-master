@@ -4,11 +4,21 @@
       <index-menu />
     </div>
 
-    <div class="q-pa-md roadmap-card center" style="width: 50%">
+    <div class="q-pa-md center">
+
+    <div class="q-pa-md roadmap-card">
+      <q-card dense square class="my-card q-pa-none">
+        <q-card-section class="bg-secondary">
+          <div class="text-h6">
+           <h6 class="q-pa-xs">Where We're Headed</h6>
+          </div>
+        </q-card-section>
+      </q-card>
+    </div>
         
-      <div class="q-pa-md">
+    <div class="q-pa-md roadmap-card">
       <q-card dense square class="my-card q-pa-xs">
-        <q-card-section class="row bg-secondary">
+        <q-card-section class="bg-secondary">
           <q-icon name="plus_one" class="text-white center" style="font-size: 4rem;" />
           <div class="text-h7">
           <div>
@@ -23,9 +33,9 @@
 
         </q-card-section>
       </q-card>
-      </div>
+    </div>
 
-      <div class="q-pa-md">
+    <div class="q-pa-md roadmap-card">
       <q-card dense square class="my-card q-pa-xs">
         <q-card-section class="row bg-secondary">
           <q-icon name="pets" class="text-white center" style="font-size: 4rem;" />
@@ -41,7 +51,44 @@
 
         </q-card-section>
       </q-card>
-      </div>
+    </div>  
+
+    <div class="q-pa-md roadmap-card">
+      <q-card dense square class="my-card q-pa-xs">
+        <q-card-section class="row bg-secondary">
+          <q-icon name="local_mall" class="text-white center" style="font-size: 4rem;" />
+          <div class="text-h7">
+          <div>
+            <h6 class="q-pa-sm">Inventory!</h6>
+            <p>
+              This is the big one! Once we have a game inventory, we have a game! Once we have a system in place where you can keep an inventory of items, that will open 
+              up a whole new world of possibilities. Use the Lin you'e been earning to purchase items for your Tasklins, finding random items, trading, selling, the whole 
+              nine yards. Eventually, this inventory system will also help us with...
+            </p>
+          </div>
+          </div>
+
+        </q-card-section>
+      </q-card>
+    </div>  
+
+    <div class="q-pa-md roadmap-card">
+      <q-card dense square class="my-card q-pa-xs">
+        <q-card-section class="row bg-secondary">
+          <q-icon name="person" class="text-white center" style="font-size: 4rem;" />
+          <div class="text-h7">
+          <div>
+            <h6 class="q-pa-sm">Avatars!</h6>
+            <p>
+              Your Tasklins aren't the only beings that exist in this world. Once we have the above features in place, our next goal is to have avatars for our users 
+              that you can customize through game play. Express yourself however you see fit as we all work together to reach out goals.
+            </p>
+          </div>
+          </div>
+
+        </q-card-section>
+      </q-card>
+    </div>  
 
     </div>  
   </q-page>
