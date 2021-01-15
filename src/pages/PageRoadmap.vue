@@ -88,7 +88,27 @@
 
         </q-card-section>
       </q-card>
-    </div>  
+    </div>
+
+    <div class="q-pa-md roadmap-card">
+      <q-card dense square class="my-card q-pa-xs">
+        <q-card-section class="row bg-secondary">
+          <q-icon name="stay_primary_portrait" class="text-white center" style="font-size: 4rem;" />
+          <div class="text-h7">
+          <div>
+            <h6 class="q-pa-sm">Tasklins... The App</h6>
+            <p>
+              It's hard to say exactly where the app falls in our timeline, but this is absolutely a priority. We'd love to let users have Tasklins on their phone more 
+              easily, and somewhat have things in place to do this (though to start, the app version would look fairly similar to the mobile browser version). At this point 
+              we just want to have things running slightly more stabley before spending the money we need to to get in both the Apple and Android app stores. We'll likely start 
+              with rough versions that you need to manually put onto your phone to make sure everything works, and go from there.
+            </p>
+          </div>
+          </div>
+
+        </q-card-section>
+      </q-card>
+    </div>   
 
     </div>  
   </q-page>

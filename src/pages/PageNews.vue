@@ -6,6 +6,11 @@
       <div class="row q-pa-xs">
         <div class="col-2 newsMenuSection q-pa-sm">
           <div class="col center">
+
+            <q-btn class="row newsBtn" color="secondary" @click="news = 3">
+              Some Small Updates
+            </q-btn>
+
             <q-btn class="row newsBtn" color="primary" @click="news = 2">
               One Week Down
             </q-btn>
@@ -15,6 +20,29 @@
             </q-btn>
           </div>
         </div>
+
+        <div class="col q-pa-sm">
+        <div class="newsPost" v-if="news == 3">
+          <h4>Some Small Updates</h4>
+          <br />
+          <p>
+            Another week of 2021 in the books, and another week of Planuary up for you to explore.
+          </p>  
+          <p>
+             
+          </p>
+          <p>
+             
+          </p>
+          <p>
+             In terms of what's next... we're still trying to fix the bug where Tasklins aren't leveling up like they're supposed to. 
+             But I'd also really, really like to update the Tasklin art before that happens as well, which is a fairly big task. So far, 
+             one of the biggest issues in creating Tasklins has been that how I envision everything looking is still leaps and bounds 
+             above my own artistic ability. Of course, I'd love to hire an artist one day and take things to the next level, but we're 
+             still a ways away from the happening. So for now, expect all things artistic on the website to change and evolve over time.
+          </p>
+        </div>
+          
         <div class="col q-pa-sm">
           <div class="newsPost" v-if="news == 2">
             <h4>One Week Down</h4>
@@ -88,6 +116,7 @@
         </div>
       </div>
     </div>
+    </div>
   </q-page>
 </template>
 
@@ -97,7 +126,7 @@ import { mapActions, mapState, mapGetters } from "vuex";
 export default {
   data() {
     return {
-      news: 2
+      news: 3
     };
   },
   computed: {
