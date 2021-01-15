@@ -1197,14 +1197,14 @@
           </p>
 
           <div class="text-h7 focus-boxes center">
-        <q-btn
-            class="q-mt-sm col"
-            padding
-            color="primary"
-            push
-            to="/community"
-            >Check Out the New Community Page</q-btn
-          >
+            <q-btn
+                class="q-mt-sm col"
+                padding
+                color="primary"
+                push
+                to="/community"
+                >Check Out the New Community Page</q-btn
+              >
           </div>
           <br />
         </q-card-section>
@@ -1345,6 +1345,23 @@
               size="md"
               label="On to week three!"
             />
+          </div>
+
+          <div class="center">
+
+            <p>
+              We also wanted to take today to share of some of our goal for Tasklins with all of you. 
+            </p>
+
+            <q-btn
+              class="q-mt-sm col"
+              padding
+              color="primary"
+              push
+              to="/roadmap"
+              >Where We're Headed
+            </q-btn>
+
           </div>
           <br />
         </q-card-section>
