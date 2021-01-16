@@ -26,14 +26,16 @@
           <h4>Some Small Updates</h4>
           <br />
           <p>
-            Another week of 2021 in the books, and another week of Planuary up for you to explore.
+            Another week of 2021 in the books, and another week of Planuary up for you to explore. If you haven't gone through and filled 
+            out this week's prompts yet, we recommend popping over there whenever you have a minute. We'll be bringing your answers back up 
+            throughout the year in some unexpected ways.
           </p>  
+
           <p>
-             
+             We've also made some small improvements and bug fixes this week. Things should look a little cleaner in mobile, load a little faster, 
+             and generally, break a little less often. Always a win!
           </p>
-          <p>
-             
-          </p>
+
           <p>
              In terms of what's next... we're still trying to fix the bug where Tasklins aren't leveling up like they're supposed to. 
              But I'd also really, really like to update the Tasklin art before that happens as well, which is a fairly big task. So far, 

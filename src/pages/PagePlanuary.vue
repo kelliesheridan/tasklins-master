@@ -202,10 +202,8 @@
             </p>
 
             <p>
-              <i
-                >Anything listed here will remain private and not be posted
-                elsewhere on the website.</i
-              >
+              <i>Anything listed here will remain private and not be posted
+                elsewhere on the website.</i>
             </p>
 
             <p>
@@ -374,6 +372,10 @@
               something new, and we'll see how it goes!
             </p>
 
+            <p>
+            <i>Anything listed here will remain private and not be posted elsewhere on the website.</i>
+            </p>
+
             <div>
               <div class="text-h7 focus-boxes center">
                 <q-input
@@ -414,12 +416,7 @@
                   v-model="goalFive"
                 ></q-input>
               </div>
-              <p>
-                <i
-                  >Anything listed here will remain private and not be posted
-                  elsewhere on the website.</i
-                >
-              </p>
+              <br>
               <div class="center q-pa-md">
                 <q-btn
                   @click="setGoals()"
@@ -573,7 +570,8 @@
                 >Note: There's still so much going on in the world, and a lot of
                 us are maybe even more anxious than usual. It's totally up to
                 you whether these are the things you want to focus on, or if you
-                want to keep these more personal. Anything goes!</i
+                want to keep these more personal. Anything goes! And as aways, what 
+                you choose to list here will remain private.</i
               >
             </p>
 
@@ -687,6 +685,11 @@
               more tomorrow!
             </p>
 
+            <p>
+              <i>Unlike most days in Planuary, what you choose to enter here will not remain private, both the Tasklins team and the wider community may end up 
+                having a look, so keep that in mind.</i>
+            </p>
+
             <div class="text-h7 focus-boxes center">
               <q-input
                 class="q-pa-xs"
@@ -781,6 +784,10 @@
             to think about how we feel things went this first week, and what we
             might want to change in the future. Plus, having memories to look
             back on later might be fun!
+          </p>
+
+          <p>
+            <i>Anything listed here will remain private and not be posted elsewhere on the website.</i>
           </p>
 
           <div class="text-h7 focus-boxes center">
@@ -941,6 +948,12 @@
             </div>
           </div>
 
+          <div>
+            <p>
+            <i>Anything listed here will remain private and not be posted elsewhere on the website.</i>
+          </p>
+          </div>
+
           <div class="text-h7 focus-boxes center">
             <q-input
               class="q-pa-xs"
@@ -1034,6 +1047,10 @@
             2021.
           </p>
 
+          <p>
+            <i>Anything listed here will remain private and not be posted elsewhere on the website.</i>
+          </p>
+
           <div class="text-h7 focus-boxes center">
             <q-input
               class="q-pa-xs"
@@ -1103,6 +1120,10 @@
             on a topic we're interested in. So today, let's take a few minutes
             to think about some of the things we want to make more time for in
             2021.
+          </p>
+
+          <p>
+            <i>Anything listed here will remain private and not be posted elsewhere on the website.</i>
           </p>
 
           <div class="text-h7 focus-boxes center">
@@ -1243,7 +1264,11 @@
 
           <p>
             Today, your job is to give some thought to three things you want to let go of. You can interpret this in whatever way makes the most sense for you and
-            your own goals. You
+            your own goals.
+          </p>
+
+          <p>
+            <i>Anything listed here will remain private and not be posted elsewhere on the website.</i>
           </p>
 
           <div class="text-h7 focus-boxes center">
@@ -1367,6 +1392,73 @@
         </q-card-section>
       </q-card>
     </div>
+
+    <div class="planuaryDay day-16">
+      <q-card>
+        <q-card-section>
+          <div class="text-h7 row">
+            <q-btn dense flat @click="daySixteen = !daySixteen">
+              Planuary. Day Sixteen.
+            </q-btn>
+            <q-space />
+
+            <q-btn
+              @click="daySixteen = !daySixteen"
+              v-if="!daySixteen"
+              color="secondary"
+              padding="none"
+              class="no-margin no-padding"
+              flat
+              round
+              dense
+              icon="add"
+            />
+          </div>
+        </q-card-section>
+
+        <q-card-section v-if="daySixteen">
+          <p>
+           We've spent a lot of time thinking about what we've done and what we want to do, creating lists and making wishes. Today, we're going to take some time to 
+           think about the one thing that drives ALL of this. You! Who you are, and what makes you capable of taking on all of the challenges you set for yourself (and 
+           the ones the world sets for you, whether you asked it to or not). While we all have areas where we'd like to improve, it's so important to remember that we 
+           also all have things we're fantastic at. Incredible. Super. We all have our superpowers, and today, I want you to figure out yours. Not a whole list, just one 
+           thing, skill, personality trait, or whatever else, that you absolutely rock at.
+          </p>
+
+          <p>
+            So what's your superpower? What's that thing you not only do well but love doing? This can be your sense of humour, the way you solve problems, a special meal 
+            that you can cook better than anyone else you know? You don't need super strength or telekenesis to be a superhero, and your superpower doesn't need to be something 
+            you can build a career around or even something that society thinks is especially useful. In a lot of cases, this could be something that fuels you and brings you joy,
+            or something that helps boost your confidence because you know it's one of your biggest strengths. So, give it some thought, and write down your power.
+          </p>
+
+          <p>
+            <i>Anything listed here will remain private and not be posted elsewhere on the website.</i>
+          </p>
+
+          <div class="text-h7 focus-boxes center">
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="What's your superpower?"
+              outlined
+              v-model="superpower1"
+            ></q-input>
+          </div>
+
+          <div class="center q-pa-md">
+            <q-btn
+              @click="setSuperpower()"
+              class="q-pa-xs"
+              color="primary"
+              size="md"
+              label="Share Your Power"
+            />
+          </div>
+          <br />
+        </q-card-section>
+      </q-card>
+    </div>
     
     
 
@@ -1462,6 +1554,7 @@ export default {
       letGo1: "",
       letGo2: "",
       letGo3: "",
+      superpower1: "",
       dayOne: false,
       dayTwo: false,
       dayThree: false,
@@ -1912,6 +2005,14 @@ export default {
         this.letGo3 = value;
       }
     },
+    superpower: {
+      get() {
+        return this.superpower1;
+      },
+      set(value) {
+        this.superpower1 = value;
+      }
+    },    
     projectSearchField: {
       get() {
         return this.projectSearch;
@@ -1939,7 +2040,8 @@ export default {
       "addQuarterlyGoals",
       "addPractices",
       "addGratitude",
-      "addLetGo"
+      "addLetGo",
+      "addSuperpower"
     ]),
     ...mapActions("tasks", ["setProjectSearch"]),
     ...mapActions("community", ["addEncouragement"]),
@@ -2183,6 +2285,19 @@ export default {
         color: "primary"
       });
     },
+    setSuperpower() {
+      let payload = {
+        type: "superpower",
+        superpower: this.superpower,
+        username: this.profile.username
+      };
+      this.addSuperpower(payload);
+      this.daySixteen = false;
+      this.$q.notify({
+        message: "You are a LEGEND",
+        color: "primary"
+      });
+    },
     showDate(dayNumber) {
       if (dayNumber == 1) {
         this.dayOne = true;
@@ -2358,6 +2473,10 @@ export default {
       this.letGoOne = this.planuary.letGo.letGo1;
       this.letGoTwo = this.planuary.letGo.letGo2;
       this.letGoThree = this.planuary.letGo.letGo3;
+    }
+    if (this.planuary.superpower != undefined) {
+      this.superpower = this.planuary.superpower.superpower1;
+
     }
     var date = moment().date();
     this.showDate(date);

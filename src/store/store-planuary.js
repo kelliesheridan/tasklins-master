@@ -52,6 +52,9 @@ const mutations = {
   setLetGo(state, letGo) {
     if (letGo != undefined) state.planuary.letGo = letGo;
   },
+  setSuperpower(state, superpower) {
+    if (superpower != undefined) state.planuary.superpower = superpower;
+  },
   addWish(state, wishes) {
     Vue.set(state.planuary.wishes, wishes, wishes);
   },
@@ -200,6 +203,14 @@ const actions = {
     };
     dispatch("fbAddPlanuary", payload);
   },
+  addSuperpower({ dispatch, commit }, superpower) {
+    let payload = {
+      type: "superpower",
+      username: superpower.username,
+      superpower1: superpower.superpower,
+    };
+    dispatch("fbAddPlanuary", payload);
+  },
   fbAddPlanuary({ dispatch }, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let planuaryRef = firebaseDb.ref("planuary/" + payload.type + "/" + userId);
@@ -252,7 +263,10 @@ const actions = {
               break; 
           case "letGo":
               commit("setLetGo", planuary);
-              break;                      
+              break;     
+          case "superpower":
+                commit("setSuperpower", planuary);
+                break;                   
         }
       },
       error => {
@@ -294,6 +308,9 @@ const actions = {
         case "letGo":
             commit("setLetGo", planuary);
             break;     
+        case "superpower":
+                commit("setSuperpower", planuary);
+                break;                   
       }
     });
 
@@ -333,7 +350,10 @@ const actions = {
           break;      
         case "letGo":
           commit("setLetGo", planuary);
-          break;            
+          break;
+        case "superpower":
+            commit("setSuperpower", planuary);
+            break;                                 
       }
     });
   },
