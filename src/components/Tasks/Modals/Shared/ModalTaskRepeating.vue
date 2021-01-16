@@ -45,6 +45,27 @@
           >Repeat Task Every ___ of days</q-tooltip
         >
       </q-btn>
+
+        <q-btn
+        class="task-btn q-pa-xs"
+        @click="
+          daily = false;
+          monthly = true;
+          byDayNumber = false;
+          everyNumDays = false;
+          nrepeating.numDay = '';
+          nrepeating.numDaySet = false;
+        "
+        flat
+        dense
+        color="blue"
+        icon="date_range"
+      >
+        <q-tooltip content-class="bg-secondary"
+          >Repeat Monthly from Due Date</q-tooltip
+        >
+      </q-btn>
+
       <div>
         <span v-if="daily">
           <q-btn
