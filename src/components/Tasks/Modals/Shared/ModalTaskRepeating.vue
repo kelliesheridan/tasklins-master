@@ -50,17 +50,17 @@
         class="task-btn q-pa-xs"
         @click="
           daily = false;
-          everyWeek = !everyWeek;
+          everyMonth = !everyMonth;
           byDayNumber = false;
           everyNumDays = false;
           nrepeating.numDay = '';
           nrepeating.numDaySet = false;
-          nrepeating.weekly = everyWeek;
+          nrepeating.monthly = everyMonth;
         "
-        @change="$emit('update:nrepeating.weekly', $event)"
+        @change="$emit('update:nrepeating.monthly', $event)"
         flat
         dense
-        :style="{ 'color': everyWeek ? 'green' : 'blue' }"
+        :style="{ 'color': everyMonth ? 'green' : 'blue' }"
         icon="date_range"
       >
         <q-tooltip content-class="bg-secondary"
@@ -589,13 +589,13 @@ export default {
         numberOfDays = value;
       }
     },
-    everyWeek: {
+    everyMonth: {
       get() {
-        return this.nrepeating.weekly;
+        return this.nrepeating.monthly;
       },
       set(value) {
-        this.nrepeating.weekly = value;
-        everyWeek = value;
+        this.nrepeating.monthly = value;
+        everyMonth = value;
       }
     }
   }

@@ -243,7 +243,7 @@ const actions = {
       } else if (payload.updates.task.nrepeating.numDay > "0") {
         newPayload = getNumDayTask(payload.updates.task);
         dispatch("fbAddTask", newPayload);
-      } else if (payload.updates.task.nrepeating.weekly) {
+      } else if (payload.updates.task.nrepeating.monthly) {
         newPayload = getMonthlyTask(payload.updates.task);
         dispatch("fbAddTask", newPayload);
       }
@@ -944,7 +944,7 @@ function getMonthlyTask(task) {
       saturday: task.nrepeating.saturday,
       sunday: task.nrepeating.sunday,
       numDay: task.nrepeating.numDay,
-      weekly: task.nrepeating.weekly
+      monthly: task.nrepeating.monthly
     },
     dueDate: "",
     dueTime: "",
@@ -952,12 +952,15 @@ function getMonthlyTask(task) {
     createdDate: moment().format(),
     lastModified: moment().format()
   };
-  newTask.dueDate = moment(
-    task.dueDate == "" ? moment().format("YYYY-MM-DD") : task.dueDate
-  )
-    .add(1, "week")
-    .format("YYYY-MM-DD");
-
+  // if dueDate is last day of the month, set dueDate to last day of NEXT month 
+  var endOfMonth = moment(task.dueDate).endOf('month').format("YYYY-MM-DD");
+  if (moment(task.dueDate).isSame(endOfMonth)) {
+    var nextMonth = moment(task.dueDate).add(1, 'month');
+    newTask.dueDate = moment(nextMonth).endOf('month').format("YYYY-MM-DD");
+  } else {
+    newTask.dueDate = moment(task.dueDate == "" ? moment().format("YYYY-MM-DD") : task.dueDate).add(1, "month").format("YYYY-MM-DD");
+  }
+  
   var newPayload = {};
   newPayload.task = newTask;
   newPayload.id = uid();
