@@ -243,6 +243,9 @@ const actions = {
       } else if (payload.updates.task.nrepeating.numDay > "0") {
         newPayload = getNumDayTask(payload.updates.task);
         dispatch("fbAddTask", newPayload);
+      } else if (payload.updates.task.nrepeating.weekly) {
+        newPayload = getMonthlyTask(payload.updates.task);
+        dispatch("fbAddTask", newPayload);
       }
     }
   },
@@ -924,4 +927,40 @@ function getNumDayTask(task) {
   newPayload.task = newTask;
   newPayload.id = uid();
   return newPayload;
+};
+function getMonthlyTask(task) {
+  // task.nrepeating.numDay
+  // moment addNum of days - check to make sure it handles the month carry-over
+  var newTask = {
+    name: task.name,
+    project: task.project,
+    npublic: task.npublic,
+    nrepeating: {
+      monday: task.nrepeating.monday,
+      tuesday: task.nrepeating.tuesday,
+      wednesday: task.nrepeating.wednesday,
+      thursday: task.nrepeating.thursday,
+      friday: task.nrepeating.friday,
+      saturday: task.nrepeating.saturday,
+      sunday: task.nrepeating.sunday,
+      numDay: task.nrepeating.numDay,
+      weekly: task.nrepeating.weekly
+    },
+    dueDate: "",
+    dueTime: "",
+    completed: false,
+    createdDate: moment().format(),
+    lastModified: moment().format()
+  };
+  newTask.dueDate = moment(
+    task.dueDate == "" ? moment().format("YYYY-MM-DD") : task.dueDate
+  )
+    .add(1, "week")
+    .format("YYYY-MM-DD");
+
+  var newPayload = {};
+  newPayload.task = newTask;
+  newPayload.id = uid();
+  return newPayload;
 }
+

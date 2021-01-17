@@ -5,7 +5,7 @@
         class="task-btn q-pa-xs"
         @click="
           daily = !daily;
-          monthly = false;
+          everyWeek = false;
           byDayNumber = false;
           everyNumDays = false;
           nrepeating.numDay = '';
@@ -13,7 +13,7 @@
         "
         flat
         dense
-        color="blue"
+        :style="{ 'color': daily  ? 'green' : 'blue' }"
         icon="repeat_one"
       >
         <q-tooltip content-class="bg-secondary"
@@ -25,7 +25,7 @@
         class="task-btn q-pa-xs"
         @click="
           daily = false;
-          monthly = false;
+          everyWeek = false;
           byDayNumber = false;
           everyNumDays = !everyNumDays;
           nrepeating.monday = false;
@@ -38,7 +38,7 @@
         "
         flat
         dense
-        color="blue"
+        :style="{ 'color': everyNumDays  ? 'green' : 'blue' }"
         icon="forward_5"
       >
         <q-tooltip content-class="bg-secondary"
@@ -50,15 +50,17 @@
         class="task-btn q-pa-xs"
         @click="
           daily = false;
-          monthly = true;
+          everyWeek = !everyWeek;
           byDayNumber = false;
           everyNumDays = false;
           nrepeating.numDay = '';
           nrepeating.numDaySet = false;
+          nrepeating.weekly = everyWeek;
         "
+        @change="$emit('update:nrepeating.weekly', $event)"
         flat
         dense
-        color="blue"
+        :style="{ 'color': everyWeek ? 'green' : 'blue' }"
         icon="date_range"
       >
         <q-tooltip content-class="bg-secondary"
@@ -561,7 +563,6 @@
             style="max-width: 200px"
           />
         </div>
-
       </div>
     </div>
   </div>
@@ -575,7 +576,7 @@ export default {
       daily: false,
       monthly: false,
       byDayNumber: false,
-      everyNumDays: false
+      everyNumDays: false,
     };
   },
   computed: {
@@ -586,6 +587,15 @@ export default {
       set(value) {
         this.nrepeating.numDay = value;
         numberOfDays = value;
+      }
+    },
+    everyWeek: {
+      get() {
+        return this.nrepeating.weekly;
+      },
+      set(value) {
+        this.nrepeating.weekly = value;
+        everyWeek = value;
       }
     }
   }
