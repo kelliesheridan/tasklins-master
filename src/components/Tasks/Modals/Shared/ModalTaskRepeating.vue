@@ -5,9 +5,9 @@
         class="task-btn q-pa-xs"
         @click="
           daily = !daily;
-          everyWeek = false;
           byDayNumber = false;
           everyNumDays = false;
+          everyMonth = false;
           nrepeating.numDay = '';
           nrepeating.numDaySet = false;
         "
@@ -25,7 +25,6 @@
         class="task-btn q-pa-xs"
         @click="
           daily = false;
-          everyWeek = false;
           byDayNumber = false;
           everyNumDays = !everyNumDays;
           nrepeating.monday = false;
@@ -35,6 +34,7 @@
           nrepeating.friday = false;
           nrepeating.saturday = false;
           nrepeating.sunday = false;
+          everyMonth = false;
         "
         flat
         dense
@@ -55,8 +55,9 @@
           everyNumDays = false;
           nrepeating.numDay = '';
           nrepeating.numDaySet = false;
-          nrepeating.monthly = everyMonth;
+          //nrepeating.monthly = everyMonth;
         "
+        v-model="everyMonth"
         @change="$emit('update:nrepeating.monthly', $event)"
         flat
         dense
@@ -595,7 +596,7 @@ export default {
       },
       set(value) {
         this.nrepeating.monthly = value;
-        everyMonth = value;
+        //everyMonth = value;
       }
     }
   }

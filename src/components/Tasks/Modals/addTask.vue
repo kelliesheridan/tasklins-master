@@ -62,7 +62,7 @@ export default {
           sunday: false,
           numDay: "",
           numDaySet: false,
-          monthly: false
+          everyMonth: false
         },
         dueDate: "",
         dueTime: "",
