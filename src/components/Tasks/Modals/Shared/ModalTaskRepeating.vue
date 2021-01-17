@@ -10,6 +10,7 @@
           everyNumDays = false;
           nrepeating.numDay = '';
           nrepeating.numDaySet = false;
+          nrepeating.monthly = false;
         "
         flat
         dense
@@ -35,6 +36,7 @@
           nrepeating.friday = false;
           nrepeating.saturday = false;
           nrepeating.sunday = false;
+          nrepeating.monthly = false;
         "
         flat
         dense
@@ -218,7 +220,7 @@ export default {
       daily: false,
       byDayNumber: false,
       everyNumDays: false,
-      everyMonth: false
+      //everyMonth: false
     };
   },
   computed: {
@@ -231,13 +233,13 @@ export default {
         numberOfDays = value;
       }
     },
-    monthly: {
+    everyMonth: {
       get() {
-        return this.nrepeating.weekly;
+        return this.nrepeating.monthly;
       },
       set(value) {
-        this.nrepeating.weekly = value;
-        everyMonth = value;
+        this.nrepeating.monthly = value;
+        return value;
       }
     }
   }
