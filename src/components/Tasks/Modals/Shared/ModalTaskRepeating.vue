@@ -57,7 +57,6 @@
           nrepeating.numDaySet = false;
           //nrepeating.monthly = everyMonth;
         "
-        v-model="everyMonth"
         @change="$emit('update:nrepeating.monthly', $event)"
         flat
         dense
