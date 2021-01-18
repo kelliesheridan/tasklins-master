@@ -32,9 +32,11 @@ module.exports = function (/* ctx */) {
       // 'line-awesome',
       // 'roboto-font-latin-ext', // this or either 'roboto-font', NEVER both!
 
-      'roboto-font', // optional, you are not bound to it
+      'fontawesome-v5',
       'material-icons',
-      'fontawesome-v5', // optional, you are not bound to it
+      'roboto-font', // optional, you are not bound to it
+      
+ // optional, you are not bound to it
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
