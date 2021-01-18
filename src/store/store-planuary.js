@@ -218,11 +218,11 @@ const actions = {
     let payload = {
       type: "avoid",
       username: avoid.username,
-      avoid1: avoid.avoid1,
-      avoid2: avoid.avoid2,
-      avoid3: avoid.avoid3,
-      avoid: avoid.avoid4,
-      avoid5: avoid.avoid5
+      avoid1: avoid.avoidOne,
+      avoid2: avoid.avoidTwo,
+      avoid3: avoid.avoidThree,
+      avoid4: avoid.avoidFour,
+      avoid5: avoid.avoidFive
     };
     dispatch("fbAddPlanuary", payload);
   },
