@@ -65,12 +65,3 @@ export default {
   }
 };
 </script>
-
-<style>
-.tasklin {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  color: black !important
-}
-</style>

@@ -9,11 +9,3 @@ export default {
     props: ['bgColor']
 }
 </script>
-
-<style>
-.list-header {
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
-    border: 0;
-}
-</style>
