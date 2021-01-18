@@ -20,7 +20,6 @@
       <q-card dense square class="my-card q-pa-xs">
         <q-card-section class="bg-secondary">
           <q-icon name="plus_one" class="text-white center" style="font-size: 4rem;" />
-          <div class="text-h7">
           <div>
             <h6 class="q-pa-sm">Leveling Up Tasklins</h6>
             <p>
@@ -28,7 +27,6 @@
               your Tasklin will gain xp, and with certain amounts of xp, reach new levels. With new levels come new features (noses, tails, ears, etc.), and eventually things like 
               hunger levels, more advanced moods, and even breeding (although that part is farther down the road) as before that happens we'll need...
             </p>
-          </div>
           </div>
 
         </q-card-section>
@@ -39,14 +37,12 @@
       <q-card dense square class="my-card q-pa-xs">
         <q-card-section class="row bg-secondary">
           <q-icon name="pets" class="text-white center" style="font-size: 4rem;" />
-          <div class="text-h7">
           <div>
             <h6 class="q-pa-sm">Collect Multiple Tasklins!</h6>
             <p>
               Once we have Tasklin levels looking pretty solid, we'll add in the ability to have multiple Tasklins on your account. You can decide which of your Tasklins are connected 
               to which of your projects, and then they'll level up individually based on which Tasklin is connected to each task you complete. 
             </p>
-          </div>
           </div>
 
         </q-card-section>
@@ -57,7 +53,6 @@
       <q-card dense square class="my-card q-pa-xs">
         <q-card-section class="row bg-secondary">
           <q-icon name="local_mall" class="text-white center" style="font-size: 4rem;" />
-          <div class="text-h7">
           <div>
             <h6 class="q-pa-sm">Inventory!</h6>
             <p>
@@ -65,7 +60,6 @@
               up a whole new world of possibilities. Use the Lin you'e been earning to purchase items for your Tasklins, finding random items, trading, selling, the whole 
               nine yards. Eventually, this inventory system will also help us with...
             </p>
-          </div>
           </div>
 
         </q-card-section>
@@ -76,14 +70,12 @@
       <q-card dense square class="my-card q-pa-xs">
         <q-card-section class="row bg-secondary">
           <q-icon name="person" class="text-white center" style="font-size: 4rem;" />
-          <div class="text-h7">
           <div>
             <h6 class="q-pa-sm">Avatars!</h6>
             <p>
               Your Tasklins aren't the only beings that exist in this world. Once we have the above features in place, our next goal is to have avatars for our users 
               that you can customize through game play. Express yourself however you see fit as we all work together to reach out goals.
             </p>
-          </div>
           </div>
 
         </q-card-section>
@@ -94,7 +86,6 @@
       <q-card dense square class="my-card q-pa-xs">
         <q-card-section class="row bg-secondary">
           <q-icon name="stay_primary_portrait" class="text-white center" style="font-size: 4rem;" />
-          <div class="text-h7">
           <div>
             <h6 class="q-pa-sm">Tasklins... The App</h6>
             <p>
@@ -103,8 +94,7 @@
               we just want to have things running slightly more stabley before spending the money we need to to get in both the Apple and Android app stores. We'll likely start 
               with rough versions that you need to manually put onto your phone to make sure everything works, and go from there.
             </p>
-          </div>
-          </div>
+            </div>
 
         </q-card-section>
       </q-card>
