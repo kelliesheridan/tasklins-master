@@ -1521,6 +1521,93 @@
         </q-card-section>
       </q-card>
     </div> 
+
+    <div class="planuaryDay day-18">
+      <q-card>
+        <q-card-section>
+          <div class="text-h7 row">
+            <q-btn dense flat @click="dayEighteen = !dayEighteen">
+              Planuary. Day Eighteen.
+            </q-btn>
+            <q-space />
+
+            <q-btn
+              @click="dayEighteen = !dayEighteen"
+              v-if="!dayEighteen"
+              color="secondary"
+              padding="none"
+              class="no-margin no-padding"
+              flat
+              round
+              dense
+              icon="add"
+            />
+          </div>
+        </q-card-section>
+
+        <q-card-section v-if="dayEighteen">
+          <p>
+           What have you been avoiding? Go on, admit it. It really is okay. Procrastination in all its forms is something that so many of us find ourselves up againast 
+           on a fairly regular basis. Sometimes its because we lack motivation. Sometimes self doubt is slowing us down. Other times, the thing we're avoiding is something 
+           we very much <i>want</i> to do, but we're having trouble finding the time. For today's task, come up with a list of 3-5 tasks that you've been putting off, for 
+           whatever reason. Things you want to do. Things you should do. Just give some thought to the tasks you haven't gotten around to yet, but definitely will evenetually 
+           Someday.
+          </p>
+
+          <p><i>As always, these will remain private, and you can use or ignore the prompts as needed. </i></p>
+
+          <div class="text-h7 focus-boxes center">
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="What are you avoiding?"
+              outlined
+              v-model="avoidOne"
+            ></q-input>
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="Is there something you should be doing?"
+              outlined
+              v-model="avoidTwo"
+            ></q-input>
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="What are you procrastinating?"
+              outlined
+              v-model="avoidThree"
+            ></q-input>
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="Is there something new you'd like to learn?"
+              outlined
+              v-model="avoidFour"
+            ></q-input>
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="What about an appointment you keep putting off?"
+              outlined
+              v-model="avoidFive"
+            ></q-input>
+          </div>
+
+          <div class="center q-pa-md">
+            <q-btn
+              @click="setAvoid()"
+              class="q-pa-xs"
+              color="primary"
+              size="md"
+              label="Admit it!"
+            />
+          </div>
+
+          <br />
+        </q-card-section>
+      </q-card>
+    </div>   
     
     <q-dialog v-model="showAddTask">
       <add-task @close="showAddTask = false" />
@@ -1546,28 +1633,6 @@ export default {
       focus5: "",
       wish1: "",
 
-      options: [
-        {
-          label: ":D",
-          value: "great"
-        },
-        {
-          label: ":)",
-          value: "happy"
-        },
-        {
-          label: ":|",
-          value: "fine"
-        },
-        {
-          label: ":(",
-          value: "lousy"
-        },
-        {
-          label: ">:(",
-          value: "awful"
-        }
-      ],
       mood_1: null,
       goal1: "",
       goal2: "",
@@ -1615,6 +1680,11 @@ export default {
       letGo2: "",
       letGo3: "",
       superpower1: "",
+      avoid1: "",
+      avoid2: "",
+      avoid3: "",
+      avoid4: "",
+      avoid5: "",
       dayOne: false,
       dayTwo: false,
       dayThree: false,
@@ -2072,7 +2142,47 @@ export default {
       set(value) {
         this.superpower1 = value;
       }
-    },    
+    },  
+    avoidOne: {
+      get() {
+        return this.avoid1;
+      },
+      set(value) {
+        this.avoid1 = value;
+      }
+    },
+    avoidTwo: {
+      get() {
+        return this.avoid2;
+      },
+      set(value) {
+        this.avoid2 = value;
+      }
+    },
+    avoidThree: {
+      get() {
+        return this.avoid3;
+      },
+      set(value) {
+        this.avoid3 = value;
+      }
+    },
+    avoidFour: {
+      get() {
+        return this.avoid4;
+      },
+      set(value) {
+        this.avoid4 = value;
+      }
+    },
+    avoidFive: {
+      get() {
+        return this.avoid5;
+      },
+      set(value) {
+        this.avoid5 = value;
+      }
+    },  
     projectSearchField: {
       get() {
         return this.projectSearch;
@@ -2101,7 +2211,8 @@ export default {
       "addPractices",
       "addGratitude",
       "addLetGo",
-      "addSuperpower"
+      "addSuperpower",
+      "addAvoid"
     ]),
     ...mapActions("tasks", ["setProjectSearch"]),
     ...mapActions("community", ["addEncouragement"]),
@@ -2358,6 +2469,23 @@ export default {
         color: "primary"
       });
     },
+    setAvoid() {
+      let payload = {
+        type: "avoid",
+        avoidOne: this.avoidOne,
+        avoidTwo: this.avoidTwo,
+        avoidThree: this.avoidThree,
+        avoidFour: this.avoidFour,
+        avoidFive: this.avoidFive,
+        username: this.profile.username
+      };
+      this.addAvoid(payload);
+      this.daySeventeen = false;
+      this.$q.notify({
+        message: "You'll have to get to them someday!",
+        color: "primary"
+      });
+    },
     showDate(dayNumber) {
       if (dayNumber == 1) {
         this.dayOne = true;
@@ -2536,7 +2664,13 @@ export default {
     }
     if (this.planuary.superpower != undefined) {
       this.superpower = this.planuary.superpower.superpower1;
-
+    }
+    if (this.planuary.avoid != undefined) {
+      this.avoidOne = this.planuary.avoid.avoid1;
+      this.avoidTwo = this.planuary.avoid.avoid2;
+      this.avoidThree = this.planuary.avoid.avoid3;
+      this.avoidFour = this.planuary.avoid.avoid4;
+      this.avoidFive = this.planuary.avoid.avoid5;
     }
     var date = moment().date();
     this.showDate(date);

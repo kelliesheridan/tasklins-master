@@ -55,6 +55,9 @@ const mutations = {
   setSuperpower(state, superpower) {
     if (superpower != undefined) state.planuary.superpower = superpower;
   },
+  setAvoid(state, avoid) {
+    if (avoid != undefined) state.planuary.avoid = avoid;
+  },
   addWish(state, wishes) {
     Vue.set(state.planuary.wishes, wishes, wishes);
   },
@@ -211,6 +214,18 @@ const actions = {
     };
     dispatch("fbAddPlanuary", payload);
   },
+  addAvoid({ dispatch, commit }, avoid) {
+    let payload = {
+      type: "avoid",
+      username: avoid.username,
+      avoid1: avoid.avoid1,
+      avoid2: avoid.avoid2,
+      avoid3: avoid.avoid3,
+      avoid: avoid.avoid4,
+      avoid5: avoid.avoid5
+    };
+    dispatch("fbAddPlanuary", payload);
+  },
   fbAddPlanuary({ dispatch }, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let planuaryRef = firebaseDb.ref("planuary/" + payload.type + "/" + userId);
@@ -266,7 +281,10 @@ const actions = {
               break;     
           case "superpower":
                 commit("setSuperpower", planuary);
-                break;                   
+                break;    
+          case "avoid":
+                commit("setAvoid", planuary);
+                break;                       
         }
       },
       error => {
@@ -310,7 +328,10 @@ const actions = {
             break;     
         case "superpower":
                 commit("setSuperpower", planuary);
-                break;                   
+                break;   
+        case "avoid":
+                commit("setAvoid", planuary);
+                break;                          
       }
     });
 
@@ -353,7 +374,10 @@ const actions = {
           break;
         case "superpower":
             commit("setSuperpower", planuary);
-            break;                                 
+            break; 
+        case "avoid":
+              commit("setAvoid", planuary);
+              break;                                  
       }
     });
   },

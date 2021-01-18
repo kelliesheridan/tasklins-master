@@ -81,6 +81,7 @@ const actions = {
         dispatch("planuary/fbReadPlanuary", {type: "gratitude"}, { root: true });
         dispatch("planuary/fbReadPlanuary", {type: "letGo"}, { root: true });
         dispatch("planuary/fbReadPlanuary", {type: "superpower"}, { root: true });
+        dispatch("planuary/fbReadPlanuary", {type: "avoid"}, { root: true });
         dispatch("profile/fbReadAllMoods", null, { root: true });
         dispatch("community/fbReadLikes", null, { root: true });
         if (this.state.profile.profile.user.name !== "") {
