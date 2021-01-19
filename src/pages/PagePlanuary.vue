@@ -1608,6 +1608,62 @@
         </q-card-section>
       </q-card>
     </div>   
+
+    <div class="planuaryDay day-19">
+      <q-card>
+        <q-card-section>
+          <div class="text-h7 row">
+            <q-btn dense flat @click="dayNineteen = !dayNineteen">
+              Planuary. Day Nineteen.
+            </q-btn>
+            <q-space />
+
+            <q-btn
+              @click="dayNineteen = !dayNineteen"
+              v-if="!dayNineteen"
+              color="secondary"
+              padding="none"
+              class="no-margin no-padding"
+              flat
+              round
+              dense
+              icon="add"
+            />
+          </div>
+        </q-card-section>
+
+        <q-card-section v-if="dayNineteen">
+          <p>
+           The last couple of days we've talked a lot about some of the less fun things we have to deal with. But the whole point of Tasklins is to make the 
+           tasks you have to get done a little more, well, fun. So today, what we'd love to hear from you is how we can help <i>you</i> reach your goals. Are 
+           there any tools or features you'd especially like to see added to Tasklins? Or is there an organizational problem in your life that you aren't sure 
+           how to solve? Even if you aren't sure what the Tasklins-style answer will be, let us know what the problem is. So... how can we help?
+          </p>
+
+          <div class="text-h7 focus-boxes center">
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="How can we help?"
+              outlined
+              v-model="tasklinsHelp"
+            ></q-input>
+          </div>
+
+          <div class="center q-pa-md">
+            <q-btn
+              @click="setTasklinsHelp()"
+              class="q-pa-xs"
+              color="primary"
+              size="md"
+              label="Let Us Know!"
+            />
+          </div>
+
+          <br />
+        </q-card-section>
+      </q-card>
+    </div>   
     
     <q-dialog v-model="showAddTask">
       <add-task @close="showAddTask = false" />
@@ -1685,6 +1741,7 @@ export default {
       avoid3: "",
       avoid4: "",
       avoid5: "",
+      tasklinsHelp1: "",
       dayOne: false,
       dayTwo: false,
       dayThree: false,
@@ -2182,7 +2239,15 @@ export default {
       set(value) {
         this.avoid5 = value;
       }
-    },  
+    }, 
+    tasklinsHelp: {
+      get() {
+        return this.tasklinsHelp1;
+      },
+      set(value) {
+        this.tasklinsHelp1 = value;
+      }
+    },   
     projectSearchField: {
       get() {
         return this.projectSearch;
@@ -2212,7 +2277,8 @@ export default {
       "addGratitude",
       "addLetGo",
       "addSuperpower",
-      "addAvoid"
+      "addAvoid",
+      "addTasklinsHelp"
     ]),
     ...mapActions("tasks", ["setProjectSearch"]),
     ...mapActions("community", ["addEncouragement"]),
@@ -2486,6 +2552,19 @@ export default {
         color: "primary"
       });
     },
+    setTasklinsHelp() {
+      let payload = {
+        type: "tasklinsHelp",
+        tasklinsHelp: this.tasklinsHelp,
+        username: this.profile.username
+      };
+      this.addTasklinsHelp(payload);
+      this.dayEighteen = false;
+      this.$q.notify({
+        message: "We'll see what we can do!",
+        color: "primary"
+      });
+    },
     showDate(dayNumber) {
       if (dayNumber == 1) {
         this.dayOne = true;
@@ -2671,6 +2750,9 @@ export default {
       this.avoidThree = this.planuary.avoid.avoid3;
       this.avoidFour = this.planuary.avoid.avoid4;
       this.avoidFive = this.planuary.avoid.avoid5;
+    }
+    if (this.planuary.tasklinsHelp != undefined) {
+      this.tasklinsHelp = this.planuary.tasklinsHelp.tasklinsHelp1;
     }
     var date = moment().date();
     this.showDate(date);

@@ -58,6 +58,9 @@ const mutations = {
   setAvoid(state, avoid) {
     if (avoid != undefined) state.planuary.avoid = avoid;
   },
+  setTasklinsHelp(state, tasklinsHelp) {
+    if (tasklinsHelp != undefined) state.planuary.tasklinsHelp = tasklinsHelp;
+  },
   addWish(state, wishes) {
     Vue.set(state.planuary.wishes, wishes, wishes);
   },
@@ -226,6 +229,14 @@ const actions = {
     };
     dispatch("fbAddPlanuary", payload);
   },
+  addTasklinsHelp({ dispatch, commit }, tasklinsHelp) {
+    let payload = {
+      type: "tasklinsHelp",
+      username: tasklinsHelp.username,
+      tasklinsHelp1: tasklinsHelp.tasklinsHelp,
+    };
+    dispatch("fbAddPlanuary", payload);
+  },
   fbAddPlanuary({ dispatch }, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let planuaryRef = firebaseDb.ref("planuary/" + payload.type + "/" + userId);
@@ -284,7 +295,10 @@ const actions = {
                 break;    
           case "avoid":
                 commit("setAvoid", planuary);
-                break;                       
+                break;  
+          case "tasklinsHelp":
+                commit("setTasklinsHelp", planuary);
+                break;                        
         }
       },
       error => {
@@ -331,7 +345,10 @@ const actions = {
                 break;   
         case "avoid":
                 commit("setAvoid", planuary);
-                break;                          
+                break;
+        case "tasklinsHelp":
+                commit("setTasklinsHelp", planuary);
+                break;                               
       }
     });
 
@@ -377,7 +394,10 @@ const actions = {
             break; 
         case "avoid":
               commit("setAvoid", planuary);
-              break;                                  
+              break; 
+        case "tasklinsHelp":
+              commit("setTasklinsHelp", planuary);
+              break;                                            
       }
     });
   },
