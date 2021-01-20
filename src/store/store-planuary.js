@@ -61,6 +61,9 @@ const mutations = {
   setTasklinsHelp(state, tasklinsHelp) {
     if (tasklinsHelp != undefined) state.planuary.tasklinsHelp = tasklinsHelp;
   },
+  setReward(state, reward) {
+    if (reward != undefined) state.planuary.reward = reward;
+  },
   addWish(state, wishes) {
     Vue.set(state.planuary.wishes, wishes, wishes);
   },
@@ -237,6 +240,18 @@ const actions = {
     };
     dispatch("fbAddPlanuary", payload);
   },
+  addReward({ dispatch, commit }, reward) {
+    let payload = {
+      type: "reward",
+      username: reward.username,
+      reward1: reward.rewardOne,
+      reward2: reward.rewardTwo,
+      reward3: reward.rewardThree,
+      reward4: reward.rewardFour,
+      reward5: reward.rewardFive
+    };
+    dispatch("fbAddPlanuary", payload);
+  },
   fbAddPlanuary({ dispatch }, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let planuaryRef = firebaseDb.ref("planuary/" + payload.type + "/" + userId);
@@ -298,6 +313,9 @@ const actions = {
                 break;  
           case "tasklinsHelp":
                 commit("setTasklinsHelp", planuary);
+                break;   
+          case "reward":
+                commit("setReward", planuary);
                 break;                        
         }
       },
@@ -348,7 +366,10 @@ const actions = {
                 break;
         case "tasklinsHelp":
                 commit("setTasklinsHelp", planuary);
-                break;                               
+                break;       
+        case "reward":
+          commit("setReward", planuary);
+          break;                                        
       }
     });
 
@@ -397,7 +418,10 @@ const actions = {
               break; 
         case "tasklinsHelp":
               commit("setTasklinsHelp", planuary);
-              break;                                            
+              break; 
+        case "reward":
+          commit("setReward", planuary);
+          break;                                                         
       }
     });
   },

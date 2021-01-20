@@ -1664,6 +1664,100 @@
         </q-card-section>
       </q-card>
     </div>   
+
+    <div class="planuaryDay day-20">
+        <q-card>
+          <q-card-section>
+            <div class="text-h7 row">
+              <q-btn dense flat @click="dayTwenty = !dayTwenty">
+                Planuary. Day Twenty.
+              </q-btn>
+              <q-space />
+
+              <q-space />
+              <q-btn
+                @click="dayTwenty = !dayTwenty"
+                padding="none"
+                class="no-margin"
+                flat
+                color="secondary"
+                push
+                dense
+                icon="add"
+              />
+            </div>
+          </q-card-section>
+
+          <q-card-section v-if="dayTwenty">
+            <p>
+              Twenty days into the new year, and you've done great work! Seriously, you should be proud. No. Better. You should 
+              be rewarded! If you want to train your brain to keep making progress and reaching your goals, you need to treat yourself 
+               as much as you need to see progress. So, ;et's start brainstorming some of the ways you can do that. What are some of 
+               your favorite treats or activities? How do you like to unwind after a long day?
+            </p>
+            <p class="center q-pa-md" style="text-decoration: underline"> Ideas</p>   
+              <uL class="center q-pa-md" style="list-style-position: inside; list-style-type: none;">
+                <li>an episode of your favorite tv show</li>
+                <li>something you love to snack on</li>
+                <li>a long walk</li>
+                <li>a phone call with a friend </li>
+              </uL>
+            <p>
+              <i>Anything listed here will remain private and not be posted
+                elsewhere on the website. These are treats you don't have to share!</i>
+            </p>
+
+            <div>
+              <div class="text-h7 focus-boxes center">
+                <q-input
+                  class="q-pa-xs"
+                  rounded
+                  label="Reward One"
+                  outlined
+                  v-model="rewardOne"
+                ></q-input>
+                <q-input
+                  class="q-pa-xs"
+                  rounded
+                  label="Reward Two"
+                  outlined
+                  v-model="rewardTwo"
+                ></q-input>
+                <q-input
+                  class="q-pa-xs"
+                  rounded
+                  label="Reward Three"
+                  outlined
+                  v-model="rewardThree"
+                ></q-input>
+                <q-input
+                  class="q-pa-xs"
+                  rounded
+                  label="Reward Four"
+                  outlined
+                  v-model="rewardFour"
+                ></q-input>
+                <q-input
+                  class="q-pa-xs"
+                  rounded
+                  label="Reward Five"
+                  outlined
+                  v-model="rewardFive"
+                ></q-input>
+              </div>
+              <div class="center q-pa-md">
+                <q-btn
+                  @click="setReward()"
+                  class="q-pa-xs"
+                  color="primary"
+                  size="md"
+                  label="Go!"
+                />
+              </div>
+            </div>
+          </q-card-section>
+        </q-card>
+      </div>
     
     <q-dialog v-model="showAddTask">
       <add-task @close="showAddTask = false" />
@@ -1742,6 +1836,11 @@ export default {
       avoid4: "",
       avoid5: "",
       tasklinsHelp1: "",
+      reward1: "",
+      reward2: "",
+      reward3: "",
+      reward4: "",
+      reward5: "",
       dayOne: false,
       dayTwo: false,
       dayThree: false,
@@ -2248,6 +2347,46 @@ export default {
         this.tasklinsHelp1 = value;
       }
     },   
+    rewardOne: {
+      get() {
+        return this.reward1;
+      },
+      set(value) {
+        this.reward1 = value;
+      }
+    },
+    rewardTwo: {
+      get() {
+        return this.reward2;
+      },
+      set(value) {
+        this.reward2 = value;
+      }
+    },
+    rewardThree: {
+      get() {
+        return this.reward3;
+      },
+      set(value) {
+        this.reward3 = value;
+      }
+    },
+    rewardFour: {
+      get() {
+        return this.reward4;
+      },
+      set(value) {
+        this.reward4 = value;
+      }
+    },
+    rewardFive: {
+      get() {
+        return this.reward5;
+      },
+      set(value) {
+        this.reward5 = value;
+      }
+    },
     projectSearchField: {
       get() {
         return this.projectSearch;
@@ -2278,7 +2417,8 @@ export default {
       "addLetGo",
       "addSuperpower",
       "addAvoid",
-      "addTasklinsHelp"
+      "addTasklinsHelp",
+      "addReward"
     ]),
     ...mapActions("tasks", ["setProjectSearch"]),
     ...mapActions("community", ["addEncouragement"]),
@@ -2565,6 +2705,22 @@ export default {
         color: "primary"
       });
     },
+    setReward() {
+      let payload = {
+        rewardOne: this.rewardOne,
+        rewardTwo: this.rewardTwo,
+        rewardThree: this.rewardThree,
+        rewardFour: this.rewardFour,
+        rewardFive: this.rewardFive,
+        username: this.profile.username
+      };
+      this.addReward(payload);
+      this.dayTwenty = true;
+      this.$q.notify({
+        message: "You're worth it!",
+        color: "primary"
+      });
+    },
     showDate(dayNumber) {
       if (dayNumber == 1) {
         this.dayOne = true;
@@ -2753,6 +2909,13 @@ export default {
     }
     if (this.planuary.tasklinsHelp != undefined) {
       this.tasklinsHelp = this.planuary.tasklinsHelp.tasklinsHelp1;
+    }
+    if (this.planuary.reward != undefined) {
+      this.rewardOne = this.planuary.reward.reward1;
+      this.rewardTwo = this.planuary.reward.reward2;
+      this.rewardThree = this.planuary.reward.reward3;
+      this.rewardFour = this.planuary.reward.reward4;
+      this.rewardFive = this.planuary.reward.reward5;
     }
     var date = moment().date();
     this.showDate(date);
