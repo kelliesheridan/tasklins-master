@@ -20,12 +20,15 @@
         </p>
       </q-card-section>
 
-      <q-btn class="fixed-center-bottom"
+      <div class="center q-pt-sm">
+      <q-btn 
         padding
         color="secondary"
         :disable="this.projectCount > 0 || this.project.projectName == 'Tasks'"
         @click="submitDelete()"
         >Delete</q-btn>
+      </div>  
+      <br>
     </q-form>
   </q-card>
 </template>
