@@ -1758,6 +1758,66 @@
           </q-card-section>
         </q-card>
       </div>
+
+    <div class="planuaryDay day-21">
+      <q-card>
+        <q-card-section>
+          <div class="text-h7 row">
+            <q-btn dense flat @click="dayTwentyOne = !dayTwentyOne">
+              Planuary. Day Twenty-One.
+            </q-btn>
+            <q-space />
+
+            <q-btn
+              @click="dayTwentyOne = !dayTwentyOne"
+              v-if="!dayTwentyOne"
+              color="secondary"
+              padding="none"
+              class="no-margin no-padding"
+              flat
+              round
+              dense
+              icon="add"
+            />
+          </div>
+        </q-card-section>
+
+        <q-card-section v-if="dayTwentyOne">
+          <p>
+            Let's talk about how we organize all of the things we need to do. Here at Tasklins, we have Tasks and Projects. Projects are a way to organize the 
+            different things you need to get done. A project can be something small like a reorganizing your closet, where you want to break down a big job into 
+            much smaller jobs, or it can be a whole category of tasks. Chores, Work, Learning, Excercise... what projects you use depends entirely on what you 
+            want to accomplish.
+          </p>
+
+          <p>
+            For today's prompt, take some time to think about how you organize the projects in your life. For the things that don't fit into broader categories, you'll 
+            always have the default <i>Tasks</i> project. For everything else, organize as you see fit. We've also now added the ability to delete projects you no longer need 
+            via the projects page in your journal. You'll need to delete any uncompleted tasks still in that project, or move them to a different project before deleting, but 
+            after that you can organize to your heart's content. Happy planning!
+          </p>  
+
+
+          <div class="center">
+
+            <q-btn
+              class="q-mt-sm col"
+              padding
+              color="primary"
+              push
+              to="/journal"
+              >Check Your Journal
+            </q-btn>
+
+          </div>
+          <br />
+        </q-card-section>
+      </q-card>
+    </div>
+    
+    
+    
+    
     
     <q-dialog v-model="showAddTask">
       <add-task @close="showAddTask = false" />
