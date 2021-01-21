@@ -63,9 +63,7 @@ export default {
     },
     setProjectCount() {
       if (this.project.projectName) {
-        var count = Object.values(this.$store.state.tasks.tasks).filter(
-          x => x.project == this.project.projectName
-        ).length;
+        var count = Object.values(this.$store.state.tasks.tasks).filter(x => x.project == this.project.projectName && !x.completed).length;
         this.projectCount = count;
       }
     }
