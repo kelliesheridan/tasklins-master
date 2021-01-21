@@ -77,6 +77,43 @@
       </q-card>
     </div>
 
+    <div class="planuaryDay">
+      <q-card>
+        <q-card-section>
+          <div class="text-h7 row">
+            <q-btn dense flat @click="weekThree = !weekThree">
+              Planuary. Week Three.
+            </q-btn>
+
+            <q-space />
+            <q-btn
+              @click="weekThree = !weekThree"
+              v-if="!weekThree"
+              padding="none"
+              class="no-margin"
+              flat
+              color="secondary"
+              push
+              dense
+              icon="keyboard_arrow_down"
+            />
+
+            <q-btn
+              @click="weekThree = !weekThree"
+              v-if="weekThree"
+              padding="none"
+              class="no-margin"
+              flat
+              color="secondary"
+              push
+              dense
+              icon="keyboard_arrow_up"
+            />
+          </div>
+        </q-card-section>
+      </q-card>
+    </div>
+
     <div v-if="weekOne">
       <div class="planuaryDay day-1">
         <q-card>
@@ -743,1077 +780,1167 @@
     </div>
 
     <div v-if="weekTwo">
-    <div class="planuaryDay day-8">
-      <q-card>
-        <q-card-section>
-          <div class="text-h7 row">
-            <q-btn dense flat @click="dayEight = !dayEight">
-              Planuary. Day Eight.
-            </q-btn>
-            <q-space />
-
-            <q-btn
-              @click="dayEight = !dayEight"
-              v-if="!dayEight"
-              color="secondary"
-              padding="none"
-              class="no-margin no-padding"
-              flat
-              round
-              dense
-              icon="add"
-            />
-          </div>
-        </q-card-section>
-
-        <q-card-section v-if="dayEight">
-          <p>
-            We made it through the first week of 2021! We're one one step closer
-            to reaching out goals, but in order to give ourselves the best
-            chance we can of success, we can't only focus on moving forward.
-            It's important to also take a moment to pause and reflect on what
-            we've already done. What went well? Where did we struggle? What can
-            we learn from?
-          </p>
-
-          <p>
-            You can head over to the journal page to check
-            out some new tracking features. You can see get an overview not only
-            on what you got finished, but how you were feeling. For today's prompts, we've also
-            included some bonus questions below in order to give ourselves time
-            to think about how we feel things went this first week, and what we
-            might want to change in the future. Plus, having memories to look
-            back on later might be fun!
-          </p>
-
-          <p>
-            <i>Anything listed here will remain private and not be posted elsewhere on the website.</i>
-          </p>
-
-          <div class="text-h7 focus-boxes center">
-            <q-input
-              class="q-pa-xs"
-              rounded
-              label="What went well this week?"
-              outlined
-              v-model="weekOneWin"
-            ></q-input>
-            <q-input
-              class="q-pa-xs"
-              rounded
-              label="What did you struggle with?"
-              outlined
-              v-model="weekOneStruggle"
-            ></q-input>
-            <q-input
-              class="q-pa-xs"
-              rounded
-              label="What do you want to remember?"
-              outlined
-              v-model="weekOneMemory"
-            ></q-input>
-          </div>
-
-          <div class="center q-pa-md">
-            <q-btn
-              @click="setWeekOne()"
-              class="q-pa-xs"
-              color="primary"
-              size="md"
-              label="On to week two!"
-            />
-          </div>
-        </q-card-section>
-      </q-card>
-    </div>
-
-    <div class="planuaryDay day-9">
-      <q-card>
-        <q-card-section>
-          <div class="text-h7 row">
-            <q-btn dense flat @click="dayNine = !dayNine">
-              Planuary. Day Nine.
-            </q-btn>
-            <q-space />
-
-            <q-btn
-              @click="dayNine = !dayNine"
-              v-if="!dayNine"
-              color="secondary"
-              padding="none"
-              class="no-margin no-padding"
-              flat
-              round
-              dense
-              icon="add"
-            />
-          </div>
-        </q-card-section>
-
-        <q-card-section v-if="dayNine">
-          <p>
-            Today, we're talking about slowing down. It can be tempting to add
-            every task that needs to be done right to the top of your to do
-            list, especially if you're worried you won't remember. But it can be
-            all too easy to get overwhelmed by too easily throwing our plan for
-            the day aside. So instead of giving you any prompts for day nine,
-            instead we're introducing a new feature, the tomorrow button. Now,
-            when you go to add a new task, there's a button to add it to
-            tomorrow's list as easily as today's (and of course, you can always
-            still add a due date for any point in the future).
-          </p>
-
-          <p>
-            Your homework for the day is to look at the list of tasks that's due
-            today on the home page, and consider if you're putting too much on
-            your plate. Are there tasks that can wait? Or overdue tasks that can
-            be finished later than you initially thought? Finishing a task late
-            on tasklins (or post-poning it) does effect the amount of experience
-            points your Tasklin will earn, but you can always change the due
-            date without any penalty. So be honest with yourself, try to set
-            realistic expecations, and remember that the only way we can
-            accomplish anything long-term is by being kind to ourselves. Set big
-            goals, but remember you don't have to get them done all at once!
-          </p>
-
-          <div class="center">
-            <q-btn
-              @click="showAddTask = true"
-              class="add-task-btn textureBar"
-              round
-              text-color="accent"
-              size="18px"
-              icon="add"
-            >
-              <q-tooltip content-class="bg-primary">Add New Task</q-tooltip>
-            </q-btn>
-          </div>
-          <br />
-        </q-card-section>
-      </q-card>
-    </div>
-
-    <div class="planuaryDay day-10">
-      <q-card>
-        <q-card-section>
-          <div class="text-h7 row">
-            <q-btn dense flat @click="dayTen = !dayTen">
-              Planuary. Day Ten.
-            </q-btn>
-            <q-space />
-
-            <q-btn
-              @click="dayTen = !dayTen"
-              v-if="!dayTen"
-              color="secondary"
-              padding="none"
-              class="no-margin no-padding"
-              flat
-              round
-              dense
-              icon="add"
-            />
-          </div>
-        </q-card-section>
-
-        <q-card-section v-if="dayTen">
-          <p>
-            Back to our goals and the year ahead! We've already talked a little
-            about our focuses for the year and some of the goals we want to work
-            toward in 2021, but it's time to start breaking things down. There
-            are four quarters in the year, each made up of three months. And
-            it's a lot easier to look three months ahead than twelve. For now,
-            let's focus on setting some overall goal posts for ourselves to
-            guide the rest of the year by coming up with one main goal for each
-            quarter to help guide the way to where we'd like to be by the
-            beginning of 2022.
-          </p>
-
-          <div class="row center">
-            <div class="col">
-              <h4>Goals</h4>
-              <div>{{ this.planuary.goals.goal1 }}</div>
-              <div>{{ this.planuary.goals.goal2 }}</div>
-              <div>{{ this.planuary.goals.goal3 }}</div>
-              <div>{{ this.planuary.goals.goal4 }}</div>
-              <div>{{ this.planuary.goals.goal5 }}</div>
-            </div>
-            <div class="col">
-              <h4>Focuses</h4>
-              <div>{{ this.planuary.focus.focus1 }}</div>
-              <div>{{ this.planuary.focus.focus2 }}</div>
-              <div>{{ this.planuary.focus.focus3 }}</div>
-              <div>{{ this.planuary.focus.focus4 }}</div>
-              <div>{{ this.planuary.focus.focus5 }}</div>
-            </div>
-          </div>
-
-          <div>
-            <p>
-            <i>Anything listed here will remain private and not be posted elsewhere on the website.</i>
-          </p>
-          </div>
-
-          <div class="text-h7 focus-boxes center">
-            <q-input
-              class="q-pa-xs"
-              rounded
-              label="Where would you like to be by March 31st?"
-              outlined
-              v-model="quarterOneMilestone"
-            ></q-input>
-            <q-input
-              class="q-pa-xs"
-              rounded
-              label="Where would you like to be by June 30th?"
-              outlined
-              v-model="quarterTwoMilestone"
-            ></q-input>
-            <q-input
-              class="q-pa-xs"
-              rounded
-              label="Where would you like to be by September 30th?"
-              outlined
-              v-model="quarterThreeMilestone"
-            ></q-input>
-            <q-input
-              class="q-pa-xs"
-              rounded
-              label="Where would you like to be by December 31st?"
-              outlined
-              v-model="quarterFourMilestone"
-            ></q-input>
-          </div>
-          <br />
-
-          <div>
-            <p>
-              We'll revisit your quarterly goals throughout the year in order to
-              see how we're progressing, but if you have the time, we recommend
-              breaking down those milestones even further by turning them into
-              tasks. Have a look at your focus and goal lists above and see if
-              you can come up with a quarterly goal for each of them (some may
-              overlap, that's okay!) and create tasks to go along with those
-              goals, so if you're feeling stuck later, we can always look back
-              on these goals as a road map for the rest of the year.
-            </p>
-          </div>
-
-            <div class="center q-pa-md">
-            <q-btn
-              @click="setQuarterlyGoals()"
-              class="q-pa-xs"
-              color="primary"
-              size="md"
-              label="Set Quarterly Goals!"
-            />
-          </div>
-          <br />
-        </q-card-section>
-      </q-card>
-    </div>
-
-    <div class="planuaryDay day-11">
-      <q-card>
-        <q-card-section>
-          <div class="text-h7 row">
-            <q-btn dense flat @click="dayEleven = !dayEleven">
-              Planuary. Day Eleven.
-            </q-btn>
-            <q-space />
-
-            <q-btn
-              @click="dayEleven = !dayEleven"
-              v-if="!dayEleven"
-              color="secondary"
-              padding="none"
-              class="no-margin no-padding"
-              flat
-              round
-              dense
-              icon="add"
-            />
-          </div>
-        </q-card-section>
-
-        <q-card-section v-if="dayEleven">
-          <p>
-            We never stop learning and growing as people, and as a result not
-            every goal has a clear cut finish line. For example, we can never be
-            finished learning to code or getting better at an art form. We'll
-            also never finish reading every book, or listening to every podcast
-            on a topic we're interested in. So today, let's take a few minutes
-            to think about some of the things we want to make more time for in
-            2021.
-          </p>
-
-          <p>
-            <i>Anything listed here will remain private and not be posted elsewhere on the website.</i>
-          </p>
-
-          <div class="text-h7 focus-boxes center">
-            <q-input
-              class="q-pa-xs"
-              rounded
-              label="Practice One"
-              outlined
-              v-model="practiceOne"
-            ></q-input>
-            <q-input
-              class="q-pa-xs"
-              rounded
-              label="Practice Two"
-              outlined
-              v-model="practiceTwo"
-            ></q-input>
-            <q-input
-              class="q-pa-xs"
-              rounded
-              label="Practice Three"
-              outlined
-              v-model="practiceThree"
-            ></q-input>
-          </div>
-            <div class="center q-pa-md">
-            <q-btn
-              @click="setPractices()"
-              class="q-pa-xs"
-              color="primary"
-              size="md"
-              label="Set Practices!"
-            />
-          </div>
-          <br />
-        </q-card-section>
-      </q-card>
-    </div>
-
-    <div class="planuaryDay day-12">
-      <q-card>
-        <q-card-section>
-          <div class="text-h7 row">
-            <q-btn dense flat @click="dayTwelve = !dayTwelve">
-              Planuary. Day Twelve.
-            </q-btn>
-            <q-space />
-
-            <q-btn
-              @click="dayTwelve = !dayTwelve"
-              v-if="!dayTwelve"
-              color="secondary"
-              padding="none"
-              class="no-margin no-padding"
-              flat
-              round
-              dense
-              icon="add"
-            />
-          </div>
-        </q-card-section>
-
-        <q-card-section v-if="dayTwelve">
-          <p>
-            We never stop learning and growing as people, and as a result not
-            every goal has a clear cut finish line. For example, we can never be
-            finished learning to code or getting better at an art form. We'll
-            also never finish reading every book, or listening to every podcast
-            on a topic we're interested in. So today, let's take a few minutes
-            to think about some of the things we want to make more time for in
-            2021.
-          </p>
-
-          <p>
-            <i>Anything listed here will remain private and not be posted elsewhere on the website.</i>
-          </p>
-
-          <div class="text-h7 focus-boxes center">
-            <q-input
-              class="q-pa-xs"
-              rounded
-              label="What are you grateful for?"
-              outlined
-              v-model="gratitudeOne"
-            ></q-input>
-            <q-input
-              class="q-pa-xs"
-              rounded
-              label="What are you grateful for?"
-              outlined
-              v-model="gratitudeTwo"
-            ></q-input>
-            <q-input
-              class="q-pa-xs"
-              rounded
-              label="What are you grateful for?"
-              outlined
-              v-model="gratitudeThree"
-            ></q-input>
-            <q-input
-              class="q-pa-xs"
-              rounded
-              label="What are you grateful for?"
-              outlined
-              v-model="gratitudeFour"
-            ></q-input>
-            <q-input
-              class="q-pa-xs"
-              rounded
-              label="What are you grateful for?"
-              outlined
-              v-model="gratitudeFive"
-            ></q-input>
-          </div>
-
-          <div class="center q-pa-md">
-            <q-btn
-              @click="setGratitude()"
-              class="q-pa-xs"
-              color="primary"
-              size="md"
-              label="Send a little gratitude"
-            />
-          </div>
-          <br />
-        </q-card-section>
-      </q-card>
-    </div>
-    
-    <div class="planuaryDay day-13">
-      <q-card>
-        <q-card-section>
-          <div class="text-h7 row">
-            <q-btn dense flat @click="dayThirteen = !dayThirteen">
-              Planuary. Day Thirteen.
-            </q-btn>
-            <q-space />
-
-            <q-btn
-              @click="dayThirteen = !dayThirteen"
-              v-if="!dayThirteen"
-              color="secondary"
-              padding="none"
-              class="no-margin no-padding"
-              flat
-              round
-              dense
-              icon="add"
-            />
-          </div>
-        </q-card-section>
-
-        <q-card-section v-if="dayThirteen">
-          <p>
-            Whatever goals you've set so far, however you imagine your year going, it's important to remember that you're not in this alone. Whether we're talking about your friends or family, or the community that we're building here on Tasklins, we're all in this together.
-          </p>
-
-          <p>
-            So today's prompt has less to do with making more plans, and everything to do with sharing those plans with other people for both accountability and encouragement. By sharing your goals, you can not only make them more real, but also add an extra dash of accountability 
-            when you know there's someone else out there who will know whether you reach your goal. And of course, don't forget to encourage and support anyone who chooses to share their own goals with you.
-          </p>
-
-          <p>
-            We're also so excited to announce a new area of the website to help us build our communities and support one another in the future... our community page! It's still a work in progress, but consider this a corner of the internet you can turn to to share what you're working 
-            on, what you're proud of, a new project, or something your struggling with as you finish your tasks and work towards your goals. Admittedly, the functionality is still fairly limited, but <i>our goal</i> is to continue to build on this, adding features like friends, the 
-            ability to reply to certain posts or like someone else's post, and more.
-          </p>
-
-          <div class="text-h7 focus-boxes center">
-            <q-btn
-                class="q-mt-sm col"
-                padding
-                color="primary"
-                push
-                to="/community"
-                >Check Out the New Community Page</q-btn
-              >
-          </div>
-          <br />
-        </q-card-section>
-      </q-card>
-    </div>
-
-    <div class="planuaryDay day-14">
-      <q-card>
-        <q-card-section>
-          <div class="text-h7 row">
-            <q-btn dense flat @click="dayFourteen = !dayFourteen">
-              Planuary. Day Fourteen.
-            </q-btn>
-            <q-space />
-
-            <q-btn
-              @click="dayFourteen = !dayFourteen"
-              v-if="!dayFourteen"
-              color="secondary"
-              padding="none"
-              class="no-margin no-padding"
-              flat
-              round
-              dense
-              icon="add"
-            />
-          </div>
-        </q-card-section>
-
-        <q-card-section v-if="dayFourteen">
-          <p>
-           2020 ended two weeks ago now, but for so many of us it's next to impossible to fully move into a new year and embrace the future. And while it's
-           important to remember where we came from and the lessons we learned, there are also things we need to work to leave in the past. Is there something 
-           you've been holding on to that you need to let go of? Is there a memory you want to put in the past? A part of yourself your trying to move on from?
-          </p>
-
-          <p>
-            Today, your job is to give some thought to three things you want to let go of. You can interpret this in whatever way makes the most sense for you and
-            your own goals.
-          </p>
-
-          <p>
-            <i>Anything listed here will remain private and not be posted elsewhere on the website.</i>
-          </p>
-
-          <div class="text-h7 focus-boxes center">
-            <q-input
-              class="q-pa-xs"
-              rounded
-              label="What are you trying to let go of?"
-              outlined
-              v-model="letGoOne"
-            ></q-input>
-            <q-input
-              class="q-pa-xs"
-              rounded
-              label="What are you trying to let go of?"
-              outlined
-              v-model="letGoTwo"
-            ></q-input>
-            <q-input
-              class="q-pa-xs"
-              rounded
-              label="What are you trying to let go of?"
-              outlined
-              v-model="letGoThree"
-            ></q-input>
-          </div>
-
-          <div class="center q-pa-md">
-            <q-btn
-              @click="setLetGo()"
-              class="q-pa-xs"
-              color="primary"
-              size="md"
-              label="Let it go... Let it go..."
-            />
-          </div>
-          <br />
-        </q-card-section>
-      </q-card>
-    </div>
-    </div>
-
-    <div class="planuaryDay day-15">
-      <q-card>
-        <q-card-section>
-          <div class="text-h7 row">
-            <q-btn dense flat @click="dayFifteen = !dayFifteen">
-              Planuary. Day Fifteen.
-            </q-btn>
-            <q-space />
-
-            <q-btn
-              @click="dayFifteen = !dayFifteen"
-              v-if="!dayFifteen"
-              color="secondary"
-              padding="none"
-              class="no-margin no-padding"
-              flat
-              round
-              dense
-              icon="add"
-            />
-          </div>
-        </q-card-section>
-
-        <q-card-section v-if="dayFifteen">
-          <p>
-            Another week has come and gone and it's time to reflect.
-          </p>
-
-          <div class="text-h7 focus-boxes center">
-            <q-input
-              class="q-pa-xs"
-              rounded
-              label="What went well this week?"
-              outlined
-              v-model="weekTwoWin"
-            ></q-input>
-            <q-input
-              class="q-pa-xs"
-              rounded
-              label="What did you struggle with?"
-              outlined
-              v-model="weekTwoStruggle"
-            ></q-input>
-            <q-input
-              class="q-pa-xs"
-              rounded
-              label="What do you want to remember?"
-              outlined
-              v-model="weekTwoMemory"
-            ></q-input>
-          </div>
-
-          <div class="center q-pa-md">
-            <q-btn
-              @click="setWeekTwo()"
-              class="q-pa-xs"
-              color="primary"
-              size="md"
-              label="On to week three!"
-            />
-          </div>
-
-          <div class="center">
-
-            <p>
-              We also wanted to take today to share of some of our goal for Tasklins with all of you. 
-            </p>
-
-            <q-btn
-              class="q-mt-sm col"
-              padding
-              color="primary"
-              push
-              to="/roadmap"
-              >Where We're Headed
-            </q-btn>
-
-          </div>
-          <br />
-        </q-card-section>
-      </q-card>
-    </div>
-
-    <div class="planuaryDay day-16">
-      <q-card>
-        <q-card-section>
-          <div class="text-h7 row">
-            <q-btn dense flat @click="daySixteen = !daySixteen">
-              Planuary. Day Sixteen.
-            </q-btn>
-            <q-space />
-
-            <q-btn
-              @click="daySixteen = !daySixteen"
-              v-if="!daySixteen"
-              color="secondary"
-              padding="none"
-              class="no-margin no-padding"
-              flat
-              round
-              dense
-              icon="add"
-            />
-          </div>
-        </q-card-section>
-
-        <q-card-section v-if="daySixteen">
-          <p>
-           We've spent a lot of time thinking about what we've done and what we want to do, creating lists and making wishes. Today, we're going to take some time to 
-           think about the one thing that drives ALL of this. You! Who you are, and what makes you capable of taking on all of the challenges you set for yourself (and 
-           the ones the world sets for you, whether you asked it to or not). While we all have areas where we'd like to improve, it's so important to remember that we 
-           also all have things we're fantastic at. Incredible. Super. We all have our superpowers, and today, I want you to figure out yours. Not a whole list, just one 
-           thing, skill, personality trait, or whatever else, that you absolutely rock at.
-          </p>
-
-          <p>
-            So what's your superpower? What's that thing you not only do well but love doing? This can be your sense of humour, the way you solve problems, a special meal 
-            that you can cook better than anyone else you know? You don't need super strength or telekenesis to be a superhero, and your superpower doesn't need to be something 
-            you can build a career around or even something that society thinks is especially useful. In a lot of cases, this could be something that fuels you and brings you joy,
-            or something that helps boost your confidence because you know it's one of your biggest strengths. So, give it some thought, and write down your power.
-          </p>
-
-          <p>
-            <i>Anything listed here will remain private and not be posted elsewhere on the website.</i>
-          </p>
-
-          <div class="text-h7 focus-boxes center">
-            <q-input
-              class="q-pa-xs"
-              rounded
-              label="What's your superpower?"
-              outlined
-              v-model="superpower1"
-            ></q-input>
-          </div>
-
-          <div class="center q-pa-md">
-            <q-btn
-              @click="setSuperpower()"
-              class="q-pa-xs"
-              color="primary"
-              size="md"
-              label="Share Your Power"
-            />
-          </div>
-          <br />
-        </q-card-section>
-      </q-card>
-    </div>
-
-    <div class="planuaryDay day-17">
-      <q-card>
-        <q-card-section>
-          <div class="text-h7 row">
-            <q-btn dense flat @click="daySeventeen = !daySeventeen">
-              Planuary. Day Seventeen.
-            </q-btn>
-            <q-space />
-
-            <q-btn
-              @click="daySeventeen = !daySeventeen"
-              v-if="!daySeventeen"
-              color="secondary"
-              padding="none"
-              class="no-margin no-padding"
-              flat
-              round
-              dense
-              icon="add"
-            />
-          </div>
-        </q-card-section>
-
-        <q-card-section v-if="daySeventeen">
-          <p>
-           Today we're looking at a type of tasks that so many of us dread (even if we do feel pretty great after we've finished them). Chores. Ugh. From wiping down the counter to deep 
-           cleaning the bathroom, there's a seemingly endless list of things we need to do to keep our living space looking and feeling its best... which can go a long way toward helping 
-           us feel productive in other areas of our life.
-          </p>
-
-          <p>
-            Sometimes, remembering what we need to do and when can be a big part of the battle. So for today's challenge, take a few minutes to think of us many chores (they don't all have to 
-            be of the cleaning variety) that you need to do on a regular basis, and create new tasks for them. You can use the repeating features so that once you finish a chore and check it off 
-            here on Tasklins, it will automatically create a new task for you for the next time that task needs to be done.
-          </p>
-
-          <div class="q-pa-lg">
-            <ul>
-              <li>This can be something like taking out the trash that needs to happen on a specific day of the week (use the first repeating button and select the days of the week you need).</li>
-              <li>Or something like cleaning the fridge that you want to do every set number of days (use the second repeating button and set a due date for the next time you'd like to do it, and then how many days before you'll need to do it again</li>
-              <li>Or you can try out our newest repeating option, monthly, for something like paying the bills that needs to happen on a certain day of every month. The task will repeat monthly based on the due date you set the first time.</li>  
-            </ul>
-          </div>
-
-          <div class="center">
-            <q-btn
-              @click="showAddTask = true"
-              class="add-task-btn textureBar"
-              round
-              text-color="accent"
-              size="18px"
-              icon="add"
-            >
-              <q-tooltip content-class="bg-primary">Add New Task</q-tooltip>
-            </q-btn>
-          </div>
-
-          <br />
-        </q-card-section>
-      </q-card>
-    </div> 
-
-    <div class="planuaryDay day-18">
-      <q-card>
-        <q-card-section>
-          <div class="text-h7 row">
-            <q-btn dense flat @click="dayEighteen = !dayEighteen">
-              Planuary. Day Eighteen.
-            </q-btn>
-            <q-space />
-
-            <q-btn
-              @click="dayEighteen = !dayEighteen"
-              v-if="!dayEighteen"
-              color="secondary"
-              padding="none"
-              class="no-margin no-padding"
-              flat
-              round
-              dense
-              icon="add"
-            />
-          </div>
-        </q-card-section>
-
-        <q-card-section v-if="dayEighteen">
-          <p>
-           What have you been avoiding? Go on, admit it. It really is okay. Procrastination in all its forms is something that so many of us find ourselves up againast 
-           on a fairly regular basis. Sometimes its because we lack motivation. Sometimes self doubt is slowing us down. Other times, the thing we're avoiding is something 
-           we very much <i>want</i> to do, but we're having trouble finding the time. For today's task, come up with a list of 3-5 tasks that you've been putting off, for 
-           whatever reason. Things you want to do. Things you should do. Just give some thought to the tasks you haven't gotten around to yet, but definitely will evenetually 
-           Someday.
-          </p>
-
-          <p><i>As always, these will remain private, and you can use or ignore the prompts as needed. </i></p>
-
-          <div class="text-h7 focus-boxes center">
-            <q-input
-              class="q-pa-xs"
-              rounded
-              label="What are you avoiding?"
-              outlined
-              v-model="avoidOne"
-            ></q-input>
-            <q-input
-              class="q-pa-xs"
-              rounded
-              label="Is there something you should be doing?"
-              outlined
-              v-model="avoidTwo"
-            ></q-input>
-            <q-input
-              class="q-pa-xs"
-              rounded
-              label="What are you procrastinating?"
-              outlined
-              v-model="avoidThree"
-            ></q-input>
-            <q-input
-              class="q-pa-xs"
-              rounded
-              label="Is there something new you'd like to learn?"
-              outlined
-              v-model="avoidFour"
-            ></q-input>
-            <q-input
-              class="q-pa-xs"
-              rounded
-              label="What about an appointment you keep putting off?"
-              outlined
-              v-model="avoidFive"
-            ></q-input>
-          </div>
-
-          <div class="center q-pa-md">
-            <q-btn
-              @click="setAvoid()"
-              class="q-pa-xs"
-              color="primary"
-              size="md"
-              label="Admit it!"
-            />
-          </div>
-
-          <br />
-        </q-card-section>
-      </q-card>
-    </div>   
-
-    <div class="planuaryDay day-19">
-      <q-card>
-        <q-card-section>
-          <div class="text-h7 row">
-            <q-btn dense flat @click="dayNineteen = !dayNineteen">
-              Planuary. Day Nineteen.
-            </q-btn>
-            <q-space />
-
-            <q-btn
-              @click="dayNineteen = !dayNineteen"
-              v-if="!dayNineteen"
-              color="secondary"
-              padding="none"
-              class="no-margin no-padding"
-              flat
-              round
-              dense
-              icon="add"
-            />
-          </div>
-        </q-card-section>
-
-        <q-card-section v-if="dayNineteen">
-          <p>
-           The last couple of days we've talked a lot about some of the less fun things we have to deal with. But the whole point of Tasklins is to make the 
-           tasks you have to get done a little more, well, fun. So today, what we'd love to hear from you is how we can help <i>you</i> reach your goals. Are 
-           there any tools or features you'd especially like to see added to Tasklins? Or is there an organizational problem in your life that you aren't sure 
-           how to solve? Even if you aren't sure what the Tasklins-style answer will be, let us know what the problem is. So... how can we help?
-          </p>
-
-          <div class="text-h7 focus-boxes center">
-            <q-input
-              class="q-pa-xs"
-              rounded
-              label="How can we help?"
-              outlined
-              v-model="tasklinsHelp"
-            ></q-input>
-          </div>
-
-          <div class="center q-pa-md">
-            <q-btn
-              @click="setTasklinsHelp()"
-              class="q-pa-xs"
-              color="primary"
-              size="md"
-              label="Let Us Know!"
-            />
-          </div>
-
-          <br />
-        </q-card-section>
-      </q-card>
-    </div>   
-
-    <div class="planuaryDay day-20">
+      <div class="planuaryDay day-8">
         <q-card>
           <q-card-section>
             <div class="text-h7 row">
-              <q-btn dense flat @click="dayTwenty = !dayTwenty">
-                Planuary. Day Twenty.
+              <q-btn dense flat @click="dayEight = !dayEight">
+                Planuary. Day Eight.
               </q-btn>
               <q-space />
 
-              <q-space />
               <q-btn
-                @click="dayTwenty = !dayTwenty"
-                padding="none"
-                class="no-margin"
-                flat
+                @click="dayEight = !dayEight"
+                v-if="!dayEight"
                 color="secondary"
-                push
+                padding="none"
+                class="no-margin no-padding"
+                flat
+                round
                 dense
                 icon="add"
               />
             </div>
           </q-card-section>
 
-          <q-card-section v-if="dayTwenty">
+          <q-card-section v-if="dayEight">
             <p>
-              Twenty days into the new year, and you've done great work! Seriously, you should be proud. No. Better. You should 
-              be rewarded! If you want to train your brain to keep making progress and reaching your goals, you need to treat yourself 
-               as much as you need to see progress. So, ;et's start brainstorming some of the ways you can do that. What are some of 
-               your favorite treats or activities? How do you like to unwind after a long day?
-            </p>
-            <p class="center q-pa-md" style="text-decoration: underline"> Ideas</p>   
-              <uL class="center q-pa-md" style="list-style-position: inside; list-style-type: none;">
-                <li>an episode of your favorite tv show</li>
-                <li>something you love to snack on</li>
-                <li>a long walk</li>
-                <li>a phone call with a friend </li>
-              </uL>
-            <p>
-              <i>Anything listed here will remain private and not be posted
-                elsewhere on the website. These are treats you don't have to share!</i>
+              We made it through the first week of 2021! We're one one step closer
+              to reaching out goals, but in order to give ourselves the best
+              chance we can of success, we can't only focus on moving forward.
+              It's important to also take a moment to pause and reflect on what
+              we've already done. What went well? Where did we struggle? What can
+              we learn from?
             </p>
 
-            <div>
-              <div class="text-h7 focus-boxes center">
-                <q-input
-                  class="q-pa-xs"
-                  rounded
-                  label="Reward One"
-                  outlined
-                  v-model="rewardOne"
-                ></q-input>
-                <q-input
-                  class="q-pa-xs"
-                  rounded
-                  label="Reward Two"
-                  outlined
-                  v-model="rewardTwo"
-                ></q-input>
-                <q-input
-                  class="q-pa-xs"
-                  rounded
-                  label="Reward Three"
-                  outlined
-                  v-model="rewardThree"
-                ></q-input>
-                <q-input
-                  class="q-pa-xs"
-                  rounded
-                  label="Reward Four"
-                  outlined
-                  v-model="rewardFour"
-                ></q-input>
-                <q-input
-                  class="q-pa-xs"
-                  rounded
-                  label="Reward Five"
-                  outlined
-                  v-model="rewardFive"
-                ></q-input>
-              </div>
-              <div class="center q-pa-md">
-                <q-btn
-                  @click="setReward()"
-                  class="q-pa-xs"
-                  color="primary"
-                  size="md"
-                  label="Go!"
-                />
-              </div>
+            <p>
+              You can head over to the journal page to check
+              out some new tracking features. You can see get an overview not only
+              on what you got finished, but how you were feeling. For today's prompts, we've also
+              included some bonus questions below in order to give ourselves time
+              to think about how we feel things went this first week, and what we
+              might want to change in the future. Plus, having memories to look
+              back on later might be fun!
+            </p>
+
+            <p>
+              <i>Anything listed here will remain private and not be posted elsewhere on the website.</i>
+            </p>
+
+            <div class="text-h7 focus-boxes center">
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="What went well this week?"
+                outlined
+                v-model="weekOneWin"
+              ></q-input>
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="What did you struggle with?"
+                outlined
+                v-model="weekOneStruggle"
+              ></q-input>
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="What do you want to remember?"
+                outlined
+                v-model="weekOneMemory"
+              ></q-input>
+            </div>
+
+            <div class="center q-pa-md">
+              <q-btn
+                @click="setWeekOne()"
+                class="q-pa-xs"
+                color="primary"
+                size="md"
+                label="On to week two!"
+              />
             </div>
           </q-card-section>
         </q-card>
       </div>
 
-    <div class="planuaryDay day-21">
-      <q-card>
-        <q-card-section>
-          <div class="text-h7 row">
-            <q-btn dense flat @click="dayTwentyOne = !dayTwentyOne">
-              Planuary. Day Twenty-One.
-            </q-btn>
-            <q-space />
+      <div class="planuaryDay day-9">
+        <q-card>
+          <q-card-section>
+            <div class="text-h7 row">
+              <q-btn dense flat @click="dayNine = !dayNine">
+                Planuary. Day Nine.
+              </q-btn>
+              <q-space />
 
-            <q-btn
-              @click="dayTwentyOne = !dayTwentyOne"
-              v-if="!dayTwentyOne"
-              color="secondary"
-              padding="none"
-              class="no-margin no-padding"
-              flat
-              round
-              dense
-              icon="add"
-            />
-          </div>
-        </q-card-section>
+              <q-btn
+                @click="dayNine = !dayNine"
+                v-if="!dayNine"
+                color="secondary"
+                padding="none"
+                class="no-margin no-padding"
+                flat
+                round
+                dense
+                icon="add"
+              />
+            </div>
+          </q-card-section>
 
-        <q-card-section v-if="dayTwentyOne">
-          <p>
-            Let's talk about how we organize all of the things we need to do. Here at Tasklins, we have Tasks and Projects. Projects are a way to organize the 
-            different things you need to get done. A project can be something small like a reorganizing your closet, where you want to break down a big job into 
-            much smaller jobs, or it can be a whole category of tasks. Chores, Work, Learning, Excercise... what projects you use depends entirely on what you 
-            want to accomplish.
-          </p>
+          <q-card-section v-if="dayNine">
+            <p>
+              Today, we're talking about slowing down. It can be tempting to add
+              every task that needs to be done right to the top of your to do
+              list, especially if you're worried you won't remember. But it can be
+              all too easy to get overwhelmed by too easily throwing our plan for
+              the day aside. So instead of giving you any prompts for day nine,
+              instead we're introducing a new feature, the tomorrow button. Now,
+              when you go to add a new task, there's a button to add it to
+              tomorrow's list as easily as today's (and of course, you can always
+              still add a due date for any point in the future).
+            </p>
 
-          <p>
-            For today's prompt, take some time to think about how you organize the projects in your life. For the things that don't fit into broader categories, you'll 
-            always have the default <i>Tasks</i> project. For everything else, organize as you see fit. We've also now added the ability to delete projects you no longer need 
-            via the projects page in your journal. You'll need to delete any uncompleted tasks still in that project, or move them to a different project before deleting, but 
-            after that you can organize to your heart's content. Happy planning!
-          </p>  
+            <p>
+              Your homework for the day is to look at the list of tasks that's due
+              today on the home page, and consider if you're putting too much on
+              your plate. Are there tasks that can wait? Or overdue tasks that can
+              be finished later than you initially thought? Finishing a task late
+              on tasklins (or post-poning it) does effect the amount of experience
+              points your Tasklin will earn, but you can always change the due
+              date without any penalty. So be honest with yourself, try to set
+              realistic expecations, and remember that the only way we can
+              accomplish anything long-term is by being kind to ourselves. Set big
+              goals, but remember you don't have to get them done all at once!
+            </p>
 
+            <div class="center">
+              <q-btn
+                @click="showAddTask = true"
+                class="add-task-btn textureBar"
+                round
+                text-color="accent"
+                size="18px"
+                icon="add"
+              >
+                <q-tooltip content-class="bg-primary">Add New Task</q-tooltip>
+              </q-btn>
+            </div>
+            <br />
+          </q-card-section>
+        </q-card>
+      </div>
 
-          <div class="center">
+      <div class="planuaryDay day-10">
+        <q-card>
+          <q-card-section>
+            <div class="text-h7 row">
+              <q-btn dense flat @click="dayTen = !dayTen">
+                Planuary. Day Ten.
+              </q-btn>
+              <q-space />
 
-            <q-btn
-              class="q-mt-sm col"
-              padding
-              color="primary"
-              push
-              to="/journal"
-              >Check Your Journal
-            </q-btn>
+              <q-btn
+                @click="dayTen = !dayTen"
+                v-if="!dayTen"
+                color="secondary"
+                padding="none"
+                class="no-margin no-padding"
+                flat
+                round
+                dense
+                icon="add"
+              />
+            </div>
+          </q-card-section>
 
-          </div>
-          <br />
-        </q-card-section>
-      </q-card>
+          <q-card-section v-if="dayTen">
+            <p>
+              Back to our goals and the year ahead! We've already talked a little
+              about our focuses for the year and some of the goals we want to work
+              toward in 2021, but it's time to start breaking things down. There
+              are four quarters in the year, each made up of three months. And
+              it's a lot easier to look three months ahead than twelve. For now,
+              let's focus on setting some overall goal posts for ourselves to
+              guide the rest of the year by coming up with one main goal for each
+              quarter to help guide the way to where we'd like to be by the
+              beginning of 2022.
+            </p>
+
+            <div class="row center">
+              <div class="col">
+                <h4>Goals</h4>
+                <div>{{ this.planuary.goals.goal1 }}</div>
+                <div>{{ this.planuary.goals.goal2 }}</div>
+                <div>{{ this.planuary.goals.goal3 }}</div>
+                <div>{{ this.planuary.goals.goal4 }}</div>
+                <div>{{ this.planuary.goals.goal5 }}</div>
+              </div>
+              <div class="col">
+                <h4>Focuses</h4>
+                <div>{{ this.planuary.focus.focus1 }}</div>
+                <div>{{ this.planuary.focus.focus2 }}</div>
+                <div>{{ this.planuary.focus.focus3 }}</div>
+                <div>{{ this.planuary.focus.focus4 }}</div>
+                <div>{{ this.planuary.focus.focus5 }}</div>
+              </div>
+            </div>
+
+            <div>
+              <p>
+              <i>Anything listed here will remain private and not be posted elsewhere on the website.</i>
+            </p>
+            </div>
+
+            <div class="text-h7 focus-boxes center">
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="Where would you like to be by March 31st?"
+                outlined
+                v-model="quarterOneMilestone"
+              ></q-input>
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="Where would you like to be by June 30th?"
+                outlined
+                v-model="quarterTwoMilestone"
+              ></q-input>
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="Where would you like to be by September 30th?"
+                outlined
+                v-model="quarterThreeMilestone"
+              ></q-input>
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="Where would you like to be by December 31st?"
+                outlined
+                v-model="quarterFourMilestone"
+              ></q-input>
+            </div>
+            <br />
+
+            <div>
+              <p>
+                We'll revisit your quarterly goals throughout the year in order to
+                see how we're progressing, but if you have the time, we recommend
+                breaking down those milestones even further by turning them into
+                tasks. Have a look at your focus and goal lists above and see if
+                you can come up with a quarterly goal for each of them (some may
+                overlap, that's okay!) and create tasks to go along with those
+                goals, so if you're feeling stuck later, we can always look back
+                on these goals as a road map for the rest of the year.
+              </p>
+            </div>
+
+              <div class="center q-pa-md">
+              <q-btn
+                @click="setQuarterlyGoals()"
+                class="q-pa-xs"
+                color="primary"
+                size="md"
+                label="Set Quarterly Goals!"
+              />
+            </div>
+            <br />
+          </q-card-section>
+        </q-card>
+      </div>
+
+      <div class="planuaryDay day-11">
+        <q-card>
+          <q-card-section>
+            <div class="text-h7 row">
+              <q-btn dense flat @click="dayEleven = !dayEleven">
+                Planuary. Day Eleven.
+              </q-btn>
+              <q-space />
+
+              <q-btn
+                @click="dayEleven = !dayEleven"
+                v-if="!dayEleven"
+                color="secondary"
+                padding="none"
+                class="no-margin no-padding"
+                flat
+                round
+                dense
+                icon="add"
+              />
+            </div>
+          </q-card-section>
+
+          <q-card-section v-if="dayEleven">
+            <p>
+              We never stop learning and growing as people, and as a result not
+              every goal has a clear cut finish line. For example, we can never be
+              finished learning to code or getting better at an art form. We'll
+              also never finish reading every book, or listening to every podcast
+              on a topic we're interested in. So today, let's take a few minutes
+              to think about some of the things we want to make more time for in
+              2021.
+            </p>
+
+            <p>
+              <i>Anything listed here will remain private and not be posted elsewhere on the website.</i>
+            </p>
+
+            <div class="text-h7 focus-boxes center">
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="Practice One"
+                outlined
+                v-model="practiceOne"
+              ></q-input>
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="Practice Two"
+                outlined
+                v-model="practiceTwo"
+              ></q-input>
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="Practice Three"
+                outlined
+                v-model="practiceThree"
+              ></q-input>
+            </div>
+              <div class="center q-pa-md">
+              <q-btn
+                @click="setPractices()"
+                class="q-pa-xs"
+                color="primary"
+                size="md"
+                label="Set Practices!"
+              />
+            </div>
+            <br />
+          </q-card-section>
+        </q-card>
+      </div>
+
+      <div class="planuaryDay day-12">
+        <q-card>
+          <q-card-section>
+            <div class="text-h7 row">
+              <q-btn dense flat @click="dayTwelve = !dayTwelve">
+                Planuary. Day Twelve.
+              </q-btn>
+              <q-space />
+
+              <q-btn
+                @click="dayTwelve = !dayTwelve"
+                v-if="!dayTwelve"
+                color="secondary"
+                padding="none"
+                class="no-margin no-padding"
+                flat
+                round
+                dense
+                icon="add"
+              />
+            </div>
+          </q-card-section>
+
+          <q-card-section v-if="dayTwelve">
+            <p>
+              We never stop learning and growing as people, and as a result not
+              every goal has a clear cut finish line. For example, we can never be
+              finished learning to code or getting better at an art form. We'll
+              also never finish reading every book, or listening to every podcast
+              on a topic we're interested in. So today, let's take a few minutes
+              to think about some of the things we want to make more time for in
+              2021.
+            </p>
+
+            <p>
+              <i>Anything listed here will remain private and not be posted elsewhere on the website.</i>
+            </p>
+
+            <div class="text-h7 focus-boxes center">
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="What are you grateful for?"
+                outlined
+                v-model="gratitudeOne"
+              ></q-input>
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="What are you grateful for?"
+                outlined
+                v-model="gratitudeTwo"
+              ></q-input>
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="What are you grateful for?"
+                outlined
+                v-model="gratitudeThree"
+              ></q-input>
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="What are you grateful for?"
+                outlined
+                v-model="gratitudeFour"
+              ></q-input>
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="What are you grateful for?"
+                outlined
+                v-model="gratitudeFive"
+              ></q-input>
+            </div>
+
+            <div class="center q-pa-md">
+              <q-btn
+                @click="setGratitude()"
+                class="q-pa-xs"
+                color="primary"
+                size="md"
+                label="Send a little gratitude"
+              />
+            </div>
+            <br />
+          </q-card-section>
+        </q-card>
+      </div>
+      
+      <div class="planuaryDay day-13">
+        <q-card>
+          <q-card-section>
+            <div class="text-h7 row">
+              <q-btn dense flat @click="dayThirteen = !dayThirteen">
+                Planuary. Day Thirteen.
+              </q-btn>
+              <q-space />
+
+              <q-btn
+                @click="dayThirteen = !dayThirteen"
+                v-if="!dayThirteen"
+                color="secondary"
+                padding="none"
+                class="no-margin no-padding"
+                flat
+                round
+                dense
+                icon="add"
+              />
+            </div>
+          </q-card-section>
+
+          <q-card-section v-if="dayThirteen">
+            <p>
+              Whatever goals you've set so far, however you imagine your year going, it's important to remember that you're not in this alone. Whether we're talking about your friends or family, or the community that we're building here on Tasklins, we're all in this together.
+            </p>
+
+            <p>
+              So today's prompt has less to do with making more plans, and everything to do with sharing those plans with other people for both accountability and encouragement. By sharing your goals, you can not only make them more real, but also add an extra dash of accountability 
+              when you know there's someone else out there who will know whether you reach your goal. And of course, don't forget to encourage and support anyone who chooses to share their own goals with you.
+            </p>
+
+            <p>
+              We're also so excited to announce a new area of the website to help us build our communities and support one another in the future... our community page! It's still a work in progress, but consider this a corner of the internet you can turn to to share what you're working 
+              on, what you're proud of, a new project, or something your struggling with as you finish your tasks and work towards your goals. Admittedly, the functionality is still fairly limited, but <i>our goal</i> is to continue to build on this, adding features like friends, the 
+              ability to reply to certain posts or like someone else's post, and more.
+            </p>
+
+            <div class="text-h7 focus-boxes center">
+              <q-btn
+                  class="q-mt-sm col"
+                  padding
+                  color="primary"
+                  push
+                  to="/community"
+                  >Check Out the New Community Page</q-btn
+                >
+            </div>
+            <br />
+          </q-card-section>
+        </q-card>
+      </div>
+
+      <div class="planuaryDay day-14">
+        <q-card>
+          <q-card-section>
+            <div class="text-h7 row">
+              <q-btn dense flat @click="dayFourteen = !dayFourteen">
+                Planuary. Day Fourteen.
+              </q-btn>
+              <q-space />
+
+              <q-btn
+                @click="dayFourteen = !dayFourteen"
+                v-if="!dayFourteen"
+                color="secondary"
+                padding="none"
+                class="no-margin no-padding"
+                flat
+                round
+                dense
+                icon="add"
+              />
+            </div>
+          </q-card-section>
+
+          <q-card-section v-if="dayFourteen">
+            <p>
+            2020 ended two weeks ago now, but for so many of us it's next to impossible to fully move into a new year and embrace the future. And while it's
+            important to remember where we came from and the lessons we learned, there are also things we need to work to leave in the past. Is there something 
+            you've been holding on to that you need to let go of? Is there a memory you want to put in the past? A part of yourself your trying to move on from?
+            </p>
+
+            <p>
+              Today, your job is to give some thought to three things you want to let go of. You can interpret this in whatever way makes the most sense for you and
+              your own goals.
+            </p>
+
+            <p>
+              <i>Anything listed here will remain private and not be posted elsewhere on the website.</i>
+            </p>
+
+            <div class="text-h7 focus-boxes center">
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="What are you trying to let go of?"
+                outlined
+                v-model="letGoOne"
+              ></q-input>
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="What are you trying to let go of?"
+                outlined
+                v-model="letGoTwo"
+              ></q-input>
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="What are you trying to let go of?"
+                outlined
+                v-model="letGoThree"
+              ></q-input>
+            </div>
+
+            <div class="center q-pa-md">
+              <q-btn
+                @click="setLetGo()"
+                class="q-pa-xs"
+                color="primary"
+                size="md"
+                label="Let it go... Let it go..."
+              />
+            </div>
+            <br />
+          </q-card-section>
+        </q-card>
+      </div>
     </div>
+
+    <div v-if="weekThree">
+      <div class="planuaryDay day-15">
+        <q-card>
+          <q-card-section>
+            <div class="text-h7 row">
+              <q-btn dense flat @click="dayFifteen = !dayFifteen">
+                Planuary. Day Fifteen.
+              </q-btn>
+              <q-space />
+
+              <q-btn
+                @click="dayFifteen = !dayFifteen"
+                v-if="!dayFifteen"
+                color="secondary"
+                padding="none"
+                class="no-margin no-padding"
+                flat
+                round
+                dense
+                icon="add"
+              />
+            </div>
+          </q-card-section>
+
+          <q-card-section v-if="dayFifteen">
+            <p>
+              Another week has come and gone and it's time to reflect.
+            </p>
+
+            <div class="text-h7 focus-boxes center">
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="What went well this week?"
+                outlined
+                v-model="weekTwoWin"
+              ></q-input>
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="What did you struggle with?"
+                outlined
+                v-model="weekTwoStruggle"
+              ></q-input>
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="What do you want to remember?"
+                outlined
+                v-model="weekTwoMemory"
+              ></q-input>
+            </div>
+
+            <div class="center q-pa-md">
+              <q-btn
+                @click="setWeekTwo()"
+                class="q-pa-xs"
+                color="primary"
+                size="md"
+                label="On to week three!"
+              />
+            </div>
+
+            <div class="center">
+
+              <p>
+                We also wanted to take today to share of some of our goal for Tasklins with all of you. 
+              </p>
+
+              <q-btn
+                class="q-mt-sm col"
+                padding
+                color="primary"
+                push
+                to="/roadmap"
+                >Where We're Headed
+              </q-btn>
+
+            </div>
+            <br />
+          </q-card-section>
+        </q-card>
+      </div>
+
+      <div class="planuaryDay day-16">
+        <q-card>
+          <q-card-section>
+            <div class="text-h7 row">
+              <q-btn dense flat @click="daySixteen = !daySixteen">
+                Planuary. Day Sixteen.
+              </q-btn>
+              <q-space />
+
+              <q-btn
+                @click="daySixteen = !daySixteen"
+                v-if="!daySixteen"
+                color="secondary"
+                padding="none"
+                class="no-margin no-padding"
+                flat
+                round
+                dense
+                icon="add"
+              />
+            </div>
+          </q-card-section>
+
+          <q-card-section v-if="daySixteen">
+            <p>
+            We've spent a lot of time thinking about what we've done and what we want to do, creating lists and making wishes. Today, we're going to take some time to 
+            think about the one thing that drives ALL of this. You! Who you are, and what makes you capable of taking on all of the challenges you set for yourself (and 
+            the ones the world sets for you, whether you asked it to or not). While we all have areas where we'd like to improve, it's so important to remember that we 
+            also all have things we're fantastic at. Incredible. Super. We all have our superpowers, and today, I want you to figure out yours. Not a whole list, just one 
+            thing, skill, personality trait, or whatever else, that you absolutely rock at.
+            </p>
+
+            <p>
+              So what's your superpower? What's that thing you not only do well but love doing? This can be your sense of humour, the way you solve problems, a special meal 
+              that you can cook better than anyone else you know? You don't need super strength or telekenesis to be a superhero, and your superpower doesn't need to be something 
+              you can build a career around or even something that society thinks is especially useful. In a lot of cases, this could be something that fuels you and brings you joy,
+              or something that helps boost your confidence because you know it's one of your biggest strengths. So, give it some thought, and write down your power.
+            </p>
+
+            <p>
+              <i>Anything listed here will remain private and not be posted elsewhere on the website.</i>
+            </p>
+
+            <div class="text-h7 focus-boxes center">
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="What's your superpower?"
+                outlined
+                v-model="superpower1"
+              ></q-input>
+            </div>
+
+            <div class="center q-pa-md">
+              <q-btn
+                @click="setSuperpower()"
+                class="q-pa-xs"
+                color="primary"
+                size="md"
+                label="Share Your Power"
+              />
+            </div>
+            <br />
+          </q-card-section>
+        </q-card>
+      </div>
+
+      <div class="planuaryDay day-17">
+        <q-card>
+          <q-card-section>
+            <div class="text-h7 row">
+              <q-btn dense flat @click="daySeventeen = !daySeventeen">
+                Planuary. Day Seventeen.
+              </q-btn>
+              <q-space />
+
+              <q-btn
+                @click="daySeventeen = !daySeventeen"
+                v-if="!daySeventeen"
+                color="secondary"
+                padding="none"
+                class="no-margin no-padding"
+                flat
+                round
+                dense
+                icon="add"
+              />
+            </div>
+          </q-card-section>
+
+          <q-card-section v-if="daySeventeen">
+            <p>
+            Today we're looking at a type of tasks that so many of us dread (even if we do feel pretty great after we've finished them). Chores. Ugh. From wiping down the counter to deep 
+            cleaning the bathroom, there's a seemingly endless list of things we need to do to keep our living space looking and feeling its best... which can go a long way toward helping 
+            us feel productive in other areas of our life.
+            </p>
+
+            <p>
+              Sometimes, remembering what we need to do and when can be a big part of the battle. So for today's challenge, take a few minutes to think of us many chores (they don't all have to 
+              be of the cleaning variety) that you need to do on a regular basis, and create new tasks for them. You can use the repeating features so that once you finish a chore and check it off 
+              here on Tasklins, it will automatically create a new task for you for the next time that task needs to be done.
+            </p>
+
+            <div class="q-pa-lg">
+              <ul>
+                <li>This can be something like taking out the trash that needs to happen on a specific day of the week (use the first repeating button and select the days of the week you need).</li>
+                <li>Or something like cleaning the fridge that you want to do every set number of days (use the second repeating button and set a due date for the next time you'd like to do it, and then how many days before you'll need to do it again</li>
+                <li>Or you can try out our newest repeating option, monthly, for something like paying the bills that needs to happen on a certain day of every month. The task will repeat monthly based on the due date you set the first time.</li>  
+              </ul>
+            </div>
+
+            <div class="center">
+              <q-btn
+                @click="showAddTask = true"
+                class="add-task-btn textureBar"
+                round
+                text-color="accent"
+                size="18px"
+                icon="add"
+              >
+                <q-tooltip content-class="bg-primary">Add New Task</q-tooltip>
+              </q-btn>
+            </div>
+
+            <br />
+          </q-card-section>
+        </q-card>
+      </div> 
+
+      <div class="planuaryDay day-18">
+        <q-card>
+          <q-card-section>
+            <div class="text-h7 row">
+              <q-btn dense flat @click="dayEighteen = !dayEighteen">
+                Planuary. Day Eighteen.
+              </q-btn>
+              <q-space />
+
+              <q-btn
+                @click="dayEighteen = !dayEighteen"
+                v-if="!dayEighteen"
+                color="secondary"
+                padding="none"
+                class="no-margin no-padding"
+                flat
+                round
+                dense
+                icon="add"
+              />
+            </div>
+          </q-card-section>
+
+          <q-card-section v-if="dayEighteen">
+            <p>
+            What have you been avoiding? Go on, admit it. It really is okay. Procrastination in all its forms is something that so many of us find ourselves up againast 
+            on a fairly regular basis. Sometimes its because we lack motivation. Sometimes self doubt is slowing us down. Other times, the thing we're avoiding is something 
+            we very much <i>want</i> to do, but we're having trouble finding the time. For today's task, come up with a list of 3-5 tasks that you've been putting off, for 
+            whatever reason. Things you want to do. Things you should do. Just give some thought to the tasks you haven't gotten around to yet, but definitely will evenetually 
+            Someday.
+            </p>
+
+            <p><i>As always, these will remain private, and you can use or ignore the prompts as needed. </i></p>
+
+            <div class="text-h7 focus-boxes center">
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="What are you avoiding?"
+                outlined
+                v-model="avoidOne"
+              ></q-input>
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="Is there something you should be doing?"
+                outlined
+                v-model="avoidTwo"
+              ></q-input>
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="What are you procrastinating?"
+                outlined
+                v-model="avoidThree"
+              ></q-input>
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="Is there something new you'd like to learn?"
+                outlined
+                v-model="avoidFour"
+              ></q-input>
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="What about an appointment you keep putting off?"
+                outlined
+                v-model="avoidFive"
+              ></q-input>
+            </div>
+
+            <div class="center q-pa-md">
+              <q-btn
+                @click="setAvoid()"
+                class="q-pa-xs"
+                color="primary"
+                size="md"
+                label="Admit it!"
+              />
+            </div>
+
+            <br />
+          </q-card-section>
+        </q-card>
+      </div>   
+
+      <div class="planuaryDay day-19">
+        <q-card>
+          <q-card-section>
+            <div class="text-h7 row">
+              <q-btn dense flat @click="dayNineteen = !dayNineteen">
+                Planuary. Day Nineteen.
+              </q-btn>
+              <q-space />
+
+              <q-btn
+                @click="dayNineteen = !dayNineteen"
+                v-if="!dayNineteen"
+                color="secondary"
+                padding="none"
+                class="no-margin no-padding"
+                flat
+                round
+                dense
+                icon="add"
+              />
+            </div>
+          </q-card-section>
+
+          <q-card-section v-if="dayNineteen">
+            <p>
+            The last couple of days we've talked a lot about some of the less fun things we have to deal with. But the whole point of Tasklins is to make the 
+            tasks you have to get done a little more, well, fun. So today, what we'd love to hear from you is how we can help <i>you</i> reach your goals. Are 
+            there any tools or features you'd especially like to see added to Tasklins? Or is there an organizational problem in your life that you aren't sure 
+            how to solve? Even if you aren't sure what the Tasklins-style answer will be, let us know what the problem is. So... how can we help?
+            </p>
+
+            <div class="text-h7 focus-boxes center">
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="How can we help?"
+                outlined
+                v-model="tasklinsHelp"
+              ></q-input>
+            </div>
+
+            <div class="center q-pa-md">
+              <q-btn
+                @click="setTasklinsHelp()"
+                class="q-pa-xs"
+                color="primary"
+                size="md"
+                label="Let Us Know!"
+              />
+            </div>
+
+            <br />
+          </q-card-section>
+        </q-card>
+      </div>   
+
+      <div class="planuaryDay day-20">
+        <q-card>
+          <q-card-section>
+            <div class="text-h7 row">
+              <q-btn dense flat @click="dayTwenty = !dayTwenty">
+                  Planuary. Day Twenty.
+              </q-btn>
+              <q-space />
+
+                <q-btn
+                  @click="dayTwenty = !dayTwenty"
+                  padding="none"
+                  class="no-margin"
+                  flat
+                  color="secondary"
+                  push
+                  dense
+                  icon="add"
+                />
+              </div>
+            </q-card-section>
+
+            <q-card-section v-if="dayTwenty">
+              <p>
+                Twenty days into the new year, and you've done great work! Seriously, you should be proud. No. Better. You should 
+                be rewarded! If you want to train your brain to keep making progress and reaching your goals, you need to treat yourself 
+                as much as you need to see progress. So, ;et's start brainstorming some of the ways you can do that. What are some of 
+                your favorite treats or activities? How do you like to unwind after a long day?
+              </p>
+              <p class="center q-pa-md" style="text-decoration: underline"> Ideas</p>   
+                <uL class="center q-pa-md" style="list-style-position: inside; list-style-type: none;">
+                  <li>an episode of your favorite tv show</li>
+                  <li>something you love to snack on</li>
+                  <li>a long walk</li>
+                  <li>a phone call with a friend </li>
+                </uL>
+              <p>
+                <i>Anything listed here will remain private and not be posted
+                  elsewhere on the website. These are treats you don't have to share!</i>
+              </p>
+
+              <div>
+                <div class="text-h7 focus-boxes center">
+                  <q-input
+                    class="q-pa-xs"
+                    rounded
+                    label="Reward One"
+                    outlined
+                    v-model="rewardOne"
+                  ></q-input>
+                  <q-input
+                    class="q-pa-xs"
+                    rounded
+                    label="Reward Two"
+                    outlined
+                    v-model="rewardTwo"
+                  ></q-input>
+                  <q-input
+                    class="q-pa-xs"
+                    rounded
+                    label="Reward Three"
+                    outlined
+                    v-model="rewardThree"
+                  ></q-input>
+                  <q-input
+                    class="q-pa-xs"
+                    rounded
+                    label="Reward Four"
+                    outlined
+                    v-model="rewardFour"
+                  ></q-input>
+                  <q-input
+                    class="q-pa-xs"
+                    rounded
+                    label="Reward Five"
+                    outlined
+                    v-model="rewardFive"
+                  ></q-input>
+                </div>
+                <div class="center q-pa-md">
+                  <q-btn
+                    @click="setReward()"
+                    class="q-pa-xs"
+                    color="primary"
+                    size="md"
+                    label="Go!"
+                  />
+                </div>
+              </div>
+            </q-card-section>
+          </q-card>
+      </div>
+
+      <div class="planuaryDay day-21">
+        <q-card>
+          <q-card-section>
+            <div class="text-h7 row">
+              <q-btn dense flat @click="dayTwentyOne = !dayTwentyOne">
+                Planuary. Day Twenty-One.
+              </q-btn>
+              <q-space />
+
+              <q-btn
+                @click="dayTwentyOne = !dayTwentyOne"
+                v-if="!dayTwentyOne"
+                color="secondary"
+                padding="none"
+                class="no-margin no-padding"
+                flat
+                round
+                dense
+                icon="add"
+              />
+            </div>
+          </q-card-section>
+
+          <q-card-section v-if="dayTwentyOne">
+            <p>
+              Let's talk about how we organize all of the things we need to do. Here at Tasklins, we have Tasks and Projects. Projects are a way to organize the 
+              different things you need to get done. A project can be something small like a reorganizing your closet, where you want to break down a big job into 
+              much smaller jobs, or it can be a whole category of tasks. Chores, Work, Learning, Excercise... what projects you use depends entirely on what you 
+              want to accomplish.
+            </p>
+
+            <p>
+              For today's prompt, take some time to think about how you organize the projects in your life. For the things that don't fit into broader categories, you'll 
+              always have the default <i>Tasks</i> project. For everything else, organize as you see fit. We've also now added the ability to delete projects you no longer need 
+              via the projects page in your journal. You'll need to delete any uncompleted tasks still in that project, or move them to a different project before deleting, but 
+              after that you can organize to your heart's content. Happy planning!
+            </p>  
+
+
+            <div class="center">
+
+              <q-btn
+                class="q-mt-sm col"
+                padding
+                color="primary"
+                push
+                to="/journal"
+                >Check Your Journal
+              </q-btn>
+
+            </div>
+            <br />
+          </q-card-section>
+        </q-card>
+      </div>
+
+    </div>
+
+    <div>
+      <div class="planuaryDay day-22">
+        <q-card>
+          <q-card-section>
+            <div class="text-h7 row">
+              <q-btn dense flat @click="dayTwentyTwo = !dayTwentyTwo">
+                Planuary. Day Twenty-Two.
+              </q-btn>
+              <q-space />
+
+              <q-btn
+                @click="dayTwentyTwo = !dayTwentyTwo"
+                v-if="!dayTwentyTwo"
+                color="secondary"
+                padding="none"
+                class="no-margin no-padding"
+                flat
+                round
+                dense
+                icon="add"
+              />
+            </div>
+          </q-card-section>
+
+          <q-card-section v-if="dayTwentyTwo">
+            <p>
+              We made it through the first week of 2021! We're one one step closer
+              to reaching out goals, but in order to give ourselves the best
+              chance we can of success, we can't only focus on moving forward.
+              It's important to also take a moment to pause and reflect on what
+              we've already done. What went well? Where did we struggle? What can
+              we learn from?
+            </p>
+
+            <p>
+              You can head over to the journal page to check
+              out some new tracking features. You can see get an overview not only
+              on what you got finished, but how you were feeling. For today's prompts, we've also
+              included some bonus questions below in order to give ourselves time
+              to think about how we feel things went this first week, and what we
+              might want to change in the future. Plus, having memories to look
+              back on later might be fun!
+            </p>
+
+            <p>
+              <i>Anything listed here will remain private and not be posted elsewhere on the website.</i>
+            </p>
+
+            <div class="text-h7 focus-boxes center">
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="What went well this week?"
+                outlined
+                v-model="weekThreeWin"
+              ></q-input>
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="What did you struggle with?"
+                outlined
+                v-model="weekThreeStruggle"
+              ></q-input>
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="What do you want to remember?"
+                outlined
+                v-model="weekThreeMemory"
+              ></q-input>
+            </div>
+
+            <div class="center q-pa-md">
+              <q-btn
+                @click="setWeekThree()"
+                class="q-pa-xs"
+                color="primary"
+                size="md"
+                label="Another week finished!"
+              />
+            </div>
+          </q-card-section>
+        </q-card>
+      </div>
+    </div>
+
+
     
     
     
@@ -2471,6 +2598,7 @@ export default {
       "addScary",
       "addWeekOne",
       "addWeekTwo",
+      "addWeekThree",
       "addQuarterlyGoals",
       "addPractices",
       "addGratitude",
@@ -2638,7 +2766,7 @@ export default {
         username: this.profile.username
       };
       this.addWeekThree(payload);
-      //this.dayEight = false;
+      this.dayTwentyTwo = false;
       this.$q.notify({
         message: "On to week four!",
         color: "primary"
