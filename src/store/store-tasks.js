@@ -81,6 +81,9 @@ const actions = {
   addProject({ dispatch, commit }, project) {
     dispatch("fbAddProject", project);
   },
+  deleteProject({ dispatch }, projectName) {
+    dispatch("fbDeleteProject", projectName);
+  },
   setSearch({ commit }, value) {
     commit("setSearch", value);
   },
@@ -197,6 +200,17 @@ const actions = {
           projectsArray.push(element);
         });
         commit("setProjects", projectsArray);
+      }
+    });
+  },
+  fbDeleteProject({ dispatch }, projectName) {
+    let userId = firebaseAuth.currentUser.uid;
+    let projectRef = firebaseDb.ref("projects/" + userId + "/" + projectName);
+    projectRef.remove(error => {
+      if (error) {
+        showErrorMessage(error.message);
+      } else {
+        dispatch("fbReadProjects");
       }
     });
   },

@@ -65,6 +65,12 @@
                     color="primary"
                     label="New Project"
                   />
+                  <q-btn
+                    @click="showDeleteProject = true"
+                    class="new-project-btn"
+                    color="primary"
+                    label="Delete Project"
+                  />
                 </div>
                 <div
                   v-show="pageNumber == 3"
@@ -320,6 +326,10 @@
           <add-project @close="showAddProject = false" />
         </q-dialog>
 
+        <q-dialog v-model="showDeleteProject">
+          <delete-project @close="showDeleteProject = false" />
+        </q-dialog>
+
         <q-dialog v-model="showMoodPicker">
           <mood-picker @close="showMoodPicker = false; updateGrid();"
           />
@@ -344,6 +354,7 @@ export default {
   data() {
     return {
       showAddProject: false,
+      showDeleteProject: false,
       showMoodPicker: false,
       showTaskList: false,
       pageNumber: 1
@@ -368,6 +379,7 @@ export default {
   },
   components: {
     "add-project": require("components/Tasks/Modals/addProject.vue").default,
+    "delete-project": require("components/Tasks/Modals/deleteProject.vue").default,
     project: require("components/Tasks/Tools/ProjectList.vue").default,
     "tasks-todo": require("components/Tasks/TasksTodo.vue").default,
     "mood-picker": require("components/Tasks/Modals/moodPicker.vue").default
