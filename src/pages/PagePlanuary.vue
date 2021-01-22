@@ -1938,6 +1938,68 @@
           </q-card-section>
         </q-card>
       </div>
+
+      <div class="planuaryDay day-23">
+        <q-card>
+          <q-card-section>
+            <div class="text-h7 row">
+              <q-btn dense flat @click="dayTwentyThree = !dayTwentyThree">
+                Planuary. Day Twenty-Three.
+              </q-btn>
+              <q-space />
+
+              <q-btn
+                @click="dayTwentyThree = !dayTwentyThree"
+                v-if="!dayTwentyThree"
+                color="secondary"
+                padding="none"
+                class="no-margin no-padding"
+                flat
+                round
+                dense
+                icon="add"
+              />
+            </div>
+          </q-card-section>
+
+          <q-card-section v-if="dayTwentyThree">
+            <p>
+            Today we're looking at a type of tasks that so many of us dread (even if we do feel pretty great after we've finished them). Chores. Ugh. From wiping down the counter to deep 
+            cleaning the bathroom, there's a seemingly endless list of things we need to do to keep our living space looking and feeling its best... which can go a long way toward helping 
+            us feel productive in other areas of our life.
+            </p>
+
+            <p>
+              Sometimes, remembering what we need to do and when can be a big part of the battle. So for today's challenge, take a few minutes to think of us many chores (they don't all have to 
+              be of the cleaning variety) that you need to do on a regular basis, and create new tasks for them. You can use the repeating features so that once you finish a chore and check it off 
+              here on Tasklins, it will automatically create a new task for you for the next time that task needs to be done.
+            </p>
+
+            <div class="q-pa-lg">
+              <ul>
+                <li>This can be something like taking out the trash that needs to happen on a specific day of the week (use the first repeating button and select the days of the week you need).</li>
+                <li>Or something like cleaning the fridge that you want to do every set number of days (use the second repeating button and set a due date for the next time you'd like to do it, and then how many days before you'll need to do it again</li>
+                <li>Or you can try out our newest repeating option, monthly, for something like paying the bills that needs to happen on a certain day of every month. The task will repeat monthly based on the due date you set the first time.</li>  
+              </ul>
+            </div>
+
+            <div class="center">
+              <q-btn
+                @click="showAddTask = true"
+                class="add-task-btn textureBar"
+                round
+                text-color="accent"
+                size="18px"
+                icon="add"
+              >
+                <q-tooltip content-class="bg-primary">Add New Task</q-tooltip>
+              </q-btn>
+            </div>
+
+            <br />
+          </q-card-section>
+        </q-card>
+      </div> 
     </div>
 
 
