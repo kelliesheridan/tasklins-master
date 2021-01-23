@@ -1940,6 +1940,7 @@
                   v-model="focusFive"
                 ></q-input>
               </div>
+             </div> 
               <div class="center q-pa-md">
                 <q-btn
                   @click="setFocus()"
