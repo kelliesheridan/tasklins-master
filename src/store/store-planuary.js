@@ -259,9 +259,9 @@ const actions = {
     let payload = {
       type: "priority",
       username: priority.username,
-      reward1: priority.priorityOne,
-      reward2: priority.priorityTwo,
-      reward3: priority.priorityThree,
+      priority1: priority.priorityOne,
+      priority2: priority.priorityTwo,
+      priority3: priority.priorityThree,
     };
     dispatch("fbAddPlanuary", payload);
   },
