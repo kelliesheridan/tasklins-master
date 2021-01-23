@@ -1902,29 +1902,53 @@
               <i>Anything listed here will remain private and not be posted elsewhere on the website.</i>
             </p>
 
-            <div class="text-h7 focus-boxes center">
-              <q-input
-                class="q-pa-xs"
-                rounded
-                label="What went well this week?"
-                outlined
-                v-model="weekThreeWin"
-              ></q-input>
-              <q-input
-                class="q-pa-xs"
-                rounded
-                label="What did you struggle with?"
-                outlined
-                v-model="weekThreeStruggle"
-              ></q-input>
-              <q-input
-                class="q-pa-xs"
-                rounded
-                label="What do you want to remember?"
-                outlined
-                v-model="weekThreeMemory"
-              ></q-input>
-            </div>
+            <div>
+              <div class="text-h7 focus-boxes center">
+                <q-input
+                  class="q-pa-xs"
+                  rounded
+                  label="Focus One"
+                  outlined
+                  v-model="focusOne"
+                ></q-input>
+                <q-input
+                  class="q-pa-xs"
+                  rounded
+                  label="Focus Two"
+                  outlined
+                  v-model="focusTwo"
+                ></q-input>
+                <q-input
+                  class="q-pa-xs"
+                  rounded
+                  label="Focus Three"
+                  outlined
+                  v-model="focusThree"
+                ></q-input>
+                <q-input
+                  class="q-pa-xs"
+                  rounded
+                  label="Focus Four"
+                  outlined
+                  v-model="focusFour"
+                ></q-input>
+                <q-input
+                  class="q-pa-xs"
+                  rounded
+                  label="Focus Five"
+                  outlined
+                  v-model="focusFive"
+                ></q-input>
+              </div>
+              <div class="center q-pa-md">
+                <q-btn
+                  @click="setFocus()"
+                  class="q-pa-xs"
+                  color="primary"
+                  size="md"
+                  label="Let's Go!"
+                />
+              </div>
 
             <div class="center q-pa-md">
               <q-btn
@@ -1969,19 +1993,6 @@
             us feel productive in other areas of our life.
             </p>
 
-            <p>
-              Sometimes, remembering what we need to do and when can be a big part of the battle. So for today's challenge, take a few minutes to think of us many chores (they don't all have to 
-              be of the cleaning variety) that you need to do on a regular basis, and create new tasks for them. You can use the repeating features so that once you finish a chore and check it off 
-              here on Tasklins, it will automatically create a new task for you for the next time that task needs to be done.
-            </p>
-
-            <div class="q-pa-lg">
-              <ul>
-                <li>This can be something like taking out the trash that needs to happen on a specific day of the week (use the first repeating button and select the days of the week you need).</li>
-                <li>Or something like cleaning the fridge that you want to do every set number of days (use the second repeating button and set a due date for the next time you'd like to do it, and then how many days before you'll need to do it again</li>
-                <li>Or you can try out our newest repeating option, monthly, for something like paying the bills that needs to happen on a certain day of every month. The task will repeat monthly based on the due date you set the first time.</li>  
-              </ul>
-            </div>
 
             <div class="center">
               <q-btn
