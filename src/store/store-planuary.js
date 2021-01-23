@@ -64,6 +64,9 @@ const mutations = {
   setReward(state, reward) {
     if (reward != undefined) state.planuary.reward = reward;
   },
+  setPriority(state, priority) {
+    if (priority != undefined) state.planuary.priority = priority;
+  },
   addWish(state, wishes) {
     Vue.set(state.planuary.wishes, wishes, wishes);
   },
@@ -252,6 +255,16 @@ const actions = {
     };
     dispatch("fbAddPlanuary", payload);
   },
+  addPriority({ dispatch, commit }, priority) {
+    let payload = {
+      type: "priority",
+      username: priority.username,
+      reward1: priority.priorityOne,
+      reward2: priority.priorityTwo,
+      reward3: priority.priorityThree,
+    };
+    dispatch("fbAddPlanuary", payload);
+  },
   fbAddPlanuary({ dispatch }, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let planuaryRef = firebaseDb.ref("planuary/" + payload.type + "/" + userId);
@@ -316,7 +329,11 @@ const actions = {
                 break;   
           case "reward":
                 commit("setReward", planuary);
-                break;                        
+                break;     
+          case "priority":
+            commit("setPriority", planuary);
+            break;        
+
         }
       },
       error => {
@@ -369,7 +386,10 @@ const actions = {
                 break;       
         case "reward":
           commit("setReward", planuary);
-          break;                                        
+          break;         
+        case "priority":
+          commit("setPriority", planuary);
+          break;                                       
       }
     });
 
@@ -421,7 +441,10 @@ const actions = {
               break; 
         case "reward":
           commit("setReward", planuary);
-          break;                                                         
+          break;  
+        case "priority":
+          commit("setPriority", planuary);
+          break;                                                               
       }
     });
   },

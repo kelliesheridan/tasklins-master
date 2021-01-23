@@ -1976,22 +1976,9 @@
         <q-card>
           <q-card-section v-if="dayTwentyTwo">
             <p>
-              We made it through the first week of 2021! We're one one step
-              closer to reaching out goals, but in order to give ourselves the
-              best chance we can of success, we can't only focus on moving
-              forward. It's important to also take a moment to pause and reflect
-              on what we've already done. What went well? Where did we struggle?
-              What can we learn from?
-            </p>
-
-            <p>
-              You can head over to the journal page to check out some new
-              tracking features. You can see get an overview not only on what
-              you got finished, but how you were feeling. For today's prompts,
-              we've also included some bonus questions below in order to give
-              ourselves time to think about how we feel things went this first
-              week, and what we might want to change in the future. Plus, having
-              memories to look back on later might be fun!
+              Another week in the books, and hopefully it was a good one. You probably guessed that it's time to take another minute to reflect on the good, 
+              the not so good, and the things we want to remember. We're headed into the final stretch of January, but we still have the rest of the year ahead 
+              of us, so lets focus on building good <i>habits</i>, taking it all on, and getting excited for everything 2021 has to offer.
             </p>
 
             <p>
@@ -2063,76 +2050,46 @@
 
           <q-card-section v-if="dayTwentyThree">
             <p>
-              Today we're looking at a type of tasks that so many of us dread
-              (even if we do feel pretty great after we've finished them).
-              Chores. Ugh. From wiping down the counter to deep cleaning the
-              bathroom, there's a seemingly endless list of things we need to do
-              to keep our living space looking and feeling its best... which can
-              go a long way toward helping us feel productive in other areas of
-              our life.
+              So much to do, so little time. With a nearly endless list of things we need to do, how to you choose what gets done? 
+              By prioritizing. Let's face it, not all tasks are created equal. So today, what you need to do is look at this list of 
+              things you want to get done by the end of January (incuding those you haven't made tasks here on Tasklins for yet) and 
+              decide what's most important. For now, decide what your top three priorities are, and we'll check back in at the end of 
+              the month to make sure you got them finished!
             </p>
             <div>
               <div class="text-h7 focus-boxes center">
                 <q-input
                   class="q-pa-xs"
                   rounded
-                  label="Focus One"
+                  label="Priority One"
                   outlined
-                  v-model="focusOne"
+                  v-model="priorityOne"
                 ></q-input>
                 <q-input
                   class="q-pa-xs"
                   rounded
-                  label="Focus Two"
+                  label="Priority Two"
                   outlined
-                  v-model="focusTwo"
+                  v-model="priorityTwo"
                 ></q-input>
                 <q-input
                   class="q-pa-xs"
                   rounded
-                  label="Focus Three"
+                  label="Priority Three"
                   outlined
-                  v-model="focusThree"
-                ></q-input>
-                <q-input
-                  class="q-pa-xs"
-                  rounded
-                  label="Focus Four"
-                  outlined
-                  v-model="focusFour"
-                ></q-input>
-                <q-input
-                  class="q-pa-xs"
-                  rounded
-                  label="Focus Five"
-                  outlined
-                  v-model="focusFive"
+                  v-model="priorityThree"
                 ></q-input>
               </div>
               <div class="center q-pa-md">
                 <q-btn
-                  @click="setFocus()"
+                  @click="setPriority()"
                   class="q-pa-xs"
                   color="primary"
                   size="md"
-                  label="Let's Go!"
+                  label="Set Priorities!"
                 />
               </div>
             </div>
-
-            <div class="center">
-              <q-btn
-                @click="showAddTask = true"
-                class="add-task-btn textureBar"
-                round
-                text-color="accent"
-                size="18px"
-                icon="add"
-              >
-                <q-tooltip content-class="bg-primary">Add New Task</q-tooltip>
-              </q-btn>
-            </div>
-
             <br />
           </q-card-section>
         </q-card>
@@ -2220,6 +2177,9 @@ export default {
       reward3: "",
       reward4: "",
       reward5: "",
+      priority1: "",
+      priority2: "",
+      priority3: "",
       dayOne: false,
       dayTwo: false,
       dayThree: false,
@@ -2766,6 +2726,30 @@ export default {
         this.reward5 = value;
       }
     },
+    priorityOne: {
+      get() {
+        return this.priority1;
+      },
+      set(value) {
+        this.priority1 = value;
+      }
+    },
+    priorityTwo: {
+      get() {
+        return this.priority2;
+      },
+      set(value) {
+        this.priority2 = value;
+      }
+    },
+    priorityThree: {
+      get() {
+        return this.priority3;
+      },
+      set(value) {
+        this.priority3 = value;
+      }
+    },
     projectSearchField: {
       get() {
         return this.projectSearch;
@@ -2798,7 +2782,8 @@ export default {
       "addSuperpower",
       "addAvoid",
       "addTasklinsHelp",
-      "addReward"
+      "addReward",
+      "addPriority"
     ]),
     ...mapActions("tasks", ["setProjectSearch"]),
     ...mapActions("community", ["addEncouragement"]),
@@ -3095,9 +3080,23 @@ export default {
         username: this.profile.username
       };
       this.addReward(payload);
-      this.dayTwenty = true;
+      this.dayTwenty = false;
       this.$q.notify({
         message: "You're worth it!",
+        color: "primary"
+      });
+    },
+    setPriority() {
+      let payload = {
+        priorityOne: this.priorityOne,
+        priorityTwo: this.priorityTwo,
+        priorityThree: this.priorityThree,
+        username: this.profile.username
+      };
+      this.addPriority(payload);
+      this.dayTwentyThree = false;
+      this.$q.notify({
+        message: "Now, it's time to focus!",
         color: "primary"
       });
     },
@@ -3296,6 +3295,11 @@ export default {
       this.rewardThree = this.planuary.reward.reward3;
       this.rewardFour = this.planuary.reward.reward4;
       this.rewardFive = this.planuary.reward.reward5;
+    }
+    if (this.planuary.priority != undefined) {
+      this.priorityOne = this.planuary.priority.priority1;
+      this.priorityTwo = this.planuary.priority.priority2;
+      this.priorityThree = this.planuary.priority.priority3;
     }
     var date = moment().date();
     this.showDate(date);
