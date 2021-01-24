@@ -64,6 +64,9 @@ const mutations = {
   setReward(state, reward) {
     if (reward != undefined) state.planuary.reward = reward;
   },
+  setDistraction(state, reward) {
+    if (distraction != undefined) state.planuary.distraction = distraction;
+  },
   setPriority(state, priority) {
     if (priority != undefined) state.planuary.priority = priority;
   },
@@ -265,6 +268,18 @@ const actions = {
     };
     dispatch("fbAddPlanuary", payload);
   },
+  addDistraction({ dispatch, commit }, distraction) {
+    let payload = {
+      type: "distraction",
+      username: distraction.username,
+      distraction1: distraction.distractionOne,
+      distraction2: distraction.distractionTwo,
+      distraction3: distraction.distractionThree,
+      distraction4: distraction.distractionFour,
+      distraction5: distraction.distractionFive
+    };
+    dispatch("fbAddPlanuary", payload);
+  },
   fbAddPlanuary({ dispatch }, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let planuaryRef = firebaseDb.ref("planuary/" + payload.type + "/" + userId);
@@ -332,7 +347,11 @@ const actions = {
                 break;     
           case "priority":
             commit("setPriority", planuary);
+            break;    
+          case "distraction":
+            commit("setDistraction", planuary);
             break;        
+    
 
         }
       },
@@ -389,7 +408,10 @@ const actions = {
           break;         
         case "priority":
           commit("setPriority", planuary);
-          break;                                       
+          break;       
+          case "distraction":
+            commit("setDistraction", planuary);
+            break;                                        
       }
     });
 
@@ -444,7 +466,10 @@ const actions = {
           break;  
         case "priority":
           commit("setPriority", planuary);
-          break;                                                               
+          break;       
+          case "distraction":
+            commit("setDistraction", planuary);
+            break;                                                                
       }
     });
   },

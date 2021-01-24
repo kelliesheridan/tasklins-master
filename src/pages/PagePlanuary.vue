@@ -2056,6 +2056,12 @@
               decide what's most important. For now, decide what your top three priorities are, and we'll check back in at the end of 
               the month to make sure you got them finished!
             </p>
+
+            <p>
+              <i>Anything listed here will remain private and not be posted
+                elsewhere on the website.</i
+              >
+            </p>
             <div>
               <div class="text-h7 focus-boxes center">
                 <q-input
@@ -2087,6 +2093,100 @@
                   color="primary"
                   size="md"
                   label="Set Priorities!"
+                />
+              </div>
+            </div>
+            <br />
+          </q-card-section>
+        </q-card>
+      </div>
+
+      <div class="planuaryDay day-24">
+        <q-card>
+          <q-card-section>
+            <div class="text-h7 row">
+              <q-btn dense flat @click="dayTwentyFour = !dayTwentyFour">
+                Planuary. Day Twenty-Four.
+              </q-btn>
+              <q-space />
+
+              <q-btn
+                @click="dayTwentyFour = !dayTwentyFour"
+                v-if="!dayTwentyFour"
+                color="secondary"
+                padding="none"
+                class="no-margin no-padding"
+                flat
+                round
+                dense
+                icon="add"
+              />
+            </div>
+          </q-card-section>
+
+          <q-card-section v-if="dayTwentyFour">
+            <p>
+              Goals are great. Distractions are inevitable. Some days, it can feel like there are more distractions than hours in the day, and while some of them are things we do when we should or want 
+              to be productive, other things, like our responsibilities, are impossible to avoid. Distractions can be fun... or just irritating. And unfortunately, not everything that disracts us are 
+              things within our control. But we're doing our best!
+            </p>
+
+            <p>
+              Today's prompt is all about acknowledging the top five distractions that keep up from our to do lists. Remember, just because something if fun doesn't mean it's a distraction. Relaxing, doing 
+              our hobbies and spending time with the people we care about are all things that don't always feel productive, but are so important to our well being. 
+            </p>
+
+            <p>
+              <i
+                >Anything listed here will remain private and not be posted
+                elsewhere on the website, and the prompts are optional.</i
+              >
+            </p>
+            <div>
+              <div class="text-h7 focus-boxes center">
+                <q-input
+                  class="q-pa-xs"
+                  rounded
+                  label="What's something you spend more time on than you should?"
+                  outlined
+                  v-model="distractionOne"
+                ></q-input>
+                <q-input
+                  class="q-pa-xs"
+                  rounded
+                  label="Do you have a bad habit/routine that you can't quit?"
+                  outlined
+                  v-model="distractionTwo"
+                ></q-input>
+                <q-input
+                  class="q-pa-xs"
+                  rounded
+                  label="What is something that frequently steals your focus?"
+                  outlined
+                  v-model="distractionThree"
+                ></q-input>
+                <q-input
+                  class="q-pa-xs"
+                  rounded
+                  label="Is there an app you're easily distracted by?"
+                  outlined
+                  v-model="distractionFour"
+                ></q-input>
+                <q-input
+                  class="q-pa-xs"
+                  rounded
+                  label="Is there a time of day you find especially distracting?"
+                  outlined
+                  v-model="distractionFive"
+                ></q-input>
+              </div>
+              <div class="center q-pa-md">
+                <q-btn
+                  @click="setDistraction()"
+                  class="q-pa-xs"
+                  color="primary"
+                  size="md"
+                  label="Distractions, be gone!"
                 />
               </div>
             </div>
@@ -2180,6 +2280,11 @@ export default {
       priority1: "",
       priority2: "",
       priority3: "",
+      distraction1: "",
+      distraction2: "",
+      distraction3: "",
+      distraction4: "",
+      distraction5: "",
       dayOne: false,
       dayTwo: false,
       dayThree: false,
@@ -2750,6 +2855,46 @@ export default {
         this.priority3 = value;
       }
     },
+    distractionOne: {
+      get() {
+        return this.distraction1;
+      },
+      set(value) {
+        this.distraction1 = value;
+      }
+    },
+    distractionTwo: {
+      get() {
+        return this.distraction2;
+      },
+      set(value) {
+        this.distraction2 = value;
+      }
+    },
+    distractionThree: {
+      get() {
+        return this.distraction3;
+      },
+      set(value) {
+        this.distraction3 = value;
+      }
+    },
+    distractionFour: {
+      get() {
+        return this.distraction4;
+      },
+      set(value) {
+        this.distraction4 = value;
+      }
+    },
+    distractionFive: {
+      get() {
+        return this.distraction5;
+      },
+      set(value) {
+        this.distraction5 = value;
+      }
+    },
     projectSearchField: {
       get() {
         return this.projectSearch;
@@ -2783,7 +2928,8 @@ export default {
       "addAvoid",
       "addTasklinsHelp",
       "addReward",
-      "addPriority"
+      "addPriority",
+      "addDistraction"
     ]),
     ...mapActions("tasks", ["setProjectSearch"]),
     ...mapActions("community", ["addEncouragement"]),
@@ -3086,6 +3232,22 @@ export default {
         color: "primary"
       });
     },
+    setDistraction() {
+      let payload = {
+        distractionOne: this.distractionOne,
+        distractionTwo: this.distractionTwo,
+        distractionThree: this.distractionThree,
+        distractionFour: this.distractionFour,
+        distractionFive: this.distractionFive,
+        username: this.profile.username
+      };
+      this.addDistraction(payload);
+      this.dayTwentyFour = false;
+      this.$q.notify({
+        message: "Nicely done!",
+        color: "primary"
+      });
+    },
     setPriority() {
       let payload = {
         priorityOne: this.priorityOne,
@@ -3300,6 +3462,13 @@ export default {
       this.priorityOne = this.planuary.priority.priority1;
       this.priorityTwo = this.planuary.priority.priority2;
       this.priorityThree = this.planuary.priority.priority3;
+    }
+    if (this.planuary.distraction != undefined) {
+      this.distractionOne = this.planuary.distraction.distraction1;
+      this.distractionTwo = this.planuary.distraction.distraction2;
+      this.distractionThree = this.planuary.distraction.distraction3;
+      this.distractionFour = this.planuary.distraction.distraction4;
+      this.distractionFive = this.planuary.distraction.distraction5;
     }
     var date = moment().date();
     this.showDate(date);

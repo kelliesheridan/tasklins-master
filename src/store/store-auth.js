@@ -85,6 +85,7 @@ const actions = {
         dispatch("planuary/fbReadPlanuary", {type: "tasklinsHelp"}, { root: true });
         dispatch("planuary/fbReadPlanuary", {type: "reward"}, { root: true });
         dispatch("planuary/fbReadPlanuary", {type: "priority"}, { root: true });
+        dispatch("planuary/fbReadPlanuary", {type: "distraction"}, { root: true });
         dispatch("profile/fbReadAllMoods", null, { root: true });
         dispatch("community/fbReadLikes", null, { root: true });
         if (this.state.profile.profile.user.name !== "") {
