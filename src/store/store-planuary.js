@@ -64,7 +64,7 @@ const mutations = {
   setReward(state, reward) {
     if (reward != undefined) state.planuary.reward = reward;
   },
-  setDistraction(state, reward) {
+  setDistraction(state, distraction) {
     if (distraction != undefined) state.planuary.distraction = distraction;
   },
   setPriority(state, priority) {
