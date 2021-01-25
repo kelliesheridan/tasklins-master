@@ -2265,7 +2265,102 @@
                 <q-tooltip content-class="bg-primary">Add New Task</q-tooltip>
               </q-btn>
             </div>
+            <br>
 
+          </q-card-section>
+        </q-card>
+      </div>
+
+      <div class="planuaryDay day-26">
+        <q-card>
+          <q-card-section>
+            <div class="text-h7 row">
+              <q-btn dense flat @click="dayTwentySix = !dayTwentySix">
+                Planuary. Day Twenty-Four.
+              </q-btn>
+              <q-space />
+
+              <q-btn
+                @click="dayTwentySix = !dayTwentySix"
+                v-if="!dayTwentySix"
+                color="secondary"
+                padding="none"
+                class="no-margin no-padding"
+                flat
+                round
+                dense
+                icon="add"
+              />
+            </div>
+          </q-card-section>
+
+          <q-card-section v-if="dayTwentySix">
+            <p>
+              Goals are great. Distractions are inevitable. Some days, it can feel like there are more distractions than hours in the day, and while some of them are things we do when we should or want 
+              to be productive, other things, like our responsibilities, are impossible to avoid. Distractions can be fun... or just irritating. And unfortunately, not everything that disracts us are 
+              things within our control. But we're doing our best!
+            </p>
+
+            <p>
+              Today's prompt is all about acknowledging the top five distractions that keep up from our to do lists. Remember, just because something if fun doesn't mean it's a distraction. Relaxing, doing 
+              our hobbies and spending time with the people we care about are all things that don't always feel productive, but are so important to our well being. 
+            </p>
+
+            <p>
+              <i
+                >Anything listed here will remain private and not be posted
+                elsewhere on the website, and the prompts are optional.</i
+              >
+            </p>
+            <div>
+              <div class="text-h7 focus-boxes center">
+                <q-input
+                  class="q-pa-xs"
+                  rounded
+                  label="What's something you spend more time on than you should?"
+                  outlined
+                  v-model="distractionOne"
+                ></q-input>
+                <q-input
+                  class="q-pa-xs"
+                  rounded
+                  label="Do you have a bad habit/routine that you can't quit?"
+                  outlined
+                  v-model="distractionTwo"
+                ></q-input>
+                <q-input
+                  class="q-pa-xs"
+                  rounded
+                  label="What is something that frequently steals your focus?"
+                  outlined
+                  v-model="distractionThree"
+                ></q-input>
+                <q-input
+                  class="q-pa-xs"
+                  rounded
+                  label="Is there an app you're easily distracted by?"
+                  outlined
+                  v-model="distractionFour"
+                ></q-input>
+                <q-input
+                  class="q-pa-xs"
+                  rounded
+                  label="Is there a time of day you find especially distracting?"
+                  outlined
+                  v-model="distractionFive"
+                ></q-input>
+              </div>
+              <div class="center q-pa-md">
+                <q-btn
+                  @click="setDistraction()"
+                  class="q-pa-xs"
+                  color="primary"
+                  size="md"
+                  label="Distractions, be gone!"
+                />
+              </div>
+            </div>
+            <br />
           </q-card-section>
         </q-card>
       </div>
