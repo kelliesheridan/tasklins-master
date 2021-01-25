@@ -1974,6 +1974,27 @@
     <div>
       <div class="planuaryDay day-22">
         <q-card>
+          <q-card-section>
+            <div class="text-h7 row">
+              <q-btn dense flat @click="dayTwentyTwo = !dayTwentyTwo">
+                Planuary. Day Twenty-Two.
+              </q-btn>
+              <q-space />
+
+              <q-btn
+                @click="dayTwentyTwo = !dayTwentyTwo"
+                v-if="!dayTwentyTwo"
+                color="secondary"
+                padding="none"
+                class="no-margin no-padding"
+                flat
+                round
+                dense
+                icon="add"
+              />
+            </div>
+          </q-card-section>
+
           <q-card-section v-if="dayTwentyTwo">
             <p>
               Another week in the books, and hopefully it was a good one. You probably guessed that it's time to take another minute to reflect on the good, 
@@ -2194,6 +2215,62 @@
           </q-card-section>
         </q-card>
       </div>
+
+      <div class="planuaryDay day-25">
+        <q-card>
+          <q-card-section>
+            <div class="text-h7 row">
+              <q-btn dense flat @click="dayTwentyFive = !dayTwentyFive">
+                Planuary. Day Twenty-Five.
+              </q-btn>
+              <q-space />
+
+              <q-btn
+                @click="dayTwentyFive = !dayTwentyFive"
+                v-if="!dayTwentyFive"
+                color="secondary"
+                padding="none"
+                class="no-margin no-padding"
+                flat
+                round
+                dense
+                icon="add"
+              />
+            </div>
+          </q-card-section>
+
+          <q-card-section v-if="dayTwentyFive">
+            <p>
+              Let's talk about rituals, or routines. Whatever you want to call them, the little things we do at various points throughout our days, or 
+              even years, can hold a lot of hidden importance. Do you start your day with a cup of tea? Spend time journaling? Go for a long walk after 
+              dinner? Like some of the other things we've talked about this month, these things might not seem productive, but can be so important.
+            </p>
+
+            <p>
+              And what about the rituals we haven't let ourselves make the time for yet? There are plenty of little things we want to find the time for 
+              but struggle to make room for in our already busy lives. Today's challenge is to create a new ritual. Make a task using the button below, 
+              something simple you can do in five or ten minutes, and then use the repeating button to set up how often you'd ideally like to do this 
+              new ritual. Try for something you can do daily, but once a week on a certain day works well too. Good luck!
+            </p>
+
+            <div class="center">
+              <q-btn
+                @click="showAddTask = true"
+                class="add-task-btn textureBar"
+                round
+                text-color="accent"
+                size="18px"
+                icon="add"
+              >
+                <q-tooltip content-class="bg-primary">Add New Task</q-tooltip>
+              </q-btn>
+            </div>
+
+          </q-card-section>
+        </q-card>
+      </div>
+
+      
     </div>
     <q-dialog v-model="showAddTask">
       <add-task @close="showAddTask = false" />
