@@ -2297,12 +2297,8 @@
 
           <q-card-section v-if="dayTwentySix">
             <p>
-              Most days, the prompts that go with each of our challenges are totally optional
-            </p>
-
-            <p>
-              Today's prompt is all about acknowledging the top five distractions that keep up from our to do lists. Remember, just because something if fun doesn't mean it's a distraction. Relaxing, doing 
-              our hobbies and spending time with the people we care about are all things that don't always feel productive, but are so important to our well being. 
+              Most days, the prompts that go with each of our challenges are totally optional. Today, we have specific questions in hopes of learning a thing or to that 
+              can be incorporated into your future Tasklins adventures. The first month of the year is almost over, so let's ponder a little more about what's to come.
             </p>
 
             <p>
