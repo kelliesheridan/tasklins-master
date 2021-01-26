@@ -2163,7 +2163,8 @@
                 elsewhere on the website, and the prompts are optional.</i
               >
             </p>
-            <div>
+
+                        <div>
               <div class="text-h7 focus-boxes center">
                 <q-input
                   class="q-pa-xs"
@@ -2210,7 +2211,7 @@
                   label="Distractions, be gone!"
                 />
               </div>
-            </div>
+              </div>
             <br />
           </q-card-section>
         </q-card>
@@ -2276,7 +2277,7 @@
           <q-card-section>
             <div class="text-h7 row">
               <q-btn dense flat @click="dayTwentySix = !dayTwentySix">
-                Planuary. Day Twenty-Four.
+                Planuary. Day Twenty-Six.
               </q-btn>
               <q-space />
 
@@ -2296,9 +2297,7 @@
 
           <q-card-section v-if="dayTwentySix">
             <p>
-              Goals are great. Distractions are inevitable. Some days, it can feel like there are more distractions than hours in the day, and while some of them are things we do when we should or want 
-              to be productive, other things, like our responsibilities, are impossible to avoid. Distractions can be fun... or just irritating. And unfortunately, not everything that disracts us are 
-              things within our control. But we're doing our best!
+              Most days, the prompts that go with each of our challenges are totally optional
             </p>
 
             <p>
@@ -2307,59 +2306,74 @@
             </p>
 
             <p>
-              <i
-                >Anything listed here will remain private and not be posted
-                elsewhere on the website, and the prompts are optional.</i
-              >
+              <i>Anything listed here will remain private and not be posted
+                elsewhere on the website, and the prompts are optional.</i>
             </p>
+
             <div>
               <div class="text-h7 focus-boxes center">
+                <p>
+                  Who would you like to spend more time with this year?
+                </p>  
                 <q-input
                   class="q-pa-xs"
                   rounded
-                  label="What's something you spend more time on than you should?"
                   outlined
-                  v-model="distractionOne"
+                  v-model="randomOne"
                 ></q-input>
+                <br>
+                <p>
+                  Is there a new hobby you'd like to try this year?
+                </p>  
                 <q-input
                   class="q-pa-xs"
                   rounded
-                  label="Do you have a bad habit/routine that you can't quit?"
                   outlined
-                  v-model="distractionTwo"
+                  v-model="randomTwo"
                 ></q-input>
+                <br>
+                <p>
+                  Can you think of a new meal you'd like to try and make in 2021?
+                </p>  
                 <q-input
                   class="q-pa-xs"
                   rounded
-                  label="What is something that frequently steals your focus?"
                   outlined
-                  v-model="distractionThree"
+                  v-model="randomThree"
                 ></q-input>
+                <br>
+                <p>
+                  What's your most anticipated new release? (a book, movie, album, whatever works for you)
+                </p>  
                 <q-input
                   class="q-pa-xs"
                   rounded
-                  label="Is there an app you're easily distracted by?"
                   outlined
-                  v-model="distractionFour"
+                  v-model="randomFour"
                 ></q-input>
+                <br>
+                <p>
+                What would it take for you to consider 2021 a success?                   
+                </p>  
                 <q-input
                   class="q-pa-xs"
                   rounded
-                  label="Is there a time of day you find especially distracting?"
                   outlined
-                  v-model="distractionFive"
+                  v-model="randomFive"
                 ></q-input>
+                <br>
               </div>
               <div class="center q-pa-md">
                 <q-btn
-                  @click="setDistraction()"
+                  @click="setRandom()"
                   class="q-pa-xs"
                   color="primary"
                   size="md"
-                  label="Distractions, be gone!"
+                  label="Onward!"
                 />
               </div>
             </div>
+
             <br />
           </q-card-section>
         </q-card>
@@ -2457,6 +2471,11 @@ export default {
       distraction3: "",
       distraction4: "",
       distraction5: "",
+      random1: "",
+      random2: "",
+      random3: "",
+      random4: "",
+      random5: "",
       dayOne: false,
       dayTwo: false,
       dayThree: false,
@@ -3067,6 +3086,46 @@ export default {
         this.distraction5 = value;
       }
     },
+    randomOne: {
+      get() {
+        return this.random1;
+      },
+      set(value) {
+        this.random1 = value;
+      }
+    },
+    randomTwo: {
+      get() {
+        return this.random2;
+      },
+      set(value) {
+        this.random2 = value;
+      }
+    },
+    randomThree: {
+      get() {
+        return this.random3;
+      },
+      set(value) {
+        this.random3 = value;
+      }
+    },
+    randomFour: {
+      get() {
+        return this.random4;
+      },
+      set(value) {
+        this.random4 = value;
+      }
+    },
+    randomFive: {
+      get() {
+        return this.random5;
+      },
+      set(value) {
+        this.random5 = value;
+      }
+    },
     projectSearchField: {
       get() {
         return this.projectSearch;
@@ -3101,7 +3160,8 @@ export default {
       "addTasklinsHelp",
       "addReward",
       "addPriority",
-      "addDistraction"
+      "addDistraction",
+      "addRandom"
     ]),
     ...mapActions("tasks", ["setProjectSearch"]),
     ...mapActions("community", ["addEncouragement"]),
@@ -3434,6 +3494,22 @@ export default {
         color: "primary"
       });
     },
+    setRandom() {
+      let payload = {
+        randomOne: this.randomOne,
+        randomTwo: this.randomTwo,
+        randomThree: this.randomThree,
+        randomFour: this.randomFour,
+        randomFive: this.randomFive,
+        username: this.profile.username
+      };
+      this.addRandom(payload);
+      this.dayTwentyFour = false;
+      this.$q.notify({
+        message: "Good to know!",
+        color: "primary"
+      });
+    },
     showDate(dayNumber) {
       if (dayNumber == 1) {
         this.dayOne = true;
@@ -3641,6 +3717,13 @@ export default {
       this.distractionThree = this.planuary.distraction.distraction3;
       this.distractionFour = this.planuary.distraction.distraction4;
       this.distractionFive = this.planuary.distraction.distraction5;
+    }
+    if (this.planuary.random != undefined) {
+      this.randomOne = this.planuary.random.random1;
+      this.randomTwo = this.planuary.random.random2;
+      this.randomThree = this.planuary.random.random3;
+      this.randomFour = this.planuary.random.random4;
+      this.randomFive = this.planuary.random.random5;
     }
     var date = moment().date();
     this.showDate(date);

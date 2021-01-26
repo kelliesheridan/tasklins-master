@@ -70,6 +70,9 @@ const mutations = {
   setPriority(state, priority) {
     if (priority != undefined) state.planuary.priority = priority;
   },
+  setRandom(state, random) {
+    if (random != undefined) state.planuary.random = random;
+  },
   addWish(state, wishes) {
     Vue.set(state.planuary.wishes, wishes, wishes);
   },
@@ -280,6 +283,18 @@ const actions = {
     };
     dispatch("fbAddPlanuary", payload);
   },
+  addRandom({ dispatch, commit }, random) {
+    let payload = {
+      type: "random",
+      username: random.username,
+      random1: random.randomOne,
+      random2: random.randomTwo,
+      random3: random.randomThree,
+      random4: random.randomFour,
+      random5: random.randomFive
+    };
+    dispatch("fbAddPlanuary", payload);
+  },
   fbAddPlanuary({ dispatch }, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let planuaryRef = firebaseDb.ref("planuary/" + payload.type + "/" + userId);
@@ -351,8 +366,9 @@ const actions = {
           case "distraction":
             commit("setDistraction", planuary);
             break;        
-    
-
+          case "random":
+              commit("setRandom", planuary);
+              break; 
         }
       },
       error => {
@@ -411,7 +427,10 @@ const actions = {
           break;       
           case "distraction":
             commit("setDistraction", planuary);
-            break;                                        
+            break;              
+       case "random":
+              commit("setRandom", planuary);
+              break;                                 
       }
     });
 
@@ -469,6 +488,9 @@ const actions = {
           break;       
           case "distraction":
             commit("setDistraction", planuary);
+            break;   
+            case "random":
+            commit("setRandom", planuary);
             break;                                                                
       }
     });
