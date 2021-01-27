@@ -2467,6 +2467,109 @@
         </q-card>
       </div>
 
+      <div class="planuaryDay day-28">
+        <q-card>
+          <q-card-section>
+            <div class="text-h7 row">
+              <q-btn dense flat @click="dayTwentyEight = !dayTwentyEight">
+                Planuary. Day Twenty-Eight.
+              </q-btn>
+              <q-space />
+
+              <q-btn
+                @click="dayTwentyEight = !dayTwentyEight"
+                v-if="!dayTwentyEight"
+                color="secondary"
+                padding="none"
+                class="no-margin no-padding"
+                flat
+                round
+                dense
+                icon="add"
+              />
+            </div>
+          </q-card-section>
+
+          <q-card-section v-if="dayTwentyEight">
+            <p>
+              Most days, the prompts that go with each of our challenges are totally optional. Today, we have specific questions in hopes of learning a thing or to that 
+              can be incorporated into your future Tasklins adventures. The first month of the year is almost over, so let's ponder a little more about what's to come.
+            </p>
+
+            <p>
+              <i>Anything listed here will remain private and not be posted
+                elsewhere on the website, and the prompts are optional.</i>
+            </p>
+
+            <div>
+              <div class="text-h7 focus-boxes center">
+                <p>
+                  Who would you like to spend more time with this year?
+                </p>  
+                <q-input
+                  class="q-pa-xs"
+                  rounded
+                  outlined
+                  v-model="randomOne"
+                ></q-input>
+                <br>
+                <p>
+                  Is there a new hobby you'd like to try this year?
+                </p>  
+                <q-input
+                  class="q-pa-xs"
+                  rounded
+                  outlined
+                  v-model="randomTwo"
+                ></q-input>
+                <br>
+                <p>
+                  Can you think of a new meal you'd like to try and make in 2021?
+                </p>  
+                <q-input
+                  class="q-pa-xs"
+                  rounded
+                  outlined
+                  v-model="randomThree"
+                ></q-input>
+                <br>
+                <p>
+                  What's your most anticipated new release? (a book, movie, album, whatever works for you)
+                </p>  
+                <q-input
+                  class="q-pa-xs"
+                  rounded
+                  outlined
+                  v-model="randomFour"
+                ></q-input>
+                <br>
+                <p>
+                What would it take for you to consider 2021 a success?                   
+                </p>  
+                <q-input
+                  class="q-pa-xs"
+                  rounded
+                  outlined
+                  v-model="randomFive"
+                ></q-input>
+                <br>
+              </div>
+              <div class="center q-pa-md">
+                <q-btn
+                  @click="setRandom()"
+                  class="q-pa-xs"
+                  color="primary"
+                  size="md"
+                  label="Onward!"
+                />
+              </div>
+            </div>
+
+            <br />
+          </q-card-section>
+        </q-card>
+      </div>
+
       
     </div>
     <q-dialog v-model="showAddTask">
