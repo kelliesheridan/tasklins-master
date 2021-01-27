@@ -2375,6 +2375,92 @@
         </q-card>
       </div>
 
+      <div class="planuaryDay day-27">
+        <q-card>
+          <q-card-section>
+            <div class="text-h7 row">
+              <q-btn dense flat @click="dayTwentySeven = !dayTwentySeven">
+                Planuary. Day Twenty-Seven.
+              </q-btn>
+              <q-space />
+
+              <q-btn
+                @click="dayTwentySeven = !dayTwentySeven"
+                v-if="!dayTwentySeven"
+                color="secondary"
+                padding="none"
+                class="no-margin no-padding"
+                flat
+                round
+                dense
+                icon="add"
+              />
+            </div>
+          </q-card-section>
+
+          <q-card-section v-if="dayTwentySeven">
+            <p>
+              Let's talk about rituals, or routines. Whatever you want to call them, the little things we do at various points throughout our days, or 
+              even years, can hold a lot of hidden importance. Do you start your day with a cup of tea? Spend time journaling? Go for a long walk after 
+              dinner? Like some of the other things we've talked about this month, these things might not seem productive, but can be so important.
+            </p>
+
+            <p>
+              Today's Planuary task is to do a self assessment on how you feel you're doing in each of the following areas of your life. 
+            </p>
+
+              <div>
+                <div class="q-pa-sm">
+                  <p>Physical Health</p>
+                  <q-radio v-model="physical" val="1" label="1" />
+                  <q-radio v-model="physical" val="2" label="2" />
+                  <q-radio v-model="physical" val="3" label="3" />
+                  <q-radio v-model="physical" val="4" label="4" />
+                  <q-radio v-model="physical" val="5" label="5" />
+                </div>
+                <br>
+                <div class="q-pa-sm">
+                  <p>Mental Health/Wellbeing</p>
+                  <q-radio v-model="mental" val="1" label="1" />
+                  <q-radio v-model="mental" val="2" label="2" />
+                  <q-radio v-model="mental" val="3" label="3" />
+                  <q-radio v-model="mental" val="4" label="4" />
+                  <q-radio v-model="mental" val="5" label="5" />
+                </div>
+                <div class="q-pa-sm">
+                  <p>Personal Growth</p>
+                  <q-radio v-model="growth" val="1" label="1" />
+                  <q-radio v-model="growth" val="2" label="2" />
+                  <q-radio v-model="growth" val="3" label="3" />
+                  <q-radio v-model="growth" val="4" label="4" />
+                  <q-radio v-model="growth" val="5" label="5" />
+                </div>
+                <br>
+                <div class="q-pa-sm">
+                  <p>Career and/or School</p>
+                  <q-radio v-model="career" val="1" label="1" />
+                  <q-radio v-model="career" val="2" label="2" />
+                  <q-radio v-model="career" val="3" label="3" />
+                  <q-radio v-model="career" val="4" label="4" />
+                  <q-radio v-model="career" val="5" label="5" />
+                </div>
+                <br>
+                <div class="q-pa-sm">
+                  <p>Personal Relationships</p>
+                  <q-radio v-model="relationships" val="1" label="1" />
+                  <q-radio v-model="relationships" val="2" label="2" />
+                  <q-radio v-model="relationships" val="3" label="3" />
+                  <q-radio v-model="relationships" val="4" label="4" />
+                  <q-radio v-model="relationships" val="5" label="5" />
+                </div>
+
+              </div>
+            <br>
+
+          </q-card-section>
+        </q-card>
+      </div>
+
       
     </div>
     <q-dialog v-model="showAddTask">
