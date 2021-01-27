@@ -73,6 +73,9 @@ const mutations = {
   setRandom(state, random) {
     if (random != undefined) state.planuary.random = random;
   },
+  setAssess(state, assess) {
+    if (assess != undefined) state.planuary.assess = assess;
+  },
   addWish(state, wishes) {
     Vue.set(state.planuary.wishes, wishes, wishes);
   },
@@ -295,6 +298,18 @@ const actions = {
     };
     dispatch("fbAddPlanuary", payload);
   },
+  addAssess({ dispatch, commit }, assess) {
+    let payload = {
+      type: "assess",
+      username: assess.username,
+      assess1: assess.assessOne,
+      assess2: assess.assessTwo,
+      assess3: assess.assessThree,
+      assess4: assess.assessFour,
+      assess5: assess.assessFive
+    };
+    dispatch("fbAddPlanuary", payload);
+  },
   fbAddPlanuary({ dispatch }, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let planuaryRef = firebaseDb.ref("planuary/" + payload.type + "/" + userId);
@@ -369,6 +384,9 @@ const actions = {
           case "random":
               commit("setRandom", planuary);
               break; 
+          case "assess":
+                commit("setAssess", planuary);
+                break; 
         }
       },
       error => {
@@ -430,7 +448,10 @@ const actions = {
             break;              
        case "random":
               commit("setRandom", planuary);
-              break;                                 
+              break;  
+        case "assess":
+          commit("setAssess", planuary);
+          break;                                
       }
     });
 
@@ -491,7 +512,10 @@ const actions = {
             break;   
             case "random":
             commit("setRandom", planuary);
-            break;                                                                
+            break;   
+        case "assess":
+            commit("setAssess", planuary);
+            break;                                                              
       }
     });
   },

@@ -2412,50 +2412,56 @@
               <div>
                 <div class="q-pa-sm">
                   <p>Physical Health</p>
-                  <q-radio v-model="physical" val="1" label="1" />
-                  <q-radio v-model="physical" val="2" label="2" />
-                  <q-radio v-model="physical" val="3" label="3" />
-                  <q-radio v-model="physical" val="4" label="4" />
-                  <q-radio v-model="physical" val="5" label="5" />
+                  <q-radio v-model="assessOne" val="1" label="1" />
+                  <q-radio v-model="assessOne" val="2" label="2" />
+                  <q-radio v-model="assessOne" val="3" label="3" />
+                  <q-radio v-model="assessOne" val="4" label="4" />
+                  <q-radio v-model="assessOne" val="5" label="5" />
                 </div>
-                <br>
                 <div class="q-pa-sm">
                   <p>Mental Health/Wellbeing</p>
-                  <q-radio v-model="mental" val="1" label="1" />
-                  <q-radio v-model="mental" val="2" label="2" />
-                  <q-radio v-model="mental" val="3" label="3" />
-                  <q-radio v-model="mental" val="4" label="4" />
-                  <q-radio v-model="mental" val="5" label="5" />
+                  <q-radio v-model="assessTwo" val="1" label="1" />
+                  <q-radio v-model="assessTwo" val="2" label="2" />
+                  <q-radio v-model="assessTwo" val="3" label="3" />
+                  <q-radio v-model="assessTwo" val="4" label="4" />
+                  <q-radio v-model="assessTwo" val="5" label="5" />
                 </div>
                 <div class="q-pa-sm">
                   <p>Personal Growth</p>
-                  <q-radio v-model="growth" val="1" label="1" />
-                  <q-radio v-model="growth" val="2" label="2" />
-                  <q-radio v-model="growth" val="3" label="3" />
-                  <q-radio v-model="growth" val="4" label="4" />
-                  <q-radio v-model="growth" val="5" label="5" />
+                  <q-radio v-model="assessThree" val="1" label="1" />
+                  <q-radio v-model="assessThree" val="2" label="2" />
+                  <q-radio v-model="assessThree" val="3" label="3" />
+                  <q-radio v-model="assessThree" val="4" label="4" />
+                  <q-radio v-model="assessThree" val="5" label="5" />
                 </div>
-                <br>
                 <div class="q-pa-sm">
                   <p>Career and/or School</p>
-                  <q-radio v-model="career" val="1" label="1" />
-                  <q-radio v-model="career" val="2" label="2" />
-                  <q-radio v-model="career" val="3" label="3" />
-                  <q-radio v-model="career" val="4" label="4" />
-                  <q-radio v-model="career" val="5" label="5" />
+                  <q-radio v-model="assessFour" val="1" label="1" />
+                  <q-radio v-model="assessFour" val="2" label="2" />
+                  <q-radio v-model="assessFour" val="3" label="3" />
+                  <q-radio v-model="assessFour" val="4" label="4" />
+                  <q-radio v-model="assessFour" val="5" label="5" />
                 </div>
-                <br>
                 <div class="q-pa-sm">
                   <p>Personal Relationships</p>
-                  <q-radio v-model="relationships" val="1" label="1" />
-                  <q-radio v-model="relationships" val="2" label="2" />
-                  <q-radio v-model="relationships" val="3" label="3" />
-                  <q-radio v-model="relationships" val="4" label="4" />
-                  <q-radio v-model="relationships" val="5" label="5" />
+                  <q-radio v-model="assessFive" val="1" label="1" />
+                  <q-radio v-model="assessFive" val="2" label="2" />
+                  <q-radio v-model="assessFive" val="3" label="3" />
+                  <q-radio v-model="assessFive" val="4" label="4" />
+                  <q-radio v-model="assessFive" val="5" label="5" />
                 </div>
 
               </div>
             <br>
+              <div class="center q-pa-md">
+                <q-btn
+                  @click="setAssess()"
+                  class="q-pa-xs"
+                  color="primary"
+                  size="md"
+                  label="Take Stock of Your Life!"
+                />
+              </div>
 
           </q-card-section>
         </q-card>
@@ -2558,6 +2564,11 @@ export default {
       random3: "",
       random4: "",
       random5: "",
+      assess1: null,
+      assess2: null,
+      assess3: null,
+      assess4: null,
+      assess5: null,
       dayOne: false,
       dayTwo: false,
       dayThree: false,
@@ -3208,6 +3219,46 @@ export default {
         this.random5 = value;
       }
     },
+    assessOne: {
+      get() {
+        return this.assess1;
+      },
+      set(value) {
+        this.assess1 = value;
+      }
+    },
+    assessTwo: {
+      get() {
+        return this.assess2;
+      },
+      set(value) {
+        this.assess2 = value;
+      }
+    },
+    assessThree: {
+      get() {
+        return this.assess3;
+      },
+      set(value) {
+        this.assess3 = value;
+      }
+    },
+    assessFour: {
+      get() {
+        return this.assess4;
+      },
+      set(value) {
+        this.assess4 = value;
+      }
+    },
+    assessFive: {
+      get() {
+        return this.assess5;
+      },
+      set(value) {
+        this.assess5 = value;
+      }
+    },
     projectSearchField: {
       get() {
         return this.projectSearch;
@@ -3243,7 +3294,8 @@ export default {
       "addReward",
       "addPriority",
       "addDistraction",
-      "addRandom"
+      "addRandom",
+      "addAssess"
     ]),
     ...mapActions("tasks", ["setProjectSearch"]),
     ...mapActions("community", ["addEncouragement"]),
@@ -3592,6 +3644,22 @@ export default {
         color: "primary"
       });
     },
+    setAssess() {
+      let payload = {
+        assessOne: this.assessOne,
+        assessTwo: this.assessTwo,
+        assessThree: this.assessThree,
+        assessFour: this.assessFour,
+        assessFive: this.assessFive,
+        username: this.profile.username
+      };
+      this.addAssess(payload);
+      this.dayTwentySeven = false;
+      this.$q.notify({
+        message: "Well done!",
+        color: "primary"
+      });
+    },
     showDate(dayNumber) {
       if (dayNumber == 1) {
         this.dayOne = true;
@@ -3800,12 +3868,12 @@ export default {
       this.distractionFour = this.planuary.distraction.distraction4;
       this.distractionFive = this.planuary.distraction.distraction5;
     }
-    if (this.planuary.random != undefined) {
-      this.randomOne = this.planuary.random.random1;
-      this.randomTwo = this.planuary.random.random2;
-      this.randomThree = this.planuary.random.random3;
-      this.randomFour = this.planuary.random.random4;
-      this.randomFive = this.planuary.random.random5;
+    if (this.planuary.assess != undefined) {
+      this.assessOne = this.planuary.assess.assess1;
+      this.assessTwo = this.planuary.assess.assess2;
+      this.assessThree = this.planuary.assess.assess3;
+      this.assessFour = this.planuary.assess.assess4;
+      this.assessFive = this.planuary.assess.assess5;
     }
     var date = moment().date();
     this.showDate(date);
