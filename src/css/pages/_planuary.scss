@@ -1,6 +1,6 @@
 .planuaryDay {
     padding: 1rem;
-    max-width: 60%;
+    max-width: 70%;
     margin: 0 auto;
 
     @include respond(tab-port) {
@@ -23,5 +23,15 @@
     @include respond(tab-port) {
         width: 30%;
     height: auto;     
+       }    
+}
+
+.quest-card {
+    font-size: smaller;
+    width: 40%;
+    margin: 10px;
+
+    @include respond(phone) {
+        width: 100%;        
        }    
 }

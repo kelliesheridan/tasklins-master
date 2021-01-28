@@ -2500,8 +2500,6 @@
                 elsewhere on the website, and the prompts are optional.</i>
             </p>
 
-            <div class="row">
-              <div class="col q-pa-sm">
                   <q-card class="my-card quest-card center q-pa-md">
                   <img src="/statics/icons/quests/quest1.png">
 
@@ -2515,8 +2513,10 @@
                    are, don't worry. You still have plenty of time left this year. 
                   </q-card-section>
 
-                  <q-card-actions class="center">
+                  <q-card-actions>
+                    <q-space />
                     <q-btn>Accept This Quest!</q-btn>
+                    <q-space />
                   </q-card-actions>
                 </q-card>
 
@@ -2533,21 +2533,16 @@
                    novels always count.
                   </q-card-section>
 
-                  <q-card-actions class="center">
+                  <q-card-actions>
+                    <q-space />
                     <q-btn>Accept This Quest!</q-btn>
+                     <q-space />
                   </q-card-actions>
                 </q-card>
 
                 <div>
 
                 </div>
-
-
-                
-              </div>
-              <br>
-
-              <div class="col q-pa-md">
 
                 <q-card class="my-card quest-card center q-pa-md">
                   <img class="q-p-sm" src="/statics/icons/quests/quest3.png">
@@ -2562,12 +2557,14 @@
                    remember that the goal here is to strengthen connections!
                   </q-card-section>
 
-                  <q-card-actions class="center">
+                  <q-card-actions>
+                    <q-space />
                     <q-btn>Accept This Quest!</q-btn>
+                    <q-space />
                   </q-card-actions>
                 </q-card>
 
-                <q-card class="my-card quest-card center q-pa-md">
+                <q-card class="my-card col-xs-12 col-sm-12 col-md-6 col-lg-6 quest-card center q-pa-md">
                   <img src="/statics/icons/quests/quest4.png">
 
                   <q-card-section>
@@ -2580,15 +2577,12 @@
                    all you need to do is go visit somewhere local that you haven't been to before!
                   </q-card-section>
 
-                  <q-card-actions class="center">
+                  <q-card-actions>
+                    <q-space />
                     <q-btn>Accept This Quest!</q-btn>
+                    <q-space />
                   </q-card-actions>
                 </q-card>
-
-              </div>
-            
-            </div>
-
             <br />
           </q-card-section>
         </q-card>
