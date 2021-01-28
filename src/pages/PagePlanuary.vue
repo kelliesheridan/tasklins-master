@@ -2514,9 +2514,8 @@
                   </q-card-section>
 
                   <q-card-actions>
-                    <q-space />
-                    <q-btn>Accept This Quest!</q-btn>
-                    <q-space />
+                  <q-card-actions class="center">
+                    <q-btn @click="acceptQuest('quest1')">Accept This Quest!</q-btn>
                   </q-card-actions>
                 </q-card>
 
@@ -2533,10 +2532,8 @@
                    novels always count.
                   </q-card-section>
 
-                  <q-card-actions>
-                    <q-space />
-                    <q-btn>Accept This Quest!</q-btn>
-                     <q-space />
+                  <q-card-actions class="center">
+                    <q-btn @click="acceptQuest('quest2')">Accept This Quest!</q-btn>
                   </q-card-actions>
                 </q-card>
 
@@ -2557,10 +2554,8 @@
                    remember that the goal here is to strengthen connections!
                   </q-card-section>
 
-                  <q-card-actions>
-                    <q-space />
-                    <q-btn>Accept This Quest!</q-btn>
-                    <q-space />
+                  <q-card-actions class="center">
+                    <q-btn @click="acceptQuest('quest3')">Accept This Quest!</q-btn>
                   </q-card-actions>
                 </q-card>
 
@@ -2577,10 +2572,8 @@
                    all you need to do is go visit somewhere local that you haven't been to before!
                   </q-card-section>
 
-                  <q-card-actions>
-                    <q-space />
-                    <q-btn>Accept This Quest!</q-btn>
-                    <q-space />
+                  <q-card-actions class="center">
+                    <q-btn @click="acceptQuest('quest4')">Accept This Quest!</q-btn>
                   </q-card-actions>
                 </q-card>
             <br />
@@ -3416,7 +3409,8 @@ export default {
       "addPriority",
       "addDistraction",
       "addRandom",
-      "addAssess"
+      "addAssess",
+      "acceptQuest"
     ]),
     ...mapActions("tasks", ["setProjectSearch"]),
     ...mapActions("community", ["addEncouragement"]),
@@ -3778,6 +3772,18 @@ export default {
       this.dayTwentySeven = false;
       this.$q.notify({
         message: "Well done!",
+        color: "primary"
+      });
+    },
+    acceptQuest(quest) {
+      let payload = {
+        chosenQuest: quest,
+        username: this.profile.username
+      };
+      this.acceptQuest(payload);
+      this.dayTwentyEight = false;
+      this.$q.notify({
+        message: "Good luck on your quest!",
         color: "primary"
       });
     },
