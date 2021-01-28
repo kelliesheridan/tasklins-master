@@ -2516,7 +2516,7 @@
                   </q-card-section>
 
                   <q-card-actions class="center">
-                    <q-btn>Accept This Quest!</q-btn>
+                    <q-btn @click="acceptQuest('quest1')">Accept This Quest!</q-btn>
                   </q-card-actions>
                 </q-card>
 
@@ -2534,7 +2534,7 @@
                   </q-card-section>
 
                   <q-card-actions class="center">
-                    <q-btn>Accept This Quest!</q-btn>
+                    <q-btn @click="acceptQuest('quest2')">Accept This Quest!</q-btn>
                   </q-card-actions>
                 </q-card>
 
@@ -2563,7 +2563,7 @@
                   </q-card-section>
 
                   <q-card-actions class="center">
-                    <q-btn>Accept This Quest!</q-btn>
+                    <q-btn @click="acceptQuest('quest3')">Accept This Quest!</q-btn>
                   </q-card-actions>
                 </q-card>
 
@@ -2581,7 +2581,7 @@
                   </q-card-section>
 
                   <q-card-actions class="center">
-                    <q-btn>Accept This Quest!</q-btn>
+                    <q-btn @click="acceptQuest('quest4')">Accept This Quest!</q-btn>
                   </q-card-actions>
                 </q-card>
 
@@ -3422,7 +3422,8 @@ export default {
       "addPriority",
       "addDistraction",
       "addRandom",
-      "addAssess"
+      "addAssess",
+      "acceptQuest"
     ]),
     ...mapActions("tasks", ["setProjectSearch"]),
     ...mapActions("community", ["addEncouragement"]),
@@ -3784,6 +3785,18 @@ export default {
       this.dayTwentySeven = false;
       this.$q.notify({
         message: "Well done!",
+        color: "primary"
+      });
+    },
+    acceptQuest(quest) {
+      let payload = {
+        chosenQuest: quest,
+        username: this.profile.username
+      };
+      this.acceptQuest(payload);
+      this.dayTwentyEight = false;
+      this.$q.notify({
+        message: "Good luck on your quest!",
         color: "primary"
       });
     },
