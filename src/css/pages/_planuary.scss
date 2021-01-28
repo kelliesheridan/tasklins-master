@@ -1,10 +1,10 @@
 .planuaryDay {
     padding: 1rem;
-    max-width: 50%;
+    max-width: 60%;
     margin: 0 auto;
 
     @include respond(tab-port) {
-        max-width: 80%;        
+        max-width: 100%;        
        }    
 }
 
