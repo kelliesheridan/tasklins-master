@@ -114,6 +114,43 @@
       </q-card>
     </div>
 
+    <div class="planuaryDay">
+      <q-card>
+        <q-card-section>
+          <div class="text-h7 row">
+            <q-btn dense flat @click="weekFour = !weekFour">
+              Planuary. Week Four.
+            </q-btn>
+
+            <q-space />
+            <q-btn
+              @click="weekFour = !weekFour"
+              v-if="!weekFour"
+              padding="none"
+              class="no-margin"
+              flat
+              color="secondary"
+              push
+              dense
+              icon="keyboard_arrow_down"
+            />
+
+            <q-btn
+              @click="weekFour = !weekFour"
+              v-if="weekFour"
+              padding="none"
+              class="no-margin"
+              flat
+              color="secondary"
+              push
+              dense
+              icon="keyboard_arrow_up"
+            />
+          </div>
+        </q-card-section>
+      </q-card>
+    </div>
+
     <div v-if="weekOne">
       <div class="planuaryDay day-1">
         <q-card>
@@ -1969,9 +2006,10 @@
           </q-card-section>
         </q-card>
       </div>
+      
     </div>
 
-    <div>
+    <div v-if="weekFour">
       <div class="planuaryDay day-22">
         <q-card>
           <q-card-section>
@@ -2583,10 +2621,78 @@
             </div>
           </q-card-section>
         </q-card>
+      </div>      
+    </div>
+
+      <div class="planuaryDay day-29">
+        <q-card>
+          <q-card-section>
+            <div class="text-h7 row">
+              <q-btn dense flat @click="dayTwentyNine = !dayTwentyNine">
+                Planuary. Day Twenty-Nine.
+              </q-btn>
+              <q-space />
+
+              <q-btn
+                @click="dayTwentyNine = !dayTwentyNine"
+                v-if="!dayTwentyNine"
+                color="secondary"
+                padding="none"
+                class="no-margin no-padding"
+                flat
+                round
+                dense
+                icon="add"
+              />
+            </div>
+          </q-card-section>
+
+          <q-card-section v-if="dayTwentyNine">
+            <p>
+              We made it through the final full week of January, and there are only a few final days left in Planuary. We're sending so many high-fives to every single 
+              one of you for keeping at your goals throughout a hectic and volatile month. Now, it's time to look back on this week and write down a few important 
+              highlights to look back on later.
+            </p>
+
+            <div class="text-h7 focus-boxes center">
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="What went well this week?"
+                outlined
+                v-model="weekFourWin"
+              ></q-input>
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="What did you struggle with?"
+                outlined
+                v-model="weekFourStruggle"
+              ></q-input>
+              <q-input
+                class="q-pa-xs"
+                rounded
+                label="What do you want to remember?"
+                outlined
+                v-model="weekFourMemory"
+              ></q-input>
+            </div>
+
+            <div class="center q-pa-md">
+              <q-btn
+                @click="setWeekFour()"
+                class="q-pa-xs"
+                color="primary"
+                size="md"
+                label="Week four complete!"
+              />
+            </div>
+
+            <br />
+          </q-card-section>
+        </q-card>
       </div>
 
-      
-    </div>
     <q-dialog v-model="showAddTask">
       <add-task @close="showAddTask = false" />
     </q-dialog>
@@ -2603,6 +2709,7 @@ export default {
       weekOne: false,
       weekTwo: false,
       weekThree: false,
+      weekFour: false,
       wishSubmitted: false,
       focus1: "",
       focus2: "",
@@ -2641,6 +2748,9 @@ export default {
       week3Win: "",
       week3Struggle: "",
       week3Memory: "",
+      week4Win: "",
+      week4Struggle: "",
+      week4Memory: "",
       showAddTask: false,
       quarter1Milestone: "",
       quarter2Milestone: "",
@@ -2975,6 +3085,30 @@ export default {
       },
       set(value) {
         this.week3Memory = value;
+      }
+    },
+    weekFourWin: {
+      get() {
+        return this.week4Win;
+      },
+      set(value) {
+        this.week4Win = value;
+      }
+    },
+    weekFourStruggle: {
+      get() {
+        return this.week4Struggle;
+      },
+      set(value) {
+        this.week4Struggle = value;
+      }
+    },
+    weekFourMemory: {
+      get() {
+        return this.week4Memory;
+      },
+      set(value) {
+        this.week4Memory = value;
       }
     },
     encouragementOne: {
@@ -3402,6 +3536,7 @@ export default {
       "addWeekOne",
       "addWeekTwo",
       "addWeekThree",
+      "addWeekFour",
       "addQuarterlyGoals",
       "addPractices",
       "addGratitude",
@@ -3589,9 +3724,9 @@ export default {
         username: this.profile.username
       };
       this.addWeekFour(payload);
-      //this.dayEight = false;
+      this.dayTwentyNine = false;
       this.$q.notify({
-        message: "Thank you!",
+        message: "Bravo!",
         color: "primary"
       });
     },
@@ -3946,9 +4081,9 @@ export default {
       this.weekThreeMemory = this.planuary.weekThree.weekThreeMemory;
     }
     if (this.planuary.weekFour != undefined) {
-      this.weekFourWin = this.planuary.weekFour.weekThreeWin;
-      this.weekFourStruggle = this.planuary.weekFour.weekThreeStruggle;
-      this.weekFourMemory = this.planuary.weekFour.weekThreeMemory;
+      this.weekFourWin = this.planuary.weekFour.weekFourWin;
+      this.weekFourStruggle = this.planuary.weekFour.weekFourStruggle;
+      this.weekFourMemory = this.planuary.weekFour.weekFourMemory;
     }
     if (this.planuary.quarterlyGoals != undefined) {
       this.quarterOneMilestone = this.planuary.quarterlyGoals.quarter1Milestone;
