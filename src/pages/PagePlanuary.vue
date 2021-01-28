@@ -2513,7 +2513,7 @@
                    are, don't worry. You still have plenty of time left this year. 
                   </q-card-section>
 
-                  <q-card-actions class="center" :class="!this.planuary.quest.quest == 'quest1' ? 'bg-accent' : ''">
+                  <q-card-actions class="center">
                     <q-btn @click="setQuest('quest1')" :class="questActive('quest1') ? 'bg-accent' : ''">Accept This Quest!</q-btn>
                   </q-card-actions>
                 </q-card>
@@ -3787,7 +3787,11 @@ export default {
       });
     },
     questActive(quest) {
+      if (this.planuary.quest != undefined)
       return this.planuary.quest.quest == quest ? true : false;
+    },
+    getQuest(quest) {
+      return true
     },
     showDate(dayNumber) {
       if (dayNumber == 1) {
