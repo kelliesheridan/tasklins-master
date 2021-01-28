@@ -2515,8 +2515,8 @@
                    are, don't worry. You still have plenty of time left this year. 
                   </q-card-section>
 
-                  <q-card-actions class="center">
-                    <q-btn @click="acceptQuest('quest1')">Accept This Quest!</q-btn>
+                  <q-card-actions class="center" :class="!this.planuary.quest.quest == 'quest1' ? 'bg-accent' : ''">
+                    <q-btn @click="setQuest('quest1')" :class="questActive('quest1') ? 'bg-accent' : ''">Accept This Quest!</q-btn>
                   </q-card-actions>
                 </q-card>
 
@@ -2534,7 +2534,7 @@
                   </q-card-section>
 
                   <q-card-actions class="center">
-                    <q-btn @click="acceptQuest('quest2')">Accept This Quest!</q-btn>
+                    <q-btn @click="setQuest('quest2')" :class="questActive('quest2') ? 'bg-accent' : ''">Accept This Quest!</q-btn>
                   </q-card-actions>
                 </q-card>
 
@@ -2563,7 +2563,7 @@
                   </q-card-section>
 
                   <q-card-actions class="center">
-                    <q-btn @click="acceptQuest('quest3')">Accept This Quest!</q-btn>
+                    <q-btn @click="setQuest('quest3')" :class="questActive('quest3') ? 'bg-accent' : ''">Accept This Quest!</q-btn>
                   </q-card-actions>
                 </q-card>
 
@@ -2581,7 +2581,7 @@
                   </q-card-section>
 
                   <q-card-actions class="center">
-                    <q-btn @click="acceptQuest('quest4')">Accept This Quest!</q-btn>
+                    <q-btn @click="setQuest('quest4')" :class="questActive('quest4') ? 'bg-accent' : ''">Accept This Quest!</q-btn>
                   </q-card-actions>
                 </q-card>
 
@@ -3788,7 +3788,7 @@ export default {
         color: "primary"
       });
     },
-    acceptQuest(quest) {
+    setQuest(quest) {
       let payload = {
         chosenQuest: quest,
         username: this.profile.username
@@ -3799,6 +3799,9 @@ export default {
         message: "Good luck on your quest!",
         color: "primary"
       });
+    },
+    questActive(quest) {
+      return this.planuary.quest.quest == quest ? true : false;
     },
     showDate(dayNumber) {
       if (dayNumber == 1) {

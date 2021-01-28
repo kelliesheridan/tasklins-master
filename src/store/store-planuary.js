@@ -41,7 +41,8 @@ const mutations = {
     if (weekFour != undefined) state.planuary.weekFour = weekFour;
   },
   setQuarterlyGoals(state, quarterlyGoals) {
-    if (quarterlyGoals != undefined) state.planuary.quarterlyGoals = quarterlyGoals;
+    if (quarterlyGoals != undefined)
+      state.planuary.quarterlyGoals = quarterlyGoals;
   },
   setPractices(state, practices) {
     if (practices != undefined) state.planuary.practices = practices;
@@ -76,6 +77,9 @@ const mutations = {
   setAssess(state, assess) {
     if (assess != undefined) state.planuary.assess = assess;
   },
+  setQuest(state, quest) {
+    if (quest != undefined) state.planuary.quest = quest;
+  },
   addWish(state, wishes) {
     Vue.set(state.planuary.wishes, wishes, wishes);
   },
@@ -84,7 +88,7 @@ const mutations = {
   },
   addGoals(state, goals) {
     state.planuary.goals = goals;
-  },
+  }
 };
 
 const actions = {
@@ -188,7 +192,7 @@ const actions = {
       quarterOneMilestone: quarterlyGoals.quarterOneMilestone,
       quarterTwoMilestone: quarterlyGoals.quarterTwoMilestone,
       quarterThreeMilestone: quarterlyGoals.quarterThreeMilestone,
-      quarterFourMilestone: quarterlyGoals.quarterFourMilestone,
+      quarterFourMilestone: quarterlyGoals.quarterFourMilestone
     };
     dispatch("fbAddPlanuary", payload);
   },
@@ -198,7 +202,7 @@ const actions = {
       username: practices.username,
       practice1: practices.practiceOne,
       practice2: practices.practiceTwo,
-      practice3: practices.practiceThree,
+      practice3: practices.practiceThree
     };
     dispatch("fbAddPlanuary", payload);
   },
@@ -210,7 +214,7 @@ const actions = {
       gratitude2: gratitude.gratitudeTwo,
       gratitude3: gratitude.gratitudeThree,
       gratitude4: gratitude.gratitudeFour,
-      gratitude5: gratitude.gratitudeFive,
+      gratitude5: gratitude.gratitudeFive
     };
     dispatch("fbAddPlanuary", payload);
   },
@@ -220,7 +224,7 @@ const actions = {
       username: letGo.username,
       letGo1: letGo.letGoOne,
       letGo2: letGo.letGoTwo,
-      letGo3: letGo.letGoThree,
+      letGo3: letGo.letGoThree
     };
     dispatch("fbAddPlanuary", payload);
   },
@@ -228,7 +232,7 @@ const actions = {
     let payload = {
       type: "superpower",
       username: superpower.username,
-      superpower1: superpower.superpower,
+      superpower1: superpower.superpower
     };
     dispatch("fbAddPlanuary", payload);
   },
@@ -248,7 +252,7 @@ const actions = {
     let payload = {
       type: "tasklinsHelp",
       username: tasklinsHelp.username,
-      tasklinsHelp1: tasklinsHelp.tasklinsHelp,
+      tasklinsHelp1: tasklinsHelp.tasklinsHelp
     };
     dispatch("fbAddPlanuary", payload);
   },
@@ -270,7 +274,7 @@ const actions = {
       username: priority.username,
       priority1: priority.priorityOne,
       priority2: priority.priorityTwo,
-      priority3: priority.priorityThree,
+      priority3: priority.priorityThree
     };
     dispatch("fbAddPlanuary", payload);
   },
@@ -307,6 +311,14 @@ const actions = {
       assess3: assess.assessThree,
       assess4: assess.assessFour,
       assess5: assess.assessFive
+    };
+    dispatch("fbAddPlanuary", payload);
+  },
+  acceptQuest({ dispatch, commit }, quest) {
+    let payload = {
+      type: "quest",
+      username: quest.username,
+      quest: quest.chosenQuest
     };
     dispatch("fbAddPlanuary", payload);
   },
@@ -358,35 +370,38 @@ const actions = {
             commit("setPractices", planuary);
             break;
           case "gratitude":
-              commit("setGratitude", planuary);
-              break; 
+            commit("setGratitude", planuary);
+            break;
           case "letGo":
-              commit("setLetGo", planuary);
-              break;     
+            commit("setLetGo", planuary);
+            break;
           case "superpower":
-                commit("setSuperpower", planuary);
-                break;    
+            commit("setSuperpower", planuary);
+            break;
           case "avoid":
-                commit("setAvoid", planuary);
-                break;  
+            commit("setAvoid", planuary);
+            break;
           case "tasklinsHelp":
-                commit("setTasklinsHelp", planuary);
-                break;   
+            commit("setTasklinsHelp", planuary);
+            break;
           case "reward":
-                commit("setReward", planuary);
-                break;     
+            commit("setReward", planuary);
+            break;
           case "priority":
             commit("setPriority", planuary);
-            break;    
+            break;
           case "distraction":
             commit("setDistraction", planuary);
-            break;        
+            break;
           case "random":
-              commit("setRandom", planuary);
-              break; 
+            commit("setRandom", planuary);
+            break;
           case "assess":
-                commit("setAssess", planuary);
-                break; 
+            commit("setAssess", planuary);
+            break;
+          case "quest":
+            commit("setQuest", planuary);
+            break;
         }
       },
       error => {
@@ -423,35 +438,35 @@ const actions = {
           commit("setPractices", planuary);
           break;
         case "gratitude":
-            commit("setGratitude", planuary);
-            break;        
+          commit("setGratitude", planuary);
+          break;
         case "letGo":
-            commit("setLetGo", planuary);
-            break;     
+          commit("setLetGo", planuary);
+          break;
         case "superpower":
-                commit("setSuperpower", planuary);
-                break;   
+          commit("setSuperpower", planuary);
+          break;
         case "avoid":
-                commit("setAvoid", planuary);
-                break;
+          commit("setAvoid", planuary);
+          break;
         case "tasklinsHelp":
-                commit("setTasklinsHelp", planuary);
-                break;       
+          commit("setTasklinsHelp", planuary);
+          break;
         case "reward":
           commit("setReward", planuary);
-          break;         
+          break;
         case "priority":
           commit("setPriority", planuary);
-          break;       
-          case "distraction":
-            commit("setDistraction", planuary);
-            break;              
-       case "random":
-              commit("setRandom", planuary);
-              break;  
+          break;
+        case "distraction":
+          commit("setDistraction", planuary);
+          break;
+        case "random":
+          commit("setRandom", planuary);
+          break;
         case "assess":
           commit("setAssess", planuary);
-          break;                                
+          break;
       }
     });
 
@@ -488,34 +503,34 @@ const actions = {
           break;
         case "gratitude":
           commit("setGratitude", planuary);
-          break;      
+          break;
         case "letGo":
           commit("setLetGo", planuary);
           break;
         case "superpower":
-            commit("setSuperpower", planuary);
-            break; 
+          commit("setSuperpower", planuary);
+          break;
         case "avoid":
-              commit("setAvoid", planuary);
-              break; 
+          commit("setAvoid", planuary);
+          break;
         case "tasklinsHelp":
-              commit("setTasklinsHelp", planuary);
-              break; 
+          commit("setTasklinsHelp", planuary);
+          break;
         case "reward":
           commit("setReward", planuary);
-          break;  
+          break;
         case "priority":
           commit("setPriority", planuary);
-          break;       
-          case "distraction":
-            commit("setDistraction", planuary);
-            break;   
-            case "random":
-            commit("setRandom", planuary);
-            break;   
+          break;
+        case "distraction":
+          commit("setDistraction", planuary);
+          break;
+        case "random":
+          commit("setRandom", planuary);
+          break;
         case "assess":
-            commit("setAssess", planuary);
-            break;                                                              
+          commit("setAssess", planuary);
+          break;
       }
     });
   },
