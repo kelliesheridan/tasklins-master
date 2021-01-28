@@ -2500,8 +2500,6 @@
                 elsewhere on the website, and the prompts are optional.</i>
             </p>
 
-            <div class="row">
-              <div class="col q-pa-sm">
                   <q-card class="my-card quest-card center q-pa-md">
                   <img src="/statics/icons/quests/quest1.png">
 
@@ -2542,13 +2540,6 @@
 
                 </div>
 
-
-                
-              </div>
-              <br>
-
-              <div class="col q-pa-md">
-
                 <q-card class="my-card quest-card center q-pa-md">
                   <img class="q-p-sm" src="/statics/icons/quests/quest3.png">
 
@@ -2567,7 +2558,7 @@
                   </q-card-actions>
                 </q-card>
 
-                <q-card class="my-card quest-card center q-pa-md">
+                <q-card class="my-card col-xs-12 col-sm-12 col-md-6 col-lg-6 quest-card center q-pa-md">
                   <img src="/statics/icons/quests/quest4.png">
 
                   <q-card-section>
@@ -2584,11 +2575,6 @@
                     <q-btn @click="setQuest('quest4')" :class="questActive('quest4') ? 'bg-accent' : ''">Accept This Quest!</q-btn>
                   </q-card-actions>
                 </q-card>
-
-              </div>
-            
-            </div>
-
             <br />
           </q-card-section>
         </q-card>
