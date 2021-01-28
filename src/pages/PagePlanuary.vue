@@ -2500,10 +2500,9 @@
                 elsewhere on the website, and the prompts are optional.</i>
             </p>
 
-            <div class="row q-pa-md">
-              <div class="col q-pa-md">
-
-                <q-card class="my-card q-pa-md">
+            <div class="row">
+              <div class="col q-pa-sm">
+                  <q-card class="my-card quest-card center q-pa-md">
                   <img src="/statics/icons/quests/quest1.png">
 
                   <q-card-section>
@@ -2511,7 +2510,9 @@
                   </q-card-section>
 
                   <q-card-section class="q-pt-none">
-                   Text
+                   Make the world a little better than you found it. To complete this quest, you'll need to plant a tree. At your home, somewhere 
+                   in your neighborhood, whatever makes sense for you. If this isn't the right time of year for growing things outside where you 
+                   are, don't worry. You still have plenty of time left this year. 
                   </q-card-section>
 
                   <q-card-actions class="center">
@@ -2519,7 +2520,7 @@
                   </q-card-actions>
                 </q-card>
 
-                <q-card class="my-card q-pa-md">
+                <q-card class="my-card quest-card center q-pa-sm">
                   <img src="/statics/icons/quests/quest2.png">
 
                   <q-card-section>
@@ -2527,7 +2528,9 @@
                   </q-card-section>
 
                   <q-card-section class="q-pt-none">
-                   Text
+                   Books can help you escape, let you explore, teach you new things, and so much more. To complete this quest, read five more books 
+                   than you did last year. If you don't know what your number is, make an honest guess! And don't forget, audiobooks and graphic 
+                   novels always count.
                   </q-card-section>
 
                   <q-card-actions class="center">
@@ -2535,21 +2538,28 @@
                   </q-card-actions>
                 </q-card>
 
+                <div>
+
+                </div>
+
+
+                
               </div>
-              <br>
               <br>
 
               <div class="col q-pa-md">
 
-                <q-card class="my-card q-pa-md">
-                  <img src="/statics/icons/quests/quest3.png">
+                <q-card class="my-card quest-card center q-pa-md">
+                  <img class="q-p-sm" src="/statics/icons/quests/quest3.png">
 
                   <q-card-section>
                     <div class="text-h6">Write Some Letters</div>
                   </q-card-section>
 
                   <q-card-section class="q-pt-none">
-                   Text
+                   This time of year can be isolating, which is true now more than ever. So lets try to bridge the gap and re-connect. Over the 
+                   course of 2021, you'll need to write and send five letters (e-mail works too). It's up to you to decide who these go to, but 
+                   remember that the goal here is to strengthen connections!
                   </q-card-section>
 
                   <q-card-actions class="center">
@@ -2557,7 +2567,7 @@
                   </q-card-actions>
                 </q-card>
 
-                <q-card class="my-card q-pa-md">
+                <q-card class="my-card quest-card center q-pa-md">
                   <img src="/statics/icons/quests/quest4.png">
 
                   <q-card-section>
@@ -2565,7 +2575,9 @@
                   </q-card-section>
 
                   <q-card-section class="q-pt-none">
-                   Text
+                   For so many of us, travel is not a real possibility for this year. That doesn't mean we can't take the time to explore our own 
+                   backyards, home towns, a local park, a nearby tourist attreaction or somewhere else you've always meant to go. To complete this quest 
+                   all you need to do is go visit somewhere local that you haven't been to before!
                   </q-card-section>
 
                   <q-card-actions class="center">
