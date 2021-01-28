@@ -2492,14 +2492,11 @@
 
           <q-card-section v-if="dayTwentyEight">
             <p>
-              Wow! Finishing up the last full week of January, and by the time the next Monday rolls around, Planuary will have come to an end. 
+              We're now only days away from the end of Planuary, but we still have the rest of 2021 ahead of us, and it's time to start thinking 
+              about our next big adventures. So today, we choose a quest!
             </p>
 
-            <p>
-              <i>Anything listed here will remain private and not be posted
-                elsewhere on the website, and the prompts are optional.</i>
-            </p>
-
+                <div class="row center">  
                   <q-card class="my-card quest-card center q-pa-md">
                   <img src="/statics/icons/quests/quest1.png">
 
@@ -2514,11 +2511,13 @@
                   </q-card-section>
 
                   <q-card-actions class="center">
-                    <q-btn @click="setQuest('quest1')" :class="questActive('quest1') ? 'bg-accent' : ''">Accept This Quest!</q-btn>
+                    <q-space />
+                    <q-btn @click="setQuest('quest1')" :class="questActive('quest1') ? 'bg-secondary' : ''">Accept This Quest!</q-btn>
+                    <q-space />
                   </q-card-actions>
                 </q-card>
 
-                <q-card class="my-card quest-card center q-pa-sm">
+                <q-card class="my-card quest-card center q-pa-md">
                   <img src="/statics/icons/quests/quest2.png">
 
                   <q-card-section>
@@ -2532,7 +2531,9 @@
                   </q-card-section>
 
                   <q-card-actions class="center">
-                    <q-btn @click="setQuest('quest2')" :class="questActive('quest2') ? 'bg-accent' : ''">Accept This Quest!</q-btn>
+                    <q-space />
+                    <q-btn @click="setQuest('quest2')" :class="questActive('quest2') ? 'bg-secondary' : ''">Accept This Quest!</q-btn>
+                    <q-space />
                   </q-card-actions>
                 </q-card>
 
@@ -2554,11 +2555,13 @@
                   </q-card-section>
 
                   <q-card-actions class="center">
-                    <q-btn @click="setQuest('quest3')" :class="questActive('quest3') ? 'bg-accent' : ''">Accept This Quest!</q-btn>
+                    <q-space />
+                    <q-btn @click="setQuest('quest3')" :class="questActive('quest3') ? 'bg-secondary' : ''">Accept This Quest!</q-btn>
+                    <q-space />
                   </q-card-actions>
                 </q-card>
 
-                <q-card class="my-card col-xs-12 col-sm-12 col-md-6 col-lg-6 quest-card center q-pa-md">
+                <q-card class="my-card quest-card center q-pa-md">
                   <img src="/statics/icons/quests/quest4.png">
 
                   <q-card-section>
@@ -2572,10 +2575,12 @@
                   </q-card-section>
 
                   <q-card-actions class="center">
-                    <q-btn @click="setQuest('quest4')" :class="questActive('quest4') ? 'bg-accent' : ''">Accept This Quest!</q-btn>
+                    <q-space />
+                    <q-btn @click="setQuest('quest4')" :class="questActive('quest4') ? 'bg-secondary' : ''">Accept This Quest!</q-btn>
+                    <q-space />
                   </q-card-actions>
                 </q-card>
-            <br />
+            </div>
           </q-card-section>
         </q-card>
       </div>
@@ -3780,7 +3785,6 @@ export default {
         username: this.profile.username
       };
       this.acceptQuest(payload);
-      this.dayTwentyEight = false;
       this.$q.notify({
         message: "Good luck on your quest!",
         color: "primary"
