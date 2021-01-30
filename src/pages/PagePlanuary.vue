@@ -2790,7 +2790,7 @@
             </q-list>            
 
             <div class="q-px-sm q-mt-sm">
-              Your selection is: <strong>{{ color }}</strong>
+              Your selection is: <strong>{{ janDescription }}</strong>
             </div>
 
             <div class="center q-pa-md">
@@ -3631,7 +3631,7 @@ export default {
         this.assess5 = value;
       }
     },
-    janDescripton: {
+    janDescription: {
       get() {
         return this.janDes;
       },
@@ -4066,7 +4066,7 @@ export default {
         janDescription: this.janDescription,
         username: this.profile.username
       };
-      this.addAssess(payload);
+      this.addJanDescription(payload);
       this.dayThirty = false;
       this.$q.notify({
         message: "The month is almost finished!",
