@@ -2755,21 +2755,35 @@
 
               <q-item tag="label" v-ripple>
                 <q-item-section avatar>
-                  <q-radio v-model="janDescription" val="strange" color="orange" />
+                  <q-radio v-model="janDescription" val="busy" color="blue-grey" />
                 </q-item-section>
 
                 <q-item-section avatar>
-                  <q-icon color="orange" name="las la-gamepad" />
+                  <q-icon color="blue-grey" name="las la-list" />
                 </q-item-section>
 
                 <q-item-section avatar>
-                  <q-item-label>Distracted</q-item-label>
+                  <q-item-label>Busy</q-item-label>
                 </q-item-section>
               </q-item>
 
               <q-item tag="label" v-ripple>
                 <q-item-section avatar>
-                  <q-radio v-model="janDescription" val="strange" color="purple" />
+                  <q-radio v-model="janDescription" val="distracted" color="red" />
+                </q-item-section>
+
+                <q-item-section avatar>
+                  <q-icon color="red" name="las la-gamepad" />
+                </q-item-section>
+
+                <q-item-section avatar>
+                  <q-item-label>Distracting</q-item-label>
+                </q-item-section>
+              </q-item>
+
+              <q-item tag="label" v-ripple>
+                <q-item-section avatar>
+                  <q-radio v-model="janDescription" val="exciting" color="purple" />
                 </q-item-section>
 
                 <q-item-section avatar>
@@ -2783,7 +2797,7 @@
 
               <q-item tag="label" v-ripple>
                 <q-item-section avatar>
-                  <q-radio v-model="janDescription" val="strange" color="orange" />
+                  <q-radio v-model="janDescription" val="happy" color="orange" />
                 </q-item-section>
 
                 <q-item-section avatar>
@@ -2794,6 +2808,20 @@
                   <q-item-label>Happy</q-item-label>
                 </q-item-section>
               </q-item>
+
+              <q-item tag="label" v-ripple>
+                <q-item-section avatar>
+                  <q-radio v-model="janDescription" val="nice" color="pink" />
+                </q-item-section>
+
+                <q-item-section avatar>
+                  <q-icon color="pink" name="las la-cookie-bite" />
+                </q-item-section>
+
+                <q-item-section avatar>
+                  <q-item-label>Nice</q-item-label>
+                </q-item-section>
+              </q-item>
               
               <q-item tag="label" v-ripple>
                 <q-item-section avatar>
@@ -2801,7 +2829,7 @@
                 </q-item-section>
 
                 <q-item-section avatar>
-                  <q-icon color="teal" name="las la-atom" />
+                  <q-icon color="teal" name="las la-hippo" />
                 </q-item-section>
 
                 <q-item-section avatar>
