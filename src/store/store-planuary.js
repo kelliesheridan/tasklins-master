@@ -80,7 +80,7 @@ const mutations = {
   setQuest(state, quest) {
     if (quest != undefined) state.planuary.quest = quest;
   },
-  setJanDescription(state, quest) {
+  setJanDescription(state, janDescription) {
     if (janDescription != undefined) state.planuary.janDescription = janDescription;
   },
   addWish(state, wishes) {
@@ -328,7 +328,7 @@ const actions = {
   addJanDescription({ dispatch, commit }, janDescription) {
     let payload = {
       type: "janDescription",
-      username: assess.username,
+      username: janDescription.username,
       janDescription: janDescription.janDescription,
     };
     dispatch("fbAddPlanuary", payload);

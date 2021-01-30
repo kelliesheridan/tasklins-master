@@ -2795,7 +2795,7 @@
 
             <div class="center q-pa-md">
               <q-btn
-                @click="setJanDes()"
+                @click="setJanDescription()"
                 class="q-pa-xs"
                 color="primary"
                 size="md"
@@ -4289,7 +4289,7 @@ export default {
       this.assessFive = this.planuary.assess.assess5;
     }
     if (this.planuary.janDescription != undefined) {
-      this.janDescription = this.planuary.janDescription.janDes;
+      this.janDescription = this.planuary.janDescription.janDescription;
     }
     var date = moment().date();
     this.showDate(date);
