@@ -2769,6 +2769,20 @@
 
               <q-item tag="label" v-ripple>
                 <q-item-section avatar>
+                  <q-radio v-model="janDescription" val="chaotic" color="cyan-9" />
+                </q-item-section>
+
+                <q-item-section avatar>
+                  <q-icon color="cyan-9" name="las la-chart-line" />
+                </q-item-section>
+
+                <q-item-section avatar>
+                  <q-item-label>Chaotic</q-item-label>
+                </q-item-section>
+              </q-item>
+
+              <q-item tag="label" v-ripple>
+                <q-item-section avatar>
                   <q-radio v-model="janDescription" val="distracted" color="red" />
                 </q-item-section>
 
@@ -2778,6 +2792,20 @@
 
                 <q-item-section avatar>
                   <q-item-label>Distracting</q-item-label>
+                </q-item-section>
+              </q-item>
+
+              <q-item tag="label" v-ripple>
+                <q-item-section avatar>
+                  <q-radio v-model="janDescription" val="discouraging" color="black" />
+                </q-item-section>
+
+                <q-item-section avatar>
+                  <q-icon color="black" name="las la-heart-broken" />
+                </q-item-section>
+
+                <q-item-section avatar>
+                  <q-item-label>Discouraging</q-item-label>
                 </q-item-section>
               </q-item>
 
@@ -2811,6 +2839,34 @@
 
               <q-item tag="label" v-ripple>
                 <q-item-section avatar>
+                  <q-radio v-model="janDescription" val="hopeful" color="indigo" />
+                </q-item-section>
+
+                <q-item-section avatar>
+                  <q-icon color="indigo" name="las la-seedling" />
+                </q-item-section>
+
+                <q-item-section avatar>
+                  <q-item-label>Hopeful</q-item-label>
+                </q-item-section>
+              </q-item>
+
+              <q-item tag="label" v-ripple>
+                <q-item-section avatar>
+                  <q-radio v-model="janDescription" val="lonely" color="grey" />
+                </q-item-section>
+
+                <q-item-section avatar>
+                  <q-icon color="grey" name="las la-user-circle" />
+                </q-item-section>
+
+                <q-item-section avatar>
+                  <q-item-label>Lonely</q-item-label>
+                </q-item-section>
+              </q-item>
+
+              <q-item tag="label" v-ripple>
+                <q-item-section avatar>
                   <q-radio v-model="janDescription" val="nice" color="pink" />
                 </q-item-section>
 
@@ -2820,6 +2876,20 @@
 
                 <q-item-section avatar>
                   <q-item-label>Nice</q-item-label>
+                </q-item-section>
+              </q-item>
+
+              <q-item tag="label" v-ripple>
+                <q-item-section avatar>
+                  <q-radio v-model="janDescription" val="quiet" color="light-blue-14" />
+                </q-item-section>
+
+                <q-item-section avatar>
+                  <q-icon color="light-blue-14" name="las la-book" />
+                </q-item-section>
+
+                <q-item-section avatar>
+                  <q-item-label>Quiet</q-item-label>
                 </q-item-section>
               </q-item>
               
