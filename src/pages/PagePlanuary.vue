@@ -2738,34 +2738,53 @@
                 change Toggle state.
               -->
 
-              <q-item tag="label" v-ripple>
-
-                <q-item-section avatar>
-                  <q-radio v-model="color" val="strange" color="teal" />
-                </q-item-section>
-
-                <q-item-section avatar>
-                  <q-icon color="teal" name="las la-atom" />
-                </q-item-section>
-
-                <q-item-section>
-                  <q-item-label>Strange</q-item-label>
-                </q-item-section>
-              </q-item>
 
               <q-item tag="label" v-ripple>
 
                 <q-item-section avatar>
-                  <q-radio v-model="color" val="boring" color="orange" />
+                  <q-radio v-model="janDescription" val="boring" color="orange" />
                 </q-item-section>
 
                 <q-item-section avatar>
                   <q-icon color="orange" name="las la-cloud" />
                 </q-item-section>
 
-                <q-item-section>
+                <q-item-section avatar>
                   <q-item-label>Boring</q-item-label>
                 </q-item-section>
+
+              </q-item>
+
+              <q-item tag="label" v-ripple>
+
+                <q-item-section avatar>
+                  <q-radio v-model="janDescription" val="strange" color="teal" />
+                </q-item-section>
+
+                <q-item-section avatar>
+                  <q-icon color="teal" name="las la-atom" />
+                </q-item-section>
+
+                <q-item-section avatar>
+                  <q-item-label>Strange</q-item-label>
+                </q-item-section>
+
+              </q-item>
+              
+              <q-item tag="label" v-ripple>
+
+                <q-item-section avatar>
+                  <q-radio v-model="janDescription" val="strange" color="teal" />
+                </q-item-section>
+
+                <q-item-section avatar>
+                  <q-icon color="teal" name="las la-atom" />
+                </q-item-section>
+
+                <q-item-section avatar>
+                  <q-item-label>Strange</q-item-label>
+                </q-item-section>
+
               </q-item>
 
             </q-list>            
