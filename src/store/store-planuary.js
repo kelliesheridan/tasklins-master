@@ -80,6 +80,9 @@ const mutations = {
   setQuest(state, quest) {
     if (quest != undefined) state.planuary.quest = quest;
   },
+  setJanDescription(state, quest) {
+    if (janDescription != undefined) state.planuary.janDescription = janDescription;
+  },
   addWish(state, wishes) {
     Vue.set(state.planuary.wishes, wishes, wishes);
   },
@@ -322,6 +325,14 @@ const actions = {
     };
     dispatch("fbAddPlanuary", payload);
   },
+  addJanDescription({ dispatch, commit }, janDescription) {
+    let payload = {
+      type: "janDescription",
+      username: assess.username,
+      janDescription: janDescription.janDescription,
+    };
+    dispatch("fbAddPlanuary", payload);
+  },
   fbAddPlanuary({ dispatch }, payload) {
     let userId = firebaseAuth.currentUser.uid;
     let planuaryRef = firebaseDb.ref("planuary/" + payload.type + "/" + userId);
@@ -402,6 +413,9 @@ const actions = {
           case "quest":
             commit("setQuest", planuary);
             break;
+            case "janDescription":
+              commit("setJanDescription", planuary);
+              break;
         }
       },
       error => {
@@ -467,6 +481,9 @@ const actions = {
         case "assess":
           commit("setAssess", planuary);
           break;
+        case "janDescription":
+          commit("setJanDescription", planuary);
+          break;
       }
     });
 
@@ -530,6 +547,9 @@ const actions = {
           break;
         case "assess":
           commit("setAssess", planuary);
+          break;
+        case "janDescription":
+          commit("setJanDescription", planuary);
           break;
       }
     });

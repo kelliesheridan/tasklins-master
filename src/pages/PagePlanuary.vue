@@ -2624,74 +2624,174 @@
       </div>      
     </div>
 
-      <div class="planuaryDay day-29">
-        <q-card>
-          <q-card-section>
-            <div class="text-h7 row">
-              <q-btn dense flat @click="dayTwentyNine = !dayTwentyNine">
-                Planuary. Day Twenty-Nine.
-              </q-btn>
-              <q-space />
+    <div class="planuaryDay day-29">
+      <q-card>
+        <q-card-section>
+          <div class="text-h7 row">
+            <q-btn dense flat @click="dayTwentyNine = !dayTwentyNine">
+              Planuary. Day Twenty-Nine.
+            </q-btn>
+            <q-space />
 
-              <q-btn
-                @click="dayTwentyNine = !dayTwentyNine"
-                v-if="!dayTwentyNine"
-                color="secondary"
-                padding="none"
-                class="no-margin no-padding"
-                flat
-                round
-                dense
-                icon="add"
-              />
-            </div>
-          </q-card-section>
+            <q-btn
+              @click="dayTwentyNine = !dayTwentyNine"
+              v-if="!dayTwentyNine"
+              color="secondary"
+              padding="none"
+              class="no-margin no-padding"
+              flat
+              round
+              dense
+              icon="add"
+            />
+          </div>
+        </q-card-section>
 
-          <q-card-section v-if="dayTwentyNine">
-            <p>
-              We made it through the final full week of January, and there are only a few final days left in Planuary. We're sending so many high-fives to every single 
-              one of you for keeping at your goals throughout a hectic and volatile month. Now, it's time to look back on this week and write down a few important 
-              highlights to look back on later.
-            </p>
+        <q-card-section v-if="dayTwentyNine">
+          <p>
+            We made it through the final full week of January, and there are only a few final days left in Planuary. We're sending so many high-fives to every single 
+            one of you for keeping at your goals throughout a hectic and volatile month. Now, it's time to look back on this week and write down a few important 
+            highlights to look back on later.
+          </p>
 
-            <div class="text-h7 focus-boxes center">
-              <q-input
-                class="q-pa-xs"
-                rounded
-                label="What went well this week?"
-                outlined
-                v-model="weekFourWin"
-              ></q-input>
-              <q-input
-                class="q-pa-xs"
-                rounded
-                label="What did you struggle with?"
-                outlined
-                v-model="weekFourStruggle"
-              ></q-input>
-              <q-input
-                class="q-pa-xs"
-                rounded
-                label="What do you want to remember?"
-                outlined
-                v-model="weekFourMemory"
-              ></q-input>
+          <div class="text-h7 focus-boxes center">
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="What went well this week?"
+              outlined
+              v-model="weekFourWin"
+            ></q-input>
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="What did you struggle with?"
+              outlined
+              v-model="weekFourStruggle"
+            ></q-input>
+            <q-input
+              class="q-pa-xs"
+              rounded
+              label="What do you want to remember?"
+              outlined
+              v-model="weekFourMemory"
+            ></q-input>
+          </div>
+
+          <div class="center q-pa-md">
+            <q-btn
+              @click="setWeekFour()"
+              class="q-pa-xs"
+              color="primary"
+              size="md"
+              label="Week four complete!"
+            />
+          </div>
+
+          <br />
+        </q-card-section>
+      </q-card>
+    </div>
+
+    <div class="planuaryDay day-30">
+      <q-card>
+        <q-card-section>
+          <div class="text-h7 row">
+            <q-btn dense flat @click="dayThirty = !dayThirty">
+              Planuary. Day Thirty.
+            </q-btn>
+            <q-space />
+
+            <q-btn
+              @click="dayThirty = !dayThirty"
+              v-if="!dayThirty"
+              color="secondary"
+              padding="none"
+              class="no-margin no-padding"
+              flat
+              round
+              dense
+              icon="add"
+            />
+          </div>
+        </q-card-section>
+
+        <q-card-section v-if="dayThirty">
+          <p>
+            February is so close, we can practically taste it, but before we look ahead to the second month of the year, it's time to look back on January. 
+            Tomorrow, we'll do a general roundup of the month based on some of things you've done here on Tasklins, but today, it's time for you to leave one 
+            final note on your own personal journey through January of 2021.
+          </p>
+
+          <p>
+            So! How do you feel your month went? Select whichever of the words below you think best describes how this month went for you. And don't worry, if 
+            anything particularly dramatic happens this weekend, you can always come back and change the word you've chosen.
+          </p>  
+
+          <div class="text-h7 focus-boxes center">
+
+            <div class="q-pa-md">
+            <q-list>
+              <!--
+                Rendering a <label> tag (notice tag="label")
+                so QRadios will respond to clicks on QItems to
+                change Toggle state.
+              -->
+
+              <q-item tag="label" v-ripple>
+
+                <q-item-section avatar>
+                  <q-radio v-model="color" val="strange" color="teal" />
+                </q-item-section>
+
+                <q-item-section avatar>
+                  <q-icon color="teal" name="las la-atom" />
+                </q-item-section>
+
+                <q-item-section>
+                  <q-item-label>Strange</q-item-label>
+                </q-item-section>
+              </q-item>
+
+              <q-item tag="label" v-ripple>
+
+                <q-item-section avatar>
+                  <q-radio v-model="color" val="boring" color="orange" />
+                </q-item-section>
+
+                <q-item-section avatar>
+                  <q-icon color="orange" name="las la-cloud" />
+                </q-item-section>
+
+                <q-item-section>
+                  <q-item-label>Boring</q-item-label>
+                </q-item-section>
+              </q-item>
+
+            </q-list>            
+
+            <div class="q-px-sm q-mt-sm">
+              Your selection is: <strong>{{ color }}</strong>
             </div>
 
             <div class="center q-pa-md">
               <q-btn
-                @click="setWeekFour()"
+                @click="setJanDes()"
                 class="q-pa-xs"
                 color="primary"
                 size="md"
-                label="Week four complete!"
+                label="Set the Record"
               />
             </div>
 
-            <br />
-          </q-card-section>
-        </q-card>
-      </div>
+          </div>
+            
+          </div>
+
+          <br />
+        </q-card-section>
+      </q-card>
+    </div>
 
     <q-dialog v-model="showAddTask">
       <add-task @close="showAddTask = false" />
@@ -2797,6 +2897,7 @@ export default {
       assess3: null,
       assess4: null,
       assess5: null,
+      janDes: null, 
       dayOne: false,
       dayTwo: false,
       dayThree: false,
@@ -3511,6 +3612,14 @@ export default {
         this.assess5 = value;
       }
     },
+    janDescripton: {
+      get() {
+        return this.janDes;
+      },
+      set(value) {
+        this.janDes = value;
+      }
+    },
     projectSearchField: {
       get() {
         return this.projectSearch;
@@ -3549,7 +3658,8 @@ export default {
       "addDistraction",
       "addRandom",
       "addAssess",
-      "acceptQuest"
+      "acceptQuest",
+      "addJanDescription"
     ]),
     ...mapActions("tasks", ["setProjectSearch"]),
     ...mapActions("community", ["addEncouragement"]),
@@ -3932,6 +4042,18 @@ export default {
     getQuest(quest) {
       return true
     },
+    setJanDescription() {
+      let payload = {
+        janDescription: this.janDescription,
+        username: this.profile.username
+      };
+      this.addAssess(payload);
+      this.dayThirty = false;
+      this.$q.notify({
+        message: "The month is almost finished!",
+        color: "primary"
+      });
+    },
     showDate(dayNumber) {
       if (dayNumber == 1) {
         this.dayOne = true;
@@ -4146,6 +4268,9 @@ export default {
       this.assessThree = this.planuary.assess.assess3;
       this.assessFour = this.planuary.assess.assess4;
       this.assessFive = this.planuary.assess.assess5;
+    }
+    if (this.planuary.janDescription != undefined) {
+      this.janDescription = this.planuary.janDescription.janDes;
     }
     var date = moment().date();
     this.showDate(date);
