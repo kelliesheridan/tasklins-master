@@ -90,6 +90,7 @@ const actions = {
         dispatch("planuary/fbReadPlanuary", {type: "assess"}, { root: true });
         dispatch("planuary/fbReadPlanuary", {type: "quest"}, { root: true });
         dispatch("planuary/fbReadPlanuary", {type: "janDescription"}, { root: true });
+        dispatch("planuary/fbReadPlanuary", {type: "timeCapsule"}, { root: true });
         dispatch("profile/fbReadAllMoods", null, { root: true });
         dispatch("community/fbReadLikes", null, { root: true });
         if (this.state.profile.profile.user.name !== "") {

@@ -81,7 +81,12 @@ const mutations = {
     if (quest != undefined) state.planuary.quest = quest;
   },
   setJanDescription(state, janDescription) {
-    if (janDescription != undefined) state.planuary.janDescription = janDescription;
+    if (janDescription != undefined)
+      state.planuary.janDescription = janDescription;
+  },
+  setTimeCapsule(state, timeCapsule) {
+    if (timeCapsule != undefined)
+      state.planuary.timeCapsule = timeCapsule;
   },
   addWish(state, wishes) {
     Vue.set(state.planuary.wishes, wishes, wishes);
@@ -329,7 +334,19 @@ const actions = {
     let payload = {
       type: "janDescription",
       username: janDescription.username,
-      janDescription: janDescription.janDescription,
+      janDescription: janDescription.janDescription
+    };
+    dispatch("fbAddPlanuary", payload);
+  },
+  addTimeCapsule({ dispatch, commit }, timeCapsule) {
+    let payload = {
+      type: "timeCapsule",
+      username: timeCapsule.username,
+      capsuleOne: timeCapsule.capsuleOne,
+      capsuleTwo: timeCapsule.capsuleTwo,
+      capsuleThree: timeCapsule.capsuleThree,
+      capsuleFour: timeCapsule.capsuleFour,
+      capsuleFive: timeCapsule.capsuleFive
     };
     dispatch("fbAddPlanuary", payload);
   },
@@ -413,9 +430,12 @@ const actions = {
           case "quest":
             commit("setQuest", planuary);
             break;
-            case "janDescription":
-              commit("setJanDescription", planuary);
-              break;
+          case "janDescription":
+            commit("setJanDescription", planuary);
+            break;
+          case "timeCapsule":
+            commit("setTimeCapsule", planuary);
+            break;
         }
       },
       error => {

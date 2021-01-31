@@ -2956,22 +2956,79 @@
         </q-card-section>
 
         <q-card-section v-if="dayThirtyOne">
-          <p>
-            This is it! We've made it to the end of Planuary!
-          </p>
+          <p>This has been a wonderful journey to go on with all of you, and marks only the beginning of our adventure here on Tasklins. 
+            You can expect lots of updates and new features over the coming weeks and months, although not quite as frequently.</p>
+
+          <p>For now, to celebrate this historic month of goal setting, we'll be burying a time capsule in the center of our town square, 
+            to be dug up at some point in the future, when we need a little extra motivation to keep chipping away at our goals.</p>
+
+          <p>Below are a few questions for you to fill in and submit for our time capsule. All of the questions are optional, but 
+            the answers will be public within our community when they're uncovered again in the future.</p>
 
           <div class="text-h7 focus-boxes center">
-
-          </div>
-
-          <div class="center q-pa-md">
-            <q-btn
-              @click="setWeekFour()"
-              class="q-pa-xs"
-              color="primary"
-              size="md"
-              label="Submit Your Entry"
-            />
+<div>
+              <div class="text-h7 focus-boxes center">
+                <p>
+                  Who would you like to spend more time with this year?
+                </p>  
+                <q-input
+                  class="q-pa-xs"
+                  rounded
+                  outlined
+                  v-model="capsuleOne"
+                ></q-input>
+                <br>
+                <p>
+                  Is there a new hobby you'd like to try this year?
+                </p>  
+                <q-input
+                  class="q-pa-xs"
+                  rounded
+                  outlined
+                  v-model="capsuleTwo"
+                ></q-input>
+                <br>
+                <p>
+                  Can you think of a new meal you'd like to try and make in 2021?
+                </p>  
+                <q-input
+                  class="q-pa-xs"
+                  rounded
+                  outlined
+                  v-model="capsuleThree"
+                ></q-input>
+                <br>
+                <p>
+                  What's your most anticipated new release? (a book, movie, album, whatever works for you)
+                </p>  
+                <q-input
+                  class="q-pa-xs"
+                  rounded
+                  outlined
+                  v-model="capsuleFour"
+                ></q-input>
+                <br>
+                <p>
+                What would it take for you to consider 2021 a success?                   
+                </p>  
+                <q-input
+                  class="q-pa-xs"
+                  rounded
+                  outlined
+                  v-model="capsuleFive"
+                ></q-input>
+                <br>
+              </div>
+              <div class="center q-pa-md">
+                <q-btn
+                  @click="setTimeCapsule()"
+                  class="q-pa-xs"
+                  color="primary"
+                  size="md"
+                  label="Onward!"
+                />
+              </div>
+            </div>
           </div>
 
           <br />
@@ -3086,6 +3143,11 @@ export default {
       assess4: null,
       assess5: null,
       janDes: null, 
+      capsule1: null, 
+      capsule2: null, 
+      capsule3: null, 
+      capsule4: null, 
+      capsule5: null, 
       dayOne: false,
       dayTwo: false,
       dayThree: false,
@@ -3808,6 +3870,51 @@ export default {
         this.janDes = value;
       }
     },
+    capsuleOne: {
+      get() {
+        return this.capsule1;
+      },
+      set(value) {
+        this.capsule1 = value;
+      }
+
+    },
+    capsuleTwo: {
+      get() {
+        return this.capsule2;
+      },
+      set(value) {
+        this.capsule2 = value;
+      }
+
+    },
+    capsuleThree: {
+      get() {
+        return this.capsule3;
+      },
+      set(value) {
+        this.capsule3 = value;
+      }
+
+    },
+    capsuleFour: {
+      get() {
+        return this.capsule4;
+      },
+      set(value) {
+        this.capsule4 = value;
+      }
+
+    },
+    capsuleFive: {
+      get() {
+        return this.capsule5;
+      },
+      set(value) {
+        this.capsule5 = value;
+      }
+
+    },
     projectSearchField: {
       get() {
         return this.projectSearch;
@@ -3847,7 +3954,8 @@ export default {
       "addRandom",
       "addAssess",
       "acceptQuest",
-      "addJanDescription"
+      "addJanDescription",
+      "addTimeCapsule"
     ]),
     ...mapActions("tasks", ["setProjectSearch"]),
     ...mapActions("community", ["addEncouragement"]),
@@ -4242,6 +4350,22 @@ export default {
         color: "primary"
       });
     },
+    setTimeCapsule() {
+      let payload = {
+        capsuleOne: this.capsuleOne,
+        capsuleTwo: this.capsuleTwo,
+        capsuleThree: this.capsuleThree,
+        capsuleFour: this.capsuleFour,
+        capsuleFive: this.capsuleFive,
+        username: this.profile.username
+      };
+      this.addTimeCapsule(payload);
+      this.dayThirtyOne = false;
+      this.$q.notify({
+        message: "January is over!",
+        color: "primary"
+      });
+    },
     showDate(dayNumber) {
       if (dayNumber == 1) {
         this.dayOne = true;
@@ -4459,6 +4583,13 @@ export default {
     }
     if (this.planuary.janDescription != undefined) {
       this.janDescription = this.planuary.janDescription.janDescription;
+    }
+    if (this.planuary.timeCapsule != undefined) {
+      this.capsuleOne = this.planuary.timeCapsule.capsuleOne;
+      this.capsuleTwo = this.planuary.timeCapsule.capsuleTwo;
+      this.capsuleThree = this.planuary.timeCapsule.capsuleThree;
+      this.capsuleFour = this.planuary.timeCapsule.capsuleFour;
+      this.capsuleFive = this.planuary.timeCapsule.capsuleFive;
     }
     var date = moment().date();
     this.showDate(date);
