@@ -2932,6 +2932,55 @@
       </q-card>
     </div>
 
+    <div class="planuaryDay day-31">
+      <q-card>
+        <q-card-section>
+          <div class="text-h7 row">
+            <q-btn dense flat @click="dayThirtyOne = !dayThirtyOne">
+              Planuary. Day Thirty-One.
+            </q-btn>
+            <q-space />
+
+            <q-btn
+              @click="dayThirtyOne = !dayThirtyOne"
+              v-if="!dayThirtyOne"
+              color="secondary"
+              padding="none"
+              class="no-margin no-padding"
+              flat
+              round
+              dense
+              icon="add"
+            />
+          </div>
+        </q-card-section>
+
+        <q-card-section v-if="dayThirtyOne">
+          <p>
+            This is it! We've made it to the end of Planuary!
+          </p>
+
+          <div class="text-h7 focus-boxes center">
+
+          </div>
+
+          <div class="center q-pa-md">
+            <q-btn
+              @click="setWeekFour()"
+              class="q-pa-xs"
+              color="primary"
+              size="md"
+              label="Submit Your Entry"
+            />
+          </div>
+
+          <br />
+        </q-card-section>
+      </q-card>
+    </div>
+
+    
+
     <q-dialog v-model="showAddTask">
       <add-task @close="showAddTask = false" />
     </q-dialog>
