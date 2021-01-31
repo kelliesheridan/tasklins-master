@@ -2969,7 +2969,7 @@
 <div>
               <div class="text-h7 focus-boxes center">
                 <p>
-                  Who would you like to spend more time with this year?
+                  Your Name:
                 </p>  
                 <q-input
                   class="q-pa-xs"
@@ -2979,7 +2979,7 @@
                 ></q-input>
                 <br>
                 <p>
-                  Is there a new hobby you'd like to try this year?
+                  What is your biggest goal right now?
                 </p>  
                 <q-input
                   class="q-pa-xs"
@@ -2989,7 +2989,7 @@
                 ></q-input>
                 <br>
                 <p>
-                  Can you think of a new meal you'd like to try and make in 2021?
+                  What has been your biggest lifetime achievement so far? 
                 </p>  
                 <q-input
                   class="q-pa-xs"
@@ -2999,7 +2999,7 @@
                 ></q-input>
                 <br>
                 <p>
-                  What's your most anticipated new release? (a book, movie, album, whatever works for you)
+                  What is the biggest (non-pandemic) challenge you're facing today?
                 </p>  
                 <q-input
                   class="q-pa-xs"
@@ -3009,7 +3009,7 @@
                 ></q-input>
                 <br>
                 <p>
-                What would it take for you to consider 2021 a success?                   
+                What skill are you currently working on learning/improving?                 
                 </p>  
                 <q-input
                   class="q-pa-xs"
@@ -3018,6 +3018,15 @@
                   v-model="capsuleFive"
                 ></q-input>
                 <br>
+                <p>
+                Leave a message for your future self (keep in mind that we don't know exactly when we'll be digging our time capsule back up)!               
+                </p>  
+                <q-input
+                  class="q-pa-xs"
+                  rounded
+                  outlined
+                  v-model="capsuleSix"
+                ></q-input>
               </div>
               <div class="center q-pa-md">
                 <q-btn
@@ -3147,7 +3156,8 @@ export default {
       capsule2: null, 
       capsule3: null, 
       capsule4: null, 
-      capsule5: null, 
+      capsule5: null,
+      capsule6: null, 
       dayOne: false,
       dayTwo: false,
       dayThree: false,
@@ -3913,7 +3923,14 @@ export default {
       set(value) {
         this.capsule5 = value;
       }
-
+    },
+    capsuleSix: {
+      get() {
+        return this.capsule6;
+      },
+      set(value) {
+        this.capsule6 = value;
+      }
     },
     projectSearchField: {
       get() {
@@ -4357,12 +4374,13 @@ export default {
         capsuleThree: this.capsuleThree,
         capsuleFour: this.capsuleFour,
         capsuleFive: this.capsuleFive,
+        capsuleSix: this.capsuleSix,
         username: this.profile.username
       };
       this.addTimeCapsule(payload);
       this.dayThirtyOne = false;
       this.$q.notify({
-        message: "January is over!",
+        message: "See You in the Future!",
         color: "primary"
       });
     },
@@ -4590,6 +4608,7 @@ export default {
       this.capsuleThree = this.planuary.timeCapsule.capsuleThree;
       this.capsuleFour = this.planuary.timeCapsule.capsuleFour;
       this.capsuleFive = this.planuary.timeCapsule.capsuleFive;
+      this.capsuleSix = this.planuary.timeCapsule.capsuleSix;
     }
     var date = moment().date();
     this.showDate(date);

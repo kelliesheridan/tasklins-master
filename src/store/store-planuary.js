@@ -346,7 +346,8 @@ const actions = {
       capsuleTwo: timeCapsule.capsuleTwo,
       capsuleThree: timeCapsule.capsuleThree,
       capsuleFour: timeCapsule.capsuleFour,
-      capsuleFive: timeCapsule.capsuleFive
+      capsuleFive: timeCapsule.capsuleFive,
+      capsuleSix: timeCapsule.capsuleSix,
     };
     dispatch("fbAddPlanuary", payload);
   },
