@@ -169,7 +169,7 @@ function getLevel() {
   if (level > state.tasklin.maxLevel) {
     Notify.create({
       icon: 'grade',
-      message: "Congratulations! You reached level " + level + "!",
+      message: "Congratulations! " + state.tasklin.name == '' ? " Your tasklin" : state.tasklin.name + " reached level " + level + "!",
       color: 'primary',
       textColor: 'white'  
     })
