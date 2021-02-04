@@ -1,6 +1,6 @@
 import { firebaseDb, firebaseAuth } from "boot/firebase";
 import moment from "moment";
-import { Notify } from 'quasar'
+import { Notify } from 'quasar';
 
 const state = {
   profile: {
