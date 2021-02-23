@@ -7,6 +7,10 @@
         <div class="col-2 newsMenuSection q-pa-sm">
           <div class="col center">
 
+            <q-btn class="row newsBtn" color="primary" @click="news = 4">
+              February
+            </q-btn>
+
             <q-btn class="row newsBtn" color="secondary" @click="news = 3">
               Some Small Updates
             </q-btn>
@@ -22,6 +26,31 @@
         </div>
 
         <div class="col q-pa-sm">
+
+          <div class="newsPost" v-if="news == 4">
+            <h4>February</h4>
+            <br />
+            <p>
+              What a month! February has flown by with some personal life things going 
+              on behind the scenes... all good, just hectic! I have a new neice in my life 
+              (and my house), so that's been exciting, but it's well past time for a 
+              Tasklins update.
+            </p>  
+            <p>
+              This week's update is focusing on moods! Your Tasklins are now capable of 
+              more moods than ever before, and we've also had to do some tweaking on some 
+              of the current possible moods to keep everything nice and balanced. Plus, we've
+              added two more possible moods into the mood tracker in your journal with plans 
+              for more to come! Enjoy!!
+            </p>
+            <p>
+              If you're looking for a little more detail, we've also had a new
+              Patreon post go up today, including a look into what you can expect 
+              in next week's update, and a hint about just how moody your Tasklin 
+              can be.
+            </p>
+          </div>
+
         <div class="newsPost" v-if="news == 3">
           <h4>Some Small Updates</h4>
           <br />
@@ -128,7 +157,7 @@ import { mapActions, mapState, mapGetters } from "vuex";
 export default {
   data() {
     return {
-      news: 3
+      news: 4
     };
   },
   computed: {

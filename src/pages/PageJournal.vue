@@ -135,6 +135,17 @@
 
                       <div class="col">
                         <q-img
+                          src="/statics/moods/bored.png"
+                          spinner-color="white"
+                          class="row moodImage"
+                        />
+                        <div class="row moodImageText  text-center">
+                          Bored
+                        </div>
+                      </div>
+
+                      <div class="col">
+                        <q-img
                           src="/statics/moods/fine.png"
                           spinner-color="white"
                           class="row moodImage"
@@ -154,6 +165,18 @@
                           Glum
                         </div>
                       </div>
+
+                      <div class="col">
+                        <q-img
+                          src="/statics/moods/grateful.png"
+                          spinner-color="white"
+                          class="row moodImage"
+                        />
+                        <div class="row moodImageText  text-center">
+                          Grateful
+                        </div>
+                      </div>
+
 
                       <div class="col" v-if="this.profile.memberType > 1">
                         <q-img
