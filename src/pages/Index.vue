@@ -308,17 +308,17 @@ export default {
         return "Asleep";
       } else if (lateToday > 0 && completedToday > 0) {
         return "Concerned";
-      } else if (completedToday >= 1 && completedToday <= 3) {
+      } else if (completedToday >= 1 && completedToday <= 4) {
         return "Okay.";
       } else if (
-            completedToday > 3 &&
+            completedToday > 4 &&
             tasksDueTodayButNotCompleted == 0 &&
-            createdToday >= 2 &&
+            createdToday >= 1 &&
             lateToday == 0
           ) {
-        return "Thrilled!";
-      } else {
         return "Happy";
+      } else {
+        return "Content";
       }
     },
     showNewUserPanel(hidePanel) {
