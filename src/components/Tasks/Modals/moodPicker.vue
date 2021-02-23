@@ -13,6 +13,12 @@
           @click="mood = 'happy'"
         />
         <q-img
+          src="/statics/moods/bored.png"
+          spinner-color="white"
+          style="height: 80px; max-width: 80px"
+          @click="mood = 'bored'"
+        />
+        <q-img
           src="/statics/moods/fine.png"
           spinner-color="white"
           style="height: 80px; max-width: 80px"
@@ -23,6 +29,12 @@
           spinner-color="white"
           style="height: 80px; max-width: 80px"
           @click="mood = 'glum'"
+        />
+        <q-img
+          src="/statics/moods/grateful.png"
+          spinner-color="white"
+          style="height: 80px; max-width: 80px"
+          @click="mood = 'grateful'"
         />
         <q-img
           src="/statics/moods/tired.png"
