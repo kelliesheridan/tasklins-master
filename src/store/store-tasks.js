@@ -40,6 +40,9 @@ const mutations = {
   setProjects(state, value) {
     state.projects = value;
   },
+  setAllProjects(state, value) {
+    state.allProjects = value;
+  },
   setProjectSearch(state, value) {
     state.projectSearch = value;
   }
@@ -200,6 +203,7 @@ const actions = {
           projectsArray.push(element);
         });
         commit("setProjects", projectsArray);
+        commit("setAllProjects", projectRecords);
       }
     });
   },
@@ -745,8 +749,64 @@ const getters = {
     });
     return tasks;
   },
+  tasksCompletedYesterday: (state, getters) => {
+    let tasksCompleted = getters.tasksCompleted;
+    let tasks = {};
+    Object.keys(tasksCompleted).forEach(function(key) {
+      let task = tasksCompleted[key];
+      let taskCompletedDate = task.completedDate;
+      let yesterday = moment().subtract(1, "days");
+
+      let formattedTaskCompletedDate = moment(taskCompletedDate).format("YYYY-MM-DD");
+
+      if (
+        moment(formattedTaskCompletedDate).isSame(yesterday) &&
+        task.completed
+      ) {
+        tasks[key] = task;
+      }
+    });
+    return tasks;
+  },
+  tasksCompletedTwoDaysAgo: (state, getters) => {
+    let tasksCompleted = getters.tasksCompleted;
+    let tasks = {};
+    Object.keys(tasksCompleted).forEach(function(key) {
+      let task = tasksCompleted[key];
+      let taskCompletedDate = task.completedDate;
+      let twoDaysAgo = moment().subtract(2, "days");
+
+      let formattedTaskCompletedDate = moment(taskCompletedDate).format("YYYY-MM-DD");
+
+      if (
+        moment(formattedTaskCompletedDate).isSame(twoDaysAgo) &&
+        task.completed
+      ) {
+        tasks[key] = task;
+      }
+    });
+    return tasks;
+  },
+  projectsCreatedToday: (state, getters) => {
+    let projects = getters.allProjects;
+    let projectsCreatedToday = {};
+    Object.keys(projects).forEach(function(key) {
+      let proj = projects[key];
+      let formattedProjectCreatedDate = moment(proj.createdDate).format("YYYY-MM-DD");
+
+      if (
+        moment(moment(formattedProjectCreatedDate).format("YYYY-MM-DD")).isSame(moment().format("YYYY-MM-DD"),"day")
+      ) {
+        projectsCreatedToday[key] = proj.createdDate;
+      }
+    });
+    return projectsCreatedToday;
+  },
   projects: state => {
     return state.projects;
+  },
+  allProjects: state => {
+    return state.allProjects;
   }
 };
 export default {

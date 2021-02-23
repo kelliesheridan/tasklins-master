@@ -114,7 +114,7 @@
                 <q-item-label
                   ><b>Mood: </b
                   >{{
-                    this.getMood(Object.keys(this.tasksCompletedToday).length, Object.keys(this.tasksLate).length, Object.keys(this.tasksCreatedToday).length, Object.keys(this.tasksTodayNotCompleted).length)
+                    this.getMood(Object.keys(this.tasksCompletedToday).length, Object.keys(this.tasksLate).length, Object.keys(this.tasksCreatedToday).length, Object.keys(this.tasksTodayNotCompleted).length, Object.keys(this.tasksCompletedYesterday).length, Object.keys(this.tasksCompletedTwoDaysAgo).length, Object.keys(this.projectsCreatedToday).length)
                   }}</q-item-label
                 >
                 <!-- <q-item-label><b>XP: </b> {{ tasklin.xp }}</q-item-label> -->
@@ -294,7 +294,10 @@ export default {
       "tasksLate",
       "tasksCompletedToday",
       "tasksSorted",
-      "tasksCreatedToday"
+      "tasksCreatedToday",
+      "tasksCompletedYesterday",
+      "tasksCompletedTwoDaysAgo",
+      "projectsCreatedToday"
     ]),
     ...mapGetters("tasklins", ["tasklin"]),
     ...mapState("tasks", ["search", "tasksDownloaded"])
@@ -303,7 +306,7 @@ export default {
     ...mapActions("profile", ["addXP"]),
     ...mapActions("tasks", ["readData", "setProjectSearch"]),
     ...mapActions("tasklins", ["updateTasklin"]),
-    getMood(completedToday, lateToday, createdToday, tasksDueTodayButNotCompleted) {      
+    getMood(completedToday, lateToday, createdToday, tasksDueTodayButNotCompleted, completedYesterday, completedTwoDaysAgo, projectsCreatedToday) {      
       if (completedToday == 0) {
         return "Asleep";
       } else if (lateToday > 0 && completedToday > 0) {
@@ -317,7 +320,16 @@ export default {
             lateToday == 0
           ) {
         return "Happy";
-      } else {
+        
+      } else if (completedToday >= 1 && completedToday <= 4 && (completedToday < 3 && completedYesterday < 3 && completedTwoDaysAgo < 3)) {
+        return "Lonely";
+      } else if (completedToday >= 1 && completedToday <= 4 && (lateToday == 0 && projectsCreatedToday >= 1)) {
+        return "Intrigued";
+      } else if (completedToday >= 7 && tasksDueTodayButNotCompleted == 0 && createdToday >=3 && lateToday == 0) {
+        return "Thrilled";
+      } else if ((completedTwoDaysAgo >= 4 && completedYesterday >= 4 && completedToday >= 4) && (tasksDueTodayButNotCompleted >= 2 && createdToday >= 1 && lateToday <= 2)) {
+        return "Loved";
+      }else {
         return "Content";
       }
     },
