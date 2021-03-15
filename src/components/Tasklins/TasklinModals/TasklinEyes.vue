@@ -27,12 +27,16 @@ export default {
   methods: {
     getEyes(layerNumber, eyeType, arg) {
       if (Object.keys(this.tasksCompletedToday).length == 0) {
-        return "/statics/tasklins/eyes/eyes" + eyeType.charAt(eyeType.length - 1) + "/Moods/Asleep.png"
+        if (eyeType) {
+          return "/statics/tasklins/eyes/eyes" + eyeType.charAt(eyeType.length - 1) + "/Moods/Asleep.png"
+        } else 
+          return "/statics/tasklins/eyes/eyes1/Moods/Asleep.png"
       } else {
         // we've completed a task, so.. build this up.
         if (eyeType != undefined) {
-          return ("/statics/tasklins/eyes/eyes" + eyeType.charAt(eyeType.length - 1) + "/1-" + this.getColour(arg) +  this.getEyeType() + ".png"
-          );
+          return "/statics/tasklins/eyes/eyes" + eyeType.charAt(eyeType.length - 1) + "/1-" + this.getColour(arg) +  this.getEyeType() + ".png";
+        } else {
+          return "/statics/tasklins/eyes/eyes1/1-" + this.getColour(arg) +  this.getEyeType() + ".png"
         }
       }
     },

@@ -42,6 +42,8 @@ export default {
           case "#8c8c8c":
             return "Grey";
         }
+      } else {
+        return "Blue";
       }
      },
      getBodyType(bodyShape) {
