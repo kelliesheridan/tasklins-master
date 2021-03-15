@@ -2,7 +2,7 @@
   <div>
     <div>
       <div>
-        <img class="tasklin" :src="this.getMouth(this.tasklin.mouth)" />
+        <img class="tasklin" :src="this.getMouth(this.tasklin.mouth, this.tasklin.mood)" />
       </div>
     </div>
   </div>
@@ -31,13 +31,13 @@ export default {
           case "mouth1":
           case "mouth3":
           case "mouth5":
-            return "/statics/tasklins/mouth/mouth" +
+            return "/statics/tasklins/mouth/mouth1/tooth" +
               mouthType.charAt(mouthType.length - 1) +
               "/neutral.png";
             break;
           case "mouth2":
           case "mouth4":
-            return "/statics/tasklins/mouth/mouth" +
+            return "/statics/tasklins/mouth/mouth1/tooth" +
               mouthType.charAt(mouthType.length - 1) +
               "/neutral.png";
             break;
@@ -51,7 +51,7 @@ export default {
             Object.keys(this.tasksLate).length == 0
           ) {
             return (
-              "/statics/tasklins/mouth/mouth" +
+              "/statics/tasklins/mouth/mouth1/tooth" +
               mouthType.charAt(mouthType.length - 1) +
               "/happy2.png"
             );
@@ -59,13 +59,13 @@ export default {
             Object.keys(this.tasksLate).length > 0
           ) {
             return (
-              "/statics/tasklins/mouth/mouth" +
+              "/statics/tasklins/mouth/mouth1/tooth" +
               mouthType.charAt(mouthType.length - 1) +
               "/worried.png"
             );
           } else {
             return (
-              "/statics/tasklins/mouth/mouth" +
+              "/statics/tasklins/mouth/mouth1/tooth" +
               mouthType.charAt(mouthType.length - 1) +
               "/happy1.png"
             );

@@ -82,7 +82,10 @@ const actions = {
           nose: tasklinInfo.nose,
           hatched: tasklinInfo.hatched,
           level: tasklinInfo.level,
-          maxLevel: tasklinInfo.maxLevel
+          maxLevel: tasklinInfo.maxLevel,
+          bodyShape: tasklinInfo.bodyShape,
+          eyeColor: tasklinInfo.eyeColor,
+          tongue: tasklinInfo.tongue
         };
         commit("setTasklin", payload);
       }
@@ -117,7 +120,6 @@ const actions = {
       eyeType: tasklin.eyeType == undefined ? "eyes1" : tasklin.eyeType,
       nose: tasklin.nose,
       mouth: tasklin.mouth == undefined ? "mouth1" : tasklin.mouth,
-      tongue: tasklin.tongue,
       pattern1: tasklin.pattern1,
       eyebrowsOrTail: tasklin.eyebrowsOrTail,
       earsOrHorns: tasklin.earsOrHorns,

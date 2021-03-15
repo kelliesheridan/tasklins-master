@@ -1,14 +1,14 @@
 <template>
   <div class="tasklin">
-    <img class="baseType" :src="this.getEyes('base', this.tasklin.eyeType)" />
+    <img class="baseType" :src="this.getEyes('base', this.tasklin.eyeType, this.tasklin.color)" />
     <img
       class="colorType"
       :src="this.getEyes('color', this.tasklin.eyeType, this.tasklin.color)"
     />
-    <img class="pupilType" :src="this.getEyes('pupil', this.tasklin.eyeType)" />
+    <img class="pupilType" :src="this.getEyes('pupil', this.tasklin.eyeType, this.tasklin.color)" />
     <img
       class="highlightType"
-      :src="this.getEyes('highlight', this.tasklin.eyeType)"
+      :src="this.getEyes('highlight', this.tasklin.eyeType, this.tasklin.color)"
     />
   </div>
 </template>
@@ -27,29 +27,44 @@ export default {
   methods: {
     getEyes(layerNumber, eyeType, arg) {
       if (Object.keys(this.tasksCompletedToday).length == 0) {
-        switch (eyeType) {
-          case "eyes1":
-          case "eyes3":
-          case "eyes5":
-          case "eyes2":
-          case "eyes4":
-            return (
-              "/statics/tasklins/eyes/eyes" +
-              eyeType.charAt(eyeType.length - 1) +
-              "/sleeping1.png"
-            );
-            break;
-        }
+        return "/statics/tasklins/eyes/eyes" + eyeType.charAt(eyeType.length - 1) + "/Moods/Asleep.png"
       } else {
         // we've completed a task, so.. build this up.
         if (eyeType != undefined) {
-          return (
-            "/statics/tasklins/eyes/babyeyes" +
-            eyeType.charAt(eyeType.length - 1) +
-            ".png"
+          return ("/statics/tasklins/eyes/eyes" + eyeType.charAt(eyeType.length - 1) + "/1-" + this.getColour(arg) +  this.getEyeType() + ".png"
           );
         }
       }
+    },
+    getColour(colourString) {
+      if (colourString != undefined) {
+        switch (colourString) {
+          case "#b15858":
+            return "Red";
+          case "#cf7d95":
+            return "Pink";
+          case "#8c5688":
+            return "Purple";
+          case "#589fb1":
+            return "Blue";
+          case "#5cdcc4":
+            return "Cyan";
+          case "#7eb158":
+            return "Green";
+          case "#f9f871":
+            return "Yellow";
+          case "#fa9f53":
+            return "Orange";
+          case "#bc987e":
+            return "Brown";
+          case "#8c8c8c":
+            return "Grey";
+        }
+      }
+    },
+    getEyeType() {
+      const eyeTypeArray = ["A", "B"];
+       return eyeTypeArray[Math.floor(Math.random() * eyeTypeArray.length)]
     }
   }
 };

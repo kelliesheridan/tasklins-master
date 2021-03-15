@@ -28,9 +28,9 @@ export default {
     getNose(noseType) {
       if (noseType != undefined && noseType != "") {
         return (
-          "/statics/tasklins/nose/nose" +
+          "/statics/tasklins/nose/3-nose" +
           noseType.charAt(noseType.length - 1) +
-          "/black.png"
+          ".png"
         );
       } else {
         return "/statics/tasklins/nose/nose1/black.png";
