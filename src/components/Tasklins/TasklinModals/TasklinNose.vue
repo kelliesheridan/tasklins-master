@@ -33,7 +33,7 @@ export default {
           ".png"
         );
       } else {
-        return "/statics/tasklins/nose/nose1/black.png";
+        return "/statics/tasklins/nose/3-nose1.png";
       }
     }
   }
