@@ -332,7 +332,7 @@ export default {
         bodyShape2: "",
         pattern2: "",
         hatched: false,
-        tongue: tongueArrayColors[Math.floor(Math.random() * tongueArrayColors.length)]
+        //tongue: tongueArrayColors[Math.floor(Math.random() * tongueArrayColors.length)]
       };
 
       console.debug(tasklin);

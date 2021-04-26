@@ -22,7 +22,17 @@ export default {
   components: {},
   computed: {
     ...mapGetters("tasklins", ["tasklin"]),
-    ...mapGetters("tasks", ["tasksCompletedToday"])
+    ...mapGetters("tasks", ["tasksToday",
+      "tasksTomorrow",
+      "tasksTodayNotCompleted",
+      "tasksTomorrowNotCompleted",
+      "tasksLate",
+      "tasksCompletedToday",
+      "tasksSorted",
+      "tasksCreatedToday",
+      "tasksCompletedYesterday",
+      "tasksCompletedTwoDaysAgo",
+      "projectsCreatedToday"])
   },
   methods: {
     getEyes(layerNumber, eyeType, arg) {
@@ -69,7 +79,7 @@ export default {
     getEyeType() {
       const eyeTypeArray = ["A", "B"];
        return eyeTypeArray[Math.floor(Math.random() * eyeTypeArray.length)]
-    }
+    },
   }
 };
 </script>

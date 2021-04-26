@@ -11,6 +11,7 @@
 <script>
 import { mapState, mapActions, mapGetters } from "vuex";
 import { date } from "quasar";
+import { getMood } from "src/functions/function-get-mood";
 const moment = require("moment");
 
 export default {

@@ -85,7 +85,7 @@ const actions = {
           maxLevel: tasklinInfo.maxLevel,
           bodyShape: tasklinInfo.bodyShape,
           eyeColor: tasklinInfo.eyeColor,
-          tongue: tasklinInfo.tongue
+          //tongue: tasklinInfo.tongue
         };
         commit("setTasklin", payload);
       }
@@ -126,7 +126,7 @@ const actions = {
       bodyShape2: tasklin.bodyShape2,
       pattern2: tasklin.pattern2,
       hatched: false,
-      tongue: tasklin.tongue
+      //tongue: tasklin.tongue
     };
     let fbTasklin = firebaseDb.ref("tasklins/" + userId);
     fbTasklin.set(payload);
@@ -177,7 +177,7 @@ function getLevel() {
     })
   }
   return level;
-}
+};
 
 export default {
   namespaced: true,

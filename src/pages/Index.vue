@@ -4,7 +4,7 @@
       <new-user />
     </q-dialog>
 
-    <q-dialog v-if="settings" v-model="settings" >
+    <q-dialog v-if="settings" v-model="settings">
       <settingsModal />
     </q-dialog>
 
@@ -15,8 +15,8 @@
         bordered
         flat
         v-if="showNewUserPanel() && !hideNewUserPanel"
-        class="card center">
-
+        class="card center"
+      >
         <q-card-section>
           <div class="text-h6">Let's Get Started</div>
           <div class="text-subtitle2">
@@ -49,21 +49,25 @@
       </q-card>
 
       <div class="row main justify-center q-pa-md">
-        
         <div
           class="section col-xs-12 col-sm-12 col-md-6 col-lg-6 q-pa-xs"
           style="overflow: auto;"
         >
-        
           <div>
             <list-header class="textureBar">
-              <div v-show="tomorrow == false" class="index-header">Today's Tasks</div>
-              <div v-show="tomorrow == true" class="index-header">Tomorrow's Tasks</div>
+              <div v-show="tomorrow == false" class="index-header">
+                Today's Tasks
+              </div>
+              <div v-show="tomorrow == true" class="index-header">
+                Tomorrow's Tasks
+              </div>
             </list-header>
             <no-tasks
               v-if="
                 !Object.keys(tasksToday).length &&
-                  !Object.keys(tasksLate).length">
+                  !Object.keys(tasksLate).length
+              "
+            >
             </no-tasks>
             <tasks-late
               v-if="Object.keys(tasksLate).length"
@@ -83,12 +87,31 @@
               v-show="tomorrow == true"
               :tasksToday="tasksTomorrow"
             />
-
-              <div v-show="tomorrow == false" class="q-pa-sm u-center-text">Remaining Tasks ({{ Object.keys(tasksTodayNotCompleted).length + Object.keys(tasksLate).length }}) </div>
-              <div v-show="tomorrow == true" class="q-pa-sm u-center-text">Remaining Tasks ({{ Object.keys(tasksTomorrowNotCompleted).length }}) </div>
-              <div v-show="tomorrow == false" class="q-pa-sm u-center-text"><q-btn @click="tomorrow = !tomorrow" dense label="Show Tomorrow's Tasks" /> </div>
-              <div v-show="tomorrow == true" class="q-pa-sm u-center-text"><q-btn @click="tomorrow = !tomorrow" dense label="Show Today's Tasks" /> </div>
-
+            <div v-show="tomorrow == false" class="q-pa-sm u-center-text">
+              Remaining Tasks ({{
+                Object.keys(tasksTodayNotCompleted).length +
+                  Object.keys(tasksLate).length
+              }})
+            </div>
+            <div v-show="tomorrow == true" class="q-pa-sm u-center-text">
+              Remaining Tasks ({{
+                Object.keys(tasksTomorrowNotCompleted).length
+              }})
+            </div>
+            <div v-show="tomorrow == false" class="q-pa-sm u-center-text">
+              <q-btn
+                @click="tomorrow = !tomorrow"
+                dense
+                label="Show Tomorrow's Tasks"
+              />
+            </div>
+            <div v-show="tomorrow == true" class="q-pa-sm u-center-text">
+              <q-btn
+                @click="tomorrow = !tomorrow"
+                dense
+                label="Show Today's Tasks"
+              />
+            </div>
           </div>
         </div>
 
@@ -100,23 +123,28 @@
           </list-header>
           <div
             class="tasklin-section"
-            :class="
-              !darkMode
-                ? 'tasklin-section-day'
-                : 'tasklin-section-night'
-            "
+            :class="!darkMode ? 'tasklin-section-day' : 'tasklin-section-night'"
           >
             <div class="">
               <tasklin v-if="tasklin.hatched" />
               <egg v-if="!tasklin.hatched" />
               <div v-if="tasklin.name" class="tasklin-details">
                 <q-item-label><b>Name: </b> {{ tasklin.name }}</q-item-label>
-                <q-item-label
-                  ><b>Mood: </b
-                  >{{
-                    this.getMood(Object.keys(this.tasksCompletedToday).length, Object.keys(this.tasksLate).length, Object.keys(this.tasksCreatedToday).length, Object.keys(this.tasksTodayNotCompleted).length, Object.keys(this.tasksCompletedYesterday).length, Object.keys(this.tasksCompletedTwoDaysAgo).length, Object.keys(this.projectsCreatedToday).length)
-                  }}</q-item-label
-                >
+                <q-item-label v-if="tasklin.level >= 2"
+                  ><b>Mood: </b>
+                  {{
+                    this.getMood(
+                      Object.keys(this.tasksCompletedToday).length,
+                      Object.keys(this.tasksLate).length,
+                      Object.keys(this.tasksCreatedToday).length,
+                      Object.keys(this.tasksTodayNotCompleted).length,
+                      Object.keys(this.tasksCompletedYesterday).length,
+                      Object.keys(this.tasksCompletedTwoDaysAgo).length,
+                      Object.keys(this.projectsCreatedToday).length
+                    )
+                  }}
+                  <!-- {{this.getMood}} -->
+                </q-item-label>
                 <!-- <q-item-label><b>XP: </b> {{ tasklin.xp }}</q-item-label> -->
                 <q-item-label><b>Level: </b> {{ tasklin.level }}</q-item-label>
               </div>
@@ -214,17 +242,21 @@
             />
           </div>
           <div>
-          
-          <div class="q-pa-lg text-center fixed-center-bottom">
-            <a href="https://www.patreon.com/bePatron?u=9215033" target="_blank">
-          <q-btn class="textureBar" dense text-color="white" label="- Become a Patron -" /></a>
-          
-      </div>
+            <div class="q-pa-lg text-center fixed-center-bottom">
+              <a
+                href="https://www.patreon.com/bePatron?u=9215033"
+                target="_blank"
+              >
+                <q-btn
+                  class="textureBar"
+                  dense
+                  text-color="white"
+                  label="- Become a Patron -"
+              /></a>
+            </div>
           </div>
           <br />
         </div>
-
-
       </div>
     </template>
 
@@ -233,15 +265,16 @@
         <q-spinner-audio size="3em" color="secondary" />
       </span>
     </template>
-      <q-dialog v-model="register2" transition-hide="scale">
-          <register2 v-if="register2" />
-      </q-dialog>
+    <q-dialog v-model="register2" transition-hide="scale">
+      <register2 v-if="register2" />
+    </q-dialog>
   </q-page>
 </template>
 
 <script>
 import { mapState, mapGetters, mapActions } from "vuex";
 import { openURL } from "quasar";
+import { getMood } from "src/functions/function-get-mood";
 import moment from "moment";
 
 export default {
@@ -275,12 +308,12 @@ export default {
     "tasks-tomorrow": require("components/Tasks/TasksToday.vue").default,
     "tasks-late": require("components/Tasks/TasksLate.vue").default,
     "list-header": require("components/Shared/ListHeader.vue").default,
-    "settingsModal": require("components/Help/SettingsModal.vue").default,
+    settingsModal: require("components/Help/SettingsModal.vue").default,
     "no-tasks": require("components/Tasks/NoTasks.vue").default,
     tasklin: require("components/Tasklins/Tasklin.vue").default,
     "new-user": require("components/Help/NewUser.vue").default,
     egg: require("components/Tasklins/egg.vue").default,
-    "register2": require("components/Auth/Register2.vue").default,
+    register2: require("components/Auth/Register2.vue").default,
     "index-menu": require("components/IndexMenu.vue").default
   },
   computed: {
@@ -306,33 +339,7 @@ export default {
     ...mapActions("profile", ["addXP"]),
     ...mapActions("tasks", ["readData", "setProjectSearch"]),
     ...mapActions("tasklins", ["updateTasklin"]),
-    getMood(completedToday, lateToday, createdToday, tasksDueTodayButNotCompleted, completedYesterday, completedTwoDaysAgo, projectsCreatedToday) {      
-      if (completedToday == 0) {
-        return "Asleep";
-      } else if (lateToday > 0 && completedToday > 0) {
-        return "Concerned";
-      } else if (completedToday >= 1 && completedToday <= 4) {
-        return "Okay.";
-      } else if (
-            completedToday > 4 &&
-            tasksDueTodayButNotCompleted == 0 &&
-            createdToday >= 1 &&
-            lateToday == 0
-          ) {
-        return "Happy";
-        
-      } else if (completedToday >= 1 && completedToday <= 4 && (completedToday < 3 && completedYesterday < 3 && completedTwoDaysAgo < 3)) {
-        return "Lonely";
-      } else if (completedToday >= 1 && completedToday <= 4 && (lateToday == 0 && projectsCreatedToday >= 1)) {
-        return "Intrigued";
-      } else if (completedToday >= 7 && tasksDueTodayButNotCompleted == 0 && createdToday >=3 && lateToday == 0) {
-        return "Thrilled";
-      } else if ((completedTwoDaysAgo >= 4 && completedYesterday >= 4 && completedToday >= 4) && (tasksDueTodayButNotCompleted >= 2 && createdToday >= 1 && lateToday <= 2)) {
-        return "Loved";
-      }else {
-        return "Content";
-      }
-    },
+
     showNewUserPanel(hidePanel) {
       if (this.tasklin.eyeType == undefined || this.tasklin.eyeType == "") {
         this.register2 = true;
@@ -363,6 +370,9 @@ export default {
         this.updateTasklin(tasklin);
       }
     },
+    getMood(completedToday, lateToday, createdToday, tasksDueTodayButNotCompleted, completedYesterday, completedTwoDaysAgo, projectsCreatedToday) {
+      return getMood(completedToday, lateToday, createdToday, tasksDueTodayButNotCompleted, completedYesterday, completedTwoDaysAgo, projectsCreatedToday);
+    }
   }
 };
 </script>

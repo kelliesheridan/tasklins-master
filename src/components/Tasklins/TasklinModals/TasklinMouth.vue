@@ -11,18 +11,24 @@
 <script>
 import { mapState, mapActions, mapGetters } from "vuex";
 import { date } from "quasar";
+import { getMood } from "src/functions/function-get-mood";
 const moment = require("moment");
 
 export default {
   components: {},
   computed: {
     ...mapGetters("tasklins", ["tasklin"]),
-    ...mapGetters("tasks", [
-      "tasksCompletedToday",
+    ...mapGetters("tasks", ["tasksToday",
+      "tasksTomorrow",
       "tasksTodayNotCompleted",
+      "tasksTomorrowNotCompleted",
+      "tasksLate",
+      "tasksCompletedToday",
+      "tasksSorted",
       "tasksCreatedToday",
-      "tasksLate"
-    ])
+      "tasksCompletedYesterday",
+      "tasksCompletedTwoDaysAgo",
+      "projectsCreatedToday"])
   },
   methods: {
     getMouth(mouthType) {
@@ -72,7 +78,7 @@ export default {
           }
         }
       }
-    }
+    },
   }
 };
 </script>

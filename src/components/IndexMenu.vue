@@ -9,14 +9,14 @@
             to="/index"
             >Home</q-btn
           >
-          <q-btn
+          <!-- <q-btn
             class="q-mt-sm col indexMenuButton"
             padding
             color="secondary"
             push
             to="/planuary"
             >Planuary</q-btn
-          >
+          > -->
           <q-btn
             class="q-mt-sm col indexMenuButton"
             padding

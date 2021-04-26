@@ -240,7 +240,8 @@ const getters = {
   },
   updatesSorted: state => {
     let updatesSorted = {},
-      keysOrdered = Object.keys(state.community.communityUpdate).reverse();
+      // keysOrdered = Object.keys(state.community.communityUpdate).reverse();
+      keysOrdered = Object.keys(state.community.communityUpdate);
     if (keysOrdered.length > 0) {
       keysOrdered.forEach(key => {
         updatesSorted[key] = state.community.communityUpdate[key];
