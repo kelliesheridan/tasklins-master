@@ -2,7 +2,10 @@
   <div>
     <div>
       <div>
-        <img class="tasklin" :src="this.getMouth(this.tasklin.mouth, this.tasklin.mood)" />
+        <img
+          class="tasklin"
+          :src="this.getMouth(this.tasklin.mouth, this.tasklin.mood)"
+        />
       </div>
     </div>
   </div>
@@ -18,7 +21,8 @@ export default {
   components: {},
   computed: {
     ...mapGetters("tasklins", ["tasklin"]),
-    ...mapGetters("tasks", ["tasksToday",
+    ...mapGetters("tasks", [
+      "tasksToday",
       "tasksTomorrow",
       "tasksTodayNotCompleted",
       "tasksTomorrowNotCompleted",
@@ -28,57 +32,96 @@ export default {
       "tasksCreatedToday",
       "tasksCompletedYesterday",
       "tasksCompletedTwoDaysAgo",
-      "projectsCreatedToday"])
+      "projectsCreatedToday"
+    ])
   },
   methods: {
     getMouth(mouthType) {
-      if (Object.keys(this.tasksCompletedToday).length <= 3 && Object.keys(this.tasksLate).length == 0) {
-        switch (mouthType) {
-          case "mouth1":
-          case "mouth3":
-          case "mouth5":
-            return "/statics/tasklins/mouth/mouth1/tooth" +
+      if (mouthType != undefined) {
+        var tasklinMood = getMood(
+          Object.keys(this.tasksCompletedToday).length,
+          Object.keys(this.tasksLate).length,
+          Object.keys(this.tasksCreatedToday).length,
+          Object.keys(this.tasksTodayNotCompleted).length,
+          Object.keys(this.tasksCompletedYesterday).length,
+          Object.keys(this.tasksCompletedTwoDaysAgo).length,
+          Object.keys(this.projectsCreatedToday).length
+        );
+
+        switch (tasklinMood) {
+          case "Asleep":
+            return (
+              "/statics/tasklins/mouth/mouth1/tooth" +
               mouthType.charAt(mouthType.length - 1) +
-              "/neutral.png";
+              "/neutral.png"
+            );
             break;
-          case "mouth2":
-          case "mouth4":
-            return "/statics/tasklins/mouth/mouth1/tooth" +
+          case "Concerned":
+            return (
+              "/statics/tasklins/mouth/mouth1/tooth" +
               mouthType.charAt(mouthType.length - 1) +
-              "/neutral.png";
+              "/concerned.png"
+            );
             break;
-        }
-      } else {
-        if (mouthType != undefined) {
-          if (
-            Object.keys(this.tasksCompletedToday).length > 3 &&
-            Object.keys(this.tasksTodayNotCompleted).length == 0 &&
-            Object.keys(this.tasksCreatedToday).length >= 2 &&
-            Object.keys(this.tasksLate).length == 0
-          ) {
+          case "Okay":
+            return (
+              "/statics/tasklins/mouth/mouth1/tooth" +
+              mouthType.charAt(mouthType.length - 1) +
+              "/neutral.png"
+            );
+            break;
+          case "Sleepy":
             return (
               "/statics/tasklins/mouth/mouth1/tooth" +
               mouthType.charAt(mouthType.length - 1) +
               "/happy2.png"
             );
-          } else if (
-            Object.keys(this.tasksLate).length > 0
-          ) {
-            return (
-              "/statics/tasklins/mouth/mouth1/tooth" +
-              mouthType.charAt(mouthType.length - 1) +
-              "/worried.png"
-            );
-          } else {
+            break;
+          case "Happy":
             return (
               "/statics/tasklins/mouth/mouth1/tooth" +
               mouthType.charAt(mouthType.length - 1) +
               "/happy1.png"
             );
-          }
+            break;
+          case "Lonely":
+            return (
+              "/statics/tasklins/mouth/mouth1/tooth" +
+              mouthType.charAt(mouthType.length - 1) +
+              "/frown.png"
+            );
+            break;
+          case "Intrigued":
+            return (
+              "/statics/tasklins/mouth/mouth1/tooth" +
+              mouthType.charAt(mouthType.length - 1) +
+              "/shocked.png"
+            );
+            break;
+          case "Thrilled":
+            return (
+              "/statics/tasklins/mouth/mouth1/tooth" +
+              mouthType.charAt(mouthType.length - 1) +
+              "/happy2.png"
+            );
+            break;
+          case "Loved":
+            return (
+              "/statics/tasklins/mouth/mouth1/tooth" +
+              mouthType.charAt(mouthType.length - 1) +
+              "/happy1.png"
+            );
+            break;
+          case "Content":
+            return (
+              "/statics/tasklins/mouth/mouth1/tooth" +
+              mouthType.charAt(mouthType.length - 1) +
+              "/happy1.png"
+            );
+            break;
         }
       }
-    },
+    }
   }
 };
 </script>

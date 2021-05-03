@@ -4,7 +4,9 @@ export function getMood(completedToday, lateToday, createdToday, tasksDueTodayBu
       } else if (lateToday > 0 && completedToday > 0) {
         return "Concerned";
       } else if (completedToday >= 1 && completedToday <= 4) {
-        return "Okay.";
+        return "Okay";
+      } else if ((completedToday - completedYesterday) >= 2) {
+        return "Sleepy";
       } else if (
         completedToday > 4 &&
         tasksDueTodayButNotCompleted == 0 &&
