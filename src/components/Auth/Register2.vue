@@ -213,7 +213,8 @@ export default {
         signup: false,
         admin: this.profile.admin,
         color: this.profile.color,
-        pronouns: this.profile.pronouns == undefined ? "" : this.profile.pronouns
+        pronouns: this.profile.pronouns == undefined ? "" : this.profile.pronouns,
+        maxLevel: this.profile.maxLevel
       };
 
       this.updateProfile(profile);
@@ -241,6 +242,7 @@ export default {
         project: "Tasks",
         xp: 0,
         level: 1,
+        maxLevel: 1,
         color: this.profile.color,
         color2: colorArray[Math.floor(Math.random() * colorArray.length)],
         color3: colorArray[Math.floor(Math.random() * colorArray.length)],
