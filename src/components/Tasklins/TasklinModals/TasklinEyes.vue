@@ -106,7 +106,15 @@ export default {
       return eyeTypeArray[Math.floor(Math.random() * eyeTypeArray.length)];
     },
     getEyeBase(eyeType) {
-      if (this.tasklin.level >= 5) {
+      if (this.tasklin.level >= 5 && getMood(
+        Object.keys(this.tasksCompletedToday).length,
+        Object.keys(this.tasksLate).length,
+        Object.keys(this.tasksCreatedToday).length,
+        Object.keys(this.tasksTodayNotCompleted).length,
+        Object.keys(this.tasksCompletedYesterday).length,
+        Object.keys(this.tasksCompletedTwoDaysAgo).length,
+        Object.keys(this.projectsCreatedToday).length
+      ) != 'Asleep') {
         if (eyeType != undefined) {
           return (
             "/statics/tasklins/eyes/eyes" +
