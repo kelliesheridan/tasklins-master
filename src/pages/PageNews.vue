@@ -7,6 +7,11 @@
         <div class="col-2 newsMenuSection q-pa-sm">
           <div class="col center">
 
+            
+            <q-btn class="row newsBtn" color="primary" @click="news = 5">
+              June
+            </q-btn>
+
             <q-btn class="row newsBtn" color="primary" @click="news = 4">
               February
             </q-btn>
@@ -26,6 +31,37 @@
         </div>
 
         <div class="col q-pa-sm">
+
+          <div class="newsPost" v-if="news == 5">
+            <h4>June?!</h4>
+            <br />
+            <p>
+              No, seriously... how is it June already? I know it's been a while since we've had 
+              an update around here, but we're back in action, so thank you all so much for your 
+              patience.
+            </p>  
+            <p>
+              The first thing you're probably going to notice is... the art update! Yup, 
+              your Tasklin looks a little different. In order to adjust for future evolutions 
+              of all our Tasklins, I ended up changing some of the art around and making some 
+              additions. Ultimately, with every other level (up to a point) your Tasklin will 
+              gain or change a physical feature, letting them grow up as you get things done. 
+              Only the first few levels are in place right now, but more are coming.
+            </p>
+            <p>
+              The next thing you might notice is that there are a few fewer pages to visit on 
+              site right now. Both the community and challenges pages have been taken down 
+              temporarily. Let's face it, they weren't getting a lot of love, so its time to 
+              spruce them up a little.
+            </p>
+            <p>
+              That's all for now, but more to come soon. Hopefully we'll be back to weekly or so 
+              updates, rather than monthly! I'm almost positive there are more bugs lurking around 
+              here, so if you come up against any issues, please feel free to reach out to me directly 
+              on social media (links on the bottom of the home page).
+            </p>
+          
+          </div>
 
           <div class="newsPost" v-if="news == 4">
             <h4>February</h4>
