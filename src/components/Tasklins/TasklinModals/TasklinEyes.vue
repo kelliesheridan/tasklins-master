@@ -200,6 +200,11 @@ export default {
         case "Intrigued":
           return "";
           break;
+        default:
+          return (
+            "/statics/tasklins/eyes/eyes1/1-BlueA.png"
+          );
+          break;
       }
     }
   }

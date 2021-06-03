@@ -119,6 +119,11 @@ export default {
               "/happy1.png"
             );
             break;
+          default:
+            return (
+              "/statics/tasklins/mouth/mouth1/tooth1/happy1.png"
+            );
+            break;
         }
       }
     }
