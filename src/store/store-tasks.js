@@ -787,6 +787,25 @@ const getters = {
     });
     return tasks;
   },
+  tasksWeekly: (state, getters) => {
+    let tasksFiltered = getters.tasksFiltered;
+    let tasks = {};
+    Object.keys(tasksFiltered).forEach(function(key) {
+      let task = tasksFiltered[key];
+      let taskDueDate = task.dueDate;
+      let today = moment().format();
+      //console.debug("moment date: " +  moment().format() + ", normal date:" + today);
+
+      let formattedTaskDueDateWeek = moment(taskDueDate, "YYYY-MM-DD").week();
+      let formattedCurrentWeek = moment(today, "YYYY-MM-DD").week();
+      
+      if (moment(formattedTaskDueDateWeek).isSame(formattedCurrentWeek, "week") && task.weekly) {
+        tasks[key] = task;
+      }
+    });
+
+    return tasks;
+  },
   projectsCreatedToday: (state, getters) => {
     let projects = getters.allProjects;
     let projectsCreatedToday = {};

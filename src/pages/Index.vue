@@ -112,6 +112,20 @@
                 label="Show Today's Tasks"
               />
             </div>
+            <list-header class="textureBar">
+            <div class="index-header">Weekly Tasks</div>
+            </list-header>
+            <tasks-weekly
+              class="task-box"
+              v-if="Object.keys(tasksWeekly).length"
+              :tasksWeekly="tasksWeekly"
+            />
+            
+            <no-tasks-weekly v-if="!Object.keys(tasksWeekly).length">
+            </no-tasks-weekly>
+            <div class="q-pa-sm u-center-text">
+              Remaining Tasks ({{Object.keys(tasksWeekly).length}})
+            </div>
           </div>
         </div>
 
@@ -306,10 +320,12 @@ export default {
   components: {
     "tasks-today": require("components/Tasks/TasksToday.vue").default,
     "tasks-tomorrow": require("components/Tasks/TasksToday.vue").default,
+    "tasks-weekly": require("components/Tasks/TasksWeekly.vue").default,
     "tasks-late": require("components/Tasks/TasksLate.vue").default,
     "list-header": require("components/Shared/ListHeader.vue").default,
     settingsModal: require("components/Help/SettingsModal.vue").default,
     "no-tasks": require("components/Tasks/NoTasks.vue").default,
+    "no-tasks-weekly": require("components/Tasks/NoTasksWeekly.vue").default,
     tasklin: require("components/Tasklins/Tasklin.vue").default,
     "new-user": require("components/Help/NewUser.vue").default,
     egg: require("components/Tasklins/egg.vue").default,
@@ -330,7 +346,8 @@ export default {
       "tasksCreatedToday",
       "tasksCompletedYesterday",
       "tasksCompletedTwoDaysAgo",
-      "projectsCreatedToday"
+      "projectsCreatedToday",
+      "tasksWeekly"
     ]),
     ...mapGetters("tasklins", ["tasklin"]),
     ...mapState("tasks", ["search", "tasksDownloaded"])
