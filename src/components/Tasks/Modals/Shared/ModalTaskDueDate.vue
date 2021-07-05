@@ -46,22 +46,10 @@
           flat
           dense
           size="md"
-          color="blue"
           icon="schedule_send"
+          :style="{ 'color': weekly ? 'green' : 'blue' }"
           ><q-tooltip content-class="bg-primary">Weekly</q-tooltip>
-        </q-btn>
-
-        <!-- <q-btn
-          class="task-btn-popup"
-          @click.stop="setDueEveryWeek()"
-          flat
-          dense
-          color="blue"
-          icon="next_week"
-        >
-          <q-tooltip content-class="bg-primary">Every Week</q-tooltip>
-        </q-btn> -->
-      
+        </q-btn>     
     </div>
   </div>
 </template>
@@ -72,6 +60,11 @@ import moment from "moment";
 
 export default {
   props: ["dueDate", "task", "id"],
+  data() {
+    return {
+      weekly: false
+    };
+  },
   methods: {
     ...mapActions("tasks", ["pushDueDate", "dueDateToday", "dueDateTomorrow"]),
     setDueDate() {
@@ -86,12 +79,9 @@ export default {
       );
     },
     setDueWeekly() {
-      this.$emit("update:weekly", true);
-      $(this).color('red');
+      this.weekly = !this.weekly
+      this.$emit("update:weekly", this.weekly);
     },
-    setDueEveryWeek() {
-      this.$emit("update:everyWeek", true);
-    }
   }
 };
 </script>

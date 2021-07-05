@@ -5,11 +5,13 @@
         class="task-btn q-pa-xs"
         @click="
           daily = !daily;
-          everyMonth = false;
+          weekly = false;
+          everyWeek = false;
           byDayNumber = false;
           everyNumDays = false;
           nrepeating.numDay = '';
           nrepeating.numDaySet = false;
+          nrepeating.everyWeek = false;
           nrepeating.monthly = false;
         "
         flat
@@ -26,7 +28,8 @@
         class="task-btn q-pa-xs"
         @click="
           daily = false;
-          everyMonth = false;
+          weekly = false;
+          everyWeek = false;
           byDayNumber = false;
           everyNumDays = !everyNumDays;
           nrepeating.monday = false;
@@ -48,15 +51,41 @@
         >
       </q-btn>
 
+ <q-btn
+        class="task-btn q-pa-xs"
+        @click="
+          daily = false;
+          everyMonth = false;
+          weekly = !weekly;
+          byDayNumber = false;
+          everyNumDays = false;
+          nrepeating.numDay = '';
+          nrepeating.numDaySet = false;
+          nrepeating.everyWeek = !everyWeek;
+          nrepeating.monthly = false;
+        "
+        @change="$emit('update:nrepeating.everyWeek', $event)"
+        flat
+        dense
+        :style="{ 'color': weekly ? 'green' : 'blue' }"
+        icon="next_week"
+      >
+        <q-tooltip content-class="bg-secondary"
+          >Repeat Weekly from Due Date</q-tooltip
+        >
+      </q-btn>
+
         <q-btn
         class="task-btn q-pa-xs"
         @click="
           daily = false;
           everyMonth = !everyMonth;
+          weekly = false;
           byDayNumber = false;
           everyNumDays = false;
           nrepeating.numDay = '';
           nrepeating.numDaySet = false;
+          nrepeating.everyWeek = false;
           nrepeating.monthly = everyMonth;
         "
         @change="$emit('update:nrepeating.monthly', $event)"
@@ -218,9 +247,9 @@ export default {
   data() {
     return {
       daily: false,
+      weekly: false,
       byDayNumber: false,
       everyNumDays: false,
-      //everyMonth: false
     };
   },
   computed: {
@@ -239,6 +268,15 @@ export default {
       },
       set(value) {
         this.nrepeating.monthly = value;
+        return value;
+      }
+    },
+    everyWeek: {
+      get() {
+        return this.nrepeating.everyWeek;
+      },
+      set(value) {
+        this.nrepeating.everyWeek = value;
         return value;
       }
     }

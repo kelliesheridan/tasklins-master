@@ -18,8 +18,7 @@
 
       <q-card-section class="q-pt-none">
         <modal-task-due-date :dueDate.sync="taskToSubmit.dueDate" 
-        :weekly.sync="taskToSubmit.nrepeating.weekly" 
-        :everyWeek.sync="taskToSubmit.nrepeating.everyWeek"/>
+        :weekly.sync="taskToSubmit.nrepeating.weekly"/>
         <modal-task-due-time
           v-if="taskToSubmit.dueDate"
           :dueTime.sync="taskToSubmit.dueTime"

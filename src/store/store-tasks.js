@@ -267,7 +267,7 @@ const actions = {
       } else if (payload.updates.task.nrepeating.monthly) {
         newPayload = getMonthlyTask(payload.updates.task);
         dispatch("fbAddTask", newPayload);
-      } else if (payload.updates.task.nrepeating.weekly) {
+      } else if (payload.updates.task.nrepeating.everyWeek) {
         newPayload = getWeeklyTask(payload.updates.task);
         dispatch("fbAddTask", newPayload);
       }
@@ -494,10 +494,6 @@ const getters = {
 
       let formattedTaskDueDate = moment(taskDueDate).format("YYYY-MM-DD");
       let formattedToday = moment(today).format("YYYY-MM-DD");
-      let weeklyTask = false;
-      if (task.nrepeating) {
-        weeklyTask = task.nrepeating.weekly
-      }
 
       if (moment(formattedTaskDueDate).isSame(formattedToday, "day") && !task.nrepeating.weekly) {
         tasks[key] = task;
