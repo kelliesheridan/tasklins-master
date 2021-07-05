@@ -16,8 +16,7 @@
       </template>
     </q-input>
 
-    <!-- @click.stop="dueDateToday({ id: id, dueDate: task.dueDate })" -->
-    <div style="float: right">
+    <div>
       <div>
         <q-btn
           class="task-btn-popup"
@@ -41,7 +40,6 @@
           <q-tooltip content-class="bg-primary">Due Tomorrow</q-tooltip>
         </q-btn>
       </div>
-      <div>
         <q-btn
           class="task-btn-popup"
           @click="setDueWeekly()"
@@ -53,7 +51,7 @@
           ><q-tooltip content-class="bg-primary">Weekly</q-tooltip>
         </q-btn>
 
-        <q-btn
+        <!-- <q-btn
           class="task-btn-popup"
           @click.stop="setDueEveryWeek()"
           flat
@@ -62,8 +60,8 @@
           icon="next_week"
         >
           <q-tooltip content-class="bg-primary">Every Week</q-tooltip>
-        </q-btn>
-      </div>
+        </q-btn> -->
+      
     </div>
   </div>
 </template>
@@ -88,20 +86,11 @@ export default {
       );
     },
     setDueWeekly() {
-      this.$emit(
-        "update:dueDate",
-        moment()
-          .add(1, "days")
-          .format("YYYY-MM-DD")
-      );
+      this.$emit("update:weekly", true);
+      $(this).color('red');
     },
     setDueEveryWeek() {
-      this.$emit(
-        "update:dueDate",
-        moment()
-          .add(1, "days")
-          .format("YYYY-MM-DD")
-      );
+      this.$emit("update:everyWeek", true);
     }
   }
 };

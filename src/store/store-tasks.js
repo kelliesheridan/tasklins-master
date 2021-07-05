@@ -489,6 +489,10 @@ const getters = {
 
       let formattedTaskDueDate = moment(taskDueDate).format("YYYY-MM-DD");
       let formattedToday = moment(today).format("YYYY-MM-DD");
+      let weeklyTask = false;
+      if (task.nrepeating) {
+        weeklyTask = task.nrepeating.weekly
+      }
 
       if (moment(formattedTaskDueDate).isSame(formattedToday, "day")) {
         tasks[key] = task;
@@ -794,12 +798,11 @@ const getters = {
       let task = tasksFiltered[key];
       let taskDueDate = task.dueDate;
       let today = moment().format();
-      //console.debug("moment date: " +  moment().format() + ", normal date:" + today);
-
       let formattedTaskDueDateWeek = moment(taskDueDate, "YYYY-MM-DD").week();
       let formattedCurrentWeek = moment(today, "YYYY-MM-DD").week();
+      let taskWeekly = task.nrepeating.weekly;
       
-      if (moment(formattedTaskDueDateWeek).isSame(formattedCurrentWeek, "week") && task.weekly) {
+      if ((taskWeekly || moment(task.dueDate).isSame(formattedCurrentWeek, "week") || moment(task.createdDate).isSame(formattedCurrentWeek, "week")) && !task.completed) {
         tasks[key] = task;
       }
     });

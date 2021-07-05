@@ -85,11 +85,11 @@
               class="task-box"
               v-if="Object.keys(tasksTomorrow).length"
               v-show="tomorrow == true"
-              :tasksToday="tasksTomorrow"
+              :tasksTomorrow="tasksTomorrow"
             />
             <div v-show="tomorrow == false" class="q-pa-sm u-center-text">
               Remaining Tasks ({{
-                Object.keys(tasksTodayNotCompleted).length +
+                Object.keys(tasksTomorrowNotCompleted).length +
                   Object.keys(tasksLate).length
               }})
             </div>
