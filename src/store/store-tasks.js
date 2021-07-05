@@ -147,6 +147,9 @@ const actions = {
     if (payload.task.dueDate !== "") {
       payload.task.dueDate = moment(payload.task.dueDate).format("YYYY-MM-DD");
     }
+    if (payload.task.dueDate == "" && payload.task.nrepeating.weekly) {
+      payload.task.dueDate = moment().format("YYYY-MM-DD");
+    }
     if (payload.task.project == "") {
       payload.task.project = "Tasks";
     }
@@ -263,6 +266,9 @@ const actions = {
         dispatch("fbAddTask", newPayload);
       } else if (payload.updates.task.nrepeating.monthly) {
         newPayload = getMonthlyTask(payload.updates.task);
+        dispatch("fbAddTask", newPayload);
+      } else if (payload.updates.task.nrepeating.weekly) {
+        newPayload = getWeeklyTask(payload.updates.task);
         dispatch("fbAddTask", newPayload);
       }
     }
@@ -485,7 +491,6 @@ const getters = {
       let task = tasksFiltered[key];
       let taskDueDate = task.dueDate;
       let today = moment().format();
-      //console.debug("moment date: " +  moment().format() + ", normal date:" + today);
 
       let formattedTaskDueDate = moment(taskDueDate).format("YYYY-MM-DD");
       let formattedToday = moment(today).format("YYYY-MM-DD");
@@ -494,7 +499,7 @@ const getters = {
         weeklyTask = task.nrepeating.weekly
       }
 
-      if (moment(formattedTaskDueDate).isSame(formattedToday, "day")) {
+      if (moment(formattedTaskDueDate).isSame(formattedToday, "day") && !task.nrepeating.weekly) {
         tasks[key] = task;
       }
 
@@ -800,9 +805,8 @@ const getters = {
       let today = moment().format();
       let formattedTaskDueDateWeek = moment(taskDueDate, "YYYY-MM-DD").week();
       let formattedCurrentWeek = moment(today, "YYYY-MM-DD").week();
-      let taskWeekly = task.nrepeating.weekly;
       
-      if ((taskWeekly || moment(task.dueDate).isSame(formattedCurrentWeek, "week") || moment(task.createdDate).isSame(formattedCurrentWeek, "week")) && !task.completed) {
+      if (task.nrepeating.weekly && (formattedTaskDueDateWeek == formattedCurrentWeek) && !task.completed) {
         tasks[key] = task;
       }
     });
@@ -1056,6 +1060,29 @@ function getMonthlyTask(task) {
   } else {
     newTask.dueDate = moment(task.dueDate == "" ? moment().format("YYYY-MM-DD") : task.dueDate).add(1, "month").format("YYYY-MM-DD");
   }
+  
+  var newPayload = {};
+  newPayload.task = newTask;
+  newPayload.id = uid();
+  return newPayload;
+}
+
+function getWeeklyTask(task) {
+  var newTask = {
+    name: task.name,
+    project: task.project,
+    npublic: task.npublic,
+    nrepeating: {
+      weekly: true
+    },
+    dueDate: "",
+    dueTime: "",
+    completed: false,
+    createdDate: moment().format(),
+    lastModified: moment().format()
+  };
+
+  newTask.dueDate = moment(task.dueDate == "" ? moment().format("YYYY-MM-DD") : task.dueDate).add(1, "week").format("YYYY-MM-DD");
   
   var newPayload = {};
   newPayload.task = newTask;
