@@ -55,11 +55,26 @@
         >
           <div>
             <list-header class="textureBar">
-              <div v-show="tomorrow == false" class="index-header">
+              <!-- <div v-show="tomorrow == false" class="index-header">
                 Today's Tasks
               </div>
               <div v-show="tomorrow == true" class="index-header">
                 Tomorrow's Tasks
+              </div> -->
+              <div class="index-header">
+                <q-btn-toggle
+                  v-model="model"
+                  class="my-custom-toggle"
+                  toggle-color="primary"
+                  flat
+                  size=".6rem"                  
+                  no-caps
+                  :options="[
+                    {label: 'Daily View', value: 'today1'},
+                    {label: 'Weekly View', value: 'weekly2'},
+                    {label: 'Someday View', value: 'someday3'}
+                  ]"
+                />
               </div>
             </list-header>
             <no-tasks
@@ -404,6 +419,10 @@ img {
 .news {
   margin: 0%;
 }
+
+.my-custom-toggle {
+  margin: 1px;
+  }
 
 .section {
   overflow: auto;
