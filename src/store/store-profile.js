@@ -207,6 +207,8 @@ const actions = {
   fbUpdateProfile({ dispatch }) {
     let userId = firebaseAuth.currentUser.uid;
     let proUpdate = firebaseDb.ref("profile/" + userId);
+    // sanitize username of spaces
+    state.profile.user.username = state.profile.user.username.replace(/\s+/g, '');
     proUpdate.update(state.profile.user, error => {
       if (error) {
         showErrorMessage(error.message);

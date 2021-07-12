@@ -63,7 +63,7 @@
               </div> -->
               <div class="index-header">
                 <q-btn-toggle
-                  v-model="model"
+                  v-model="viewType"
                   class="my-custom-toggle"
                   toggle-color="primary"
                   flat
@@ -318,8 +318,8 @@ export default {
       slide: "style",
       tomorrow: false,
       register2: false,
-      lorem:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque voluptatem totam, architecto cupiditate officia rerum, error dignissimos praesentium libero ab nemo."
+      lorem: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque voluptatem totam, architecto cupiditate officia rerum, error dignissimos praesentium libero ab nemo.",
+        viewType: "daily"
     };
   },
   mounted() {

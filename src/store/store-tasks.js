@@ -147,7 +147,7 @@ const actions = {
     if (payload.task.dueDate !== "") {
       payload.task.dueDate = moment(payload.task.dueDate).format("YYYY-MM-DD");
     }
-    if (payload.task.dueDate == "" && payload.task.nrepeating.weekly) {
+    if (payload.task.dueDate == "" && (payload.task.nrepeating.weekly || payload.task.nrepeating.everyWeek)) {
       payload.task.dueDate = moment().format("YYYY-MM-DD");
     }
     if (payload.task.project == "") {
@@ -495,7 +495,7 @@ const getters = {
       let formattedTaskDueDate = moment(taskDueDate).format("YYYY-MM-DD");
       let formattedToday = moment(today).format("YYYY-MM-DD");
 
-      if (moment(formattedTaskDueDate).isSame(formattedToday, "day") && !task.nrepeating.weekly) {
+      if (moment(formattedTaskDueDate).isSame(formattedToday, "day") && (!task.nrepeating.weekly && !task.nrepeating.everyWeek)) {
         tasks[key] = task;
       }
 
@@ -797,12 +797,12 @@ const getters = {
     let tasks = {};
     Object.keys(tasksFiltered).forEach(function(key) {
       let task = tasksFiltered[key];
-      let taskDueDate = task.dueDate;
       let today = moment().format();
-      let formattedTaskDueDateWeek = moment(taskDueDate, "YYYY-MM-DD").week();
+      let formattedTaskCreatedWeek = moment(task.createdDate, "YYYY-MM-DD").week();
+      let formattedTaskDueDateWeek = moment(task.dueDate, "YYYY-MM-DD").week();
       let formattedCurrentWeek = moment(today, "YYYY-MM-DD").week();
       
-      if (task.nrepeating.weekly && (formattedTaskDueDateWeek == formattedCurrentWeek) && !task.completed) {
+      if ((task.nrepeating.weekly || task.nrepeating.everyWeek) && (formattedTaskDueDateWeek == formattedCurrentWeek) && !task.completed) {
         tasks[key] = task;
       }
     });
@@ -1069,7 +1069,8 @@ function getWeeklyTask(task) {
     project: task.project,
     npublic: task.npublic,
     nrepeating: {
-      weekly: true
+      weekly: true,
+      everyWeek: true
     },
     dueDate: "",
     dueTime: "",
