@@ -55,24 +55,20 @@
         >
           <div>
             <list-header class="textureBar">
-              <!-- <div v-show="tomorrow == false" class="index-header">
-                Today's Tasks
+              <!-- <div v-show="viewType == 'today1'" class="index-header">
+                Daily View
               </div>
-              <div v-show="tomorrow == true" class="index-header">
-                Tomorrow's Tasks
+              <div v-show="viewType == 'weekly2'" class="index-header">
+                Weekly View
               </div> -->
               <div class="index-header">
                 <q-btn-toggle
                   v-model="viewType"
-                  class="my-custom-toggle"
-                  toggle-color="primary"
-                  flat
-                  size=".6rem"                  
+                  size="0.8rem"                  
                   no-caps
                   :options="[
-                    {label: 'Daily View', value: 'today1'},
-                    {label: 'Weekly View', value: 'weekly2'},
-                    {label: 'Someday View', value: 'someday3'}
+                    {label: 'Daily View', value: 'daily'},
+                    {label: 'Weekly View', value: 'weekly'},
                   ]"
                 />
               </div>
@@ -80,66 +76,65 @@
             <no-tasks
               v-if="
                 !Object.keys(tasksToday).length &&
-                  !Object.keys(tasksLate).length
+                  !Object.keys(tasksLate).length && viewType == 'daily'
               "
             >
             </no-tasks>
             <tasks-late
               v-if="Object.keys(tasksLate).length"
-              v-show="tomorrow == false"
+              v-show="tomorrow == false && viewType == 'daily'"
               :tasksLate="tasksLate"
               class="lateTasks task-box"
             />
             <tasks-today
               class="task-box"
               v-if="Object.keys(tasksToday).length"
-              v-show="tomorrow == false"
+              v-show="tomorrow == false && viewType == 'daily'"
               :tasksToday="tasksToday"
             />
             <tasks-tomorrow
               class="task-box"
               v-if="Object.keys(tasksTomorrow).length"
-              v-show="tomorrow == true"
+              v-show="tomorrow == true && viewType == 'daily'"
               :tasksTomorrow="tasksTomorrow"
             />
-            <div v-show="tomorrow == false" class="q-pa-sm u-center-text">
+            <tasks-weekly
+              class="task-box"
+              v-if="Object.keys(tasksWeekly).length"
+              v-show="viewType == 'weekly'"
+              :tasksWeekly="tasksWeekly"
+            />
+            
+            <no-tasks-weekly v-if="!Object.keys(tasksWeekly).length && viewType == 'weekly'">
+            </no-tasks-weekly>
+            <div class="q-pa-sm u-center-text" v-show="viewType == 'weekly'">
+              Remaining Tasks ({{Object.keys(tasksWeekly).length}})
+            </div>
+
+            <div v-show="tomorrow == false && viewType == 'daily'" class="q-pa-sm u-center-text">
               Remaining Tasks ({{
                 Object.keys(tasksTomorrowNotCompleted).length +
                   Object.keys(tasksLate).length
               }})
             </div>
-            <div v-show="tomorrow == true" class="q-pa-sm u-center-text">
+            <div v-show="tomorrow == true && viewType == 'daily'" class="q-pa-sm u-center-text">
               Remaining Tasks ({{
                 Object.keys(tasksTomorrowNotCompleted).length
               }})
             </div>
-            <div v-show="tomorrow == false" class="q-pa-sm u-center-text">
+            <div v-show="tomorrow == false && viewType == 'daily'" class="q-pa-sm u-center-text">
               <q-btn
                 @click="tomorrow = !tomorrow"
                 dense
                 label="Show Tomorrow's Tasks"
               />
             </div>
-            <div v-show="tomorrow == true" class="q-pa-sm u-center-text">
+            <div v-show="tomorrow == true && viewType == 'daily'" class="q-pa-sm u-center-text">
               <q-btn
                 @click="tomorrow = !tomorrow"
                 dense
                 label="Show Today's Tasks"
               />
-            </div>
-            <list-header class="textureBar">
-            <div class="index-header">Weekly Tasks</div>
-            </list-header>
-            <tasks-weekly
-              class="task-box"
-              v-if="Object.keys(tasksWeekly).length"
-              :tasksWeekly="tasksWeekly"
-            />
-            
-            <no-tasks-weekly v-if="!Object.keys(tasksWeekly).length">
-            </no-tasks-weekly>
-            <div class="q-pa-sm u-center-text">
-              Remaining Tasks ({{Object.keys(tasksWeekly).length}})
             </div>
           </div>
         </div>
@@ -319,7 +314,7 @@ export default {
       tomorrow: false,
       register2: false,
       lorem: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque voluptatem totam, architecto cupiditate officia rerum, error dignissimos praesentium libero ab nemo.",
-        viewType: "daily"
+      viewType: "daily"
     };
   },
   mounted() {
