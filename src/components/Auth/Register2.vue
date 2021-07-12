@@ -224,7 +224,7 @@ export default {
     
     addNewTasklin() {
       // static fields
-      const bodyShapeArray = ["Ghost", "Round", "Squat", "Felt"]
+      const bodyShapeArray = ["Ghost", "Round", "Squat"]
       const bodyShape2Array = ["Tall", "Short"]
       const bodyTextureArray = ["Charred", "Crumpled", "Stitched"]
       const eyeArray = ["1", "2", "3", "4", "5"];

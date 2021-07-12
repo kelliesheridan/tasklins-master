@@ -102,7 +102,9 @@ const actions = {
     let help = {
       problem: payload.problem,
       createdDate: moment().format("YYYY-MM-DD HH:mm:ss"),
-      userName: this.state.profile.profile.user.name
+      name: this.state.profile.profile.user.name,
+      userame: this.state.profile.profile.user.username,
+      userid: userId
     };
     taskRef.set(help, error => {
       if (error) {

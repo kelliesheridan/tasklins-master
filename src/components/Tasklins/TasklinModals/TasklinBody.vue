@@ -39,7 +39,7 @@ export default {
           case "#fa9f53":
             return "Orange";
           case "#bc987e":
-            return "Brown";
+            return "Brown"
           case "#8c8c8c":
             return "Grey";
         }
@@ -49,6 +49,9 @@ export default {
      },
      getBodyType(bodyShape) {
        if (bodyShape != undefined) {
+         if (bodyShape == 'Felt') {
+         return 'ghost';
+          }
          return bodyShape.toLowerCase();
        } else {
        const bodyShapeArray = ["ghost", "round", "squat"];
