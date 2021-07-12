@@ -74,7 +74,7 @@ export default {
             return (
               "/statics/tasklins/mouth/mouth1/tooth" +
               mouthType.charAt(mouthType.length - 1) +
-              "/happy2.png"
+              "/neutral.png"
             );
             break;
           case "Happy":
