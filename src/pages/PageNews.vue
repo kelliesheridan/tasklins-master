@@ -7,8 +7,11 @@
         <div class="col-2 newsMenuSection q-pa-sm">
           <div class="col center">
 
+            <q-btn class="row newsBtn" color="primary" @click="news = 6">
+              July
+            </q-btn>
             
-            <q-btn class="row newsBtn" color="primary" @click="news = 5">
+            <q-btn class="row newsBtn" color="secondary" @click="news = 5">
               June
             </q-btn>
 
@@ -31,6 +34,30 @@
         </div>
 
         <div class="col q-pa-sm">
+
+          <div class="newsPost" v-if="news == 6">
+            <h4>July!</h4>
+            <br />
+            <p>
+              Did I say more frequent updates? *awkward cough*
+            </p>  
+            <p>
+              July is here, along with a small update. Some of these bugs have been tough to crack 
+              because I'm very much not a pro at this stuff and am learning as I go. We shouuulldd 
+              have a fix for any of you who have been getting invisible Tasklins, along with some 
+              mood bugs and some general make things run more smoothly fixes up now.
+            </p>
+            <p>
+              There is also a bigger update on the way that's already close to completion. I'd hoped 
+              to have that up today too since it technically works, but am going to try to clean 
+              it up a little more first. And that is a new weekly view where you can see your whole 
+              week at a glance. This is usually how I like to run my own schedule since I work from 
+              home and usually set my own chaos hours, so having tasks that need to be done at some 
+              point this week instead of assigning everything to a specific day tends to give me 
+              more flexibility. So hopefully you'll all be seeing that shortly.
+            </p>
+          
+          </div>
 
           <div class="newsPost" v-if="news == 5">
             <h4>June?!</h4>
