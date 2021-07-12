@@ -55,14 +55,14 @@
         >
           <div>
             <list-header class="textureBar">
-              <div class="index-header">Your Tasks</div>
+              <!-- <div class="index-header">Your Tasks</div> -->
               <!-- <div v-show="viewType == 'today1'" class="index-header">
                 Daily View
               </div>
               <div v-show="viewType == 'weekly2'" class="index-header">
                 Weekly View
               </div> -->
-              <!-- <div class="index-header">
+              <div class="index-header">
                 <q-btn-toggle
                   v-model="viewType"
                   size="0.8rem"                  
@@ -72,7 +72,7 @@
                     {label: 'Weekly View', value: 'weekly'},
                   ]"
                 />
-              </div> -->
+              </div>
             </list-header>
             <no-tasks
               v-if="
