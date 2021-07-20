@@ -19,9 +19,9 @@
         v-html="$options.filters.searchHighlight(task.name, search)">
       </q-item-label>
 
-      <q-item-label v-if='task.dueTime'       
+      <q-item-label v-if='task.dueDate'       
         class="row justify-start">
-        <small>{{ taskDueTime }}</small>
+        <small>{{ task.dueDate | niceDate }}</small>
       </q-item-label>
         
     </q-item-section>
