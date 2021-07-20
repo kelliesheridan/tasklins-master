@@ -54,6 +54,12 @@
           style="overflow: auto;"
         >
           <div>
+            <!-- <div v-if="!Object.keys(tasksWeeklyByProject).length">
+
+            </div>
+            <div v-if="Object.keys(tasksWeeklyByProject).length">
+
+            </div> -->
             <list-header class="textureBar">
               <!-- <div class="index-header">Your Tasks</div> -->
               <!-- <div v-show="viewType == 'today1'" class="index-header">

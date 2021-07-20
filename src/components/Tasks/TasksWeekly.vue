@@ -18,7 +18,7 @@ const moment= require('moment')
 export default {
     props: ['tasksWeekly'],
     components: {
-        'task' : require('components/Tasks/TaskIndex.vue').default,
+        'task' : require('components/Tasks/TaskWeekly.vue').default,
 		},
 	computed: {
 	...mapGetters('profile', ['profile']),
