@@ -119,9 +119,6 @@
             
             <no-tasks-weekly v-if="!Object.keys(tasksWeeklyByProject).length && viewType == 'weekly'">
             </no-tasks-weekly>
-            <div class="q-pa-sm u-center-text" v-show="viewType == 'weekly'">
-              Remaining Tasks ({{Object.keys(tasksWeeklyByProject).length}})
-            </div>
 
             <div v-show="tomorrow == false && viewType == 'daily'" class="q-pa-sm u-center-text">
               Remaining Tasks ({{
