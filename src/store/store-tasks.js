@@ -40,9 +40,6 @@ const mutations = {
   setProjects(state, value) {
     state.projects = value;
   },
-  setAllProjects(state, value) {
-    state.allProjects = value;
-  },
   setProjectSearch(state, value) {
     state.projectSearch = value;
   }
@@ -206,7 +203,6 @@ const actions = {
           projectsArray.push(element);
         });
         commit("setProjects", projectsArray);
-        commit("setAllProjects", projectRecords);
       }
     });
   },
@@ -809,8 +805,25 @@ const getters = {
 
     return tasks;
   },
+  tasksWeeklyByProject: (state, getters) => {
+    let projects = getters.projects;
+    let tasksFiltered = getters.tasksWeekly;
+    let projectTasks = {};
+    Object.keys(projects).forEach(function(projKey) { 
+      projectTasks[projects[projKey]] = {};
+      projectTasks[projects[projKey]].name = projects[projKey];
+      projectTasks[projects[projKey]].task = {};
+      console.debug(projects[projKey]);//projectTasks.push(projKey);
+      Object.keys(tasksFiltered).forEach(function(key) {
+        let task = tasksFiltered[key];
+        if (task.project == projects[projKey]) {
+          projectTasks[projects[projKey]].task[key] = task;
+      }});
+    });
+    return projectTasks;
+  },
   projectsCreatedToday: (state, getters) => {
-    let projects = getters.allProjects;
+    let projects = getters.projects;
     let projectsCreatedToday = {};
     Object.keys(projects).forEach(function(key) {
       let proj = projects[key];
@@ -827,9 +840,6 @@ const getters = {
   projects: state => {
     return state.projects;
   },
-  allProjects: state => {
-    return state.allProjects;
-  }
 };
 export default {
   namespaced: true,

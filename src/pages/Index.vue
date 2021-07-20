@@ -75,10 +75,8 @@
               </div>
             </list-header>
             <no-tasks
-              v-if="
-                !Object.keys(tasksToday).length &&
-                  !Object.keys(tasksLate).length && viewType == 'daily'
-              "
+              v-if="!Object.keys(tasksToday).length &&
+                  !Object.keys(tasksLate).length && viewType == 'daily'"
             >
             </no-tasks>
             <tasks-late
@@ -99,17 +97,24 @@
               v-show="tomorrow == true && viewType == 'daily'"
               :tasksTomorrow="tasksTomorrow"
             />
-            <tasks-weekly
+            <!-- <tasks-weekly
               class="task-box"
-              v-if="Object.keys(tasksWeekly).length"
+              v-if="Object.keys(tasksWeeklyByProject).length"
               v-show="viewType == 'weekly'"
-              :tasksWeekly="tasksWeekly"
+              :tasksWeekly="tasksWeeklyByProject"
+            /> -->
+            <tasks-weekly-by-project
+              class="task-box"
+              v-if="Object.keys(tasksWeeklyByProject).length"
+              v-show="viewType == 'weekly'"
+              :tasksWeekly="tasksWeeklyByProject"
             />
+            <!-- <project v-show="viewType == 'weekly'"></project> -->
             
-            <no-tasks-weekly v-if="!Object.keys(tasksWeekly).length && viewType == 'weekly'">
+            <no-tasks-weekly v-if="!Object.keys(tasksWeeklyByProject).length && viewType == 'weekly'">
             </no-tasks-weekly>
             <div class="q-pa-sm u-center-text" v-show="viewType == 'weekly'">
-              Remaining Tasks ({{Object.keys(tasksWeekly).length}})
+              Remaining Tasks ({{Object.keys(tasksWeeklyByProject).length}})
             </div>
 
             <div v-show="tomorrow == false && viewType == 'daily'" class="q-pa-sm u-center-text">
@@ -331,7 +336,8 @@ export default {
   components: {
     "tasks-today": require("components/Tasks/TasksToday.vue").default,
     "tasks-tomorrow": require("components/Tasks/TasksToday.vue").default,
-    "tasks-weekly": require("components/Tasks/TasksWeekly.vue").default,
+    // "tasks-weekly": require("components/Tasks/TasksWeekly.vue").default,
+    "tasks-weekly-by-project": require("components/Tasks/TasksWeeklyByProject.vue").default,
     "tasks-late": require("components/Tasks/TasksLate.vue").default,
     "list-header": require("components/Shared/ListHeader.vue").default,
     settingsModal: require("components/Help/SettingsModal.vue").default,
@@ -358,7 +364,8 @@ export default {
       "tasksCompletedYesterday",
       "tasksCompletedTwoDaysAgo",
       "projectsCreatedToday",
-      "tasksWeekly"
+      "tasksWeekly",
+      "tasksWeeklyByProject"
     ]),
     ...mapGetters("tasklins", ["tasklin"]),
     ...mapState("tasks", ["search", "tasksDownloaded"])

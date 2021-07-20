@@ -1,12 +1,16 @@
 <template>
 	<div>
 		<q-list separator>
-			<task
-				v-for="(task, key) in tasksWeekly"
+			<p v-for="(project, projKey) in tasksWeekly"
+				:key="projKey"
+				> {{project.name}}
+				<task
+				v-for="(task, key) in project.task"
 				:key="key"
 				:task="task"
 				:id="key">
 			</task>
+			</p>
 		</q-list>
 		</div>
 </template>
