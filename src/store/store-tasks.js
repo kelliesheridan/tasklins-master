@@ -820,7 +820,13 @@ const getters = {
           projectTasks[projects[projKey]].task[key] = task;
       }});
     });
-    return projectTasks;
+    let projectsWithTasks = [];
+    Object.keys(projectTasks).forEach(function(proj) {
+      if (Object.keys(projectTasks[proj].task).length > 0) {
+        projectsWithTasks.push(projectTasks[proj]);
+      }
+     })
+    return projectsWithTasks;
   },
   projectsCreatedToday: (state, getters) => {
     let projects = getters.projects;
