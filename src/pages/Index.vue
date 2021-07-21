@@ -357,7 +357,7 @@ export default {
   },
   components: {
     "tasks-today": require("components/Tasks/TasksToday.vue").default,
-    "tasks-tomorrow": require("components/Tasks/TasksToday.vue").default,
+    "tasks-tomorrow": require("components/Tasks/TasksTomorrow.vue").default,
     // "tasks-weekly": require("components/Tasks/TasksWeekly.vue").default,
     "tasks-weekly-by-project": require("components/Tasks/TasksWeeklyByProject.vue").default,
     "tasks-late": require("components/Tasks/TasksLate.vue").default,

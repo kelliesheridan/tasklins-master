@@ -1,9 +1,6 @@
 <template>
 	<div>
-		<q-list
-		separator
-		>
-
+		<q-list separator>
 			<task
 				v-for="(task, key) in tasksTomorrow"
 				:key="key"
