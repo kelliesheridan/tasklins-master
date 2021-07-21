@@ -129,7 +129,7 @@
     },
     filters: {
       niceDate(value) {
-        return moment(value.value).format('ddd MMM D')
+        return moment(value).format('ddd')
       },
       searchHighlight(value, search) {
         if (search) {
