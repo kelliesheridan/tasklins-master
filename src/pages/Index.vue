@@ -78,6 +78,24 @@
                     {label: 'Weekly View', value: 'weekly'},
                   ]"
                 />
+                <!-- <q-btn 
+                  @click.stop="hideEdits == true"
+                  v-if="hideEdits"
+                  flat
+                  round
+                  dense
+                  color="secondary"
+                  icon="visibility">
+                </q-btn>
+                <q-btn 
+                  @click.stop="hideEdits == false"
+                  v-if="!hideEdits"
+                  flat
+                  round
+                  dense
+                  color="secondary"
+                  icon="visibility_off">
+                </q-btn> -->
               </div>
             </list-header>
             <no-tasks
@@ -319,6 +337,7 @@ export default {
       hideNewUserPanel: false,
       tasklinName: "",
       settings: false,
+      hideEdits: false,
       slide: "style",
       tomorrow: false,
       register2: false,
