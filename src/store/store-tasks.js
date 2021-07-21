@@ -530,36 +530,6 @@ const getters = {
 
     return tasks;
   },
-  tasksSomeday: (state, getters) => {
-    let tasksFiltered = getters.tasksFiltered;
-    let tasks = {};
-    Object.keys(tasksFiltered).forEach(function(key) {
-      let task = tasksFiltered[key];
-      let taskDueDate = task.dueDate;
-      let today = moment().format();
-
-      let formattedTaskDueDate = moment(taskDueDate).format("YYYY-MM-DD");
-      let formattedToday = moment(today).format("YYYY-MM-DD");
-
-      if (moment(formattedTaskDueDate).isSame(formattedToday, "day") && (!task.nrepeating.weekly && !task.nrepeating.everyWeek)) {
-        tasks[key] = task;
-      }
-
-      if (task.completedDate != undefined) {
-        if (
-          task.completedDate &&
-          moment(moment(task.completedDate).format("YYYY-MM-DD")).isSame(
-            moment().format("YYYY-MM-DD"),
-            "day"
-          )
-        ) {
-          tasks[key] = task;
-        }
-      }
-    });
-
-    return tasks;
-  },
   tasksTodayNotCompleted: (state, getters) => {
     let tasksFiltered = getters.tasksFiltered;
     let tasks = {};
@@ -750,7 +720,7 @@ const getters = {
 
       if (
         moment(formattedTaskDueDate).isBefore(formattedToday) &&
-        !task.completed
+        !task.completed && !task.nrepeating.weekly
       ) {
         tasks[key] = task;
       }
