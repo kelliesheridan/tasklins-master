@@ -544,7 +544,7 @@ const getters = {
 
       if (
         moment(formattedTaskDueDate).isSame(formattedToday, "day") &&
-        !task.completed
+        !task.completed && !task.nrepeating.weekly
       ) {
         tasks[key] = task;
       }

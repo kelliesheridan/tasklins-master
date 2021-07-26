@@ -47,7 +47,7 @@
           dense
           size="md"
           icon="schedule_send"
-          :style="{ 'color': weekly ? '#bf8686' : '#89be85' }"
+          :style="{ 'color': weekly ? '#89be85' : '#bf8686' }" 
           ><q-tooltip content-class="bg-primary">Weekly</q-tooltip>
         </q-btn>     
     </div>

@@ -1,7 +1,9 @@
 <template>
+<!-- 
+    :class="[!settings.darkMode ? 'bg-accent' : 'bg-dark', !task.completed ? '' : 'bg-positive']"  -->
+
   <q-item class="task"
   	@click="updateTask({ id: id, updates: { completed: !task.completed, dueDate: task.dueDate, task: task } }); addLin(task.completed);"
-    :class="[!settings.darkMode ? 'bg-accent' : 'bg-dark', !task.completed ? '' : 'bg-positive']" 
     v-touch-hold:1000.mouse="showEditTaskModal"
   	clickable
   	v-ripple>

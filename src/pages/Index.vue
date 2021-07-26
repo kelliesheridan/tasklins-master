@@ -140,7 +140,7 @@
 
             <div v-show="tomorrow == false && viewType == 'daily'" class="q-pa-sm u-center-text">
               Remaining Tasks ({{
-                Object.keys(tasksTomorrowNotCompleted).length +
+                Object.keys(tasksTodayNotCompleted).length +
                   Object.keys(tasksLate).length
               }})
             </div>
