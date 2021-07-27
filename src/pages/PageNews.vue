@@ -7,6 +7,10 @@
         <div class="col-2 newsMenuSection q-pa-sm">
           <div class="col center">
 
+            <q-btn class="row newsBtn" color="secondary" @click="news = 7">
+              Weekly Mode + Bug Fixes
+            </q-btn>
+
             <q-btn class="row newsBtn" color="primary" @click="news = 6">
               July
             </q-btn>
@@ -34,6 +38,39 @@
         </div>
 
         <div class="col q-pa-sm">
+
+          <div class="newsPost" v-if="news == 7">
+            <h4>Weekly Mode + Bug Fixes</h4>
+            <br />
+            <p>
+              Brace yourselves, this is the biggest update we've had in a good long while. It's time 
+              for the feature I personally have been "waiting for" (basically waiting for myself to 
+              get my act together on) the longest since this is the closest I've gotten to adapting 
+              the weekly planner system I use outside of Tasklins to work here on the website. Very 
+              much hoping it will be as useful to other people as it has been for me.
+            </p>  
+            <p>
+              From now on, when you're on the home page, you can switch over from daily mode 
+              (essentially the default home page task list we've had for a while now) over to 
+              weekly mode. While the daily view lets you see what you still need to get done today, 
+              your weekly view will show you your whole week at a glance, broken down by project. 
+              We've also added a new weekly button on the add/edit task page. You can click the new 
+              arrow button which will mark that task as due <i>the week of</i> the due date you 
+              select, rather than on the specific due date. This is for all the tasks that you know 
+              you need to do at some point this week, but there isn't a specific date associated 
+              with it. This is something I use ALL THE TIME to give my weekly schedule's more 
+              flexibility. I'm planning a patreon post later this week that goes more in depth 
+              on how I use weekly mode and future plans for this new mode.
+            </p>
+            <p>
+              This new update also comes with some bug changes here and there, including some mood 
+              fixes (you can now actually see the adorable, sleepy eyelids when your Tasklin is 
+              feeling overworked), and a few other little things that have been bugging me, along 
+              with some bugs that all of you have reported.
+            </p>
+            <p>More to come soon. Have a fantastic week!</p>
+          
+          </div>
 
           <div class="newsPost" v-if="news == 6">
             <h4>July!</h4>
