@@ -74,8 +74,8 @@
                   size="0.8rem"                  
                   no-caps
                   :options="[
-                    {label: 'Daily View', value: 'daily'},
-                    {label: 'Weekly View', value: 'weekly'},
+                    {label: 'Daily', value: 'daily'},
+                    {label: 'Weekly', value: 'weekly'},
                   ]"
                 />
                 <!-- <q-btn 
@@ -121,12 +121,6 @@
               v-show="tomorrow == true && viewType == 'daily'"
               :tasksTomorrow="tasksTomorrow"
             />
-            <!-- <tasks-weekly
-              class="task-box"
-              v-if="Object.keys(tasksWeeklyByProject).length"
-              v-show="viewType == 'weekly'"
-              :tasksWeekly="tasksWeeklyByProject"
-            /> -->
             <tasks-weekly-by-project
               class="task-box"
               v-if="Object.keys(tasksWeeklyByProject).length"

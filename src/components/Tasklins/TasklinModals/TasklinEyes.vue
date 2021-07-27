@@ -158,6 +158,7 @@ export default {
           return (
             "/statics/tasklins/eyes/eyes" +
             eyeType.charAt(eyeType.length - 1) +
+            "/Eyelids" +
             "/2-sleepy" +
             this.getColour(eyeColor) +
             ".png"
