@@ -149,6 +149,7 @@ export default {
           return (
             "/statics/tasklins/eyes/eyes" +
             eyeType.charAt(eyeType.length - 1) +
+            "/Eyelids" +
             "/2-concerned" +
             this.getColour(eyeColor) +
             ".png"
@@ -191,6 +192,7 @@ export default {
           return (
             "/statics/tasklins/eyes/eyes" +
             eyeType.charAt(eyeType.length - 1) +
+            "/Eyelids" +
             "/2-happy" +
             this.getColour(eyeColor) +
             ".png"
