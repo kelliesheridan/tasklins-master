@@ -8,12 +8,15 @@
       class="colorType"
       :src="this.getEyes('color', this.tasklin.eyeType, this.tasklin.color)"
     />
-    <img class="pupilType" :src="this.getEyeBase(this.tasklin.eyeTypeArray)" />
+    <img
+     class="pupilType" :src="this.getEyeBase(this.tasklin.eyeType)"
+     />
     <img
       class="highlightType"
       :src="this.getEyes('highlight', this.tasklin.eyeType, this.tasklin.color)"
     />
     <img
+      v-if="showEyelid()"
       class="highlightType"
       :src="this.getEyelid(this.tasklin.eyeType, this.tasklin.color)"
     />
@@ -45,6 +48,35 @@ export default {
     ])
   },
   methods: {
+    showEyelid() {
+        var tasklinMood = getMood(
+        Object.keys(this.tasksCompletedToday).length,
+        Object.keys(this.tasksLate).length,
+        Object.keys(this.tasksCreatedToday).length,
+        Object.keys(this.tasksTodayNotCompleted).length,
+        Object.keys(this.tasksCompletedYesterday).length,
+        Object.keys(this.tasksCompletedTwoDaysAgo).length,
+        Object.keys(this.projectsCreatedToday).length
+      );
+      switch (tasklinMood) {
+        
+        case "Concerned":
+        case "Thrilled":
+        case "Sleepy":
+          return true;
+          break;
+
+        case "Asleep":
+        case "Loved":
+        case "Content":
+        case "Okay":
+        case "Happy":
+        case "Lonely":
+        case "Intrigued":
+          return false;
+          break;
+      }
+    },
     getEyes(layerNumber, eyeType, arg) {
       if (Object.keys(this.tasksCompletedToday).length == 0) {
         if (eyeType) {
@@ -124,6 +156,16 @@ export default {
         } else {
           return "/statics/tasklins/eyes/eyes1/5-Base.png";
         }
+      } else {
+        if (eyeType != undefined) {
+          return (
+            "/statics/tasklins/eyes/eyes" +
+            eyeType.charAt(eyeType.length - 1) +
+            "/Moods/Asleep.png"
+          );
+        } else {
+          return "/statics/tasklins/eyes/eyes1/Moods/Asleep.png"
+        }
       }
     },
     getEyelid(eyeType, eyeColor) {
@@ -165,20 +207,14 @@ export default {
             ".png"
           );
           break;
-        case "Happy":
-          return (
-            "/statics/tasklins/eyes/eyes" +
-            eyeType.charAt(eyeType.length - 1) +
-            "/2-happy" +
-            this.getColour(eyeColor) +
-            ".png"
-          );
-          break;
         case "Thrilled":
           return (
             "/statics/tasklins/eyes/eyes" +
             eyeType.charAt(eyeType.length - 1) +
-            "/Moods/Asleep.png"
+            "/Eyelids" +
+            "/2-happy" +
+            this.getColour(eyeColor) +
+            ".png"
           );
           break;
         case "Loved":
@@ -199,6 +235,7 @@ export default {
           );
           break;
         case "Okay":
+        case "Happy":
         case "Lonely":
         case "Intrigued":
           return "";

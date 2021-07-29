@@ -257,7 +257,7 @@ import { mapActions, mapState, mapGetters } from "vuex";
 export default {
   data() {
     return {
-      news: 4
+      news: 7
     };
   },
   computed: {
