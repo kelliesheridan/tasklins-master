@@ -28,19 +28,24 @@ const mutations = {
   setXP(state, isCompleted) {
     if (isCompleted) {
       state.profile.user.xp += 5;
+      state.tasklin.xp += 5;
     } else {
       state.profile.user.xp -= 5;
+      state.tasklin.xp -= 5;
     }
   },
   setXPFromTask(state, task) {
     if (task.updates.completed) {
       if (moment(task.updates.dueDate).isSameOrBefore(moment())) {
         state.profile.user.xp += 5;
+        state.tasklin.xp += 5;
       } else {
         state.profile.user.xp += 3;
+        state.tasklin.xp += 3;
       }
     } else {
       state.profile.user.xp -= 5;
+      state.tasklin.xp -= 5;
     }
   },
   setLin(state, isCompleted) {
@@ -52,6 +57,7 @@ const mutations = {
   },
   setXPValue(state, value) {
     state.profile.user.xp += value;
+    state.tasklin.xp += value;
   },
   setLevel(state) {
     state.profile.user.level = getLevel();
