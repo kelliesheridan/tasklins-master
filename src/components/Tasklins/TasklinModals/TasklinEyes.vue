@@ -18,7 +18,7 @@
     <img
       v-if="showEyelid()"
       class="highlightType"
-      :src="this.getEyelid(this.tasklin.eyeType, this.tasklin.color)"
+      :src="this.getEyelid(this.tasklin.eyeType, this.tasklin.eyeColor)"
     />
   </div>
 </template>
@@ -157,16 +157,9 @@ export default {
           return "/statics/tasklins/eyes/eyes1/5-Base.png";
         }
       } else {
-        if (eyeType != undefined) {
-          return (
-            "/statics/tasklins/eyes/eyes" +
-            eyeType.charAt(eyeType.length - 1) +
-            "/Moods/Asleep.png"
-          );
-        } else {
-          return "/statics/tasklins/eyes/eyes1/Moods/Asleep.png"
+        // return a transparent src
+          return "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==";
         }
-      }
     },
     getEyelid(eyeType, eyeColor) {
       var tasklinMood = getMood(
