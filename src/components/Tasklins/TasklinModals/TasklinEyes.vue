@@ -2,23 +2,23 @@
   <div class="tasklin">
     <img
       class="baseType"
-      :src="this.getEyes('base', this.tasklin.eyeType, this.tasklin.color)"
+      :src="this.getEyes('base', this.tasklin.eyeType, this.tasklin.eyeColor)"
     />
     <img
       class="colorType"
-      :src="this.getEyes('color', this.tasklin.eyeType, this.tasklin.color)"
+      :src="this.getEyes('color', this.tasklin.eyeType, this.tasklin.eyeColor)"
     />
     <img
      class="pupilType" :src="this.getEyeBase(this.tasklin.eyeType)"
      />
     <img
       class="highlightType"
-      :src="this.getEyes('highlight', this.tasklin.eyeType, this.tasklin.color)"
+      :src="this.getEyes('highlight', this.tasklin.eyeType, this.tasklin.eyeColor)"
     />
     <img
       v-if="showEyelid()"
       class="highlightType"
-      :src="this.getEyelid(this.tasklin.eyeType, this.tasklin.eyeColor)"
+      :src="this.getEyelid(this.tasklin.eyeType, this.tasklin.color)"
     />
   </div>
 </template>

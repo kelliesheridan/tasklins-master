@@ -248,7 +248,7 @@ export default {
         color3: colorArray[Math.floor(Math.random() * colorArray.length)],
         bodyShape: bodyShapeArray[Math.floor(Math.random() * bodyShapeArray.length)],
         bodyTexture: bodyTextureArray[Math.floor(Math.random() * bodyTextureArray.length)],
-        eyeColor: this.profile.color,
+        eyeColor: colorArray[Math.floor(Math.random() * colorArray.length)],
         eyeType: "eyes" + eyeArray[Math.floor(Math.random() * eyeArray.length)],
         nose: "nose" + noseArray[Math.floor(Math.random() * noseArray.length)],
         mouth: "mouth" + mouthArray[Math.floor(Math.random() * mouthArray.length)],
