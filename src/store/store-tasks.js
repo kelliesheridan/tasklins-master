@@ -1,5 +1,5 @@
 import Vue from "vue";
-import { uid, Notify } from "quasar";
+import { LocalStorage, uid, Notify } from "quasar";
 import { firebaseDb, firebaseAuth } from "boot/firebase";
 import { showErrorMessage } from "src/functions/function-show-error-message";
 import { date } from "quasar";
@@ -12,7 +12,7 @@ const state = {
   search: "",
   projectSearch: "",
   sort: "dueDate",
-  tasksDownloaded: false
+  tasksDownloaded: false,
 };
 
 const mutations = {
@@ -789,15 +789,16 @@ const getters = {
     return tasks;
   },
   tasksWeekly: (state, getters) => {
+    let sundayStart = LocalStorage.getItem('sundayStart');
+    console.debug("start on sunday? ", sundayStart);
     let tasksFiltered = getters.tasksFiltered;
     let tasks = {};
     Object.keys(tasksFiltered).forEach(function(key) {
       let task = tasksFiltered[key];
       let today = moment().format();
-      let formattedTaskCreatedWeek = moment(task.createdDate, "YYYY-MM-DD").week();
-      let formattedTaskDueDateWeek = moment(task.dueDate, "YYYY-MM-DD").week();
-      let formattedCurrentWeek = moment(today, "YYYY-MM-DD").week();
-      
+      let formattedTaskCreatedWeek = sundayStart ? moment(task.createdDate, "YYYY-MM-DD").isoWeek() : moment(task.createdDate, "YYYY-MM-DD").week();
+      let formattedTaskDueDateWeek = sundayStart ? moment(task.dueDate, "YYYY-MM-DD").isoWeek() :  moment(task.dueDate, "YYYY-MM-DD").week();
+      let formattedCurrentWeek = sundayStart ? moment(today, "YYYY-MM-DD").isoWeek() : moment(today, "YYYY-MM-DD").week();
       if (formattedTaskDueDateWeek == formattedCurrentWeek) {
         tasks[key] = task;
 

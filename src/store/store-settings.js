@@ -1,3 +1,4 @@
+import Vue from "vue";
 import { LocalStorage, SessionStorage } from "quasar";
 import { Dark } from "quasar";
 import { firebaseAuth, firebaseDb } from "boot/firebase";
@@ -9,7 +10,7 @@ const state = {
     showProjectsOnPage: false,
     hideCompletedTasks: false,
     darkMode: false,
-    sundayStart: false
+    sundayStart: false,
   }
 };
 
@@ -27,8 +28,9 @@ const mutations = {
     Dark.toggle();
     state.settings.darkMode = value;
   },
-  setSundayStart(state, value) {
+  setSundayStart(state, value, dispatch) {
     state.settings.sundayStart = value;
+    LocalStorage.set("sundayStart", state.settings.sundayStart);
   },
   setSettings(state, settings) {
     if (
@@ -38,6 +40,7 @@ const mutations = {
       Dark.toggle();
     }
     Object.assign(state.settings, settings);
+    LocalStorage.set("sundayStart", settings.sundayStart);
   }
 };
 
@@ -60,6 +63,7 @@ const actions = {
   },
   setSundayStart({ commit, dispatch }, value) {
     commit("setSundayStart", value);
+    dispatch("tasks/fbReadData", null, { root: true })
     // dispatch('saveSettings')
   },
   saveSettings({ state, dispatch }) {
@@ -122,8 +126,11 @@ const getters = {
   },
   darkMode: state => { 
     return state.settings.darkMode;
-    }
-  };
+  },
+  sundayStart: state => {
+    return state.settings.sundayStart;
+  }
+};
 
 export default {
   namespaced: true,

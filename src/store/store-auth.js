@@ -55,6 +55,7 @@ const actions = {
       if (user) {
         commit("setLoggedIn", true);
         LocalStorage.set("loggedIn", true);
+        dispatch("settings/fbReadSettings", null, { root: true });
         dispatch("tasks/fbReadData", null, { root: true });
         dispatch("tasks/fbReadProjects", null, { root: true });
         dispatch("profile/fbReadProfile", null, { root: true });
@@ -62,7 +63,6 @@ const actions = {
         dispatch("fitness/readFitnessLevels", null, { root: true });
         dispatch("writing/readWritingTasks", null, { root: true });
         dispatch("writing/readWritingLevels", null, { root: true });
-        dispatch("settings/fbReadSettings", null, { root: true });
         ////dispatch("profile/fbCheckUsername", null, { root: true });
         dispatch("tasklins/getTasklin", null, { root: true });
         dispatch("community/fbReadCommunity", {type: "encouragement"}, { root: true });
