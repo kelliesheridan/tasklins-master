@@ -97,6 +97,8 @@ const actions = {
     let userId = firebaseAuth.currentUser.uid;
     //let userTasks = today ? firebaseDb.ref("tasks/" + userId).orderByChild("dueDate").equalTo(moment().format("YYYY-MM-DD")) : firebaseDb.ref("tasks/" + userId);
     // let userTasks = firebaseDb.ref("tasks/" + userId).orderByChild("dueDate").equalTo(moment().format("YYYY-MM-DD"));
+    //let userTasks = firebaseDb.ref("tasks/" + userId);
+    //let userTasks = firebaseDb.ref("tasks/" + userId).orderByChild("createdDate").startAt(moment().startOf('year').format('MM/DD/YYYY'));
     let userTasks = firebaseDb.ref("tasks/" + userId);
 
     //initial check for data
