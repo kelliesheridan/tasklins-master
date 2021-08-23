@@ -38,9 +38,6 @@
                   </q-btn>
                   <br />
 
-                  <q-btn dense flat @click="pageNumber = 5">
-                    This Week
-                  </q-btn>
                 </div>
                 <div
                   v-show="pageNumber == 2"
@@ -305,10 +302,7 @@
                 class="notebookPage3 notebookMargin"
                 style="margin-top: -80%"
               >
-                <h4>This Week</h4>
-                <div>
-                  Coming Soon!
-                </div>
+
               </div>
             </div>
 

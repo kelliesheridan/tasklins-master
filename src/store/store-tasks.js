@@ -525,7 +525,7 @@ const getters = {
       let formattedTaskDueDate = moment(taskDueDate).format("YYYY-MM-DD");
       let formattedTomorrow = moment(tomorrow).format("YYYY-MM-DD");
 
-      if (moment(formattedTaskDueDate).isSame(formattedTomorrow, "day")) {
+      if (moment(formattedTaskDueDate).isSame(formattedTomorrow, "day") && (!task.nrepeating.weekly && !task.nrepeating.everyWeek)) {
         tasks[key] = task;
       }
     });
