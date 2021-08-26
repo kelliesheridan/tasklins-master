@@ -48,16 +48,13 @@ export default {
       }
      },
      getBodyType(bodyShape) {
-       if (bodyShape != undefined) {
-         if (bodyShape == 'Felt') {
-         return 'ghost';
-          }
-         return bodyShape.toLowerCase();
-       } else {
+       if (bodyShape != undefined && bodyShape != "") {
+          return bodyShape.toLowerCase();
+        } else {
        const bodyShapeArray = ["ghost", "round", "squat"];
-       return bodyShapeArray[Math.floor(Math.random() * bodyShapeArray.length)]
+       return bodyShapeArray[Math.floor(Math.random() * bodyShapeArray.length)];
+        }  
        }
      }
-  }
 };
 </script>
