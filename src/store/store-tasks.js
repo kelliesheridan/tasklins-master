@@ -431,7 +431,7 @@ const getters = {
         let task = tasksSorted[key],
           taskNameLowerCase = task.name.toLowerCase(),
           searchLowerCase = state.search.toLowerCase();
-        if (taskNameLowerCase.includes(searchLowerCase)) {
+        if (taskNameLowerCase.includes(searchLowerCase) && moment(task.createdDate).isSame(moment(), "year")) {
           tasksFiltered[key] = task;
         }
       });
@@ -441,7 +441,7 @@ const getters = {
         let task = tasksSorted[key],
           taskProjectNameLowerCase = task.project.toLowerCase(),
           searchLowerCase = state.projectSearch.toLowerCase();
-        if (taskProjectNameLowerCase.includes(searchLowerCase)) {
+        if (taskProjectNameLowerCase.includes(searchLowerCase) && moment(task.createdDate).isSame(moment(), "year")) {
           tasksFiltered[key] = task;
         }
       });
@@ -798,12 +798,12 @@ const getters = {
     Object.keys(tasksFiltered).forEach(function(key) {
       let task = tasksFiltered[key];
       let today = moment().format();
-      let formattedTaskCreatedWeek = sundayStart ? moment(task.createdDate, "YYYY-MM-DD").isoWeek() : moment(task.createdDate, "YYYY-MM-DD").week();
       let formattedTaskDueDateWeek = sundayStart ? moment(task.dueDate, "YYYY-MM-DD").isoWeek() :  moment(task.dueDate, "YYYY-MM-DD").week();
       let formattedCurrentWeek = sundayStart ? moment(today, "YYYY-MM-DD").isoWeek() : moment(today, "YYYY-MM-DD").week();
-      if (formattedTaskDueDateWeek == formattedCurrentWeek) {
+      let formattedTaskYear = moment(task.createdDate, "YYYY-MM-DD").year();
+      let formattedCurrentYear = moment(today, "YYYY-MM-DD").year();
+      if (formattedTaskDueDateWeek == formattedCurrentWeek && formattedTaskYear == formattedCurrentYear) {
         tasks[key] = task;
-
         // if ((task.nrepeating.weekly || task.nrepeating.everyWeek) && (formattedTaskDueDateWeek == formattedCurrentWeek)) {
         //   tasks[key] = task;
       }
