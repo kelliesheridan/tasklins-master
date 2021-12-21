@@ -42,6 +42,7 @@ const actions = {
       })
       .catch(error => {
         showErrorMessage(error.message);
+        this.$router.push("/auth").catch(err => {});
       });
   },
   logoutUser() {
@@ -54,14 +55,44 @@ const actions = {
       if (user) {
         commit("setLoggedIn", true);
         LocalStorage.set("loggedIn", true);
+        dispatch("settings/fbReadSettings", null, { root: true });
         dispatch("tasks/fbReadData", null, { root: true });
         dispatch("tasks/fbReadProjects", null, { root: true });
         dispatch("profile/fbReadProfile", null, { root: true });
         dispatch("fitness/readFitnessTasks", null, { root: true });
+        dispatch("fitness/readFitnessLevels", null, { root: true });
         dispatch("writing/readWritingTasks", null, { root: true });
+        dispatch("writing/readWritingLevels", null, { root: true });
+        ////dispatch("profile/fbCheckUsername", null, { root: true });
         dispatch("tasklins/getTasklin", null, { root: true });
-        dispatch("settings/fbReadSettings", null, { root: true });
-        dispatch("profile/fbCheckUsername", null, { root: true });
+        dispatch("community/fbReadCommunity", {type: "encouragement"}, { root: true });
+        dispatch("community/fbReadCommunity", {type: "communityUpdate"}, { root: true });
+        dispatch("profile/fbReadAllMoods", null, { root: true });
+        dispatch("community/fbReadLikes", null, { root: true });
+        // dispatch("planuary/fbReadWishes", null, { root: true });
+        // dispatch("planuary/fbReadFocus", null, { root: true });
+        // dispatch("planuary/fbReadGoals", null, { root: true });
+        // dispatch("planuary/fbReadPlanuary", {type: "highlights"}, { root: true });
+        // dispatch("planuary/fbReadPlanuary", {type: "scary"}, { root: true });
+        // dispatch("planuary/fbReadPlanuary", {type: "weekOne"}, { root: true });
+        // dispatch("planuary/fbReadPlanuary", {type: "weekTwo"}, { root: true });
+        // dispatch("planuary/fbReadPlanuary", {type: "weekThree"}, { root: true });
+        // dispatch("planuary/fbReadPlanuary", {type: "weekFour"}, { root: true });
+        // dispatch("planuary/fbReadPlanuary", {type: "quarterlyGoals"}, { root: true });
+        // dispatch("planuary/fbReadPlanuary", {type: "practices"}, { root: true });
+        // dispatch("planuary/fbReadPlanuary", {type: "gratitude"}, { root: true });
+        // dispatch("planuary/fbReadPlanuary", {type: "letGo"}, { root: true });
+        // dispatch("planuary/fbReadPlanuary", {type: "superpower"}, { root: true });
+        // dispatch("planuary/fbReadPlanuary", {type: "avoid"}, { root: true });
+        // dispatch("planuary/fbReadPlanuary", {type: "tasklinsHelp"}, { root: true });
+        // dispatch("planuary/fbReadPlanuary", {type: "reward"}, { root: true });
+        // dispatch("planuary/fbReadPlanuary", {type: "priority"}, { root: true });
+        // dispatch("planuary/fbReadPlanuary", {type: "distraction"}, { root: true });
+        // dispatch("planuary/fbReadPlanuary", {type: "random"}, { root: true });
+        // dispatch("planuary/fbReadPlanuary", {type: "assess"}, { root: true });
+        // dispatch("planuary/fbReadPlanuary", {type: "quest"}, { root: true });
+        // dispatch("planuary/fbReadPlanuary", {type: "janDescription"}, { root: true });
+        // dispatch("planuary/fbReadPlanuary", {type: "timeCapsule"}, { root: true });
         if (this.state.profile.profile.user.name !== "") {
           if (this.state.tasklins.tasklin.name === "") {
             this.$router.replace("/index").catch(err => {});
@@ -90,12 +121,13 @@ const actions = {
       lin: 0,
       xp: 0,
       level: 0,
+      maxLevel: 0,
       friends: "",
       inventory: "",
       private: "",
       signup: true,
       admin: false,
-      dateCreated: moment().format("YYYY-MM-DD")
+      createdDate: moment().format("YYYY-MM-DD")
     };
     let taskRef = firebaseDb.ref("profile/" + userId);
     taskRef.set(payload);
@@ -127,7 +159,7 @@ const actions = {
       if (error) {
         showErrorMessage(error.message);
       } else {
-        dispatch("fbReadProjects");
+        dispatch("tasks/fbReadProjects", null, { root: true });
         //Notify.create('New Task Added - + 1xp')
       }
     });

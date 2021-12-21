@@ -27,7 +27,7 @@
         />
 
         <q-input
-          id="userID"
+          id="username"
           stack-label
           class="col auth-input"
           bg-color="green-2"
@@ -35,13 +35,13 @@
           ref="username"
           placeholder="Choose a Username"
           lazy-rules
-          :rules="[val => val.length >= 1 || 'Please enter your username!']"
+          :rules="[val => val.length >= 1 || 'Please enter your username!', disable => !disableUsername || 'Username in use']"
         />
       </div>
 
       <div class="row auth-section">
         <q-select
-          id="userID"
+          id="userPronoun"
           outlined
           v-model="changePronouns"
           bg-color="green-2"
@@ -95,9 +95,8 @@
           class="auth-register-btn"
           label="Register"
           :disable="
-            formData.email2 != formData.email &&
-            formData.password2 != formData.email
-          "
+            this.profile.name == '' ||
+            disableUsername || this.profile.color == undefined"
           type="submit"
         />
       </div>
@@ -126,11 +125,12 @@ export default {
       },
       model: null,
       filterOptions: stringOptions,
-      hex: "#FF00FF"
+      hex: "#FF00FF",
+      disableUsername: false
     };
   },
   computed: {
-    ...mapGetters("profile", ["profile"]),
+    ...mapGetters("profile", ["profile", "profiles"]),
     ...mapGetters("tasklins", ["tasklin"]),
     ...mapGetters("settings", ["fbReadSettings"]),
     changeAbout: {
@@ -155,7 +155,8 @@ export default {
       },
       set(value) {
         this.updateUsername(value);
-      }
+        this.checkUsername();
+      },
     },
     togglePrivate: {
       get() {
@@ -212,15 +213,28 @@ export default {
         signup: false,
         admin: this.profile.admin,
         color: this.profile.color,
-        pronouns: this.profile.pronouns == undefined ? "" : this.profile.pronouns
+        pronouns: this.profile.pronouns == undefined ? "" : this.profile.pronouns,
+        maxLevel: this.profile.maxLevel
       };
 
       this.updateProfile(profile);
       this.addNewTasklin();
-      this.$router.push("/initial");
+      //this.$router.push("/initial");
     },
     
     addNewTasklin() {
+      // static fields
+      const bodyShapeArray = ["Ghost", "Round", "Squat"]
+      const bodyShape2Array = ["Tall", "Short"]
+      const bodyTextureArray = ["Charred", "Crumpled", "Stitched"]
+      const eyeArray = ["1", "2", "3", "4", "5"];
+      const mouthArray = ["1", "2", "3", "4", "5"];
+      const noseArray =["1", "2", "3", "4"];
+      const patternArray =["1", "2", "3", "4"];
+      const tongueArray = ["1", "2"]
+      const colorArray = ["blue", "brown", "cyan", "green", "grey", "orange", "pink", "purple", "red", "yellow"]
+      const tailEyebrowsArray = ["1", "2", "3"];
+      const earsHornsArray = ["1", "2", "3"];
       let tasklin = {
         name: "",
         creation_date: Date.now(),
@@ -228,20 +242,23 @@ export default {
         project: "Tasks",
         xp: 0,
         level: 1,
+        maxLevel: 1,
         color: this.profile.color,
-        color2: "",
-        color3: "",
-        bodyShape: "",
-        bodyTexture: "",
-        eyeColor: this.profile.color,
-        eyeType: "eyes1",
-        nose: "",
-        mouth: "mouth1",
-        pattern1: "",
-        eyebrowsOrTail: "",
-        earsOrHorns: "",
-        bodyShape2: "",
-        pattern2: ""
+        color2: colorArray[Math.floor(Math.random() * colorArray.length)],
+        color3: colorArray[Math.floor(Math.random() * colorArray.length)],
+        bodyShape: bodyShapeArray[Math.floor(Math.random() * bodyShapeArray.length)],
+        bodyTexture: bodyTextureArray[Math.floor(Math.random() * bodyTextureArray.length)],
+        eyeColor: colorArray[Math.floor(Math.random() * colorArray.length)],
+        eyeType: "eyes" + eyeArray[Math.floor(Math.random() * eyeArray.length)],
+        nose: "nose" + noseArray[Math.floor(Math.random() * noseArray.length)],
+        mouth: "mouth" + mouthArray[Math.floor(Math.random() * mouthArray.length)],
+        pattern1: "pattern" + patternArray[Math.floor(Math.random() * patternArray.length)],
+        eyebrowsOrTail: "tailEyebrows" + tailEyebrowsArray[Math.floor(Math.random() * tailEyebrowsArray.length)],
+        earsOrHorns: "earsHorns" + earsHornsArray[Math.floor(Math.random() * earsHornsArray.length)],
+        bodyShape2: bodyShape2Array[Math.floor(Math.random() * bodyShape2Array.length)],
+        pattern2: "pattern" + patternArray[Math.floor(Math.random() * patternArray.length)],
+        hatched: false,
+        tongue: ""
       };
 
       this.addTasklin(tasklin);
@@ -252,7 +269,20 @@ export default {
       return re.test(String(email).toLowerCase());
     },
     submitForm() {
-      this.$router.push("/initial");
+      //this.$router.push("/initial");
+    },
+    checkUsername() {
+      this.disableUsername = false;
+  
+      let allProfiles = this.profiles;
+        if (allProfiles != undefined) {
+          Object.keys(allProfiles).forEach(element => {
+            if (allProfiles[element].username == this.profile.username) {
+              this.disableUsername = true;
+              return;
+            }
+          });
+        }
     }
   }
 };

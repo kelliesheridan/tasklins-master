@@ -1,95 +1,56 @@
 <template>
   <q-page padding>
+    <q-dialog v-if="addChallengeTask" v-model="addChallengeTask">
+      <challengeModal />
+    </q-dialog>
+
     <div class="q-pa-xs q-gutter-xs">
       <div class="q-pa-xs q-gutter-xs fitness row text-center">
         <div class="col-12">
-          <q-btn-dropdown
+          <q-btn
             class="q-mr-sm"
             color="light-green"
-            label="I Worked Out"
-            dropdown-icon="fitness_center"
+            label="I Did Something"
+            icon="create"
+            @click="addChallengeTask = true"
           >
-            <q-list>
-              <q-item clickable v-close-popup @click="submit('weights')">
-                <q-item-section>
-                  <q-item-label>Lifted Weights</q-item-label>
-                </q-item-section>
-              </q-item>
-
-              <q-item clickable v-close-popup @click="submit('run')">
-                <q-item-section>
-                  <q-item-label>Went for a Run</q-item-label>
-                </q-item-section>
-              </q-item>
-
-              <q-item clickable v-close-popup @click="submit('walk')">
-                <q-item-section>
-                  <q-item-label>Went for a Walk</q-item-label>
-                </q-item-section>
-              </q-item>
-
-              <q-item clickable v-close-popup @click="submit('yoga')">
-                <q-item-section>
-                  <q-item-label>Did Some Yoga</q-item-label>
-                </q-item-section>
-              </q-item>
-
-              <q-item clickable v-close-popup @click="submit('home')">
-                <q-item-section>
-                  <q-item-label>Home Workout</q-item-label>
-                </q-item-section>
-              </q-item>
-
-              <q-item clickable v-close-popup @click="submit('sports')">
-                <q-item-section>
-                  <q-item-label>Sports!</q-item-label>
-                </q-item-section>
-              </q-item>
-
-              <q-item clickable v-close-popup @click="submit('other')">
-                <q-item-section>
-                  <q-item-label>Did some other healthy thing</q-item-label>
-                </q-item-section>
-              </q-item>
-            </q-list>
-          </q-btn-dropdown>
+          </q-btn>
         </div>
       </div>
 
       <div class="row">
         <div
-          class="col-xs-12 col-sm-12 col-md-6 col-lg-4 q-pa-xs bg-accent"
+          class="col-xs-12 col-sm-12 col-md-6 col-lg-4 q-pa-xs"
+          :class="!settings.darkMode ? 'bg-accent' : 'bg-dark'"
           style="overflow: auto; height: 570px"
         >
           <div v-for="n in 9" :key="n">
             <q-card dense flat square class="my-card q-pa-xs">
-              <q-card-section
-                :style="{ 'background-color': getCardColor(n - 1) }"
-                class="text-white"
-              >
+              <q-card-section :style="{ 'background-color': getCardColor(n - 1) }" class="text-black">
                 <div class="text-h7">
                   {{ getActivity(n - 1) }}
                 </div>
+                <!-- <div style="position: relative; float: right; color: white; margin-left: 5px; margin-top: -5px"> {{ getLikes(n - 1) }}</div>
+                <div style="position: relative; float: right; color: white; margin-right: -2px; margin-top: -2px" class="fas fa-thumbs-up" @click="increaseLike(n - 1)"></div> -->
               </q-card-section>
             </q-card>
           </div>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 q-pa-xs">
-        <div v-for="n in this.profileIDs" :key="n" >
-          <div v-if="calculateValues(getProfileName(n))">
-            {{ getProfileName(n) }}
-            <q-linear-progress
-              rounded
-              size="15px"
-              :value="getProgress(getProfileName(n))"
-              :style="{ color: getUserColor(getProfileName(n)) }"
-              :key="update"
-            />
+          <div v-for="n in this.fitness.fitnessChallenge" :key="n.username">
+            <div v-if="getIntensity(getProfileName(n))">
+              {{ getProfileName(n) }}
+              <q-linear-progress
+                rounded
+                size="15px"
+                :value="getProgress(getProfileName(n))"
+                :style="{ color: getUserColor(getProfileName(n)) }"
+                :key="update"
+              />
+            </div>
           </div>
         </div>
-        </div>        
-
       </div>
     </div>
   </q-page>
@@ -102,13 +63,22 @@ const moment = require("moment");
 export default {
   data: () => ({
     update: 0,
+    addChallengeTask: false,
+    likes: 0
   }),
+  components: {
+    challengeModal: require("components/Tasks/Modals/addFitnessTask.vue")
+      .default
+  },
   computed: {
-    ...mapGetters("fitness", ["fitness"]),
-    ...mapGetters("profile", ["profile", "profiles", "profileIDs"])
+    ...mapGetters("fitness", ["fitness", "fitnessChallenge"]),
+    ...mapGetters("settings", ["settings"]),
+    ...mapGetters("profile", ["profile", "profiles", "profileIDs"]),
+    ...mapState("community", ["likedFitness"])
   },
   methods: {
     ...mapActions("fitness", ["addFitnessTask", "readFitnessTasks", "cheer"]),
+    ...mapActions("community", ["addLike", "removeLike"]),
     submit(event) {
       console.debug("fitness event: ", event);
       this.addFitnessTask(event);
@@ -122,6 +92,20 @@ export default {
           Object.keys(fitness).forEach(element => {
             if (fitness[element].username == user.toLowerCase()) {
               intensityCount += fitness[element].intensity;
+            }
+          });
+        }
+      }
+      return intensityCount;
+    },
+    getIntensity(user) {
+      let intensityCount = 0.0;
+      if (user) {
+        let fitness = this.fitness.fitnessChallenge;
+        if (fitness != undefined) {
+          Object.keys(fitness).forEach(element => {
+            if (fitness[element].username == user.toLowerCase()) {
+              intensityCount = fitness[element].intensity;
             }
           });
         }
@@ -143,7 +127,8 @@ export default {
     },
     getProgress(username) {
       this.update;
-      return this.calculateValues(username);
+      //return this.calculateValues(username);
+      return this.getIntensity(username);
     },
     getUserColor(user) {
       let color = "";
@@ -258,6 +243,9 @@ export default {
                   activity +=
                     " did something else? It was probably a healthy thing!";
                   break;
+                default:
+                  activity += " " + fitness[element].type;
+                  break;
                 // case "cheer":
                 //   activity += " cheered for someone! Who? We'll figure that out later."
                 //   break;
@@ -271,7 +259,68 @@ export default {
       return activity;
     },
     getProfileName(value) {
-      return this.profiles[value].name;
+      if (value) {
+        return value.username;
+      }
+    },
+    getLikes(value) {
+      if (this.$store.state.community.fitnessLikes) {
+        let fitness = this.fitness.fitness;
+        let likes = this.$store.state.community.fitnessLikes;
+        if (likes != undefined && fitness != undefined) {
+        let elementToCheck = value === 0 ? Object.keys(fitness).length - 1 : Object.keys(fitness).length - 1 - value;
+          let fitnessElement = "";
+          Object.keys(fitness).forEach(element => {
+            if (Object.keys(fitness).indexOf(element) == elementToCheck) {
+              fitnessElement = element;
+            }
+          });
+
+  
+
+          if (fitnessElement != "") {
+            if (likes[fitnessElement] != undefined) {
+              return Object.values(likes[fitnessElement]).length;
+            } else {
+              return 0;
+            }
+          } else {
+            return 0;
+          }
+        } else {
+          return 0;
+        }
+      }
+    },
+    increaseLike(value) {
+      this.likes += 1;
+
+      let fitness = this.fitness.fitness;
+      if (fitness != undefined) {
+        let elementToCheck =
+          value === 0
+            ? Object.keys(fitness).length - 1
+            : Object.keys(fitness).length - 1 - value;
+        if (fitness != undefined) {
+          let fitnessElement = "";
+          Object.keys(fitness).forEach(element => {
+            if (Object.keys(fitness).indexOf(element) == elementToCheck) {
+              fitnessElement = element;
+            }
+          });
+
+          if (fitnessElement != "") {
+            let payload = {
+              username: this.profile.username,
+              type: "fitness",
+              id: fitnessElement
+            };
+            this.addLike(payload);
+          }
+        }
+
+        //return activity;
+      }
     }
   }
 };

@@ -1,11 +1,51 @@
 .task {
-    padding: 4px;
+    padding: 2px;
     border: 0px;
-    margin-bottom: -3px;
+    margin-bottom: 0px;
+    margin-top: -2px;
 }
 
 .task-btn {
-    margin: -4px;
+    margin: .5px;
+    margin-left: -5px;
+    font-size: small;
+
+    @include respond(tab-port) {
+        margin: -1px;
+        margin-left: -4px;
+        font-size: small;
+       }
+}
+
+.task-btn-popup {
+    margin: .5px;
+    margin-left: 6px;
+    font-size: medium;
+
+    @include respond(tab-port) {
+        margin: 2px;
+        font-size: small;
+       }
+}
+
+.popup-box {
+    width: 350px;
+
+    @include respond(tab-port) {
+        width: 365px;
+       }
+}
+
+.due-box {
+    width: 225px;
+    
+    @include respond(phone) {
+        width: 200px;
+       }
+
+       @include respond(small-phone) {
+        width: 160px;
+       }   
 }
 
 .task-box {
@@ -14,6 +54,10 @@
 
 .task-late {
     border-right: 1px;
+}
+
+.tasks-late-section {
+    margin-bottom: 2px;
 }
 
 .task-date {
@@ -25,3 +69,40 @@
        padding: 1px;
       }
    }
+
+ .modal-header-task {
+     font-size: 120%;
+     text-transform: uppercase;
+     margin-left: 8px;
+ }  
+
+ .project-label {
+     font-size: smaller;
+ }
+
+ .task-label {
+     font-size: small;
+ }
+
+ .checkbox-style {
+     margin-top: 4px;
+     margin-right: -2px;
+ }
+
+ .task-name-section {
+     margin-left: -8px;
+ }
+
+ .popup-save-btn {
+     margin-top: -30px;
+ }
+
+ .popup-seperator {
+     margin: 0 auto;
+     width: 85%;
+     margin-bottom: 5px;
+ }
+
+ .task-input {
+     margin-top: -5px;
+ }

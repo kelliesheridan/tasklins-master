@@ -1,21 +1,21 @@
 <template>
   <q-item class="task"
-
   	@click="updateTask({ id: id, updates: { completed: !task.completed, dueDate: task.dueDate, task: task } }); addLin(task.completed);"
-  	:class="!task.completed ? 'bg-accent' : 'bg-positive'"
-
+    :class="[!settings.darkMode ? 'bg-accent' : 'bg-dark', !task.completed ? '' : 'bg-positive']" 
     v-touch-hold:1000.mouse="showEditTaskModal"
   	clickable
   	v-ripple>
     <q-item-section side top>
-      <q-checkbox 
+      <q-checkbox
+        size="sm" 
         v-model="task.completed"
-        class="no-pointer-events" />
+        class="no-pointer-events checkbox-style" />
     </q-item-section>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 
-    <q-item-section>
+    <q-item-section class="task-name-section">
       <q-item-label
       	:class="{ 'text-strikethrough' : task.completed }"
+        class="task-label"
         v-html="$options.filters.searchHighlight(task.name, search)">
       </q-item-label>
 
@@ -29,6 +29,7 @@
     <q-item-section v-if="showProjects" side>
       <q-item-label
       	:class="{ 'text-strikethrough' : task.completed }"
+        class="project-label"
         v-html="$options.filters.searchHighlight(task.project, search)">
       </q-item-label>
     </q-item-section>
@@ -54,7 +55,7 @@
           <q-tooltip content-class="bg-primary">Delete</q-tooltip>
           </q-btn>
         <q-btn class="task-btn"
-          @click.stop="pushDueDate({ id: id, dueDate: task.dueDate, nrepeating: task.nrepeating })"
+          @click.stop="pushDueDate({ id: id, task: task})"
           flat
           round
           dense
@@ -84,7 +85,7 @@
 		props: ['task', 'id'],
     data() {
       return {
-        showEditTask: false
+        showEditTask: false,
       }
     },
     computed: {
@@ -102,7 +103,7 @@
         } else {
           return false;
         }
-      }
+      },
     },
     methods: {
       ...mapActions('tasks', ['updateTask', 'deleteTask', 'pushDueDate']),

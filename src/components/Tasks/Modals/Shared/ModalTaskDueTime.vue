@@ -4,6 +4,7 @@
             <q-input
             outlined
             clearable
+            class="due-box"
             label="Due Time"
             :value="dueTime"
             @input="$emit('update:dueTime', $event)">

@@ -4,7 +4,7 @@
       <q-toolbar class="textureBar">
         <!-- <q-btn dense flat round color="accent" icon="notifications"/> -->
         <q-btn
-          v-if="loggedIn && this.tasklin.name !== ''"
+          v-if="loggedIn"
           dense
           flat
           round
@@ -18,21 +18,21 @@
           <q-img class="mainLogo" src="statics/tasklinslogo.png"></q-img>
         </q-toolbar-title>
         <q-btn
-          v-if="loggedIn && this.tasklin.name !== ''"
+          v-if="loggedIn"
           dense
           flat
           to="/help"
           round
           color="warning"
           icon="help"
-        />        
+        />
         <q-btn
-          v-if="loggedIn && this.tasklin.name !== ''"
+          v-if="loggedIn"
           dense
           flat
-          to="/settings"
           round
           color="info"
+          @click="settings = true"
           icon="settings"
         />
         <q-btn
@@ -56,25 +56,29 @@
       </q-toolbar>
     </q-header>
 
-    <q-footer v-if="loggedIn && this.tasklin.name !== ''" class="text-center transparent">
+    <q-footer v-if="loggedIn" class="text-center transparent">
       <div class="row transparent">
+        <q-space />
 
-
-
-        <q-space/>
-
-        <img src="statics/items/chest-1.png" v-show="showBonusItem" class="bonusImg2" @click="showBonus = true" />
+        <img
+          src="statics/items/scroll-1.png"
+          v-show="showBonusItem"
+          class="bonusImg2"
+          @click="showBonus = true"
+        />
       </div>
       <div class="row textureBar">
         <q-btn
-          color="accent" text-color="primary"
-          round          
+          color="accent"
+          text-color="primary"
+          round
           @click="showAddTask = true"
           class="q-pa-lg add-task-btn-footer"
-          icon="add">
+          icon="add"
+        >
         </q-btn>
 
-        <q-space/>
+        <q-space />
         <q-tabs
           align="center"
           mobile-arrows
@@ -85,19 +89,19 @@
           class="text-secondary col-10"
         >
           <q-route-tab class="q-pa-xs" dense to="/index" icon="home" />
-          <q-route-tab class="q-pa-xs" dense to="/todo" icon="done" />
-          <!-- <q-route-tab class="q-pa-xs" dense to="/tasklins" icon="pets" />
-          <q-route-tab class="q-pa-xs" dense to="/community" icon="chat" /> -->
+          <q-route-tab class="q-pa-xs" dense to="/journal" icon="menu_book" />
+          <!-- <q-route-tab class="q-pa-xs" dense to="/tasklins" icon="pets" />  -->
+          <!-- <q-route-tab class="q-pa-xs" dense to="/community" icon="chat" /> -->
           <q-route-tab class="q-pa-xs" dense to="/explore" icon="explore" />
-          <q-route-tab class="q-pa-xs" dense to="/challenges" icon="assessment" />
+          <!-- <q-route-tab class="q-pa-xs" dense to="/challenges" icon="assessment" /> -->
           <q-route-tab class="q-pa-xs" dense to="/profile" icon="person" />
         </q-tabs>
-        <q-space/>
+        <q-space />
       </div>
     </q-footer>
 
     <q-drawer
-      v-if="loggedIn && this.tasklin.color !== ''"
+      v-if="loggedIn"
       :breakpoint="767"
       show-if-above
       bordered
@@ -106,9 +110,18 @@
       side="left"
     >
       <div>
-        <q-img src="statics/backgrounds/TownBackground.jpg" style="height: 250px">
-          <div class="eventBox bg-transparent">                 
-              <img src="statics/items/chest-1.png" v-show="showBonusItem" style="margin-top: 50px; margin-left: 50px" class="bonusImg" @click="showBonus = true" />
+        <q-img
+          :class="!darkMode ? 'town-day' : 'town-night'"
+          style="height: 250px;"
+        >
+          <div class="eventBox bg-transparent">
+            <img
+              src="statics/items/scroll-1.png"
+              v-show="showBonusItem"
+              style="margin-top: 50px; margin-left: 50px"
+              class="bonusImg"
+              @click="showBonus = true"
+            />
           </div>
         </q-img>
       </div>
@@ -125,47 +138,52 @@
           class="col-10 text-accent"
         >
           <q-route-tab class="q-pa-xs" dense to="/index" icon="home" />
-          <q-route-tab class="q-pa-xs" dense to="/todo" icon="done" />
-          <!-- <q-route-tab class="q-pa-xs" dense to="/tasklins" icon="pets" />
+          <q-route-tab class="q-pa-xs" dense to="/journal" icon="menu_book" />
+          <!-- <q-route-tab class="q-pa-xs" dense to="/tasklins" icon="pets" /> -->
+          <!-- <q-route-tab class="q-pa-xs" dense to="/community" icon="chat" /> -->
           <q-route-tab class="q-pa-xs" dense to="/explore" icon="explore" />
-          <q-route-tab class="q-pa-xs" dense to="/community" icon="chat" /> -->
-          <q-route-tab class="q-pa-xs" dense to="/explore" icon="explore" />
-          <q-route-tab class="q-pa-xs" dense to="/challenges" icon="assessment" />
+          <!-- <q-route-tab class="q-pa-xs" dense to="/challenges" icon="assessment" /> -->
           <q-route-tab class="q-pa-xs" dense to="/profile" icon="person" />
         </q-tabs>
       </div>
 
       <div class="text-center q-mb-lg">
         <q-btn
-          @click="showAddTask = true"         
+          @click="showAddTask = true"
           class="add-task-btn textureBar"
           round
           text-color="accent"
           size="18px"
           icon="add"
         >
-        <q-tooltip content-class="bg-primary">Add New Task</q-tooltip>
+          <q-tooltip content-class="bg-primary">Add New Task</q-tooltip>
         </q-btn>
       </div>
 
       <div class="q-ma-sm layout-details">
         <div>{{ profile.name }} (@{{ profile.username }})</div>
-        <div>Level: {{ profile.level }}</div>
-        <div>{{ profile.lin }}
-          <q-img
-        src="statics/items/lin.png"
-        style="width:15px;">
-        <q-tooltip content-class="bg-primary">{{ profile.lin }} Lin.</q-tooltip>
-        </q-img>
+        <div>
+          {{ profile.lin }}
+          <q-img src="statics/items/lin.PNG" style="width:15px;">
+            <q-tooltip content-class="bg-primary"
+              >{{ profile.lin }} Lin.</q-tooltip
+            >
+          </q-img>
         </div>
-        <div>Tasks Completed Today: {{Object.keys(tasksCompletedToday).length}} </div>
+        <div>
+          Tasks Completed Today: {{ Object.keys(tasksCompletedToday).length }}
+        </div>
       </div>
 
       <br />
       <div class="q-pa-lg text-center fixed-center-bottom">
-            <a href="https://www.patreon.com/bePatron?u=9215033" target="_blank"
-              >
-              <q-btn class="textureBar" dense text-color="secondary" label="- Become a Patron -" /></a>
+        <a href="https://www.patreon.com/bePatron?u=9215033" target="_blank">
+          <q-btn
+            class="textureBar"
+            dense
+            text-color="secondary"
+            label="- Become a Patron -"
+        /></a>
       </div>
     </q-drawer>
 
@@ -179,38 +197,52 @@
       transition-show="scale"
       transition-hide="scale"
     >
-    <div class="text-center">
-      <q-card class="randomEvent center">
-        <q-card-section class="bg-primary u-center-text text-white">
-          <div class="text-h5 bonusHeader">Something Happened</div>
-        </q-card-section>
+      <div class="text-center">
+        <q-card class="randomEvent center">
+          <q-card-section class="bg-primary u-center-text text-white">
+            <div class="text-h5 bonusHeader">Big News!</div>
+          </q-card-section>
 
-        <q-card-section class="q-pt-md">
-          <div>
-            <q-item>
-              <q-item-section side top>
-                <q-avatar class="bonusImgFocus">
-                  <img src="statics/items/chest-1.png" />
-                </q-avatar>
-              </q-item-section>
-              <q-item-section top>
-                <q-item-label class="bonusBox">
-                  You found a chest! There's nothing in it because Kellie hasn't figured out how to do that yet. But yay! Finding stuff! Have an excellent day!
-                </q-item-label>
-              </q-item-section>
-            </q-item>
-          </div>
+          <q-card-section class="q-pt-md">
+            <div>
+              <q-item>
+                <q-item-section side top>
+                  <p>
+                    Want to know what's going on with Tasklins? Head over to the
+                    news page for an update.
+                  </p>
+                  <!-- <q-avatar class="bonusImgFocus">
+                  <img src="statics/items/scroll-1.png" />
+                </q-avatar> -->
+                </q-item-section>
+                <q-item-section top>
+                  <q-item-label class="bonusBox" />
+                </q-item-section>
+              </q-item>
+            </div>
 
-        <q-card-actions align="right" class="bg-white text-teal" style="margin-top: -25px;">
-          <q-btn label="OK" color="primary" v-close-popup @click="showBonusItem = false"/>
-        </q-card-actions>
-
-        </q-card-section>
-      </q-card>
-    </div>
+            <q-card-actions
+              align="right"
+              class="bg-white text-teal"
+              style="margin-top: -25px;"
+            >
+              <q-btn
+                label="OK"
+                color="primary"
+                v-close-popup
+                @click="showBonusItem = false"
+              />
+            </q-card-actions>
+          </q-card-section>
+        </q-card>
+      </div>
     </q-dialog>
 
-    <q-page-container v-if="loggedIn" class="loggedIn">
+    <q-dialog v-if="settings" v-model="settings">
+      <settingsModal />
+    </q-dialog>
+
+    <q-page-container v-if="loggedIn">
       <router-view />
     </q-page-container>
 
@@ -229,13 +261,14 @@ export default {
   data() {
     return {
       showAddTask: false,
+      settings: false,
       levelUp: false,
       problem: null,
       accept: false,
       left: false,
       right: false,
       showBonus: false,
-      showBonusItem: false,
+      showBonusItem: true,
       essentialLinks: [
         {
           title: "Home",
@@ -258,9 +291,9 @@ export default {
           link: "/profile"
         },
         {
-          title: 'Explore',
-          icon: 'explore',
-          link: '/explore'
+          title: "Explore",
+          icon: "explore",
+          link: "/explore"
         },
         // {
         //   title: 'Community',
@@ -288,7 +321,12 @@ export default {
   computed: {
     ...mapGetters("profile", ["profile"]),
     ...mapGetters("tasklins", ["tasklin"]),
-    ...mapGetters("tasks", ["tasksCompletedToday"]),
+    ...mapGetters("settings", ["darkMode"]),
+    ...mapGetters("tasks", [
+      "tasksCompletedToday",
+      "tasksCreatedToday",
+      "tasksToday"
+    ]),
     ...mapState("auth", ["loggedIn"])
   },
 
@@ -299,10 +337,61 @@ export default {
       this.problem = null;
       this.accept = false;
     },
+    generateRandomTasklin() {
+      const colorArray = [
+        "#b15858",
+        "#cf7d95",
+        "#8c5688",
+        "#589fb1",
+        "#5cdcc4",
+        "#7eb158",
+        "#f9f871",
+        "#fa9f53",
+        "#bc987e",
+        "#8c8c8c"
+      ];
+      const bodyShapeArray = ["Ghost", "Round", "Squat"];
+      const bodyTextureArray = ["Charred", "Crumpled", "Stitched"];
+      const eyeArray = ["1", "2", "3", "4", "5"];
+      const noseArray = ["1", "2", "3", "4"];
+      const mouthArray = 5;
+      const tongueArray = ["happy1", "happy2", "shock1", "shock2", "worried"];
+      const tongueArrayColors = ["cyan", "green", "pink", "red"];
+      let tasklin = {
+        name: "",
+        creation_date: Date.now(),
+        type: "Monster",
+        project: "Tasks",
+        xp: 0,
+        level: 1,
+        color: this.profile.color,
+        color2: colorArray[Math.floor(Math.random() * colorArray.length)],
+        color3: colorArray[Math.floor(Math.random() * colorArray.length)],
+        bodyShape:
+          bodyShapeArray[Math.floor(Math.random() * bodyShapeArray.length)],
+        bodyTexture:
+          bodyTextureArray[Math.floor(Math.random() * bodyTextureArray.length)],
+        eyeColor: colorArray[Math.floor(Math.random() * colorArray.length)],
+        eyeType: "eyes" + eyeArray[Math.floor(Math.random() * eyeArray.length)],
+        nose: "",
+        mouth:
+          "mouth" + mouthArray[Math.floor(Math.random() * mouthArray.length)],
+        pattern1: "",
+        eyebrowsOrTail: "",
+        earsOrHorns: "",
+        bodyShape2: "",
+        pattern2: "",
+        hatched: false
+        //tongue: tongueArrayColors[Math.floor(Math.random() * tongueArrayColors.length)]
+      };
+
+      console.debug(tasklin);
+    }
   },
 
   components: {
-    "add-task": require("components/Tasks/Modals/addTask.vue").default
+    "add-task": require("components/Tasks/Modals/addTask.vue").default,
+    settingsModal: require("components/Help/SettingsModal.vue").default
     // search: require("components/Tasks/Tools/Search.vue").default,
     // 'new-user-info' : require('components/NewUserInfo.vue').default,
     // 'lin' : require('components/Shared/Lin.vue').default,
@@ -329,14 +418,16 @@ export default {
   background-size: contain;
 }
 
+.felt {
+  background-color: $secondary;
+}
+
 .loggedIn {
-  background-image: url("/statics/canvas.png");
   background-color: $accent;
 }
 
-.felt {
-  // background-image: url("/statics/felt.png");
-  background-color: $secondary;
+.loggedInDark {
+  background-color: $dark;
 }
 
 .bg-image2 {
@@ -344,13 +435,13 @@ export default {
   background-size: contain;
 }
 
-.layout-details {  
-  color: #607d8b;  
+.layout-details {
+  color: #607d8b;
   padding: 1rem;
   margin: 0 auto;
 }
 
-.eventBox {  
+.eventBox {
   margin: 0 auto;
 }
 
@@ -368,5 +459,15 @@ a:hover {
 
 a:active {
   text-decoration: none;
+}
+
+.town-day {
+  background-image: url("/statics/backgrounds/TownBackground1Day.jpg");
+  background-size: cover;
+}
+
+.town-night {
+  background-image: url("/statics/backgrounds/TownBackground1Night.jpg");
+  background-size: cover;
 }
 </style>

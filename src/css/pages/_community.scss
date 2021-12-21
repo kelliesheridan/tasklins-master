@@ -1,0 +1,75 @@
+.communityMain {
+    padding: 1rem;
+    width: 80%;
+    margin: 0 auto;
+
+    @include respond(phone) {
+        width: 100%;
+    }
+
+    @include respond(tab-port) {
+        width: 90%;
+    }
+}
+
+.shareUpdate-form {
+    width: 400px;
+    margin-left: 10px;
+    
+    @include respond(tab-port) {
+        width: 300px;
+    }
+
+    @include respond(phone) {
+        width: 200px;
+    }
+    
+
+}
+
+.shareUpdate-btn {
+    width: 65px;
+    margin-left: 23px;
+    margin-top: 10px;
+}
+
+.community-update-time {
+    margin-top: -15px;
+    margin-bottom: 4px;
+}
+
+.community-update-stats {
+    margin-top: -10px;
+    margin-bottom: 4px;
+}
+
+.community-post-text {
+    margin-top: -30px;
+    background-color: #ebf3f4;
+    padding: 7px;
+    border-radius: 3px;
+    color: black;
+}
+
+.community-avater {
+
+    @include respond(tab-port) {
+        margin-top: 10px;
+        margin-right: 3px;
+    }
+}
+
+.community-like-section {
+    margin: -20px;
+}
+
+.community-like-count {
+    margin-top: 9px;
+    margin-right: -5px;
+
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column-reverse;
+  }

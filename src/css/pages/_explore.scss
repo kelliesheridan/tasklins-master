@@ -1,8 +1,173 @@
 .world-map {
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .map-size {
     width: 80%;
-    height: auto;
+    height: 80%;
 
     @include respond(tab-port) {
-        width: 100%;
-       }
+      width: 97%;
+      height: 97%;
+     }
   }
+
+  .btn-fixed-width {
+    width: 200px
+  }
+
+  .world-day {
+    background-image: url("/statics/backgrounds/WorldMap-min.jpg");    
+    }
+  
+  .world-night {
+    background-image: url("/statics/backgrounds/WorldMapNight-min.jpg");  
+   }
+
+   .map-town {
+    background-image: url("/statics/backgrounds/map-town.png"); 
+   }
+
+   .map-forest {
+    background-image: url("/statics/backgrounds/map-forest.png"); 
+   }
+
+   .map-moon {
+    background-image: url("/statics/backgrounds/map-moon.png"); 
+   }
+
+   .night-sky {
+    background-image: url("/statics/backgrounds/nightSky2.png"); 
+
+    
+    @include respond(phone) {
+      background-image: none;
+     }
+   }
+
+   .night-stars {
+    background-image: none;
+   }
+
+   .town-piper {
+    background-image: url("/statics/backgrounds/town-piper.png"); 
+   }
+
+   .town-blacksmith {
+    background-image: url("/statics/backgrounds/town-blacksmith.png"); 
+   }
+
+   .coming-soon-sign {
+     width: 30%;
+     height: 30%;
+
+     @include respond(tab-port) {
+      width: 50%;
+      height: 50%;
+     }
+   }
+
+   .wishBubble {
+     margin-right: 200px;
+     margin-left: 12px;
+     margin-bottom: 150px;
+     width: 100%;
+     height: 100px;
+     max-width: 100%;
+     display: block;
+
+     @include respond(phone) {
+      width: 300%;
+      max-width: 300%;
+      margin-bottom: 20px;
+     }
+
+     @include respond(tab-port) {
+      width: 300%;
+      max-width: 300%;
+      margin-bottom: 220px;
+     }
+   }
+
+   .wishStar1 {
+    width: 50px;
+    height: 50px;
+    display: block;
+   }
+
+   .wishGap1 {
+    width: 120px;
+    height: 120px;
+   }
+
+   .wishStar2 {
+    width: 50px;
+    height: 50px;
+    display: block;
+   }
+
+   .wishStar3 {
+    margin-top: 50px;
+    margin-left: 200px;
+    width: 50px;
+    height: 50px;
+
+    @include respond(tab-port) {
+      margin-top: 5px;
+     }
+   }
+
+   .wishGap2 {
+    width: 120px;
+    height: 120px;
+   }
+
+   .wishStar4 {
+    margin-top: 50px;
+    margin-left: 280px;
+    width: 50px;
+    height: 50px;
+    background-image: url("/statics/backgrounds/stars/star4.png"); 
+
+    @include respond(phone) {
+      margin-bottom: 80px;
+     }
+   }
+
+   .wishStar5 {
+    margin-bottom: 100px;
+    margin-left: 150px;
+    width: 50px;
+    height: 50px;
+    background-image: url("/statics/backgrounds/stars/star5.png"); 
+
+    @include respond(phone) {
+      margin-top: -200px;
+     }
+   }
+
+   .wishStar6 {
+    margin-bottom: 170px;
+    margin-left: -280px;
+    width: 50px;
+    height: 50px;
+    background-image: url("/statics/backgrounds/stars/star6.png"); 
+
+    @include respond(phone) {
+      margin-left: 120px;
+      margin-top: -160px;
+     }
+   }
+
+   .wishStar7 {
+    margin-top: -50px;
+    margin-left: -140px;
+    width: 50px;
+    height: 50px;
+    background-image: url("/statics/backgrounds/stars/star7.png"); 
+
+    @include respond(phone) {
+      margin-top: -150px;
+     }
+   }

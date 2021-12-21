@@ -1,0 +1,193 @@
+.notebookMain {
+	max-width: 800px;
+	min-width: 550px;
+	min-height: 670px;
+	border-radius: 16px;
+	background: #30575a;
+	padding: 20px 10px 20px;
+
+  
+  @include respond(phone) {
+	max-width: 100%;
+	min-width: 90%;
+	min-height: 70%;    
+}
+}
+  
+	.notebookInner {
+		width: 100%;
+		height: 100%;
+    	position: relative;
+		border-radius: 6px;
+		background: linear-gradient(90deg, #fbfae8 15px, transparent 1%) center,
+			linear-gradient(#fbfae8 15px, transparent 1%) center, #ccc;
+		background-size: 16px 16px;
+		padding: 600px 20px 25px;
+		color: black;
+		// grid-template-areas:
+		// 	"title expenses picture"
+		// 	"days expenses picture"
+		// 	"days expenses picture"
+		// 	"days goals quote"
+		// 	"notes tracker tracker";
+		// grid-template-columns: 50% 30% 20%;
+		// grid-template-rows: 18% auto auto 30% 25%;
+		// &:after {
+		// 	content: "";
+		// 	width: 100px;
+		// 	height: 100%;
+		// 	top: 0;
+		// 	margin: auto;
+		// 	left: 0;
+		// 	right: 0;
+		// 	position: absolute;
+		// }
+  }
+
+//   .notebookPages {
+// 	margin-top: -80%;
+
+// 	@include respond(phone) {
+// 		margin-top: -30%; 
+// 	}
+//   }
+
+  .notebookTitle {
+		width: 100%;
+		height: 100%;
+   		position: relative;
+		border-radius: 6px;
+		background-size: 16px 16px;
+		padding: 650px 20px 25px;
+  }
+
+
+  .buttonRowJournal {
+	margin-bottom: -12px;
+	
+	@include respond(phone) {
+		margin-bottom: 45px;
+	}
+  }
+
+  .traced-header {
+    grid-column: 1 / -1;
+    margin-top: -500px;
+  }
+  
+  .notebookPage0 {
+    border-radius: 6px;
+	background: #fbfae8;
+	
+	@include respond(phone) {
+		margin-top: -30%; 
+	}
+  }
+
+  .notebookPage1 {
+	margin-top: -80%; 
+	
+	@include respond(phone) {
+		margin-top: -100%; 
+	}
+  }
+
+  .notebookPage2 {
+	margin-top: -80%; 
+	
+	@include respond(phone) {
+		margin-top: -100%; 
+	}
+  }
+
+  .notebookPage3 {
+	margin-top: -80%; 
+	
+	@include respond(phone) {
+		margin-top: -100%; 
+	}
+  }
+
+  .notebookPage4 {
+	border-radius: 3px;
+	margin-top: -80%; 
+	
+	@include respond(phone) {
+		margin-top: -200%; 
+	}
+  }
+
+  .notebookMargin {
+	margin-top: -80%;
+
+	@include respond(phone) {
+		margin-top: -140%; 
+	}
+  }
+
+  .moodTracker {
+	width: 40%;
+
+	@include respond(phone) {
+		width: 100%; 
+	}
+  }
+
+  .moodTrackerHeader {
+	width: 55%;
+
+	@include respond(phone) {
+		width: 100%; 
+	}
+  }
+
+  .moodSquare {
+	width: 15px;
+	height: 15px;
+	border: 2px solid;
+	margin-top: 7.9px;
+
+	@include respond(phone) {
+		width: 14px;
+		height: 14px;
+		border: 1.5px solid;
+		margin-top: 8.8px;
+	}
+  }
+
+  .moodImage {
+	height: 60px;
+	width: 60px;
+  }
+
+  .moodImageText {
+	margin-left: 12px;
+  }
+
+  .moodImageText1 {
+	margin-left: 5px;
+  }
+
+  .moodHappy {
+	background-color: #5cdcc4;
+  }
+  
+  .moodFine {
+	background-color: #7eb158;
+  }
+  
+  .moodGlum {
+	background-color: #8c5688;
+  }
+
+  .moodBored {
+	background-color: #bc987e;
+  }
+
+  .moodGrateful {
+	background-color: #cf7d95;
+  }
+  
+  .moodTired {
+	background-color: #8c8c8c;
+  }

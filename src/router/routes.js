@@ -8,7 +8,6 @@ const routes = [
       { path: 'index', component: () => import('pages/Index.vue') },
       { path: 'atd', component: () => import('pages/PageAdmin.vue') },
       { path: 'initial', component: () => import('pages/PageInitial.vue') },
-      { path: 'atdtest', component: () => import('pages/PageInitialTest.vue') },
       { path: 'tasklins', component: () => import('pages/PageTasklins.vue') },
       { path: 'profile', component: () => import('pages/PageProfile.vue') },
       { path: 'explore', component: () => import('pages/PageExplore.vue') },
@@ -19,7 +18,15 @@ const routes = [
       { path: 'settings', component: () => import('pages/PageSettings.vue') },
       { path: 'auth', component: () => import('pages/PageAuth.vue') },
       { path: 'auth2', component: () => import('pages/PageAuth2.vue') },      
-      { path: 'challenges', component: () => import('pages/PageChallenges.vue') }
+      { path: 'challenges', component: () => import('pages/PageChallenges.vue') },
+      { path: 'planuary', component: () => import('pages/PagePlanuary.vue') },
+      { path: 'news', component: () => import('pages/PageNews.vue') },
+      { path: 'roadmap', component: () => import('pages/PageRoadmap.vue') },
+      { path: 'journal', component: () => import('pages/PageJournal.vue') },
+      { path: 'town', component: () => import('pages/map/town.vue') },
+      { path: 'wish-sky', component: () => import('pages/map/wishSky.vue') },
+      { path: 'piper-store', component: () => import('pages/stores/Piper.vue') },
+      { path: 'town-blacksmith', component: () => import('pages/stores/town-Blacksmith.vue') }
     ]
   }
 ]

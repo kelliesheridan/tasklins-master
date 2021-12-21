@@ -1,5 +1,5 @@
 <template>
-  <q-card style="width: 350px">
+  <q-card class="popup-box">
     <modal-header>Add Task</modal-header>
 
     <q-form @submit.prevent="submitForm">
@@ -17,22 +17,16 @@
       </q-card-section>
 
       <q-card-section class="q-pt-none">
-        <modal-task-due-date :dueDate.sync="taskToSubmit.dueDate" />
+        <modal-task-due-date :dueDate.sync="taskToSubmit.dueDate" 
+        :weekly.sync="taskToSubmit.nrepeating.weekly"/>
         <modal-task-due-time
           v-if="taskToSubmit.dueDate"
           :dueTime.sync="taskToSubmit.dueTime"
         />
 
-        <!-- <q-btn class="task-btn"
-          @click.stop="pushDueDate({ id: id, dueDate: task.dueDate, nrepeating: task.nrepeating })"
-          flat
-          round
-          dense
-          color="blue"
-          icon="rotate_right">
-          <q-tooltip content-class="bg-secondary">Move to Tomorrow</q-tooltip>
-        </q-btn> -->
       </q-card-section>
+
+      <q-separator class="popup-seperator"/>
 
       <q-card-section class="q-pt-none">
         <modal-task-nrepeating
@@ -41,7 +35,7 @@
         />
       </q-card-section>
 
-      <modal-task-save></modal-task-save>
+      <modal-task-save class="popup-save-btn"></modal-task-save>
     </q-form>
   </q-card>
 </template>
@@ -66,7 +60,10 @@ export default {
           thursday: false,
           friday: false,
           saturday: false,
-          sunday: false
+          sunday: false,
+          numDay: "",
+          numDaySet: false,
+          monthly: false
         },
         dueDate: "",
         dueTime: "",

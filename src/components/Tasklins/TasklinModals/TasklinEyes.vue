@@ -1,53 +1,245 @@
 <template>
-  <div>
-    <img class="tasklin" :src="this.getEyes(this.tasklin.eyeType)" />
+  <div class="tasklin">
+    <img
+      class="baseType"
+      :src="this.getEyes('base', this.tasklin.eyeType, this.tasklin.eyeColor)"
+    />
+    <img
+      class="colorType"
+      :src="this.getEyes('color', this.tasklin.eyeType, this.tasklin.eyeColor)"
+    />
+    <img
+     class="pupilType" :src="this.getEyeBase(this.tasklin.eyeType)"
+     />
+    <img
+      class="highlightType"
+      :src="this.getEyes('highlight', this.tasklin.eyeType, this.tasklin.eyeColor)"
+    />
+    <img
+      v-if="showEyelid()"
+      class="highlightType"
+      :src="this.getEyelid(this.tasklin.eyeType, this.tasklin.color)"
+    />
   </div>
 </template>
 
 <script>
 import { mapState, mapActions, mapGetters } from "vuex";
 import { date } from "quasar";
+import { getMood } from "src/functions/function-get-mood";
 const moment = require("moment");
 
 export default {
   components: {},
   computed: {
     ...mapGetters("tasklins", ["tasklin"]),
-    ...mapGetters("tasks", ["tasksCompletedToday"])
+    ...mapGetters("tasks", [
+      "tasksToday",
+      "tasksTomorrow",
+      "tasksTodayNotCompleted",
+      "tasksTomorrowNotCompleted",
+      "tasksLate",
+      "tasksCompletedToday",
+      "tasksSorted",
+      "tasksCreatedToday",
+      "tasksCompletedYesterday",
+      "tasksCompletedTwoDaysAgo",
+      "projectsCreatedToday"
+    ])
   },
   methods: {
-    getEyes(eyeType) {
+    showEyelid() {
+        var tasklinMood = getMood(
+        Object.keys(this.tasksCompletedToday).length,
+        Object.keys(this.tasksLate).length,
+        Object.keys(this.tasksCreatedToday).length,
+        Object.keys(this.tasksTodayNotCompleted).length,
+        Object.keys(this.tasksCompletedYesterday).length,
+        Object.keys(this.tasksCompletedTwoDaysAgo).length,
+        Object.keys(this.projectsCreatedToday).length
+      );
+      switch (tasklinMood) {
+        
+        case "Concerned":
+        case "Thrilled":
+        case "Sleepy":
+          return true;
+          break;
+
+        case "Asleep":
+        case "Loved":
+        case "Content":
+        case "Okay":
+        case "Happy":
+        case "Lonely":
+        case "Intrigued":
+          return false;
+          break;
+      }
+    },
+    getEyes(layerNumber, eyeType, arg) {
       if (Object.keys(this.tasksCompletedToday).length == 0) {
-        switch (eyeType) {
-          case "eyes1":
-          case "eyes3":
-          case "eyes5":
-            return "/statics/tasklins/eyes/sleepingeyes1.png";
-            break;
-          case "eyes2":
-          case "eyes4":
-            return "/statics/tasklins/eyes/sleepingeyes2.png";
-            break;
-        }
+        if (eyeType) {
+          return (
+            "/statics/tasklins/eyes/eyes" +
+            eyeType.charAt(eyeType.length - 1) +
+            "/Moods/Asleep.png"
+          );
+        } else return "/statics/tasklins/eyes/eyes1/Moods/Asleep.png";
       } else {
+        // we've completed a task, so.. build this up.
         if (eyeType != undefined) {
           return (
-            "/statics/tasklins/eyes/babyeyes" +
+            "/statics/tasklins/eyes/eyes" +
             eyeType.charAt(eyeType.length - 1) +
+            "/1-" +
+            this.getColour(arg) +
+            this.getEyeType() +
+            ".png"
+          );
+        } else {
+          return (
+            "/statics/tasklins/eyes/eyes1/1-" +
+            this.getColour(arg) +
+            this.getEyeType() +
             ".png"
           );
         }
+      }
+    },
+    getColour(colourString) {
+      if (colourString != undefined) {
+        switch (colourString) {
+          case "#b15858":
+            return "Red";
+          case "#cf7d95":
+            return "Pink";
+          case "#8c5688":
+            return "Purple";
+          case "#589fb1":
+            return "Blue";
+          case "#5cdcc4":
+            return "Cyan";
+          case "#7eb158":
+            return "Green";
+          case "#f9f871":
+            return "Yellow";
+          case "#fa9f53":
+            return "Orange";
+          case "#bc987e":
+            return "Brown";
+          case "#8c8c8c":
+            return "Grey";
+        }
+      }
+    },
+    getEyeType() {
+      const eyeTypeArray = ["A", "B"];
+      return eyeTypeArray[Math.floor(Math.random() * eyeTypeArray.length)];
+    },
+    getEyeBase(eyeType) {
+      if (this.tasklin.level >= 5 && getMood(
+        Object.keys(this.tasksCompletedToday).length,
+        Object.keys(this.tasksLate).length,
+        Object.keys(this.tasksCreatedToday).length,
+        Object.keys(this.tasksTodayNotCompleted).length,
+        Object.keys(this.tasksCompletedYesterday).length,
+        Object.keys(this.tasksCompletedTwoDaysAgo).length,
+        Object.keys(this.projectsCreatedToday).length
+      ) != 'Asleep') {
+        if (eyeType != undefined) {
+          return (
+            "/statics/tasklins/eyes/eyes" +
+            eyeType.charAt(eyeType.length - 1) +
+            "/5-Base.png"
+          );
+        } else {
+          return "/statics/tasklins/eyes/eyes1/5-Base.png";
+        }
+      } else {
+        // return a transparent src
+          return "data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==";
+        }
+    },
+    getEyelid(eyeType, eyeColor) {
+      var tasklinMood = getMood(
+        Object.keys(this.tasksCompletedToday).length,
+        Object.keys(this.tasksLate).length,
+        Object.keys(this.tasksCreatedToday).length,
+        Object.keys(this.tasksTodayNotCompleted).length,
+        Object.keys(this.tasksCompletedYesterday).length,
+        Object.keys(this.tasksCompletedTwoDaysAgo).length,
+        Object.keys(this.projectsCreatedToday).length
+      );
+
+      switch (tasklinMood) {
+        case "Asleep":
+          return (
+            "/statics/tasklins/eyes/eyes" +
+            eyeType.charAt(eyeType.length - 1) +
+            "/Moods/Asleep.png"
+          );
+          break;
+        case "Concerned":
+          return (
+            "/statics/tasklins/eyes/eyes" +
+            eyeType.charAt(eyeType.length - 1) +
+            "/Eyelids" +
+            "/2-concerned" +
+            this.getColour(eyeColor) +
+            ".png"
+          );
+          break;
+        case "Sleepy":
+          return (
+            "/statics/tasklins/eyes/eyes" +
+            eyeType.charAt(eyeType.length - 1) +
+            "/Eyelids" +
+            "/2-sleepy" +
+            this.getColour(eyeColor) +
+            ".png"
+          );
+          break;
+        case "Thrilled":
+          return (
+            "/statics/tasklins/eyes/eyes" +
+            eyeType.charAt(eyeType.length - 1) +
+            "/Eyelids" +
+            "/2-happy" +
+            this.getColour(eyeColor) +
+            ".png"
+          );
+          break;
+        case "Loved":
+          return (
+            "/statics/tasklins/eyes/eyes" +
+            eyeType.charAt(eyeType.length - 1) +
+            "/Moods/Loved.png"
+          );
+          break;
+        case "Content":
+          return (
+            "/statics/tasklins/eyes/eyes" +
+            eyeType.charAt(eyeType.length - 1) +
+            "/Eyelids" +
+            "/2-happy" +
+            this.getColour(eyeColor) +
+            ".png"
+          );
+          break;
+        case "Okay":
+        case "Happy":
+        case "Lonely":
+        case "Intrigued":
+          return "";
+          break;
+        default:
+          return (
+            "/statics/tasklins/eyes/eyes1/1-BlueA.png"
+          );
+          break;
       }
     }
   }
 };
 </script>
-
-<style>
-.tasklin {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  color: black !important;
-}
-</style>

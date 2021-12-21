@@ -2,7 +2,7 @@
   <q-item class="task task-late" 
 
   	@click="updateTask({ id: id, updates: { completed: !task.completed, dueDate: task.dueDate, task: task } }); addLin(task.completed);"
-  	:class="!task.completed ? 'bg-negative' : 'bg-green-1'"
+  	:class="{ 'late-highlight' : !task.completed }"
 
     v-touch-hold:1000.mouse="showEditTaskModal"
   	clickable
@@ -10,11 +10,15 @@
     <q-item-section side top>
       <q-checkbox 
         v-model="task.completed"
-        class="no-pointer-events" />
+        keep-color
+        size="sm" 
+        color="red" 
+        class="no-pointer-events late-warning checkbox-style" />
     </q-item-section>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 
-    <q-item-section>          
+    <q-item-section class="task-name-section">             
       <q-item-label
+        class="task-label"
       	:class="{ 'text-strikethrough' : task.completed }"
         v-html="$options.filters.searchHighlight(task.name, search)">        
       </q-item-label>      
@@ -23,39 +27,19 @@
     <q-item-section  side>
       <q-item-label
         v-if="showProjects"
+        class="project-label"
       	:class="{ 'text-strikethrough' : task.completed }"
         v-html="$options.filters.searchHighlight(task.project, search)">
       </q-item-label>
 
-      <q-item-label>
-        <span v-if="task.dueDate != ''">
+      <q-item-label class="late-warning">
+        <span class="project-label" v-if="task.dueDate != ''">
         # Days Late: {{this.getDaysLate(task.dueDate)}}
         </span>
       </q-item-label>
     </q-item-section>
 
-    <!-- <q-item-section v-if="task.dueDate" side>
-      <div class="row">
-        <div class="column justify-center">
-          <q-icon 
-            name="event"
-            size="18px"
-            class="q-mr-xs" />
-        </div>
-        <div class="column">
-          <q-item-label 
-            class="row justify-end"
-            caption>
-            {{ task.dueDate | niceDate }}
-          </q-item-label>
-          <q-item-label
-            class="row justify-end"
-            caption>
-            <small>{{ taskDueTime }}</small>
-          </q-item-label>
-        </div> 
-      </div>
-    </q-item-section> -->
+
     <q-item-section side>
       <div class="row">
         <q-btn class="task-btn"
@@ -79,7 +63,7 @@
           </q-btn>
 
           <q-btn class="task-btn"
-          @click.stop="pushDueDate({ id: id, dueDate: task.dueDate, nrepeating: task.nrepeating })"
+          @click.stop="pushDueDate({ id: id, task: task })"
           flat
           round
           dense
@@ -174,3 +158,24 @@
     }
 	}
 </script>
+
+<style>
+.late-highlight {
+  border: 2px dotted red;
+  margin: 0px;
+}
+
+.late-warning {
+  animation: .4s jump ease 10 alternate;
+}
+
+@keyframes jump {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.15);
+  }
+}
+
+</style>

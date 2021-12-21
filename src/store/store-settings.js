@@ -1,3 +1,4 @@
+import Vue from "vue";
 import { LocalStorage, SessionStorage } from "quasar";
 import { Dark } from "quasar";
 import { firebaseAuth, firebaseDb } from "boot/firebase";
@@ -8,7 +9,8 @@ const state = {
     show24hrTimeFormat: false,
     showProjectsOnPage: false,
     hideCompletedTasks: false,
-    darkMode: false
+    darkMode: false,
+    sundayStart: false,
   }
 };
 
@@ -26,6 +28,10 @@ const mutations = {
     Dark.toggle();
     state.settings.darkMode = value;
   },
+  setSundayStart(state, value, dispatch) {
+    state.settings.sundayStart = value;
+    LocalStorage.set("sundayStart", state.settings.sundayStart);
+  },
   setSettings(state, settings) {
     if (
       (!Dark.isActive && settings.darkMode) ||
@@ -34,6 +40,7 @@ const mutations = {
       Dark.toggle();
     }
     Object.assign(state.settings, settings);
+    LocalStorage.set("sundayStart", settings.sundayStart);
   }
 };
 
@@ -54,6 +61,11 @@ const actions = {
     commit("setDarkMode", value);
     // dispatch('saveSettings')
   },
+  setSundayStart({ commit, dispatch }, value) {
+    commit("setSundayStart", value);
+    dispatch("tasks/fbReadData", null, { root: true })
+    // dispatch('saveSettings')
+  },
   saveSettings({ state, dispatch }) {
     LocalStorage.set("settings", state.settings);
     dispatch("fbUpdateSettings");
@@ -70,6 +82,7 @@ const actions = {
       let payload = {
         darkMode: settings.darkMode,
         showProjectsOnPage: settings.showProjectsOnPage,
+        sundayStart: settings.sundayStart,
         hideCompletedTasks: settings.hideCompletedTasks,
         show24hrTimeFormat: settings.show24hrTimeFormat
       };
@@ -93,7 +106,9 @@ const actions = {
     let help = {
       problem: payload.problem,
       createdDate: moment().format("YYYY-MM-DD HH:mm:ss"),
-      userName: this.state.profile.profile.user.name
+      name: this.state.profile.profile.user.name,
+      userame: this.state.profile.profile.user.username,
+      userid: userId
     };
     taskRef.set(help, error => {
       if (error) {
@@ -108,6 +123,12 @@ const actions = {
 const getters = {
   settings: state => {
     return state.settings;
+  },
+  darkMode: state => { 
+    return state.settings.darkMode;
+  },
+  sundayStart: state => {
+    return state.settings.sundayStart;
   }
 };
 

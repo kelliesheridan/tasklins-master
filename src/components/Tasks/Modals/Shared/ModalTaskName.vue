@@ -9,7 +9,7 @@
 		v-select-all
     	ref="name"
     	label="Task name"
-    	class="col">
+    	class="col task-input">
         </q-input>
         
 </template>

@@ -1,6 +1,6 @@
 import { firebaseDb, firebaseAuth } from "boot/firebase";
 import moment from "moment";
-import { Notify } from 'quasar'
+import { Notify } from 'quasar';
 
 const state = {
   profile: {
@@ -28,19 +28,24 @@ const mutations = {
   setXP(state, isCompleted) {
     if (isCompleted) {
       state.profile.user.xp += 5;
+      state.tasklin.xp += 5;
     } else {
       state.profile.user.xp -= 5;
+      state.tasklin.xp -= 5;
     }
   },
   setXPFromTask(state, task) {
     if (task.updates.completed) {
       if (moment(task.updates.dueDate).isSameOrBefore(moment())) {
         state.profile.user.xp += 5;
+        state.tasklin.xp += 5;
       } else {
         state.profile.user.xp += 3;
+        state.tasklin.xp += 3;
       }
     } else {
       state.profile.user.xp -= 5;
+      state.tasklin.xp -= 5;
     }
   },
   setLin(state, isCompleted) {
@@ -52,9 +57,16 @@ const mutations = {
   },
   setXPValue(state, value) {
     state.profile.user.xp += value;
+    state.tasklin.xp += value;
   },
   setLevel(state) {
     state.profile.user.level = getLevel();
+    if (state.profile.user.maxLevel < state.profile.user.level) {
+      state.profile.user.maxLevel = state.profile.user.level;
+    }
+  },
+  setLevelValue(state, value) {
+    state.profile.user.level = value;
   },
   setAbout(state, value) {
     state.profile.user.about = value;
@@ -80,11 +92,20 @@ const mutations = {
   loadAllProfileIDs({}, profileIDs) {
     state.profileIDs = profileIDs;
   },
+  loadAllMoods({}, moods) {
+    state.moods = moods;
+  },
   printUsername({}, userNames) {
     console.debug("usernames: " + userNames);
   },
   setPronouns(state, value) {
     state.profile.user.pronouns = value;
+  },
+  setMoodDate(state, value, mood) {
+    if (value != undefined) {
+      state.profile.user.moodDate = value;
+      state.profile.user.currentMood = value;
+    }
   },
 };
 // addNewUser(state, payload) {
@@ -134,6 +155,10 @@ const actions = {
     commit("setPronouns", value);
     //dispatch('fbUpdateProfile')
   },
+  setMood({ commit, dispatch }, value) {
+    dispatch("fbSetMood", value);
+    //dispatch('fbUpdateProfile')
+  },
   fbReadProfile({ dispatch, commit }) {
     let userId = firebaseAuth.currentUser.uid;
     let userProfile = firebaseDb.ref("profile/" + userId);
@@ -148,13 +173,16 @@ const actions = {
         lin: profile.lin,
         xp: profile.xp,
         level: profile.level,
+        maxLevel: profile.maxLevel,
         friends: profile.friends,
         inventory: profile.inventory,
         private: profile.private,
         signup: profile.signup,
         admin: profile.admin,
-        color: profile.color,
-        pronouns: profile.pronouns
+        color: profile.color == undefined ? "" : profile.color,
+        pronouns: profile.pronouns == undefined ? "" : profile.pronouns,
+        createdDate: profile.createdDate == undefined ? "" : profile.createdDate,
+        memberType: profile.memberType == undefined ? 1 : profile.memberType
       };
       commit("updateProfile", payload);
       dispatch("fbReadAllProfiles")
@@ -173,7 +201,7 @@ const actions = {
       Object.keys(profiles).forEach(element => {
         profileArray.push(element);
         commit("loadAllProfileIDs", profileArray);
-      });
+      });    
     });
   },
 
@@ -185,6 +213,8 @@ const actions = {
   fbUpdateProfile({ dispatch }) {
     let userId = firebaseAuth.currentUser.uid;
     let proUpdate = firebaseDb.ref("profile/" + userId);
+    // sanitize username of spaces
+    state.profile.user.username = state.profile.user.username.replace(/\s+/g, '');
     proUpdate.update(state.profile.user, error => {
       if (error) {
         showErrorMessage(error.message);
@@ -210,7 +240,35 @@ const actions = {
         );
       }
     });
-  }
+  },
+  fbSetMood({ dispatch, commit }, payload) {
+    let userId = firebaseAuth.currentUser.uid;
+    let moodDate = payload.moodDate;
+    commit('setMoodDate', moodDate, payload.mood);
+    let moodRef = firebaseDb.ref("mood/" + userId + "/" + moodDate);
+    moodRef.set(payload.mood, error => {
+      if (error) {
+        showErrorMessage(error.message);
+      } else {
+        dispatch("fbReadAllMoods");
+      }
+    });
+  },
+  fbReadAllMoods({ dispatch, commit }) {
+    let userId = firebaseAuth.currentUser.uid;
+    let userProfile = firebaseDb.ref("mood/" + userId);
+
+    userProfile.once("value", snapshot => {
+      let profiles = snapshot.val();
+      commit("loadAllMoods", profiles);
+    });
+
+    userProfile.on("child_added", snapshot => {
+      let profiles = snapshot.val();
+      commit("loadAllMoods", profiles);
+    });
+  },
+
 };
 function mutateLin(min, max) {
   var lin = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -249,7 +307,7 @@ function getLevel() {
   } else {
     level = "1";
   }
-  if (level > state.profile.user.level) {
+  if (level > state.profile.user.maxLevel) {
     Notify.create({
       icon: 'grade',
       message: "Congratulations! You reached level " + level + "!",
@@ -269,7 +327,7 @@ const getters = {
   },
   profileIDs: state => {
     return state.profileIDs;
-  }
+  },
 };
 
 export default {

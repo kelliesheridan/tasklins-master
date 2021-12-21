@@ -23,6 +23,16 @@ const mutations = {
   setFitnessTask(state, payload) {
     state.fitness = payload;
   },
+  setFitnessChallengeTask(state, payload) {
+    state.fitnessChallenge = payload;
+  },
+  addFitnessTask(state, payload) {
+    if (state.fitness != undefined) 
+    Vue.set(state.fitness, payload.id, payload.fitnessTask);
+  },
+  updateFitnessTask(state, payload) {
+    Object.assign(state.fitness[payload.userId], payload);
+  },
   setSortedFitnessTask(state, payload) {
     let sortedArray = new Array();
     sortedArray = payload.sort();
@@ -38,12 +48,15 @@ const actions = {
   readFitnessTasks({ dispatch }) {
     dispatch("fbReadFitnessTasks");
   },
+  readFitnessLevels({ dispatch }) {
+    dispatch("fbReadFitnessLevels");
+  },
   cheer({ dispatch }, value) {
     dispatch("fbCheerFitnessTask", value)
   },
   fbReadFitnessTasks({ commit }) {
     let userId = firebaseAuth.currentUser.uid;
-    let fitnessTasks = firebaseDb.ref("fitness").orderByKey();
+    let fitnessTasks = firebaseDb.ref("fitness").orderByKey().limitToLast(10);
     fitnessTasks.once("value").then(function(snapshot) {
       let fitnessRecord = snapshot.val();
       commit("setFitnessTask", fitnessRecord);
@@ -51,9 +64,23 @@ const actions = {
     // child added
     fitnessTasks.on("child_added", snapshot => {
       let fitnessRecord = snapshot.val();
-      commit("setFitnessTask", fitnessRecord);
+      let payload = {
+        id: snapshot.key,
+        fitnessTask: fitnessRecord
+      };
+      commit("addFitnessTask", payload);
     });
   },
+
+  fbReadFitnessLevels({ commit }) {
+    let userId = firebaseAuth.currentUser.uid;
+    let fitnessTasks = firebaseDb.ref("fitnessChallenge");
+    fitnessTasks.once("value").then(function(snapshot) {
+      let fitnessRecord = snapshot.val();
+      commit("setFitnessChallengeTask", fitnessRecord);
+    });
+  },
+
   fbAddFitnessTask({ dispatch }, fitnessTask) {
     let userId = firebaseAuth.currentUser.uid;
     let username = this.state.profile.profile.user.name;
@@ -62,6 +89,7 @@ const actions = {
     let payload = {
       date: date,
       username: username.toLowerCase(),
+      userId: userId,
       type: fitnessTask,
       intensity: 0.01,
       goal: 10,
@@ -70,8 +98,26 @@ const actions = {
     };
     let taskFitness = firebaseDb.ref("fitness/" + date);
     taskFitness.set(payload);
+
+    var intensityCount = 0.0;
+    Object.keys(this.state.fitness.fitness).forEach(element => {
+      if (this.state.fitness.fitness[element].userId == userId) {
+        intensityCount += this.state.fitness.fitness[element].intensity;
+      }
+    });
+
+    let taskFitnessChallenge = firebaseDb.ref("fitnessChallenge/" + userId);
+    let fitnessActivity = {
+      username: username.toLowerCase(),
+      intensity: intensityCount + 0.01,
+      color: userColor
+    };
+    taskFitnessChallenge.set(fitnessActivity);
+
     dispatch("fbReadFitnessTasks");
-    dispatch("profile/addXP", true, { root: true })
+    dispatch("fbReadFitnessLevels");
+    //dispatch("profile/addXP", true, { root: true })
+    dispatch("tasklins/addXP", true, { root: true })
     dispatch("profile/addLin", true, { root: true })
   },
   fbCheerFitnessTask({dispatch}, payload) {
@@ -93,6 +139,9 @@ const actions = {
 const getters = {
   fitness: state => {
     return state;
+  },
+  fitnessChallenge: state => {
+    return state.fitness.fitnessChallenge;
   }
 };
 

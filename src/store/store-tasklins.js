@@ -2,52 +2,99 @@ import { uid, date } from "quasar";
 import { LocalStorage, SessionStorage } from "quasar";
 import { firebaseAuth, firebaseDb } from "boot/firebase";
 import moment from "moment";
+import { Notify } from 'quasar';
 
 const state = {
   tasklin: {
-    name: "",
-    color: "",
-    type: "",
-    xp: 0,
-    creation_date: ""
+    // name: "",
+    // color: "",
+    // type: "",
+    // xp: 0,
+    // creation_date: "",
+    // eyeType: "",
+    // mouth: "",
+    // nose: "",
+    // hatched: "",
+    // level: ""
   }
 };
 
 const mutations = {
   setTasklin(state, payload) {
     state.tasklin = payload;
-  }
+  },
+  updateXP(state, isCompleted) {
+    if (isCompleted) {
+      state.tasklin.xp += 1;
+    } else {
+      state.tasklin.xp -= 1;
+    }
+  },
+  addXP(state) {
+    state.tasklin.xp += 1;
+  },
+  setLevel(state) {
+    state.tasklin.level = getLevel();
+    if (state.tasklin.maxLevel < state.tasklin.level) {
+      state.tasklin.maxLevel = state.tasklin.level;
+    }
+  },
 };
 
 const actions = {
   addTasklin({ dispatch }, tasklin) {
     dispatch("fbAddTasklin", tasklin);
     dispatch("profile/fbReadProfile", null, { root: true });
-    this.$router.replace("/todo");
+    this.$router.replace("/index");
   },
   updateTasklin({ dispatch }, tasklin) {
     dispatch("fbUpdateTasklin", tasklin);
     dispatch("profile/fbReadProfile", null, { root: true });
-  },
-  getTasklin({ dispatch }, payload) {
     dispatch("fbReadTasklins", {});
+  },
+  getTasklin({ dispatch, commit }, payload) {
+    dispatch("fbReadTasklins", {});
+  },
+  addXPToTasklin({ dispatch, commit }, task) {
+    commit("updateXP", task.updates.completed);
+    commit("setLevel");
+    dispatch("fbUpdateTasklin", state.tasklin);
+  },
+  addXP({ dispatch, commit }, task) {
+    commit("addXP");
+    dispatch("fbUpdateTasklin", state.tasklin);
   },
   fbReadTasklins({ commit }) {
     let userId = firebaseAuth.currentUser.uid;
-    
     let userSettings = firebaseDb.ref("tasklins/" + userId);
 
     userSettings.once("value", snapshot => {
       let tasklinInfo = snapshot.val();
       if (tasklinInfo) {
         let payload = {
-          name: tasklinInfo.name,
-          color: tasklinInfo.color,
-          type: tasklinInfo.type,
-          xp: tasklinInfo.xp,
+          bodyShape: tasklinInfo.bodyShape == undefined ? "Ghost" : tasklinInfo.bodyShape,
+          bodyShape2: tasklinInfo.bodyShape2 == undefined ? "Tall" : tasklinInfo.bodyShape2,
+          bodyTexture: tasklinInfo.bodyTexture == undefined ? "Stitched" : tasklinInfo.bodyTexture,
+          color: tasklinInfo.color == undefined ? "#8c5688" : tasklinInfo.color,
+          color2: tasklinInfo.color2 == undefined ? "#8c5688" : tasklinInfo.color2,
+          color3: tasklinInfo.color3 == undefined ? "#8c5688" : tasklinInfo.color3,
           creation_date: moment(tasklinInfo.creation_date).format("YYYY-MM-DD"),
-          eyeType: tasklinInfo.eyeType,
-          mouth: tasklinInfo.mouth,
+          earsOrHorns: tasklinInfo.earsOrHorns == undefined ? "earsHorns1" : tasklinInfo.earsOrHorns,
+          eyebrowsOrTail: tasklinInfo.eyebrowsOrTail == undefined ? "tailEyebrows2" : tasklinInfo.eyebrowsOrTail,
+          eyeColor: tasklinInfo.eyeColor == undefined ? "#7eb158" : tasklinInfo.eyeColor,
+          eyeType: tasklinInfo.eyeType == undefined ? "eyes1" : tasklinInfo.eyeType,
+          hatched: tasklinInfo.hatched == undefined ? false : tasklinInfo.hatched,
+          level: tasklinInfo.level == undefined ? 1 : tasklinInfo.level,
+          maxLevel: tasklinInfo.maxLevel == undefined ? tasklinInfo.level : tasklinInfo.maxLevel, 
+          mouth: tasklinInfo.mouth == undefined ? "mouth1" : tasklinInfo.mouth,
+          name: tasklinInfo.name,
+          nose: tasklinInfo.nose == undefined ? "nose1" : tasklinInfo.nose,
+          pattern1: tasklinInfo.pattern1 == undefined ? "pattern4" : tasklinInfo.pattern1,
+          pattern2: tasklinInfo.pattern2 == undefined ? "patterns2" : tasklinInfo.pattern2,
+          project: tasklinInfo.project,
+          type: tasklinInfo.type == undefined ? "Monster" : tasklinInfo.type,
+          xp: tasklinInfo.xp,
+          //tongue: tasklinInfo.tongue
         };
         commit("setTasklin", payload);
       }
@@ -65,24 +112,79 @@ const actions = {
   fbAddTasklin({ commit }, tasklin) {
     let userId = firebaseAuth.currentUser.uid;
     let payload = {
-      name: tasklin.name,
+      bodyShape: tasklin.bodyShape,
+      bodyShape2: tasklin.bodyShape2,
+      bodyTexture: tasklin.bodyTexture,
       color: tasklin.color,
+      color2: tasklin.color2,
+      color3: tasklin.color3,
+      creation_date: moment(tasklin.creation_date).format("YYYY-MM-DD"),
+      earsOrHorns: tasklin.earsOrHorns,
+      eyebrowsOrTail: tasklin.eyebrowsOrTail,
+      eyeColor: tasklin.eyeColor,
+      eyeType: tasklin.eyeType == undefined ? "eyes1" : tasklin.eyeType,
+      hatched: false,
+      level: tasklin.level,
+      maxLevel: tasklin.maxLevel == undefined ? tasklin.level : tasklin.maxLevel, 
+      mouth: tasklin.mouth == undefined ? "mouth1" : tasklin.mouth,
+      name: tasklin.name,
+      nose: tasklin.nose == undefined ? "nose1" : tasklin.nose,
+      pattern1: tasklin.pattern1,
+      pattern2: tasklin.pattern2,
+      project: tasklin.project,
       type: tasklin.type,
       xp: tasklin.xp,
-      creation_date: moment(tasklin.creation_date).format("YYYY-MM-DD"),
-      eyeType: "eyes1",
-      mouth: "mouth1"
+      //tongue: tasklin.tongue
     };
     let fbTasklin = firebaseDb.ref("tasklins/" + userId);
     fbTasklin.set(payload);
     commit("setTasklin", payload);
-  }
+  }, 
 };
 
 const getters = {
   tasklin: state => {
     return state.tasklin;
   }
+};
+
+function getLevel() {
+  var xp = parseInt(state.tasklin.xp);
+  var level = ""
+  if (xp >= 3500) {
+    level = "12";
+  } else if (xp >= 3000 && xp <= 3499) {
+    level = "11";
+  } else if (xp >= 2500 && xp <= 2999) {
+    level = "10";
+  } else if (xp >= 2000 && xp <= 2499) {
+    level = "9";
+  } else if (xp >= 1500 && xp <= 1999) {
+    level = "8";
+  } else if (xp >= 1000 && xp <= 1499) {
+    level = "7";
+  } else if (xp >= 500 && xp <= 999) {
+    level = "6";
+  } else if (xp >= 250 && xp <= 499) {
+    level = "5";
+  } else if (xp >= 100 && xp <= 249) {
+    level = "4";
+  } else if (xp >= 50 && xp <= 99) {
+    level = "3";
+  } else if (xp >= 25 && xp <= 49) {
+    level = "2";
+  } else {
+    level = "1";
+  }
+  if (level > state.tasklin.maxLevel) {
+    Notify.create({
+      icon: 'grade',
+      message: "Congratulations! " + state.tasklin.name == '' ? " Your tasklin" : state.tasklin.name + " reached level " + level + "!",
+      color: 'primary',
+      textColor: 'white'  
+    })
+  }
+  return level;
 };
 
 export default {

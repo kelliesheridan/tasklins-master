@@ -1,0 +1,37 @@
+.planuaryDay {
+    padding: 1rem;
+    max-width: 70%;
+    margin: 0 auto;
+
+    @include respond(tab-port) {
+        max-width: 100%;        
+       }    
+}
+
+.focus-boxes {
+    width: 350px;
+
+    @include respond(tab-port) {
+        width: 280px;        
+       }    
+}
+
+.wish-moon {
+    width: 10%;
+    height: auto;
+
+    @include respond(tab-port) {
+        width: 30%;
+    height: auto;     
+       }    
+}
+
+.quest-card {
+    font-size: smaller;
+    width: 40%;
+    margin: 10px;
+
+    @include respond(phone) {
+        width: 100%;        
+       }    
+}

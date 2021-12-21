@@ -8,19 +8,24 @@
 @import "base/utilities";
 
 @import "components/button";
-@import "components/eggs";
 @import "components/composition";
-@import "components/projects";
-@import "components/tasks";    
+@import "components/eggs";
+@import "components/journal";
+@import "components/projects";  
 @import "components/tasklin";  
+@import "components/tasks";  
 
 @import "layout/header";
  
 @import "pages/auth";
+@import "pages/community";
 @import "pages/explore";
-@import "pages/home";
 @import "pages/help";
+@import "pages/home";
 @import "pages/initial";
+@import "pages/journal";
+@import "pages/november";
+@import "pages/planuary";
 @import "pages/todo"; 
 
 

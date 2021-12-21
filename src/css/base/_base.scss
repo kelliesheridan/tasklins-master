@@ -9,7 +9,6 @@
 
 .textureBar {
     background-image: url("/statics/repeatingbar2.jpg");
-    margin: auto;
     background-color: #607d8b;
     background-position: center top;
   }
@@ -46,11 +45,12 @@ body {
     font-family: gopher, sans-serif;
     font-style: normal;
     font-weight: 100;
+    background-color: #ebf3f4;
+}
 
     // @include respond(tab-port) {
         
     // }
-}
 
 [v-cloak] {
     display:none;
